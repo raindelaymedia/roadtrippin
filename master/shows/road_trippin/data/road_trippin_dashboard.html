@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Road Trippin' — Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ─────────────────────────────────────────────────────────────
+   ROAD TRIPPIN' DASHBOARD — Rain Delay Media brand styling
+   Brand color: #2F6DDE (logo blue)
+   Aesthetic:   Clean, modern, professional — bright accents on
+                a soft neutral background, plenty of whitespace.
+   ───────────────────────────────────────────────────────────── */
+:root{
+  /* Brand */
+  --brand:        #2F6DDE;            /* Rain Delay blue */
+  --brand-deep:   #1F4FA8;            /* Hover/pressed */
+  --brand-soft:   rgba(47,109,222,.08);
+  --brand-tint:   rgba(47,109,222,.16);
+
+  /* Surfaces */
+  --bg:           #f7f8fb;            /* Page bg — cool tinted white */
+  --surface:      #ffffff;            /* Cards */
+  --surface2:     #eef1f7;            /* Hover / row stripe */
+  --surface3:     #dde3ee;            /* Section header */
+
+  /* Borders */
+  --border:       rgba(20,30,55,.08);
+  --border2:      rgba(20,30,55,.16);
+
+  /* Text */
+  --text:         #0f1729;            /* Near-black with blue undertone */
+  --text2:        #4a5468;
+  --text3:        #8a93a6;
+
+  /* Functional accents */
+  --green:        #1B7A3A;
+  --green-soft:   rgba(27,122,58,.10);
+  --red:          #BC2E3A;
+  --amber:        #E08C2A;
+  --teal:         #1B9B96;
+  --pink:         #DD4B5C;
+  --gray:         #6b7280;
+
+  /* Chart palette — coordinated, brand-led */
+  --c-blue:       #2F6DDE;            /* Brand blue */
+  --c-green:      #1B7A3A;
+  --c-amber:      #E08C2A;
+  --c-violet:     #7C5BD8;
+  --c-coral:      #DD4B5C;
+  --c-teal:       #1B9B96;
+  --c-gold:       #C9A84C;
+  --c-slate:      #6B7280;
+
+  /* Radii / sizing */
+  --r:            10px;
+  --rsm:          6px;
+  --rlg:          14px;
+  --shadow-sm:    0 1px 2px rgba(15,23,41,.04);
+  --shadow:       0 1px 3px rgba(15,23,41,.06), 0 1px 2px rgba(15,23,41,.04);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.5;font-size:14px}
+
+/* ── Shell layout ── */
+.shell{display:flex;height:100vh;overflow:hidden}
+
+/* ── Sidebar ── */
+.sidebar{
+  width:212px; min-width:212px;
+  background:var(--surface);
+  border-right:1px solid var(--border);
+  display:flex; flex-direction:column;
+  padding:0;
+}
+.sidebar-logo{
+  padding:18px 18px 18px;
+  border-bottom:1px solid var(--border);
+  display:flex; align-items:center; gap:10px;
+}
+.logo-mark{
+  width:32px; height:32px; flex-shrink:0;
+  background:var(--brand);
+  border-radius:7px;
+  display:flex; align-items:center; justify-content:center;
+  color:#fff; font-weight:700; font-size:11px;
+  letter-spacing:-.02em;
+  box-shadow:0 2px 4px rgba(47,109,222,.25);
+}
+.logo-text{display:flex;flex-direction:column;line-height:1.15}
+.logo-main{font-size:14px;font-weight:600;letter-spacing:-.3px;color:var(--text)}
+.logo-sub{font-size:11px;color:var(--text3);margin-top:1px;font-weight:400}
+
+.nav{padding:14px 10px 10px;flex:1}
+.nav-section{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--text3);padding:8px 12px 6px;font-weight:600}
+.nav-item{
+  display:flex; align-items:center; gap:10px;
+  padding:8px 11px; border-radius:var(--rsm);
+  cursor:pointer; font-size:13px; color:var(--text2);
+  margin-bottom:1px; user-select:none;
+  transition:background .12s, color .12s;
+  position:relative;
+}
+.nav-item:hover{background:var(--surface2);color:var(--text)}
+.nav-item.active{
+  background:var(--brand-soft);
+  color:var(--brand);
+  font-weight:500;
+}
+.nav-item.active::before{
+  content:''; position:absolute; left:-10px; top:6px; bottom:6px;
+  width:3px; background:var(--brand); border-radius:0 2px 2px 0;
+}
+.nav-icon{width:15px;height:15px;opacity:.55;flex-shrink:0}
+.nav-item.active .nav-icon{opacity:1;color:var(--brand)}
+.sidebar-footer{
+  padding:14px 18px;
+  border-top:1px solid var(--border);
+  font-size:11px; color:var(--text3);
+  font-family:'DM Mono',monospace;
+}
+
+/* ── Main ── */
+.main{flex:1;overflow-y:auto;overflow-x:hidden;background:var(--bg)}
+.page{display:none;padding:28px 32px 80px;max-width:1400px}
+.page.active{display:block}
+.page-header{margin-bottom:22px;padding-bottom:18px;border-bottom:1px solid var(--border)}
+.page-title{font-size:22px;font-weight:600;letter-spacing:-.5px;color:var(--text)}
+.page-sub{font-size:13px;color:var(--text2);margin-top:4px}
+
+/* ── Metric cards ── */
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:18px}
+.metric{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--r);
+  padding:14px 16px;
+  transition:border-color .15s, box-shadow .15s;
+}
+.metric:hover{border-color:var(--border2);box-shadow:var(--shadow-sm)}
+.metric-label{
+  font-size:11px; text-transform:uppercase; letter-spacing:.08em;
+  color:var(--text3); margin-bottom:8px; font-weight:600;
+}
+.metric-value{
+  font-size:24px; font-weight:600;
+  letter-spacing:-.6px; line-height:1;
+  color:var(--text);
+}
+.metric-delta{font-size:11px;margin-top:6px;color:var(--text2);font-weight:500}
+.up{color:var(--green)}
+.down{color:var(--red)}
+
+/* ── Card grid ── */
+.grid-2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px;margin-bottom:14px}
+.card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--r);
+  padding:18px 20px;
+  min-width:0;
+  transition:box-shadow .15s;
+}
+.card:hover{box-shadow:var(--shadow-sm)}
+.card-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;gap:12px}
+.card-title{font-size:13px;font-weight:600;color:var(--text)}
+.card-sub{font-size:11px;color:var(--text3);font-weight:500}
+.mb12{margin-bottom:12px}
+
+/* ── Chart containers ──
+   .chart-outer: fixed height window that scrolls on x
+   inner div: wide enough for all bars, height fills outer completely
+   canvas: fills inner div — Chart.js sees a real pixel size */
+.chart-outer{
+  overflow-x:auto; overflow-y:hidden;
+  width:100%; height:220px;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:thin; scrollbar-color:rgba(0,0,0,.12) transparent;
+  cursor:grab;
+}
+.chart-outer:active{cursor:grabbing}
+.chart-outer::-webkit-scrollbar{height:4px}
+.chart-outer::-webkit-scrollbar-track{background:transparent}
+.chart-outer::-webkit-scrollbar-thumb{background:rgba(0,0,0,.15);border-radius:2px}
+.chart-outer-lg{
+  overflow-x:auto; overflow-y:hidden;
+  width:100%; height:260px;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:thin; scrollbar-color:rgba(0,0,0,.12) transparent;
+  cursor:grab;
+}
+.chart-outer-lg:active{cursor:grabbing}
+.chart-outer-lg::-webkit-scrollbar{height:4px}
+.chart-outer-lg::-webkit-scrollbar-track{background:transparent}
+.chart-outer-lg::-webkit-scrollbar-thumb{background:rgba(0,0,0,.15);border-radius:2px}
+
+/* ── Legend ── */
+.legend{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:10px}
+.legend-item{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text2)}
+.leg-dot{width:12px;height:4px;border-radius:2px;display:inline-block}
+
+/* ── Tab toggle ── */
+.tabs{display:flex;gap:4px}
+.tab-btn{font-size:11px;font-family:'DM Sans',sans-serif;padding:3px 9px;border-radius:var(--rsm);border:.5px solid var(--border);background:transparent;color:var(--text2);cursor:pointer}
+.tab-btn.on{background:var(--surface2);color:var(--text);border-color:var(--border2)}
+
+/* ── Platform bars ── */
+.plat-row{display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid var(--border)}
+.plat-row:last-child{border-bottom:none}
+.plat-name{font-size:12px;min-width:96px;color:var(--text2)}
+.plat-bar-bg{flex:1;height:6px;background:var(--surface2);border-radius:3px;overflow:hidden}
+.plat-bar{height:100%;border-radius:3px;transition:width .3s}
+.plat-val{font-size:11px;font-family:'DM Mono',monospace;min-width:50px;text-align:right;color:var(--text)}
+
+/* ── Tracker tab ── */
+.tracker-section{margin-bottom:24px}
+.tracker-section-title{
+  font-size:13px; font-weight:600; color:var(--text);
+  margin-bottom:10px; padding-bottom:10px;
+  border-bottom:1px solid var(--border2);
+  letter-spacing:-.1px;
+}
+.table-scroll{overflow-x:auto;scrollbar-width:thin;scrollbar-color:rgba(0,0,0,.1) transparent}
+.table-scroll::-webkit-scrollbar{height:4px}
+.table-scroll::-webkit-scrollbar-thumb{background:rgba(0,0,0,.1);border-radius:2px}
+.data-table{border-collapse:collapse;font-size:12px;font-family:'DM Mono',monospace;white-space:nowrap}
+.data-table th{
+  background:var(--surface2); padding:7px 12px;
+  text-align:right; font-weight:600; font-size:10px;
+  color:var(--text2); border:1px solid var(--border);
+  text-transform:uppercase; letter-spacing:.06em;
+  white-space:nowrap; position:sticky; top:0; z-index:2;
+}
+.data-table th:first-child{text-align:left;position:sticky;left:0;z-index:3;background:var(--surface2);min-width:150px}
+.data-table td{padding:6px 12px;text-align:right;border:.5px solid var(--border)}
+.data-table td:first-child{text-align:left;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;color:var(--text2);position:sticky;left:0;background:var(--surface);z-index:1;min-width:150px}
+.data-table tr:nth-child(even) td{background:rgba(20,30,55,.02)}
+.data-table tr:nth-child(even) td:first-child{background:#f8f9fc}
+.na{color:var(--text3)}
+/* Revenue table section header style */
+.revenue-table th.section-label{
+  background:var(--surface3); color:var(--text); font-weight:600;
+  font-size:10px; letter-spacing:.06em; padding:5px 12px;
+  border-bottom:1px solid var(--border2);
+}
+.revenue-table th.section-label-cell{background:var(--surface);border:none;position:sticky;left:0;z-index:3}
+.revenue-table tr.total-row td{
+  background:var(--surface2)!important; border-top:1px solid var(--border2);
+  font-family:'DM Mono',monospace;
+}
+.revenue-table tr.total-row td:first-child{font-family:'DM Sans',sans-serif;background:var(--surface2)!important}
+
+/* ── Reports tab ── */
+.reports-section{margin-bottom:28px}
+.reports-section-title{font-size:13px;font-weight:600;margin-bottom:12px;padding-bottom:8px;border-bottom:.5px solid var(--border2)}
+.reports-empty{font-size:13px;color:var(--text3);padding:16px;background:var(--surface);border:.5px solid var(--border);border-radius:var(--r)}
+.reports-empty code{font-family:'DM Mono',monospace;font-size:12px;background:var(--surface2);padding:2px 6px;border-radius:4px}
+.report-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px}
+.report-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--r);
+  padding:14px 16px;
+  display:flex; align-items:center; gap:12px;
+  cursor:pointer;
+  transition:all .15s;
+}
+.report-card:hover{
+  border-color:var(--brand);
+  background:var(--brand-soft);
+  transform:translateY(-1px);
+  box-shadow:var(--shadow);
+}
+.report-icon{font-size:22px;flex-shrink:0}
+.report-info{flex:1;min-width:0}
+.report-label{font-size:13px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.report-filename{font-size:11px;color:var(--text3);font-family:'DM Mono',monospace;margin-top:2px}
+.report-arrow{font-size:16px;color:var(--text3);transition:transform .15s}
+.report-card:hover .report-arrow{color:var(--brand);transform:translateX(2px)}
+
+/* chart-inner / chart-inner-wrap: sized by JS prep() */
+.chart-inner, .chart-inner-wrap {
+  display:block; height:100%; position:relative;
+}
+.chart-inner canvas, .chart-inner-wrap canvas {
+  display:block; width:100% !important; height:100% !important;
+}
+
+/* ── Socials page ── */
+.soc-platform-grid{
+  display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+  gap:14px; margin-bottom:18px;
+}
+.soc-platform-card{padding:0; overflow:hidden}
+.soc-card-header{
+  display:flex; justify-content:space-between; align-items:baseline;
+  padding:14px 18px; border-bottom:2px solid;
+}
+.soc-platform-name{font-size:13px; font-weight:600; color:var(--text)}
+.soc-platform-followers{
+  font-size:18px; font-weight:600; letter-spacing:-.3px;
+  color:var(--text); display:flex; gap:8px; align-items:baseline;
+}
+.soc-stat-grid{
+  display:grid; grid-template-columns:1fr 1fr; gap:10px 16px;
+  padding:14px 18px;
+}
+.soc-stat-label{
+  font-size:10px; text-transform:uppercase; letter-spacing:.06em;
+  color:var(--text3); margin-bottom:3px; font-weight:600;
+}
+.soc-stat-val{
+  font-size:14px; font-weight:600; color:var(--text);
+  font-family:'DM Mono',monospace;
+}
+.socials-table{margin-bottom:18px}
+.socials-table th.soc-platform-header{
+  background:var(--surface); color:var(--text);
+  font-size:12px; font-weight:600; letter-spacing:0;
+  text-transform:none; padding:10px 12px; text-align:left;
+  border-left:3px solid; border-bottom:1px solid var(--border2);
+}
+
+@media(max-width:700px){
+  .grid-2{grid-template-columns:1fr}
+  .sidebar{width:50px;min-width:50px}
+  .logo-main,.logo-sub,.nav-item span,.sidebar-footer{display:none}
+  .nav-item{justify-content:center;padding:10px}
+}
+</style>
+</head>
+<body>
+<div class="shell">
+
+<nav class="sidebar">
+  <div class="sidebar-logo">
+    <div class="logo-mark">RD</div>
+    <div class="logo-text">
+      <div class="logo-main">Road Trippin'</div>
+      <div class="logo-sub">Rain Delay Media</div>
+    </div>
+  </div>
+  <div class="nav">
+    <div class="nav-section">Analytics</div>
+    <div class="nav-item active" onclick="showPage('overview',this)">
+      <svg class="nav-icon" viewBox="0 0 16 16" fill="none"><rect x="1" y="1" width="6" height="6" rx="1.5" fill="currentColor"/><rect x="9" y="1" width="6" height="6" rx="1.5" fill="currentColor" opacity=".5"/><rect x="1" y="9" width="6" height="6" rx="1.5" fill="currentColor" opacity=".5"/><rect x="9" y="9" width="6" height="6" rx="1.5" fill="currentColor" opacity=".3"/></svg>
+      <span>Overview</span>
+    </div>
+    <div class="nav-item" onclick="showPage('youtube',this)">
+      <svg class="nav-icon" viewBox="0 0 16 16" fill="none"><rect x="1" y="3" width="14" height="10" rx="2" fill="currentColor" opacity=".2"/><path d="M6.5 5.5l4 2.5-4 2.5V5.5z" fill="currentColor"/></svg>
+      <span>YouTube</span>
+    </div>
+    <div class="nav-item" onclick="showPage('audio',this)">
+      <svg class="nav-icon" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5"/><circle cx="8" cy="8" r="2.5" fill="currentColor"/></svg>
+      <span>Audio</span>
+    </div>
+    <div class="nav-item" onclick="showPage('socials',this)">
+      <svg class="nav-icon" viewBox="0 0 16 16" fill="none"><path d="M5 7a2 2 0 100-4 2 2 0 000 4zm6 6a2 2 0 100-4 2 2 0 000 4zm0-10a2 2 0 100 4 2 2 0 000-4zM6.6 8.5l3 2.5M9.4 5l-3 2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+      <span>Socials</span>
+    </div>
+    <div class="nav-item" onclick="showPage('revenue',this)">
+      <svg class="nav-icon" viewBox="0 0 16 16" fill="none"><path d="M8 2v12M5 5h4.5a1.5 1.5 0 010 3h-3a1.5 1.5 0 000 3H11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      <span>Revenue</span>
+    </div>
+    <div class="nav-section" style="margin-top:14px">Resources</div>
+    <div class="nav-item" onclick="showPage('tracker',this)">
+      <svg class="nav-icon" viewBox="0 0 16 16" fill="none"><rect x="1" y="1" width="14" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M1 5h14M5 5v10" stroke="currentColor" stroke-width="1.2"/></svg>
+      <span>Tracker</span>
+    </div>
+    <div class="nav-item" onclick="showPage('reports',this)">
+      <svg class="nav-icon" viewBox="0 0 16 16" fill="none"><path d="M3 2h7l3 3v9a1 1 0 01-1 1H3a1 1 0 01-1-1V3a1 1 0 011-1z" stroke="currentColor" stroke-width="1.4"/><path d="M10 2v3h3M5 8h6M5 11h4" stroke="currentColor" stroke-width="1.2"/></svg>
+      <span>Reports</span>
+    </div>
+  </div>
+  <div class="sidebar-footer">Updated May 11, 2026</div>
+</nav>
+
+<div class="main">
+
+<!-- ═══ OVERVIEW ═══ -->
+<div class="page active" id="page-overview">
+  <div class="page-header">
+    <div class="page-title">Overview</div>
+    <div class="page-sub">All platforms · AUG 24 – MAY</div>
+  </div>
+
+  <div class="metrics">
+    <div class="metric">
+      <div class="metric-label">YT Subscribers</div>
+      <div class="metric-value">154.0K</div>
+      <div class="metric-delta"><span class="up">+1.1K vs prev</span></div>
+    </div>
+    <div class="metric">
+      <div class="metric-label">YT Views (MAY)</div>
+      <div class="metric-value">702.5K</div>
+      <div class="metric-delta"><span class="down">-2,999,042 vs prev</span></div>
+    </div>
+    <div class="metric">
+      <div class="metric-label">Audio (MAY)</div>
+      <div class="metric-value">62.1K</div>
+      <div class="metric-delta"><span class="down">-4,313 vs prev</span></div>
+    </div>
+    <div class="metric">
+      <div class="metric-label">Episodes (MAY)</div>
+      <div class="metric-value">0</div>
+      <div class="metric-delta" style="color:var(--text2)">published</div>
+    </div>
+    <div class="metric">
+      <div class="metric-label">Shorts % (MAY)</div>
+      <div class="metric-value">68.4%</div>
+      <div class="metric-delta" style="color:var(--text2)">of total views</div>
+    </div>
+  </div>
+
+  <div class="card mb12">
+    <div class="card-header">
+      <span class="card-title">YouTube views by content type</span>
+      <div class="tabs">
+        <button class="tab-btn on" onclick="switchOv('stacked',this)">Stacked</button>
+        <button class="tab-btn" onclick="switchOv('line',this)">Total</button>
+      </div>
+    </div>
+    <div class="legend">
+      <span class="legend-item"><span class="leg-dot" style="background:#2F6DDE"></span>Videos</span>
+      <span class="legend-item"><span class="leg-dot" style="background:#1B9B96"></span>Shorts</span>
+      <span class="legend-item"><span class="leg-dot" style="background:#E08C2A"></span>Lives</span>
+    </div>
+    <div class="chart-outer-lg" id="ov-stacked-outer">
+      <div style="position:relative;width:1012px;height:100%">
+        <canvas id="ovStacked"></canvas>
+      </div>
+    </div>
+    <div class="chart-outer-lg" id="ov-line-outer" style="display:none">
+      <div style="position:relative;width:1012px;height:100%">
+        <canvas id="ovLine"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-header"><span class="card-title">Subscriber growth</span><span class="card-sub">YouTube</span></div>
+      <div class="chart-outer" style="height:220px">
+        <div style="position:relative;width:1012px;height:100%"><canvas id="ovSubs"></canvas></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header"><span class="card-title">Platform reach</span><span class="card-sub">Current snapshot</span></div>
+      <div class="plat-row"><span class="plat-name">YouTube</span><div class="plat-bar-bg"><div class="plat-bar" style="width:100%;background:#2F6DDE"></div></div><span class="plat-val">154.0K</span></div><div class="plat-row"><span class="plat-name">Instagram</span><div class="plat-bar-bg"><div class="plat-bar" style="width:73%;background:#E08C2A"></div></div><span class="plat-val">112.5K</span></div><div class="plat-row"><span class="plat-name">Apple Podcasts</span><div class="plat-bar-bg"><div class="plat-bar" style="width:0%;background:#DD4B5C"></div></div><span class="plat-val">—</span></div><div class="plat-row"><span class="plat-name">TikTok</span><div class="plat-bar-bg"><div class="plat-bar" style="width:22%;background:#7C5BD8"></div></div><span class="plat-val">33.8K</span></div><div class="plat-row"><span class="plat-name">Spotify</span><div class="plat-bar-bg"><div class="plat-bar" style="width:0%;background:#1B7A3A"></div></div><span class="plat-val">—</span></div><div class="plat-row"><span class="plat-name">X / Twitter</span><div class="plat-bar-bg"><div class="plat-bar" style="width:15%;background:#6B7280"></div></div><span class="plat-val">23.8K</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ YOUTUBE ═══ -->
+<div class="page" id="page-youtube">
+  <div class="page-header"><div class="page-title">YouTube</div><div class="page-sub">Views, subscribers, content type breakdown · AUG 24 – MAY</div></div>
+  <div class="grid-2 mb12">
+    <div class="card">
+      <div class="card-header"><span class="card-title">Videos (VOD)</span><span class="card-sub">Monthly views</span></div>
+      <div class="chart-outer" style="height:220px"><div style="position:relative;width:1012px;height:100%"><canvas id="ytVids"></canvas></div></div>
+    </div>
+    <div class="card">
+      <div class="card-header"><span class="card-title">Shorts</span><span class="card-sub">Monthly views</span></div>
+      <div class="chart-outer" style="height:220px"><div style="position:relative;width:1012px;height:100%"><canvas id="ytShorts"></canvas></div></div>
+    </div>
+  </div>
+  <div class="grid-2 mb12">
+    <div class="card">
+      <div class="card-header"><span class="card-title">Lives</span><span class="card-sub">Monthly views</span></div>
+      <div class="chart-outer" style="height:220px"><div style="position:relative;width:1012px;height:100%"><canvas id="ytLives"></canvas></div></div>
+    </div>
+    <div class="card">
+      <div class="card-header"><span class="card-title">Subscribers</span><span class="card-sub">Running total</span></div>
+      <div class="chart-outer" style="height:220px"><div style="position:relative;width:1012px;height:100%"><canvas id="ytSubsLine"></canvas></div></div>
+    </div>
+  </div>
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-header"><span class="card-title">Shorts % of views</span></div>
+      <div class="chart-outer" style="height:220px"><div style="position:relative;width:1012px;height:100%"><canvas id="ytPct"></canvas></div></div>
+    </div>
+    <div class="card">
+      <div class="card-header"><span class="card-title"># of Shorts published</span></div>
+      <div class="chart-outer" style="height:220px"><div style="position:relative;width:1012px;height:100%"><canvas id="ytNSht"></canvas></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ AUDIO ═══ -->
+<div class="page" id="page-audio">
+  <div class="page-header"><div class="page-title">Audio</div><div class="page-sub">Megaphone downloads, streams, per-episode performance</div></div>
+  <div class="metrics">
+    <div class="metric">
+      <div class="metric-label">Downloads (MAY)</div>
+      <div class="metric-value">62.1K</div>
+      <div class="metric-delta"><span class="down">-4,313 vs prev</span></div>
+    </div>
+    <div class="metric">
+      <div class="metric-label">Streams (MAY)</div>
+      <div class="metric-value">25.3K</div>
+      <div class="metric-delta" style="color:var(--text2)">Spotify + Apple</div>
+    </div>
+    <div class="metric">
+      <div class="metric-label">Per-ep (MAY)</div>
+      <div class="metric-value">—</div>
+      <div class="metric-delta" style="color:var(--text2)">0 eps</div>
+    </div>
+  </div>
+  <div class="card mb12">
+    <div class="card-header"><span class="card-title">Total downloads</span><span class="card-sub">Megaphone</span></div>
+    <div class="chart-outer-lg" style="height:260px"><div style="position:relative;width:1012px;height:100%"><canvas id="audioTotal"></canvas></div></div>
+  </div>
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-header"><span class="card-title">Streams</span><span class="card-sub">Spotify + Apple</span></div>
+      <div class="chart-outer" style="height:220px"><div style="position:relative;width:1012px;height:100%"><canvas id="audioStrm"></canvas></div></div>
+    </div>
+    <div class="card">
+      <div class="card-header"><span class="card-title">Per-episode listens</span></div>
+      <div class="chart-outer" style="height:220px"><div style="position:relative;width:1012px;height:100%"><canvas id="audioPerEp"></canvas></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SOCIALS ═══ -->
+<div class="page" id="page-socials">
+  <div class="page-header">
+    <div class="page-title">Socials</div>
+    <div class="page-sub">AUG 24 – APR · 4 platforms</div>
+  </div>
+
+  <div class="metrics">
+    <div class="metric"><div class="metric-label">Total Followers (APR)</div><div class="metric-value">323.1K</div><div class="metric-delta" style="color:var(--text2)">across 4 platforms</div></div><div class="metric"><div class="metric-label">Impressions (APR)</div><div class="metric-value">11.80M</div><div class="metric-delta" style="color:var(--text2)">all platforms</div></div><div class="metric"><div class="metric-label">Engagements (APR)</div><div class="metric-value">555.4K</div><div class="metric-delta" style="color:var(--text2)">4.7% ER</div></div><div class="metric"><div class="metric-label">Posts (APR)</div><div class="metric-value">342</div><div class="metric-delta" style="color:var(--text2)">all platforms</div></div>
+  </div>
+
+  <div class="soc-platform-grid">
+    <div class="card soc-platform-card"><div class="soc-card-header" style="border-color:#E08C2A"><span class="soc-platform-name">Instagram</span><span class="soc-platform-followers">112.5K <span class="up" style="font-size:11px;font-weight:500">+5.1K</span></span></div><div class="soc-stat-grid"><div class="soc-stat"><div class="soc-stat-label">Impressions</div><div class="soc-stat-val">6.32M</div></div><div class="soc-stat"><div class="soc-stat-label">Engagements</div><div class="soc-stat-val">361.9K</div></div><div class="soc-stat"><div class="soc-stat-label">Posts</div><div class="soc-stat-val">81</div></div><div class="soc-stat"><div class="soc-stat-label">ER</div><div class="soc-stat-val">5.7%</div></div><div class="soc-stat" style="grid-column:span 2"><div class="soc-stat-label">Top Post Views</div><div class="soc-stat-val">586.6K</div></div></div></div><div class="card soc-platform-card"><div class="soc-card-header" style="border-color:#7C5BD8"><span class="soc-platform-name">TikTok</span><span class="soc-platform-followers">33.8K <span class="up" style="font-size:11px;font-weight:500">+1.4K</span></span></div><div class="soc-stat-grid"><div class="soc-stat"><div class="soc-stat-label">Impressions</div><div class="soc-stat-val">1.39M</div></div><div class="soc-stat"><div class="soc-stat-label">Engagements</div><div class="soc-stat-val">98.1K</div></div><div class="soc-stat"><div class="soc-stat-label">Posts</div><div class="soc-stat-val">34</div></div><div class="soc-stat"><div class="soc-stat-label">ER</div><div class="soc-stat-val">7.0%</div></div><div class="soc-stat" style="grid-column:span 2"><div class="soc-stat-label">Top Post Views</div><div class="soc-stat-val">368.2K</div></div></div></div><div class="card soc-platform-card"><div class="soc-card-header" style="border-color:#6B7280"><span class="soc-platform-name">X / Twitter</span><span class="soc-platform-followers">23.8K <span class="up" style="font-size:11px;font-weight:500">+315</span></span></div><div class="soc-stat-grid"><div class="soc-stat"><div class="soc-stat-label">Impressions</div><div class="soc-stat-val">938.6K</div></div><div class="soc-stat"><div class="soc-stat-label">Engagements</div><div class="soc-stat-val">13.7K</div></div><div class="soc-stat"><div class="soc-stat-label">Posts</div><div class="soc-stat-val">109</div></div><div class="soc-stat"><div class="soc-stat-label">ER</div><div class="soc-stat-val">1.5%</div></div><div class="soc-stat" style="grid-column:span 2"><div class="soc-stat-label">Top Post Views</div><div class="soc-stat-val">92.5K</div></div></div></div><div class="card soc-platform-card"><div class="soc-card-header" style="border-color:#2F6DDE"><span class="soc-platform-name">YouTube</span><span class="soc-platform-followers">153.0K </span></div><div class="soc-stat-grid"><div class="soc-stat"><div class="soc-stat-label">Impressions</div><div class="soc-stat-val">3.15M</div></div><div class="soc-stat"><div class="soc-stat-label">Engagements</div><div class="soc-stat-val">81.8K</div></div><div class="soc-stat"><div class="soc-stat-label">Posts</div><div class="soc-stat-val">118</div></div><div class="soc-stat"><div class="soc-stat-label">ER</div><div class="soc-stat-val">2.6%</div></div><div class="soc-stat" style="grid-column:span 2"><div class="soc-stat-label">Top Post Views</div><div class="soc-stat-val">359.3K</div></div></div></div>
+  </div>
+
+  <div class="card mb12">
+    <div class="card-header">
+      <span class="card-title">Follower growth by platform</span>
+      <span class="card-sub">monthly snapshot</span>
+    </div>
+    <div class="legend"><span class="legend-item"><span class="leg-dot" style="background:#E08C2A"></span>Instagram</span><span class="legend-item"><span class="leg-dot" style="background:#7C5BD8"></span>TikTok</span><span class="legend-item"><span class="leg-dot" style="background:#6B7280"></span>X / Twitter</span><span class="legend-item"><span class="leg-dot" style="background:#2F6DDE"></span>YouTube</span></div>
+    <div class="chart-outer-lg" style="height:260px">
+      <div style="position:relative;width:966px;height:100%"><canvas id="socFollowers"></canvas></div>
+    </div>
+  </div>
+
+  <div class="grid-2 mb12">
+    <div class="card">
+      <div class="card-header"><span class="card-title">Impressions by platform</span><span class="card-sub">stacked monthly</span></div>
+      <div class="chart-outer" style="height:220px">
+        <div style="position:relative;width:966px;height:100%"><canvas id="socImpressions"></canvas></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header"><span class="card-title">Engagement rate</span><span class="card-sub">per platform</span></div>
+      <div class="chart-outer" style="height:220px">
+        <div style="position:relative;width:966px;height:100%"><canvas id="socER"></canvas></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tracker-section">
+    <div class="tracker-section-title">📱 Per-platform breakdown</div>
+    <div class="table-scroll"><table class="data-table socials-table"><thead><tr><th colspan="22" class="soc-platform-header" style="border-color:#E08C2A">Instagram</th></tr><tr><th>Metric</th><th>APR</th><th>MAR</th><th>FEB</th><th>JAN</th><th>DEC 25</th><th>NOV 25</th><th>OCT 25</th><th>SEP 25</th><th>AUG 25</th><th>JUL 25</th><th>JUN 25</th><th>MAY 25</th><th>APR 25</th><th>MAR 25</th><th>FEB 25</th><th>JAN 25</th><th>DEC 24</th><th>NOV 24</th><th>OCT 24</th><th>SEP 24</th><th>AUG 24</th></tr></thead><tbody><tr><td>Followers</td><td>112,471</td><td>107,347</td><td>102,490</td><td>98,509</td><td>93,575</td><td>91,076</td><td>87,285</td><td>85,440</td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td></tr><tr><td>Net Gain</td><td>5,124</td><td>4,822</td><td>3,981</td><td>4,934</td><td>2,495</td><td>3,804</td><td>1,717</td><td>1,495</td><td>4,633</td><td>2,789</td><td>1,447</td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td></tr><tr><td>Posts</td><td>81</td><td>92</td><td>62</td><td>56</td><td>45</td><td>46</td><td>40</td><td>25</td><td>27</td><td>41</td><td>33</td><td>17</td><td>12</td><td>15</td><td>15</td><td>15</td><td>6</td><td>12</td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td></tr><tr><td>Impressions</td><td>6,317,325</td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td></tr><tr><td>Views</td><td>5,472,215</td><td>7,530,100</td><td>5,719,587</td><td>5,467,827</td><td>6,067,589</td><td>14,488,842</td><td>3,253,832</td><td>3,600,005</td><td>5,527,244</td><td>4,973,683</td><td>3,976,385</td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td></tr><tr><td>Engagements</td><td>361,866</td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td></tr><tr><td>ER</td><td>5.73%</td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td></tr><tr><td>Top Post</td><td>586,551</td><td>1,321,647</td><td>540,101</td><td>2,157,207</td><td>685,622</td><td>10,563,585</td><td>424,907</td><td>908,071</td><td>2,762,382</td><td>1,878,737</td><td>2,598,656</td><td>390,777</td><td>94,660</td><td>926,216</td><td>500,483</td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td></tr></tbody></table><table class="data-table socials-table"><thead><tr><th colspan="22" class="soc-platform-header" style="border-color:#7C5BD8">TikTok</th></tr><tr><th>Metric</th><th>APR</th><th>MAR</th><th>FEB</th><th>JAN</th><th>DEC 25</th><th>NOV 25</th><th>OCT 25</th><th>SEP 25</th><th>AUG 25</th><th>JUL 25</th><th>JUN 25</th><th>MAY 25</th><th>APR 25</th><th>MAR 25</th><th>FEB 25</th><th>JAN 25</th><th>DEC 24</th><th>NOV 24</th><th>OCT 24</th><th>SEP 24</th><th>AUG 24</th></tr></thead><tbody><tr><td>Followers</td><td>33,826</td><td>32,440</td><td>30,553</td><td>28,050</td><td>25,699</td><td>24,297</td><td>21,941</td><td>21,259</td><td>20,640</td><td>17,843</td><td>16,385</td><td>14,905</td><td>14,309</td><td>14,214</td><td>13,705</td><td>12,969</td><td>12,952</td><td>12,990</td><td>13,029</td><td><span class="na">—</span></td><td><span class="na">—</span></td></tr><tr><td>Net Gain</td><td>1,386</td><td>1,787</td><td>2,396</td><td>2,415</td><td>1,402</td><td>2,272</td><td>648</td><td>725</td><td>2,930</td><td>1,573</td><td>1,561</td><td>665</td><td>136</td><td>563</td><td>787</td><td>59</td><td>3</td><td>2</td><td>1</td><td><span class="na">—</span></td><td><span class="na">—</span></td></tr><tr><td>Posts</td><td>34</td><td>55</td><td>47</td><td>42</td><td>35</td><td>29</td><td>39</td><td>23</td><td>28</td><td>42</td><td>23</td><td>13</td><td>6</td><td>6</td><td>11</td><td>9</td><td>0</td><td>0</td><td>0</td><td>4</td><td><span class="na">—</span></td></tr><tr><td>Impressions</td><td>1,390,228</td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td></tr><tr><td>Views</td><td>1,390,228</td><td>1,998,538</td><td>2,644,733</td><td>2,361,362</td><td>1,935,661</td><td>3,937,370</td><td>514,163</td><td>562,423</td><td>1,878,110</td><td>1,077,471</td><td>1,386,435</td><td>708,243</td><td>116,235</td><td>200,756</td><td>422,799</td><td>29,942</td><td>2,534</td><td>1,953</td><td>2,992</td><td><span class="na">—</span></td><td><span class="na">—</span></td></tr><tr><td>Engagements</td><td>98,056</td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td></tr><tr><td>ER</td><td>7.05%</td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td></tr><tr><td>Top Post</td><td>368,168</td><td>160,700</td><td>565,700</td><td>321,520</td><td>369,229</td><td>2,412,445</td><td>138,522</td><td>93,835</td><td>738,668</td><td>237,394</td><td>569,315</td><td>74,755</td><td>516,855</td><td>61,399</td><td>287,341</td><td>8,399</td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td></tr></tbody></table><table class="data-table socials-table"><thead><tr><th colspan="22" class="soc-platform-header" style="border-color:#6B7280">X / Twitter</th></tr><tr><th>Metric</th><th>APR</th><th>MAR</th><th>FEB</th><th>JAN</th><th>DEC 25</th><th>NOV 25</th><th>OCT 25</th><th>SEP 25</th><th>AUG 25</th><th>JUL 25</th><th>JUN 25</th><th>MAY 25</th><th>APR 25</th><th>MAR 25</th><th>FEB 25</th><th>JAN 25</th><th>DEC 24</th><th>NOV 24</th><th>OCT 24</th><th>SEP 24</th><th>AUG 24</th></tr></thead><tbody><tr><td>Followers</td><td>23,818</td><td>23,503</td><td>22,767</td><td>21,806</td><td>20,259</td><td>20,177</td><td>19,946</td><td>19,894</td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td></tr><tr><td>Net Gain</td><td>315</td><td>736</td><td>961</td><td>1,444</td><td>206</td><td>231</td><td>112</td><td>63</td><td>269</td><td>298</td><td>178</td><td>130</td><td>56</td><td>982</td><td>422</td><td>162</td><td>46</td><td>93</td><td>54</td><td>47</td><td>49</td></tr><tr><td>Posts</td><td>109</td><td>84</td><td>64</td><td>51</td><td>35</td><td>36</td><td>42</td><td>31</td><td>40</td><td>46</td><td>38</td><td>15</td><td>13</td><td>13</td><td>19</td><td>15</td><td>7</td><td>15</td><td>5</td><td>4</td><td>16</td></tr><tr><td>Impressions</td><td>938,566</td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td></tr><tr><td>Views</td><td>620,454</td><td>1,197,699</td><td>920,223</td><td>1,136,936</td><td>227,097</td><td>774,867</td><td>336,926</td><td>450,107</td><td>351,272</td><td>849,708</td><td>1,710,453</td><td>95,687</td><td>61,294</td><td>1,418,758</td><td>1,254,850</td><td>165,092</td><td>94,531</td><td>184,161</td><td>103,264</td><td>41,235</td><td>115,449</td></tr><tr><td>Engagements</td><td>13,730</td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td></tr><tr><td>ER</td><td>1.46%</td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td>1.60%</td><td>0.83%</td><td>1.10%</td><td>2.23%</td><td>0.93%</td><td>1.24%</td><td>1.26%</td><td>1.49%</td><td>1.88%</td><td>2.82%</td><td>2.31%</td><td>1.74%</td><td>1.03%</td><td>1.00%</td><td>2.94%</td><td>1.07%</td></tr><tr><td>Top Post</td><td>92,498</td><td>100,265</td><td>128,006</td><td>558,400</td><td>1,159</td><td>364,500</td><td>83,667</td><td>21,914</td><td>34,049</td><td>372,061</td><td>1,360,249</td><td>27,499</td><td>4,473</td><td>20,174</td><td>938,120</td><td>35,336</td><td>27,372</td><td>34,252</td><td>132,325</td><td>23,808</td><td>42,342</td></tr></tbody></table><table class="data-table socials-table"><thead><tr><th colspan="22" class="soc-platform-header" style="border-color:#2F6DDE">YouTube</th></tr><tr><th>Metric</th><th>APR</th><th>MAR</th><th>FEB</th><th>JAN</th><th>DEC 25</th><th>NOV 25</th><th>OCT 25</th><th>SEP 25</th><th>AUG 25</th><th>JUL 25</th><th>JUN 25</th><th>MAY 25</th><th>APR 25</th><th>MAR 25</th><th>FEB 25</th><th>JAN 25</th><th>DEC 24</th><th>NOV 24</th><th>OCT 24</th><th>SEP 24</th><th>AUG 24</th></tr></thead><tbody><tr><td>Followers</td><td>153,000</td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td></tr><tr><td>Posts</td><td>118</td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td></tr><tr><td>Impressions</td><td>3,152,267</td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td></tr><tr><td>Views</td><td>3,152,267</td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td></tr><tr><td>Engagements</td><td>81,796</td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td></tr><tr><td>ER</td><td>2.59%</td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td></tr><tr><td>Top Post</td><td>359,290</td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td></tr></tbody></table></div>
+  </div>
+</div>
+
+<!-- ═══ REVENUE ═══ -->
+<div class="page" id="page-revenue">
+  <div class="page-header">
+    <div class="page-title">Revenue</div>
+    <div class="page-sub">JUN 24 – APR · all monthly revenue sources</div>
+  </div>
+
+  <div class="metrics">
+    <div class="metric"><div class="metric-label">Latest (APR)</div><div class="metric-value">$51,983</div><div class="metric-delta"><span class="down">-4.6% vs prev</span></div></div><div class="metric"><div class="metric-label">12-mo Total</div><div class="metric-value">$230,752</div><div class="metric-delta" style="color:var(--text2)">trailing 12 months</div></div><div class="metric"><div class="metric-label">12-mo Avg</div><div class="metric-value">$19,229</div><div class="metric-delta" style="color:var(--text2)">per month</div></div><div class="metric"><div class="metric-label">Months tracked</div><div class="metric-value">23</div><div class="metric-delta" style="color:var(--text2)">since JUN 24</div></div>
+  </div>
+
+  <div class="card mb12">
+    <div class="card-header">
+      <span class="card-title">Total revenue by month</span>
+      <div class="tabs">
+        <button class="tab-btn on" onclick="switchRev('total',this)">Total</button>
+        <button class="tab-btn" onclick="switchRev('stacked',this)">By source</button>
+      </div>
+    </div>
+    <div class="legend" id="rev-legend" style="display:none">
+      <span class="legend-item"><span class="leg-dot" style="background:#2F6DDE"></span>YT Videos</span><span class="legend-item"><span class="leg-dot" style="background:#1B9B96"></span>YT Shorts</span><span class="legend-item"><span class="leg-dot" style="background:#E08C2A"></span>YT Lives</span><span class="legend-item"><span class="leg-dot" style="background:#DD4B5C"></span>Culture Genesis</span><span class="legend-item"><span class="leg-dot" style="background:#7C5BD8"></span>Uptides</span><span class="legend-item"><span class="leg-dot" style="background:#1B7A3A"></span>Audio</span><span class="legend-item"><span class="leg-dot" style="background:#C9A84C"></span>Brands</span>
+    </div>
+    <div class="chart-outer-lg" style="height:260px" id="rev-total-outer">
+      <div style="position:relative;width:1058px;height:100%"><canvas id="revTotal"></canvas></div>
+    </div>
+    <div class="chart-outer-lg" style="height:260px" id="rev-stacked-outer" style="display:none">
+      <div style="position:relative;width:1058px;height:100%"><canvas id="revStacked"></canvas></div>
+    </div>
+  </div>
+
+  <div class="grid-2 mb12">
+    <div class="card">
+      <div class="card-header"><span class="card-title">Source mix</span><span class="card-sub">Last 12 months</span></div>
+      <div style="position:relative;height:220px;width:100%"><canvas id="revMix"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="card-header"><span class="card-title">YouTube AdSense</span><span class="card-sub">Videos + Shorts + Lives</span></div>
+      <div class="chart-outer" style="height:220px"><div style="position:relative;width:1058px;height:100%"><canvas id="revYT"></canvas></div></div>
+    </div>
+  </div>
+
+  <div class="tracker-section">
+    <div class="tracker-section-title">💲 Revenue Breakdown</div>
+    <div class="table-scroll"><table class="data-table revenue-table"><thead><tr><th class="section-label-cell">&nbsp;</th><th colspan="3" class="section-label">PAST 90 DAYS</th><th colspan="3" class="section-label">PAST 6 MONTHS</th><th colspan="6" class="section-label">PAST 12 MONTHS</th><th colspan="11" class="section-label">> 12 MONTHS</th></tr><tr><th>Source</th><th>APR</th><th>MAR</th><th>FEB</th><th>JAN</th><th>DEC 25</th><th>NOV 25</th><th>OCT 25</th><th>SEP 25</th><th>AUG 25</th><th>JUL 25</th><th>JUN 25</th><th>MAY 25</th><th>APR 25</th><th>MAR 25</th><th>FEB 25</th><th>JAN 25</th><th>DEC 24</th><th>NOV 24</th><th>OCT 24</th><th>SEP 24</th><th>AUG 24</th><th>JUL 24</th><th>JUN 24</th></tr></thead><tbody><tr><td>YT Videos</td><td>$4,413.73</td><td>$5,078.70</td><td>$3,528.49</td><td>$4,193.08</td><td>$14,418.95</td><td>$7,986.27</td><td>$4,882.45</td><td>$2,508.56</td><td>$5,206.70</td><td>$7,649.82</td><td>$3,012.39</td><td>$3,811.41</td><td>$784.31</td><td>$2,319.51</td><td>$155.61</td><td>$105.36</td><td>$98.28</td><td>$228.90</td><td>$200.99</td><td>$310.61</td><td>$2,135.04</td><td>$1,745.68</td><td>$2,662.66</td></tr><tr><td>YT Shorts</td><td>$545.95</td><td>$527.17</td><td>$284.47</td><td>$182.65</td><td>$277.36</td><td>$234.24</td><td>$108.64</td><td>$81.51</td><td>$236.08</td><td>$243.56</td><td>$75.32</td><td>$18.70</td><td>$12.98</td><td>$20.86</td><td>$10.68</td><td>$6.18</td><td>$5.42</td><td>$3.96</td><td>$2.18</td><td>$2.09</td><td>$5.11</td><td>$2.73</td><td>$9.28</td></tr><tr><td>YT Lives</td><td>$2,023.31</td><td>$2,367.37</td><td>$3,774.16</td><td>$878.91</td><td>$1.28</td><td>$1.29</td><td>$0.82</td><td>$1.42</td><td>$1.40</td><td>$2.18</td><td>$180.18</td><td>$31.21</td><td>$42.47</td><td>$8.46</td><td>$186.16</td><td>$3.47</td><td>$14.26</td><td>$6.38</td><td>$134.50</td><td>$8.16</td><td>$1,702.04</td><td>$1,210.78</td><td>$3,030.49</td></tr><tr><td>Culture Genesis</td><td><span class="na">TBD</span></td><td>$1,515.64</td><td><span class="na">TBD</span></td><td>$676.74</td><td>$2,887.07</td><td>$3,155.81</td><td>$1,520.75</td><td>$365.06</td><td>$714.93</td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">—</span></td></tr><tr><td>Uptides</td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td>$7.68</td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td></tr><tr><td>Audio</td><td><span class="na">TBD</span></td><td><span class="na">TBD</span></td><td>$0.00</td><td>$631.81</td><td>$1,441.56</td><td>$2,218.64</td><td>$837.92</td><td>$918.70</td><td>$89.60</td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">—</span></td></tr><tr><td>Brands</td><td>$45,000.00</td><td>$45,000.00</td><td>$45,000.00</td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td></tr><tr><td>Social</td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">—</span></td></tr><tr><td>Merch</td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">N/A</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td></tr><tr class="total-row"><td><strong>TOTAL</strong></td><td><strong>$51,982.99</strong></td><td><strong>$54,488.88</strong></td><td><strong>$52,594.80</strong></td><td><strong>$6,563.19</strong></td><td><strong>$19,026.22</strong></td><td><strong>$13,596.25</strong></td><td><strong>$7,350.58</strong></td><td><strong>$3,875.25</strong></td><td><strong>$6,248.71</strong></td><td><strong>$7,895.56</strong></td><td><strong>$3,267.89</strong></td><td><strong>$3,861.32</strong></td><td><strong>$839.76</strong></td><td><strong>$2,348.83</strong></td><td><strong>$352.45</strong></td><td><strong>$115.01</strong></td><td><strong>$117.96</strong></td><td><strong>$239.24</strong></td><td><strong>$337.67</strong></td><td><strong>$320.86</strong></td><td><strong>$3,842.19</strong></td><td><strong>$2,959.19</strong></td><td><strong>$5,702.43</strong></td></tr></tbody></table></div>
+  </div>
+</div>
+
+<!-- ═══ TRACKER ═══ -->
+<div class="page" id="page-tracker">
+  <div class="page-header">
+    <div class="page-title">Tracker</div>
+    <div class="page-sub">Full data export · AUG 24 – MAY · oldest left, newest right</div>
+  </div>
+  <div class="tracker-section"><div class="tracker-section-title">📺 Views</div><div class="table-scroll"><table class="data-table"><thead><tr><th>📺 Views</th><th>AUG 24</th><th>SEP 24</th><th>OCT 24</th><th>NOV 24</th><th>DEC 24</th><th>JAN 25</th><th>FEB 25</th><th>MAR 25</th><th>APR 25</th><th>MAY 25</th><th>JUN 25</th><th>JUL 25</th><th>AUG 25</th><th>SEP 25</th><th>OCT 25</th><th>NOV 25</th><th>DEC 25</th><th>JAN</th><th>FEB</th><th>MAR</th><th>APR</th><th>MAY</th></tr></thead><tbody><tr><td># of Episodes</td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td></tr><tr><td>YT Videos</td><td>498,547</td><td>55,180</td><td>75,408</td><td>114,534</td><td>48,198</td><td>67,472</td><td>87,239</td><td>322,450</td><td>115,398</td><td>629,557</td><td>606,682</td><td>1,515,762</td><td>1,296,821</td><td>461,276</td><td>951,387</td><td>1,237,011</td><td>1,819,209</td><td>733,899</td><td>456,937</td><td>999,377</td><td>790,959</td><td>178,786</td></tr><tr><td>YT Shorts</td><td>40,926</td><td>9,896</td><td>11,180</td><td>17,758</td><td>24,015</td><td>34,237</td><td>56,970</td><td>90,474</td><td>89,465</td><td>130,006</td><td>545,861</td><td>2,030,353</td><td>1,348,061</td><td>390,738</td><td>542,576</td><td>920,589</td><td>1,102,899</td><td>1,021,398</td><td>1,412,041</td><td>2,437,458</td><td>2,732,269</td><td>480,341</td></tr><tr><td>YT Lives</td><td>358,110</td><td>1,926</td><td>33,838</td><td>40,604</td><td>11,199</td><td>3,965</td><td>78,402</td><td>1,399</td><td>7,173</td><td>4,972</td><td>37,296</td><td>697</td><td>386</td><td>220</td><td>381</td><td>405</td><td>365</td><td>90,638</td><td>209,927</td><td>211,738</td><td>178,304</td><td>43,363</td></tr><tr><td>Spotify Streams</td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td>22,620</td><td>24,712</td><td>25,288</td><td><span class="na">—</span></td></tr></tbody></table></div></div><div class="tracker-section"><div class="tracker-section-title">🎧 Listens</div><div class="table-scroll"><table class="data-table"><thead><tr><th>🎧 Listens</th><th>AUG 24</th><th>SEP 24</th><th>OCT 24</th><th>NOV 24</th><th>DEC 24</th><th>JAN 25</th><th>FEB 25</th><th>MAR 25</th><th>APR 25</th><th>MAY 25</th><th>JUN 25</th><th>JUL 25</th><th>AUG 25</th><th>SEP 25</th><th>OCT 25</th><th>NOV 25</th><th>DEC 25</th><th>JAN</th><th>FEB</th><th>MAR</th><th>APR</th><th>MAY</th></tr></thead><tbody><tr><td># of Episodes</td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td></tr><tr><td>Per-ep Listens</td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td></tr><tr><td>Total Listens</td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td>27</td><td>49,702</td><td>66,378</td><td>62,065</td><td><span class="na">—</span></td></tr></tbody></table></div></div><div class="tracker-section"><div class="tracker-section-title">👥 Subscribers</div><div class="table-scroll"><table class="data-table"><thead><tr><th>👥 Subscribers</th><th>AUG 24</th><th>SEP 24</th><th>OCT 24</th><th>NOV 24</th><th>DEC 24</th><th>JAN 25</th><th>FEB 25</th><th>MAR 25</th><th>APR 25</th><th>MAY 25</th><th>JUN 25</th><th>JUL 25</th><th>AUG 25</th><th>SEP 25</th><th>OCT 25</th><th>NOV 25</th><th>DEC 25</th><th>JAN</th><th>FEB</th><th>MAR</th><th>APR</th><th>MAY</th></tr></thead><tbody><tr><td>YouTube</td><td>85,955</td><td>85,951</td><td>86,304</td><td>87,226</td><td>87,308</td><td>87,473</td><td>88,984</td><td>92,556</td><td>93,058</td><td>96,661</td><td>100,481</td><td>109,496</td><td>114,591</td><td>115,595</td><td>119,213</td><td>123,796</td><td>134,817</td><td>138,665</td><td>141,953</td><td>148,455</td><td>152,940</td><td>154,000</td></tr><tr><td>Apple Podcasts</td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td></tr><tr><td>Spotify</td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td></tr></tbody></table></div></div><div class="tracker-section"><div class="tracker-section-title">🔑 KPIs</div><div class="table-scroll"><table class="data-table"><thead><tr><th>🔑 KPIs</th><th>AUG 24</th><th>SEP 24</th><th>OCT 24</th><th>NOV 24</th><th>DEC 24</th><th>JAN 25</th><th>FEB 25</th><th>MAR 25</th><th>APR 25</th><th>MAY 25</th><th>JUN 25</th><th>JUL 25</th><th>AUG 25</th><th>SEP 25</th><th>OCT 25</th><th>NOV 25</th><th>DEC 25</th><th>JAN</th><th>FEB</th><th>MAR</th><th>APR</th><th>MAY</th></tr></thead><tbody><tr><td>CTR – Videos</td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td></tr><tr><td>CTR – Shorts</td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td></tr><tr><td># of Shorts</td><td>4</td><td>2</td><td>4</td><td>6</td><td>2</td><td>14</td><td>13</td><td>15</td><td>11</td><td>21</td><td>31</td><td>38</td><td>26</td><td>25</td><td>30</td><td>39</td><td>25</td><td>37</td><td>31</td><td>61</td><td>57</td><td>24</td></tr><tr><td>Shorts % of Views</td><td>4.6%</td><td>14.8%</td><td>9.3%</td><td>10.3%</td><td>28.8%</td><td>32.4%</td><td>25.6%</td><td>21.8%</td><td>42.2%</td><td>17.0%</td><td>45.9%</td><td>57.2%</td><td>51.0%</td><td>45.8%</td><td>36.3%</td><td>42.7%</td><td>37.7%</td><td>55.3%</td><td>67.9%</td><td>66.8%</td><td>73.8%</td><td>68.4%</td></tr><tr><td>Search % of Views</td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td></tr><tr><td>CTR in Search</td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td></tr></tbody></table></div></div>
+</div>
+
+<!-- ═══ REPORTS ═══ -->
+<div class="page" id="page-reports">
+  <div class="page-header">
+    <div class="page-title">Reports</div>
+    <div class="page-sub">Fanatics delivery reports and revenue summaries</div>
+  </div>
+  <div class="reports-section"><div class="reports-section-title">📊 Fanatics Delivery Reports</div><div class="reports-empty">No reports yet — generate one with <code>build_report.py</code></div></div><div class="reports-section"><div class="reports-section-title">💰 Revenue Reports</div><div class="reports-empty">No reports yet — generate one with <code>build_report.py</code></div></div><div id="pdf-viewer" style="display:none;margin-top:20px;"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;"><span id="pdf-label" style="font-size:13px;font-weight:500;"></span><button onclick="closePdf()" style="font-size:12px;padding:4px 10px;border-radius:6px;border:.5px solid var(--border2);background:var(--surface2);cursor:pointer;">✕ Close</button></div><iframe id="pdf-frame" style="width:100%;height:75vh;border:none;border-radius:var(--r);border:.5px solid var(--border);"></iframe></div>
+</div>
+
+</div><!-- /main -->
+</div><!-- /shell -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+const M = ["AUG 24","SEP 24","OCT 24","NOV 24","DEC 24","JAN 25","FEB 25","MAR 25","APR 25","MAY 25","JUN 25","JUL 25","AUG 25","SEP 25","OCT 25","NOV 25","DEC 25","JAN","FEB","MAR","APR","MAY"];
+const VIDS=[498547,55180,75408,114534,48198,67472,87239,322450,115398,629557,606682,1515762,1296821,461276,951387,1237011,1819209,733899,456937,999377,790959,178786], SHORTS=[40926,9896,11180,17758,24015,34237,56970,90474,89465,130006,545861,2030353,1348061,390738,542576,920589,1102899,1021398,1412041,2437458,2732269,480341], LIVES=[358110,1926,33838,40604,11199,3965,78402,1399,7173,4972,37296,697,386,220,381,405,365,90638,209927,211738,178304,43363], SUBS=[85955,85951,86304,87226,87308,87473,88984,92556,93058,96661,100481,109496,114591,115595,119213,123796,134817,138665,141953,148455,152940,154000];
+const LTOTAL=[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,27,49702,66378,62065,null], LSTRM=[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,22620,24712,25288,null], PEREP=[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null];
+const NSHT=[4,2,4,6,2,14,13,15,11,21,31,38,26,25,30,39,25,37,31,61,57,24], PCTSHT=[0.046,0.148,0.093,0.103,0.288,0.324,0.256,0.218,0.422,0.17,0.459,0.572,0.51,0.458,0.363,0.427,0.377,0.553,0.679,0.668,0.738,0.684];
+
+// Revenue data
+const REV_M = ["JUN 24","JUL 24","AUG 24","SEP 24","OCT 24","NOV 24","DEC 24","JAN 25","FEB 25","MAR 25","APR 25","MAY 25","JUN 25","JUL 25","AUG 25","SEP 25","OCT 25","NOV 25","DEC 25","JAN","FEB","MAR","APR"];
+const REV_TOTALS = [5702.43,2959.19,3842.19,320.86,337.67,239.24,117.96,115.01,352.45,2348.83,839.76,3861.32,3267.89,7895.56,6248.71,3875.25,7350.58,13596.25,19026.22,6563.19,52594.8,54488.88,51982.99];
+const REV_YT_VIDEOS = [2662.66,1745.68,2135.04,310.61,200.99,228.9,98.28,105.36,155.61,2319.51,784.31,3811.41,3012.39,7649.82,5206.7,2508.56,4882.45,7986.27,14418.95,4193.08,3528.49,5078.7,4413.73];
+const REV_YT_SHORTS = [9.28,2.73,5.11,2.09,2.18,3.96,5.42,6.18,10.68,20.86,12.98,18.7,75.32,243.56,236.08,81.51,108.64,234.24,277.36,182.65,284.47,527.17,545.95];
+const REV_YT_LIVES = [3030.49,1210.78,1702.04,8.16,134.5,6.38,14.26,3.47,186.16,8.46,42.47,31.21,180.18,2.18,1.4,1.42,0.82,1.29,1.28,878.91,3774.16,2367.37,2023.31];
+const REV_STACKED_DS = [{"label": "YT Videos", "data": [2662.66, 1745.68, 2135.04, 310.61, 200.99, 228.9, 98.28, 105.36, 155.61, 2319.51, 784.31, 3811.41, 3012.39, 7649.82, 5206.7, 2508.56, 4882.45, 7986.27, 14418.95, 4193.08, 3528.49, 5078.7, 4413.73], "backgroundColor": "#2F6DDE", "borderRadius": 2, "stack": "s"}, {"label": "YT Shorts", "data": [9.28, 2.73, 5.11, 2.09, 2.18, 3.96, 5.42, 6.18, 10.68, 20.86, 12.98, 18.7, 75.32, 243.56, 236.08, 81.51, 108.64, 234.24, 277.36, 182.65, 284.47, 527.17, 545.95], "backgroundColor": "#1B9B96", "borderRadius": 2, "stack": "s"}, {"label": "YT Lives", "data": [3030.49, 1210.78, 1702.04, 8.16, 134.5, 6.38, 14.26, 3.47, 186.16, 8.46, 42.47, 31.21, 180.18, 2.18, 1.4, 1.42, 0.82, 1.29, 1.28, 878.91, 3774.16, 2367.37, 2023.31], "backgroundColor": "#E08C2A", "borderRadius": 2, "stack": "s"}, {"label": "Culture Genesis", "data": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, 714.93, 365.06, 1520.75, 3155.81, 2887.07, 676.74, null, 1515.64, null], "backgroundColor": "#DD4B5C", "borderRadius": 2, "stack": "s"}, {"label": "Uptides", "data": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 7.68, null, null], "backgroundColor": "#7C5BD8", "borderRadius": 2, "stack": "s"}, {"label": "Audio", "data": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, 89.6, 918.7, 837.92, 2218.64, 1441.56, 631.81, 0.0, null, null], "backgroundColor": "#1B7A3A", "borderRadius": 2, "stack": "s"}, {"label": "Brands", "data": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 45000.0, 45000.0, 45000.0], "backgroundColor": "#C9A84C", "borderRadius": 2, "stack": "s"}];
+const REV_MIX_LABELS = ["YT Videos","YT Shorts","YT Lives","Culture Genesis","Uptides","Audio","Brands"];
+const REV_MIX_VALUES = [66690.55,2815.65,9263.53,10836.0,7.68,6138.23,135000.0];
+const REV_MIX_COLORS = ["#2F6DDE","#1B9B96","#E08C2A","#DD4B5C","#7C5BD8","#1B7A3A","#C9A84C"];
+
+// Socials data
+const SOC_M = ["AUG 24","SEP 24","OCT 24","NOV 24","DEC 24","JAN 25","FEB 25","MAR 25","APR 25","MAY 25","JUN 25","JUL 25","AUG 25","SEP 25","OCT 25","NOV 25","DEC 25","JAN","FEB","MAR","APR"];
+const SOC_FOLLOWERS_DS = [{"label": "Instagram", "data": [null, null, null, null, null, null, null, null, null, null, null, null, null, 85440.0, 87285.0, 91076.0, 93575.0, 98509.0, 102490.0, 107347.0, 112471.0], "borderColor": "#E08C2A", "backgroundColor": "#E08C2A15", "tension": 0.3, "pointRadius": 2, "borderWidth": 2}, {"label": "TikTok", "data": [null, null, 13029.0, 12990.0, 12952.0, 12969.0, 13705.0, 14214.0, 14309.0, 14905.0, 16385.0, 17843.0, 20640.0, 21259.0, 21941.0, 24297.0, 25699.0, 28050.0, 30553.0, 32440.0, 33826.0], "borderColor": "#7C5BD8", "backgroundColor": "#7C5BD815", "tension": 0.3, "pointRadius": 2, "borderWidth": 2}, {"label": "X / Twitter", "data": [null, null, null, null, null, null, null, null, null, null, null, null, null, 19894.0, 19946.0, 20177.0, 20259.0, 21806.0, 22767.0, 23503.0, 23818.0], "borderColor": "#6B7280", "backgroundColor": "#6B728015", "tension": 0.3, "pointRadius": 2, "borderWidth": 2}, {"label": "YouTube", "data": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 153000.0], "borderColor": "#2F6DDE", "backgroundColor": "#2F6DDE15", "tension": 0.3, "pointRadius": 2, "borderWidth": 2}];
+const SOC_IMP_DS = [{"label": "Instagram", "data": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 6317325.0], "backgroundColor": "#E08C2A", "borderRadius": 2, "stack": "s"}, {"label": "TikTok", "data": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1390228.0], "backgroundColor": "#7C5BD8", "borderRadius": 2, "stack": "s"}, {"label": "X / Twitter", "data": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 938566.0], "backgroundColor": "#6B7280", "borderRadius": 2, "stack": "s"}, {"label": "YouTube", "data": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 3152267.0], "backgroundColor": "#2F6DDE", "borderRadius": 2, "stack": "s"}];
+const SOC_ER_DS = [{"label": "Instagram", "data": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 0.0573], "borderColor": "#E08C2A", "backgroundColor": "transparent", "tension": 0.3, "pointRadius": 2, "borderWidth": 2, "fill": false}, {"label": "TikTok", "data": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 0.0705], "borderColor": "#7C5BD8", "backgroundColor": "transparent", "tension": 0.3, "pointRadius": 2, "borderWidth": 2, "fill": false}, {"label": "X / Twitter", "data": [0.0107, 0.0294, 0.01, 0.0103, 0.0174, 0.0231, 0.0282, 0.0188, 0.0149, 0.0126, 0.0124, 0.0093, 0.0223, 0.011, 0.0083, 0.016, null, null, null, null, 0.0146], "borderColor": "#6B7280", "backgroundColor": "transparent", "tension": 0.3, "pointRadius": 2, "borderWidth": 2, "fill": false}, {"label": "YouTube", "data": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 0.0259], "borderColor": "#2F6DDE", "backgroundColor": "transparent", "tension": 0.3, "pointRadius": 2, "borderWidth": 2, "fill": false}];
+
+const CW = Math.max(M.length * 46, 500);
+const gc = 'rgba(20,30,55,.06)', tc = '#8a93a6';
+const nn = a => a.map(v => v === null ? NaN : v);
+
+// Set inner wrapper to explicit px width so Chart.js measures correctly
+// chart-outer is fixed height and scrolls on x
+function prep(id) {
+  return document.getElementById(id);
+}
+
+function opts(pct) {
+  return {
+    responsive: true,
+    maintainAspectRatio: false,
+    animation: { duration: 300 },
+    plugins: {
+      legend: { display: false },
+      tooltip: { callbacks: { label: c => {
+        const v = c.parsed.y;
+        if (isNaN(v)) return ' No data';
+        if (pct) return ' ' + (v*100).toFixed(1) + '%';
+        return ' ' + (v>=1e6 ? (v/1e6).toFixed(2)+'M' : v>=1e3 ? (v/1e3).toFixed(0)+'K' : v.toLocaleString());
+      } } }
+    },
+    scales: {
+      x: { grid: { color: gc }, ticks: { color: tc, font: { size: 10 }, maxRotation: 45, autoSkip: false } },
+      y: { grid: { color: gc }, ticks: { color: tc, font: { size: 10 },
+        callback: v => pct ? (v*100).toFixed(0)+'%' : v>=1e6 ? (v/1e6).toFixed(1)+'M' : v>=1e3 ? (v/1e3).toFixed(0)+'K' : v
+      } }
+    }
+  };
+}
+
+function mkBar(id, data, color) {
+  const c = prep(id); if (!c) return;
+  new Chart(c, { type:'bar', data:{ labels:M, datasets:[{ data:nn(data), backgroundColor:color, borderRadius:2, label:'' }] }, options:opts(false) });
+}
+
+function mkLine(id, data, color, fill, pct) {
+  const c = prep(id); if (!c) return;
+  new Chart(c, { type:'line', data:{ labels:M, datasets:[{ data:nn(data), borderColor:color, backgroundColor:fill, fill:true, tension:.3, pointRadius:2, pointBackgroundColor:color, label:'' }] }, options:opts(pct||false) });
+}
+
+function mkStacked(id) {
+  const c = prep(id); if (!c) return;
+  const o = opts(false); o.scales.x.stacked = true; o.scales.y.stacked = true;
+  new Chart(c, { type:'bar', data:{ labels:M, datasets:[
+    { label:'Videos', data:nn(VIDS), backgroundColor:'#2F6DDE', borderRadius:2, stack:'s' },
+    { label:'Shorts', data:nn(SHORTS), backgroundColor:'#1B9B96', borderRadius:2, stack:'s' },
+    { label:'Lives',  data:nn(LIVES),  backgroundColor:'#E08C2A', borderRadius:2, stack:'s' },
+  ]}, options:o });
+}
+
+function initCharts() {
+  mkStacked('ovStacked');
+  const totals = M.map((_,i) => (VIDS[i]||0)+(SHORTS[i]||0)+(LIVES[i]||0)||NaN);
+  mkLine('ovLine', totals, '#2F6DDE', 'rgba(47,109,222,.08)');
+  mkLine('ovSubs', SUBS, '#2F6DDE', 'rgba(47,109,222,.08)');
+  mkBar('ytVids', VIDS, '#2F6DDE');
+  mkBar('ytShorts', SHORTS, '#1B9B96');
+  mkBar('ytLives', LIVES, '#E08C2A');
+  mkLine('ytSubsLine', SUBS, '#2F6DDE', 'rgba(47,109,222,.08)');
+  mkLine('ytPct', PCTSHT, '#E08C2A', 'rgba(224,140,42,.08)', true);
+  mkBar('ytNSht', NSHT, '#6B7280');
+  mkBar('audioTotal', LTOTAL, '#1B7A3A');
+  mkBar('audioStrm', LSTRM, '#1B9B96');
+  mkLine('audioPerEp', PEREP, '#1B7A3A', 'rgba(27,122,58,.08)');
+
+  // Revenue charts
+  if (typeof REV_M !== 'undefined' && REV_M.length > 0) {
+    // Total revenue line
+    const rTotalC = document.getElementById('revTotal');
+    if (rTotalC) {
+      const wrap = rTotalC.parentElement;
+      wrap.style.cssText = 'position:relative;width:' + Math.max(REV_M.length * 46, 500) + 'px;height:100%';
+      new Chart(rTotalC, {
+        type: 'line',
+        data: { labels: REV_M, datasets: [{ data: nn(REV_TOTALS), borderColor: '#1B7A3A',
+          backgroundColor: 'rgba(27,122,58,.08)', fill: true, tension: .3,
+          pointRadius: 2, pointBackgroundColor: '#1B7A3A', label: 'Total' }] },
+        options: revOpts()
+      });
+    }
+
+    // Stacked by source
+    const rStackedC = document.getElementById('revStacked');
+    if (rStackedC) {
+      const wrap = rStackedC.parentElement;
+      wrap.style.cssText = 'position:relative;width:' + Math.max(REV_M.length * 46, 500) + 'px;height:100%';
+      const so = revOpts(); so.scales.x.stacked = true; so.scales.y.stacked = true;
+      new Chart(rStackedC, {
+        type: 'bar', data: { labels: REV_M, datasets: REV_STACKED_DS }, options: so
+      });
+    }
+
+    // Source mix doughnut
+    const rMixC = document.getElementById('revMix');
+    if (rMixC && REV_MIX_LABELS.length > 0) {
+      new Chart(rMixC, {
+        type: 'doughnut',
+        data: { labels: REV_MIX_LABELS, datasets: [{ data: REV_MIX_VALUES, backgroundColor: REV_MIX_COLORS, borderWidth: 0 }] },
+        options: {
+          responsive: true, maintainAspectRatio: false,
+          plugins: {
+            legend: { display: true, position: 'right', labels: { font: { size: 11 }, color: tc, boxWidth: 10 } },
+            tooltip: { callbacks: { label: c => ' ' + c.label + ': $' + c.parsed.toLocaleString() } }
+          }
+        }
+      });
+    }
+
+    // YouTube AdSense (V+S+L)
+    const rYTC = document.getElementById('revYT');
+    if (rYTC) {
+      const wrap = rYTC.parentElement;
+      wrap.style.cssText = 'position:relative;width:' + Math.max(REV_M.length * 46, 500) + 'px;height:100%';
+      new Chart(rYTC, {
+        type: 'bar', data: { labels: REV_M, datasets: [
+          { label: 'Videos', data: nn(REV_YT_VIDEOS), backgroundColor: '#2F6DDE', borderRadius: 2, stack: 's' },
+          { label: 'Shorts', data: nn(REV_YT_SHORTS), backgroundColor: '#1B9B96', borderRadius: 2, stack: 's' },
+          { label: 'Lives',  data: nn(REV_YT_LIVES),  backgroundColor: '#E08C2A', borderRadius: 2, stack: 's' },
+        ]}, options: (() => { const o = revOpts(); o.scales.x.stacked = true; o.scales.y.stacked = true; return o; })()
+      });
+    }
+  }
+
+  // Socials charts
+  if (typeof SOC_M !== 'undefined' && SOC_M.length > 0) {
+    const SOC_W = Math.max(SOC_M.length * 46, 500);
+
+    function socPrep(id) {
+      const c = document.getElementById(id);
+      if (!c) return null;
+      const wrap = c.parentElement;
+      wrap.style.cssText = 'position:relative;width:' + SOC_W + 'px;height:100%';
+      return c;
+    }
+
+    function socOpts(pct) {
+      return {
+        responsive: true, maintainAspectRatio: false, animation: { duration: 300 },
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            backgroundColor: '#0f1729', titleColor: '#fff', bodyColor: '#cbd5e1',
+            padding: 10, cornerRadius: 6, boxPadding: 4,
+            titleFont: { size: 11, weight: '600' }, bodyFont: { size: 12 },
+            callbacks: { label: c => {
+              const v = c.parsed.y;
+              if (isNaN(v)) return ' No data';
+              const lbl = c.dataset.label ? c.dataset.label + ': ' : '';
+              if (pct) return ' ' + lbl + (v*100).toFixed(2) + '%';
+              return ' ' + lbl + (v >= 1e6 ? (v/1e6).toFixed(2)+'M' : v >= 1e3 ? (v/1e3).toFixed(0)+'K' : v.toLocaleString());
+            } }
+          }
+        },
+        scales: {
+          x: { grid: { color: gc }, ticks: { color: tc, font: { size: 10 }, maxRotation: 45, autoSkip: false } },
+          y: { grid: { color: gc }, ticks: { color: tc, font: { size: 10 },
+            callback: v => pct ? (v*100).toFixed(1)+'%' : v >= 1e6 ? (v/1e6).toFixed(1)+'M' : v >= 1e3 ? (v/1e3).toFixed(0)+'K' : v
+          } }
+        }
+      };
+    }
+
+    // Followers line chart (multi-series)
+    const fc = socPrep('socFollowers');
+    if (fc) new Chart(fc, {
+      type: 'line', data: { labels: SOC_M, datasets: SOC_FOLLOWERS_DS }, options: socOpts(false)
+    });
+
+    // Impressions stacked bar
+    const ic = socPrep('socImpressions');
+    if (ic) {
+      const o = socOpts(false); o.scales.x.stacked = true; o.scales.y.stacked = true;
+      new Chart(ic, { type: 'bar', data: { labels: SOC_M, datasets: SOC_IMP_DS }, options: o });
+    }
+
+    // ER line chart (multi-series)
+    const ec = socPrep('socER');
+    if (ec) new Chart(ec, {
+      type: 'line', data: { labels: SOC_M, datasets: SOC_ER_DS }, options: socOpts(true)
+    });
+  }
+}
+
+function revOpts() {
+  return {
+    responsive: true, maintainAspectRatio: false, animation: { duration: 300 },
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        backgroundColor: '#0f1729',
+        titleColor: '#fff',
+        bodyColor: '#cbd5e1',
+        padding: 10,
+        cornerRadius: 6,
+        titleFont: { size: 11, weight: '600' },
+        bodyFont: { size: 12 },
+        boxPadding: 4,
+        callbacks: { label: c => {
+          const v = c.parsed.y;
+          if (isNaN(v)) return ' No data';
+          return ' ' + (c.dataset.label ? c.dataset.label + ': ' : '') + '$' + v.toLocaleString(undefined, {minimumFractionDigits:2, maximumFractionDigits:2});
+        } }
+      }
+    },
+    scales: {
+      x: { grid: { color: gc }, ticks: { color: tc, font: { size: 10 }, maxRotation: 45, autoSkip: false } },
+      y: { grid: { color: gc }, ticks: { color: tc, font: { size: 10 },
+        callback: v => v >= 1000 ? '$' + (v/1000).toFixed(0) + 'K' : '$' + v
+      } }
+    }
+  };
+}
+
+function switchRev(type, btn) {
+  const tot = document.getElementById('rev-total-outer');
+  const stk = document.getElementById('rev-stacked-outer');
+  const leg = document.getElementById('rev-legend');
+  tot.style.display = type === 'total'   ? 'block' : 'none';
+  stk.style.display = type === 'stacked' ? 'block' : 'none';
+  leg.style.display = type === 'stacked' ? 'flex'  : 'none';
+  document.querySelectorAll('#page-revenue .tab-btn').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+}
+
+// Wait for full paint before initializing
+if (document.readyState === 'complete') { initCharts(); }
+else { window.addEventListener('load', initCharts); }
+
+function showPage(id, el) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.getElementById('page-'+id).classList.add('active');
+  el.classList.add('active');
+}
+
+function switchOv(type, btn) {
+  document.getElementById('ov-stacked-outer').style.display = type==='stacked' ? 'block' : 'none';
+  document.getElementById('ov-line-outer').style.display   = type==='line'    ? 'block' : 'none';
+  document.querySelectorAll('#page-overview .tab-btn').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+}
+
+function openReport(path) {
+  document.getElementById('pdf-frame').src = path;
+  document.getElementById('pdf-label').textContent = path.split('/').pop().replace(/_/g,' ').replace('.pdf','');
+  const v = document.getElementById('pdf-viewer');
+  v.style.display = 'block';
+  v.scrollIntoView({ behavior:'smooth' });
+}
+
+function closePdf() {
+  document.getElementById('pdf-viewer').style.display = 'none';
+  document.getElementById('pdf-frame').src = '';
+}
+</script>
+</body>
+</html>
