@@ -1,0 +1,76 @@
+name: Daily data refresh
+
+on:
+  schedule:
+    # 09:00 UTC daily = ~05:00 EDT / 04:00 EST — dashboards update overnight
+    - cron: '0 9 * * *'
+  workflow_dispatch:   # manual "Run workflow" button in Actions tab
+
+permissions:
+  contents: write      # needed so the bot can commit refreshed data back to main
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          # need full history so the auto-commit pushes cleanly
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install \
+            google-api-python-client \
+            google-auth-oauthlib \
+            google-auth-httplib2 \
+            requests \
+            openpyxl \
+            python-dateutil
+
+      - name: Write config.py from secret
+        env:
+          CONFIG_PY: ${{ secrets.CONFIG_PY }}
+        run: |
+          printf "%s" "$CONFIG_PY" > master/shows/road_trippin/config.py
+          # sanity check (don't print the file contents — they're secret)
+          test -s master/shows/road_trippin/config.py || { echo "config.py is empty — check the CONFIG_PY secret"; exit 1; }
+          echo "✓ config.py written ($(wc -c < master/shows/road_trippin/config.py) bytes)"
+
+      - name: Run tracker (pulls YT + Megaphone API data)
+        working-directory: master/shows/road_trippin
+        run: python build_tracker.py
+
+      - name: Rebuild Road Trippin' dashboard
+        working-directory: master/shows/road_trippin
+        run: python build_dashboard.py
+
+      - name: Rebuild RDM master dashboard
+        working-directory: master
+        # output to repo root since that's where Pages serves index.html from
+        run: python build_master.py --output ../index.html
+
+      - name: Commit refreshed data + HTML
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          # never commit the secret config back to the repo
+          rm -f master/shows/road_trippin/config.py
+          git add -A
+          if git diff --staged --quiet; then
+            echo "No changes to commit — data hasn't moved since last refresh."
+          else
+            git commit -m "chore: daily data refresh [skip ci]"
+            git push
+            echo "✓ Pushed refreshed dashboards"
+          fi
