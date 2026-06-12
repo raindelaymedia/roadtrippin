@@ -1,0 +1,14 @@
+# Secrets — never commit
+config.py
+client_secrets.json
+*.env
+
+# Python cache
+__pycache__/
+*.pyc
+
+# IDE / OS junk
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

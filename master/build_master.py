@@ -236,8 +236,8 @@ def _mdy(d): return f"{_MONTH_ABBR[d.month]} {d.day}, {d.year}"
 # ─── Main ────────────────────────────────────────────────────────────────
 def main():
     ap = argparse.ArgumentParser(description="Build the RDM master dashboard.")
-    ap.add_argument("--output", default="index.html",
-                    help="Output path (default: index.html in the master/ dir)")
+    ap.add_argument("--output", default="../index.html",
+                    help="Output path (default: ../index.html → lands at repo root)")
     args = ap.parse_args()
 
     script_dir = os.path.dirname(os.path.abspath(__file__))

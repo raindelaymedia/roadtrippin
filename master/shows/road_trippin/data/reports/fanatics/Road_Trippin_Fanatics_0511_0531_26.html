@@ -1,0 +1,410 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<title>Road Trippin' × Fanatics — May 11 – May 31, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --gold:#C9A84C; --ink:#1a1a1a; --mut:#8a8a8a; --line:#e6e6e6; }
+  * { box-sizing:border-box; }
+  body { font-family:'Barlow',sans-serif; color:var(--ink); margin:0; background:#f3f3f3; font-size:12px; }
+  .page { width:8.5in; min-height:11in; padding:0.5in 0.55in; margin:14px auto; background:#fff;
+          box-shadow:0 2px 12px rgba(0,0,0,.12); }
+  h1,h2,h3,.cond { font-family:'Barlow Condensed',sans-serif; }
+  .eyebrow { font-family:'Barlow Condensed'; letter-spacing:.28em; font-weight:600; color:var(--mut); font-size:9px; text-transform:uppercase; }
+
+  /* header */
+  .hdr { display:flex; justify-content:space-between; align-items:flex-start; border-bottom:2px solid var(--gold); padding-bottom:12px; }
+  .title { font-family:'Barlow Condensed'; font-weight:800; font-size:42px; line-height:.95; letter-spacing:-.01em; text-transform:uppercase; }
+  .title .x { color:var(--gold); }
+  .subt { letter-spacing:.22em; font-weight:600; color:var(--mut); font-size:9px; text-transform:uppercase; margin-top:6px; }
+  .hdr-r { text-align:right; }
+  .hdr-r .big { font-family:'Barlow Condensed'; font-weight:700; font-size:20px; }
+  .hdr-r .sm { color:var(--mut); font-size:10px; }
+
+  /* metric cards */
+  .cards { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin:16px 0; }
+  .card { border:1px solid var(--line); border-radius:3px; padding:12px 14px; }
+  .card .lbl { font-size:8px; letter-spacing:.16em; color:var(--mut); font-weight:600; text-transform:uppercase; }
+  .card .val { font-family:'Barlow Condensed'; font-weight:700; font-size:30px; line-height:1.05; margin-top:6px; }
+  .card .note { color:var(--mut); font-size:9.5px; margin-top:2px; }
+
+  /* impressions banner */
+  .imp { border:1px solid var(--line); border-radius:3px; padding:16px 18px; display:flex; gap:26px; align-items:center; margin-bottom:18px; }
+  .imp .lbl { font-size:8px; letter-spacing:.2em; color:var(--gold); font-weight:700; text-transform:uppercase; }
+  .imp .num { font-family:'Barlow Condensed'; font-weight:800; font-size:34px; color:var(--gold); line-height:1; }
+  .imp .vs { color:var(--mut); font-size:12px; }
+  .imp .pace { font-size:10px; color:#555; line-height:1.5; }
+  .imp .pace b { color:var(--gold); }
+
+  /* section heading */
+  .sec-h { display:flex; justify-content:space-between; align-items:baseline; border-bottom:1px solid var(--ink); padding-bottom:4px; margin-bottom:2px; }
+  .sec-h h2 { font-weight:700; font-size:17px; letter-spacing:.02em; margin:0; text-transform:uppercase; }
+  .sec-h .r { font-size:8px; letter-spacing:.18em; color:var(--mut); font-weight:600; }
+
+  /* views table */
+  table { width:100%; border-collapse:collapse; }
+  thead td { font-size:8px; letter-spacing:.14em; color:var(--mut); font-weight:600; padding:8px 6px; text-transform:uppercase; }
+  tbody tr { border-top:1px solid var(--line); }
+  td { padding:9px 6px; vertical-align:middle; }
+  tr.ind .pl-name { padding-left:22px; }
+  tr.ind .pl-title { font-size:10px; }
+  .pl-title { font-family:'Barlow Condensed'; font-weight:700; font-size:13px; text-transform:uppercase; }
+  .pl-sub { color:var(--mut); font-size:9px; font-style:italic; }
+  .pl-metric { color:#666; font-size:10px; font-style:italic; width:150px; }
+  .pl-num { font-family:'Barlow Condensed'; font-weight:700; font-size:15px; text-align:right; white-space:nowrap; }
+
+  /* three KPI columns */
+  .kpis { display:grid; grid-template-columns:1fr 1fr 1.35fr; gap:12px; margin-top:16px; }
+  .kpi { border:1px solid var(--line); border-radius:3px; padding:12px; }
+  .kpi-h { font-size:8px; letter-spacing:.16em; color:var(--mut); font-weight:600; text-transform:uppercase; line-height:1.3; }
+  .big-row { display:flex; align-items:baseline; gap:8px; margin:6px 0 2px; }
+  .big-num { font-family:'Barlow Condensed'; font-weight:800; font-size:30px; line-height:1; }
+  .big-pct { font-family:'Barlow Condensed'; font-weight:800; font-size:22px; color:var(--gold); }
+  .big-tgt { font-family:'Barlow Condensed'; font-weight:700; font-size:20px; color:var(--mut); }
+  .micro { font-size:7.5px; letter-spacing:.1em; color:var(--mut); text-transform:uppercase; }
+  .bar { height:5px; background:#eee; border-radius:3px; overflow:hidden; margin:8px 0; }
+  .bar-fill { height:100%; }
+  .line { display:flex; justify-content:space-between; font-size:10.5px; padding:3px 0; border-top:1px dotted var(--line); }
+  .line .v { font-family:'Barlow Condensed'; font-weight:700; }
+  .line .v small { color:var(--mut); font-weight:500; }
+
+  /* talent */
+  .talent-card { border-top:1px solid var(--line); padding:8px 0; }
+  .talent-card:first-child { border-top:none; }
+  .tc-name { font-family:'Barlow Condensed'; font-weight:700; font-size:13px; }
+  .tc-handle { color:var(--mut); font-weight:500; font-size:9px; margin-left:6px; }
+  .tc-req { color:var(--mut); font-size:8px; display:block; }
+  .tc-stats { display:grid; grid-template-columns:repeat(3,1fr); gap:6px; margin-top:5px; text-align:center; }
+  .tc-lbl { font-size:7px; letter-spacing:.1em; color:var(--mut); }
+  .tc-num { font-family:'Barlow Condensed'; font-weight:800; font-size:20px; line-height:1; }
+  .tc-num.gold { color:var(--gold); }
+  .tc-sub { font-size:7px; color:var(--mut); }
+  .gold-box { border:1px solid var(--gold); border-radius:3px; padding:3px 0; }
+
+  /* top content cards */
+  .cc-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin:10px 0 18px; }
+  .cc { border:1px solid var(--line); border-radius:3px; overflow:hidden; text-decoration:none; color:inherit; display:block; }
+  .cc-thumb { aspect-ratio:16/9; background:#222 center/cover no-repeat; }
+  .cc-body { padding:8px 10px 11px; }
+  .cc-rank { font-family:'Barlow Condensed'; font-weight:800; font-size:22px; display:flex; align-items:baseline; gap:8px; }
+  .cc-views { font-size:13px; color:var(--gold); }
+  .cc-meta { font-size:8px; letter-spacing:.12em; color:var(--mut); text-transform:uppercase; margin:2px 0 4px; }
+  .cc-title { font-weight:600; font-size:11px; line-height:1.25; }
+  .sc { border:1px solid var(--line); border-left:3px solid var(--gold); border-radius:3px; padding:9px 11px; }
+  .sc-plat { font-family:'Barlow Condensed'; font-weight:700; font-size:11px; color:var(--gold); margin:2px 0 4px; }
+  .sc-date { color:var(--mut); font-weight:500; margin-left:8px; letter-spacing:.1em; }
+
+  /* goal box */
+  .goal { border:1px solid var(--line); border-radius:3px; padding:16px 18px; margin-top:6px; }
+  .goal-top { display:flex; justify-content:space-between; align-items:flex-start; }
+  .goal h2 { font-weight:700; font-size:18px; margin:0; text-transform:uppercase; }
+  .goal .desc { color:#666; font-size:10px; max-width:62%; margin-top:4px; }
+  .goal .tot { text-align:right; }
+  .goal .tot .l { font-size:8px; letter-spacing:.16em; color:var(--mut); }
+  .goal .tot .n { font-family:'Barlow Condensed'; font-weight:800; font-size:26px; color:var(--gold); }
+  .mults { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:14px; }
+  .mult h3 { font-weight:700; font-size:12px; margin:0; text-transform:uppercase; }
+  .mult .x { color:var(--gold); font-family:'Barlow Condensed'; font-weight:800; font-size:15px; }
+  .mult ul { list-style:none; padding:0; margin:8px 0 0; }
+  .mult li { font-size:9.5px; color:#444; padding:1.5px 0; }
+  .mult .calc { font-style:italic; font-size:9.5px; color:#666; border-top:1px solid var(--line); margin-top:8px; padding-top:6px; }
+  .mult .calc b { color:var(--gold); font-style:normal; }
+
+  .foot { display:flex; justify-content:space-between; color:var(--mut); font-size:7.5px; letter-spacing:.12em;
+           text-transform:uppercase; border-top:1px solid var(--line); margin-top:18px; padding-top:8px; }
+
+  @media print {
+    body { background:#fff; }
+    .page { box-shadow:none; margin:0; width:auto; min-height:auto; padding:0.4in 0.45in; }
+    .page + .page { page-break-before:always; }
+    .cc, .sc, .talent-card, .kpi, .mult { break-inside:avoid; }
+  }
+  @page { size:letter; margin:0; }
+</style></head><body>
+
+<!-- ══════════════ PAGE 1 ══════════════ -->
+<section class="page">
+  <div class="hdr">
+    <div>
+      <div class="title">ROAD TRIPPIN' <span class="x">×</span> FANATICS<br>SPORTSBOOK</div>
+      <div class="subt">Presenting Partnership · Monthly Delivery Report</div>
+    </div>
+    <div class="hdr-r">
+      <div class="eyebrow">Reporting Period</div>
+      <div class="big">May 11 – May 31, 2026</div>
+      <div class="sm">Term: Feb 13, 2026 – Sep 13, 2026 · ~94 Episodes</div>
+    </div>
+  </div>
+
+  <div class="cards">
+    <div class="card"><div class="lbl">Cumulative Views &amp; Downloads</div><div class="val">39,940,380</div><div class="note">All platforms · since 2/17</div></div>
+    <div class="card"><div class="lbl">This Period Views &amp; Downloads</div><div class="val">9,691,705</div><div class="note">May 11 – May 31 only</div></div>
+    <div class="card"><div class="lbl">% of Term Elapsed</div><div class="val">51.89%</div><div class="note">Of 212-day term</div></div>
+    <div class="card"><div class="lbl">Days Into Partnership</div><div class="val">110</div><div class="note">of 212 days (Feb 13 → Sep 13)</div></div>
+  </div>
+
+  <div class="imp">
+    <div>
+      <div class="lbl">Impressions*</div>
+      <div class="num">53,283,173</div>
+      <div class="vs">vs. 47M plan</div>
+    </div>
+    <div class="pace">
+      <b>113.37%</b> &nbsp;At current rate: on pace for <b>~102,691,206</b> total impressions<br>
+      Goal: 47,000,000 – 50,000,000 · 212-day term
+    </div>
+  </div>
+
+  <div class="sec-h"><h2>Views &amp; Downloads</h2><div class="r">Cumulative from Feb 17</div></div>
+  <div class="eyebrow" style="margin:4px 0 2px">Platform Delivery Breakdown · Raw Counts · Not Impression Equivalents</div>
+  <table>
+    <thead><tr><td>Platform</td><td>Metric Type</td><td style="text-align:right">This Period (raw)</td><td style="text-align:right">Cumulative (raw)</td></tr></thead>
+    <tbody>
+        <tr class="">
+          <td class="pl-name"><div class="pl-title">YOUTUBE</div><div class="pl-sub">Content 2/16+ · 421 videos (81 new this period)</div></td>
+          <td class="pl-metric">Views</td>
+          <td class="pl-num">1,866,428</td>
+          <td class="pl-num">10,412,168</td>
+        </tr>
+        <tr class="ind">
+          <td class="pl-name"><div class="pl-title">FULL EPISODES</div><div class="pl-sub">&gt;30 min · 40 videos (8 new this period)</div></td>
+          <td class="pl-metric">Views</td>
+          <td class="pl-num">120,345</td>
+          <td class="pl-num">795,912</td>
+        </tr>
+        <tr class="ind">
+          <td class="pl-name"><div class="pl-title">SEGMENT CLIPS</div><div class="pl-sub">3:01–30 min · 172 videos (28 new this period)</div></td>
+          <td class="pl-metric">Views</td>
+          <td class="pl-num">325,176</td>
+          <td class="pl-num">2,288,404</td>
+        </tr>
+        <tr class="ind">
+          <td class="pl-name"><div class="pl-title">SHORTS</div><div class="pl-sub">≤3:00 · 209 videos (45 new this period)</div></td>
+          <td class="pl-metric">Views</td>
+          <td class="pl-num">1,420,907</td>
+          <td class="pl-num">7,327,852</td>
+        </tr>
+        <tr><td class="pl-name"><div class="pl-title">MEGAPHONE</div><div class="pl-sub">RSS &amp; Spotify</div></td>
+            <td class="pl-metric">Total Delivery · content 2/16+ only</td>
+            <td class="pl-num">47,692</td><td class="pl-num">268,758</td></tr>
+        <tr><td class="pl-name"><div class="pl-title" style="color:#C9A84C">INSTAGRAM</div><div class="pl-sub">@RoadTrippinShow account only</div></td>
+            <td class="pl-metric">Views / Reach</td>
+            <td class="pl-num">3,641,703</td><td class="pl-num">18,353,199</td></tr>
+        <tr><td class="pl-name"><div class="pl-title" style="color:#C9A84C">TIKTOK</div><div class="pl-sub">Per-video · 27 videos this period · 141 total</div></td>
+            <td class="pl-metric">Views</td>
+            <td class="pl-num">2,324,000</td><td class="pl-num">5,927,661</td></tr>
+        <tr><td class="pl-name"><div class="pl-title">X (TWITTER)</div><div class="pl-sub">Show account · @roadtrippin</div></td>
+            <td class="pl-metric">Impressions</td>
+            <td class="pl-num">1,811,882</td><td class="pl-num">4,978,594</td></tr></tbody>
+  </table>
+
+  <div class="kpis">
+    <div class="kpi">
+      <div class="kpi-h">Episode Delivery Tracker</div>
+      <div class="big-row"><span class="big-num">43</span><span class="big-pct">45.7%</span><span class="big-tgt">~94</span></div>
+      <div class="micro">Episodes aired · % of target · total target</div>
+      <div class="bar"><div class="bar-fill" style="width:45.7%;background:#C9A84C"></div></div>
+      <div class="line"><span>Group Episodes (Full Crew)</span><span class="v">29 <small>/ ~56</small></span></div>
+      <div class="line"><span>Solo – Kendrick Perkins</span><span class="v">9 <small>/ ~24</small></span></div>
+      <div class="line"><span>Solo – Channing Frye</span><span class="v">5 <small>/ ~14</small></span></div>
+      <div class="line"><span><b>Total Aired</b></span><span class="v">43 <small>/ ~94</small></span></div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-h">Integrations Delivered</div>
+      <div class="big-row"><span class="big-num">113</span><span class="big-pct">47.1%</span><span class="big-tgt">~240</span></div>
+      <div class="micro">Total delivered · % of target · 94+52+94</div>
+      <div class="bar"><div class="bar-fill" style="width:47.1%;background:#C9A84C"></div></div>
+      <div class="line"><span>Top-of-Show Shoutouts</span><span class="v">42 <small>/ ~94</small></span></div>
+      <div class="line"><span>Sponsored Segments (On-Cam)</span><span class="v">29 <small>/ ~52</small></span></div>
+      <div class="line"><span>Host-Read Ad Reads (60s)</span><span class="v">42 <small>/ ~94</small></span></div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-h">Talent Social Amplification</div>
+      <div class="big-row"><span class="big-num">102</span><span class="big-pct">441</span><span class="big-tgt">~182</span></div>
+      <div class="micro">This period · cumulative total · contractual target</div>
+      <div class="bar"><div class="bar-fill" style="width:100.0%;background:#2E7D32"></div></div>
+      <div class="micro" style="color:#2E7D32">242.3% ✓ Exceeded ~182 total posts over term</div>
+      
+        <div class="talent-card">
+          <div class="tc-name">KENDRICK PERKINS<span class="tc-handle">@KendrickPerkins</span>
+            <span class="tc-req">Min. 2/wk required</span></div>
+          <div class="tc-stats">
+            <div class="tc-stat"><div class="tc-lbl">THIS PERIOD</div><div class="tc-num">38</div><div class="tc-sub">POSTS</div></div>
+            <div class="tc-stat"><div class="tc-lbl">CUMULATIVE</div><div class="tc-num">178</div><div class="tc-sub">POSTS</div></div>
+            <div class="tc-stat gold-box"><div class="tc-num gold">11+</div><div class="tc-sub">/ WK AVG<br>VS 2/WK</div></div>
+          </div>
+        </div>
+        <div class="talent-card">
+          <div class="tc-name">CHANNING FRYE<span class="tc-handle">@ChanningFrye</span>
+            <span class="tc-req">Min. 2/wk required</span></div>
+          <div class="tc-stats">
+            <div class="tc-stat"><div class="tc-lbl">THIS PERIOD</div><div class="tc-num">37</div><div class="tc-sub">POSTS</div></div>
+            <div class="tc-stat"><div class="tc-lbl">CUMULATIVE</div><div class="tc-num">160</div><div class="tc-sub">POSTS</div></div>
+            <div class="tc-stat gold-box"><div class="tc-num gold">10+</div><div class="tc-sub">/ WK AVG<br>VS 2/WK</div></div>
+          </div>
+        </div>
+        <div class="talent-card">
+          <div class="tc-name">RICHARD JEFFERSON<span class="tc-handle">@RichardJefferson</span>
+            <span class="tc-req">Min. 2/wk required</span></div>
+          <div class="tc-stats">
+            <div class="tc-stat"><div class="tc-lbl">THIS PERIOD</div><div class="tc-num">15</div><div class="tc-sub">POSTS</div></div>
+            <div class="tc-stat"><div class="tc-lbl">CUMULATIVE</div><div class="tc-num">60</div><div class="tc-sub">POSTS</div></div>
+            <div class="tc-stat gold-box"><div class="tc-num gold">4+</div><div class="tc-sub">/ WK AVG<br>VS 2/WK</div></div>
+          </div>
+        </div>
+        <div class="talent-card">
+          <div class="tc-name">ALLIE CLIFTON<span class="tc-handle">@AllieClifton</span>
+            <span class="tc-req">Min. 1/wk required</span></div>
+          <div class="tc-stats">
+            <div class="tc-stat"><div class="tc-lbl">THIS PERIOD</div><div class="tc-num">12</div><div class="tc-sub">POSTS</div></div>
+            <div class="tc-stat"><div class="tc-lbl">CUMULATIVE</div><div class="tc-num">43</div><div class="tc-sub">POSTS</div></div>
+            <div class="tc-stat gold-box"><div class="tc-num gold">2+</div><div class="tc-sub">/ WK AVG<br>VS 1/WK</div></div>
+          </div>
+        </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ PAGE 2 ══════════════ -->
+<section class="page">
+  <div class="sec-h"><h2>Top Content — May 11 – May 31</h2><div class="r">Ranked by Views</div></div>
+  <div class="eyebrow" style="margin:4px 0">Best-Performing Content Published May 11 – May 31 · Click Any Title To View</div>
+
+  <div class="eyebrow" style="color:#C9A84C;font-size:11px;margin-top:8px">★ Top 3 Full Episodes · YouTube</div>
+  <div class="cc-grid">
+    <a class="cc" href="https://youtu.be/JVtMpIpnwl0">
+      <div class="cc-thumb" style="background-image:url('https://i.ytimg.com/vi/JVtMpIpnwl0/maxresdefault.jpg')"></div>
+      <div class="cc-body">
+        <div class="cc-rank">#1<span class="cc-views">32,003 VIEWS</span></div>
+        <div class="cc-meta">May 29<span class="cc-dur"> · 1:06:05</span></div>
+        <div class="cc-title">We Have A Game 7! Wemby vs SGA For A Trip To The Finals! Road Trippin' In The Morning</div>
+      </div>
+    </a>
+    <a class="cc" href="https://youtu.be/XAL6nGH2O-Y">
+      <div class="cc-thumb" style="background-image:url('https://i.ytimg.com/vi/XAL6nGH2O-Y/maxresdefault.jpg')"></div>
+      <div class="cc-body">
+        <div class="cc-rank">#2<span class="cc-views">20,473 VIEWS</span></div>
+        <div class="cc-meta">May 20<span class="cc-dur"> · 1:18:04</span></div>
+        <div class="cc-title">Perk DARES Chet to GO CHECK Wemby + Who's To Blame for Cavs EPIC Meltdown??</div>
+      </div>
+    </a>
+    <a class="cc" href="https://youtu.be/D8WTonjHwh8">
+      <div class="cc-thumb" style="background-image:url('https://i.ytimg.com/vi/D8WTonjHwh8/maxresdefault.jpg')"></div>
+      <div class="cc-body">
+        <div class="cc-rank">#3<span class="cc-views">16,326 VIEWS</span></div>
+        <div class="cc-meta">May 18<span class="cc-dur"> · 1:06:46</span></div>
+        <div class="cc-title">RJ & Channing CAN'T AGREE On Anything: SGA MVP, Ant's Handshake & The Randle Problem</div>
+      </div>
+    </a></div>
+
+  <div class="eyebrow" style="color:#C9A84C;font-size:11px">★ Top 3 Segment Clips · YouTube</div>
+  <div class="cc-grid">
+    <a class="cc" href="https://youtu.be/Z2aOtGIhWdM">
+      <div class="cc-thumb" style="background-image:url('https://i.ytimg.com/vi/Z2aOtGIhWdM/maxresdefault.jpg')"></div>
+      <div class="cc-body">
+        <div class="cc-rank">#1<span class="cc-views">76,981 VIEWS</span></div>
+        <div class="cc-meta">May 27</div>
+        <div class="cc-title">Kendrick Perkins Addresses VIRAL AAU Fight</div>
+      </div>
+    </a>
+    <a class="cc" href="https://youtu.be/GzQ4nst8_ak">
+      <div class="cc-thumb" style="background-image:url('https://i.ytimg.com/vi/GzQ4nst8_ak/maxresdefault.jpg')"></div>
+      <div class="cc-body">
+        <div class="cc-rank">#2<span class="cc-views">25,504 VIEWS</span></div>
+        <div class="cc-meta">May 15</div>
+        <div class="cc-title">Perk Declares Wemby The BEST Player In The NBA & GOES OFF On Julius Randle</div>
+      </div>
+    </a>
+    <a class="cc" href="https://youtu.be/L4ZDBAG33l4">
+      <div class="cc-thumb" style="background-image:url('https://i.ytimg.com/vi/L4ZDBAG33l4/maxresdefault.jpg')"></div>
+      <div class="cc-body">
+        <div class="cc-rank">#3<span class="cc-views">18,384 VIEWS</span></div>
+        <div class="cc-meta">May 19</div>
+        <div class="cc-title">"No More Bullying" - Can Cleveland's Bigs Get Revenge On The Knicks?</div>
+      </div>
+    </a></div>
+
+  <div class="eyebrow" style="color:#C9A84C;font-size:11px">★ Top 3 Shorts · YouTube</div>
+  <div class="cc-grid">
+    <a class="cc" href="https://youtu.be/7aus3KbsW_c">
+      <div class="cc-thumb" style="background-image:url('https://i.ytimg.com/vi/7aus3KbsW_c/maxresdefault.jpg')"></div>
+      <div class="cc-body">
+        <div class="cc-rank">#1<span class="cc-views">222,595 VIEWS</span></div>
+        <div class="cc-meta">May 13</div>
+        <div class="cc-title">Lakers Rebuilding!? Road Trippin Breaks Down LeBron & Lakers Next Move #nba #lakers #lebron</div>
+      </div>
+    </a>
+    <a class="cc" href="https://youtu.be/6oGL_hVMNjM">
+      <div class="cc-thumb" style="background-image:url('https://i.ytimg.com/vi/6oGL_hVMNjM/maxresdefault.jpg')"></div>
+      <div class="cc-body">
+        <div class="cc-rank">#2<span class="cc-views">142,628 VIEWS</span></div>
+        <div class="cc-meta">May 31</div>
+        <div class="cc-title">Knicks vs Spurs is “David vs Goliath” NBA Finals Matchup #JalenBrunson #Wemby #nba</div>
+      </div>
+    </a>
+    <a class="cc" href="https://youtu.be/ncc0PEKBAFY">
+      <div class="cc-thumb" style="background-image:url('https://i.ytimg.com/vi/ncc0PEKBAFY/maxresdefault.jpg')"></div>
+      <div class="cc-body">
+        <div class="cc-rank">#3<span class="cc-views">96,120 VIEWS</span></div>
+        <div class="cc-meta">May 30</div>
+        <div class="cc-title">“The Spurs Looked TOO CONFIDENT” Says ESPN’s Kendrick Perkins #Wemby #Game7 #nba</div>
+      </div>
+    </a></div>
+</section>
+
+<!-- ══════════════ PAGE 3 ══════════════ -->
+<section class="page">
+  <div class="eyebrow" style="color:#C9A84C;font-size:11px">★ Top 3 Social Posts · Instagram / TikTok / X</div>
+  <div class="cc-grid">
+    <div class="sc">
+      <div class="cc-rank">#1<span class="cc-views">547,853 VIEWS</span></div>
+      <div class="sc-plat">INSTAGRAM<span class="sc-date">May 5</span></div>
+      <div class="cc-title">Shoes all muddy on you coffee table. Kendrick Perkins and Richard Jefferson call out Jaylen Brown's recent comments and point to the Celtics lack of adjustments when it mattered most.</div>
+    </div>
+    <div class="sc">
+      <div class="cc-rank">#2<span class="cc-views">533,042 VIEWS</span></div>
+      <div class="sc-plat">TIKTOK<span class="sc-date">May 16</span></div>
+      <div class="cc-title">If he was a cornerback he'd be in the hall of fame Ausar Thompson's 4-of-6 night was exactly what Detroit needed to keep the season alive.</div>
+    </div>
+    <div class="sc">
+      <div class="cc-rank">#3<span class="cc-views">445,495 VIEWS</span></div>
+      <div class="sc-plat">TIKTOK<span class="sc-date">May 13</span></div>
+      <div class="cc-title">Lakers Nation, it's going to get BUMPY! The Lakers rebuild talk is getting REAL. Perk wants a makeover, Channing is calling out the "Master of Nothing", and the Austin Reavesdebate is just getting started.</div>
+    </div></div>
+
+  <div class="goal">
+    <div class="goal-top">
+      <div>
+        <h2>*How the 47–50M Goal Is Calculated</h2>
+        <div class="desc">Each episode view counts as multiple impressions — one per sponsored asset delivered within that episode.</div>
+      </div>
+      <div class="tot"><div class="l">Impressions Total</div><div class="n">53,283,173</div>
+        <div class="micro">113.37% of 47M goal</div></div>
+    </div>
+    <div class="mults">
+      <div class="mult">
+        <h3>Group Episodes <span class="x">6× Multiplier</span></h3>
+        <ul><li>✓ Top-of-Show Brand Shoutout</li><li>✓ Sponsored Segment</li><li>✓ Video Ad Read</li>
+            <li>✓ Audio Ad Read</li><li>✓ Logo Watermark</li><li>✓ On-Set Branding</li></ul>
+        <div class="calc">795,912 views → <b>4,522,449 imp.</b></div>
+      </div>
+      <div class="mult">
+        <h3>Solo Episodes (Perk / Channing) <span class="x">5× Multiplier</span></h3>
+        <ul><li>✓ Top-of-Show Brand Shoutout</li><li>✓ Video Ad Read</li><li>✓ Audio Ad Read</li>
+            <li>✓ Logo Watermark</li><li>✓ On-Set Branding</li></ul>
+        <div class="calc">Included in full ep total above</div>
+      </div>
+      <div class="mult">
+        <h3>Clips &amp; Shorts <span class="x">2× Multiplier</span></h3>
+        <ul><li>✓ View</li><li>✓ Logo Watermark</li></ul>
+        <div class="calc">9,616,256 views → <b>19,232,512 imp.</b></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span>Road Trippin' Show × Fanatics Sportsbook · Presenting Partnership</span>
+    <span>Prepared by Rain Delay Media · Confidential &amp; Internal</span>
+    <span>Generated June 2, 2026</span>
+  </div>
+</section>
+</body></html>
