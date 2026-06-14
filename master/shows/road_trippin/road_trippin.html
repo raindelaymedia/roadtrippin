@@ -418,7 +418,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);lin
       <span>Reports</span>
     </div>
   </div>
-  <div class="sidebar-footer">Updated Jun 10, 2026</div>
+  <div class="sidebar-footer">Updated Jun 14, 2026</div>
 </nav>
 
 <div class="main">
@@ -449,12 +449,12 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);lin
     <div class="metric">
       <div class="metric-label">Episodes (JUN)</div>
       <div class="metric-value">4</div>
-      <div class="metric-delta" style="color:var(--text2)">published</div>
+      <div class="metric-delta"><span class="down">-7 vs prev</span></div>
     </div>
     <div class="metric">
       <div class="metric-label">Shorts % (JUN)</div>
       <div class="metric-value">95.1%</div>
-      <div class="metric-delta" style="color:var(--text2)">of total views</div>
+      <div class="metric-delta"><span class="up">+24.6 pp vs prev</span></div>
     </div>
   </div>
 
@@ -505,31 +505,31 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);lin
   <div class="page-header"><div class="page-title">YouTube</div><div class="page-sub">Views, subscribers, content type breakdown · SEP 24 – JUN</div></div>
   <div class="grid-2 mb12">
     <div class="card">
-      <div class="card-header"><span class="card-title">Videos (VOD)</span><span class="card-sub">Monthly views</span></div>
+      <div class="card-header"><span class="card-title">Videos (VOD)</span><span class="card-sub">Monthly views</span><button class="expand-btn" onclick="openHistory('ytVids','')" title="Full history">↗</button></div>
       <div class="chart-outer" style="height:220px"><div style="position:relative;width:1012px;height:100%"><canvas id="ytVids"></canvas></div></div>
     </div>
     <div class="card">
-      <div class="card-header"><span class="card-title">Shorts</span><span class="card-sub">Monthly views</span></div>
+      <div class="card-header"><span class="card-title">Shorts</span><span class="card-sub">Monthly views</span><button class="expand-btn" onclick="openHistory('ytShorts','')" title="Full history">↗</button></div>
       <div class="chart-outer" style="height:220px"><div style="position:relative;width:1012px;height:100%"><canvas id="ytShorts"></canvas></div></div>
     </div>
   </div>
   <div class="grid-2 mb12">
     <div class="card">
-      <div class="card-header"><span class="card-title">Lives</span><span class="card-sub">Monthly views</span></div>
+      <div class="card-header"><span class="card-title">Lives</span><span class="card-sub">Monthly views</span><button class="expand-btn" onclick="openHistory('ytLives','')" title="Full history">↗</button></div>
       <div class="chart-outer" style="height:220px"><div style="position:relative;width:1012px;height:100%"><canvas id="ytLives"></canvas></div></div>
     </div>
     <div class="card">
-      <div class="card-header"><span class="card-title">Subscribers</span><span class="card-sub">Running total</span></div>
+      <div class="card-header"><span class="card-title">Subscribers</span><span class="card-sub">Running total</span><button class="expand-btn" onclick="openHistory('subs','')" title="Full history">↗</button></div>
       <div class="chart-outer" style="height:220px"><div style="position:relative;width:1012px;height:100%"><canvas id="ytSubsLine"></canvas></div></div>
     </div>
   </div>
   <div class="grid-2">
     <div class="card">
-      <div class="card-header"><span class="card-title">Shorts % of views</span></div>
+      <div class="card-header"><span class="card-title">Shorts % of views</span><button class="expand-btn" onclick="openHistory('ytPct','')" title="Full history">↗</button></div>
       <div class="chart-outer" style="height:220px"><div style="position:relative;width:1012px;height:100%"><canvas id="ytPct"></canvas></div></div>
     </div>
     <div class="card">
-      <div class="card-header"><span class="card-title"># of Shorts published</span></div>
+      <div class="card-header"><span class="card-title"># of Shorts published</span><button class="expand-btn" onclick="openHistory('ytNSht','')" title="Full history">↗</button></div>
       <div class="chart-outer" style="height:220px"><div style="position:relative;width:1012px;height:100%"><canvas id="ytNSht"></canvas></div></div>
     </div>
   </div>
@@ -590,7 +590,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);lin
     <div class="card-header">
       <span class="card-title">Follower growth by platform</span>
       <span class="card-sub">monthly snapshot</span>
-    </div>
+    <button class="expand-btn" onclick="openHistory('socFollowers','')" title="Full history">↗</button></div>
     <div class="legend"><span class="legend-item"><span class="leg-dot" style="background:#E08C2A"></span>Instagram</span><span class="legend-item"><span class="leg-dot" style="background:#7C5BD8"></span>TikTok</span><span class="legend-item"><span class="leg-dot" style="background:#6B7280"></span>X / Twitter</span><span class="legend-item"><span class="leg-dot" style="background:#2F6DDE"></span>YouTube</span><span class="legend-item"><span class="leg-dot" style="background:#1B7A3A"></span>Facebook</span></div>
     <div class="chart-outer-lg" style="height:260px">
       <div style="position:relative;width:1012px;height:100%"><canvas id="socFollowers"></canvas></div>
@@ -599,13 +599,13 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);lin
 
   <div class="grid-2 mb12">
     <div class="card">
-      <div class="card-header"><span class="card-title">Impressions by platform</span><span class="card-sub">stacked monthly</span></div>
+      <div class="card-header"><span class="card-title">Impressions by platform</span><span class="card-sub">stacked monthly</span><button class="expand-btn" onclick="openHistory('socImpressions','')" title="Full history">↗</button></div>
       <div class="chart-outer" style="height:220px">
         <div style="position:relative;width:1012px;height:100%"><canvas id="socImpressions"></canvas></div>
       </div>
     </div>
     <div class="card">
-      <div class="card-header"><span class="card-title">Engagement rate</span><span class="card-sub">per platform</span></div>
+      <div class="card-header"><span class="card-title">Engagement rate</span><span class="card-sub">per platform</span><button class="expand-btn" onclick="openHistory('socER','')" title="Full history">↗</button></div>
       <div class="chart-outer" style="height:220px">
         <div style="position:relative;width:1012px;height:100%"><canvas id="socER"></canvas></div>
       </div>
@@ -635,7 +635,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);lin
       <div class="tabs">
         <button class="tab-btn on" onclick="switchRev('total',this)">Total</button>
         <button class="tab-btn" onclick="switchRev('stacked',this)">By source</button>
-      </div>
+      <button class="expand-btn" onclick="openHistory('revTotal','')" title="Full history">↗</button></div>
     </div>
     <div class="legend" id="rev-legend" style="display:none">
       <span class="legend-item"><span class="leg-dot" style="background:#2F6DDE"></span>YT Videos</span><span class="legend-item"><span class="leg-dot" style="background:#1B9B96"></span>YT Shorts</span><span class="legend-item"><span class="leg-dot" style="background:#E08C2A"></span>YT Lives</span><span class="legend-item"><span class="leg-dot" style="background:#DD4B5C"></span>Culture Genesis</span><span class="legend-item"><span class="leg-dot" style="background:#7C5BD8"></span>Uptides</span><span class="legend-item"><span class="leg-dot" style="background:#1B7A3A"></span>Acast</span><span class="legend-item"><span class="leg-dot" style="background:#C9A84C"></span>Fanatics</span><span class="legend-item"><span class="leg-dot" style="background:#0E7490"></span>Backyard Ventures · Podcast</span><span class="legend-item"><span class="leg-dot" style="background:#67E8F9"></span>Backyard Ventures · Programmatic</span><span class="legend-item"><span class="leg-dot" style="background:#9CA3AF"></span>Threads</span>
@@ -654,7 +654,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);lin
       <div style="position:relative;height:220px;width:100%"><canvas id="revMix"></canvas></div>
     </div>
     <div class="card">
-      <div class="card-header"><span class="card-title">YouTube AdSense</span><span class="card-sub">Videos + Shorts + Lives</span></div>
+      <div class="card-header"><span class="card-title">YouTube AdSense</span><span class="card-sub">Videos + Shorts + Lives</span><button class="expand-btn" onclick="openHistory('revYT','')" title="Full history">↗</button></div>
       <div class="chart-outer" style="height:220px"><div style="position:relative;width:1104px;height:100%"><canvas id="revYT"></canvas></div></div>
     </div>
   </div>
@@ -712,9 +712,9 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="page" id="page-reports">
   <div class="page-header">
     <div class="page-title">Reports</div>
-    <div class="page-sub">Fanatics delivery reports and revenue summaries</div>
+    <div class="page-sub">Monthly Fanatics delivery reports — click any card to view in line</div>
   </div>
-  <div class="reports-section"><div class="reports-section-title">📊 Fanatics Delivery Reports</div><div class="reports-empty">No reports yet — generate one with <code>build_report.py</code></div></div><div class="reports-section"><div class="reports-section-title">💰 Revenue Reports</div><div class="reports-empty">No reports yet — generate one with <code>build_report.py</code></div></div><div id="pdf-viewer" style="display:none;margin-top:20px;"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;"><span id="pdf-label" style="font-size:13px;font-weight:500;"></span><button onclick="closePdf()" style="font-size:12px;padding:4px 10px;border-radius:6px;border:.5px solid var(--border2);background:var(--surface2);cursor:pointer;">✕ Close</button></div><iframe id="pdf-frame" style="width:100%;height:75vh;border:none;border-radius:var(--r);border:.5px solid var(--border);"></iframe></div>
+  <div class="reports-section"><div class="reports-section-title">📊 Fanatics Delivery Reports</div><div class="report-cards"><div class="report-card" onclick="openReport('data/reports/fanatics/Road_Trippin_Fanatics_0501_0531_26.html')"><div class="report-icon">📄</div><div class="report-info"><div class="report-label">Fanatics · May 1 – May 31, 2026</div><div class="report-filename">Road_Trippin_Fanatics_0501_0531_26.html</div></div><div class="report-arrow">→</div></div><div class="report-card" onclick="openReport('data/reports/fanatics/Road_Trippin_Fanatics_0511_0531_26.html')"><div class="report-icon">📄</div><div class="report-info"><div class="report-label">Fanatics · May 11 – May 31, 2026</div><div class="report-filename">Road_Trippin_Fanatics_0511_0531_26.html</div></div><div class="report-arrow">→</div></div></div></div><div id="pdf-viewer" style="display:none;margin-top:20px;"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;"><span id="pdf-label" style="font-size:13px;font-weight:500;"></span><button onclick="closePdf()" style="font-size:12px;padding:4px 10px;border-radius:6px;border:.5px solid var(--border2);background:var(--surface2);cursor:pointer;">✕ Close</button></div><iframe id="pdf-frame" style="width:100%;height:75vh;border:none;border-radius:var(--r);border:.5px solid var(--border);"></iframe></div>
 </div>
 
 </div><!-- /main -->
@@ -796,6 +796,75 @@ const HISTORY_CONFIGS = {
     type: 'line',
     datasets: () => [{ data: nn(PE_F), borderColor: '#1B7A3A', backgroundColor: 'rgba(27,122,58,.08)', fill: true, tension: .3, pointRadius: 2 }],
   },
+  // ── YouTube page charts ──
+  ytVids: {
+    label: 'Videos — full history',
+    type: 'bar',
+    datasets: () => [{ data: nn(VIDS_F), backgroundColor: '#2F6DDE', borderRadius: 2 }],
+  },
+  ytShorts: {
+    label: 'Shorts — full history',
+    type: 'bar',
+    datasets: () => [{ data: nn(SH_F), backgroundColor: '#1B9B96', borderRadius: 2 }],
+  },
+  ytLives: {
+    label: 'Lives — full history',
+    type: 'bar',
+    datasets: () => [{ data: nn(LV_F), backgroundColor: '#E08C2A', borderRadius: 2 }],
+  },
+  ytPct: {
+    label: 'Shorts share of views — full history',
+    type: 'line',
+    datasets: () => [{ data: nn(PS_F), borderColor: '#1B9B96', backgroundColor: 'rgba(27,155,150,.08)', fill: true, tension: .3, pointRadius: 2 }],
+    pct: true,
+  },
+  ytNSht: {
+    label: 'Shorts published — full history',
+    type: 'bar',
+    datasets: () => [{ data: nn(NS_F), backgroundColor: '#1B9B96', borderRadius: 2 }],
+  },
+  // ── Revenue page charts ──
+  revTotal: {
+    label: 'Monthly revenue — full history',
+    type: 'bar',
+    datasets: () => [{ data: nn(REV_TOTALS), backgroundColor: '#C9A84C', borderRadius: 2 }],
+  },
+  revStacked: {
+    label: 'Revenue by source — full history',
+    type: 'bar',
+    datasets: () => REV_STACKED_DS.map(ds => ({ ...ds, stack: 's' })),
+    stacked: true,
+  },
+  revYT: {
+    label: 'YouTube revenue by content type — full history',
+    type: 'bar',
+    datasets: () => [
+      { label: 'Videos', data: nn(REV_YT_VIDEOS), backgroundColor: '#2F6DDE', borderRadius: 2, stack: 'y' },
+      { label: 'Shorts', data: nn(REV_YT_SHORTS), backgroundColor: '#1B9B96', borderRadius: 2, stack: 'y' },
+      { label: 'Lives',  data: nn(REV_YT_LIVES),  backgroundColor: '#E08C2A', borderRadius: 2, stack: 'y' },
+    ],
+    stacked: true,
+  },
+  // ── Socials page charts ──
+  socFollowers: {
+    label: 'Followers — full history',
+    type: 'line',
+    datasets: () => SOC_FOLLOWERS_DS,
+    socials: true,
+  },
+  socImpressions: {
+    label: 'Impressions / views — full history',
+    type: 'bar',
+    datasets: () => SOC_IMP_DS,
+    socials: true,
+  },
+  socER: {
+    label: 'Engagement rate — full history',
+    type: 'line',
+    datasets: () => SOC_ER_DS,
+    pct: true,
+    socials: true,
+  },
 };
 
 function openHistory(key, title) {
@@ -813,17 +882,18 @@ function openHistory(key, title) {
 
   const canvas = document.getElementById('history-canvas');
   const wrap = canvas.parentElement;
-  wrap.style.width = Math.max(M_FULL.length * 46, 700) + 'px';
+  const labels = cfg.socials ? SOC_M : M_FULL;
+  wrap.style.width = Math.max(labels.length * 46, 700) + 'px';
   wrap.style.height = '100%';
 
-  const o = opts(false);
+  const o = opts(cfg.pct || false);
   if (cfg.stacked) { o.scales.x.stacked = true; o.scales.y.stacked = true; }
   o.plugins.legend = { display: true, position: 'top',
     labels: { color: tc, font: { size: 11 }, boxWidth: 12 } };
 
   _historyChart = new Chart(canvas, {
     type: cfg.type,
-    data: { labels: M_FULL, datasets: cfg.datasets() },
+    data: { labels: labels, datasets: cfg.datasets() },
     options: o,
   });
 }
@@ -862,21 +932,94 @@ function opts(pct) {
     },
     scales: {
       x: { grid: { color: gc }, ticks: { color: tc, font: { size: 10 }, maxRotation: 45, autoSkip: false } },
-      y: { grid: { color: gc }, ticks: { color: tc, font: { size: 10 },
+      y: { min: 0, grid: { color: gc }, ticks: { color: tc, font: { size: 10 },
         callback: v => pct ? (v*100).toFixed(0)+'%' : v>=1e6 ? (v/1e6).toFixed(1)+'M' : v>=1e3 ? (v/1e3).toFixed(0)+'K' : v
       } }
     }
   };
 }
 
+/* ─── Linear regression trendline ─── */
+function trendline(values) {
+  // Ignore null/NaN entries when fitting; output is full-length, with nulls preserved at gaps
+  const pts = [];
+  for (let i = 0; i < values.length; i++) {
+    const v = values[i];
+    if (v != null && !isNaN(v)) pts.push([i, v]);
+  }
+  if (pts.length < 3) return values.map(() => null);
+  const n = pts.length;
+  const sx  = pts.reduce((a, p) => a + p[0], 0);
+  const sy  = pts.reduce((a, p) => a + p[1], 0);
+  const sxy = pts.reduce((a, p) => a + p[0]*p[1], 0);
+  const sxx = pts.reduce((a, p) => a + p[0]*p[0], 0);
+  const denom = n*sxx - sx*sx;
+  if (denom === 0) return values.map(() => null);
+  const slope = (n*sxy - sx*sy) / denom;
+  const intercept = (sy - slope*sx) / n;
+  return values.map((_, i) => slope*i + intercept);
+}
+function trendDS(values, baseColor) {
+  return {
+    data: trendline(values),
+    borderColor: 'rgba(120, 120, 120, 0.55)',
+    borderDash: [4, 4],
+    borderWidth: 1.4,
+    pointRadius: 0,
+    pointHoverRadius: 0,
+    fill: false,
+    tension: 0,
+    label: 'Trend',
+    order: 99,
+  };
+}
+
+/* ─── Fanatics partnership start marker (Feb 13, 2026) ─── */
+const FANATICS_START_LABEL = "FEB";
+const fanaticsAnnotationPlugin = {
+  id: 'fanaticsAnnotation',
+  afterDraw(chart) {
+    const labels = chart.data && chart.data.labels;
+    if (!labels) return;
+    const idx = labels.indexOf(FANATICS_START_LABEL);
+    if (idx < 0) return;
+    const { ctx, chartArea, scales } = chart;
+    if (!chartArea || !scales || !scales.x) return;
+    const x = scales.x.getPixelForValue(idx);
+    if (x < chartArea.left || x > chartArea.right) return;
+    ctx.save();
+    ctx.strokeStyle = 'rgba(201, 168, 76, 0.55)';
+    ctx.setLineDash([3, 3]);
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(x, chartArea.top);
+    ctx.lineTo(x, chartArea.bottom);
+    ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.fillStyle = 'rgba(201, 168, 76, 0.95)';
+    ctx.font = '600 9px Inter, system-ui, sans-serif';
+    ctx.fillText('★ Fanatics start', x + 4, chartArea.top + 11);
+    ctx.restore();
+  }
+};
+if (typeof Chart !== 'undefined') Chart.register(fanaticsAnnotationPlugin);
+
 function mkBar(id, data, color) {
   const c = prep(id); if (!c) return;
-  new Chart(c, { type:'bar', data:{ labels:M, datasets:[{ data:nn(data), backgroundColor:color, borderRadius:2, label:'' }] }, options:opts(false) });
+  const vals = nn(data);
+  new Chart(c, { type:'bar', data:{ labels:M, datasets:[
+    { data:vals, backgroundColor:color, borderRadius:2, label:'' },
+    { ...trendDS(vals, color), type:'line' }
+  ] }, options:opts(false) });
 }
 
 function mkLine(id, data, color, fill, pct) {
   const c = prep(id); if (!c) return;
-  new Chart(c, { type:'line', data:{ labels:M, datasets:[{ data:nn(data), borderColor:color, backgroundColor:fill, fill:true, tension:.3, pointRadius:2, pointBackgroundColor:color, label:'' }] }, options:opts(pct||false) });
+  const vals = nn(data);
+  new Chart(c, { type:'line', data:{ labels:M, datasets:[
+    { data:vals, borderColor:color, backgroundColor:fill, fill:true, tension:.3, pointRadius:2, pointBackgroundColor:color, label:'' },
+    trendDS(vals, color)
+  ] }, options:opts(pct||false) });
 }
 
 function mkStacked(id) {

@@ -52,7 +52,7 @@ jobs:
 
       - name: Rebuild Road Trippin' dashboard
         working-directory: master/shows/road_trippin
-        run: python build_dashboard.py
+        run: python build_rt_dashboard.py
 
       - name: Rebuild RDM master dashboard
         working-directory: master
