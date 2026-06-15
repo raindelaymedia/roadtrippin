@@ -898,9 +898,9 @@ def build_html(d, reports, revenue, socials, generated_at):
     # Top Content — pre-stored per-month, filtered in JS
     js_top_content_monthly = json.dumps(d.get('top_content_monthly', {}))
 
-    # Fanatics partnership start (Feb 13, 2026) — render the label exactly
-    # as fmt_period would, so the chart annotation plugin can match it.
-    js_fanatics_label = json.dumps(fmt_period("2026-02"))
+    # Fanatics partnership — Season 2 starts Oct 1, 2025 → Sep 30, 2026
+    # (Season 3: Oct 1, 2026 → Sep 30, 2027). The annotation marks S2 start.
+    js_fanatics_label = json.dumps(fmt_period("2025-10"))
 
     # JS data — pass both 12-month (default) and full history
     js_M      = jsa(M12)
@@ -1915,7 +1915,7 @@ const fanaticsAnnotationPlugin = {{
     ctx.setLineDash([]);
     ctx.fillStyle = 'rgba(201, 168, 76, 0.95)';
     ctx.font = '600 9px Inter, system-ui, sans-serif';
-    ctx.fillText('★ Fanatics start', x + 4, chartArea.top + 11);
+    ctx.fillText('★ Fanatics S2 start', x + 4, chartArea.top + 11);
     ctx.restore();
   }}
 }};

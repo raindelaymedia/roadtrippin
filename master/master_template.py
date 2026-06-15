@@ -209,7 +209,6 @@ def _render_show_card(s):
     <div class="show-card-tag" style="background:{s['color']}">{s.get('tag','')}</div>
     <div>
       <div class="show-card-name">{s['name']}</div>
-      <div class="show-card-launch">Launched {_fmt_month_label(s['launch'])}</div>
     </div>
     <div class="show-card-arrow">↗</div>
   </div>
@@ -340,6 +339,17 @@ def build_master_html(rdm_summary, show_summaries, quarter_label,
     letter-spacing: .04em;
   }}
   .page-h .quarter-pill strong {{ color: var(--ink); }}
+  .page-h-pills {{
+    display: flex; flex-direction: column; gap: 6px; align-items: flex-end;
+  }}
+  .page-h .fanatics-pill {{
+    background: rgba(201, 168, 76, 0.10);
+    border: 1px solid rgba(201, 168, 76, 0.4);
+    color: var(--ink);
+    padding: 6px 14px; border-radius: 100px;
+    font-size: 11px; font-weight: 600;
+    letter-spacing: .03em;
+  }}
 
   /* ─── KPI cards ─── */
   .kpi-row {{
@@ -652,7 +662,10 @@ def build_master_html(rdm_summary, show_summaries, quarter_label,
       <h1>Network Dashboard</h1>
       <div class="sub">Cross-show performance, revenue, and RDM participation tracking</div>
     </div>
-    <div class="quarter-pill">Current quarter: <strong>{quarter_label}</strong> · {quarter_window}</div>
+    <div class="page-h-pills">
+      <div class="quarter-pill">Current quarter: <strong>{quarter_label}</strong> · {quarter_window}</div>
+      <div class="fanatics-pill">★ Fanatics S2 · Oct 1, 2025 → Sep 30, 2026</div>
+    </div>
   </div>
 
   {kpi_cards}
