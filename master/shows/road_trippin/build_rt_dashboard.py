@@ -41,6 +41,25 @@ from datetime import datetime
 
 
 
+def _load_all_videos(j):
+    """Get the full per-video list for the Performance Cube. Prefers tracker's
+    new `all_videos` field; falls back to flattening `top_content_monthly` so
+    the cube still works before the new tracker has been run."""
+    av = j.get('all_videos')
+    if av:
+        return av
+    seen, out = set(), []
+    for m, buckets in (j.get('top_content_monthly') or {}).items():
+        for t in ('long', 'mid', 'short'):
+            for v in buckets.get(t, []) or []:
+                vid = v.get('id')
+                if not vid or vid in seen:
+                    continue
+                seen.add(vid)
+                out.append(v)
+    return out
+
+
 def extract(path):
     """Load tracker_data.json and return a dict matching the dashboard's expected schema."""
     import json as _json
@@ -119,6 +138,7 @@ def extract(path):
         'best_of':      best_of,
         'best_of_label': best_of_label,
         'top_content_monthly': j.get('top_content_monthly', {}),
+        'all_videos':   _load_all_videos(j),
         'subs_gained':  subs_gained,
         'subs_lost':    subs_lost,
         'current_subs': current_subs,
@@ -897,6 +917,7 @@ def build_html(d, reports, revenue, socials, generated_at):
 
     # Top Content — pre-stored per-month, filtered in JS
     js_top_content_monthly = json.dumps(d.get('top_content_monthly', {}))
+    js_all_videos = json.dumps(d.get('all_videos', []))
 
     # Fanatics partnership — Season 2 starts Oct 1, 2025 → Sep 30, 2026
     # (Season 3: Oct 1, 2026 → Sep 30, 2027). The annotation marks S2 start.
@@ -1286,6 +1307,18 @@ body{{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);li
 .tc-title {{ font-size:12px; line-height:1.35; font-weight:500; color:var(--text); }}
 .tc-empty {{ color:var(--text3); font-size:13px; padding:24px; text-align:center;
   background:var(--surface2); border:1px dashed var(--border); border-radius:6px; }}
+
+/* ─── Performance Cube ─── */
+.cube-controls {{ display:flex; align-items:center; gap:8px; flex-wrap:wrap;
+  margin:0 0 14px; padding:10px 14px; background:var(--surface2);
+  border:1px solid var(--border); border-radius:8px; }}
+.cube-legend {{ display:flex; align-items:center; gap:18px; flex-wrap:wrap;
+  margin:0 0 14px; padding:10px 14px; background:var(--surface);
+  border:1px solid var(--border); border-radius:8px; font-size:12px; color:var(--text2); }}
+.cube-legend-item {{ display:inline-flex; align-items:center; gap:6px; }}
+.cube-legend-item .dot {{ width:11px; height:11px; border-radius:50%; display:inline-block; }}
+.cube-axes {{ margin-left:auto; font-size:11px; color:var(--text3); letter-spacing:.04em; }}
+#cube-plot {{ background:var(--surface); border:1px solid var(--border); border-radius:8px; }}
 </style>
 </head>
 <body>
@@ -1324,6 +1357,10 @@ body{{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);li
     <div class="nav-item" onclick="showPage('top-content',this)">
       <svg class="nav-icon" viewBox="0 0 16 16" fill="none"><path d="M2 4h12M2 8h12M2 12h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="14" cy="12" r="1.5" stroke="currentColor" stroke-width="1.3"/></svg>
       <span>Top Content</span>
+    </div>
+    <div class="nav-item" onclick="showPage('cube',this)">
+      <svg class="nav-icon" viewBox="0 0 16 16" fill="none"><path d="M8 1.5L14 4.5V11.5L8 14.5L2 11.5V4.5L8 1.5Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M2 4.5L8 7.5L14 4.5M8 7.5V14.5" stroke="currentColor" stroke-width="1.3"/></svg>
+      <span>Performance Cube</span>
     </div>
     <div class="nav-section" style="margin-top:14px">Resources</div>
     <div class="nav-item" onclick="showPage('tracker',this)">
@@ -1625,6 +1662,37 @@ body{{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);li
   </div>
 </div>
 
+<!-- ═══ PERFORMANCE CUBE ═══ -->
+<div class="page" id="page-cube">
+  <div class="page-header">
+    <div class="page-title">Performance Cube</div>
+    <div class="page-sub">3-axis distribution of every video on the channel · drag to rotate · scroll to zoom · click a point to open the video</div>
+  </div>
+
+  <div class="cube-controls">
+    <button class="tc-preset" data-range="30">Last 30d</button>
+    <button class="tc-preset" data-range="90">Last 90d</button>
+    <button class="tc-preset" data-range="ytd">YTD</button>
+    <button class="tc-preset active" data-range="all">All time</button>
+    <span class="tc-sep"></span>
+    <label class="tc-label">From <select id="cube-start"></select></label>
+    <label class="tc-label">To <select id="cube-end"></select></label>
+    <span class="tc-summary" id="cube-summary"></span>
+  </div>
+
+  <div class="cube-legend">
+    <div class="cube-legend-item"><span class="dot" style="background:#C9A84C"></span>Full episodes (&gt;30 min)</div>
+    <div class="cube-legend-item"><span class="dot" style="background:#2F6DDE"></span>Clips (3–30 min)</div>
+    <div class="cube-legend-item"><span class="dot" style="background:#1B9B96"></span>Shorts (≤3 min)</div>
+    <span class="cube-axes">Axes — X: Views (log scale) · Y: Engagement Rate · Z: Duration (min)</span>
+  </div>
+
+  <div id="cube-plot" style="width:100%;height:640px"></div>
+  <div id="cube-empty" class="tc-empty" style="display:none">
+    No video data available yet — run the latest tracker to populate.
+  </div>
+</div>
+
 <!-- ═══ REPORTS ═══ -->
 <div class="page" id="page-reports">
   <div class="page-header">
@@ -1638,6 +1706,7 @@ body{{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);li
 </div><!-- /shell -->
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
 <script>
 // 12-month view (default) + full history
 const M12   = {js_M};       const M_FULL = {js_M_full};
@@ -2258,6 +2327,177 @@ function tcApplyPreset(preset) {{
       clearPresetActive();
       btn.classList.add('active');
       tcApplyPreset(btn.dataset.range);
+    }});
+  }});
+}})();
+
+/* ─── Performance Cube (Plotly 3D scatter) ─── */
+const CUBE_VIDEOS = {js_all_videos};
+const CUBE_TYPE_COLORS = {{ long: '#C9A84C', mid: '#2F6DDE', short: '#1B9B96' }};
+const CUBE_TYPE_LABELS = {{ long: 'Full episode', mid: 'Clip', short: 'Short' }};
+// Months present in the data, ascending — used to populate filter dropdowns
+const CUBE_MONTHS = Array.from(new Set(
+  (CUBE_VIDEOS || []).map(v => (v.published || '').slice(0, 7)).filter(Boolean)
+)).sort();
+
+function cubeFilter(start, end) {{
+  // Keep only videos with usable data and published-month within range
+  return CUBE_VIDEOS.filter(v => {{
+    const m = (v.published || '').slice(0, 7);
+    if (!m || m < start || m > end) return false;
+    if (!v.views || v.views < 1) return false;           // log scale needs positive
+    if (!v.duration_sec || v.duration_sec < 1) return false;
+    return true;
+  }});
+}}
+
+function cubeRender(start, end) {{
+  const empty = document.getElementById('cube-empty');
+  const plotEl = document.getElementById('cube-plot');
+  if (!plotEl || typeof Plotly === 'undefined') return;
+
+  const videos = cubeFilter(start, end);
+  const sum = document.getElementById('cube-summary');
+  if (sum) sum.textContent = start + ' → ' + end + ' · ' + videos.length + ' videos';
+
+  if (!videos.length) {{
+    plotEl.style.display = 'none';
+    if (empty) empty.style.display = 'block';
+    return;
+  }}
+  plotEl.style.display = 'block';
+  if (empty) empty.style.display = 'none';
+
+  // Group into 3 traces by content type so the Plotly legend toggles work
+  const groups = {{ long: [], mid: [], short: [] }};
+  for (const v of videos) {{
+    const t = v.type in groups ? v.type : 'mid';
+    groups[t].push(v);
+  }}
+
+  const traces = ['long', 'mid', 'short'].map(t => {{
+    const arr = groups[t];
+    const er  = arr.map(v => v.views ? ((v.likes || 0) + (v.comments || 0)) / v.views * 100 : 0);
+    const dur = arr.map(v => (v.duration_sec || 0) / 60);
+    const hov = arr.map((v, i) =>
+      '<b>' + (v.title || '').replace(/</g, '&lt;') + '</b><br>' +
+      CUBE_TYPE_LABELS[t] + ' · ' + v.published + '<br>' +
+      'Views: ' + (v.views || 0).toLocaleString() + '<br>' +
+      'Engagement: ' + er[i].toFixed(2) + '%<br>' +
+      'Duration: ' + (dur[i] < 1 ? Math.round(dur[i]*60) + 's' : dur[i].toFixed(1) + ' min') +
+      '<extra></extra>'
+    );
+    return {{
+      name: CUBE_TYPE_LABELS[t] + ' (' + arr.length + ')',
+      type: 'scatter3d',
+      mode: 'markers',
+      x: arr.map(v => v.views),
+      y: er,
+      z: dur,
+      text: arr.map(v => v.url),  // stash url for click handler
+      hovertemplate: hov,
+      marker: {{
+        size: 5,
+        color: CUBE_TYPE_COLORS[t],
+        opacity: 0.78,
+        line: {{ width: 0.5, color: '#ffffff' }},
+      }},
+    }};
+  }});
+
+  const layout = {{
+    margin: {{ l: 0, r: 0, b: 0, t: 0 }},
+    paper_bgcolor: 'rgba(0,0,0,0)',
+    plot_bgcolor:  'rgba(0,0,0,0)',
+    font: {{ family: 'Inter, system-ui, sans-serif', size: 11, color: '#475569' }},
+    legend: {{ orientation: 'h', x: 0, y: -0.05, bgcolor: 'rgba(0,0,0,0)' }},
+    scene: {{
+      xaxis: {{ title: 'Views', type: 'log', gridcolor: '#E2E5EA', zerolinecolor: '#E2E5EA', backgroundcolor: 'rgba(0,0,0,0)' }},
+      yaxis: {{ title: 'Engagement %', gridcolor: '#E2E5EA', zerolinecolor: '#E2E5EA', backgroundcolor: 'rgba(0,0,0,0)' }},
+      zaxis: {{ title: 'Duration (min)', gridcolor: '#E2E5EA', zerolinecolor: '#E2E5EA', backgroundcolor: 'rgba(0,0,0,0)' }},
+      camera: {{ eye: {{ x: 1.5, y: 1.5, z: 1.0 }} }},
+    }},
+  }};
+
+  Plotly.react(plotEl, traces, layout, {{ displaylogo: false, responsive: true,
+    modeBarButtonsToRemove: ['lasso2d', 'select2d'] }});
+
+  // Open the video on click
+  plotEl.on('plotly_click', evt => {{
+    const url = evt.points && evt.points[0] && evt.points[0].text;
+    if (url) window.open(url, '_blank', 'noopener');
+  }});
+}}
+
+function cubeMonthsBack(n) {{
+  const d = new Date(); d.setDate(1); d.setMonth(d.getMonth() - n);
+  return d.toISOString().slice(0, 7);
+}}
+function cubeApplyPreset(preset) {{
+  if (!CUBE_MONTHS.length) return;
+  const last = CUBE_MONTHS[CUBE_MONTHS.length - 1];
+  const first = CUBE_MONTHS[0];
+  let start = first;
+  if      (preset === '30')  start = cubeMonthsBack(0);
+  else if (preset === '90')  start = cubeMonthsBack(2);
+  else if (preset === 'ytd') start = last.slice(0, 4) + '-01';
+  if (start < first) start = first;
+  document.getElementById('cube-start').value = start;
+  document.getElementById('cube-end').value   = last;
+  cubeRender(start, last);
+}}
+
+(function cubeInit() {{
+  const startSel = document.getElementById('cube-start');
+  const endSel   = document.getElementById('cube-end');
+  if (!startSel || !endSel) return;
+
+  if (!CUBE_VIDEOS.length || !CUBE_MONTHS.length) {{
+    const plotEl = document.getElementById('cube-plot');
+    if (plotEl) plotEl.style.display = 'none';
+    const empty = document.getElementById('cube-empty');
+    if (empty) empty.style.display = 'block';
+    return;
+  }}
+
+  for (const m of CUBE_MONTHS) {{
+    const o1 = document.createElement('option'); o1.value = m; o1.textContent = m;
+    const o2 = o1.cloneNode(true);
+    startSel.appendChild(o1); endSel.appendChild(o2);
+  }}
+  startSel.value = CUBE_MONTHS[0];
+  endSel.value   = CUBE_MONTHS[CUBE_MONTHS.length - 1];
+
+  // Render once when the cube page becomes visible (Plotly needs the container to have width)
+  const pageEl = document.getElementById('page-cube');
+  let rendered = false;
+  function maybeRender() {{
+    if (rendered || !pageEl) return;
+    const visible = pageEl.classList.contains('active');
+    if (!visible) return;
+    rendered = true;
+    cubeRender(startSel.value, endSel.value);
+  }}
+  // Patch showPage so it triggers a render on first visit
+  const origShowPage = window.showPage;
+  if (origShowPage) {{
+    window.showPage = function(name, el) {{
+      origShowPage(name, el);
+      if (name === 'cube') setTimeout(maybeRender, 30);
+    }};
+  }}
+  maybeRender();   // also handle case where Cube is loaded as the active page
+
+  function clearPresetActive() {{
+    document.querySelectorAll('#page-cube .tc-preset').forEach(b => b.classList.remove('active'));
+  }}
+  startSel.addEventListener('change', () => {{ clearPresetActive(); cubeRender(startSel.value, endSel.value); }});
+  endSel  .addEventListener('change', () => {{ clearPresetActive(); cubeRender(startSel.value, endSel.value); }});
+  document.querySelectorAll('#page-cube .tc-preset').forEach(btn => {{
+    btn.addEventListener('click', () => {{
+      clearPresetActive();
+      btn.classList.add('active');
+      cubeApplyPreset(btn.dataset.range);
     }});
   }});
 }})();
