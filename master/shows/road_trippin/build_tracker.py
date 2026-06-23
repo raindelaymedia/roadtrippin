@@ -219,12 +219,14 @@ def pull_top_content_monthly(youtube, months, top_n=10):
             else:
                 vtype = "long"
             videos.append({
-                "id":        vid_id,
-                "title":     vid["snippet"]["title"],
-                "published": pub[:10],
-                "month":     pub[:7],
-                "views":     int(vid["statistics"].get("viewCount", 0)),
-                "likes":     int(vid["statistics"].get("likeCount", 0)),
+                "id":           vid_id,
+                "title":        vid["snippet"]["title"],
+                "published":    pub[:10],
+                "month":        pub[:7],
+                "views":        int(vid["statistics"].get("viewCount",    0)),
+                "likes":        int(vid["statistics"].get("likeCount",    0)),
+                "comments":     int(vid["statistics"].get("commentCount", 0)),
+                "duration_sec": secs,
                 "thumbnail": (
                     vid["snippet"].get("thumbnails", {}).get("maxres", {}).get("url") or
                     vid["snippet"].get("thumbnails", {}).get("high",   {}).get("url") or
@@ -245,7 +247,7 @@ def pull_top_content_monthly(youtube, months, top_n=10):
     for m in monthly:
         for t in ("long", "mid", "short"):
             monthly[m][t] = sorted(monthly[m][t], key=lambda x: x["views"], reverse=True)[:top_n]
-    return monthly
+    return monthly, videos
 
 
 def pull_best_of(youtube, months, n_months=1):
@@ -921,6 +923,7 @@ def main():
     print("[1/3] YouTube Analytics API...")
     yt_monthly, yt_content, current_subs, yt_shorts_count, reporting_data, best_of_data, date_range_label = {}, {}, 0, {}, {}, {}, datetime.now().strftime('%b %Y')
     top_content_monthly = {}
+    all_videos = []
     try:
         creds = authenticate_yt()
         youtube = build_api("youtube", "v3", credentials=creds)
@@ -977,12 +980,13 @@ def main():
 
         try:
             print("  Pulling Top Content Monthly (filterable history)...")
-            top_content_monthly = pull_top_content_monthly(youtube, months, top_n=10)
+            top_content_monthly, all_videos = pull_top_content_monthly(youtube, months, top_n=10)
             total_tc = sum(sum(len(b) for b in v.values()) for v in top_content_monthly.values())
-            print(f"  ✓ Top Content: {total_tc} videos across {len(top_content_monthly)} months")
+            print(f"  ✓ Top Content: {total_tc} videos across {len(top_content_monthly)} months  ({len(all_videos)} total in scatter)")
         except Exception as e:
             print(f"  ✗ Top Content Monthly failed: {e}")
             top_content_monthly = {}
+            all_videos = []
 
         try:
             print("  Pulling Reporting API (CTR, traffic, device)...")
@@ -1074,6 +1078,7 @@ def main():
             "short": best_of_data.get("short", []),
         },
         "top_content_monthly": top_content_monthly,
+        "all_videos":          all_videos,
         "current_subs": current_subs,
     }
 
