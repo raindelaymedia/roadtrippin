@@ -127,6 +127,39 @@ def pull_yt_by_content_type(yt_analytics, start_date, end_date):
     return dict(data)
 
 
+def pull_yt_daily(yt_analytics, start_date, end_date):
+    """Pull daily total views + sub metrics for rolling 30-day KPIs on the dashboard."""
+    resp = yt_analytics.reports().query(
+        ids="channel==MINE", startDate=start_date, endDate=end_date,
+        metrics="views,estimatedMinutesWatched,subscribersGained,subscribersLost",
+        dimensions="day", sort="day").execute()
+    data = {}
+    for row in resp.get("rows", []):
+        data[row[0]] = {
+            "total_views": row[1],
+            "watch_hrs": round(row[2] / 60, 1),
+            "subs_gained": row[3],
+            "subs_lost": row[4],
+        }
+    return data
+
+
+def pull_yt_daily_by_content_type(yt_analytics, start_date, end_date):
+    """Pull daily views broken out by VOD/Shorts/Lives for rolling KPI breakdown."""
+    resp = yt_analytics.reports().query(
+        ids="channel==MINE", startDate=start_date, endDate=end_date,
+        metrics="views",
+        dimensions="day,creatorContentType", sort="day").execute()
+    KEY_MAP = {"videoOnDemand": "vod_views", "shorts": "shorts_views", "liveStream": "live_views"}
+    data = defaultdict(dict)
+    for row in resp.get("rows", []):
+        day, ctype, views = row[0], row[1], row[2]
+        key = KEY_MAP.get(ctype)
+        if key:
+            data[day][key] = data[day].get(key, 0) + views
+    return dict(data)
+
+
 def pull_yt_subscriber_total(youtube):
     resp = youtube.channels().list(part="statistics", id=CHANNEL_ID).execute()
     return int(resp["items"][0]["statistics"].get("subscriberCount", 0))
@@ -586,9 +619,15 @@ def load_megaphone_monthly(path):
             dl_raw = row.get("DOWNLOADS") or row.get("TOTAL DOWNLOADS") or "0"
             st_raw = row.get("STREAMS") or row.get("TOTAL STREAMS") or "0"
             td_raw = row.get("TOTAL DELIVERY") or "0"
-            dl = int(dl_raw.replace(",", "") or 0)
-            st = int(st_raw.replace(",", "") or 0)
-            td = int(td_raw.replace(",", "") or 0) or dl
+            # Megaphone sometimes exports floats like "27.0" — coerce via float first
+            def _mint(s):
+                s = str(s).strip().replace(",", "")
+                if not s: return 0
+                try: return int(float(s))
+                except (ValueError, TypeError): return 0
+            dl = _mint(dl_raw)
+            st = _mint(st_raw)
+            td = _mint(td_raw) or dl
             # Normalize month key to YYYY-MM regardless of input format
             month_raw = row.get("MONTH", "").strip()
             month_key = month_raw[:7] if len(month_raw) >= 7 else month_raw
@@ -924,6 +963,7 @@ def main():
     yt_monthly, yt_content, current_subs, yt_shorts_count, reporting_data, best_of_data, date_range_label = {}, {}, 0, {}, {}, {}, datetime.now().strftime('%b %Y')
     top_content_monthly = {}
     all_videos = []
+    daily_yt = {}
     try:
         creds = authenticate_yt()
         youtube = build_api("youtube", "v3", credentials=creds)
@@ -948,6 +988,24 @@ def main():
             print(f"  ✓ Content types: {len(yt_content)} months")
         except Exception as e:
             print(f"  ✗ Content types failed: {e}")
+
+        # Daily YT data for last ~90 days — feeds rolling-30-day KPIs on the dashboard
+        try:
+            daily_end = (datetime.now() - timedelta(days=1)).strftime("%Y-%m-%d")
+            daily_start = (datetime.now() - timedelta(days=91)).strftime("%Y-%m-%d")
+            print(f"  Pulling daily YT ({daily_start} → {daily_end}) for rolling KPIs...")
+            daily_totals = pull_yt_daily(yt_analytics, daily_start, daily_end)
+            daily_types  = pull_yt_daily_by_content_type(yt_analytics, daily_start, daily_end)
+            daily_yt = {}
+            for day in sorted(set(daily_totals.keys()) | set(daily_types.keys())):
+                entry = {}
+                entry.update(daily_totals.get(day, {}))
+                entry.update(daily_types.get(day, {}))
+                daily_yt[day] = entry
+            print(f"  ✓ Daily YT: {len(daily_yt)} days")
+        except Exception as e:
+            print(f"  ⚠ Daily YT pull failed: {e}")
+            daily_yt = {}
 
         try:
             current_subs = pull_yt_subscriber_total(youtube)
@@ -1080,6 +1138,7 @@ def main():
         "top_content_monthly": top_content_monthly,
         "all_videos":          all_videos,
         "current_subs": current_subs,
+        "daily_yt": daily_yt,
     }
 
     import json as _json

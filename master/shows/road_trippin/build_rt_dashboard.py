@@ -142,6 +142,7 @@ def extract(path):
         'subs_gained':  subs_gained,
         'subs_lost':    subs_lost,
         'current_subs': current_subs,
+        'daily_yt':     j.get('daily_yt', {}),
     }
 
 def load_socials(csv_path):
@@ -355,6 +356,57 @@ def delta_pp_str(lst):
     return f'<span class="{cls}">{"+" if d>=0 else ""}{d:.1f} pp vs prev</span>'
 
 
+def compute_rolling_kpis(daily_yt):
+    """Compute rolling 30-day KPI totals from daily YT data.
+
+    Returns dict with:
+      curr:      last 30 days totals (dict of metric -> value)
+      prev:      preceding 30 days totals (or None if insufficient data)
+      curr_range: (start_date, end_date) strings
+      prev_range: (start_date, end_date) strings or None
+
+    Returns None if daily_yt has < 30 days of data.
+    """
+    if not daily_yt or len(daily_yt) < 30:
+        return None
+    days = sorted(daily_yt.keys(), reverse=True)  # newest first
+    last_30 = days[:30]
+    prev_30 = days[30:60] if len(days) >= 60 else []
+
+    def sum_range(days_list, key):
+        return sum((daily_yt.get(d) or {}).get(key, 0) or 0 for d in days_list)
+
+    def build(days_list):
+        subs_gained = sum_range(days_list, "subs_gained")
+        subs_lost   = sum_range(days_list, "subs_lost")
+        return {
+            "total_views":  sum_range(days_list, "total_views"),
+            "vod_views":    sum_range(days_list, "vod_views"),
+            "shorts_views": sum_range(days_list, "shorts_views"),
+            "live_views":   sum_range(days_list, "live_views"),
+            "subs_gained":  subs_gained,
+            "subs_lost":    subs_lost,
+            "net_subs":     subs_gained - subs_lost,
+        }
+
+    return {
+        "curr": build(last_30),
+        "prev": build(prev_30) if prev_30 else None,
+        "curr_range": (last_30[-1], last_30[0]),
+        "prev_range": (prev_30[-1], prev_30[0]) if prev_30 else None,
+    }
+
+
+def delta_rolling(curr_val, prev_val_):
+    """Format a delta between two rolling-window totals as '±X vs prev 30d'."""
+    if curr_val is None or prev_val_ is None or prev_val_ == 0:
+        return '—'
+    d = curr_val - prev_val_
+    cls = 'up' if d >= 0 else 'down'
+    pct = (d / prev_val_) * 100 if prev_val_ else 0
+    return f'<span class="{cls}">{"+" if d>=0 else ""}{fmt(d)} · {"+" if pct>=0 else ""}{pct:.1f}% vs prev 30d</span>'
+
+
 def bar_html(v, color, name, val_str=None, baseline=1):
     pct = min(100, round((v or 0) / max(baseline, 1) * 100))
     display = val_str if val_str else (fmt(v) if v else '—')
@@ -452,10 +504,35 @@ def build_html(d, reports, revenue, socials, generated_at):
     # Use latest value for metric cards (last item = most recent)
     latest_mo   = M[-1] if M else '—'
     yt_subs_now = subs_full[-1] if subs_full else 0
-    listens_now = next((v for v in reversed(ltotal_full) if v), 0)
-    eps_now     = next((v for v in reversed(rev(d['eps'])) if v), 0)
+
+    # ── Monthly KPIs: prefer the most recent COMPLETE month.
+    # Rationale: YT/Megaphone data lags a few days into a new month, so the current
+    # partial month looks artificially low. Use last complete month as "current" unless
+    # we're far enough into a new month for data to have caught up.
+    from datetime import datetime as _dt
+    _today = _dt.now()
+    def latest_complete(lst):
+        """Get the last complete-month value: skip current month if we're early in it."""
+        if not lst: return 0
+        # If we're in the first ~5 days of a month, current month = latest[-1] is likely partial
+        # Prefer latest[-2] (last complete month) when latest[-1] looks incomplete
+        if _today.day <= 5 and len(lst) >= 2 and (lst[-1] or 0) < (lst[-2] or 0) * 0.3:
+            return lst[-2] or 0
+        for v in reversed(lst):
+            if v: return v
+        return 0
+
+    listens_now = latest_complete(ltotal_full)
+    eps_now     = latest_complete(rev(d['eps']))
     pct_sht_now = next((v for v in reversed(pctsht_full) if v is not None), None)
-    streams_now = next((v for v in reversed(lstrm_full) if v), 0)
+    streams_now = latest_complete(lstrm_full)
+
+    # ── Rolling 30-day YT KPIs (from daily_yt in tracker JSON)
+    rolling = compute_rolling_kpis(d.get('daily_yt', {}))
+
+    # Which month label to show on non-YT cards — pick the month `latest_complete` picked
+    _complete_idx = -2 if (_today.day <= 5 and len(ltotal_full) >= 2 and (ltotal_full[-1] or 0) < (ltotal_full[-2] or 0) * 0.3) else -1
+    complete_mo = M[_complete_idx] if M and abs(_complete_idx) <= len(M) else latest_mo
 
     chart_px    = max(n * 46, 500)
     chart_px_12 = max(WINDOW * 46, 500)
@@ -1388,25 +1465,35 @@ body{{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);li
     <div class="metric">
       <div class="metric-label">YT Subscribers</div>
       <div class="metric-value">{fmt(yt_subs_now)}</div>
-      <div class="metric-delta">{delta_str(d['yt_subs'])}</div>
+      <div class="metric-delta">{
+        (delta_rolling(rolling['curr']['net_subs'], rolling['prev']['net_subs'])
+          if rolling and rolling['prev'] else delta_str(d['yt_subs']))
+      }</div>
     </div>
     <div class="metric">
-      <div class="metric-label">YT Views ({latest_mo})</div>
-      <div class="metric-value">{fmt(sum(filter(None,[latest(d['vids']),latest(d['shorts']),latest(d['lives'])])))}</div>
-      <div class="metric-delta">{delta_str([sum(x or 0 for x in t) for t in zip(d['vids'],d['shorts'],d['lives'])])}</div>
+      <div class="metric-label">YT Views {'(last 30d)' if rolling else f'({latest_mo})'}</div>
+      <div class="metric-value">{
+        fmt(rolling['curr']['total_views']) if rolling
+        else fmt(sum(filter(None,[latest(d['vids']),latest(d['shorts']),latest(d['lives'])])))
+      }</div>
+      <div class="metric-delta">{
+        (delta_rolling(rolling['curr']['total_views'], rolling['prev']['total_views'])
+          if rolling and rolling['prev']
+          else delta_str([sum(x or 0 for x in t) for t in zip(d['vids'],d['shorts'],d['lives'])]))
+      }</div>
     </div>
     <div class="metric">
-      <div class="metric-label">Audio ({latest_mo})</div>
+      <div class="metric-label">Audio ({complete_mo})</div>
       <div class="metric-value">{fmt(listens_now)}</div>
-      <div class="metric-delta">{delta_str(d['l_total'])}</div>
+      <div class="metric-delta">{delta_str(d['l_total'][:_complete_idx+len(d['l_total'])+1] if _complete_idx < -1 else d['l_total'])}</div>
     </div>
     <div class="metric">
-      <div class="metric-label">Episodes ({latest_mo})</div>
+      <div class="metric-label">Episodes ({complete_mo})</div>
       <div class="metric-value">{eps_now}</div>
-      <div class="metric-delta">{delta_str(rev(d['eps']))}</div>
+      <div class="metric-delta">{delta_str(rev(d['eps'])[:_complete_idx+len(rev(d['eps']))+1] if _complete_idx < -1 else rev(d['eps']))}</div>
     </div>
     <div class="metric">
-      <div class="metric-label">Shorts % ({latest_mo})</div>
+      <div class="metric-label">Shorts % ({complete_mo})</div>
       <div class="metric-value">{fmt(pct_sht_now, pct=True)}</div>
       <div class="metric-delta">{delta_pp_str(pctsht_full)}</div>
     </div>
