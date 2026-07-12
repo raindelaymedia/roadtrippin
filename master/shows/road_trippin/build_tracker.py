@@ -15,6 +15,7 @@ Requirements:
 import argparse
 import csv
 import os
+import re
 import sys
 from collections import defaultdict
 from datetime import datetime, timedelta
@@ -62,6 +63,14 @@ FILL_NONE = PatternFill(fill_type=None)
 ALIGN_CENTER = Alignment(horizontal="center", vertical="center")
 NUM_FMT = '#,##0'
 PCT_FMT = '0.0%'
+
+
+# RT "Full Episodes" playlist — used for the Audience tab's Episodes/VODs
+# counts. Duration-based auto-classification (short/mid/long buckets) drifted
+# 2-9 videos/month from Jon's manual counts, so Andrew pointed us at this
+# playlist instead: Episodes = videos in this playlist; VODs = playlist
+# episodes + mid-length (3-30 min) clips.
+EPISODES_PLAYLIST_ID = "PLX3ZLYz4-6vE2_ZNLW5AfzbHTd1jTskDl"
 
 
 # ─── Month helpers ───────────────────────────────────────────────
@@ -198,6 +207,148 @@ def pull_yt_shorts_count(youtube):
             break
 
     return dict(counts)
+
+
+def pull_episode_playlist_ids(youtube, playlist_id):
+    """Return the set of video IDs sitting in the RT 'Full Episodes' playlist."""
+    ids = set()
+    next_page = None
+    while True:
+        resp = youtube.playlistItems().list(
+            part="contentDetails", playlistId=playlist_id,
+            maxResults=50, pageToken=next_page).execute()
+        for item in resp.get("items", []):
+            ids.add(item["contentDetails"]["videoId"])
+        next_page = resp.get("nextPageToken")
+        if not next_page:
+            break
+    return ids
+
+
+def build_audience_counts(videos, playlist_ids):
+    """Monthly Episodes / VODs counts for the Audience tab.
+
+    `videos` is the full walked list from pull_top_content_monthly (each has
+    id/month/type). Per Andrew's direction:
+      - Episodes = videos published that month that are in the Full Episodes playlist
+      - VODs     = those playlist episodes + mid-length (3-30 min) clips that month
+    """
+    eps = defaultdict(int)
+    vods = defaultdict(int)
+    for v in videos:
+        m = v["month"]
+        if v["id"] in playlist_ids:
+            eps[m] += 1
+            vods[m] += 1
+        elif v["type"] == "mid":
+            vods[m] += 1
+    return dict(eps), dict(vods)
+
+
+# Signals used to filter out test/junk broadcasts from the live count.
+# Any ONE of these trips the exclusion (per Andrew — test streams are
+# typically short, low-view, and/or left Private/Unlisted):
+LIVE_TEST_TITLE_KEYWORDS = ("test", "do not publish", "dnp")
+LIVE_MIN_DURATION_SEC = 300   # 5 min
+LIVE_MIN_VIEWS = 25
+
+
+def _iso_dur_to_sec(iso):
+    """PT1H30M5S → 5405 seconds."""
+    if not iso:
+        return 0
+    m = re.match(r"PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?", iso)
+    if not m:
+        return 0
+    h, mn, s = m.groups()
+    return int(h or 0) * 3600 + int(mn or 0) * 60 + int(s or 0)
+
+
+def pull_live_counts(youtube, channel_id, months):
+    """Walk the channel's uploads playlist and count genuine live broadcasts
+    per month, using liveStreamingDetails.actualStartTime to distinguish
+    real lives from regular uploads (duration alone can't tell them apart —
+    a long VOD and a long live look identical by length).
+
+    Filters out test/junk broadcasts using three signals (any one excludes):
+      - title contains a test keyword (LIVE_TEST_TITLE_KEYWORDS)
+      - privacyStatus is private or unlisted
+      - duration under LIVE_MIN_DURATION_SEC, or views under LIVE_MIN_VIEWS
+
+    Returns (counts_by_month: dict, excluded: list[dict], included: list[dict])
+    — both lists kept for QA so thresholds can be tuned if real lives get
+    caught by mistake, junk slips through, or (e.g.) Girls Tripp content
+    sharing this channel needs to be identified and excluded too.
+    """
+    oldest = min(months) if months else "1970-01"
+    cutoff = f"{oldest}-01T00:00:00Z"
+
+    ch = youtube.channels().list(part="contentDetails", id=channel_id).execute()
+    uploads_id = ch["items"][0]["contentDetails"]["relatedPlaylists"]["uploads"]
+
+    counts = defaultdict(int)
+    excluded = []
+    included = []
+    seen_ids = set()
+    next_page = None
+    while True:
+        resp = youtube.playlistItems().list(
+            part="contentDetails", playlistId=uploads_id,
+            maxResults=50, pageToken=next_page).execute()
+        ids = [it["contentDetails"]["videoId"] for it in resp.get("items", [])]
+        if not ids:
+            break
+        details = youtube.videos().list(
+            part="snippet,statistics,liveStreamingDetails,contentDetails,status",
+            id=",".join(ids)).execute()
+
+        stop = False
+        for v in details.get("items", []):
+            vid_id = v["id"]
+            if vid_id in seen_ids:
+                continue
+            seen_ids.add(vid_id)
+            pub = v["snippet"].get("publishedAt", "")
+            if pub and pub < cutoff:
+                stop = True
+                continue
+            lsd = v.get("liveStreamingDetails") or {}
+            actual_start = lsd.get("actualStartTime")
+            if not actual_start:
+                continue  # not a real live stream
+
+            title = v["snippet"].get("title", "")
+            title_lower = title.lower()
+            privacy = v.get("status", {}).get("privacyStatus", "public")
+            dur = _iso_dur_to_sec(v.get("contentDetails", {}).get("duration", ""))
+            views = int(v.get("statistics", {}).get("viewCount", 0))
+
+            # Word-boundary match, not substring — "GREATEST" contains "test"
+            # as a raw substring and would otherwise get wrongly excluded.
+            is_test = (
+                any(re.search(r'\b' + re.escape(kw) + r'\b', title_lower) for kw in LIVE_TEST_TITLE_KEYWORDS) or
+                privacy in ("private", "unlisted") or
+                dur < LIVE_MIN_DURATION_SEC or
+                views < LIVE_MIN_VIEWS
+            )
+            month = pub[:7]
+            if is_test:
+                excluded.append({
+                    "id": v["id"], "title": title, "month": month,
+                    "duration_sec": dur, "views": views, "privacy": privacy,
+                })
+                continue
+            counts[month] += 1
+            included.append({
+                "id": v["id"], "title": title, "month": month,
+                "duration_sec": dur, "views": views, "privacy": privacy,
+            })
+
+        next_page = resp.get("nextPageToken")
+        if stop or not next_page:
+            break
+
+    return dict(counts), excluded, included
 
 
 def pull_top_content_monthly(youtube, months, top_n=10):
@@ -964,6 +1115,8 @@ def main():
     top_content_monthly = {}
     all_videos = []
     daily_yt = {}
+    audience_eps, audience_vods = {}, {}
+    live_counts, live_excluded, live_included = {}, [], []
     try:
         creds = authenticate_yt()
         youtube = build_api("youtube", "v3", credentials=creds)
@@ -1045,6 +1198,26 @@ def main():
             print(f"  ✗ Top Content Monthly failed: {e}")
             top_content_monthly = {}
             all_videos = []
+
+        audience_eps, audience_vods = {}, {}
+        try:
+            print("  Pulling Full Episodes playlist (Audience tab)...")
+            episode_playlist_ids = pull_episode_playlist_ids(youtube, EPISODES_PLAYLIST_ID)
+            audience_eps, audience_vods = build_audience_counts(all_videos, episode_playlist_ids)
+            print(f"  ✓ Episodes/VODs: {len(episode_playlist_ids)} playlist videos matched, "
+                  f"{sum(audience_eps.values())} eps / {sum(audience_vods.values())} vods across {len(audience_eps)} months")
+        except Exception as e:
+            print(f"  ✗ Episode playlist pull failed: {e}")
+            audience_eps, audience_vods = {}, {}
+
+        try:
+            print("  Pulling live-stream counts (test-broadcast filtered)...")
+            live_counts, live_excluded, live_included = pull_live_counts(youtube, CHANNEL_ID, months)
+            print(f"  ✓ Lives: {sum(live_counts.values())} real lives across {len(live_counts)} months "
+                  f"({len(live_excluded)} test/low-quality broadcasts filtered out)")
+        except Exception as e:
+            print(f"  ✗ Live count pull failed: {e}")
+            live_counts, live_excluded, live_included = {}, [], []
 
         try:
             print("  Pulling Reporting API (CTR, traffic, device)...")
@@ -1134,6 +1307,15 @@ def main():
             "long":  best_of_data.get("long",  []),
             "mid":   best_of_data.get("mid",   []),
             "short": best_of_data.get("short", []),
+        },
+        "audience": {
+            # Episodes/VODs from the Full Episodes playlist — see EPISODES_PLAYLIST_ID.
+            # Episodes = in playlist; VODs = in playlist + mid-length (3-30 min) clips.
+            "eps":   {m: audience_eps.get(m)  for m in months},
+            "vods":  {m: audience_vods.get(m) for m in months},
+            # Real live-stream counts (liveStreamingDetails-based, test broadcasts
+            # filtered — see pull_live_counts).
+            "lives": {m: live_counts.get(m)    for m in months},
         },
         "top_content_monthly": top_content_monthly,
         "all_videos":          all_videos,

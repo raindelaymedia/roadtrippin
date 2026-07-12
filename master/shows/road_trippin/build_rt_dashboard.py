@@ -143,6 +143,12 @@ def extract(path):
         'subs_lost':    subs_lost,
         'current_subs': current_subs,
         'daily_yt':     j.get('daily_yt', {}),
+        # Audience tab — Episodes/VODs from the Full Episodes playlist.
+        # None for any month until build_tracker.py has been rerun with the
+        # playlist wired in (older tracker_data.json won't have this key).
+        'audience_eps':  series(['audience', 'eps']),
+        'audience_vods': series(['audience', 'vods']),
+        'audience_lives': series(['audience', 'lives']),
     }
 
 def load_socials(csv_path):
@@ -415,22 +421,160 @@ def bar_html(v, color, name, val_str=None, baseline=1):
             f'<span class="plat-val">{display}</span></div>')
 
 
-def table_html(title, icon, rows, months):
-    """Render a full-width data table with a section title above it."""
-    header = '<tr><th>' + icon + ' ' + title + '</th>' + ''.join(f'<th>{m}</th>' for m in months) + '</tr>'
+def social_post_series(socials, target_months):
+    """Avg views/post across IG+TikTok+X+Facebook for each month in
+    target_months (YYYY-MM, any order). Excludes YouTube — that's already
+    captured separately in the YT VOD/Live/Short rows above it on the
+    Audience tab."""
+    sm = socials.get('months', [])
+    idx = {m: i for i, m in enumerate(sm)}
+    platforms = ['INSTAGRAM', 'TIKTOK', 'X', 'FACEBOOK']
+    out = []
+    for m in target_months:
+        i = idx.get(m)
+        if i is None:
+            out.append(None)
+            continue
+        total_views, total_posts = 0, 0
+        for p in platforms:
+            v = socials['data'].get((p, 'VIEWS'), [None] * len(sm))[i]
+            pc = socials['data'].get((p, 'POSTS'), [None] * len(sm))[i]
+            if isinstance(v, (int, float)):
+                total_views += v
+            if isinstance(pc, (int, float)):
+                total_posts += pc
+        out.append(round(total_views / total_posts) if total_posts else None)
+    return out
+
+
+def audience_table_html(d, socials, M_raw, M_display):
+    """Recreates Jon's manual 'Audience' breakdown as a dashboard table:
+    per-piece average audience across every content type, full history,
+    newest-first (matches the Tracker tab convention).
+
+    Rightmost column is '% of Audience' — each content type's share of the
+    LIFETIME sum of all monthly per-piece averages (not a single-month
+    snapshot, for stability). This is a judgment call in the absence of a
+    preserved spec from Jon's original sheet — flag if a different window
+    (e.g. trailing 12mo) is wanted instead.
+    """
+    eps      = d['audience_eps']
+    vods     = d['audience_vods']
+    lives    = d['audience_lives']
+    shorts_n = d['n_sht']
+
+    def safe_div(numer, denom):
+        out = []
+        for n_, dn in zip(numer, denom):
+            out.append(round(n_ / dn) if (n_ is not None and dn) else None)
+        return out
+
+    yt_vod_pp   = safe_div(d['vids'],   vods)
+    yt_live_pp  = safe_div(d['lives'],  lives)
+    yt_short_pp = safe_div(d['shorts'], shorts_n)
+    social_pp   = social_post_series(socials, M_raw)
+    spotify_pp  = [None] * len(M_raw)   # pending Spotify for Podcasters export
+    audio_pp    = d['l_perep']
+
+    pp_rows = [
+        ('YT VOD',      yt_vod_pp),
+        ('YT Live',     yt_live_pp),
+        ('YT Short',    yt_short_pp),
+        ('Social Post', social_pp),
+        ('Spotify Ep',  spotify_pp),
+        ('Audio Ep',    audio_pp),
+    ]
+
+    # Total / Avg per month across whichever of the 6 per-piece rows have data
+    total_row, avg_row = [], []
+    for i in range(len(M_raw)):
+        vals = [series[i] for _, series in pp_rows if series[i] is not None]
+        if vals:
+            total_row.append(round(sum(vals)))
+            avg_row.append(round(sum(vals) / len(vals)))
+        else:
+            total_row.append(None)
+            avg_row.append(None)
+
+    # % of Audience — each content type's share of its lifetime sum
+    lifetime_sums = {label: sum(v for v in series if v) for label, series in pp_rows}
+    grand_total = sum(lifetime_sums.values()) or 1
+    pct_of_aud = {label: (lifetime_sums[label] / grand_total * 100) for label, _ in pp_rows}
+
+    def fmt_cell(v):
+        return f'<td>{int(v):,}</td>' if v is not None else '<td><span class="na">—</span></td>'
+
+    def row_html(label, series, pct_val=None, css_class=None):
+        cells = ''.join(fmt_cell(v) for v in series)
+        pct_cell = (f'<td class="lifetime-col">{pct_val:.1f}%</td>' if pct_val is not None
+                    else '<td class="lifetime-col">—</td>')
+        cls = f' class="{css_class}"' if css_class else ''
+        return f'<tr{cls}><td>{label}</td>{cells}{pct_cell}</tr>'
+
+    header = ('<tr><th>📊 Audience</th>' +
+              ''.join(f'<th>{m}</th>' for m in M_display) +
+              '<th class="lifetime-col">% of Aud.</th></tr>')
+
     body = ''
+    body += row_html('# of Episodes', eps)
+    body += row_html('# of VODs', vods)
+    body += row_html('# of Lives', lives)
+    body += row_html('# of Shorts', shorts_n)
+    for label, series in pp_rows:
+        body += row_html(label, series, pct_of_aud[label])
+    body += row_html('Total', total_row, css_class='total-row')
+    body += row_html('Avg', avg_row, css_class='total-row')
+
+    note = ''
+    if all(v is None for v in spotify_pp):
+        note = ('<div class="tracker-note">Spotify Ep is pending a Spotify for Podcasters export — '
+                'Total/Avg/% of Audience will be understated until that\'s wired in.</div>')
+
+    return (f'<div class="tracker-section"><div class="tracker-section-title">📊 Audience</div>'
+            f'<div class="table-scroll"><table class="data-table"><thead>{header}</thead>'
+            f'<tbody>{body}</tbody></table></div>{note}</div>')
+
+
+def table_html(title, icon, rows, months, total_labels=None):
+    """Render a full-width data table with a section title above it.
+
+    `months` and every row's data list must already be in the SAME order
+    (this dashboard displays newest-first: JUN, MAY, APR, ... on the Tracker tab).
+
+    Every row gets a Lifetime column (sum of that row's full history).
+    If `total_labels` is given (a list/set of row labels), an extra "Total"
+    row is appended summing just those rows, per month + lifetime.
+    """
+    header = ('<tr><th>' + icon + ' ' + title + '</th>' +
+               ''.join(f'<th>{m}</th>' for m in months) +
+               '<th class="lifetime-col">Lifetime</th></tr>')
+    body = ''
+    total_by_month = [0] * len(months) if total_labels else None
+    total_lifetime = 0
     for label, data, fmt_type in rows:
         cells = ''
-        for v in data:
+        lifetime_sum = 0
+        is_pct = fmt_type == 'pct'
+        for i, v in enumerate(data):
             if v is None:
                 cells += '<td><span class="na">—</span></td>'
-            elif fmt_type == 'pct' or (isinstance(v, float) and 0 < v < 1):
+            elif is_pct or (isinstance(v, float) and 0 < v < 1):
                 cells += f'<td>{v*100:.1f}%</td>'
             elif isinstance(v, (int, float)):
                 cells += f'<td>{int(v):,}</td>'
+                lifetime_sum += v
+                if total_labels and label in total_labels and total_by_month is not None and i < len(total_by_month):
+                    total_by_month[i] += v
             else:
                 cells += f'<td>{v}</td>'
-        body += f'<tr><td>{label}</td>{cells}</tr>'
+        lifetime_cell = (f'<td class="lifetime-col">{int(lifetime_sum):,}</td>'
+                          if not is_pct else '<td class="lifetime-col">—</td>')
+        body += f'<tr><td>{label}</td>{cells}{lifetime_cell}</tr>'
+        if total_labels and label in total_labels:
+            total_lifetime += lifetime_sum
+    if total_labels and total_by_month is not None:
+        total_cells = ''.join(f'<td>{int(v):,}</td>' for v in total_by_month)
+        body += f'<tr class="total-row"><td>Total</td>{total_cells}<td class="lifetime-col">{int(total_lifetime):,}</td></tr>'
     return (f'<div class="tracker-section"><div class="tracker-section-title">{icon} {title}</div>'
             f'<div class="table-scroll"><table class="data-table"><thead>{header}</thead><tbody>{body}</tbody></table></div></div>')
 
@@ -559,6 +703,10 @@ def build_html(d, reports, revenue, socials, generated_at):
         bar_html(x_followers, '#6B7280', 'X / Twitter', baseline=yt_subs_now)
     )
 
+    # Tracker tab displays newest-first (JUN, MAY, APR ...). d[...] values are
+    # already newest-first as-loaded, so pair them with M_display (also
+    # newest-first) rather than M (which was reversed to oldest-first for the
+    # left-to-right charts elsewhere).
     tracker_tables = (
         table_html('Views', '📺', [
             ('# of Episodes', d['eps'], 'int'),
@@ -566,17 +714,17 @@ def build_html(d, reports, revenue, socials, generated_at):
             ('YT Shorts', d['shorts'], 'int'),
             ('YT Lives', d['lives'], 'int'),
             ('Spotify Streams', d['spotify'], 'int'),
-        ], M) +
+        ], M_display, total_labels=['YT Videos', 'YT Shorts', 'YT Lives']) +
         table_html('Listens', '🎧', [
             ('# of Episodes', d['l_eps'], 'int'),
             ('Per-ep Listens', d['l_perep'], 'int'),
             ('Total Listens', d['l_total'], 'int'),
-        ], M) +
+        ], M_display) +
         table_html('Subscribers', '👥', [
             ('YouTube', d['yt_subs'], 'int'),
             ('Apple Podcasts', d['apple_subs'], 'int'),
             ('Spotify', d['spotify_subs'], 'int'),
-        ], M) +
+        ], M_display) +
         table_html('KPIs', '🔑', [
             ('CTR – Videos', d['ctr_vid'], 'pct'),
             ('CTR – Shorts', d['ctr_sht'], 'pct'),
@@ -584,8 +732,12 @@ def build_html(d, reports, revenue, socials, generated_at):
             ('Shorts % of Views', d['pct_sht'], 'pct'),
             ('Search % of Views', d['srch_pct'], 'pct'),
             ('CTR in Search', d['srch_ctr'], 'pct'),
-        ], M)
+        ], M_display)
     )
+
+    # ─── Audience ──────────────────────────────────────────────
+    audience_table = audience_table_html(d, socials, M_raw, M_display)
+    audience_subtitle = f'Full data export · {latest_mo} – {M[0] if M else ""} · newest left, oldest right'
 
     reports_content = reports_html(reports)
 
@@ -1260,7 +1412,21 @@ body{{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);li
 .data-table td:first-child{{text-align:left;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;color:var(--text2);position:sticky;left:0;background:var(--surface);z-index:1;min-width:150px}}
 .data-table tr:nth-child(even) td{{background:rgba(20,30,55,.02)}}
 .data-table tr:nth-child(even) td:first-child{{background:#f8f9fc}}
+.data-table th.lifetime-col{{background:var(--surface3);border-left:1px solid var(--border2)}}
+.data-table td.lifetime-col{{
+  font-weight:600; color:var(--text); background:var(--surface3)!important;
+  border-left:1px solid var(--border2);
+}}
+.data-table tr.total-row td{{
+  background:var(--surface2)!important; border-top:1px solid var(--border2);
+  font-weight:600; color:var(--text);
+}}
+.data-table tr.total-row td:first-child{{background:var(--surface2)!important}}
 .na{{color:var(--text3)}}
+.tracker-note{{
+  margin-top:8px; padding:8px 12px; font-size:12px; color:var(--text3);
+  background:var(--surface2); border-radius:6px; border:1px solid var(--border2);
+}}
 /* Revenue table section header style */
 .revenue-table th.section-label{{
   background:var(--surface3); color:var(--text); font-weight:600;
@@ -1427,6 +1593,10 @@ body{{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);li
       <svg class="nav-icon" viewBox="0 0 16 16" fill="none"><path d="M5 7a2 2 0 100-4 2 2 0 000 4zm6 6a2 2 0 100-4 2 2 0 000 4zm0-10a2 2 0 100 4 2 2 0 000-4zM6.6 8.5l3 2.5M9.4 5l-3 2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
       <span>Socials</span>
     </div>
+    <div class="nav-item" onclick="showPage('audience',this)">
+      <svg class="nav-icon" viewBox="0 0 16 16" fill="none"><circle cx="5.5" cy="5.5" r="2.2" stroke="currentColor" stroke-width="1.4"/><circle cx="11" cy="7" r="1.6" stroke="currentColor" stroke-width="1.3" opacity=".6"/><path d="M1.5 13c.4-2.6 2.1-4 4-4s3.6 1.4 4 4M9.3 9.7c1.4.1 2.7 1.2 3 3.3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+      <span>Audience</span>
+    </div>
     <div class="nav-item" onclick="showPage('revenue',this)">
       <svg class="nav-icon" viewBox="0 0 16 16" fill="none"><path d="M8 2v12M5 5h4.5a1.5 1.5 0 010 3h-3a1.5 1.5 0 000 3H11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
       <span>Revenue</span>
@@ -1485,7 +1655,7 @@ body{{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);li
     <div class="metric">
       <div class="metric-label">Audio ({complete_mo})</div>
       <div class="metric-value">{fmt(listens_now)}</div>
-      <div class="metric-delta">{delta_str(d['l_total'][:_complete_idx+len(d['l_total'])+1] if _complete_idx < -1 else d['l_total'])}</div>
+      <div class="metric-delta">{delta_str(ltotal_full[:_complete_idx+len(ltotal_full)+1] if _complete_idx < -1 else ltotal_full)}</div>
     </div>
     <div class="metric">
       <div class="metric-label">Episodes ({complete_mo})</div>
@@ -1583,7 +1753,7 @@ body{{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);li
     <div class="metric">
       <div class="metric-label">Downloads ({latest_mo})</div>
       <div class="metric-value">{fmt(listens_now)}</div>
-      <div class="metric-delta">{delta_str(d['l_total'])}</div>
+      <div class="metric-delta">{delta_str(ltotal_full)}</div>
     </div>
     <div class="metric">
       <div class="metric-label">Streams ({latest_mo})</div>
@@ -1659,6 +1829,15 @@ body{{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);li
   </div>
 </div>
 
+<!-- ═══ AUDIENCE ═══ -->
+<div class="page" id="page-audience">
+  <div class="page-header">
+    <div class="page-title">Audience</div>
+    <div class="page-sub">{audience_subtitle}</div>
+  </div>
+  {audience_table}
+</div>
+
 <!-- ═══ REVENUE ═══ -->
 <div class="page" id="page-revenue">
   <div class="page-header">
@@ -1710,7 +1889,7 @@ body{{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);li
 <div class="page" id="page-tracker">
   <div class="page-header">
     <div class="page-title">Tracker</div>
-    <div class="page-sub">Full data export · {M[0] if M else ''} – {latest_mo} · oldest left, newest right</div>
+    <div class="page-sub">Full data export · {latest_mo} – {M[0] if M else ''} · newest left, oldest right</div>
   </div>
   {tracker_tables}
 </div>
@@ -1810,7 +1989,7 @@ const PS12  ={js_pctsht};   const PS_F   ={js_pctsht_f};
 let M = M12, VIDS=VIDS12, SHORTS=SH12, LIVES=LV12, SUBS=SUBS12;
 let LTOTAL=LT12, LSTRM=LS12, PEREP=PE12, NSHT=NS12, PCTSHT=PS12;
 
-// Revenue data
+// Revenue data — full history (used by the ↗ full-history drawer)
 const REV_M = {js_rev_m};
 const REV_TOTALS = {js_rev_totals};
 const REV_YT_VIDEOS = {js_rev_yt_videos};
@@ -1821,11 +2000,25 @@ const REV_MIX_LABELS = {js_rev_mix_labels};
 const REV_MIX_VALUES = {js_rev_mix_values};
 const REV_MIX_COLORS = {js_rev_mix_colors};
 
-// Socials data
+// Revenue data — last 12 months (default on-page view)
+const REV_M12 = REV_M.slice(-12);
+const REV_TOTALS12 = REV_TOTALS.slice(-12);
+const REV_YT_VIDEOS12 = REV_YT_VIDEOS.slice(-12);
+const REV_YT_SHORTS12 = REV_YT_SHORTS.slice(-12);
+const REV_YT_LIVES12 = REV_YT_LIVES.slice(-12);
+const REV_STACKED_DS12 = REV_STACKED_DS.map(ds => ({{ ...ds, data: ds.data.slice(-12) }}));
+
+// Socials data — full history (used by the ↗ full-history drawer)
 const SOC_M = {js_soc_m};
 const SOC_FOLLOWERS_DS = {js_soc_followers_ds};
 const SOC_IMP_DS = {js_soc_imp_ds};
 const SOC_ER_DS = {js_soc_er_ds};
+
+// Socials data — last 12 months (default on-page view)
+const SOC_M12 = SOC_M.slice(-12);
+const SOC_FOLLOWERS_DS12 = SOC_FOLLOWERS_DS.map(ds => ({{ ...ds, data: ds.data.slice(-12) }}));
+const SOC_IMP_DS12 = SOC_IMP_DS.map(ds => ({{ ...ds, data: ds.data.slice(-12) }}));
+const SOC_ER_DS12 = SOC_ER_DS.map(ds => ({{ ...ds, data: ds.data.slice(-12) }}));
 
 const gc = 'rgba(20,30,55,.06)', tc = '#8a93a6';
 const nn = a => a.map(v => v === null ? NaN : v);
@@ -2120,16 +2313,16 @@ function initCharts() {{
   mkBar('audioStrm', LSTRM, '#1B9B96');
   mkLine('audioPerEp', PEREP, '#1B7A3A', 'rgba(27,122,58,.08)');
 
-  // Revenue charts
-  if (typeof REV_M !== 'undefined' && REV_M.length > 0) {{
+  // Revenue charts — 12-month default on-page, full history via ↗ drawer
+  if (typeof REV_M12 !== 'undefined' && REV_M12.length > 0) {{
     // Total revenue line
     const rTotalC = document.getElementById('revTotal');
     if (rTotalC) {{
       const wrap = rTotalC.parentElement;
-      wrap.style.cssText = 'position:relative;width:' + Math.max(REV_M.length * 46, 500) + 'px;height:100%';
+      wrap.style.cssText = 'position:relative;width:' + Math.max(REV_M12.length * 46, 500) + 'px;height:100%';
       new Chart(rTotalC, {{
         type: 'line',
-        data: {{ labels: REV_M, datasets: [{{ data: nn(REV_TOTALS), borderColor: '#1B7A3A',
+        data: {{ labels: REV_M12, datasets: [{{ data: nn(REV_TOTALS12), borderColor: '#1B7A3A',
           backgroundColor: 'rgba(27,122,58,.08)', fill: true, tension: .3,
           pointRadius: 2, pointBackgroundColor: '#1B7A3A', label: 'Total' }}] }},
         options: revOpts()
@@ -2140,14 +2333,14 @@ function initCharts() {{
     const rStackedC = document.getElementById('revStacked');
     if (rStackedC) {{
       const wrap = rStackedC.parentElement;
-      wrap.style.cssText = 'position:relative;width:' + Math.max(REV_M.length * 46, 500) + 'px;height:100%';
+      wrap.style.cssText = 'position:relative;width:' + Math.max(REV_M12.length * 46, 500) + 'px;height:100%';
       const so = revOpts(); so.scales.x.stacked = true; so.scales.y.stacked = true;
       new Chart(rStackedC, {{
-        type: 'bar', data: {{ labels: REV_M, datasets: REV_STACKED_DS }}, options: so
+        type: 'bar', data: {{ labels: REV_M12, datasets: REV_STACKED_DS12 }}, options: so
       }});
     }}
 
-    // Source mix doughnut
+    // Source mix doughnut (already last-12-months by design — unchanged)
     const rMixC = document.getElementById('revMix');
     if (rMixC && REV_MIX_LABELS.length > 0) {{
       new Chart(rMixC, {{
@@ -2167,20 +2360,20 @@ function initCharts() {{
     const rYTC = document.getElementById('revYT');
     if (rYTC) {{
       const wrap = rYTC.parentElement;
-      wrap.style.cssText = 'position:relative;width:' + Math.max(REV_M.length * 46, 500) + 'px;height:100%';
+      wrap.style.cssText = 'position:relative;width:' + Math.max(REV_M12.length * 46, 500) + 'px;height:100%';
       new Chart(rYTC, {{
-        type: 'bar', data: {{ labels: REV_M, datasets: [
-          {{ label: 'Videos', data: nn(REV_YT_VIDEOS), backgroundColor: '#2F6DDE', borderRadius: 2, stack: 's' }},
-          {{ label: 'Shorts', data: nn(REV_YT_SHORTS), backgroundColor: '#1B9B96', borderRadius: 2, stack: 's' }},
-          {{ label: 'Lives',  data: nn(REV_YT_LIVES),  backgroundColor: '#E08C2A', borderRadius: 2, stack: 's' }},
+        type: 'bar', data: {{ labels: REV_M12, datasets: [
+          {{ label: 'Videos', data: nn(REV_YT_VIDEOS12), backgroundColor: '#2F6DDE', borderRadius: 2, stack: 's' }},
+          {{ label: 'Shorts', data: nn(REV_YT_SHORTS12), backgroundColor: '#1B9B96', borderRadius: 2, stack: 's' }},
+          {{ label: 'Lives',  data: nn(REV_YT_LIVES12),  backgroundColor: '#E08C2A', borderRadius: 2, stack: 's' }},
         ]}}, options: (() => {{ const o = revOpts(); o.scales.x.stacked = true; o.scales.y.stacked = true; return o; }})()
       }});
     }}
   }}
 
-  // Socials charts
-  if (typeof SOC_M !== 'undefined' && SOC_M.length > 0) {{
-    const SOC_W = Math.max(SOC_M.length * 46, 500);
+  // Socials charts — 12-month default on-page, full history via ↗ drawer
+  if (typeof SOC_M12 !== 'undefined' && SOC_M12.length > 0) {{
+    const SOC_W = Math.max(SOC_M12.length * 46, 500);
 
     function socPrep(id) {{
       const c = document.getElementById(id);
@@ -2220,20 +2413,20 @@ function initCharts() {{
     // Followers line chart (multi-series)
     const fc = socPrep('socFollowers');
     if (fc) new Chart(fc, {{
-      type: 'line', data: {{ labels: SOC_M, datasets: SOC_FOLLOWERS_DS }}, options: socOpts(false)
+      type: 'line', data: {{ labels: SOC_M12, datasets: SOC_FOLLOWERS_DS12 }}, options: socOpts(false)
     }});
 
     // Impressions stacked bar
     const ic = socPrep('socImpressions');
     if (ic) {{
       const o = socOpts(false); o.scales.x.stacked = true; o.scales.y.stacked = true;
-      new Chart(ic, {{ type: 'bar', data: {{ labels: SOC_M, datasets: SOC_IMP_DS }}, options: o }});
+      new Chart(ic, {{ type: 'bar', data: {{ labels: SOC_M12, datasets: SOC_IMP_DS12 }}, options: o }});
     }}
 
     // ER line chart (multi-series)
     const ec = socPrep('socER');
     if (ec) new Chart(ec, {{
-      type: 'line', data: {{ labels: SOC_M, datasets: SOC_ER_DS }}, options: socOpts(true)
+      type: 'line', data: {{ labels: SOC_M12, datasets: SOC_ER_DS12 }}, options: socOpts(true)
     }});
   }}
 }}
