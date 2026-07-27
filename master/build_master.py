@@ -45,6 +45,41 @@ SPLIT_TIERS = [
     (1_000_000,   float("inf"),   0.25),
 ]
 
+# Current contract (Production Services Agreement, Cycle 2-3) began Oct 1, 2025.
+# Per §5.2 "Gross Revenue" is revenue during the Term, so the split thresholds
+# reset at contract start — pre-Oct-2025 revenue (under the Previous Agreement)
+# does NOT count toward the $500K/$1M ladder. Quarters are anchored to this
+# date in 3-month blocks: Q1 = Oct-Dec 2025, Q2 = Jan-Mar 2026, etc.
+CONTRACT_START = "2025-10"          # YYYY-MM, inclusive
+
+
+def contract_quarters(through_month):
+    """Yield (label, start_YYYY_MM, end_YYYY_MM, end_date) for every contract
+    quarter from CONTRACT_START up to and including the one containing
+    `through_month`. Anchored to Oct 2025, rolling forward in 3-month blocks."""
+    start_y, start_m = int(CONTRACT_START[:4]), int(CONTRACT_START[5:7])
+    ty, tm = int(through_month[:4]), int(through_month[5:7])
+    q = 1
+    y, m = start_y, start_m
+    while (y, m) <= (ty, tm):
+        # quarter spans months m, m+1, m+2
+        em = m + 2
+        ey = y
+        if em > 12:
+            em -= 12
+            ey += 1
+        # last day of end month
+        if em == 12:
+            end_date = date(ey, 12, 31)
+        else:
+            end_date = date(ey, em + 1, 1) - __import__("datetime").timedelta(days=1)
+        yield (f"Q{q}", f"{y:04d}-{m:02d}", f"{ey:04d}-{em:02d}", end_date)
+        q += 1
+        m += 3
+        if m > 12:
+            m -= 12
+            y += 1
+
 
 # ─── Math ────────────────────────────────────────────────────────────────
 def split_at(cum_gross):
@@ -119,34 +154,70 @@ def compute_show_summary(show, today=None, script_dir=None):
     revenue = load_revenue(os.path.join(data_dir, "revenue.csv"))
     tracker = load_tracker(os.path.join(data_dir, "tracker_data.json"))
 
-    # ── Revenue aggregates ──
+    # ── Revenue aggregates (CONTRACT-ERA ONLY) ──
     cur_month  = today.strftime("%Y-%m")
-    by_month   = defaultdict(float)
+    by_month   = defaultdict(float)          # ALL periods (for charts/history)
     for r in revenue:
         by_month[r["period"]] += r["amount"]
-    cum_total  = sum(by_month.values())
+
+    # Contract-era months only feed the split math.
+    by_month_c = {m: v for m, v in by_month.items() if m >= CONTRACT_START}
     mtd_gross  = by_month.get(cur_month, 0.0)
 
-    # ── Fiscal quarter cut ──
-    q_label, q_start, q_end, fy = current_fiscal_quarter(today)
-    q_start_key = q_start.strftime("%Y-%m")
-    cum_before_q = sum(v for m, v in by_month.items() if m < q_start_key)
-    cum_thru_now = cum_total                                # mid-quarter live total
-    q_revenue    = cum_thru_now - cum_before_q
-    rdm_q_cut    = cut_during(cum_before_q, cum_thru_now)
+    # ── Bucket contract revenue into anchored quarters ──
+    latest_rev_month = max(by_month_c) if by_month_c else cur_month
+    through = max(latest_rev_month, cur_month)
+    quarters = []
+    for label, qs, qe, qend_date in contract_quarters(through):
+        q_rev = sum(v for m, v in by_month_c.items() if qs <= m <= qe)
+        complete = today > qend_date
+        quarters.append({
+            "label": label, "start": qs, "end": qe,
+            "end_date": qend_date, "revenue": q_rev, "complete": complete,
+        })
 
-    # ── Threshold context (for the UI) ──
-    tier_idx, tier_low, tier_high, tier_rate = current_tier(cum_total)
-    to_500k  = max(0.0, 500_000   - cum_total)
-    past_500k = max(0.0, cum_total - 500_000)
-    to_1m    = max(0.0, 1_000_000 - cum_total)
-    past_1m  = max(0.0, cum_total - 1_000_000)
+    # Tally = COMPLETED quarters only. Partial (in-progress) quarter is tracked
+    # separately so the UI can visualize it without counting it.
+    completed = [q for q in quarters if q["complete"]]
+    partial   = next((q for q in quarters if not q["complete"]), None)
+
+    cum_completed = sum(q["revenue"] for q in completed)   # the headline base
+    cum_total     = cum_completed                          # split math uses completed-only
+    cum_with_partial = cum_completed + (partial["revenue"] if partial else 0.0)
+
+    # RDM cut is computed on the completed cumulative (tiers reset at contract start).
+    rdm_cut_completed = split_at(cum_completed)
+
+    # "Current quarter" for the panel = the most recent COMPLETED quarter
+    # (that's the one that just closed and is now billable). Its incremental cut
+    # is the split earned as cumulative moved across that quarter.
+    if completed:
+        last_q = completed[-1]
+        cum_before_q = cum_completed - last_q["revenue"]
+        cum_thru_now = cum_completed
+        q_label   = last_q["label"]
+        q_start_d = _ym_to_date(last_q["start"], first=True)
+        q_end_d   = last_q["end_date"]
+        q_revenue = last_q["revenue"]
+        rdm_q_cut = cut_during(cum_before_q, cum_thru_now)
+    else:
+        cum_before_q = cum_thru_now = 0.0
+        q_label = "Q1"; q_start_d = _ym_to_date(CONTRACT_START, first=True)
+        q_end_d = _ym_to_date(CONTRACT_START, first=False)
+        q_revenue = 0.0; rdm_q_cut = 0.0
+
+    # ── Threshold context (for the UI), on completed cumulative ──
+    tier_idx, tier_low, tier_high, tier_rate = current_tier(cum_completed)
+    to_500k  = max(0.0, 500_000   - cum_completed)
+    past_500k = max(0.0, cum_completed - 500_000)
+    to_1m    = max(0.0, 1_000_000 - cum_completed)
+    past_1m  = max(0.0, cum_completed - 1_000_000)
     crossed_500k_month = next(
-        (m for m in sorted(by_month) if _cum_through(by_month, m) >= 500_000),
+        (m for m in sorted(by_month_c) if _cum_through(by_month_c, m) >= 500_000),
         None,
     )
     crossed_1m_month = next(
-        (m for m in sorted(by_month) if _cum_through(by_month, m) >= 1_000_000),
+        (m for m in sorted(by_month_c) if _cum_through(by_month_c, m) >= 1_000_000),
         None,
     )
 
@@ -162,17 +233,21 @@ def compute_show_summary(show, today=None, script_dir=None):
         "color":           show.get("color", "#475569"),
         "dashboard_url":   show["dashboard_url"],
         "launch":          show["launch"],
-        # revenue
-        "cum_gross":          cum_total,
+        # revenue (contract-era, completed-quarter basis)
+        "cum_gross":          cum_completed,          # completed-quarter tally
+        "cum_with_partial":   cum_with_partial,       # incl. in-progress quarter
         "mtd_gross":          mtd_gross,
         "quarter_label":      q_label,
-        "quarter_start":      q_start.strftime("%b %d, %Y"),
-        "quarter_end":        q_end.strftime("%b %d, %Y"),
+        "quarter_start":      q_start_d.strftime("%b %d, %Y"),
+        "quarter_end":        q_end_d.strftime("%b %d, %Y"),
         "quarter_revenue":    q_revenue,
         "cum_before_quarter": cum_before_q,
         "cum_through_now":    cum_thru_now,
         "rdm_cut_quarter":    rdm_q_cut,
-        "rdm_cut_lifetime":   split_at(cum_total),
+        "rdm_cut_lifetime":   rdm_cut_completed,      # cut on completed cumulative
+        "contract_start":     CONTRACT_START,
+        "quarters":           quarters,               # all quarters w/ complete flag
+        "partial_quarter":    partial,                # in-progress quarter or None
         # threshold context
         "tier_index":         tier_idx,
         "tier_rate":          tier_rate,
@@ -193,6 +268,16 @@ def compute_show_summary(show, today=None, script_dir=None):
 
 def _cum_through(by_month, m):
     return sum(v for k, v in by_month.items() if k <= m)
+
+
+def _ym_to_date(ym, first=True):
+    """'2025-10' -> date. first=True gives the 1st; False gives the last day."""
+    y, m = int(ym[:4]), int(ym[5:7])
+    if first:
+        return date(y, m, 1)
+    if m == 12:
+        return date(y, 12, 31)
+    return date(y, m + 1, 1) - __import__("datetime").timedelta(days=1)
 
 
 def _episodes_last_n_days(tracker, today, days=30):
@@ -270,12 +355,24 @@ def main():
     if not os.path.isabs(out_path):
         out_path = os.path.join(script_dir, out_path)
 
-    q_label, q_start, q_end, _ = current_fiscal_quarter(today)
+    # Header quarter = the most recent COMPLETED contract quarter (billable one),
+    # taken from the first show's computed quarters (network shares one contract clock).
+    ref = show_summaries[0] if show_summaries else None
+    if ref and ref.get("quarters"):
+        completed_qs = [q for q in ref["quarters"] if q["complete"]]
+        hq = completed_qs[-1] if completed_qs else ref["quarters"][0]
+        q_label  = hq["label"]
+        q_start_d = _ym_to_date(hq["start"], first=True)
+        q_end_d   = hq["end_date"]
+        quarter_window = f"{_md(q_start_d)} – {_mdy(q_end_d)}"
+    else:
+        q_label, quarter_window = "Q1", ""
+
     html = build_master_html(
         rdm_summary    = rdm,
         show_summaries = show_summaries,
         quarter_label  = q_label,
-        quarter_window = f"{_md(q_start)} – {_mdy(q_end)}",
+        quarter_window = quarter_window,
         generated_at   = today.strftime("%B %d, %Y"),
     )
 

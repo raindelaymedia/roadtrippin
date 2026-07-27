@@ -967,7 +967,7 @@ def build_html(d, reports, revenue, socials, generated_at):
     # Latest month metrics — totals across platforms
     soc_latest_label = soc_M_display[-1] if soc_M_display else '—'
     total_followers = sum(filter(None, [soc_latest_for(p, 'FOLLOWERS') for p in soc_platforms]))
-    total_impressions = sum(filter(None, [soc_latest_for(p, 'IMPRESSIONS') for p in soc_platforms]))
+    total_impressions = sum(filter(None, [soc_latest_for(p, 'VIEWS') for p in soc_platforms]))
     total_engagements = sum(filter(None, [soc_latest_for(p, 'ENGAGEMENTS') for p in soc_platforms]))
     total_posts = sum(filter(None, [soc_latest_for(p, 'POSTS') for p in soc_platforms]))
 
@@ -982,7 +982,7 @@ def build_html(d, reports, revenue, socials, generated_at):
         f'<div class="metric-value">{fmt(total_followers)}</div>'
         f'<div class="metric-delta" style="color:var(--text2)">across {len(soc_platforms)} platforms</div></div>'
 
-        f'<div class="metric"><div class="metric-label">Impressions ({soc_latest_label})</div>'
+        f'<div class="metric"><div class="metric-label">Views ({soc_latest_label})</div>'
         f'<div class="metric-value">{fmt(total_impressions)}</div>'
         f'<div class="metric-delta" style="color:var(--text2)">all platforms</div></div>'
 
@@ -1001,7 +1001,7 @@ def build_html(d, reports, revenue, socials, generated_at):
         display = PLATFORM_DISPLAY.get(platform, platform.title())
         f_now = soc_latest_for(platform, 'FOLLOWERS')
         gain = soc_latest_for(platform, 'FOLLOWER_GAIN')
-        imp = soc_latest_for(platform, 'IMPRESSIONS')
+        views = soc_latest_for(platform, 'VIEWS')
         eng = soc_latest_for(platform, 'ENGAGEMENTS')
         posts = soc_latest_for(platform, 'POSTS')
         er = soc_latest_for(platform, 'ENGAGEMENT_RATE')
@@ -1020,7 +1020,7 @@ def build_html(d, reports, revenue, socials, generated_at):
             f'<span class="soc-platform-followers">{fmt(f_now)} {gain_html}</span>'
             f'</div>'
             f'<div class="soc-stat-grid">'
-            f'<div class="soc-stat"><div class="soc-stat-label">Impressions</div><div class="soc-stat-val">{fmt(imp)}</div></div>'
+            f'<div class="soc-stat"><div class="soc-stat-label">Views</div><div class="soc-stat-val">{fmt(views)}</div></div>'
             f'<div class="soc-stat"><div class="soc-stat-label">Engagements</div><div class="soc-stat-val">{fmt(eng)}</div></div>'
             f'<div class="soc-stat"><div class="soc-stat-label">Posts</div><div class="soc-stat-val">{int(posts) if posts else "—"}</div></div>'
             f'<div class="soc-stat"><div class="soc-stat-label">ER</div><div class="soc-stat-val">{fmt(er, pct=True) if er else "—"}</div></div>'
@@ -1042,7 +1042,6 @@ def build_html(d, reports, revenue, socials, generated_at):
             ('FOLLOWERS', 'Followers', 'int'),
             ('FOLLOWER_GAIN', 'Net Gain', 'int'),
             ('POSTS', 'Posts', 'int'),
-            ('IMPRESSIONS', 'Impressions', 'int'),
             ('VIEWS', 'Views', 'int'),
             ('ENGAGEMENTS', 'Engagements', 'int'),
             ('ENGAGEMENT_RATE', 'ER', 'pct'),
@@ -1096,10 +1095,10 @@ def build_html(d, reports, revenue, socials, generated_at):
         })
     js_soc_followers_ds = json.dumps(soc_followers_ds)
 
-    # Impressions per platform (stacked bar)
+    # Views per platform (stacked bar)
     soc_imp_ds = []
     for p in soc_platforms:
-        vals = [v if isinstance(v, (int, float)) else None for v in soc_series(p, 'IMPRESSIONS')]
+        vals = [v if isinstance(v, (int, float)) else None for v in soc_series(p, 'VIEWS')]
         if any(v for v in vals if v):
             soc_imp_ds.append({
                 'label': PLATFORM_DISPLAY.get(p, p.title()),
@@ -1810,7 +1809,7 @@ body{{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);li
 
   <div class="grid-2 mb12">
     <div class="card">
-      <div class="card-header"><span class="card-title">Impressions by platform</span><span class="card-sub">stacked monthly</span><button class="expand-btn" onclick="openHistory('socImpressions','')" title="Full history">↗</button></div>
+      <div class="card-header"><span class="card-title">Views by platform</span><span class="card-sub">stacked monthly</span><button class="expand-btn" onclick="openHistory('socImpressions','')" title="Full history">↗</button></div>
       <div class="chart-outer" style="height:220px">
         <div style="position:relative;width:{soc_chart_px}px;height:100%"><canvas id="socImpressions"></canvas></div>
       </div>
@@ -2119,7 +2118,7 @@ const HISTORY_CONFIGS = {{
     socials: true,
   }},
   socImpressions: {{
-    label: 'Impressions / views — full history',
+    label: 'Views — full history',
     type: 'bar',
     datasets: () => SOC_IMP_DS,
     socials: true,

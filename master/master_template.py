@@ -140,13 +140,30 @@ def _render_split_panel(s):
         "No revenue accrued in this quarter yet.</td></tr>"
     )
 
+    # In-progress quarter: shown for visibility, explicitly NOT in the tally.
+    partial = s.get("partial_quarter")
+    partial_html = ""
+    if partial and partial.get("revenue", 0) > 0.01:
+        pq_start = _fmt_month_label(partial["start"])
+        pq_end   = _fmt_month_label(partial["end"])
+        partial_html = f"""
+    <div class="partial-quarter">
+      <div class="partial-dot"></div>
+      <div class="partial-body">
+        <div class="partial-lbl">{partial['label']} in progress
+          <span class="mut">({pq_start} – {pq_end})</span></div>
+        <div class="partial-note">{_fmt_money(partial['revenue'], 2)} booked so far —
+          <strong>not yet counted</strong> in the tally above. Rolls in once the quarter closes.</div>
+      </div>
+    </div>"""
+
     return f"""
 <section class="split-panel">
   <div class="split-head">
     <div class="split-show-tag" style="background:{s['color']}">{s.get('tag','')}</div>
     <div>
       <h3 class="split-show-name">{s['name']}</h3>
-      <div class="split-show-sub">Revenue Split Tracker · since {_fmt_month_label(s['launch'])}</div>
+      <div class="split-show-sub">Revenue Split Tracker · contract to date (since {_fmt_month_label(s.get('contract_start', s['launch']))})</div>
     </div>
     <div class="split-rate-pill" style="background:{status_color}">
       Current rate: {rate_pct}%
@@ -155,14 +172,14 @@ def _render_split_panel(s):
 
   <div class="split-headline">
     <div class="split-headline-l">
-      <div class="lbl">Lifetime gross revenue</div>
+      <div class="lbl">Contract gross revenue <span class="mut">(completed quarters)</span></div>
       <div class="val">{_fmt_money(cum, 2)}</div>
       <div class="status" style="color:{status_color}">{status_text}</div>
     </div>
     <div class="split-headline-r">
-      <div class="lbl">RDM lifetime cut</div>
+      <div class="lbl">RDM cut to date</div>
       <div class="val val-rdm">{_fmt_money(s['rdm_cut_lifetime'], 2)}</div>
-      <div class="status">Total earned to date</div>
+      <div class="status">Earned on completed quarters</div>
     </div>
   </div>
 
@@ -192,11 +209,12 @@ def _render_split_panel(s):
         <thead><tr><th>Tier</th><th>Revenue in tier (this quarter)</th><th>Rate</th><th class="th-cut">RDM cut</th></tr></thead>
         <tbody>{breakdown_html}</tbody>
         <tfoot><tr>
-          <td colspan="3" style="text-align:right;font-weight:600">Total Q3 RDM cut:</td>
+          <td colspan="3" style="text-align:right;font-weight:600">Total {s['quarter_label']} RDM cut:</td>
           <td class="td-cut" style="font-weight:700;font-size:15px">{_fmt_money(q_cut, 2)}</td>
         </tr></tfoot>
       </table>
     </div>
+    {partial_html}
   </div>
 </section>
 """
@@ -525,6 +543,23 @@ def build_master_html(rdm_summary, show_summaries, quarter_label,
     font-size: 10px; font-weight: 600; color: var(--text2);
     text-transform: uppercase; letter-spacing: .12em; margin-bottom: 10px;
   }}
+
+  .partial-quarter {{
+    display: flex; align-items: flex-start; gap: 10px;
+    margin-top: 14px; padding: 12px 14px;
+    background: repeating-linear-gradient(
+      45deg, rgba(148,163,184,.06), rgba(148,163,184,.06) 8px,
+      rgba(148,163,184,.11) 8px, rgba(148,163,184,.11) 16px);
+    border: 1px dashed var(--border); border-radius: 8px;
+  }}
+  .partial-dot {{
+    width: 9px; height: 9px; border-radius: 50%; margin-top: 4px;
+    background: #F59E0B; flex-shrink: 0;
+    box-shadow: 0 0 0 3px rgba(245,158,11,.2);
+  }}
+  .partial-lbl {{ font-size: 12px; font-weight: 700; color: var(--ink); }}
+  .partial-note {{ font-size: 11.5px; color: var(--text2); margin-top: 2px; line-height: 1.4; }}
+  .partial-note strong {{ color: #B45309; font-weight: 700; }}
   .bd-table {{
     width: 100%; border-collapse: collapse; font-size: 12px;
   }}
