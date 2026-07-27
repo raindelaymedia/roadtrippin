@@ -264,6 +264,23 @@
     font-size: 10px; font-weight: 600; color: var(--text2);
     text-transform: uppercase; letter-spacing: .12em; margin-bottom: 10px;
   }
+
+  .partial-quarter {
+    display: flex; align-items: flex-start; gap: 10px;
+    margin-top: 14px; padding: 12px 14px;
+    background: repeating-linear-gradient(
+      45deg, rgba(148,163,184,.06), rgba(148,163,184,.06) 8px,
+      rgba(148,163,184,.11) 8px, rgba(148,163,184,.11) 16px);
+    border: 1px dashed var(--border); border-radius: 8px;
+  }
+  .partial-dot {
+    width: 9px; height: 9px; border-radius: 50%; margin-top: 4px;
+    background: #F59E0B; flex-shrink: 0;
+    box-shadow: 0 0 0 3px rgba(245,158,11,.2);
+  }
+  .partial-lbl { font-size: 12px; font-weight: 700; color: var(--ink); }
+  .partial-note { font-size: 11.5px; color: var(--text2); margin-top: 2px; line-height: 1.4; }
+  .partial-note strong { color: #B45309; font-weight: 700; }
   .bd-table {
     width: 100%; border-collapse: collapse; font-size: 12px;
   }
@@ -402,7 +419,7 @@
       <div class="sub">Cross-show performance, revenue, and RDM participation tracking</div>
     </div>
     <div class="page-h-pills">
-      <div class="quarter-pill">Current quarter: <strong>Q4 FY2026</strong> · Jul 1 – Sep 30, 2026</div>
+      <div class="quarter-pill">Current quarter: <strong>Q3</strong> · Apr 1 – Jun 30, 2026</div>
       <div class="fanatics-pill">★ Fanatics S2 · Oct 1, 2025 → Sep 30, 2026</div>
     </div>
   </div>
@@ -420,13 +437,13 @@
     <div class="kpi-sub">Gross, current month</div>
   </div>
   <div class="kpi">
-    <div class="kpi-lbl">Q4 FY2026 RDM Cut</div>
-    <div class="kpi-val kpi-val-accent">$35.8K</div>
+    <div class="kpi-lbl">Q3 RDM Cut</div>
+    <div class="kpi-val kpi-val-accent">$57.6K</div>
     <div class="kpi-sub">Owed to RDM this quarter</div>
   </div>
   <div class="kpi">
     <div class="kpi-lbl">Episodes (Last 30d)</div>
-    <div class="kpi-val">26</div>
+    <div class="kpi-val">27</div>
     <div class="kpi-sub">Across 1 show</div>
   </div>
   <div class="kpi">
@@ -447,23 +464,23 @@
     <div class="split-show-tag" style="background:#0EA5E9">RT</div>
     <div>
       <h3 class="split-show-name">Road Trippin'</h3>
-      <div class="split-show-sub">Revenue Split Tracker · since June 2024</div>
+      <div class="split-show-sub">Revenue Split Tracker · contract to date (since October 2025)</div>
     </div>
-    <div class="split-rate-pill" style="background:#16A34A">
-      Current rate: 25%
+    <div class="split-rate-pill" style="background:#F59E0B">
+      Current rate: 20%
     </div>
   </div>
 
   <div class="split-headline">
     <div class="split-headline-l">
-      <div class="lbl">Lifetime gross revenue</div>
-      <div class="val">$1,007,239.85</div>
-      <div class="status" style="color:#16A34A">Past $1M — earning 25% on every dollar over $1M ($7.2K past so far)</div>
+      <div class="lbl">Contract gross revenue <span class="mut">(completed quarters)</span></div>
+      <div class="val">$787,875.17</div>
+      <div class="status" style="color:#F59E0B">Past $500K in May 2026 — earning 20% on the next $212.1K to $1M</div>
     </div>
     <div class="split-headline-r">
-      <div class="lbl">RDM lifetime cut</div>
-      <div class="val val-rdm">$101,809.96</div>
-      <div class="status">Total earned to date</div>
+      <div class="lbl">RDM cut to date</div>
+      <div class="val val-rdm">$57,575.03</div>
+      <div class="status">Earned on completed quarters</div>
     </div>
   </div>
 
@@ -471,46 +488,56 @@
     <div class="tier-bar-wrap">
       <div class="tier-bar-bg"></div>
       <div class="tier-seg" style="left:0%;width:33.33333333333333%;background:#94A3B8"></div>
-      <div class="tier-seg" style="left:33.33333333333333%;width:33.33333333333333%;background:#F59E0B"></div>
-      <div class="tier-seg" style="left:66.66666666666666%;width:0.48265666666667073%;background:#16A34A"></div>
+      <div class="tier-seg" style="left:33.33333333333333%;width:19.191677999999996%;background:#F59E0B"></div>
+      
       <div class="tier-marker" style="left:33.33333333333333%"><div class="tier-marker-line"></div>
         <div class="tier-marker-label">$500K<br><span>20% tier</span></div></div>
       <div class="tier-marker" style="left:66.66666666666666%"><div class="tier-marker-line"></div>
         <div class="tier-marker-label">$1M<br><span>25% tier</span></div></div>
-      <div class="tier-current" style="left:67.14932333333333%">
+      <div class="tier-current" style="left:52.525011333333325%">
         <div class="tier-current-dot"></div>
-        <div class="tier-current-label">$1.01M</div>
+        <div class="tier-current-label">$787.9K</div>
       </div>
     </div>
 
   <div class="split-quarter">
     <div class="split-quarter-head">
       <div>
-        <div class="lbl">Q4 FY2026 <span class="mut">(Jul 01, 2026 – Sep 30, 2026)</span></div>
+        <div class="lbl">Q3 <span class="mut">(Apr 01, 2026 – Jun 30, 2026)</span></div>
         <div class="quarter-title">RDM Cut for Current Quarter</div>
       </div>
       <div class="quarter-cut-box">
         <div class="lbl">Owed to RDM</div>
-        <div class="quarter-cut-val">$35,770.06</div>
+        <div class="quarter-cut-val">$57,575.03</div>
       </div>
     </div>
 
     <div class="quarter-stats">
-      <div><span class="lbl">Cum. entering quarter</span><span class="v">$830,199.49</span></div>
-      <div><span class="lbl">Revenue this quarter</span><span class="v">$177,040.36</span></div>
-      <div><span class="lbl">Cum. through today</span><span class="v">$1,007,239.85</span></div>
+      <div><span class="lbl">Cum. entering quarter</span><span class="v">$125,098.06</span></div>
+      <div><span class="lbl">Revenue this quarter</span><span class="v">$662,777.11</span></div>
+      <div><span class="lbl">Cum. through today</span><span class="v">$787,875.17</span></div>
     </div>
 
     <div class="quarter-breakdown">
       <div class="lbl bd-lbl">Tier-by-tier breakdown (auditable math for invoicing)</div>
       <table class="bd-table">
         <thead><tr><th>Tier</th><th>Revenue in tier (this quarter)</th><th>Rate</th><th class="th-cut">RDM cut</th></tr></thead>
-        <tbody><tr><td>$500K – $1M tier (20%)</td><td>$169,800.51</td><td>20%</td><td class='td-cut'>$33,960.10</td></tr><tr><td>Above $1M tier (25%)</td><td>$7,239.85</td><td>25%</td><td class='td-cut'>$1,809.96</td></tr></tbody>
+        <tbody><tr><td>Below $500K (0%)</td><td>$374,901.94</td><td>0%</td><td class='td-cut'>$0.00</td></tr><tr><td>$500K – $1M tier (20%)</td><td>$287,875.17</td><td>20%</td><td class='td-cut'>$57,575.03</td></tr></tbody>
         <tfoot><tr>
           <td colspan="3" style="text-align:right;font-weight:600">Total Q3 RDM cut:</td>
-          <td class="td-cut" style="font-weight:700;font-size:15px">$35,770.06</td>
+          <td class="td-cut" style="font-weight:700;font-size:15px">$57,575.03</td>
         </tr></tfoot>
       </table>
+    </div>
+    
+    <div class="partial-quarter">
+      <div class="partial-dot"></div>
+      <div class="partial-body">
+        <div class="partial-lbl">Q4 in progress
+          <span class="mut">(July 2026 – September 2026)</span></div>
+        <div class="partial-note">$177,040.36 booked so far —
+          <strong>not yet counted</strong> in the tally above. Rolls in once the quarter closes.</div>
+      </div>
     </div>
   </div>
 </section>
@@ -532,8 +559,8 @@
   <div class="show-card-stats">
     <div><div class="lbl">YT Subs</div><div class="v">171.0K</div></div>
     <div><div class="lbl">MTD Gross</div><div class="v">$177.0K</div></div>
-    <div><div class="lbl">Eps 30d</div><div class="v">26</div></div>
-    <div><div class="lbl">Lifetime</div><div class="v">$1.01M</div></div>
+    <div><div class="lbl">Eps 30d</div><div class="v">27</div></div>
+    <div><div class="lbl">Lifetime</div><div class="v">$787.9K</div></div>
   </div>
   <div class="show-card-cta">Open full dashboard →</div>
 </a></div>
