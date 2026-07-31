@@ -157,6 +157,44 @@ def _render_split_panel(s):
       </div>
     </div>"""
 
+    # Quarter-by-quarter breakdown table (every contract quarter, incl. partial).
+    q_rows = []
+    for q in s.get("quarters", []):
+        if q.get("provisional"):
+            cut_cell = '<td class="qb-cut qb-pending">—</td>'
+            status_cell = '<span class="qb-badge qb-badge-live">In progress</span>'
+            row_cls = ' class="qb-row-live"'
+        else:
+            cut_val = q.get("rdm_cut", 0.0)
+            cut_cell = (f'<td class="qb-cut">{_fmt_money(cut_val, 2)}</td>'
+                        if cut_val > 0.01 else '<td class="qb-cut qb-zero">$0.00</td>')
+            status_cell = '<span class="qb-badge qb-badge-done">Complete</span>'
+            row_cls = ''
+        win = f"{_fmt_month_label(q['start'])[:3]} – {_fmt_month_label(q['end'])[:3]} {q['end'][:4]}"
+        q_rows.append(
+            f'<tr{row_cls}><td class="qb-q">{q["label"]}</td>'
+            f'<td class="qb-win">{win}</td>'
+            f'<td class="qb-rev">{_fmt_money(q["revenue"], 2)}</td>'
+            f'<td class="qb-cum">{_fmt_money(q["cum_after"], 2)}</td>'
+            f'{cut_cell}<td>{status_cell}</td></tr>'
+        )
+    quarters_html = f"""
+    <div class="quarter-ledger">
+      <div class="lbl bd-lbl">Quarter-by-quarter ledger</div>
+      <table class="qb-table">
+        <thead><tr>
+          <th>Qtr</th><th>Window</th><th>Revenue</th>
+          <th>Cumulative</th><th class="th-cut">RDM cut</th><th>Status</th>
+        </tr></thead>
+        <tbody>{"".join(q_rows)}</tbody>
+        <tfoot><tr>
+          <td colspan="4" style="text-align:right;font-weight:600">RDM cut, completed quarters:</td>
+          <td class="qb-cut" style="font-weight:700">{_fmt_money(s['rdm_cut_lifetime'], 2)}</td>
+          <td></td>
+        </tr></tfoot>
+      </table>
+    </div>""" if q_rows else ""
+
     return f"""
 <section class="split-panel">
   <div class="split-head">
@@ -215,6 +253,7 @@ def _render_split_panel(s):
       </table>
     </div>
     {partial_html}
+    {quarters_html}
   </div>
 </section>
 """
@@ -576,6 +615,34 @@ def build_master_html(rdm_summary, show_summaries, quarter_label,
   .bd-table .td-cut {{ color: var(--gold); font-weight: 600; }}
   .bd-table td:nth-child(2), .bd-table td:nth-child(3) {{ font-family: 'JetBrains Mono', monospace; color: var(--text); }}
   .bd-table tfoot td {{ border-bottom: none; padding-top: 14px; color: var(--ink); }}
+
+  /* ─── Quarter-by-quarter ledger ─── */
+  .quarter-ledger {{ margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border); }}
+  .qb-table {{ width: 100%; border-collapse: collapse; font-size: 12px; }}
+  .qb-table th, .qb-table td {{
+    padding: 9px 12px; text-align: left; border-bottom: 1px solid var(--border);
+  }}
+  .qb-table th {{
+    font-weight: 600; color: var(--text2); font-size: 10px;
+    text-transform: uppercase; letter-spacing: .08em; background: var(--surface);
+  }}
+  .qb-table .th-cut {{ text-align: right; }}
+  .qb-q {{ font-weight: 700; color: var(--ink); }}
+  .qb-win {{ color: var(--text2); }}
+  .qb-rev, .qb-cum, .qb-cut {{ font-family: 'JetBrains Mono', monospace; text-align: right; }}
+  .qb-cum {{ color: var(--text2); }}
+  .qb-cut {{ color: var(--gold); font-weight: 600; }}
+  .qb-cut.qb-zero {{ color: var(--mut); font-weight: 500; }}
+  .qb-cut.qb-pending {{ color: var(--mut); text-align: right; letter-spacing: .1em; }}
+  .qb-row-live {{ background: rgba(245,158,11,.05); }}
+  .qb-badge {{
+    display: inline-block; font-size: 9.5px; font-weight: 700; padding: 2px 8px;
+    border-radius: 10px; text-transform: uppercase; letter-spacing: .05em;
+  }}
+  .qb-badge-done {{ background: rgba(22,163,74,.12); color: #16A34A; }}
+  .qb-badge-live {{ background: rgba(245,158,11,.15); color: #B45309; }}
+  .qb-table tfoot td {{ border-bottom: none; padding-top: 13px; color: var(--ink); }}
+  .qb-table tfoot .qb-cut {{ font-size: 14px; }}
 
   /* ─── Show cards ─── */
   .show-grid {{

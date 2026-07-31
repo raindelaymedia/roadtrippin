@@ -185,6 +185,19 @@ def compute_show_summary(show, today=None, script_dir=None):
     cum_total     = cum_completed                          # split math uses completed-only
     cum_with_partial = cum_completed + (partial["revenue"] if partial else 0.0)
 
+    # Per-quarter incremental cut: the split earned as cumulative revenue moves
+    # across that quarter's slice. Progressive tiers apply to the running cumulative,
+    # so a quarter's cut depends on where cumulative sat when it happened. The
+    # in-progress quarter's cut is computed for display but flagged provisional.
+    running = 0.0
+    for q in quarters:
+        cum_before = running
+        running += q["revenue"]
+        q["cum_after"]    = running
+        q["cum_before"]   = cum_before
+        q["rdm_cut"]      = cut_during(cum_before, running)
+        q["provisional"]  = not q["complete"]     # cut not yet billable
+
     # RDM cut is computed on the completed cumulative (tiers reset at contract start).
     rdm_cut_completed = split_at(cum_completed)
 
