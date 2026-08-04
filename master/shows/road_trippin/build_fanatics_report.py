@@ -77,7 +77,7 @@ HISTORY_FIELDS = [
     "yt_full_views", "yt_full_count_new",
     "yt_clip_views", "yt_clip_count_new",
     "yt_short_views", "yt_short_count_new",
-    "mega_views", "ig_views", "tiktok_views", "tiktok_count_new", "x_imp",
+    "mega_views", "ig_views", "tiktok_views", "tiktok_count_new", "x_imp", "fb_views",
     "group_eps", "solo_perk", "solo_chan",
     "shoutouts", "segments", "ad_reads",
     "perk_posts", "channing_posts", "rj_posts", "allie_posts",
@@ -238,7 +238,7 @@ def megaphone_total(csv_path, start, end):
 def socials_for_month(csv_path, ym):
     """Return {'ig':views,'tiktok':views,'tiktok_count':n,'x':impressions} for a
     YYYY-MM month from socials.csv, or None for any field not present."""
-    out = {"ig": None, "tiktok": None, "tiktok_count": None, "x": None}
+    out = {"ig": None, "tiktok": None, "tiktok_count": None, "x": None, "fb": None}
     if not os.path.exists(csv_path):
         return out
     with open(csv_path, encoding="utf-8") as f:
@@ -258,6 +258,8 @@ def socials_for_month(csv_path, ym):
                 out["tiktok_count"] = val
             elif plat in ("X", "TWITTER") and metric in ("IMPRESSIONS", "VIEWS"):
                 out["x"] = val
+            elif plat == "FACEBOOK" and metric in ("VIEWS", "REACH"):
+                out["fb"] = val
     return out
 
 
@@ -277,6 +279,9 @@ def history_cumulative(rows):
     short do). Impressions come straight from the stored per-period column."""
     def s(col):
         return sum(int(r[col]) for r in rows) if rows else 0
+    def s_opt(col):
+        # tolerate rows that predate a column (e.g. fb_views backfill)
+        return sum(int(r.get(col) or 0) for r in rows) if rows else 0
     cum_total = s("yt_total_views")
     cum_clip = s("yt_clip_views")
     cum_short = s("yt_short_views")
@@ -294,6 +299,7 @@ def history_cumulative(rows):
         "tiktok_views": s("tiktok_views"),
         "tiktok_count": s("tiktok_count_new"),
         "x_imp": s("x_imp"),
+        "fb_views": s_opt("fb_views"),
         "group_eps": s("group_eps"), "solo_perk": s("solo_perk"), "solo_chan": s("solo_chan"),
         "shoutouts": s("shoutouts"), "segments": s("segments"), "ad_reads": s("ad_reads"),
         "perk_posts": s("perk_posts"), "channing_posts": s("channing_posts"),
@@ -383,6 +389,9 @@ def assemble(period_raw, manual, cum_prior, top_content, start, end, generated,
     cum_total = cum_full + cum_clip + cum_short
     cum_mega = c("mega_views"); cum_ig = c("ig_views")
     cum_tt = c("tiktok_views"); cum_x = c("x_imp")
+    # Facebook: shown as its own platform row only. Deliberately NOT folded into
+    # Views & Downloads (cum_vd) or the impressions math — headline totals unchanged.
+    cum_fb = cum_prior.get("fb_views", 0) + ap * period_raw.get("fb_views", 0)
 
     # episodes / integrations / talent cumulative
     cum_group = cum_prior["group_eps"] + ap * manual["group_eps"]
@@ -458,6 +467,7 @@ def assemble(period_raw, manual, cum_prior, top_content, start, end, generated,
                        "vids_tp": period_raw["tiktok_count"],
                        "vids_total": cum_prior["tiktok_count"] + period_raw["tiktok_count"]},
             "x": {"tp": period_raw["x_imp"], "cum": cum_x},
+            "fb": {"tp": period_raw.get("fb_views", 0), "cum": cum_fb},
         },
         "eps": {"tp": tp_eps, "cum": cum_eps,
                 "group": cum_group, "solo_perk": cum_perk, "solo_chan": cum_chan},
@@ -496,7 +506,7 @@ def append_history(csv_path, data):
         "yt_short_views": pr["yt_short_views"], "yt_short_count_new": pr["yt_short_count"],
         "mega_views": pr["mega_views"], "ig_views": pr["ig_views"],
         "tiktok_views": pr["tiktok_views"], "tiktok_count_new": pr["tiktok_count"],
-        "x_imp": pr["x_imp"],
+        "x_imp": pr["x_imp"], "fb_views": pr.get("fb_views", 0),
         "group_eps": mn["group_eps"], "solo_perk": mn["solo_perk"], "solo_chan": mn["solo_chan"],
         "shoutouts": mn["shoutouts"], "segments": mn["segments"], "ad_reads": mn["ad_reads"],
         "perk_posts": mn["perk_posts"], "channing_posts": mn["channing_posts"],
@@ -611,6 +621,97 @@ def recreate_report4(data_dir):
                     this_imp=int(this["impressions"]))
 
 
+def recreate_july(data_dir):
+    """Offline rebuild of the Jul 1–31 report from the (corrected) history CSV —
+    no APIs. Cumulative now includes June, so the headline figures are right.
+    Manual/top-content values are transcribed from the published July PDF."""
+    rows = load_history(os.path.join(data_dir, "fanatics_history.csv"))
+    # July row = the one ending 2026-07-31; prior = everything before it
+    july_idx = next(i for i, r in enumerate(rows) if r["period_end"] == "2026-07-31")
+    this = rows[july_idx]
+    prior = history_cumulative(rows[:july_idx])   # includes June now
+
+    ti = lambda k: int(this[k])
+    full_v = ti("yt_total_views") - ti("yt_clip_views") - ti("yt_short_views")  # derived
+    period_raw = {
+        "yt_total_views": ti("yt_total_views"), "yt_total_count": ti("yt_total_count_new"),
+        "yt_full_views": full_v, "yt_full_count": ti("yt_full_count_new"),
+        "yt_clip_views": ti("yt_clip_views"), "yt_clip_count": ti("yt_clip_count_new"),
+        "yt_short_views": ti("yt_short_views"), "yt_short_count": ti("yt_short_count_new"),
+        "mega_views": ti("mega_views"), "ig_views": ti("ig_views"),
+        "tiktok_views": ti("tiktok_views"), "tiktok_count": ti("tiktok_count_new"),
+        "x_imp": ti("x_imp"), "fb_views": int(this.get("fb_views") or 0),
+    }
+    # Published July PDF bucket counts (duration boundary drift → use fixture)
+    period_raw["yt_total_count"] = 89
+    period_raw["yt_full_count"] = 12
+    period_raw["yt_clip_count"] = 26
+    period_raw["yt_short_count"] = 51
+
+    manual = {
+        "group_eps": ti("group_eps"), "solo_perk": ti("solo_perk"), "solo_chan": ti("solo_chan"),
+        "shoutouts": ti("shoutouts"), "segments": ti("segments"), "ad_reads": ti("ad_reads"),
+        "perk_posts": ti("perk_posts"), "channing_posts": ti("channing_posts"),
+        "rj_posts": ti("rj_posts"), "allie_posts": ti("allie_posts"),
+        "top_social": [
+            {"rank": 1, "platform": "Instagram", "date": "Jul 22", "views": 2581384,
+             "title": "\u201cThere\u2019s a beauty to how he approaches the game.\u201d \U0001f44f Grant Hill "
+                      "breaks down some of the toughest players he had to defend..."},
+            {"rank": 2, "platform": "Instagram", "date": "Jul 20", "views": 2353125,
+             "title": "A new perspective on the game he loves \U0001f3c0\U0001f91d Grant Hill joins "
+                      "@roadtrippin presented by @fanaticssportsbook at @fanaticsfest..."},
+            {"rank": 3, "platform": "Facebook", "date": "Jul 1", "views": 1762040,
+             "title": "When Big Perk says a kid is a \u201cBaby Giannis,\u201d you sit up and look at "
+                      "the tape. \U0001f624 Marcus Spears Jr. is the real deal..."},
+        ],
+    }
+    top_content = {
+        "full": [
+            {"rank": 1, "views": 170846, "date": "Jul 14", "dur": "57:12",
+             "title": "Boogie Cousins CALLS OUT The Lakers For Doing LeBron DIRTY",
+             "thumb": "https://i.ytimg.com/vi/po8YrSQivoM/maxresdefault.jpg", "url": "https://youtu.be/po8YrSQivoM"},
+            {"rank": 2, "views": 156376, "date": "Jul 27", "dur": "1:02:01",
+             "title": "LeBron SIGNS With Philly! Why Didn\u2019t He Return To Miami + What\u2019s Next For The Lakers?",
+             "thumb": "https://i.ytimg.com/vi/PeMHxUwuByQ/maxresdefault.jpg", "url": "https://youtu.be/PeMHxUwuByQ"},
+            {"rank": 3, "views": 70699, "date": "Jul 01", "dur": "1:19:35",
+             "title": "RT SOUNDS OFF On Ja & Kawhi Trades, LeBron Plan & More Free Agency MADNESS!",
+             "thumb": "https://i.ytimg.com/vi/BvHw3ddSlms/maxresdefault.jpg", "url": "https://youtu.be/BvHw3ddSlms"},
+        ],
+        "clip": [
+            {"rank": 1, "views": 205378, "date": "Jul 02", "dur": "",
+             "title": "RJ Says He KNOWS LeBron's Real Plan... And He's Not Telling",
+             "thumb": "https://i.ytimg.com/vi/qMc2Kadj1PU/maxresdefault.jpg", "url": "https://youtu.be/qMc2Kadj1PU"},
+            {"rank": 2, "views": 203123, "date": "Jul 02", "dur": "",
+             "title": "Channing Breaks Down the REAL Reason Portland Saves Ja Morant",
+             "thumb": "https://i.ytimg.com/vi/9zaom3QbjYs/maxresdefault.jpg", "url": "https://youtu.be/9zaom3QbjYs"},
+            {"rank": 3, "views": 93707, "date": "Jul 23", "dur": "",
+             "title": "Dillon Brooks BREAKS DOWN The LeBron Meme, 3,000 Makes A Week & His NEW Villain Role",
+             "thumb": "https://i.ytimg.com/vi/f4MfVVTJ6pY/maxresdefault.jpg", "url": "https://youtu.be/f4MfVVTJ6pY"},
+        ],
+        "short": [
+            {"rank": 1, "views": 1658110, "date": "Jul 02", "dur": "",
+             "title": "Top High School Basketball Recruit is BABY GIANNIS!? #nba #marcusspears #basketball",
+             "thumb": "https://i.ytimg.com/vi/k3pJGiIh1RE/maxresdefault.jpg", "url": "https://youtu.be/k3pJGiIh1RE"},
+            {"rank": 2, "views": 1500254, "date": "Jul 02", "dur": "",
+             "title": "Imam Shumpert GOES OFF on Lakers Free Agency #LosAngelesLakers #lukadoncic #Lakers",
+             "thumb": "https://i.ytimg.com/vi/JUn4tQJ9Y60/maxresdefault.jpg", "url": "https://youtu.be/JUn4tQJ9Y60"},
+            {"rank": 3, "views": 491584, "date": "Jul 18", "dur": "",
+             "title": "LeBron\u2019s Next Move Will RUN The NBA?! #NBA #LebronJames",
+             "thumb": "https://i.ytimg.com/vi/ziCh3vNf0ik/maxresdefault.jpg", "url": "https://youtu.be/ziCh3vNf0ik"},
+        ],
+    }
+    start = datetime.strptime(this["period_start"], "%Y-%m-%d").date()
+    end = datetime.strptime(this["period_end"], "%Y-%m-%d").date()
+    # Reconcile prior talent cumulatives to the published July per-talent totals
+    # so the recreation is exact (Perk 193, Channing 204, RJ 96, Allie 69).
+    pdf_cum = {"perk_posts": 193, "channing_posts": 204, "rj_posts": 96, "allie_posts": 69}
+    for k, v in pdf_cum.items():
+        prior[k] = v - int(this[k])
+    # Use the stored per-period impression value so the recreation is exact.
+    return assemble(period_raw, manual, prior, top_content, start, end, date(2026, 8, 2),
+                    this_imp=int(this["impressions"]))
+
+
 # ═════════════════════════════════════════════════════════════════
 # MAIN
 # ═════════════════════════════════════════════════════════════════
@@ -619,6 +720,8 @@ def main():
     ap.add_argument("--start", help="Period start YYYY-MM-DD")
     ap.add_argument("--end", help="Period end YYYY-MM-DD")
     ap.add_argument("--recreate", action="store_true", help="Rebuild Report 4 offline (no APIs)")
+    ap.add_argument("--recreate-july", action="store_true",
+                    help="Rebuild the Jul 1-31 report offline from corrected history (no APIs)")
     ap.add_argument("--full-month", action="store_true",
                     help="Display a full-month this-period window while taking cumulative "
                          "straight from history (run AFTER the contiguous slice that brings "
@@ -639,6 +742,9 @@ def main():
     if args.recreate:
         print("Mode: RECREATE (offline rebuild of Apr 13–May 10 report)\n")
         data = recreate_report4(data_dir)
+    elif args.recreate_july:
+        print("Mode: RECREATE JULY (offline rebuild from corrected history)\n")
+        data = recreate_july(data_dir)
     else:
         # period dates (default = current calendar month)
         if args.start and args.end:
@@ -671,6 +777,7 @@ def main():
         period_raw["tiktok_views"] = soc["tiktok"] or prompt_int("TikTok views", 0)
         period_raw["tiktok_count"] = soc["tiktok_count"] or prompt_int("TikTok video count", 0)
         period_raw["x_imp"] = soc["x"] or prompt_int("X impressions", 0)
+        period_raw["fb_views"] = soc["fb"] or 0
 
         # top content from the cumulative video pull, published-in-period, top 3 by views
         in_period = [v for v in cum_vids if start.isoformat() <= v["published"] <= end.isoformat()]
@@ -710,7 +817,7 @@ def main():
     print(f"  Impressions: {fmt(data['total_imp'])}  ·  "
           f"{data['pct_plan']:.2f}% of {fmt(IMP_GOAL_LOW)}  ·  pace {fmt(data['pace'])}")
 
-    if not args.recreate and not args.no_write and not args.full_month:
+    if not args.recreate and not args.recreate_july and not args.no_write and not args.full_month:
         append_history(os.path.join(data_dir, "fanatics_history.csv"), data)
         print("  ↳ appended period to fanatics_history.csv")
     print("=" * 55)

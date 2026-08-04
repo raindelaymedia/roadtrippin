@@ -106,6 +106,9 @@ def render_html(d):
         <tr><td class="pl-name"><div class="pl-title" style="color:{GOLD}">TIKTOK</div><div class="pl-sub">Per-video · {_fmt(p['tiktok']['vids_tp'])} videos this period · {_fmt(p['tiktok']['vids_total'])} total</div></td>
             <td class="pl-metric">Views</td>
             <td class="pl-num">{_fmt(p['tiktok']['tp'])}</td><td class="pl-num">{_fmt(p['tiktok']['cum'])}</td></tr>
+        <tr><td class="pl-name"><div class="pl-title" style="color:{GOLD}">FACEBOOK</div><div class="pl-sub">@RoadTrippin page · Reels &amp; video</div></td>
+            <td class="pl-metric">Views</td>
+            <td class="pl-num">{_fmt(p['fb']['tp'])}</td><td class="pl-num">{_fmt(p['fb']['cum'])}</td></tr>
         <tr><td class="pl-name"><div class="pl-title">X (TWITTER)</div><div class="pl-sub">Show account · @roadtrippin</div></td>
             <td class="pl-metric">Impressions</td>
             <td class="pl-num">{_fmt(p['x']['tp'])}</td><td class="pl-num">{_fmt(p['x']['cum'])}</td></tr>'''
