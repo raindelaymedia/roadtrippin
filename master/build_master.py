@@ -33,6 +33,18 @@ SHOWS = [
         "dashboard_url": "master/shows/road_trippin/road_trippin.html",
         "color":         "#0EA5E9",         # show accent color
     },
+    {
+        "key":           "schultz_report",
+        "name":          "The Schultz Report",
+        "tag":           "SR",
+        "launch":        "2026-08",        # placeholder — update when first revenue lands
+        "data_dir":      "shows/schultz_report/data",
+        "dashboard_url": "master/shows/schultz_report/schultz_report.html",
+        "color":         "#C9A84C",         # gold accent
+        # Per-show filename overrides (defaults: revenue.csv, tracker_data.json)
+        "revenue_file":  "revenue_sr.csv",
+        "tracker_file":  "tracker_data_sr.json",
+    },
     # Future shows: just add another dict here.
 ]
 
@@ -151,8 +163,10 @@ def compute_show_summary(show, today=None, script_dir=None):
     script_dir = script_dir or os.path.dirname(os.path.abspath(__file__))
     data_dir   = os.path.join(script_dir, show["data_dir"])
 
-    revenue = load_revenue(os.path.join(data_dir, "revenue.csv"))
-    tracker = load_tracker(os.path.join(data_dir, "tracker_data.json"))
+    rev_file = show.get("revenue_file", "revenue.csv")
+    trk_file = show.get("tracker_file", "tracker_data.json")
+    revenue = load_revenue(os.path.join(data_dir, rev_file))
+    tracker = load_tracker(os.path.join(data_dir, trk_file))
 
     # ── Revenue aggregates (CONTRACT-ERA ONLY) ──
     cur_month  = today.strftime("%Y-%m")
