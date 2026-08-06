@@ -1681,6 +1681,9 @@ body{{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);li
       <div class="logo-sub">Rain Delay Media</div>
     </div>
   </div>
+  <a href="../../../index.html" style="display:flex;align-items:center;gap:6px;padding:10px 18px;font-size:11px;color:var(--text3);text-decoration:none;border-bottom:1px solid var(--border);letter-spacing:.02em;font-weight:500;transition:color .12s" onmouseover="this.style.color='var(--brand)'" onmouseout="this.style.color='var(--text3)'">
+    ← RDM Network
+  </a>
   <div class="nav">
     <div class="nav-section">Analytics</div>
     <div class="nav-item active" onclick="showPage('overview',this)">
