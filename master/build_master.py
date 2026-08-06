@@ -32,18 +32,19 @@ SHOWS = [
         "data_dir":      "shows/road_trippin/data",
         "dashboard_url": "master/shows/road_trippin/road_trippin.html",
         "color":         "#0EA5E9",         # show accent color
+        "show_revenue":  True,              # only RT has a known revenue structure
     },
     {
         "key":           "schultz_report",
         "name":          "The Schultz Report",
         "tag":           "SR",
-        "launch":        "2026-08",        # placeholder — update when first revenue lands
+        "launch":        "2026-08",
         "data_dir":      "shows/schultz_report/data",
         "dashboard_url": "master/shows/schultz_report/schultz_report.html",
         "color":         "#C9A84C",         # gold accent
-        # Per-show filename overrides (defaults: revenue.csv, tracker_data.json)
         "revenue_file":  "revenue_sr.csv",
         "tracker_file":  "tracker_data_sr.json",
+        "show_revenue":  False,
     },
     {
         "key":           "pop_the_trunk",
@@ -55,6 +56,19 @@ SHOWS = [
         "color":         "#DD4B5C",         # coral accent
         "revenue_file":  "revenue_ptt.csv",
         "tracker_file":  "tracker_data_ptt.json",
+        "show_revenue":  False,
+    },
+    {
+        "key":           "inside_leverage",
+        "name":          "Inside Leverage",
+        "tag":           "IL",
+        "launch":        "2026-08",
+        "data_dir":      "shows/inside_leverage/data",
+        "dashboard_url": "master/shows/inside_leverage/inside_leverage.html",
+        "color":         "#3AA88C",         # teal accent
+        "revenue_file":  "revenue_il.csv",
+        "tracker_file":  "tracker_data_il.json",
+        "show_revenue":  False,
     },
     # Future shows: just add another dict here.
 ]
@@ -301,6 +315,8 @@ def compute_show_summary(show, today=None, script_dir=None):
         "last_pub_month":     last_pub,
         # quarter-vs-prior-quarter delta for the UI
         "by_month":           dict(by_month),
+        # controls whether master template renders revenue breakdown for this show
+        "show_revenue":       show.get("show_revenue", False),
     }
 
 

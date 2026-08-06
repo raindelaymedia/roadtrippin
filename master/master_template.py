@@ -260,6 +260,12 @@ def _render_split_panel(s):
 
 
 def _render_show_card(s):
+    show_rev = s.get("show_revenue", False)
+    rev_stats = ""
+    if show_rev:
+        rev_stats = f"""
+    <div><div class="lbl">MTD Gross</div><div class="v">{_fmt_money_short(s['mtd_gross'])}</div></div>
+    <div><div class="lbl">Lifetime</div><div class="v">{_fmt_money_short(s['cum_gross'])}</div></div>"""
     return f"""
 <a class="show-card" href="{s['dashboard_url']}" target="_blank" rel="noopener">
   <div class="show-card-head">
@@ -270,10 +276,8 @@ def _render_show_card(s):
     <div class="show-card-arrow">↗</div>
   </div>
   <div class="show-card-stats">
-    <div><div class="lbl">YT Subs</div><div class="v">{_fmt_num_short(s['subs'])}</div></div>
-    <div><div class="lbl">MTD Gross</div><div class="v">{_fmt_money_short(s['mtd_gross'])}</div></div>
+    <div><div class="lbl">YT Subs</div><div class="v">{_fmt_num_short(s['subs'])}</div></div>{rev_stats}
     <div><div class="lbl">Eps 30d</div><div class="v">{_fmt_num(s['eps_30d'])}</div></div>
-    <div><div class="lbl">Lifetime</div><div class="v">{_fmt_money_short(s['cum_gross'])}</div></div>
   </div>
   <div class="show-card-cta">Open full dashboard →</div>
 </a>"""
@@ -313,7 +317,7 @@ def build_master_html(rdm_summary, show_summaries, quarter_label,
 </div>
 """
 
-    split_panels = "\n".join(_render_split_panel(s) for s in show_summaries)
+    split_panels = "\n".join(_render_split_panel(s) for s in show_summaries if s.get("show_revenue", False))
     show_cards   = "\n".join(_render_show_card(s)   for s in show_summaries)
 
     return f"""<!doctype html>
