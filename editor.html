@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RT Revenue Editor — prototype</title>
+<style>
+  :root {
+    --bg:#0f1115; --surface:#171a21; --surface2:#1e222b; --border:#2a2f3a;
+    --ink:#f3f5f8; --text:#c8cdd6; --text2:#8a93a6; --mut:#5c6470;
+    --green:#1B9B54; --green-d:#137a41; --gold:#E0A32A; --red:#C0392B;
+    --blue:#2F6DDE; --edit:#2a2233; --edit-br:#7c4dff;
+  }
+  * { box-sizing:border-box; }
+  body {
+    margin:0; background:var(--bg); color:var(--text);
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    font-size:13px; line-height:1.45;
+  }
+  .wrap { max-width:1400px; margin:0 auto; padding:20px; }
+  header {
+    display:flex; align-items:center; gap:14px; margin-bottom:6px;
+  }
+  h1 { font-size:19px; font-weight:700; color:var(--ink); margin:0; }
+  .sub { color:var(--text2); font-size:12px; margin-bottom:18px; }
+  .toolbar {
+    display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+    padding:12px 14px; background:var(--surface); border:1px solid var(--border);
+    border-radius:10px; margin-bottom:14px;
+  }
+  .btn {
+    font:inherit; font-weight:600; font-size:12.5px; padding:8px 14px; border-radius:7px;
+    border:1px solid var(--border); background:var(--surface2); color:var(--text);
+    cursor:pointer; transition:all .15s;
+  }
+  .btn:hover { border-color:var(--mut); color:var(--ink); }
+  .btn-primary { background:var(--green); border-color:var(--green); color:#fff; }
+  .btn-primary:hover { background:var(--green-d); }
+  .btn-edit { background:var(--edit); border-color:var(--edit-br); color:#d9c9ff; }
+  .btn.on { background:var(--edit-br); border-color:var(--edit-br); color:#fff; }
+  .btn:disabled { opacity:.4; cursor:not-allowed; }
+  .spacer { flex:1; }
+  .status-chip { font-size:11.5px; color:var(--text2); display:flex; align-items:center; gap:6px; }
+  .dot { width:8px; height:8px; border-radius:50%; background:var(--mut); }
+  .dot.dirty { background:var(--gold); box-shadow:0 0 0 3px rgba(224,163,42,.2); }
+  .dot.saved { background:var(--green); box-shadow:0 0 0 3px rgba(27,155,84,.2); }
+  .dot.err { background:var(--red); box-shadow:0 0 0 3px rgba(192,57,43,.2); }
+
+  .grid-scroll { overflow:auto; border:1px solid var(--border); border-radius:10px; max-height:70vh; }
+  table { border-collapse:separate; border-spacing:0; width:100%; font-size:12.5px; }
+  th, td { padding:7px 10px; text-align:right; white-space:nowrap; border-bottom:1px solid var(--border); }
+  thead th {
+    position:sticky; top:0; z-index:3; background:var(--surface2); color:var(--text2);
+    font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:.05em;
+  }
+  th.src-col, td.src-col {
+    position:sticky; left:0; z-index:2; text-align:left; background:var(--surface);
+    color:var(--ink); font-weight:600; border-right:1px solid var(--border);
+  }
+  thead th.src-col { z-index:4; }
+  tbody tr:hover td { background:rgba(47,109,222,.05); }
+  tbody tr:hover td.src-col { background:var(--surface2); }
+  td.num { font-family:'JetBrains Mono','SF Mono',monospace; color:var(--text); }
+  td.tbd { color:var(--gold); font-style:italic; }
+  td.empty { color:var(--mut); }
+  tfoot td {
+    position:sticky; bottom:0; background:var(--surface2); font-weight:700; color:var(--ink);
+    font-family:'JetBrains Mono',monospace; border-top:2px solid var(--border);
+  }
+  tfoot td.src-col { text-transform:uppercase; font-size:10.5px; letter-spacing:.05em; }
+
+  /* edit mode */
+  body.editing td.cell { cursor:cell; }
+  body.editing td.cell:hover { outline:1px solid var(--edit-br); outline-offset:-1px; background:var(--edit)!important; }
+  td.cell.editing-cell { padding:0; }
+  td.cell input {
+    width:100%; height:100%; border:none; background:var(--edit); color:var(--ink);
+    font:inherit; font-family:'JetBrains Mono',monospace; text-align:right;
+    padding:7px 10px; outline:2px solid var(--edit-br); outline-offset:-2px;
+  }
+  td.changed { background:rgba(124,77,255,.13); position:relative; }
+  td.changed::after {
+    content:''; position:absolute; top:3px; right:3px; width:5px; height:5px;
+    border-radius:50%; background:var(--edit-br);
+  }
+
+  .hint { color:var(--mut); font-size:11px; margin-top:10px; }
+  .hint code { background:var(--surface2); padding:1px 5px; border-radius:4px; color:var(--text); }
+
+  /* modal */
+  .modal-bg {
+    display:none; position:fixed; inset:0; background:rgba(0,0,0,.6); z-index:50;
+    align-items:center; justify-content:center;
+  }
+  .modal-bg.show { display:flex; }
+  .modal {
+    background:var(--surface); border:1px solid var(--border); border-radius:12px;
+    padding:22px; width:440px; max-width:92vw;
+  }
+  .modal h2 { font-size:15px; margin:0 0 4px; color:var(--ink); }
+  .modal p { font-size:12px; color:var(--text2); margin:0 0 14px; }
+  .field { margin-bottom:12px; }
+  .field label { display:block; font-size:11px; font-weight:600; color:var(--text2);
+    text-transform:uppercase; letter-spacing:.05em; margin-bottom:5px; }
+  .field input {
+    width:100%; font:inherit; font-size:12.5px; padding:9px 11px; border-radius:7px;
+    border:1px solid var(--border); background:var(--bg); color:var(--ink);
+  }
+  .field input:focus { outline:none; border-color:var(--edit-br); }
+  .modal-actions { display:flex; gap:9px; justify-content:flex-end; margin-top:16px; }
+  .warn { font-size:11px; color:var(--gold); background:rgba(224,163,42,.08);
+    border:1px solid rgba(224,163,42,.25); border-radius:7px; padding:9px 11px; margin-top:6px; }
+  .commit-log { font-size:11px; color:var(--text2); margin-top:12px; max-height:120px; overflow:auto; }
+  .commit-log div { padding:3px 0; border-bottom:1px solid var(--border); }
+  a { color:var(--blue); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Revenue Editor</h1>
+    <span style="font-size:11px;color:var(--mut);border:1px solid var(--border);padding:2px 8px;border-radius:20px">PROTOTYPE</span>
+  </header>
+  <div class="sub">Road Trippin' · <code style="font-size:11px">master/shows/road_trippin/data/revenue.csv</code></div>
+
+  <div class="toolbar">
+    <button class="btn btn-edit" id="editToggle">✎ Edit mode</button>
+    <button class="btn" id="addMonthBtn" disabled>+ Add month</button>
+    <button class="btn" id="revertBtn" disabled>↺ Revert changes</button>
+    <div class="spacer"></div>
+    <div class="status-chip"><span class="dot" id="statusDot"></span><span id="statusText">Viewing</span></div>
+    <button class="btn" id="settingsBtn">⚙ GitHub</button>
+    <button class="btn btn-primary" id="saveBtn" disabled>Save to repo</button>
+  </div>
+
+  <div class="grid-scroll">
+    <table id="grid"></table>
+  </div>
+  <div class="hint" id="hint">Click <b>Edit mode</b> to make changes. In edit mode, click any cell to edit it.
+    Enter numbers, <code>TBD</code>, or <code>N/A</code>. Tab / Enter to move between cells.</div>
+</div>
+
+<!-- GitHub settings modal -->
+<div class="modal-bg" id="ghModal">
+  <div class="modal">
+    <h2>GitHub connection</h2>
+    <p>Needed to commit the CSV back to the repo. Use a <b>fine-grained personal access token</b>
+       scoped to <code>raindelaymedia/roadtrippin</code> with <b>Contents: Read and write</b>.</p>
+    <div class="field">
+      <label>Repository</label>
+      <input id="ghRepo" value="raindelaymedia/roadtrippin" spellcheck="false">
+    </div>
+    <div class="field">
+      <label>Branch <span style="color:var(--mut);text-transform:none">(blank = auto-detect default)</span></label>
+      <input id="ghBranch" placeholder="auto-detect…" spellcheck="false">
+    </div>
+    <div class="field">
+      <label>File path</label>
+      <input id="ghPath" value="master/shows/road_trippin/data/revenue.csv" spellcheck="false">
+    </div>
+    <div class="field">
+      <label>Access token</label>
+      <input id="ghToken" type="password" placeholder="github_pat_…" spellcheck="false">
+    </div>
+    <div class="warn">⚠ Token is stored in this browser's localStorage for convenience. Only use on a
+      machine you trust. Use a fine-grained token limited to this one repo so a leak is contained.</div>
+    <div class="modal-actions">
+      <button class="btn" id="ghCancel">Cancel</button>
+      <button class="btn btn-primary" id="ghSaveConn">Save connection</button>
+    </div>
+    <div class="commit-log" id="commitLog"></div>
+  </div>
+</div>
+
+<script>
+// ─── Data (injected) ───
+const DATA = {"periods": ["2026-07", "2026-06", "2026-05", "2026-04", "2026-03", "2026-02", "2026-01", "2025-12", "2025-11", "2025-10", "2025-09", "2025-08", "2025-07", "2025-06", "2025-05", "2025-04", "2025-03", "2025-02", "2025-01", "2024-12", "2024-11", "2024-10", "2024-09", "2024-08", "2024-07", "2024-06"], "sources": ["ACAST", "BACKYARD_PODCAST", "BACKYARD_PROGRAMMATIC", "CULTURE_GENESIS", "FANATICS", "MERCH", "SOCIAL", "THREADS", "UPTIDES", "YT_LIVES", "YT_SHORTS", "YT_VIDEOS"], "cells": {"ACAST|2026-07": "TBD", "ACAST|2026-06": "TBD", "ACAST|2026-05": "TBD", "ACAST|2026-04": "21.82", "ACAST|2026-03": "1387.11", "ACAST|2026-02": "8361.19", "ACAST|2026-01": "7048.49", "ACAST|2025-12": "1441.56", "ACAST|2025-11": "2218.64", "ACAST|2025-10": "837.92", "ACAST|2025-09": "918.70", "ACAST|2025-08": "89.60", "ACAST|2025-07": "N/A", "ACAST|2025-06": "N/A", "ACAST|2025-05": "N/A", "ACAST|2025-04": "N/A", "ACAST|2025-03": "N/A", "ACAST|2025-02": "N/A", "ACAST|2025-01": "N/A", "ACAST|2024-12": "N/A", "ACAST|2024-11": "N/A", "ACAST|2024-10": "N/A", "ACAST|2024-09": "N/A", "ACAST|2024-08": "N/A", "ACAST|2024-07": "N/A", "ACAST|2024-06": "", "BACKYARD_PODCAST|2026-07": "9595.79", "BACKYARD_PODCAST|2026-06": "80.01", "BACKYARD_PODCAST|2026-05": "3185.00", "BACKYARD_PODCAST|2026-04": "1050.00", "BACKYARD_PODCAST|2026-03": "", "BACKYARD_PODCAST|2026-02": "", "BACKYARD_PODCAST|2026-01": "", "BACKYARD_PODCAST|2025-12": "", "BACKYARD_PODCAST|2025-11": "", "BACKYARD_PODCAST|2025-10": "", "BACKYARD_PODCAST|2025-09": "", "BACKYARD_PODCAST|2025-08": "", "BACKYARD_PODCAST|2025-07": "", "BACKYARD_PODCAST|2025-06": "", "BACKYARD_PODCAST|2025-05": "", "BACKYARD_PODCAST|2025-04": "", "BACKYARD_PODCAST|2025-03": "", "BACKYARD_PODCAST|2025-02": "", "BACKYARD_PODCAST|2025-01": "", "BACKYARD_PODCAST|2024-12": "", "BACKYARD_PODCAST|2024-11": "", "BACKYARD_PODCAST|2024-10": "", "BACKYARD_PODCAST|2024-09": "", "BACKYARD_PODCAST|2024-08": "", "BACKYARD_PODCAST|2024-07": "", "BACKYARD_PODCAST|2024-06": "", "BACKYARD_PROGRAMMATIC|2026-07": "1158.67", "BACKYARD_PROGRAMMATIC|2026-06": "1318.57", "BACKYARD_PROGRAMMATIC|2026-05": "1338.46", "BACKYARD_PROGRAMMATIC|2026-04": "951.39", "BACKYARD_PROGRAMMATIC|2026-03": "", "BACKYARD_PROGRAMMATIC|2026-02": "", "BACKYARD_PROGRAMMATIC|2026-01": "", "BACKYARD_PROGRAMMATIC|2025-12": "", "BACKYARD_PROGRAMMATIC|2025-11": "", "BACKYARD_PROGRAMMATIC|2025-10": "", "BACKYARD_PROGRAMMATIC|2025-09": "", "BACKYARD_PROGRAMMATIC|2025-08": "", "BACKYARD_PROGRAMMATIC|2025-07": "", "BACKYARD_PROGRAMMATIC|2025-06": "", "BACKYARD_PROGRAMMATIC|2025-05": "", "BACKYARD_PROGRAMMATIC|2025-04": "", "BACKYARD_PROGRAMMATIC|2025-03": "", "BACKYARD_PROGRAMMATIC|2025-02": "", "BACKYARD_PROGRAMMATIC|2025-01": "", "BACKYARD_PROGRAMMATIC|2024-12": "", "BACKYARD_PROGRAMMATIC|2024-11": "", "BACKYARD_PROGRAMMATIC|2024-10": "", "BACKYARD_PROGRAMMATIC|2024-09": "", "BACKYARD_PROGRAMMATIC|2024-08": "", "BACKYARD_PROGRAMMATIC|2024-07": "", "BACKYARD_PROGRAMMATIC|2024-06": "", "CULTURE_GENESIS|2026-07": "TBD", "CULTURE_GENESIS|2026-06": "976.36", "CULTURE_GENESIS|2026-05": "407.53", "CULTURE_GENESIS|2026-04": "272.52", "CULTURE_GENESIS|2026-03": "1515.64", "CULTURE_GENESIS|2026-02": "320.39", "CULTURE_GENESIS|2026-01": "676.74", "CULTURE_GENESIS|2025-12": "2887.07", "CULTURE_GENESIS|2025-11": "3155.81", "CULTURE_GENESIS|2025-10": "1520.75", "CULTURE_GENESIS|2025-09": "365.06", "CULTURE_GENESIS|2025-08": "714.93", "CULTURE_GENESIS|2025-07": "N/A", "CULTURE_GENESIS|2025-06": "N/A", "CULTURE_GENESIS|2025-05": "N/A", "CULTURE_GENESIS|2025-04": "N/A", "CULTURE_GENESIS|2025-03": "N/A", "CULTURE_GENESIS|2025-02": "N/A", "CULTURE_GENESIS|2025-01": "N/A", "CULTURE_GENESIS|2024-12": "N/A", "CULTURE_GENESIS|2024-11": "N/A", "CULTURE_GENESIS|2024-10": "N/A", "CULTURE_GENESIS|2024-09": "N/A", "CULTURE_GENESIS|2024-08": "N/A", "CULTURE_GENESIS|2024-07": "N/A", "CULTURE_GENESIS|2024-06": "", "FANATICS|2026-07": "157142.86", "FANATICS|2026-06": "157142.86", "FANATICS|2026-05": "157142.86", "FANATICS|2026-04": "314285.72", "FANATICS|2026-03": "0.00", "FANATICS|2026-02": "0.00", "FANATICS|2026-01": "0.00", "FANATICS|2025-12": "N/A", "FANATICS|2025-11": "N/A", "FANATICS|2025-10": "N/A", "FANATICS|2025-09": "N/A", "FANATICS|2025-08": "N/A", "FANATICS|2025-07": "N/A", "FANATICS|2025-06": "N/A", "FANATICS|2025-05": "N/A", "FANATICS|2025-04": "N/A", "FANATICS|2025-03": "N/A", "FANATICS|2025-02": "N/A", "FANATICS|2025-01": "", "FANATICS|2024-12": "", "FANATICS|2024-11": "", "FANATICS|2024-10": "", "FANATICS|2024-09": "", "FANATICS|2024-08": "", "FANATICS|2024-07": "", "FANATICS|2024-06": "", "MERCH|2026-07": "N/A", "MERCH|2026-06": "N/A", "MERCH|2026-05": "N/A", "MERCH|2026-04": "N/A", "MERCH|2026-03": "N/A", "MERCH|2026-02": "N/A", "MERCH|2026-01": "N/A", "MERCH|2025-12": "N/A", "MERCH|2025-11": "N/A", "MERCH|2025-10": "N/A", "MERCH|2025-09": "N/A", "MERCH|2025-08": "N/A", "MERCH|2025-07": "N/A", "MERCH|2025-06": "N/A", "MERCH|2025-05": "N/A", "MERCH|2025-04": "N/A", "MERCH|2025-03": "N/A", "MERCH|2025-02": "N/A", "MERCH|2025-01": "N/A", "MERCH|2024-12": "N/A", "MERCH|2024-11": "N/A", "MERCH|2024-10": "", "MERCH|2024-09": "", "MERCH|2024-08": "", "MERCH|2024-07": "", "MERCH|2024-06": "", "SOCIAL|2026-07": "N/A", "SOCIAL|2026-06": "N/A", "SOCIAL|2026-05": "N/A", "SOCIAL|2026-04": "N/A", "SOCIAL|2026-03": "N/A", "SOCIAL|2026-02": "N/A", "SOCIAL|2026-01": "N/A", "SOCIAL|2025-12": "N/A", "SOCIAL|2025-11": "N/A", "SOCIAL|2025-10": "N/A", "SOCIAL|2025-09": "N/A", "SOCIAL|2025-08": "N/A", "SOCIAL|2025-07": "N/A", "SOCIAL|2025-06": "N/A", "SOCIAL|2025-05": "N/A", "SOCIAL|2025-04": "N/A", "SOCIAL|2025-03": "N/A", "SOCIAL|2025-02": "N/A", "SOCIAL|2025-01": "N/A", "SOCIAL|2024-12": "N/A", "SOCIAL|2024-11": "N/A", "SOCIAL|2024-10": "N/A", "SOCIAL|2024-09": "N/A", "SOCIAL|2024-08": "N/A", "SOCIAL|2024-07": "N/A", "SOCIAL|2024-06": "", "THREADS|2026-07": "", "THREADS|2026-06": "", "THREADS|2026-05": "", "THREADS|2026-04": "", "THREADS|2026-03": "", "THREADS|2026-02": "45000.00", "THREADS|2026-01": "", "THREADS|2025-12": "", "THREADS|2025-11": "", "THREADS|2025-10": "", "THREADS|2025-09": "", "THREADS|2025-08": "", "THREADS|2025-07": "", "THREADS|2025-06": "", "THREADS|2025-05": "", "THREADS|2025-04": "", "THREADS|2025-03": "", "THREADS|2025-02": "", "THREADS|2025-01": "", "THREADS|2024-12": "", "THREADS|2024-11": "", "THREADS|2024-10": "", "THREADS|2024-09": "", "THREADS|2024-08": "", "THREADS|2024-07": "", "THREADS|2024-06": "", "UPTIDES|2026-07": "TBD", "UPTIDES|2026-06": "TBD", "UPTIDES|2026-05": "TBD", "UPTIDES|2026-04": "0.14", "UPTIDES|2026-03": "0.17", "UPTIDES|2026-02": "0.28", "UPTIDES|2026-01": "N/A", "UPTIDES|2025-12": "N/A", "UPTIDES|2025-11": "N/A", "UPTIDES|2025-10": "N/A", "UPTIDES|2025-09": "N/A", "UPTIDES|2025-08": "N/A", "UPTIDES|2025-07": "N/A", "UPTIDES|2025-06": "N/A", "UPTIDES|2025-05": "N/A", "UPTIDES|2025-04": "N/A", "UPTIDES|2025-03": "N/A", "UPTIDES|2025-02": "N/A", "UPTIDES|2025-01": "", "UPTIDES|2024-12": "", "UPTIDES|2024-11": "", "UPTIDES|2024-10": "", "UPTIDES|2024-09": "", "UPTIDES|2024-08": "", "UPTIDES|2024-07": "", "UPTIDES|2024-06": "", "YT_LIVES|2026-07": "1025.57", "YT_LIVES|2026-06": "2500.07", "YT_LIVES|2026-05": "2199.12", "YT_LIVES|2026-04": "2023.31", "YT_LIVES|2026-03": "2367.37", "YT_LIVES|2026-02": "3774.16", "YT_LIVES|2026-01": "878.91", "YT_LIVES|2025-12": "1.28", "YT_LIVES|2025-11": "1.29", "YT_LIVES|2025-10": "0.82", "YT_LIVES|2025-09": "1.42", "YT_LIVES|2025-08": "1.40", "YT_LIVES|2025-07": "2.18", "YT_LIVES|2025-06": "180.18", "YT_LIVES|2025-05": "31.21", "YT_LIVES|2025-04": "42.47", "YT_LIVES|2025-03": "8.46", "YT_LIVES|2025-02": "186.16", "YT_LIVES|2025-01": "3.47", "YT_LIVES|2024-12": "14.26", "YT_LIVES|2024-11": "6.38", "YT_LIVES|2024-10": "134.50", "YT_LIVES|2024-09": "8.16", "YT_LIVES|2024-08": "1702.04", "YT_LIVES|2024-07": "1210.78", "YT_LIVES|2024-06": "3030.49", "YT_SHORTS|2026-07": "1249.29", "YT_SHORTS|2026-06": "841.22", "YT_SHORTS|2026-05": "437.29", "YT_SHORTS|2026-04": "545.95", "YT_SHORTS|2026-03": "527.17", "YT_SHORTS|2026-02": "284.47", "YT_SHORTS|2026-01": "182.65", "YT_SHORTS|2025-12": "277.36", "YT_SHORTS|2025-11": "234.24", "YT_SHORTS|2025-10": "108.64", "YT_SHORTS|2025-09": "81.51", "YT_SHORTS|2025-08": "236.08", "YT_SHORTS|2025-07": "243.56", "YT_SHORTS|2025-06": "75.32", "YT_SHORTS|2025-05": "18.70", "YT_SHORTS|2025-04": "12.98", "YT_SHORTS|2025-03": "20.86", "YT_SHORTS|2025-02": "10.68", "YT_SHORTS|2025-01": "6.18", "YT_SHORTS|2024-12": "5.42", "YT_SHORTS|2024-11": "3.96", "YT_SHORTS|2024-10": "2.18", "YT_SHORTS|2024-09": "2.09", "YT_SHORTS|2024-08": "5.11", "YT_SHORTS|2024-07": "2.73", "YT_SHORTS|2024-06": "9.28", "YT_VIDEOS|2026-07": "6868.18", "YT_VIDEOS|2026-06": "6903.58", "YT_VIDEOS|2026-05": "4739.60", "YT_VIDEOS|2026-04": "4413.73", "YT_VIDEOS|2026-03": "5078.70", "YT_VIDEOS|2026-02": "3528.49", "YT_VIDEOS|2026-01": "4193.08", "YT_VIDEOS|2025-12": "14418.95", "YT_VIDEOS|2025-11": "7986.27", "YT_VIDEOS|2025-10": "4882.45", "YT_VIDEOS|2025-09": "2508.56", "YT_VIDEOS|2025-08": "5206.70", "YT_VIDEOS|2025-07": "7649.82", "YT_VIDEOS|2025-06": "3012.39", "YT_VIDEOS|2025-05": "3811.41", "YT_VIDEOS|2025-04": "784.31", "YT_VIDEOS|2025-03": "2319.51", "YT_VIDEOS|2025-02": "155.61", "YT_VIDEOS|2025-01": "105.36", "YT_VIDEOS|2024-12": "98.28", "YT_VIDEOS|2024-11": "228.90", "YT_VIDEOS|2024-10": "200.99", "YT_VIDEOS|2024-09": "310.61", "YT_VIDEOS|2024-08": "2135.04", "YT_VIDEOS|2024-07": "1745.68", "YT_VIDEOS|2024-06": "2662.66"}};
+const SOURCES = DATA.sources;
+let PERIODS = DATA.periods.slice();          // newest-first
+let CELLS = Object.assign({}, DATA.cells);   // "SOURCE|PERIOD" -> string value
+let ORIGINAL = Object.assign({}, DATA.cells);
+let editing = false;
+const changed = new Set();
+
+const $ = id => document.getElementById(id);
+const key = (s,p) => s+'|'+p;
+const fmtMoney = v => {
+  if (v==='' || v==null) return '';
+  if (v==='TBD'||v==='N/A') return v;
+  const n = parseFloat(v);
+  if (isNaN(n)) return v;
+  return n.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+};
+const cellClass = v => {
+  if (v==='') return 'empty';
+  if (v==='TBD'||v==='N/A') return 'tbd';
+  return 'num';
+};
+
+// ─── Render grid ───
+function render() {
+  const t = $('grid');
+  let h = '<thead><tr><th class="src-col">Source</th>';
+  for (const p of PERIODS) h += `<th>${p}</th>`;
+  h += '</tr></thead><tbody>';
+  for (const s of SOURCES) {
+    h += `<tr><td class="src-col">${s}</td>`;
+    for (const p of PERIODS) {
+      const v = CELLS[key(s,p)] ?? '';
+      const ch = changed.has(key(s,p)) ? ' changed' : '';
+      h += `<td class="cell ${cellClass(v)}${ch}" data-s="${s}" data-p="${p}">${fmtMoney(v)}</td>`;
+    }
+    h += '</tr>';
+  }
+  h += '</tbody><tfoot><tr><td class="src-col">TOTAL</td>';
+  for (const p of PERIODS) {
+    let sum=0;
+    for (const s of SOURCES) { const n=parseFloat(CELLS[key(s,p)]); if(!isNaN(n)) sum+=n; }
+    h += `<td>${sum.toLocaleString('en-US',{maximumFractionDigits:0})}</td>`;
+  }
+  h += '</tr></tfoot>';
+  t.innerHTML = h;
+  if (editing) attachCellHandlers();
+}
+
+// ─── Edit interactions ───
+function attachCellHandlers() {
+  document.querySelectorAll('td.cell').forEach(td => {
+    td.onclick = () => startEdit(td);
+  });
+}
+function startEdit(td) {
+  if (!editing || td.querySelector('input')) return;
+  const s=td.dataset.s, p=td.dataset.p;
+  const raw = CELLS[key(s,p)] ?? '';
+  td.classList.add('editing-cell');
+  td.innerHTML = `<input value="${raw}">`;
+  const inp = td.querySelector('input');
+  inp.focus(); inp.select();
+  const commit = (moveNext) => {
+    const val = inp.value.trim();
+    setCell(s,p,val);
+    td.classList.remove('editing-cell');
+    renderCell(td,s,p);
+    if (moveNext) focusNext(s,p);
+  };
+  inp.onblur = () => commit(false);
+  inp.onkeydown = e => {
+    if (e.key==='Enter') { e.preventDefault(); commit(false); }
+    else if (e.key==='Tab') { e.preventDefault(); commit(true); }
+    else if (e.key==='Escape') { td.classList.remove('editing-cell'); renderCell(td,s,p); }
+  };
+}
+function renderCell(td,s,p) {
+  const v = CELLS[key(s,p)] ?? '';
+  td.className = 'cell '+cellClass(v)+(changed.has(key(s,p))?' changed':'');
+  td.textContent = fmtMoney(v);
+}
+function focusNext(s,p) {
+  const si = SOURCES.indexOf(s);
+  if (si < SOURCES.length-1) {
+    const nt = document.querySelector(`td[data-s="${SOURCES[si+1]}"][data-p="${p}"]`);
+    if (nt) startEdit(nt);
+  }
+}
+function setCell(s,p,val) {
+  const k=key(s,p);
+  // normalize: allow "1,234.5" -> "1234.5"; uppercase tbd/na
+  let norm = val.replace(/,/g,'').trim();
+  if (/^tbd$/i.test(norm)) norm='TBD';
+  else if (/^n\/?a$/i.test(norm)) norm='N/A';
+  CELLS[k]=norm;
+  if ((ORIGINAL[k]??'') !== norm) changed.add(k); else changed.delete(k);
+  updateStatus();
+  // refresh footer totals
+  refreshFooter(p);
+}
+function refreshFooter(p) {
+  const idx = PERIODS.indexOf(p);
+  const foot = $('grid').querySelector('tfoot tr');
+  let sum=0;
+  for (const s of SOURCES){ const n=parseFloat(CELLS[key(s,p)]); if(!isNaN(n)) sum+=n; }
+  foot.children[idx+1].textContent = sum.toLocaleString('en-US',{maximumFractionDigits:0});
+}
+
+// ─── Status ───
+function updateStatus() {
+  const dot=$('statusDot'), txt=$('statusText');
+  const n = changed.size;
+  $('saveBtn').disabled = n===0;
+  $('revertBtn').disabled = n===0;
+  dot.className = 'dot' + (n>0?' dirty':(editing?'':' '));
+  txt.textContent = n>0 ? `${n} unsaved change${n>1?'s':''}` : (editing?'Editing':'Viewing');
+}
+
+// ─── Toggle edit mode ───
+$('editToggle').onclick = () => {
+  editing = !editing;
+  document.body.classList.toggle('editing', editing);
+  $('editToggle').classList.toggle('on', editing);
+  $('editToggle').textContent = editing ? '✓ Editing' : '✎ Edit mode';
+  $('addMonthBtn').disabled = !editing;
+  updateStatus();
+  render();
+};
+
+// ─── Add month ───
+$('addMonthBtn').onclick = () => {
+  const latest = PERIODS[0];
+  let [y,m]=latest.split('-').map(Number);
+  m++; if(m>12){m=1;y++;}
+  const np = `${y}-${String(m).padStart(2,'0')}`;
+  if (PERIODS.includes(np)) return;
+  PERIODS.unshift(np);
+  for (const s of SOURCES) CELLS[key(s,np)]='';
+  render();
+};
+
+// ─── Revert ───
+$('revertBtn').onclick = () => {
+  if (!confirm('Discard all unsaved changes?')) return;
+  CELLS = Object.assign({}, ORIGINAL);
+  changed.clear();
+  updateStatus(); render();
+};
+
+// ─── CSV serialization (matches repo format: period,source,amount, period-desc) ───
+function toCSV() {
+  const rows=[['period','source','amount']];
+  const periodsAsc = PERIODS.slice().sort().reverse(); // newest first, matches file
+  for (const p of periodsAsc) {
+    for (const s of SOURCES) {
+      const v = CELLS[key(s,p)] ?? '';
+      if (v==='') continue;                 // skip empty cells (no row)
+      rows.push([p,s,v]);
+    }
+  }
+  return rows.map(r=>r.join(',')).join('\r\n')+'\r\n';
+}
+
+// ─── GitHub settings ───
+const LS='rt_rev_editor_gh';
+function loadConn(){ try { return JSON.parse(localStorage.getItem(LS))||{}; } catch { return {}; } }
+function saveConn(c){ localStorage.setItem(LS, JSON.stringify(c)); }
+$('settingsBtn').onclick = () => {
+  const c=loadConn();
+  $('ghRepo').value = c.repo||'raindelaymedia/roadtrippin';
+  $('ghBranch').value = c.branch||'';
+  $('ghPath').value = c.path||'master/shows/road_trippin/data/revenue.csv';
+  $('ghToken').value = c.token||'';
+  $('ghModal').classList.add('show');
+};
+$('ghCancel').onclick = () => $('ghModal').classList.remove('show');
+$('ghSaveConn').onclick = () => {
+  saveConn({ repo:$('ghRepo').value.trim(), branch:$('ghBranch').value.trim(),
+             path:$('ghPath').value.trim(), token:$('ghToken').value.trim() });
+  $('ghModal').classList.remove('show');
+  logCommit('Connection saved.');
+};
+function logCommit(msg){ const l=$('commitLog'); const d=document.createElement('div');
+  d.textContent = new Date().toLocaleTimeString()+' — '+msg; l.prepend(d); }
+
+// ─── Save to repo via GitHub API ───
+async function gh(url, opts, token) {
+  const r = await fetch('https://api.github.com'+url, {
+    ...opts,
+    headers: { 'Authorization':'Bearer '+token, 'Accept':'application/vnd.github+json',
+               'X-GitHub-Api-Version':'2022-11-28', ...(opts.headers||{}) }
+  });
+  if (!r.ok) { const e=await r.json().catch(()=>({})); throw new Error(`${r.status} ${e.message||r.statusText}`); }
+  return r.json();
+}
+async function detectDefaultBranch(repo, token) {
+  const info = await gh(`/repos/${repo}`, {}, token);
+  return info.default_branch || 'main';
+}
+$('saveBtn').onclick = async () => {
+  const c = loadConn();
+  if (!c.token || !c.repo) { alert('Set up your GitHub connection first (⚙ GitHub).'); $('settingsBtn').click(); return; }
+  const dot=$('statusDot'), txt=$('statusText');
+  try {
+    txt.textContent='Saving…'; dot.className='dot dirty'; $('saveBtn').disabled=true;
+    let branch = c.branch;
+    if (!branch) { branch = await detectDefaultBranch(c.repo, c.token); logCommit('Auto-detected branch: '+branch); }
+    // get current file sha
+    let sha=null;
+    try {
+      const cur = await gh(`/repos/${c.repo}/contents/${c.path}?ref=${branch}`, {}, c.token);
+      sha = cur.sha;
+    } catch(e) { if(!String(e).includes('404')) throw e; } // 404 = new file, ok
+    const csv = toCSV();
+    const b64 = btoa(unescape(encodeURIComponent(csv)));
+    const body = { message:`Update revenue.csv via editor (${changed.size} change${changed.size>1?'s':''})`,
+                   content:b64, branch };
+    if (sha) body.sha=sha;
+    const res = await gh(`/repos/${c.repo}/contents/${c.path}`, {method:'PUT', body:JSON.stringify(body)}, c.token);
+    // success
+    ORIGINAL = Object.assign({}, CELLS);
+    changed.clear();
+    dot.className='dot saved'; txt.textContent='Saved ✓';
+    logCommit('Committed: '+(res.commit?.sha?.slice(0,7)||'ok')+' → '+branch);
+    render(); setTimeout(updateStatus, 2500);
+  } catch(e) {
+    dot.className='dot err'; txt.textContent='Save failed';
+    logCommit('ERROR: '+e.message);
+    alert('Save failed: '+e.message+'\n\nCheck token scope (Contents: read/write) and repo/path.');
+    $('saveBtn').disabled=false;
+  }
+};
+
+render();
+updateStatus();
+</script>
+</body>
+</html>

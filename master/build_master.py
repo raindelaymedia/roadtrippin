@@ -45,6 +45,17 @@ SHOWS = [
         "revenue_file":  "revenue_sr.csv",
         "tracker_file":  "tracker_data_sr.json",
     },
+    {
+        "key":           "pop_the_trunk",
+        "name":          "Pop the Trunk",
+        "tag":           "PTT",
+        "launch":        "2026-08",
+        "data_dir":      "shows/pop_the_trunk/data",
+        "dashboard_url": "master/shows/pop_the_trunk/pop_the_trunk.html",
+        "color":         "#DD4B5C",         # coral accent
+        "revenue_file":  "revenue_ptt.csv",
+        "tracker_file":  "tracker_data_ptt.json",
+    },
     # Future shows: just add another dict here.
 ]
 

@@ -115,27 +115,8 @@
   @media print {
     body { background:#fff; }
     .page { box-shadow:none; margin:0; width:auto; min-height:auto; padding:0.4in 0.45in; }
-    .page + .page { page-break-before:always; page-break-after:always; break-after:page; }
-
-    /* Individual cards/rows should never split across pages */
-    .cc, .sc, .talent-card, .kpi, .mult, .card, .imp, .goal, .calc, .pl-name {
-      break-inside:avoid; page-break-inside:avoid;
-    }
-
-    /* Section headings should stay glued to the content that follows */
-    .sec-h, h2, h3, .eyebrow {
-      break-after:avoid; page-break-after:avoid;
-    }
-
-    /* Platform table rows and thead — no splitting */
-    thead, tbody, tr {
-      break-inside:avoid; page-break-inside:avoid;
-    }
-
-    /* Card grid rows — keep together so a row of 3-4 cards doesn't split */
-    .mults, .kpis {
-      break-inside:avoid; page-break-inside:avoid;
-    }
+    .page + .page { page-break-before:always; }
+    .cc, .sc, .talent-card, .kpi, .mult { break-inside:avoid; }
   }
   @page { size:letter; margin:0; }
 </style></head><body>
