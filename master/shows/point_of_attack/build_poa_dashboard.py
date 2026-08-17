@@ -1,12 +1,12 @@
 """
-Inside Leverage — Dashboard Generator
-Reads tracker_data_il.json, revenue_il.csv, and socials_il.csv and generates
+Point of Attack — Dashboard Generator
+Reads tracker_data_poa.json, revenue_poa.csv, and socials_poa.csv and generates
 a standalone HTML dashboard. Mirrors Road Trippin's architecture with graceful
 degradation when data sources are missing or empty.
 
 Usage:
-    python build_il_dashboard.py
-    python build_il_dashboard.py --output inside_leverage.html
+    python build_poa_dashboard.py
+    python build_poa_dashboard.py --output point_of_attack.html
 """
 
 import argparse
@@ -18,7 +18,7 @@ from datetime import datetime
 # ─── Data loaders (same contract as RT) ──────────────────────────
 
 def extract(path):
-    """Load tracker_data_il.json → dict matching the dashboard schema.
+    """Load tracker_data_poa.json → dict matching the dashboard schema.
     Returns an empty-but-valid structure if the file has no month data."""
     with open(path, encoding='utf-8') as f:
         j = json.load(f)
@@ -337,7 +337,7 @@ def build_html(d, revenue, socials, generated_at):
         js_rev_m = '[]'; js_rev_totals = '[]'
         revenue_content = empty_state(
             "No revenue data yet",
-            "Add rows to revenue_il.csv to start tracking. Format: period,source,amount")
+            "Add rows to revenue_poa.csv to start tracking. Format: period,source,amount")
 
     # ── Socials tab ──
     if has_soc:
@@ -379,7 +379,7 @@ def build_html(d, revenue, socials, generated_at):
     else:
         socials_content = empty_state(
             "No socials data yet",
-            "Add rows to socials_il.csv to start tracking. Format: period,platform,metric,value")
+            "Add rows to socials_poa.csv to start tracking. Format: period,platform,metric,value")
 
     # ── Tracker tab ──
     if has_yt:
@@ -393,12 +393,12 @@ def build_html(d, revenue, socials, generated_at):
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Inside Leverage — Dashboard</title>
+<title>Point of Attack — Dashboard</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 /* ─────────────────────────────────────────────────────────────
-   INSIDE LEVERAGE DASHBOARD — Rain Delay Media
+   POINT OF ATTACK DASHBOARD — Rain Delay Media
    Brand color: #3AA88C (gold)
    ───────────────────────────────────────────────────────────── */
 :root{{
@@ -560,13 +560,13 @@ body{{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);li
 
 <nav class="sidebar">
   <div class="sidebar-logo">
-    <div class="logo-mark">IL</div>
+    <div class="logo-mark">POA</div>
     <div class="logo-text">
-      <div class="logo-main">Inside Leverage</div>
+      <div class="logo-main">Point of Attack</div>
       <div class="logo-sub">Rain Delay Media</div>
     </div>
   </div>
-  <a href="../../../index.html" style="display:flex;align-items:center;gap:6px;padding:10px 18px;font-size:11px;color:var(--text3);text-decoration:none;border-bottom:1px solid var(--border);letter-spacing:.02em;font-weight:500;transition:color .12s" onmouseover="this.style.color='var(--brand)'" onmouseout="this.style.color='var(--text3)'">
+    <a href="../../../index.html" style="display:flex;align-items:center;gap:6px;padding:10px 18px;font-size:11px;color:var(--text3);text-decoration:none;border-bottom:1px solid var(--border);letter-spacing:.02em;font-weight:500;transition:color .12s" onmouseover="this.style.color='var(--brand)'" onmouseout="this.style.color='var(--text3)'">
     ← RDM Network
   </a>
   <div class="nav">
@@ -782,23 +782,23 @@ def _tracker_tables(d, M_display):
 # ─── Main ────────────────────────────────────────────────────────
 
 def main():
-    parser = argparse.ArgumentParser(description="Inside Leverage — Dashboard Generator")
-    parser.add_argument("--tracker",  default=None, help="Path to tracker_data_il.json")
+    parser = argparse.ArgumentParser(description="Point of Attack — Dashboard Generator")
+    parser.add_argument("--tracker",  default=None, help="Path to tracker_data_poa.json")
     parser.add_argument("--revenue",  default=None)
     parser.add_argument("--socials",  default=None)
-    parser.add_argument("--output",   default="inside_leverage.html")
+    parser.add_argument("--output",   default="point_of_attack.html")
     args = parser.parse_args()
 
     script_dir = os.path.dirname(os.path.abspath(__file__))
     data_dir = os.path.join(script_dir, "data")
 
-    tracker_path = args.tracker or os.path.join(data_dir, "tracker_data_il.json")
-    revenue_path = args.revenue or os.path.join(data_dir, "revenue_il.csv")
-    socials_path = args.socials or os.path.join(data_dir, "socials_il.csv")
+    tracker_path = args.tracker or os.path.join(data_dir, "tracker_data_poa.json")
+    revenue_path = args.revenue or os.path.join(data_dir, "revenue_poa.csv")
+    socials_path = args.socials or os.path.join(data_dir, "socials_poa.csv")
     out = os.path.join(script_dir, args.output)
 
     print("=" * 55)
-    print("INSIDE LEVERAGE — DASHBOARD GENERATOR")
+    print("POINT OF ATTACK — DASHBOARD GENERATOR")
     print("=" * 55)
 
     # Tracker: load if present, otherwise use empty

@@ -59,15 +59,15 @@ SHOWS = [
         "show_revenue":  False,
     },
     {
-        "key":           "inside_leverage",
-        "name":          "Inside Leverage",
-        "tag":           "IL",
+        "key":           "point_of_attack",
+        "name":          "Point of Attack",
+        "tag":           "POA",
         "launch":        "2026-08",
-        "data_dir":      "shows/inside_leverage/data",
-        "dashboard_url": "master/shows/inside_leverage/inside_leverage.html",
+        "data_dir":      "shows/point_of_attack/data",
+        "dashboard_url": "master/shows/point_of_attack/point_of_attack.html",
         "color":         "#3AA88C",         # teal accent
-        "revenue_file":  "revenue_il.csv",
-        "tracker_file":  "tracker_data_il.json",
+        "revenue_file":  "revenue_poa.csv",
+        "tracker_file":  "tracker_data_poa.json",
         "show_revenue":  False,
     },
     # Future shows: just add another dict here.
