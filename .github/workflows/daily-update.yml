@@ -37,16 +37,16 @@ jobs:
             openpyxl \
             python-dateutil
 
-      - name: Write config.py from secret
+      # ── Road Trippin' ──────────────────────────────────────
+      - name: Write RT config.py from secret
         env:
           CONFIG_PY: ${{ secrets.CONFIG_PY }}
         run: |
           printf "%s" "$CONFIG_PY" > master/shows/road_trippin/config.py
-          # sanity check (don't print the file contents — they're secret)
           test -s master/shows/road_trippin/config.py || { echo "config.py is empty — check the CONFIG_PY secret"; exit 1; }
-          echo "✓ config.py written ($(wc -c < master/shows/road_trippin/config.py) bytes)"
+          echo "✓ RT config.py written ($(wc -c < master/shows/road_trippin/config.py) bytes)"
 
-      - name: Run tracker (pulls YT + Megaphone API data)
+      - name: Run RT tracker (pulls YT + Megaphone API data)
         working-directory: master/shows/road_trippin
         run: python build_tracker.py
 
@@ -54,6 +54,24 @@ jobs:
         working-directory: master/shows/road_trippin
         run: python build_rt_dashboard.py
 
+      # ── The Schultz Report ─────────────────────────────────
+      - name: Write SR config_sr.py from secret
+        env:
+          CONFIG_SR_PY: ${{ secrets.CONFIG_SR_PY }}
+        run: |
+          printf "%s" "$CONFIG_SR_PY" > master/shows/schultz_report/config_sr.py
+          test -s master/shows/schultz_report/config_sr.py || { echo "config_sr.py is empty — check the CONFIG_SR_PY secret"; exit 1; }
+          echo "✓ SR config_sr.py written ($(wc -c < master/shows/schultz_report/config_sr.py) bytes)"
+
+      - name: Run SR tracker (pulls YT API data)
+        working-directory: master/shows/schultz_report
+        run: python build_tracker_sr.py
+
+      - name: Rebuild Schultz Report dashboard
+        working-directory: master/shows/schultz_report
+        run: python build_sr_dashboard.py
+
+      # ── Master ─────────────────────────────────────────────
       - name: Rebuild RDM master dashboard
         working-directory: master
         # output to repo root since that's where Pages serves index.html from
@@ -63,8 +81,9 @@ jobs:
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          # never commit the secret config back to the repo
+          # never commit the secret configs back to the repo
           rm -f master/shows/road_trippin/config.py
+          rm -f master/shows/schultz_report/config_sr.py
           git add -A
           if git diff --staged --quiet; then
             echo "No changes to commit — data hasn't moved since last refresh."

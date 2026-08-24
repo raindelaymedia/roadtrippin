@@ -790,7 +790,7 @@ def main():
     args = parser.parse_args()
 
     script_dir = os.path.dirname(os.path.abspath(__file__))
-    data_dir = os.path.join(script_dir, "data")
+    data_dir = os.path.join(script_dir, "data_sr")
 
     tracker_path = args.tracker or os.path.join(data_dir, "tracker_data_sr.json")
     revenue_path = args.revenue or os.path.join(data_dir, "revenue_sr.csv")
