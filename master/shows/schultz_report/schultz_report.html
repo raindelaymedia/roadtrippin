@@ -203,7 +203,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);lin
       <span>Tracker</span>
     </div>
   </div>
-  <div class="sidebar-footer">Updated Aug 05, 2026</div>
+  <div class="sidebar-footer">Updated Aug 24, 2026</div>
 </nav>
 
 <div class="main">
@@ -212,25 +212,55 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="page active" id="page-overview">
   <div class="page-header">
     <div class="page-title">Overview</div>
-    <div class="page-sub">No data connected yet — metrics will appear here once data pipelines are live</div>
+    <div class="page-sub">All platforms · SEP 25 – AUG</div>
   </div>
   
     <div class="metrics">
-      <div class="metric"><div class="metric-label">YT Subscribers</div><div class="metric-value">—</div><div class="metric-delta" style="color:var(--text2)">not connected</div></div>
-      <div class="metric"><div class="metric-label">YT Views</div><div class="metric-value">—</div><div class="metric-delta" style="color:var(--text2)">not connected</div></div>
-      <div class="metric"><div class="metric-label">Revenue</div><div class="metric-value">—</div><div class="metric-delta" style="color:var(--text2)">not connected</div></div>
-      <div class="metric"><div class="metric-label">Social Platforms</div><div class="metric-value">—</div><div class="metric-delta" style="color:var(--text2)">not connected</div></div>
+      <div class="metric">
+        <div class="metric-label">YT Subscribers</div>
+        <div class="metric-value">34.9K</div>
+        <div class="metric-delta" style="color:var(--text2)">live count</div>
+      </div>
+      <div class="metric">
+        <div class="metric-label">YT Views</div>
+        <div class="metric-value">852.2K</div>
+        <div class="metric-delta" style="color:var(--text2)">latest month</div>
+      </div>
+      <div class="metric">
+        <div class="metric-label">Revenue</div>
+        <div class="metric-value">—</div>
+        <div class="metric-delta" style="color:var(--text2)">not connected</div>
+      </div>
+      <div class="metric">
+        <div class="metric-label">Social Platforms</div>
+        <div class="metric-value">—</div>
+        <div class="metric-delta" style="color:var(--text2)">not connected</div>
+      </div>
     </div>
-  <div class="empty-state"><div class="empty-icon">📭</div><div class="empty-msg">Dashboard ready — data will populate as pipelines come online</div><div class="empty-sub">YouTube API · Socials CSV · Revenue CSV</div></div>
+  
 </div>
 
 <!-- ═══ YOUTUBE ═══ -->
 <div class="page" id="page-youtube">
   <div class="page-header">
     <div class="page-title">YouTube</div>
-    <div class="page-sub">Not connected</div>
+    <div class="page-sub">Channel analytics · views, subscribers, content mix</div>
   </div>
-  <div class="empty-state"><div class="empty-icon">📭</div><div class="empty-msg">YouTube Analytics not connected yet</div><div class="empty-sub">Once the YT API credentials are added to config, data will populate automatically.</div></div>
+  
+    <div class="metrics">
+      <div class="metric"><div class="metric-label">Subscribers</div><div class="metric-value">34.9K</div></div>
+      <div class="metric"><div class="metric-label">VOD Views (AUG)</div><div class="metric-value">1.13M</div></div>
+      <div class="metric"><div class="metric-label">Shorts Views (AUG)</div><div class="metric-value">3.87M</div></div>
+      <div class="metric"><div class="metric-label">Live Views (AUG)</div><div class="metric-value">3.1K</div></div>
+    </div>
+    <div class="card">
+      <div class="card-title">Views by Content Type</div>
+      <div style="height:320px"><canvas id="yt-views-chart"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="card-title">Subscriber Growth</div>
+      <div style="height:280px"><canvas id="yt-subs-chart"></canvas></div>
+    </div>
 </div>
 
 <!-- ═══ SOCIALS ═══ -->
@@ -255,9 +285,9 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="page" id="page-tracker">
   <div class="page-header">
     <div class="page-title">Tracker</div>
-    <div class="page-sub">Not connected</div>
+    <div class="page-sub">Full data export · newest left, oldest right</div>
   </div>
-  <div class="empty-state"><div class="empty-icon">📭</div><div class="empty-msg">Tracker data will appear here once YouTube + Megaphone pipelines are connected</div></div>
+  <div class="tracker-section"><div class="tracker-section-title">📺 Views</div><div class="table-scroll"><table class="data-table"><thead><tr><th>📺 Views</th><th>AUG</th><th>JUL</th><th>JUN</th><th>MAY</th><th>APR</th><th>MAR</th><th>FEB</th><th>JAN</th><th>DEC 25</th><th>NOV 25</th><th>OCT 25</th><th>SEP 25</th><th class="lifetime-col">Lifetime</th></tr></thead><tbody><tr><td>YT Videos</td><td>1,134,060</td><td>1,467,455</td><td>983,168</td><td>697,914</td><td>790,809</td><td>999,377</td><td>456,937</td><td>733,899</td><td>1,819,209</td><td>1,237,011</td><td>951,387</td><td>461,276</td><td class="lifetime-col">11,732,502</td></tr><tr><td>YT Shorts</td><td>3,869,602</td><td>7,373,966</td><td>3,317,091</td><td>2,062,452</td><td>2,731,804</td><td>2,437,458</td><td>1,412,041</td><td>1,021,398</td><td>1,102,899</td><td>920,589</td><td>542,576</td><td>390,738</td><td class="lifetime-col">27,182,614</td></tr><tr><td>YT Lives</td><td>3,124</td><td>82,435</td><td>169,880</td><td>164,514</td><td>178,277</td><td>211,738</td><td>209,927</td><td>90,638</td><td>365</td><td>405</td><td>381</td><td>220</td><td class="lifetime-col">1,111,904</td></tr></tbody></table></div></div><div class="tracker-section"><div class="tracker-section-title">👥 Subscribers</div><div class="table-scroll"><table class="data-table"><thead><tr><th>👥 Subscribers</th><th>AUG</th><th>JUL</th><th>JUN</th><th>MAY</th><th>APR</th><th>MAR</th><th>FEB</th><th>JAN</th><th>DEC 25</th><th>NOV 25</th><th>OCT 25</th><th>SEP 25</th><th class="lifetime-col">Lifetime</th></tr></thead><tbody><tr><td>YouTube</td><td>34,900</td><td>29,062</td><td>19,152</td><td>13,198</td><td>9,715</td><td>5,230</td><td>-1,272</td><td>-4,560</td><td>-8,408</td><td>-19,429</td><td>-24,012</td><td>-27,630</td><td class="lifetime-col">25,946</td></tr></tbody></table></div></div><div class="tracker-section"><div class="tracker-section-title">🔑 KPIs</div><div class="table-scroll"><table class="data-table"><thead><tr><th>🔑 KPIs</th><th>AUG</th><th>JUL</th><th>JUN</th><th>MAY</th><th>APR</th><th>MAR</th><th>FEB</th><th>JAN</th><th>DEC 25</th><th>NOV 25</th><th>OCT 25</th><th>SEP 25</th><th class="lifetime-col">Lifetime</th></tr></thead><tbody><tr><td>CTR – Videos</td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td><span class="na">—</span></td><td class="lifetime-col">—</td></tr><tr><td># of Shorts</td><td>7</td><td><span class="na">—</span></td><td><span class="na">—</span></td><td>2</td><td>57</td><td>18</td><td>50</td><td>73</td><td>62</td><td>53</td><td>71</td><td>83</td><td class="lifetime-col">476</td></tr><tr><td>Shorts % of Views</td><td>77.3%</td><td>82.6%</td><td>74.2%</td><td>70.5%</td><td>73.8%</td><td>66.8%</td><td>67.9%</td><td>55.3%</td><td>37.7%</td><td>42.7%</td><td>36.3%</td><td>45.9%</td><td class="lifetime-col">—</td></tr><tr><td>Search % of Views</td><td>5.5%</td><td>3.1%</td><td>7.9%</td><td>10.3%</td><td>8.1%</td><td>5.9%</td><td>7.0%</td><td>6.3%</td><td>4.0%</td><td>6.4%</td><td>5.4%</td><td>4.8%</td><td class="lifetime-col">—</td></tr></tbody></table></div></div>
 </div>
 
 </div>
@@ -278,11 +308,11 @@ function showPage(id, el) {
 document.addEventListener('DOMContentLoaded', function() {
   if (typeof Chart === 'undefined') return;
 
-  const M = [];
-  const vids = [];
-  const shorts = [];
-  const lives = [];
-  const subs = [];
+  const M = ["SEP 25","OCT 25","NOV 25","DEC 25","JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG"];
+  const vids = [461276,951387,1237011,1819209,733899,456937,999377,790809,697914,983168,1467455,1134060];
+  const shorts = [390738,542576,920589,1102899,1021398,1412041,2437458,2731804,2062452,3317091,7373966,3869602];
+  const lives = [220,381,405,365,90638,209927,211738,178277,164514,169880,82435,3124];
+  const subs = [-27630,-24012,-19429,-8408,-4560,-1272,5230,9715,13198,19152,29062,34900];
   const revM = [];
   const revTotals = [];
 
