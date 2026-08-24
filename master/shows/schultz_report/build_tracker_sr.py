@@ -34,7 +34,7 @@ from config_sr import (
     YT_REFRESH_TOKEN as REFRESH_TOKEN,
 )
 
-RDM_START = "2026-08-19"
+RDM_START = "2026-08-18"
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(SCRIPT_DIR, "data_sr")
@@ -79,7 +79,7 @@ def _clean(v):
 
 def pull_monthly(yt_analytics, start, end):
     resp = yt_analytics.reports().query(
-        ids="channel==MINE", startDate=start, endDate=end,
+        ids=f"channel==MINE", startDate=start, endDate=end,
         metrics="views,estimatedMinutesWatched,subscribersGained,subscribersLost",
         dimensions="month", sort="month").execute()
     data = {}
@@ -91,7 +91,7 @@ def pull_monthly(yt_analytics, start, end):
 
 def pull_content_type(yt_analytics, start, end):
     resp = yt_analytics.reports().query(
-        ids="channel==MINE", startDate=start, endDate=end,
+        ids=f"channel==MINE", startDate=start, endDate=end,
         metrics="views,estimatedMinutesWatched",
         dimensions="month,creatorContentType", sort="month").execute()
     KEY_MAP = {"videoOnDemand": "VIDEO_ON_DEMAND", "shorts": "SHORTS", "liveStream": "LIVE_STREAM"}
@@ -104,7 +104,7 @@ def pull_content_type(yt_analytics, start, end):
 
 def pull_daily(yt_analytics, start, end):
     resp = yt_analytics.reports().query(
-        ids="channel==MINE", startDate=start, endDate=end,
+        ids=f"channel==MINE", startDate=start, endDate=end,
         metrics="views,estimatedMinutesWatched,subscribersGained,subscribersLost",
         dimensions="day", sort="day").execute()
     data = {}
@@ -116,7 +116,7 @@ def pull_daily(yt_analytics, start, end):
 
 def pull_daily_content_type(yt_analytics, start, end):
     resp = yt_analytics.reports().query(
-        ids="channel==MINE", startDate=start, endDate=end,
+        ids=f"channel==MINE", startDate=start, endDate=end,
         metrics="views",
         dimensions="day,creatorContentType", sort="day").execute()
     KEY_MAP = {"videoOnDemand": "vod_views", "shorts": "shorts_views", "liveStream": "live_views"}
@@ -177,7 +177,7 @@ def pull_traffic_sources(yt_analytics, start, end):
 
     try:
         resp = yt_analytics.reports().query(
-            ids="channel==MINE", startDate=start, endDate=end,
+            ids=f"channel==MINE", startDate=start, endDate=end,
             metrics="views",
             dimensions="day,insightTrafficSourceType", sort="day").execute()
 

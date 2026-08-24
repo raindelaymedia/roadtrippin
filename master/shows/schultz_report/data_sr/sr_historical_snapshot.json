@@ -1,831 +1,811 @@
 {
-  "snapshot_date": "2026-08-21T16:20:48.536954",
-  "rdm_start_date": "2026-08-19",
+  "snapshot_date": "2026-08-24T16:09:25.907177",
+  "rdm_start_date": "2026-08-18",
   "channel": {
     "title": "Jordan Schultz",
-    "subscribers": 34800,
-    "total_views": 18636778,
-    "video_count": 589,
+    "subscribers": 34900,
+    "total_views": 18667758,
+    "video_count": 592,
     "created": "2025-07-23T18:14:28.110381Z",
-    "snapshot_date": "2026-08-21T16:20:41.923141"
+    "snapshot_date": "2026-08-24T16:09:10.838129"
   },
   "monthly_analytics": {
     "2024-10": {
-      "views": 120426,
-      "watch_hrs": 20506.5,
-      "subs_gained": 672,
-      "subs_lost": 319
+      "views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
     },
     "2024-11": {
-      "views": 172896,
-      "watch_hrs": 34426.4,
-      "subs_gained": 1279,
-      "subs_lost": 357
+      "views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
     },
     "2024-12": {
-      "views": 83412,
-      "watch_hrs": 13745.0,
-      "subs_gained": 357,
-      "subs_lost": 275
+      "views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
     },
     "2025-01": {
-      "views": 105674,
-      "watch_hrs": 18304.1,
-      "subs_gained": 479,
-      "subs_lost": 314
+      "views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
     },
     "2025-02": {
-      "views": 222611,
-      "watch_hrs": 36371.9,
-      "subs_gained": 1839,
-      "subs_lost": 328
+      "views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
     },
     "2025-03": {
-      "views": 414323,
-      "watch_hrs": 70282.7,
-      "subs_gained": 3928,
-      "subs_lost": 356
+      "views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
     },
     "2025-04": {
-      "views": 212036,
-      "watch_hrs": 30594.7,
-      "subs_gained": 831,
-      "subs_lost": 329
+      "views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
     },
     "2025-05": {
-      "views": 764535,
-      "watch_hrs": 59707.9,
-      "subs_gained": 4083,
-      "subs_lost": 480
+      "views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
     },
     "2025-06": {
-      "views": 1189839,
-      "watch_hrs": 60643.1,
-      "subs_gained": 4465,
-      "subs_lost": 645
+      "views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
     },
     "2025-07": {
-      "views": 3546812,
-      "watch_hrs": 165907.9,
-      "subs_gained": 9981,
-      "subs_lost": 966
+      "views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
     },
     "2025-08": {
-      "views": 2645268,
-      "watch_hrs": 135735.5,
-      "subs_gained": 5896,
-      "subs_lost": 801
+      "views": 281762,
+      "watch_hrs": 9089.0,
+      "subs_gained": 802,
+      "subs_lost": 49
     },
     "2025-09": {
-      "views": 852234,
-      "watch_hrs": 57888.4,
-      "subs_gained": 1542,
-      "subs_lost": 538
+      "views": 1742898,
+      "watch_hrs": 85669.3,
+      "subs_gained": 15324,
+      "subs_lost": 3308
     },
     "2025-10": {
-      "views": 1494344,
-      "watch_hrs": 121602.5,
-      "subs_gained": 4263,
-      "subs_lost": 645
+      "views": 2789032,
+      "watch_hrs": 100081.5,
+      "subs_gained": 7053,
+      "subs_lost": 2137
     },
     "2025-11": {
-      "views": 2158005,
-      "watch_hrs": 174147.8,
-      "subs_gained": 5282,
-      "subs_lost": 699
+      "views": 2050788,
+      "watch_hrs": 55626.7,
+      "subs_gained": 5899,
+      "subs_lost": 2298
     },
     "2025-12": {
-      "views": 2922473,
-      "watch_hrs": 255504.6,
-      "subs_gained": 11844,
-      "subs_lost": 823
+      "views": 1770917,
+      "watch_hrs": 55107.4,
+      "subs_gained": 4775,
+      "subs_lost": 2178
     },
     "2026-01": {
-      "views": 1845935,
-      "watch_hrs": 142837.0,
-      "subs_gained": 4655,
-      "subs_lost": 807
+      "views": 4656257,
+      "watch_hrs": 153007.3,
+      "subs_gained": 7296,
+      "subs_lost": 2728
     },
     "2026-02": {
-      "views": 2078905,
-      "watch_hrs": 127644.9,
-      "subs_gained": 4016,
-      "subs_lost": 728
+      "views": 2900622,
+      "watch_hrs": 89014.9,
+      "subs_gained": 7535,
+      "subs_lost": 2976
     },
     "2026-03": {
-      "views": 3648942,
-      "watch_hrs": 184556.4,
-      "subs_gained": 7374,
-      "subs_lost": 872
+      "views": 679734,
+      "watch_hrs": 11526.8,
+      "subs_gained": 74,
+      "subs_lost": 241
     },
     "2026-04": {
-      "views": 3719493,
-      "watch_hrs": 147112.7,
-      "subs_gained": 5249,
-      "subs_lost": 764
+      "views": 1683943,
+      "watch_hrs": 25652.4,
+      "subs_gained": 3872,
+      "subs_lost": 1468
     },
     "2026-05": {
-      "views": 2936267,
-      "watch_hrs": 126019.2,
-      "subs_gained": 4213,
-      "subs_lost": 730
+      "views": 67275,
+      "watch_hrs": 1113.4,
+      "subs_gained": 62,
+      "subs_lost": 197
     },
     "2026-06": {
-      "views": 4493251,
-      "watch_hrs": 184887.5,
-      "subs_gained": 6762,
-      "subs_lost": 808
+      "views": 12228,
+      "watch_hrs": 129.2,
+      "subs_gained": 46,
+      "subs_lost": 162
     },
     "2026-07": {
-      "views": 8927957,
-      "watch_hrs": 289681.2,
-      "subs_gained": 10947,
-      "subs_lost": 1037
+      "views": 12928,
+      "watch_hrs": 149.4,
+      "subs_gained": 44,
+      "subs_lost": 155
     },
     "2026-08": {
-      "views": 4644220,
-      "watch_hrs": 173634.3,
-      "subs_gained": 6199,
-      "subs_lost": 654
+      "views": 69608,
+      "watch_hrs": 6047.6,
+      "subs_gained": 149,
+      "subs_lost": 123
     }
   },
   "monthly_content_type": {
-    "2024-10": {
-      "live": 33838,
-      "shorts": 11180,
-      "vod": 75408
-    },
-    "2024-11": {
-      "live": 40604,
-      "shorts": 17758,
-      "vod": 114534
-    },
-    "2024-12": {
-      "live": 11199,
-      "shorts": 24015,
-      "vod": 48198
-    },
-    "2025-01": {
-      "live": 3965,
-      "shorts": 34237,
-      "vod": 67472
-    },
-    "2025-02": {
-      "live": 78402,
-      "shorts": 56970,
-      "vod": 87239
-    },
-    "2025-03": {
-      "live": 1399,
-      "shorts": 90474,
-      "vod": 322450
-    },
-    "2025-04": {
-      "live": 7173,
-      "shorts": 89465,
-      "vod": 115398
-    },
-    "2025-05": {
-      "live": 4972,
-      "shorts": 130006,
-      "vod": 629557
-    },
-    "2025-06": {
-      "live": 37296,
-      "shorts": 545861,
-      "vod": 606682
-    },
-    "2025-07": {
-      "live": 697,
-      "shorts": 2030353,
-      "vod": 1515762
-    },
     "2025-08": {
-      "live": 386,
-      "shorts": 1348061,
-      "vod": 1296821
+      "shorts": 204788,
+      "vod": 76974
     },
     "2025-09": {
-      "live": 220,
-      "shorts": 390738,
-      "vod": 461276
+      "shorts": 1267861,
+      "vod": 475037
     },
     "2025-10": {
-      "live": 381,
-      "shorts": 542576,
-      "vod": 951387
+      "shorts": 2030752,
+      "vod": 758280
     },
     "2025-11": {
-      "live": 405,
-      "shorts": 920589,
-      "vod": 1237011
+      "shorts": 1583707,
+      "vod": 467081
     },
     "2025-12": {
-      "live": 365,
-      "shorts": 1102899,
-      "vod": 1819209
+      "shorts": 1272087,
+      "vod": 498830
     },
     "2026-01": {
-      "live": 90638,
-      "shorts": 1021398,
-      "vod": 733899
+      "shorts": 3413723,
+      "vod": 1242534
     },
     "2026-02": {
-      "live": 209927,
-      "shorts": 1412041,
-      "vod": 456937
+      "shorts": 2243228,
+      "vod": 657394
     },
     "2026-03": {
-      "live": 211738,
-      "shorts": 2437458,
-      "vod": 999377
+      "shorts": 622278,
+      "vod": 57020
     },
     "2026-04": {
-      "live": 178277,
-      "shorts": 2731804,
-      "vod": 790809,
-      "posts": 18603
+      "shorts": 1587820,
+      "vod": 96123
     },
     "2026-05": {
-      "live": 164514,
-      "shorts": 2062452,
-      "vod": 697914,
-      "posts": 11387
+      "shorts": 62067,
+      "vod": 5208
     },
     "2026-06": {
-      "live": 169880,
-      "shorts": 3317091,
-      "vod": 983168,
-      "posts": 23112
+      "shorts": 11314,
+      "vod": 914
     },
     "2026-07": {
-      "live": 82435,
-      "shorts": 7373966,
-      "vod": 1467455,
-      "posts": 4215
+      "shorts": 11045,
+      "vod": 1883
     },
     "2026-08": {
-      "live": 2832,
-      "shorts": 3554223,
-      "vod": 1090203,
-      "posts": 2030
+      "shorts": 30726,
+      "vod": 38686
     }
   },
   "daily_pre_rdm": {
     "2026-05-19": {
-      "views": 87145,
-      "watch_hrs": 4593.6,
-      "subs_gained": 147,
-      "subs_lost": 23
+      "views": 371,
+      "watch_hrs": 5.4,
+      "subs_gained": 1,
+      "subs_lost": 1
     },
     "2026-05-20": {
-      "views": 71287,
-      "watch_hrs": 6395.4,
-      "subs_gained": 126,
-      "subs_lost": 30
+      "views": 368,
+      "watch_hrs": 4.2,
+      "subs_gained": 1,
+      "subs_lost": 6
     },
     "2026-05-21": {
-      "views": 65414,
-      "watch_hrs": 2965.0,
-      "subs_gained": 89,
-      "subs_lost": 35
+      "views": 346,
+      "watch_hrs": 4.4,
+      "subs_gained": 0,
+      "subs_lost": 10
     },
     "2026-05-22": {
-      "views": 83666,
-      "watch_hrs": 1907.7,
-      "subs_gained": 46,
-      "subs_lost": 17
+      "views": 360,
+      "watch_hrs": 4.3,
+      "subs_gained": 1,
+      "subs_lost": 3
     },
     "2026-05-23": {
-      "views": 55088,
-      "watch_hrs": 1079.9,
-      "subs_gained": 34,
-      "subs_lost": 11
+      "views": 368,
+      "watch_hrs": 4.4,
+      "subs_gained": 0,
+      "subs_lost": 4
     },
     "2026-05-24": {
-      "views": 51357,
-      "watch_hrs": 1322.0,
-      "subs_gained": 47,
-      "subs_lost": 12
+      "views": 420,
+      "watch_hrs": 5.0,
+      "subs_gained": 1,
+      "subs_lost": 3
     },
     "2026-05-25": {
-      "views": 62095,
-      "watch_hrs": 1431.2,
-      "subs_gained": 64,
-      "subs_lost": 12
+      "views": 368,
+      "watch_hrs": 6.4,
+      "subs_gained": 0,
+      "subs_lost": 5
     },
     "2026-05-26": {
-      "views": 65493,
-      "watch_hrs": 1185.0,
-      "subs_gained": 46,
-      "subs_lost": 17
+      "views": 361,
+      "watch_hrs": 4.1,
+      "subs_gained": 2,
+      "subs_lost": 5
     },
     "2026-05-27": {
-      "views": 78861,
-      "watch_hrs": 7462.3,
-      "subs_gained": 226,
-      "subs_lost": 26
+      "views": 382,
+      "watch_hrs": 5.2,
+      "subs_gained": 0,
+      "subs_lost": 2
     },
     "2026-05-28": {
-      "views": 109396,
-      "watch_hrs": 5944.5,
-      "subs_gained": 261,
-      "subs_lost": 25
+      "views": 398,
+      "watch_hrs": 5.1,
+      "subs_gained": 1,
+      "subs_lost": 6
     },
     "2026-05-29": {
-      "views": 100696,
-      "watch_hrs": 9919.6,
-      "subs_gained": 242,
-      "subs_lost": 19
+      "views": 368,
+      "watch_hrs": 3.5,
+      "subs_gained": 0,
+      "subs_lost": 1
     },
     "2026-05-30": {
-      "views": 110843,
-      "watch_hrs": 6006.0,
-      "subs_gained": 207,
-      "subs_lost": 24
+      "views": 381,
+      "watch_hrs": 5.0,
+      "subs_gained": 0,
+      "subs_lost": 9
     },
     "2026-05-31": {
-      "views": 190677,
-      "watch_hrs": 4711.2,
-      "subs_gained": 215,
-      "subs_lost": 26
+      "views": 454,
+      "watch_hrs": 7.0,
+      "subs_gained": 0,
+      "subs_lost": 6
     },
     "2026-06-01": {
-      "views": 235384,
-      "watch_hrs": 4390.1,
-      "subs_gained": 254,
-      "subs_lost": 31
+      "views": 1011,
+      "watch_hrs": 7.5,
+      "subs_gained": 2,
+      "subs_lost": 11
     },
     "2026-06-02": {
-      "views": 185307,
-      "watch_hrs": 3360.9,
-      "subs_gained": 239,
-      "subs_lost": 18
+      "views": 839,
+      "watch_hrs": 5.8,
+      "subs_gained": 2,
+      "subs_lost": 4
     },
     "2026-06-03": {
-      "views": 186673,
-      "watch_hrs": 18658.2,
-      "subs_gained": 349,
-      "subs_lost": 20
+      "views": 579,
+      "watch_hrs": 5.5,
+      "subs_gained": 0,
+      "subs_lost": 2
     },
     "2026-06-04": {
-      "views": 107132,
-      "watch_hrs": 2231.2,
-      "subs_gained": 175,
-      "subs_lost": 37
+      "views": 646,
+      "watch_hrs": 5.8,
+      "subs_gained": 5,
+      "subs_lost": 4
     },
     "2026-06-05": {
-      "views": 120542,
-      "watch_hrs": 8165.0,
-      "subs_gained": 166,
-      "subs_lost": 24
+      "views": 524,
+      "watch_hrs": 4.7,
+      "subs_gained": 1,
+      "subs_lost": 7
     },
     "2026-06-06": {
-      "views": 84581,
-      "watch_hrs": 2277.4,
-      "subs_gained": 103,
-      "subs_lost": 20
+      "views": 493,
+      "watch_hrs": 7.3,
+      "subs_gained": 0,
+      "subs_lost": 9
     },
     "2026-06-07": {
-      "views": 70747,
-      "watch_hrs": 1847.2,
-      "subs_gained": 92,
-      "subs_lost": 16
+      "views": 444,
+      "watch_hrs": 7.1,
+      "subs_gained": 0,
+      "subs_lost": 4
     },
     "2026-06-08": {
-      "views": 66420,
-      "watch_hrs": 1466.0,
-      "subs_gained": 68,
-      "subs_lost": 13
+      "views": 358,
+      "watch_hrs": 3.3,
+      "subs_gained": 1,
+      "subs_lost": 0
     },
     "2026-06-09": {
-      "views": 136764,
-      "watch_hrs": 7183.2,
-      "subs_gained": 137,
-      "subs_lost": 27
+      "views": 454,
+      "watch_hrs": 4.3,
+      "subs_gained": 2,
+      "subs_lost": 14
     },
     "2026-06-10": {
-      "views": 157426,
-      "watch_hrs": 3651.5,
-      "subs_gained": 112,
-      "subs_lost": 47
-    },
-    "2026-06-11": {
-      "views": 54680,
-      "watch_hrs": 1393.6,
-      "subs_gained": 73,
-      "subs_lost": 22
-    },
-    "2026-06-12": {
-      "views": 91999,
-      "watch_hrs": 7414.2,
-      "subs_gained": 148,
-      "subs_lost": 29
-    },
-    "2026-06-13": {
-      "views": 198680,
-      "watch_hrs": 6041.8,
-      "subs_gained": 189,
-      "subs_lost": 30
-    },
-    "2026-06-14": {
-      "views": 114870,
-      "watch_hrs": 2117.8,
-      "subs_gained": 97,
-      "subs_lost": 28
-    },
-    "2026-06-15": {
-      "views": 136610,
-      "watch_hrs": 9098.8,
-      "subs_gained": 302,
-      "subs_lost": 30
-    },
-    "2026-06-16": {
-      "views": 195799,
-      "watch_hrs": 11600.2,
-      "subs_gained": 491,
-      "subs_lost": 43
-    },
-    "2026-06-17": {
-      "views": 211087,
-      "watch_hrs": 8710.2,
-      "subs_gained": 379,
-      "subs_lost": 42
-    },
-    "2026-06-18": {
-      "views": 325617,
-      "watch_hrs": 8551.7,
-      "subs_gained": 519,
-      "subs_lost": 33
-    },
-    "2026-06-19": {
-      "views": 263809,
-      "watch_hrs": 6481.4,
-      "subs_gained": 398,
-      "subs_lost": 18
-    },
-    "2026-06-20": {
-      "views": 130538,
-      "watch_hrs": 4038.1,
-      "subs_gained": 261,
-      "subs_lost": 16
-    },
-    "2026-06-21": {
-      "views": 85592,
-      "watch_hrs": 3223.9,
-      "subs_gained": 192,
-      "subs_lost": 24
-    },
-    "2026-06-22": {
-      "views": 119107,
-      "watch_hrs": 6146.6,
-      "subs_gained": 221,
-      "subs_lost": 34
-    },
-    "2026-06-23": {
-      "views": 204953,
-      "watch_hrs": 4371.6,
-      "subs_gained": 218,
-      "subs_lost": 30
-    },
-    "2026-06-24": {
-      "views": 140515,
-      "watch_hrs": 2392.7,
-      "subs_gained": 155,
-      "subs_lost": 20
-    },
-    "2026-06-25": {
-      "views": 131715,
-      "watch_hrs": 9924.5,
-      "subs_gained": 200,
-      "subs_lost": 28
-    },
-    "2026-06-26": {
-      "views": 122316,
-      "watch_hrs": 7248.4,
-      "subs_gained": 191,
-      "subs_lost": 21
-    },
-    "2026-06-27": {
-      "views": 113527,
-      "watch_hrs": 5655.1,
-      "subs_gained": 190,
-      "subs_lost": 16
-    },
-    "2026-06-28": {
-      "views": 108914,
-      "watch_hrs": 7718.4,
-      "subs_gained": 237,
-      "subs_lost": 32
-    },
-    "2026-06-29": {
-      "views": 180546,
-      "watch_hrs": 12348.0,
-      "subs_gained": 354,
-      "subs_lost": 37
-    },
-    "2026-06-30": {
-      "views": 211401,
-      "watch_hrs": 7179.3,
-      "subs_gained": 252,
-      "subs_lost": 22
-    },
-    "2026-07-01": {
-      "views": 341227,
-      "watch_hrs": 18485.7,
-      "subs_gained": 664,
-      "subs_lost": 31
-    },
-    "2026-07-02": {
-      "views": 1615710,
-      "watch_hrs": 31966.3,
-      "subs_gained": 1782,
-      "subs_lost": 87
-    },
-    "2026-07-03": {
-      "views": 634682,
-      "watch_hrs": 14164.9,
-      "subs_gained": 679,
-      "subs_lost": 56
-    },
-    "2026-07-04": {
-      "views": 554156,
-      "watch_hrs": 11623.9,
-      "subs_gained": 554,
-      "subs_lost": 50
-    },
-    "2026-07-05": {
-      "views": 360406,
-      "watch_hrs": 7911.8,
-      "subs_gained": 379,
-      "subs_lost": 34
-    },
-    "2026-07-06": {
-      "views": 362245,
-      "watch_hrs": 6825.9,
-      "subs_gained": 326,
-      "subs_lost": 34
-    },
-    "2026-07-07": {
-      "views": 282776,
-      "watch_hrs": 4855.9,
-      "subs_gained": 248,
-      "subs_lost": 31
-    },
-    "2026-07-08": {
-      "views": 133609,
-      "watch_hrs": 2630.7,
-      "subs_gained": 132,
-      "subs_lost": 26
-    },
-    "2026-07-09": {
-      "views": 180341,
-      "watch_hrs": 5245.5,
-      "subs_gained": 149,
-      "subs_lost": 26
-    },
-    "2026-07-10": {
-      "views": 123381,
-      "watch_hrs": 5168.1,
-      "subs_gained": 149,
-      "subs_lost": 19
-    },
-    "2026-07-11": {
-      "views": 122139,
-      "watch_hrs": 3008.1,
-      "subs_gained": 118,
-      "subs_lost": 18
-    },
-    "2026-07-12": {
-      "views": 115417,
-      "watch_hrs": 1975.2,
-      "subs_gained": 108,
-      "subs_lost": 16
-    },
-    "2026-07-13": {
-      "views": 95539,
-      "watch_hrs": 1403.4,
-      "subs_gained": 78,
+      "views": 379,
+      "watch_hrs": 3.5,
+      "subs_gained": 8,
       "subs_lost": 12
     },
+    "2026-06-11": {
+      "views": 332,
+      "watch_hrs": 3.5,
+      "subs_gained": 2,
+      "subs_lost": 4
+    },
+    "2026-06-12": {
+      "views": 331,
+      "watch_hrs": 2.7,
+      "subs_gained": 2,
+      "subs_lost": 4
+    },
+    "2026-06-13": {
+      "views": 324,
+      "watch_hrs": 3.7,
+      "subs_gained": 0,
+      "subs_lost": 7
+    },
+    "2026-06-14": {
+      "views": 340,
+      "watch_hrs": 2.9,
+      "subs_gained": 1,
+      "subs_lost": 2
+    },
+    "2026-06-15": {
+      "views": 325,
+      "watch_hrs": 4.5,
+      "subs_gained": 0,
+      "subs_lost": 3
+    },
+    "2026-06-16": {
+      "views": 280,
+      "watch_hrs": 2.2,
+      "subs_gained": 0,
+      "subs_lost": 9
+    },
+    "2026-06-17": {
+      "views": 233,
+      "watch_hrs": 3.6,
+      "subs_gained": 2,
+      "subs_lost": 4
+    },
+    "2026-06-18": {
+      "views": 263,
+      "watch_hrs": 4.5,
+      "subs_gained": 2,
+      "subs_lost": 4
+    },
+    "2026-06-19": {
+      "views": 259,
+      "watch_hrs": 3.7,
+      "subs_gained": 0,
+      "subs_lost": 6
+    },
+    "2026-06-20": {
+      "views": 314,
+      "watch_hrs": 3.8,
+      "subs_gained": 0,
+      "subs_lost": 1
+    },
+    "2026-06-21": {
+      "views": 317,
+      "watch_hrs": 4.5,
+      "subs_gained": 1,
+      "subs_lost": 1
+    },
+    "2026-06-22": {
+      "views": 254,
+      "watch_hrs": 3.6,
+      "subs_gained": 1,
+      "subs_lost": 10
+    },
+    "2026-06-23": {
+      "views": 247,
+      "watch_hrs": 1.9,
+      "subs_gained": 3,
+      "subs_lost": 4
+    },
+    "2026-06-24": {
+      "views": 422,
+      "watch_hrs": 2.8,
+      "subs_gained": 0,
+      "subs_lost": 7
+    },
+    "2026-06-25": {
+      "views": 348,
+      "watch_hrs": 5.0,
+      "subs_gained": 2,
+      "subs_lost": 9
+    },
+    "2026-06-26": {
+      "views": 341,
+      "watch_hrs": 4.3,
+      "subs_gained": 2,
+      "subs_lost": 3
+    },
+    "2026-06-27": {
+      "views": 321,
+      "watch_hrs": 4.1,
+      "subs_gained": 1,
+      "subs_lost": 3
+    },
+    "2026-06-28": {
+      "views": 370,
+      "watch_hrs": 4.7,
+      "subs_gained": 3,
+      "subs_lost": 9
+    },
+    "2026-06-29": {
+      "views": 407,
+      "watch_hrs": 4.1,
+      "subs_gained": 3,
+      "subs_lost": 1
+    },
+    "2026-06-30": {
+      "views": 473,
+      "watch_hrs": 4.2,
+      "subs_gained": 0,
+      "subs_lost": 4
+    },
+    "2026-07-01": {
+      "views": 412,
+      "watch_hrs": 3.8,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-07-02": {
+      "views": 412,
+      "watch_hrs": 2.6,
+      "subs_gained": 0,
+      "subs_lost": 2
+    },
+    "2026-07-03": {
+      "views": 414,
+      "watch_hrs": 4.3,
+      "subs_gained": 0,
+      "subs_lost": 1
+    },
+    "2026-07-04": {
+      "views": 363,
+      "watch_hrs": 5.8,
+      "subs_gained": 0,
+      "subs_lost": 8
+    },
+    "2026-07-05": {
+      "views": 375,
+      "watch_hrs": 3.8,
+      "subs_gained": 1,
+      "subs_lost": 2
+    },
+    "2026-07-06": {
+      "views": 365,
+      "watch_hrs": 2.7,
+      "subs_gained": 1,
+      "subs_lost": 8
+    },
+    "2026-07-07": {
+      "views": 396,
+      "watch_hrs": 3.6,
+      "subs_gained": 0,
+      "subs_lost": 13
+    },
+    "2026-07-08": {
+      "views": 378,
+      "watch_hrs": 3.8,
+      "subs_gained": 1,
+      "subs_lost": 5
+    },
+    "2026-07-09": {
+      "views": 348,
+      "watch_hrs": 2.1,
+      "subs_gained": 3,
+      "subs_lost": 2
+    },
+    "2026-07-10": {
+      "views": 375,
+      "watch_hrs": 3.4,
+      "subs_gained": 0,
+      "subs_lost": 3
+    },
+    "2026-07-11": {
+      "views": 266,
+      "watch_hrs": 1.8,
+      "subs_gained": 2,
+      "subs_lost": 4
+    },
+    "2026-07-12": {
+      "views": 341,
+      "watch_hrs": 2.2,
+      "subs_gained": 3,
+      "subs_lost": 9
+    },
+    "2026-07-13": {
+      "views": 366,
+      "watch_hrs": 2.2,
+      "subs_gained": 1,
+      "subs_lost": 6
+    },
     "2026-07-14": {
-      "views": 225526,
-      "watch_hrs": 21279.8,
-      "subs_gained": 590,
-      "subs_lost": 40
+      "views": 525,
+      "watch_hrs": 3.5,
+      "subs_gained": 0,
+      "subs_lost": 3
     },
     "2026-07-15": {
-      "views": 268323,
-      "watch_hrs": 15237.3,
-      "subs_gained": 561,
-      "subs_lost": 47
+      "views": 465,
+      "watch_hrs": 4.7,
+      "subs_gained": 0,
+      "subs_lost": 5
     },
     "2026-07-16": {
-      "views": 314141,
-      "watch_hrs": 9808.2,
-      "subs_gained": 423,
-      "subs_lost": 37
+      "views": 414,
+      "watch_hrs": 4.6,
+      "subs_gained": 0,
+      "subs_lost": 5
     },
     "2026-07-17": {
-      "views": 298144,
-      "watch_hrs": 6440.2,
-      "subs_gained": 333,
-      "subs_lost": 21
+      "views": 397,
+      "watch_hrs": 3.6,
+      "subs_gained": 0,
+      "subs_lost": 3
     },
     "2026-07-18": {
-      "views": 302007,
-      "watch_hrs": 5447.3,
-      "subs_gained": 410,
-      "subs_lost": 40
+      "views": 340,
+      "watch_hrs": 2.4,
+      "subs_gained": 2,
+      "subs_lost": 10
     },
     "2026-07-19": {
-      "views": 244491,
-      "watch_hrs": 4711.7,
-      "subs_gained": 283,
-      "subs_lost": 24
+      "views": 360,
+      "watch_hrs": 2.6,
+      "subs_gained": 1,
+      "subs_lost": 6
     },
     "2026-07-20": {
-      "views": 396794,
-      "watch_hrs": 10976.5,
-      "subs_gained": 365,
-      "subs_lost": 49
+      "views": 323,
+      "watch_hrs": 2.0,
+      "subs_gained": 3,
+      "subs_lost": 0
     },
     "2026-07-21": {
-      "views": 224740,
-      "watch_hrs": 6845.5,
-      "subs_gained": 247,
-      "subs_lost": 31
+      "views": 309,
+      "watch_hrs": 2.8,
+      "subs_gained": 4,
+      "subs_lost": 3
     },
     "2026-07-22": {
-      "views": 85517,
-      "watch_hrs": 2847.4,
-      "subs_gained": 138,
-      "subs_lost": 20
+      "views": 357,
+      "watch_hrs": 2.6,
+      "subs_gained": 1,
+      "subs_lost": 4
     },
     "2026-07-23": {
-      "views": 135542,
-      "watch_hrs": 7450.1,
-      "subs_gained": 202,
-      "subs_lost": 30
+      "views": 465,
+      "watch_hrs": 6.5,
+      "subs_gained": 3,
+      "subs_lost": 7
     },
     "2026-07-24": {
-      "views": 148371,
-      "watch_hrs": 5531.7,
-      "subs_gained": 193,
-      "subs_lost": 21
+      "views": 385,
+      "watch_hrs": 11.4,
+      "subs_gained": 3,
+      "subs_lost": 3
     },
     "2026-07-25": {
-      "views": 147160,
-      "watch_hrs": 3534.5,
-      "subs_gained": 156,
-      "subs_lost": 32
+      "views": 408,
+      "watch_hrs": 9.4,
+      "subs_gained": 0,
+      "subs_lost": 6
     },
     "2026-07-26": {
-      "views": 134060,
-      "watch_hrs": 3477.1,
-      "subs_gained": 144,
-      "subs_lost": 32
+      "views": 525,
+      "watch_hrs": 8.8,
+      "subs_gained": 5,
+      "subs_lost": 7
     },
     "2026-07-27": {
-      "views": 229219,
-      "watch_hrs": 22322.7,
-      "subs_gained": 399,
-      "subs_lost": 40
+      "views": 592,
+      "watch_hrs": 7.3,
+      "subs_gained": 4,
+      "subs_lost": 6
     },
     "2026-07-28": {
-      "views": 302224,
-      "watch_hrs": 21541.5,
-      "subs_gained": 429,
-      "subs_lost": 44
+      "views": 598,
+      "watch_hrs": 7.4,
+      "subs_gained": 2,
+      "subs_lost": 8
     },
     "2026-07-29": {
-      "views": 221576,
-      "watch_hrs": 10947.3,
-      "subs_gained": 314,
-      "subs_lost": 39
+      "views": 642,
+      "watch_hrs": 9.9,
+      "subs_gained": 3,
+      "subs_lost": 2
     },
     "2026-07-30": {
-      "views": 173508,
-      "watch_hrs": 9365.5,
-      "subs_gained": 229,
-      "subs_lost": 27
+      "views": 497,
+      "watch_hrs": 7.2,
+      "subs_gained": 1,
+      "subs_lost": 3
     },
     "2026-07-31": {
-      "views": 154986,
-      "watch_hrs": 6651.1,
-      "subs_gained": 165,
-      "subs_lost": 23
+      "views": 515,
+      "watch_hrs": 10.2,
+      "subs_gained": 0,
+      "subs_lost": 11
     },
     "2026-08-01": {
-      "views": 135518,
-      "watch_hrs": 5751.9,
-      "subs_gained": 160,
-      "subs_lost": 24
+      "views": 629,
+      "watch_hrs": 8.1,
+      "subs_gained": 2,
+      "subs_lost": 5
     },
     "2026-08-02": {
-      "views": 106055,
-      "watch_hrs": 5038.4,
-      "subs_gained": 154,
-      "subs_lost": 27
+      "views": 628,
+      "watch_hrs": 11.0,
+      "subs_gained": 0,
+      "subs_lost": 4
     },
     "2026-08-03": {
-      "views": 79429,
-      "watch_hrs": 3986.5,
-      "subs_gained": 145,
-      "subs_lost": 18
+      "views": 726,
+      "watch_hrs": 13.8,
+      "subs_gained": 1,
+      "subs_lost": 11
     },
     "2026-08-04": {
-      "views": 130269,
-      "watch_hrs": 6295.2,
-      "subs_gained": 165,
-      "subs_lost": 18
+      "views": 862,
+      "watch_hrs": 23.1,
+      "subs_gained": 1,
+      "subs_lost": 8
     },
     "2026-08-05": {
-      "views": 146468,
-      "watch_hrs": 4677.3,
-      "subs_gained": 159,
-      "subs_lost": 25
+      "views": 946,
+      "watch_hrs": 11.2,
+      "subs_gained": 2,
+      "subs_lost": 2
     },
     "2026-08-06": {
-      "views": 272407,
-      "watch_hrs": 12977.4,
-      "subs_gained": 277,
-      "subs_lost": 34
+      "views": 911,
+      "watch_hrs": 10.0,
+      "subs_gained": 3,
+      "subs_lost": 7
     },
     "2026-08-07": {
-      "views": 237024,
-      "watch_hrs": 9321.2,
-      "subs_gained": 200,
-      "subs_lost": 27
+      "views": 698,
+      "watch_hrs": 5.0,
+      "subs_gained": 0,
+      "subs_lost": 8
     },
     "2026-08-08": {
-      "views": 173269,
-      "watch_hrs": 5533.0,
-      "subs_gained": 151,
-      "subs_lost": 28
+      "views": 654,
+      "watch_hrs": 7.3,
+      "subs_gained": 1,
+      "subs_lost": 4
     },
     "2026-08-09": {
-      "views": 129079,
-      "watch_hrs": 4548.9,
-      "subs_gained": 111,
-      "subs_lost": 22
+      "views": 717,
+      "watch_hrs": 4.2,
+      "subs_gained": 1,
+      "subs_lost": 6
     },
     "2026-08-10": {
-      "views": 97875,
-      "watch_hrs": 3550.2,
-      "subs_gained": 77,
-      "subs_lost": 19
+      "views": 679,
+      "watch_hrs": 4.5,
+      "subs_gained": 0,
+      "subs_lost": 4
     },
     "2026-08-11": {
-      "views": 263994,
-      "watch_hrs": 11802.5,
-      "subs_gained": 278,
-      "subs_lost": 30
+      "views": 680,
+      "watch_hrs": 4.9,
+      "subs_gained": 1,
+      "subs_lost": 9
     },
     "2026-08-12": {
-      "views": 326891,
-      "watch_hrs": 9951.9,
-      "subs_gained": 335,
-      "subs_lost": 39
+      "views": 615,
+      "watch_hrs": 4.8,
+      "subs_gained": 1,
+      "subs_lost": 1
     },
     "2026-08-13": {
-      "views": 223740,
-      "watch_hrs": 16931.4,
-      "subs_gained": 339,
-      "subs_lost": 53
+      "views": 634,
+      "watch_hrs": 7.7,
+      "subs_gained": 4,
+      "subs_lost": 1
     },
     "2026-08-14": {
-      "views": 379769,
-      "watch_hrs": 13703.8,
-      "subs_gained": 418,
-      "subs_lost": 28
+      "views": 598,
+      "watch_hrs": 5.2,
+      "subs_gained": 3,
+      "subs_lost": 2
     },
     "2026-08-15": {
-      "views": 473969,
-      "watch_hrs": 17641.3,
-      "subs_gained": 1026,
-      "subs_lost": 62
+      "views": 558,
+      "watch_hrs": 3.7,
+      "subs_gained": 0,
+      "subs_lost": 1
     },
     "2026-08-16": {
-      "views": 412556,
-      "watch_hrs": 14164.8,
-      "subs_gained": 820,
-      "subs_lost": 60
+      "views": 543,
+      "watch_hrs": 4.0,
+      "subs_gained": 3,
+      "subs_lost": 12
     },
     "2026-08-17": {
-      "views": 437066,
-      "watch_hrs": 11793.6,
-      "subs_gained": 629,
-      "subs_lost": 53
+      "views": 559,
+      "watch_hrs": 3.6,
+      "subs_gained": 3,
+      "subs_lost": 3
     },
     "2026-08-18": {
-      "views": 316621,
-      "watch_hrs": 9046.9,
-      "subs_gained": 432,
-      "subs_lost": 44
+      "views": 8782,
+      "watch_hrs": 1095.0,
+      "subs_gained": 30,
+      "subs_lost": 4
     }
   },
   "all_videos": [
+    {
+      "id": "uhJQH9XgPfU",
+      "title": "Antoine Winfield Jr. on Tom Brady, Leading Tampa Bay and His Safety Mount Rushmore",
+      "published": "2026-08-24",
+      "month": "2026-08",
+      "duration_sec": 657,
+      "type": "mid",
+      "views": 0,
+      "likes": 0,
+      "comments": 0,
+      "pre_rdm": false
+    },
+    {
+      "id": "fTY_EY0D6rk",
+      "title": "Game recognizes game, even at the highest level \ud83d\udcaf",
+      "published": "2026-08-24",
+      "month": "2026-08",
+      "duration_sec": 72,
+      "type": "short",
+      "views": 0,
+      "likes": 0,
+      "comments": 0,
+      "pre_rdm": false
+    },
+    {
+      "id": "6IYmfnlXLGM",
+      "title": "Bijan Robinson has been a pioneer for running backs nationwide to get paid what they deserve \ud83d\udcb0",
+      "published": "2026-08-21",
+      "month": "2026-08",
+      "duration_sec": 53,
+      "type": "short",
+      "views": 1524,
+      "likes": 57,
+      "comments": 1,
+      "pre_rdm": false
+    },
+    {
+      "id": "Ps5SyCCL87g",
+      "title": "If you plan on taking Bijan Robinson in Fantasy Football this year\u2026 LOCK IN!",
+      "published": "2026-08-21",
+      "month": "2026-08",
+      "duration_sec": 35,
+      "type": "short",
+      "views": 1608,
+      "likes": 21,
+      "comments": 0,
+      "pre_rdm": false
+    },
     {
       "id": "4mt70foszEg",
       "title": "Drake London & Bijan Robinson: Atlanta\u2019s New Offense Could Be a PROBLEM",
@@ -833,9 +813,9 @@
       "month": "2026-08",
       "duration_sec": 1703,
       "type": "mid",
-      "views": 508,
-      "likes": 47,
-      "comments": 1,
+      "views": 22420,
+      "likes": 206,
+      "comments": 33,
       "pre_rdm": false
     },
     {
@@ -845,8 +825,8 @@
       "month": "2026-08",
       "duration_sec": 39,
       "type": "short",
-      "views": 1259,
-      "likes": 39,
+      "views": 1561,
+      "likes": 42,
       "comments": 0,
       "pre_rdm": false
     },
@@ -857,7 +837,7 @@
       "month": "2026-08",
       "duration_sec": 19,
       "type": "short",
-      "views": 2699,
+      "views": 2819,
       "likes": 34,
       "comments": 1,
       "pre_rdm": false
@@ -869,8 +849,8 @@
       "month": "2026-08",
       "duration_sec": 40,
       "type": "short",
-      "views": 2029,
-      "likes": 56,
+      "views": 2116,
+      "likes": 58,
       "comments": 1,
       "pre_rdm": false
     },
@@ -881,9 +861,9 @@
       "month": "2026-08",
       "duration_sec": 78,
       "type": "short",
-      "views": 3319,
-      "likes": 121,
-      "comments": 6,
+      "views": 4110,
+      "likes": 149,
+      "comments": 8,
       "pre_rdm": false
     },
     {
@@ -893,10 +873,10 @@
       "month": "2026-08",
       "duration_sec": 27,
       "type": "short",
-      "views": 4863,
-      "likes": 101,
+      "views": 5342,
+      "likes": 112,
       "comments": 2,
-      "pre_rdm": true
+      "pre_rdm": false
     },
     {
       "id": "h-8r_cWNTCY",
@@ -905,10 +885,10 @@
       "month": "2026-08",
       "duration_sec": 2568,
       "type": "long",
-      "views": 18586,
-      "likes": 327,
-      "comments": 37,
-      "pre_rdm": true
+      "views": 25851,
+      "likes": 343,
+      "comments": 42,
+      "pre_rdm": false
     },
     {
       "id": "E_Vsc76Tlr4",
@@ -917,7 +897,7 @@
       "month": "2026-05",
       "duration_sec": 2955,
       "type": "long",
-      "views": 2162,
+      "views": 2165,
       "likes": 3,
       "comments": 0,
       "pre_rdm": true
@@ -929,7 +909,7 @@
       "month": "2026-05",
       "duration_sec": 49,
       "type": "short",
-      "views": 20891,
+      "views": 20893,
       "likes": 28,
       "comments": 1,
       "pre_rdm": true
@@ -941,7 +921,7 @@
       "month": "2026-05",
       "duration_sec": 65,
       "type": "short",
-      "views": 12185,
+      "views": 12188,
       "likes": 86,
       "comments": 1,
       "pre_rdm": true
@@ -953,7 +933,7 @@
       "month": "2026-04",
       "duration_sec": 48,
       "type": "short",
-      "views": 13673,
+      "views": 13675,
       "likes": 8,
       "comments": 3,
       "pre_rdm": true
@@ -965,7 +945,7 @@
       "month": "2026-04",
       "duration_sec": 84,
       "type": "short",
-      "views": 12251,
+      "views": 12253,
       "likes": 48,
       "comments": 1,
       "pre_rdm": true
@@ -977,7 +957,7 @@
       "month": "2026-04",
       "duration_sec": 88,
       "type": "short",
-      "views": 17684,
+      "views": 17685,
       "likes": 24,
       "comments": 1,
       "pre_rdm": true
@@ -989,7 +969,7 @@
       "month": "2026-04",
       "duration_sec": 72,
       "type": "short",
-      "views": 20194,
+      "views": 20195,
       "likes": 82,
       "comments": 7,
       "pre_rdm": true
@@ -1001,7 +981,7 @@
       "month": "2026-04",
       "duration_sec": 1400,
       "type": "mid",
-      "views": 44843,
+      "views": 44855,
       "likes": 329,
       "comments": 83,
       "pre_rdm": true
@@ -1073,7 +1053,7 @@
       "month": "2026-04",
       "duration_sec": 88,
       "type": "short",
-      "views": 31348,
+      "views": 31351,
       "likes": 8,
       "comments": 2,
       "pre_rdm": true
@@ -1085,7 +1065,7 @@
       "month": "2026-04",
       "duration_sec": 1087,
       "type": "mid",
-      "views": 26634,
+      "views": 26635,
       "likes": 3,
       "comments": 1,
       "pre_rdm": true
@@ -1097,8 +1077,8 @@
       "month": "2026-04",
       "duration_sec": 36,
       "type": "short",
-      "views": 34718,
-      "likes": 36,
+      "views": 34750,
+      "likes": 38,
       "comments": 1,
       "pre_rdm": true
     },
@@ -1121,7 +1101,7 @@
       "month": "2026-04",
       "duration_sec": 76,
       "type": "short",
-      "views": 28256,
+      "views": 28257,
       "likes": 22,
       "comments": 1,
       "pre_rdm": true
@@ -1133,7 +1113,7 @@
       "month": "2026-04",
       "duration_sec": 26,
       "type": "short",
-      "views": 33197,
+      "views": 33203,
       "likes": 36,
       "comments": 1,
       "pre_rdm": true
@@ -1145,7 +1125,7 @@
       "month": "2026-04",
       "duration_sec": 68,
       "type": "short",
-      "views": 30237,
+      "views": 30239,
       "likes": 43,
       "comments": 0,
       "pre_rdm": true
@@ -1157,7 +1137,7 @@
       "month": "2026-04",
       "duration_sec": 68,
       "type": "short",
-      "views": 29500,
+      "views": 29501,
       "likes": 25,
       "comments": 0,
       "pre_rdm": true
@@ -1193,8 +1173,8 @@
       "month": "2026-04",
       "duration_sec": 33,
       "type": "short",
-      "views": 36554,
-      "likes": 78,
+      "views": 36601,
+      "likes": 77,
       "comments": 4,
       "pre_rdm": true
     },
@@ -1205,7 +1185,7 @@
       "month": "2026-04",
       "duration_sec": 87,
       "type": "short",
-      "views": 26815,
+      "views": 26834,
       "likes": 15,
       "comments": 0,
       "pre_rdm": true
@@ -1229,7 +1209,7 @@
       "month": "2026-04",
       "duration_sec": 82,
       "type": "short",
-      "views": 28295,
+      "views": 28312,
       "likes": 8,
       "comments": 1,
       "pre_rdm": true
@@ -1241,7 +1221,7 @@
       "month": "2026-04",
       "duration_sec": 35,
       "type": "short",
-      "views": 31541,
+      "views": 31542,
       "likes": 10,
       "comments": 0,
       "pre_rdm": true
@@ -1265,8 +1245,8 @@
       "month": "2026-04",
       "duration_sec": 57,
       "type": "short",
-      "views": 36557,
-      "likes": 139,
+      "views": 36582,
+      "likes": 140,
       "comments": 10,
       "pre_rdm": true
     },
@@ -1277,7 +1257,7 @@
       "month": "2026-04",
       "duration_sec": 122,
       "type": "short",
-      "views": 28862,
+      "views": 28863,
       "likes": 52,
       "comments": 1,
       "pre_rdm": true
@@ -1289,7 +1269,7 @@
       "month": "2026-04",
       "duration_sec": 49,
       "type": "short",
-      "views": 31494,
+      "views": 31495,
       "likes": 5,
       "comments": 0,
       "pre_rdm": true
@@ -1301,7 +1281,7 @@
       "month": "2026-04",
       "duration_sec": 84,
       "type": "short",
-      "views": 31471,
+      "views": 31482,
       "likes": 50,
       "comments": 5,
       "pre_rdm": true
@@ -1313,7 +1293,7 @@
       "month": "2026-04",
       "duration_sec": 76,
       "type": "short",
-      "views": 29937,
+      "views": 29940,
       "likes": 14,
       "comments": 0,
       "pre_rdm": true
@@ -1337,7 +1317,7 @@
       "month": "2026-04",
       "duration_sec": 52,
       "type": "short",
-      "views": 26853,
+      "views": 26854,
       "likes": 9,
       "comments": 0,
       "pre_rdm": true
@@ -1379,15 +1359,15 @@
       "pre_rdm": true
     },
     {
-      "id": "0ocOU4nM6V0",
-      "title": "1 Offer is All it Took for This NFL Draft Prospect",
-      "published": "2026-04-16",
+      "id": "0EdOdRNzz2I",
+      "title": "Your Insider Access to the Latest NFL News",
+      "published": "2026-04-26",
       "month": "2026-04",
-      "duration_sec": 86,
+      "duration_sec": 12,
       "type": "short",
-      "views": 23481,
-      "likes": 49,
-      "comments": 2,
+      "views": 75740,
+      "likes": 1391,
+      "comments": 4,
       "pre_rdm": true
     },
     {
@@ -1397,7 +1377,7 @@
       "month": "2026-04",
       "duration_sec": 72,
       "type": "short",
-      "views": 24551,
+      "views": 24578,
       "likes": 20,
       "comments": 1,
       "pre_rdm": true
@@ -1433,7 +1413,7 @@
       "month": "2026-04",
       "duration_sec": 51,
       "type": "short",
-      "views": 27316,
+      "views": 27319,
       "likes": 16,
       "comments": 2,
       "pre_rdm": true
@@ -1445,8 +1425,8 @@
       "month": "2026-04",
       "duration_sec": 61,
       "type": "short",
-      "views": 26214,
-      "likes": 39,
+      "views": 26216,
+      "likes": 38,
       "comments": 1,
       "pre_rdm": true
     },
@@ -1457,7 +1437,7 @@
       "month": "2026-04",
       "duration_sec": 80,
       "type": "short",
-      "views": 27343,
+      "views": 27421,
       "likes": 60,
       "comments": 2,
       "pre_rdm": true
@@ -1517,7 +1497,7 @@
       "month": "2026-04",
       "duration_sec": 101,
       "type": "short",
-      "views": 28252,
+      "views": 28253,
       "likes": 85,
       "comments": 0,
       "pre_rdm": true
@@ -1530,7 +1510,7 @@
       "duration_sec": 12,
       "type": "short",
       "views": 19968,
-      "likes": 1284,
+      "likes": 1285,
       "comments": 5,
       "pre_rdm": true
     },
@@ -1541,7 +1521,7 @@
       "month": "2026-04",
       "duration_sec": 29,
       "type": "short",
-      "views": 30493,
+      "views": 30498,
       "likes": 19,
       "comments": 0,
       "pre_rdm": true
@@ -1577,8 +1557,8 @@
       "month": "2026-04",
       "duration_sec": 26,
       "type": "short",
-      "views": 31294,
-      "likes": 9,
+      "views": 31295,
+      "likes": 10,
       "comments": 0,
       "pre_rdm": true
     },
@@ -1625,7 +1605,7 @@
       "month": "2026-04",
       "duration_sec": 44,
       "type": "short",
-      "views": 28631,
+      "views": 28633,
       "likes": 5,
       "comments": 0,
       "pre_rdm": true
@@ -1661,7 +1641,7 @@
       "month": "2026-04",
       "duration_sec": 1199,
       "type": "mid",
-      "views": 28962,
+      "views": 28987,
       "likes": 18,
       "comments": 19,
       "pre_rdm": true
@@ -1745,7 +1725,7 @@
       "month": "2026-03",
       "duration_sec": 1187,
       "type": "mid",
-      "views": 28356,
+      "views": 28358,
       "likes": 9,
       "comments": 1,
       "pre_rdm": true
@@ -1769,7 +1749,7 @@
       "month": "2026-03",
       "duration_sec": 42,
       "type": "short",
-      "views": 35241,
+      "views": 35242,
       "likes": 31,
       "comments": 3,
       "pre_rdm": true
@@ -1865,7 +1845,7 @@
       "month": "2026-03",
       "duration_sec": 44,
       "type": "short",
-      "views": 33712,
+      "views": 33719,
       "likes": 26,
       "comments": 0,
       "pre_rdm": true
@@ -1901,7 +1881,7 @@
       "month": "2026-03",
       "duration_sec": 1975,
       "type": "long",
-      "views": 27546,
+      "views": 27549,
       "likes": 18,
       "comments": 11,
       "pre_rdm": true
@@ -1943,6 +1923,18 @@
       "pre_rdm": true
     },
     {
+      "id": "4eDPwbsFUPo",
+      "title": "Eagles Leadership is Unmatched with Hurts & Sirriani",
+      "published": "2026-02-21",
+      "month": "2026-02",
+      "duration_sec": 75,
+      "type": "short",
+      "views": 73,
+      "likes": 3,
+      "comments": 0,
+      "pre_rdm": true
+    },
+    {
       "id": "3Wgyrk4lKhM",
       "title": "Learning From the Best WRs in the NFL",
       "published": "2026-02-20",
@@ -1967,15 +1959,15 @@
       "pre_rdm": true
     },
     {
-      "id": "FLb2J9xTsnI",
-      "title": "Top 5 CBs This NFL Star Loves Watching",
+      "id": "Q4i8MvsRmeA",
+      "title": "Jahan Dotson Opens Up on Eagles, Jalen Hurts\u2019 Leadership, and His NFL Future",
       "published": "2026-02-20",
       "month": "2026-02",
-      "duration_sec": 50,
-      "type": "short",
-      "views": 41683,
-      "likes": 2,
-      "comments": 0,
+      "duration_sec": 1117,
+      "type": "mid",
+      "views": 132004,
+      "likes": 183,
+      "comments": 65,
       "pre_rdm": true
     },
     {
@@ -2021,7 +2013,7 @@
       "month": "2026-02",
       "duration_sec": 1940,
       "type": "long",
-      "views": 113895,
+      "views": 113897,
       "likes": 87,
       "comments": 12,
       "pre_rdm": true
@@ -2033,7 +2025,7 @@
       "month": "2026-02",
       "duration_sec": 82,
       "type": "short",
-      "views": 39672,
+      "views": 39673,
       "likes": 11,
       "comments": 2,
       "pre_rdm": true
@@ -2105,7 +2097,7 @@
       "month": "2026-02",
       "duration_sec": 33,
       "type": "short",
-      "views": 42895,
+      "views": 42896,
       "likes": 10,
       "comments": 1,
       "pre_rdm": true
@@ -2141,7 +2133,7 @@
       "month": "2026-02",
       "duration_sec": 57,
       "type": "short",
-      "views": 42414,
+      "views": 42428,
       "likes": 32,
       "comments": 3,
       "pre_rdm": true
@@ -2273,7 +2265,7 @@
       "month": "2026-02",
       "duration_sec": 35,
       "type": "short",
-      "views": 39259,
+      "views": 39264,
       "likes": 4,
       "comments": 0,
       "pre_rdm": true
@@ -2357,7 +2349,7 @@
       "month": "2026-02",
       "duration_sec": 39,
       "type": "short",
-      "views": 40449,
+      "views": 40450,
       "likes": 3,
       "comments": 0,
       "pre_rdm": true
@@ -2381,7 +2373,7 @@
       "month": "2026-02",
       "duration_sec": 3140,
       "type": "long",
-      "views": 74293,
+      "views": 74294,
       "likes": 10,
       "comments": 1,
       "pre_rdm": true
@@ -2429,7 +2421,7 @@
       "month": "2026-02",
       "duration_sec": 63,
       "type": "short",
-      "views": 3478,
+      "views": 3479,
       "likes": 9,
       "comments": 0,
       "pre_rdm": true
@@ -2501,7 +2493,7 @@
       "month": "2026-02",
       "duration_sec": 2656,
       "type": "long",
-      "views": 128874,
+      "views": 128875,
       "likes": 15,
       "comments": 9,
       "pre_rdm": true
@@ -2567,15 +2559,15 @@
       "pre_rdm": true
     },
     {
-      "id": "Zven3oQOMVc",
-      "title": "Being a Father Changed Kyle Pitts Sr.'s Approach",
+      "id": "Uv8cKqeuPEs",
+      "title": "Bill Belichick's HOF was disrespectful to a legend",
       "published": "2026-02-03",
       "month": "2026-02",
       "duration_sec": 62,
       "type": "short",
-      "views": 6145,
-      "likes": 45,
-      "comments": 4,
+      "views": 47991,
+      "likes": 374,
+      "comments": 28,
       "pre_rdm": true
     },
     {
@@ -2585,7 +2577,7 @@
       "month": "2026-01",
       "duration_sec": 3634,
       "type": "long",
-      "views": 124106,
+      "views": 124107,
       "likes": 25,
       "comments": 2,
       "pre_rdm": true
@@ -2597,7 +2589,7 @@
       "month": "2026-01",
       "duration_sec": 31,
       "type": "short",
-      "views": 52783,
+      "views": 52801,
       "likes": 24,
       "comments": 0,
       "pre_rdm": true
@@ -2669,7 +2661,7 @@
       "month": "2026-01",
       "duration_sec": 1133,
       "type": "mid",
-      "views": 32573,
+      "views": 32574,
       "likes": 15,
       "comments": 6,
       "pre_rdm": true
@@ -2705,7 +2697,7 @@
       "month": "2026-01",
       "duration_sec": 44,
       "type": "short",
-      "views": 52909,
+      "views": 52910,
       "likes": 32,
       "comments": 3,
       "pre_rdm": true
@@ -2753,7 +2745,7 @@
       "month": "2026-01",
       "duration_sec": 2681,
       "type": "long",
-      "views": 110733,
+      "views": 110734,
       "likes": 126,
       "comments": 42,
       "pre_rdm": true
@@ -2778,7 +2770,7 @@
       "duration_sec": 42,
       "type": "short",
       "views": 61930,
-      "likes": 405,
+      "likes": 404,
       "comments": 41,
       "pre_rdm": true
     },
@@ -2825,7 +2817,7 @@
       "month": "2026-01",
       "duration_sec": 49,
       "type": "short",
-      "views": 1552,
+      "views": 1555,
       "likes": 19,
       "comments": 4,
       "pre_rdm": true
@@ -2885,7 +2877,7 @@
       "month": "2026-01",
       "duration_sec": 3157,
       "type": "long",
-      "views": 117136,
+      "views": 117137,
       "likes": 26,
       "comments": 14,
       "pre_rdm": true
@@ -2969,7 +2961,7 @@
       "month": "2026-01",
       "duration_sec": 104,
       "type": "short",
-      "views": 39828,
+      "views": 39829,
       "likes": 2,
       "comments": 0,
       "pre_rdm": true
@@ -2981,7 +2973,7 @@
       "month": "2026-01",
       "duration_sec": 69,
       "type": "short",
-      "views": 41175,
+      "views": 41179,
       "likes": 135,
       "comments": 9,
       "pre_rdm": true
@@ -2993,7 +2985,7 @@
       "month": "2026-01",
       "duration_sec": 57,
       "type": "short",
-      "views": 44228,
+      "views": 44229,
       "likes": 198,
       "comments": 4,
       "pre_rdm": true
@@ -3089,7 +3081,7 @@
       "month": "2026-01",
       "duration_sec": 34,
       "type": "short",
-      "views": 42485,
+      "views": 42487,
       "likes": 31,
       "comments": 1,
       "pre_rdm": true
@@ -3149,9 +3141,21 @@
       "month": "2026-01",
       "duration_sec": 64,
       "type": "short",
-      "views": 24600,
+      "views": 24601,
       "likes": 133,
       "comments": 1,
+      "pre_rdm": true
+    },
+    {
+      "id": "HmyFbqCEFvE",
+      "title": "How the Bears Made a CRAZY Comeback Against the Packers",
+      "published": "2026-01-15",
+      "month": "2026-01",
+      "duration_sec": 40,
+      "type": "short",
+      "views": 43416,
+      "likes": 4,
+      "comments": 0,
       "pre_rdm": true
     },
     {
@@ -3176,18 +3180,6 @@
       "views": 42267,
       "likes": 18,
       "comments": 2,
-      "pre_rdm": true
-    },
-    {
-      "id": "w8c49rbOl7E",
-      "title": "DG Gives Caleb Williams His Flowers | WIDGTAF",
-      "published": "2026-01-15",
-      "month": "2026-01",
-      "duration_sec": 60,
-      "type": "short",
-      "views": 62278,
-      "likes": 248,
-      "comments": 3,
       "pre_rdm": true
     },
     {
@@ -3293,7 +3285,7 @@
       "month": "2026-01",
       "duration_sec": 3355,
       "type": "long",
-      "views": 121444,
+      "views": 121445,
       "likes": 34,
       "comments": 14,
       "pre_rdm": true
@@ -3329,7 +3321,7 @@
       "month": "2026-01",
       "duration_sec": 55,
       "type": "short",
-      "views": 678,
+      "views": 679,
       "likes": 5,
       "comments": 0,
       "pre_rdm": true
@@ -3389,7 +3381,7 @@
       "month": "2026-01",
       "duration_sec": 34,
       "type": "short",
-      "views": 47566,
+      "views": 47568,
       "likes": 102,
       "comments": 5,
       "pre_rdm": true
@@ -3413,7 +3405,7 @@
       "month": "2026-01",
       "duration_sec": 3289,
       "type": "long",
-      "views": 95803,
+      "views": 95805,
       "likes": 208,
       "comments": 53,
       "pre_rdm": true
@@ -3425,7 +3417,7 @@
       "month": "2026-01",
       "duration_sec": 46,
       "type": "short",
-      "views": 47938,
+      "views": 47942,
       "likes": 14,
       "comments": 1,
       "pre_rdm": true
@@ -3767,6 +3759,42 @@
       "pre_rdm": true
     },
     {
+      "id": "11XjdVkoqH4",
+      "title": "Steelers Special Teams Ace Explains What's Special About Aaron Rodgers",
+      "published": "2025-12-26",
+      "month": "2025-12",
+      "duration_sec": 1138,
+      "type": "mid",
+      "views": 17759,
+      "likes": 100,
+      "comments": 32,
+      "pre_rdm": true
+    },
+    {
+      "id": "fXrV4R2sxBs",
+      "title": "Winning Mentality is Everything | WIDGTAF",
+      "published": "2025-12-25",
+      "month": "2025-12",
+      "duration_sec": 77,
+      "type": "short",
+      "views": 15996,
+      "likes": 112,
+      "comments": 1,
+      "pre_rdm": true
+    },
+    {
+      "id": "0ytJkdYzXwM",
+      "title": "Christmas Eats with Keyshawn Johnson",
+      "published": "2025-12-24",
+      "month": "2025-12",
+      "duration_sec": 51,
+      "type": "short",
+      "views": 11352,
+      "likes": 3,
+      "comments": 0,
+      "pre_rdm": true
+    },
+    {
       "id": "Oju1dpvQvQg",
       "title": "Packers Defensive Coordinator is a Top Head Coach Candidate",
       "published": "2025-12-24",
@@ -3776,42 +3804,6 @@
       "views": 11143,
       "likes": 2,
       "comments": 1,
-      "pre_rdm": true
-    },
-    {
-      "id": "-puSmbwwbNk",
-      "title": "Why Former Giants QB Davis Webb Could be a Head Coach in 2026",
-      "published": "2025-12-23",
-      "month": "2025-12",
-      "duration_sec": 50,
-      "type": "short",
-      "views": 14244,
-      "likes": 38,
-      "comments": 0,
-      "pre_rdm": true
-    },
-    {
-      "id": "K9sO-D7nfyU",
-      "title": "Top NFL Coaching Candidate for 2026 is WHO?!",
-      "published": "2025-12-23",
-      "month": "2025-12",
-      "duration_sec": 49,
-      "type": "short",
-      "views": 11781,
-      "likes": 6,
-      "comments": 2,
-      "pre_rdm": true
-    },
-    {
-      "id": "qvR4tVHLzbM",
-      "title": "Zay Flowers Shares What Fans Don't Realize About John Harbaugh",
-      "published": "2025-12-23",
-      "month": "2025-12",
-      "duration_sec": 23,
-      "type": "short",
-      "views": 11502,
-      "likes": 1,
-      "comments": 0,
       "pre_rdm": true
     },
     {
@@ -3977,8 +3969,8 @@
       "month": "2025-12",
       "duration_sec": 107,
       "type": "short",
-      "views": 12649,
-      "likes": 54,
+      "views": 12650,
+      "likes": 53,
       "comments": 2,
       "pre_rdm": true
     },
@@ -4085,7 +4077,7 @@
       "month": "2025-12",
       "duration_sec": 78,
       "type": "short",
-      "views": 11312,
+      "views": 11313,
       "likes": 48,
       "comments": 2,
       "pre_rdm": true
@@ -4110,7 +4102,7 @@
       "duration_sec": 47,
       "type": "short",
       "views": 65025,
-      "likes": 1461,
+      "likes": 1460,
       "comments": 82,
       "pre_rdm": true
     },
@@ -4158,7 +4150,7 @@
       "duration_sec": 53,
       "type": "short",
       "views": 16306,
-      "likes": 80,
+      "likes": 79,
       "comments": 0,
       "pre_rdm": true
     },
@@ -4170,7 +4162,7 @@
       "duration_sec": 51,
       "type": "short",
       "views": 44114,
-      "likes": 232,
+      "likes": 231,
       "comments": 2,
       "pre_rdm": true
     },
@@ -4182,7 +4174,7 @@
       "duration_sec": 84,
       "type": "short",
       "views": 10990,
-      "likes": 270,
+      "likes": 269,
       "comments": 3,
       "pre_rdm": true
     },
@@ -4217,7 +4209,7 @@
       "month": "2025-12",
       "duration_sec": 1948,
       "type": "long",
-      "views": 81192,
+      "views": 81194,
       "likes": 16,
       "comments": 20,
       "pre_rdm": true
@@ -4278,7 +4270,7 @@
       "duration_sec": 53,
       "type": "short",
       "views": 16736,
-      "likes": 156,
+      "likes": 155,
       "comments": 0,
       "pre_rdm": true
     },
@@ -4302,7 +4294,7 @@
       "duration_sec": 26,
       "type": "short",
       "views": 9982,
-      "likes": 13,
+      "likes": 12,
       "comments": 2,
       "pre_rdm": true
     },
@@ -4367,27 +4359,27 @@
       "pre_rdm": true
     },
     {
-      "id": "1gZcboYbXBY",
-      "title": "Why Joe Burrow Has Bengals Back in Chase for AFC North",
-      "published": "2025-12-04",
+      "id": "wURE0Rw9ofE",
+      "title": "Javonte Williams Reveals Why he Chose the Cowboys in Free Agency, What it's Like Playing with Dak",
+      "published": "2025-12-05",
       "month": "2025-12",
-      "duration_sec": 42,
-      "type": "short",
-      "views": 11000,
-      "likes": 4,
-      "comments": 0,
+      "duration_sec": 850,
+      "type": "mid",
+      "views": 7389,
+      "likes": 7,
+      "comments": 2,
       "pre_rdm": true
     },
     {
-      "id": "anz9QWC3dyQ",
-      "title": "The Secret Skill That Makes Dak Prescott an NFL Top QB",
-      "published": "2025-12-04",
+      "id": "xE6oAMzERy8",
+      "title": "5 Best Dressed Dallas Cowboys Players",
+      "published": "2025-12-05",
       "month": "2025-12",
-      "duration_sec": 56,
+      "duration_sec": 28,
       "type": "short",
-      "views": 13398,
-      "likes": 83,
-      "comments": 2,
+      "views": 12583,
+      "likes": 24,
+      "comments": 0,
       "pre_rdm": true
     },
     {
@@ -4434,7 +4426,7 @@
       "duration_sec": 57,
       "type": "short",
       "views": 86940,
-      "likes": 416,
+      "likes": 415,
       "comments": 1,
       "pre_rdm": true
     },
@@ -4487,6 +4479,18 @@
       "pre_rdm": true
     },
     {
+      "id": "pQzqvBMNQPU",
+      "title": "Trey McBride Can't Stop Hurdling",
+      "published": "2025-12-02",
+      "month": "2025-12",
+      "duration_sec": 44,
+      "type": "short",
+      "views": 0,
+      "likes": 0,
+      "comments": 0,
+      "pre_rdm": true
+    },
+    {
       "id": "PWiEo2hzLHo",
       "title": "Don't Sleep on Nik Bonitto \ud83d\ude24 | WIDGTAF",
       "published": "2025-12-02",
@@ -4518,7 +4522,7 @@
       "duration_sec": 29,
       "type": "short",
       "views": 12925,
-      "likes": 74,
+      "likes": 73,
       "comments": 3,
       "pre_rdm": true
     },
@@ -4530,7 +4534,7 @@
       "duration_sec": 37,
       "type": "short",
       "views": 8937,
-      "likes": 46,
+      "likes": 45,
       "comments": 1,
       "pre_rdm": true
     },
@@ -4565,8 +4569,8 @@
       "month": "2025-11",
       "duration_sec": 17,
       "type": "short",
-      "views": 14901,
-      "likes": 32,
+      "views": 14902,
+      "likes": 31,
       "comments": 1,
       "pre_rdm": true
     },
@@ -4602,7 +4606,7 @@
       "duration_sec": 11,
       "type": "short",
       "views": 19021,
-      "likes": 49,
+      "likes": 48,
       "comments": 0,
       "pre_rdm": true
     },
@@ -4628,6 +4632,18 @@
       "views": 7639,
       "likes": 7,
       "comments": 4,
+      "pre_rdm": true
+    },
+    {
+      "id": "a3rzIdYETsM",
+      "title": "Thankful For Football \ud83e\udd83 | WIDGTAF",
+      "published": "2025-11-27",
+      "month": "2025-11",
+      "duration_sec": 50,
+      "type": "short",
+      "views": 0,
+      "likes": 0,
+      "comments": 0,
       "pre_rdm": true
     },
     {
@@ -4673,7 +4689,7 @@
       "month": "2025-11",
       "duration_sec": 21,
       "type": "short",
-      "views": 11246,
+      "views": 11248,
       "likes": 6,
       "comments": 0,
       "pre_rdm": true
@@ -4841,7 +4857,7 @@
       "month": "2025-11",
       "duration_sec": 1005,
       "type": "mid",
-      "views": 7593,
+      "views": 7592,
       "likes": 6,
       "comments": 1,
       "pre_rdm": true
@@ -4937,7 +4953,7 @@
       "month": "2025-11",
       "duration_sec": 2813,
       "type": "long",
-      "views": 36702,
+      "views": 36703,
       "likes": 12,
       "comments": 11,
       "pre_rdm": true
@@ -5147,13 +5163,25 @@
       "pre_rdm": true
     },
     {
+      "id": "b8Y356y3FUo",
+      "title": "Breece Hall Requested Trade From Jets Before the Deadline",
+      "published": "2025-11-06",
+      "month": "2025-11",
+      "duration_sec": 31,
+      "type": "short",
+      "views": 12,
+      "likes": 0,
+      "comments": 0,
+      "pre_rdm": true
+    },
+    {
       "id": "f0SjPbWAqqY",
       "title": "Draymond Green\u2019s Dak Apology & Bold NFL Trade Deadline Reactions",
       "published": "2025-11-06",
       "month": "2025-11",
       "duration_sec": 2179,
       "type": "long",
-      "views": 64738,
+      "views": 64739,
       "likes": 14,
       "comments": 9,
       "pre_rdm": true
@@ -5165,7 +5193,7 @@
       "month": "2025-11",
       "duration_sec": 65,
       "type": "short",
-      "views": 14022,
+      "views": 14023,
       "likes": 125,
       "comments": 45,
       "pre_rdm": true
@@ -5191,6 +5219,18 @@
       "type": "short",
       "views": 11581,
       "likes": 18,
+      "comments": 0,
+      "pre_rdm": true
+    },
+    {
+      "id": "i5k2Npqe-LY",
+      "title": "Quinnen Williams Requested Jets Trade Him \ud83e\udd2f",
+      "published": "2025-11-05",
+      "month": "2025-11",
+      "duration_sec": 38,
+      "type": "short",
+      "views": 1375,
+      "likes": 11,
       "comments": 0,
       "pre_rdm": true
     },
@@ -5321,7 +5361,7 @@
       "month": "2025-10",
       "duration_sec": 30,
       "type": "short",
-      "views": 11197,
+      "views": 11198,
       "likes": 4,
       "comments": 1,
       "pre_rdm": true
@@ -5441,7 +5481,7 @@
       "month": "2025-10",
       "duration_sec": 26,
       "type": "short",
-      "views": 13894,
+      "views": 13895,
       "likes": 13,
       "comments": 0,
       "pre_rdm": true
@@ -5453,7 +5493,7 @@
       "month": "2025-10",
       "duration_sec": 30,
       "type": "short",
-      "views": 13836,
+      "views": 13837,
       "likes": 35,
       "comments": 0,
       "pre_rdm": true
@@ -5561,7 +5601,7 @@
       "month": "2025-10",
       "duration_sec": 22,
       "type": "short",
-      "views": 30074,
+      "views": 30091,
       "likes": 155,
       "comments": 21,
       "pre_rdm": true
@@ -5609,7 +5649,7 @@
       "month": "2025-10",
       "duration_sec": 28,
       "type": "short",
-      "views": 60038,
+      "views": 60049,
       "likes": 1121,
       "comments": 55,
       "pre_rdm": true
@@ -5621,8 +5661,8 @@
       "month": "2025-10",
       "duration_sec": 37,
       "type": "short",
-      "views": 56397,
-      "likes": 1313,
+      "views": 56417,
+      "likes": 1314,
       "comments": 26,
       "pre_rdm": true
     },
@@ -5669,7 +5709,7 @@
       "month": "2025-10",
       "duration_sec": 3707,
       "type": "long",
-      "views": 45352,
+      "views": 45353,
       "likes": 122,
       "comments": 26,
       "pre_rdm": true
@@ -5729,7 +5769,7 @@
       "month": "2025-10",
       "duration_sec": 59,
       "type": "short",
-      "views": 2124,
+      "views": 2197,
       "likes": 46,
       "comments": 3,
       "pre_rdm": true
@@ -5825,7 +5865,7 @@
       "month": "2025-10",
       "duration_sec": 21,
       "type": "short",
-      "views": 17675,
+      "views": 17678,
       "likes": 31,
       "comments": 10,
       "pre_rdm": true
@@ -5885,7 +5925,7 @@
       "month": "2025-10",
       "duration_sec": 32,
       "type": "short",
-      "views": 30667,
+      "views": 30668,
       "likes": 367,
       "comments": 25,
       "pre_rdm": true
@@ -6005,7 +6045,7 @@
       "month": "2025-10",
       "duration_sec": 23,
       "type": "short",
-      "views": 24355,
+      "views": 24359,
       "likes": 71,
       "comments": 4,
       "pre_rdm": true
@@ -6077,7 +6117,7 @@
       "month": "2025-10",
       "duration_sec": 28,
       "type": "short",
-      "views": 13954,
+      "views": 13956,
       "likes": 20,
       "comments": 0,
       "pre_rdm": true
@@ -6125,7 +6165,7 @@
       "month": "2025-10",
       "duration_sec": 3890,
       "type": "long",
-      "views": 55038,
+      "views": 55039,
       "likes": 13,
       "comments": 3,
       "pre_rdm": true
@@ -6137,8 +6177,8 @@
       "month": "2025-10",
       "duration_sec": 43,
       "type": "short",
-      "views": 660356,
-      "likes": 9188,
+      "views": 660360,
+      "likes": 9183,
       "comments": 20,
       "pre_rdm": true
     },
@@ -6161,7 +6201,7 @@
       "month": "2025-10",
       "duration_sec": 33,
       "type": "short",
-      "views": 16868,
+      "views": 16871,
       "likes": 255,
       "comments": 4,
       "pre_rdm": true
@@ -6233,7 +6273,7 @@
       "month": "2025-10",
       "duration_sec": 31,
       "type": "short",
-      "views": 30717,
+      "views": 30729,
       "likes": 219,
       "comments": 0,
       "pre_rdm": true
@@ -6245,9 +6285,9 @@
       "month": "2025-10",
       "duration_sec": 31,
       "type": "short",
-      "views": 57631,
-      "likes": 969,
-      "comments": 123,
+      "views": 57938,
+      "likes": 979,
+      "comments": 124,
       "pre_rdm": true
     },
     {
@@ -6269,9 +6309,21 @@
       "month": "2025-10",
       "duration_sec": 41,
       "type": "short",
-      "views": 37204,
+      "views": 37218,
       "likes": 324,
       "comments": 10,
+      "pre_rdm": true
+    },
+    {
+      "id": "EwuDCI1hmww",
+      "title": "Jordan Schultz Mid-Season Trailer! [PLACE HOLDER]",
+      "published": "2025-10-02",
+      "month": "2025-10",
+      "duration_sec": 43,
+      "type": "short",
+      "views": 0,
+      "likes": 0,
+      "comments": 0,
       "pre_rdm": true
     },
     {
@@ -6317,7 +6369,7 @@
       "month": "2025-10",
       "duration_sec": 4056,
       "type": "long",
-      "views": 86577,
+      "views": 86578,
       "likes": 335,
       "comments": 53,
       "pre_rdm": true
@@ -6341,7 +6393,7 @@
       "month": "2025-09",
       "duration_sec": 34,
       "type": "short",
-      "views": 15368,
+      "views": 15374,
       "likes": 24,
       "comments": 0,
       "pre_rdm": true
@@ -6365,7 +6417,7 @@
       "month": "2025-09",
       "duration_sec": 101,
       "type": "short",
-      "views": 13169,
+      "views": 13184,
       "likes": 68,
       "comments": 0,
       "pre_rdm": true
@@ -6377,7 +6429,7 @@
       "month": "2025-09",
       "duration_sec": 25,
       "type": "short",
-      "views": 12966,
+      "views": 12967,
       "likes": 13,
       "comments": 0,
       "pre_rdm": true
@@ -6389,7 +6441,7 @@
       "month": "2025-09",
       "duration_sec": 23,
       "type": "short",
-      "views": 22208,
+      "views": 22228,
       "likes": 84,
       "comments": 0,
       "pre_rdm": true
@@ -6401,7 +6453,7 @@
       "month": "2025-09",
       "duration_sec": 37,
       "type": "short",
-      "views": 12295,
+      "views": 12297,
       "likes": 87,
       "comments": 3,
       "pre_rdm": true
@@ -6461,7 +6513,7 @@
       "month": "2025-09",
       "duration_sec": 22,
       "type": "short",
-      "views": 18184,
+      "views": 18195,
       "likes": 59,
       "comments": 3,
       "pre_rdm": true
@@ -6474,7 +6526,7 @@
       "duration_sec": 78,
       "type": "short",
       "views": 20108,
-      "likes": 702,
+      "likes": 701,
       "comments": 15,
       "pre_rdm": true
     },
@@ -6569,7 +6621,7 @@
       "month": "2025-09",
       "duration_sec": 41,
       "type": "short",
-      "views": 11814,
+      "views": 11815,
       "likes": 15,
       "comments": 0,
       "pre_rdm": true
@@ -6653,7 +6705,7 @@
       "month": "2025-09",
       "duration_sec": 38,
       "type": "short",
-      "views": 10097,
+      "views": 10102,
       "likes": 185,
       "comments": 4,
       "pre_rdm": true
@@ -6677,7 +6729,7 @@
       "month": "2025-09",
       "duration_sec": 30,
       "type": "short",
-      "views": 13867,
+      "views": 13874,
       "likes": 455,
       "comments": 0,
       "pre_rdm": true
@@ -6701,7 +6753,7 @@
       "month": "2025-09",
       "duration_sec": 30,
       "type": "short",
-      "views": 17037,
+      "views": 17067,
       "likes": 306,
       "comments": 2,
       "pre_rdm": true
@@ -6786,7 +6838,7 @@
       "duration_sec": 3009,
       "type": "long",
       "views": 25035,
-      "likes": 42,
+      "likes": 41,
       "comments": 13,
       "pre_rdm": true
     },
@@ -6809,7 +6861,7 @@
       "month": "2025-09",
       "duration_sec": 16,
       "type": "short",
-      "views": 40525,
+      "views": 40527,
       "likes": 853,
       "comments": 27,
       "pre_rdm": true
@@ -6917,7 +6969,7 @@
       "month": "2025-09",
       "duration_sec": 68,
       "type": "short",
-      "views": 7094,
+      "views": 7096,
       "likes": 43,
       "comments": 0,
       "pre_rdm": true
@@ -6942,7 +6994,7 @@
       "duration_sec": 27,
       "type": "short",
       "views": 289983,
-      "likes": 10222,
+      "likes": 10221,
       "comments": 59,
       "pre_rdm": true
     },
@@ -6965,8 +7017,8 @@
       "month": "2025-09",
       "duration_sec": 25,
       "type": "short",
-      "views": 559554,
-      "likes": 15062,
+      "views": 559850,
+      "likes": 15068,
       "comments": 152,
       "pre_rdm": true
     },
@@ -6977,7 +7029,7 @@
       "month": "2025-09",
       "duration_sec": 880,
       "type": "mid",
-      "views": 4041,
+      "views": 4043,
       "likes": 21,
       "comments": 4,
       "pre_rdm": true
@@ -6989,7 +7041,7 @@
       "month": "2025-09",
       "duration_sec": 2935,
       "type": "long",
-      "views": 36137,
+      "views": 36138,
       "likes": 24,
       "comments": 2,
       "pre_rdm": true
@@ -7037,8 +7089,8 @@
       "month": "2025-09",
       "duration_sec": 71,
       "type": "short",
-      "views": 9307,
-      "likes": 175,
+      "views": 9325,
+      "likes": 176,
       "comments": 2,
       "pre_rdm": true
     },
@@ -7085,7 +7137,7 @@
       "month": "2025-09",
       "duration_sec": 47,
       "type": "short",
-      "views": 10302,
+      "views": 10303,
       "likes": 39,
       "comments": 0,
       "pre_rdm": true
@@ -7109,7 +7161,7 @@
       "month": "2025-09",
       "duration_sec": 31,
       "type": "short",
-      "views": 886,
+      "views": 887,
       "likes": 13,
       "comments": 1,
       "pre_rdm": true
@@ -7145,7 +7197,7 @@
       "month": "2025-09",
       "duration_sec": 1091,
       "type": "mid",
-      "views": 18959,
+      "views": 18962,
       "likes": 352,
       "comments": 75,
       "pre_rdm": true
@@ -7157,7 +7209,7 @@
       "month": "2025-09",
       "duration_sec": 47,
       "type": "short",
-      "views": 12727,
+      "views": 12737,
       "likes": 58,
       "comments": 2,
       "pre_rdm": true
@@ -7217,7 +7269,7 @@
       "month": "2025-09",
       "duration_sec": 37,
       "type": "short",
-      "views": 5525,
+      "views": 5529,
       "likes": 35,
       "comments": 0,
       "pre_rdm": true
@@ -7241,7 +7293,7 @@
       "month": "2025-09",
       "duration_sec": 27,
       "type": "short",
-      "views": 13378,
+      "views": 13387,
       "likes": 65,
       "comments": 5,
       "pre_rdm": true
@@ -7277,8 +7329,8 @@
       "month": "2025-09",
       "duration_sec": 27,
       "type": "short",
-      "views": 1348,
-      "likes": 17,
+      "views": 1351,
+      "likes": 18,
       "comments": 1,
       "pre_rdm": true
     },
@@ -7313,7 +7365,7 @@
       "month": "2025-09",
       "duration_sec": 34,
       "type": "short",
-      "views": 21757,
+      "views": 21760,
       "likes": 1390,
       "comments": 7,
       "pre_rdm": true
@@ -7325,7 +7377,7 @@
       "month": "2025-09",
       "duration_sec": 62,
       "type": "short",
-      "views": 51387,
+      "views": 51389,
       "likes": 1476,
       "comments": 46,
       "pre_rdm": true
@@ -7338,7 +7390,7 @@
       "duration_sec": 32,
       "type": "short",
       "views": 22649,
-      "likes": 1567,
+      "likes": 1566,
       "comments": 17,
       "pre_rdm": true
     },
@@ -7349,8 +7401,8 @@
       "month": "2025-09",
       "duration_sec": 26,
       "type": "short",
-      "views": 16164,
-      "likes": 67,
+      "views": 16199,
+      "likes": 68,
       "comments": 0,
       "pre_rdm": true
     },
@@ -7361,8 +7413,8 @@
       "month": "2025-09",
       "duration_sec": 27,
       "type": "short",
-      "views": 16182,
-      "likes": 69,
+      "views": 16195,
+      "likes": 70,
       "comments": 5,
       "pre_rdm": true
     },
@@ -7385,7 +7437,7 @@
       "month": "2025-09",
       "duration_sec": 3785,
       "type": "long",
-      "views": 39418,
+      "views": 39420,
       "likes": 122,
       "comments": 12,
       "pre_rdm": true
@@ -7397,7 +7449,7 @@
       "month": "2025-09",
       "duration_sec": 45,
       "type": "short",
-      "views": 1200,
+      "views": 1201,
       "likes": 7,
       "comments": 0,
       "pre_rdm": true
@@ -7433,7 +7485,7 @@
       "month": "2025-09",
       "duration_sec": 48,
       "type": "short",
-      "views": 9271,
+      "views": 9281,
       "likes": 34,
       "comments": 1,
       "pre_rdm": true
@@ -7457,7 +7509,7 @@
       "month": "2025-09",
       "duration_sec": 43,
       "type": "short",
-      "views": 10451,
+      "views": 10454,
       "likes": 55,
       "comments": 4,
       "pre_rdm": true
@@ -7469,7 +7521,7 @@
       "month": "2025-09",
       "duration_sec": 31,
       "type": "short",
-      "views": 13056,
+      "views": 13057,
       "likes": 40,
       "comments": 0,
       "pre_rdm": true
@@ -7511,6 +7563,18 @@
       "pre_rdm": true
     },
     {
+      "id": "Cw8yRXRzWpE",
+      "title": "NFL Season w/ Jordan Schultz Is HERE! \ud83d\udd25",
+      "published": "2025-09-01",
+      "month": "2025-09",
+      "duration_sec": 24,
+      "type": "short",
+      "views": 11894,
+      "likes": 2104,
+      "comments": 0,
+      "pre_rdm": true
+    },
+    {
       "id": "IsGDg482j2o",
       "title": "Courtland Sutton has caught A LOT of TD...",
       "published": "2025-09-01",
@@ -7529,7 +7593,7 @@
       "month": "2025-08",
       "duration_sec": 29,
       "type": "short",
-      "views": 29456,
+      "views": 29458,
       "likes": 711,
       "comments": 13,
       "pre_rdm": true
@@ -7544,6 +7608,18 @@
       "views": 95535,
       "likes": 1352,
       "comments": 6,
+      "pre_rdm": true
+    },
+    {
+      "id": "l3Kx8DphLvM",
+      "title": "NFL Season With Jordan Schultz Is Going To Be A MOVIE!",
+      "published": "2025-08-31",
+      "month": "2025-08",
+      "duration_sec": 64,
+      "type": "short",
+      "views": 31276,
+      "likes": 32,
+      "comments": 1,
       "pre_rdm": true
     },
     {
@@ -7565,7 +7641,7 @@
       "month": "2025-08",
       "duration_sec": 28,
       "type": "short",
-      "views": 13406,
+      "views": 13409,
       "likes": 90,
       "comments": 0,
       "pre_rdm": true
@@ -7601,7 +7677,7 @@
       "month": "2025-08",
       "duration_sec": 960,
       "type": "mid",
-      "views": 75380,
+      "views": 75383,
       "likes": 1086,
       "comments": 122,
       "pre_rdm": true
@@ -7637,7 +7713,7 @@
       "month": "2025-08",
       "duration_sec": 37,
       "type": "short",
-      "views": 200022,
+      "views": 200026,
       "likes": 6967,
       "comments": 62,
       "pre_rdm": true
@@ -7649,7 +7725,7 @@
       "month": "2025-08",
       "duration_sec": 51,
       "type": "short",
-      "views": 2475,
+      "views": 2476,
       "likes": 33,
       "comments": 5,
       "pre_rdm": true
@@ -7661,7 +7737,7 @@
       "month": "2025-08",
       "duration_sec": 24,
       "type": "short",
-      "views": 11666,
+      "views": 11677,
       "likes": 40,
       "comments": 5,
       "pre_rdm": true
@@ -7673,9 +7749,21 @@
       "month": "2025-08",
       "duration_sec": 28,
       "type": "short",
-      "views": 46709,
+      "views": 46746,
       "likes": 477,
       "comments": 1,
+      "pre_rdm": true
+    },
+    {
+      "id": "SrzEcBId6Jg",
+      "title": "Why Terrion Arnold Would Jam His Mom Into The Dirt 1v1",
+      "published": "2025-08-28",
+      "month": "2025-08",
+      "duration_sec": 24,
+      "type": "short",
+      "views": 0,
+      "likes": 0,
+      "comments": 0,
       "pre_rdm": true
     },
     {
@@ -7685,7 +7773,7 @@
       "month": "2025-08",
       "duration_sec": 820,
       "type": "mid",
-      "views": 23082,
+      "views": 23084,
       "likes": 448,
       "comments": 40,
       "pre_rdm": true
@@ -7697,7 +7785,7 @@
       "month": "2025-08",
       "duration_sec": 27,
       "type": "short",
-      "views": 2456,
+      "views": 2459,
       "likes": 30,
       "comments": 2,
       "pre_rdm": true
@@ -7769,7 +7857,7 @@
       "month": "2025-08",
       "duration_sec": 20,
       "type": "short",
-      "views": 11371,
+      "views": 11387,
       "likes": 75,
       "comments": 0,
       "pre_rdm": true
@@ -7799,6 +7887,18 @@
       "pre_rdm": true
     },
     {
+      "id": "e7959ZHGJoA",
+      "title": "Terry McLaurin Contract Drama",
+      "published": "2025-08-24",
+      "month": "2025-08",
+      "duration_sec": 183,
+      "type": "mid",
+      "views": 0,
+      "likes": 0,
+      "comments": 0,
+      "pre_rdm": true
+    },
+    {
       "id": "CyZI5WP_7iw",
       "title": "NFL Insider vs. New York Jets Trivia \ud83c\udfc8",
       "published": "2025-08-24",
@@ -7817,7 +7917,7 @@
       "month": "2025-08",
       "duration_sec": 23,
       "type": "short",
-      "views": 16198,
+      "views": 16200,
       "likes": 72,
       "comments": 0,
       "pre_rdm": true
@@ -7841,7 +7941,7 @@
       "month": "2025-08",
       "duration_sec": 45,
       "type": "short",
-      "views": 8321,
+      "views": 8324,
       "likes": 48,
       "comments": 2,
       "pre_rdm": true
@@ -7865,7 +7965,7 @@
       "month": "2025-08",
       "duration_sec": 380,
       "type": "mid",
-      "views": 21086,
+      "views": 21093,
       "likes": 201,
       "comments": 29,
       "pre_rdm": true
@@ -7877,7 +7977,7 @@
       "month": "2025-08",
       "duration_sec": 14,
       "type": "short",
-      "views": 7907,
+      "views": 7908,
       "likes": 57,
       "comments": 5,
       "pre_rdm": true
@@ -7889,19 +7989,19 @@
       "month": "2025-08",
       "duration_sec": 22,
       "type": "short",
-      "views": 12167,
-      "likes": 219,
-      "comments": 30,
+      "views": 12222,
+      "likes": 220,
+      "comments": 31,
       "pre_rdm": true
     }
   ],
   "summary": {
-    "total_videos_pre_rdm": 584,
-    "total_views_pre_rdm": 18631977,
-    "shorts_count": 497,
-    "mids_count": 39,
-    "longs_count": 48,
-    "avg_views_per_video": 31904,
+    "total_videos_pre_rdm": 592,
+    "total_views_pre_rdm": 18823459,
+    "shorts_count": 502,
+    "mids_count": 43,
+    "longs_count": 47,
+    "avg_views_per_video": 31796,
     "top_20_videos": [
       {
         "id": "lgHls1FfRR8",
@@ -7910,8 +8010,8 @@
         "month": "2025-10",
         "duration_sec": 43,
         "type": "short",
-        "views": 660356,
-        "likes": 9188,
+        "views": 660360,
+        "likes": 9183,
         "comments": 20,
         "pre_rdm": true
       },
@@ -7922,8 +8022,8 @@
         "month": "2025-09",
         "duration_sec": 25,
         "type": "short",
-        "views": 559554,
-        "likes": 15062,
+        "views": 559850,
+        "likes": 15068,
         "comments": 152,
         "pre_rdm": true
       },
@@ -7935,7 +8035,7 @@
         "duration_sec": 27,
         "type": "short",
         "views": 289983,
-        "likes": 10222,
+        "likes": 10221,
         "comments": 59,
         "pre_rdm": true
       },
@@ -7958,7 +8058,7 @@
         "month": "2025-08",
         "duration_sec": 37,
         "type": "short",
-        "views": 200022,
+        "views": 200026,
         "likes": 6967,
         "comments": 62,
         "pre_rdm": true
@@ -7973,6 +8073,18 @@
         "views": 141578,
         "likes": 35,
         "comments": 22,
+        "pre_rdm": true
+      },
+      {
+        "id": "Q4i8MvsRmeA",
+        "title": "Jahan Dotson Opens Up on Eagles, Jalen Hurts\u2019 Leadership, and His NFL Future",
+        "published": "2026-02-20",
+        "month": "2026-02",
+        "duration_sec": 1117,
+        "type": "mid",
+        "views": 132004,
+        "likes": 183,
+        "comments": 65,
         "pre_rdm": true
       },
       {
@@ -8006,7 +8118,7 @@
         "month": "2026-02",
         "duration_sec": 2656,
         "type": "long",
-        "views": 128874,
+        "views": 128875,
         "likes": 15,
         "comments": 9,
         "pre_rdm": true
@@ -8018,7 +8130,7 @@
         "month": "2026-01",
         "duration_sec": 3634,
         "type": "long",
-        "views": 124106,
+        "views": 124107,
         "likes": 25,
         "comments": 2,
         "pre_rdm": true
@@ -8030,7 +8142,7 @@
         "month": "2026-01",
         "duration_sec": 3355,
         "type": "long",
-        "views": 121444,
+        "views": 121445,
         "likes": 34,
         "comments": 14,
         "pre_rdm": true
@@ -8042,7 +8154,7 @@
         "month": "2026-01",
         "duration_sec": 3157,
         "type": "long",
-        "views": 117136,
+        "views": 117137,
         "likes": 26,
         "comments": 14,
         "pre_rdm": true
@@ -8066,7 +8178,7 @@
         "month": "2026-02",
         "duration_sec": 1940,
         "type": "long",
-        "views": 113895,
+        "views": 113897,
         "likes": 87,
         "comments": 12,
         "pre_rdm": true
@@ -8078,7 +8190,7 @@
         "month": "2026-01",
         "duration_sec": 2681,
         "type": "long",
-        "views": 110733,
+        "views": 110734,
         "likes": 126,
         "comments": 42,
         "pre_rdm": true
@@ -8129,18 +8241,6 @@
         "views": 97248,
         "likes": 19,
         "comments": 2,
-        "pre_rdm": true
-      },
-      {
-        "id": "_sbVtqhi1QM",
-        "title": "We Knew We Were Better Than Them\" | Uchenna Nwosu on Super Bowl Pick-6",
-        "published": "2026-02-11",
-        "month": "2026-02",
-        "duration_sec": 2410,
-        "type": "long",
-        "views": 96022,
-        "likes": 10,
-        "comments": 5,
         "pre_rdm": true
       }
     ]

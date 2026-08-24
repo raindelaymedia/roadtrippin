@@ -25,7 +25,7 @@ from config_sr import (
     YT_REFRESH_TOKEN as REFRESH_TOKEN,
 )
 
-RDM_START = "2026-08-19"  # anything before this = "pre-RDM"
+RDM_START = "2026-08-18"  # anything before this = "pre-RDM"
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(SCRIPT_DIR, "data_sr")
@@ -83,7 +83,7 @@ def main():
 
     # Total monthly views + subs
     resp = yt_analytics.reports().query(
-        ids="channel==MINE", startDate=api_start, endDate=api_end,
+        ids=f"channel==MINE", startDate=api_start, endDate=api_end,
         metrics="views,estimatedMinutesWatched,subscribersGained,subscribersLost",
         dimensions="month", sort="month").execute()
     monthly = {}
@@ -96,7 +96,7 @@ def main():
 
     # Views by content type
     resp = yt_analytics.reports().query(
-        ids="channel==MINE", startDate=api_start, endDate=api_end,
+        ids=f"channel==MINE", startDate=api_start, endDate=api_end,
         metrics="views,estimatedMinutesWatched",
         dimensions="month,creatorContentType", sort="month").execute()
     KEY_MAP = {"videoOnDemand": "vod", "shorts": "shorts", "liveStream": "live"}
@@ -112,7 +112,7 @@ def main():
     daily_start = "2026-05-19"  # ~3 months before RDM start
     daily_end = "2026-08-18"
     resp = yt_analytics.reports().query(
-        ids="channel==MINE", startDate=daily_start, endDate=daily_end,
+        ids=f"channel==MINE", startDate=daily_start, endDate=daily_end,
         metrics="views,estimatedMinutesWatched,subscribersGained,subscribersLost",
         dimensions="day", sort="day").execute()
     daily = {}
