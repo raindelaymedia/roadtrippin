@@ -151,15 +151,6 @@ def extract(path):
         'audience_lives': series(['audience', 'lives']),
     }
 
-def empty_state(message, sub=""):
-    """Standard empty-state block for tabs with no data."""
-    sub_html = f'<div style="font-size:12px;color:var(--text3);margin-top:6px;max-width:420px;margin-left:auto;margin-right:auto">{sub}</div>' if sub else ''
-    return (f'<div style="background:var(--surface);border:1px dashed var(--border2);border-radius:var(--r);padding:48px 24px;text-align:center;margin:16px 0">'
-            f'<div style="font-size:32px;margin-bottom:12px">📭</div>'
-            f'<div style="font-size:14px;font-weight:500;color:var(--text2)">{message}</div>'
-            f'{sub_html}</div>')
-
-
 def load_socials(csv_path):
     """Load flat socials CSV. Returns:
     {
@@ -616,11 +607,7 @@ def reports_html(reports):
     return fanatics + embed
 
 
-def build_html(d, reports, revenue, socials, generated_at,
-               gt_d=None, gt_revenue=None, gt_socials=None):
-    gt_d = gt_d or _empty_extract()
-    gt_revenue = gt_revenue or {'months': [], 'sources': {}, 'totals': [], 'order': []}
-    gt_socials = gt_socials or {'months': [], 'platforms': [], 'data': {}}
+def build_html(d, reports, revenue, socials, generated_at):
     M_raw = d['months']  # newest first: ['2026-05', '2026-04', ...]
     n = len(M_raw)
 
@@ -1247,95 +1234,6 @@ def build_html(d, reports, revenue, socials, generated_at,
     js_nsht   = jsa(nsht12);   js_nsht_f   = jsa(nsht_full)
     js_pctsht = jsa(pctsht12); js_pctsht_f = jsa(pctsht_full)
 
-    # ── Girls Tripp tab data ──
-    gt_has_yt  = bool(gt_d['months'])
-    gt_has_rev = bool(gt_revenue.get('months'))
-    gt_has_soc = bool(gt_socials.get('months'))
-    gt_has_data = gt_has_yt or gt_has_rev or gt_has_soc
-
-    if gt_has_yt:
-        gt_subs_now = gt_d['current_subs']
-        gt_js_M = jsa(list(reversed([fmt_period(m) for m in gt_d['months']])))
-        gt_js_vids = jsa(list(reversed(gt_d['vids'])))
-        gt_js_shorts = jsa(list(reversed(gt_d['shorts'])))
-        gt_js_lives = jsa(list(reversed(gt_d['lives'])))
-        gt_js_subs = jsa(list(reversed(gt_d['yt_subs'])))
-    else:
-        gt_subs_now = 0
-        gt_js_M = '[]'; gt_js_vids = '[]'; gt_js_shorts = '[]'
-        gt_js_lives = '[]'; gt_js_subs = '[]'
-
-    if gt_has_rev:
-        gt_js_rev_m = jsa([fmt_period(p) for p in gt_revenue['months']])
-        gt_js_rev_totals = jsa([round(t, 2) if t else None for t in gt_revenue['totals']])
-    else:
-        gt_js_rev_m = '[]'; gt_js_rev_totals = '[]'
-
-    if gt_has_soc:
-        _PLAT_COLORS = {'INSTAGRAM': '#E08C2A', 'TIKTOK': '#7C5BD8', 'X': '#6B7280',
-                        'YOUTUBE': '#2F6DDE', 'FACEBOOK': '#1877F2'}
-        _PLAT_NAMES = {'INSTAGRAM': 'Instagram', 'TIKTOK': 'TikTok', 'X': 'X / Twitter',
-                       'YOUTUBE': 'YouTube', 'FACEBOOK': 'Facebook'}
-        def _gt_latest(plat, metric):
-            s = gt_socials['data'].get((plat, metric), [])
-            for v in reversed(s):
-                if isinstance(v, (int, float)) and v > 0: return v
-            return None
-        _gt_cards = ''
-        for p in gt_socials['platforms']:
-            color = _PLAT_COLORS.get(p, '#6B7280')
-            display = _PLAT_NAMES.get(p, p.title())
-            fol = _gt_latest(p, 'FOLLOWERS'); vw = _gt_latest(p, 'VIEWS'); eng = _gt_latest(p, 'ENGAGEMENTS')
-            _gt_cards += (f'<div class="card soc-card"><div class="soc-card-head" style="border-color:{color}">'
-                         f'<span class="soc-name">{display}</span><span class="soc-followers">{fmt(fol)}</span></div>'
-                         f'<div class="soc-stats"><div><div class="soc-stat-lbl">Views</div><div class="soc-stat-val">{fmt(vw)}</div></div>'
-                         f'<div><div class="soc-stat-lbl">Engagements</div><div class="soc-stat-val">{fmt(eng)}</div></div></div></div>')
-        gt_socials_html = f'<div class="soc-grid">{_gt_cards}</div>'
-    else:
-        gt_socials_html = empty_state("No socials data yet",
-            "Add rows to data/girls_tripp/socials_gt.csv to start tracking")
-
-    # ── GT editor data (same structure as RT editors) ──
-    # Revenue
-    if gt_has_rev:
-        gt_rev_periods = list(reversed(gt_revenue['months']))
-        gt_rev_sources = gt_revenue['order']
-        gt_rev_cells = {}
-        for src in gt_rev_sources:
-            for i, m in enumerate(gt_revenue['months']):
-                v = gt_revenue['sources'][src][i]
-                gt_rev_cells[f"{src}|{m}"] = '' if v is None else (str(v) if isinstance(v, str) else f"{v:.2f}")
-        js_gt_rev_edit = json.dumps({'periods': gt_rev_periods, 'sources': gt_rev_sources, 'cells': gt_rev_cells})
-    else:
-        js_gt_rev_edit = json.dumps({'periods': [], 'sources': [], 'cells': {}})
-
-    # Socials
-    if gt_has_soc:
-        gt_soc_periods = list(reversed(gt_socials['months']))
-        _gt_soc_rows = []
-        _gt_soc_seen = set()
-        _GT_METRIC_LABELS = {'FOLLOWERS': 'Followers', 'VIEWS': 'Views', 'ENGAGEMENTS': 'Engagements',
-                             'POSTS': 'Posts', 'FOLLOWER_GAIN': 'Follower Gain', 'ENGAGEMENT_RATE': 'ER'}
-        for k in gt_socials['data']:
-            plat, metric = k
-            if (plat, metric) not in _gt_soc_seen:
-                _gt_soc_seen.add((plat, metric))
-                _gt_soc_rows.append({'platform': plat, 'metric': metric,
-                                     'label': _GT_METRIC_LABELS.get(metric, metric.title())})
-        _gt_soc_rows.sort(key=lambda r: (r['platform'], r['metric']))
-        gt_soc_cells = {}
-        for (plat, metric), vals in gt_socials['data'].items():
-            for i, m in enumerate(gt_socials['months']):
-                v = vals[i] if i < len(vals) else None
-                if v is None: v = ''
-                elif metric == 'ENGAGEMENT_RATE' and isinstance(v, (int, float)): v = f"{v*100:.2f}"
-                else: v = str(v) if isinstance(v, str) else str(int(v)) if isinstance(v, float) and v == int(v) else str(v)
-                gt_soc_cells[f"{plat}|{metric}|{m}"] = v
-        js_gt_soc_edit = json.dumps({'periods': gt_soc_periods, 'rows': _gt_soc_rows,
-                                      'cells': gt_soc_cells, 'platformDisplay': _PLAT_NAMES})
-    else:
-        js_gt_soc_edit = json.dumps({'periods': [], 'rows': [], 'cells': {}, 'platformDisplay': {}})
-
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1820,11 +1718,6 @@ body{{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);li
       <svg class="nav-icon" viewBox="0 0 16 16" fill="none"><path d="M8 1.5L14 4.5V11.5L8 14.5L2 11.5V4.5L8 1.5Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M2 4.5L8 7.5L14 4.5M8 7.5V14.5" stroke="currentColor" stroke-width="1.3"/></svg>
       <span>Performance Cube</span>
     </div>
-    <div class="nav-section" style="margin-top:14px">Shows</div>
-    <div class="nav-item" onclick="showPage('girls-tripp',this)">
-      <svg class="nav-icon" viewBox="0 0 16 16" fill="none"><path d="M8 1C4.13 1 1 4.13 1 8s3.13 7 7 7 7-3.13 7-7-3.13-7-7-7zm0 2.5a1.5 1.5 0 110 3 1.5 1.5 0 010-3zM8 13c-1.8 0-3.38-.94-4.28-2.35.02-1.42 2.86-2.2 4.28-2.2 1.41 0 4.26.78 4.28 2.2C11.38 12.06 9.8 13 8 13z" fill="currentColor"/></svg>
-      <span>Girls Tripp</span>
-    </div>
     <div class="nav-section" style="margin-top:14px">Resources</div>
     <div class="nav-item" onclick="showPage('tracker',this)">
       <svg class="nav-icon" viewBox="0 0 16 16" fill="none"><rect x="1" y="1" width="14" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M1 5h14M5 5v10" stroke="currentColor" stroke-width="1.2"/></svg>
@@ -2238,106 +2131,6 @@ body{{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);li
   {reports_content}
 </div>
 
-<!-- ═══ GIRLS TRIPP ═══ -->
-<div class="page" id="page-girls-tripp">
-  <div class="page-header">
-    <div class="page-title" style="display:flex;align-items:center;gap:10px">
-      <span style="background:#E84B8A;color:#fff;font-size:11px;font-weight:700;padding:3px 8px;border-radius:4px;letter-spacing:.03em">GT</span>
-      Girls Tripp
-    </div>
-    <div class="page-sub">{('Daughter show · YouTube + Socials + Revenue') if gt_has_data else 'Launching October 2026 · data will populate when channel goes live'}</div>
-  </div>
-
-  <!-- ── YouTube section ── -->
-  <div style="margin-bottom:28px">
-    <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--border2)">📺 YouTube</div>
-    {('<div class="metrics">'
-     '<div class="metric"><div class="metric-label">Subscribers</div><div class="metric-value">' + fmt(gt_subs_now) + '</div></div>'
-     '<div class="metric"><div class="metric-label">VOD Views</div><div class="metric-value">' + fmt(gt_d['vids'][0] if gt_d['vids'] else None) + '</div><div class="metric-delta" style="color:var(--text2)">latest month</div></div>'
-     '<div class="metric"><div class="metric-label">Shorts Views</div><div class="metric-value">' + fmt(gt_d['shorts'][0] if gt_d['shorts'] else None) + '</div><div class="metric-delta" style="color:var(--text2)">latest month</div></div>'
-     '</div>'
-     '<div class="card"><div class="card-title">Views by Content Type</div>'
-     '<div style="height:280px"><canvas id="gt-views-chart"></canvas></div></div>'
-     '<div class="card"><div class="card-title">Subscriber Growth</div>'
-     '<div style="height:240px"><canvas id="gt-subs-chart"></canvas></div></div>')
-     if gt_has_yt else
-     empty_state("YouTube channel not connected yet",
-                 "Once the Girls Tripp channel launches and API access is configured, data will appear here automatically.")}
-  </div>
-
-  <!-- ── Socials section ── -->
-  <div style="margin-bottom:28px">
-    <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--border2);display:flex;align-items:center;gap:12px">
-      <span>📱 Socials</span>
-      <button class="rev-edit-toggle" id="gtSocEditToggle" onclick="gtSocEditor.toggleEdit()">✎ Edit</button>
-      <button class="rev-edit-btn" id="gtSocAddMonthBtn" onclick="gtSocEditor.addMonth()" style="display:none">+ Add month</button>
-      <span class="rev-edit-status" id="gtSocEditStatus"></span>
-      <span style="flex:1"></span>
-      <button class="rev-edit-btn" id="gtSocGhBtn" onclick="gtSocEditor.openGh()" style="display:none">⚙ GitHub</button>
-      <button class="rev-edit-btn rev-save" id="gtSocSaveBtn" onclick="gtSocEditor.save()" style="display:none" disabled>Save to repo</button>
-    </div>
-    {gt_socials_html}
-    <div id="gtSoc-readonly"></div>
-    <div id="gtSoc-editable" style="display:none"></div>
-  </div>
-
-  <!-- ── Revenue section ── -->
-  <div style="margin-bottom:28px">
-    <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--border2);display:flex;align-items:center;gap:12px">
-      <span>💲 Revenue</span>
-      <button class="rev-edit-toggle" id="gtRevEditToggle" onclick="gtRevEditor.toggleEdit()">✎ Edit</button>
-      <button class="rev-edit-btn" id="gtRevAddMonthBtn" onclick="gtRevEditor.addMonth()" style="display:none">+ Add month</button>
-      <span class="rev-edit-status" id="gtRevEditStatus"></span>
-      <span style="flex:1"></span>
-      <button class="rev-edit-btn" id="gtRevGhBtn" onclick="gtRevEditor.openGh()" style="display:none">⚙ GitHub</button>
-      <button class="rev-edit-btn rev-save" id="gtRevSaveBtn" onclick="gtRevEditor.save()" style="display:none" disabled>Save to repo</button>
-    </div>
-    {('<div class="card"><div class="card-title">Monthly Revenue</div>'
-     '<div style="height:280px"><canvas id="gt-rev-chart"></canvas></div></div>')
-     if gt_has_rev else
-     empty_state("No revenue data yet",
-                 "Add rows to data/girls_tripp/revenue_gt.csv to start tracking")}
-    <div id="gtRev-readonly"></div>
-    <div id="gtRev-editable" style="display:none"></div>
-  </div>
-</div>
-
-<!-- GT Socials GitHub modal -->
-<div class="rev-modal-bg" id="gtSocGhModal" onclick="if(event.target===this)gtSocEditor.closeGh()">
-  <div class="rev-modal">
-    <h2>GitHub connection · Girls Tripp Socials</h2>
-    <p>Commits <code>socials_gt.csv</code> to the repo.</p>
-    <div class="rev-field"><label>Repository</label><input id="gtSocGhRepo" value="raindelaymedia/roadtrippin" spellcheck="false"></div>
-    <div class="rev-field"><label>Branch</label><input id="gtSocGhBranch" placeholder="auto-detect…" spellcheck="false"></div>
-    <div class="rev-field"><label>File path</label><input id="gtSocGhPath" value="master/shows/road_trippin/data/girls_tripp/socials_gt.csv" spellcheck="false"></div>
-    <div class="rev-field"><label>Access token</label><input id="gtSocGhToken" type="password" placeholder="github_pat_…" spellcheck="false"></div>
-    <div class="rev-warn">⚠ Token is stored in this browser only.</div>
-    <div class="rev-modal-actions">
-      <button class="rev-edit-btn" onclick="gtSocEditor.closeGh()">Cancel</button>
-      <button class="rev-edit-btn rev-save" onclick="gtSocEditor.saveConn()">Save connection</button>
-    </div>
-    <div class="rev-commit-log" id="gtSocCommitLog"></div>
-  </div>
-</div>
-
-<!-- GT Revenue GitHub modal -->
-<div class="rev-modal-bg" id="gtRevGhModal" onclick="if(event.target===this)gtRevEditor.closeGh()">
-  <div class="rev-modal">
-    <h2>GitHub connection · Girls Tripp Revenue</h2>
-    <p>Commits <code>revenue_gt.csv</code> to the repo.</p>
-    <div class="rev-field"><label>Repository</label><input id="gtRevGhRepo" value="raindelaymedia/roadtrippin" spellcheck="false"></div>
-    <div class="rev-field"><label>Branch</label><input id="gtRevGhBranch" placeholder="auto-detect…" spellcheck="false"></div>
-    <div class="rev-field"><label>File path</label><input id="gtRevGhPath" value="master/shows/road_trippin/data/girls_tripp/revenue_gt.csv" spellcheck="false"></div>
-    <div class="rev-field"><label>Access token</label><input id="gtRevGhToken" type="password" placeholder="github_pat_…" spellcheck="false"></div>
-    <div class="rev-warn">⚠ Token is stored in this browser only.</div>
-    <div class="rev-modal-actions">
-      <button class="rev-edit-btn" onclick="gtRevEditor.closeGh()">Cancel</button>
-      <button class="rev-edit-btn rev-save" onclick="gtRevEditor.saveConn()">Save connection</button>
-    </div>
-    <div class="rev-commit-log" id="gtRevCommitLog"></div>
-  </div>
-</div>
-
 </div><!-- /main -->
 </div><!-- /shell -->
 
@@ -2382,8 +2175,6 @@ const REV_STACKED_DS12 = REV_STACKED_DS.map(ds => ({{ ...ds, data: ds.data.slice
 const SOC_M = {js_soc_m};
 const REV_EDIT_DATA = {js_rev_edit};
 const SOC_EDIT_DATA = {js_soc_edit};
-const GT_REV_EDIT_DATA = {js_gt_rev_edit};
-const GT_SOC_EDIT_DATA = {js_gt_soc_edit};
 const SOC_FOLLOWERS_DS = {js_soc_followers_ds};
 const SOC_IMP_DS = {js_soc_imp_ds};
 const SOC_ER_DS = {js_soc_er_ds};
@@ -3156,339 +2947,379 @@ function cubeApplyPreset(preset) {{
   }});
 }})();
 
-// ═══ Generic CSV Editor Factory ═══
-// Handles both revenue-style (source×period) and socials-style (platform×metric×period) grids.
-// Returns an object with toggleEdit, addMonth, save, openGh, closeGh, saveConn methods.
-function createEditor(cfg) {{
-  // cfg: {{ data, type:'rev'|'soc', prefix, lsKey, defaultPath, commitLabel }}
-  const D = cfg.data;
-  if (!D) return {{}};
-  const isRev = cfg.type === 'rev';
-  const isSoc = cfg.type === 'soc';
-
-  // Check if data exists
-  if (isRev && (!D.sources || !D.sources.length)) return {{}};
-  if (isSoc && (!D.rows || !D.rows.length)) return {{}};
-
-  let PERIODS = D.periods ? D.periods.slice() : [];
-  const SOURCES = isRev ? (D.sources||[]).slice() : null;
-  const ROWS = isSoc ? (D.rows||[]).slice() : null;
-  const PDISP = isSoc ? (D.platformDisplay||{{}}) : null;
-  let CELLS = Object.assign({{}}, D.cells||{{}});
-  let ORIGINAL = Object.assign({{}}, D.cells||{{}});
+// ═══ Revenue Editor ═══
+(function(){{
+  const D = REV_EDIT_DATA;
+  if (!D || !D.sources) return;
+  let PERIODS = D.periods.slice();
+  const SOURCES = D.sources.slice();
+  let CELLS = Object.assign({{}}, D.cells);
+  let ORIGINAL = Object.assign({{}}, D.cells);
   let editing = false;
   const changed = new Set();
-  const LS = cfg.lsKey;
-  const P = cfg.prefix;
+  const LS = 'rt_rev_editor_gh';
   const $ = id => document.getElementById(id);
-  const key = isRev ? ((s,p) => s+'|'+p) : ((pl,mt,pe) => pl+'|'+mt+'|'+pe);
+  const key = (s,p) => s+'|'+p;
 
-  // ── Formatting ──
   const fmtMoney = v => {{
-    if (v===''||v==null) return '';
+    if (v==='' || v==null) return '';
     if (v==='TBD'||v==='N/A') return v;
-    const n=parseFloat(v); if(isNaN(n)) return v;
+    const n = parseFloat(v); if (isNaN(n)) return v;
     return n.toLocaleString('en-US',{{minimumFractionDigits:2,maximumFractionDigits:2}});
   }};
-  const isPct = mt => mt==='ENGAGEMENT_RATE';
-  const fmtSocCell = (mt,v) => {{
-    if (v===''||v==null) return '';
-    if (v==='TBD'||v==='N/A') return v;
-    const n=parseFloat(v); if(isNaN(n)) return v;
-    if (isPct(mt)) return n.toFixed(2)+'%';
-    return n.toLocaleString('en-US');
-  }};
-  const fmtCell = isRev ? ((_,v) => fmtMoney(v)) : ((mt,v) => fmtSocCell(mt,v));
   const cellCls = v => v==='' ? 'rev-empty' : (v==='TBD'||v==='N/A' ? 'rev-tbd' : '');
 
-  // ── Render ──
-  function render() {{
-    const host = $(P+'-editable');
-    if (!host) return;
-    let h = '<div class="table-scroll"><table class="rev-grid"><thead><tr>';
-    h += '<th class="rev-src">'+(isRev?'Source':'Platform · Metric')+'</th>';
+  function render(){{
+    const host = $('rev-editable');
+    let h = '<div class="table-scroll"><table class="rev-grid"><thead><tr><th class="rev-src">Source</th>';
     for (const p of PERIODS) h += '<th>'+p+'</th>';
     h += '</tr></thead><tbody>';
-
-    if (isRev) {{
-      for (const s of SOURCES) {{
-        h += '<tr><td class="rev-src">'+s+'</td>';
-        for (const p of PERIODS) {{
-          const k=key(s,p), v=CELLS[k]??'';
-          const ch=changed.has(k)?' rev-changed':'', ec=editing?' rev-cell':'';
-          h += '<td class="'+cellCls(v)+ch+ec+'" data-s="'+s+'" data-p="'+p+'">'+fmtCell(null,v)+'</td>';
-        }}
-        h += '</tr>';
+    for (const s of SOURCES){{
+      h += '<tr><td class="rev-src">'+s+'</td>';
+      for (const p of PERIODS){{
+        const v = CELLS[key(s,p)] ?? '';
+        const ch = changed.has(key(s,p)) ? ' rev-changed' : '';
+        const ec = editing ? ' rev-cell' : '';
+        h += '<td class="'+cellCls(v)+ch+ec+'" data-s="'+s+'" data-p="'+p+'">'+fmtMoney(v)+'</td>';
       }}
-      h += '</tbody><tfoot><tr class="rev-total"><td class="rev-src">TOTAL</td>';
-      for (const p of PERIODS) {{
-        let sum=0; for(const s of SOURCES){{const n=parseFloat(CELLS[key(s,p)]);if(!isNaN(n))sum+=n;}}
-        h += '<td>'+sum.toLocaleString('en-US',{{maximumFractionDigits:0}})+'</td>';
-      }}
-      h += '</tr></tfoot>';
-    }} else {{
-      let lastPlat = null;
-      for (const row of ROWS) {{
-        const {{platform,metric,label}} = row;
-        if (platform!==lastPlat) {{
-          const disp = PDISP[platform]||platform;
-          h += '<tr><td class="rev-src" style="background:var(--surface2);font-weight:700;color:var(--text)">'+disp+'</td>';
-          for(let i=0;i<PERIODS.length;i++) h+='<td style="background:var(--surface2)"></td>';
-          h += '</tr>';
-          lastPlat = platform;
-        }}
-        h += '<tr><td class="rev-src" style="padding-left:22px;color:var(--text2)">'+label+'</td>';
-        for (const pe of PERIODS) {{
-          const k=key(platform,metric,pe), v=CELLS[k]??'';
-          const ch=changed.has(k)?' rev-changed':'', ec=editing?' rev-cell':'';
-          h += '<td class="'+cellCls(v)+ch+ec+'" data-pl="'+platform+'" data-mt="'+metric+'" data-pe="'+pe+'">'+fmtCell(metric,v)+'</td>';
-        }}
-        h += '</tr>';
-      }}
-      h += '</tbody>';
+      h += '</tr>';
     }}
-    h += '</table></div>';
+    h += '</tbody><tfoot><tr class="rev-total"><td class="rev-src">TOTAL</td>';
+    for (const p of PERIODS){{
+      let sum=0; for (const s of SOURCES){{ const n=parseFloat(CELLS[key(s,p)]); if(!isNaN(n)) sum+=n; }}
+      h += '<td>'+sum.toLocaleString('en-US',{{maximumFractionDigits:0}})+'</td>';
+    }}
+    h += '</tr></tfoot></table></div>';
     host.innerHTML = h;
-    if (editing) host.querySelectorAll('td.rev-cell').forEach(td => td.onclick=()=>startEdit(td));
+    if (editing) host.querySelectorAll('td.rev-cell').forEach(td => td.onclick = () => startEdit(td));
   }}
 
-  // ── Cell editing ──
-  function startEdit(td) {{
-    if(!editing||td.querySelector('input')) return;
-    let rawKey, dispMetric;
-    if (isRev) {{
-      const s=td.dataset.s, p=td.dataset.p; rawKey=key(s,p); dispMetric=null;
-    }} else {{
-      const pl=td.dataset.pl, mt=td.dataset.mt, pe=td.dataset.pe; rawKey=key(pl,mt,pe); dispMetric=mt;
-    }}
-    const raw=CELLS[rawKey]??'';
+  function startEdit(td){{
+    if (!editing || td.querySelector('input')) return;
+    const s=td.dataset.s, p=td.dataset.p, raw = CELLS[key(s,p)] ?? '';
     td.classList.add('rev-editing');
-    td.innerHTML='<input value="'+raw+'">';
-    const inp=td.querySelector('input'); inp.focus(); inp.select();
-    const commit=next=>{{
-      let norm=inp.value.trim().replace(/,/g,'');
-      if(isSoc) norm=norm.replace(/%/g,'');
-      if(/^tbd$/i.test(norm)) norm='TBD'; else if(/^n[/]?a$/i.test(norm)) norm='N/A';
-      CELLS[rawKey]=norm;
-      if((ORIGINAL[rawKey]??'')!==norm) changed.add(rawKey); else changed.delete(rawKey);
-      updateStatus();
-      if(isRev) {{ refreshFooter(td.dataset.p); }}
-      td.classList.remove('rev-editing');
-      td.className=cellCls(CELLS[rawKey]??'')+(changed.has(rawKey)?' rev-changed':'')+(editing?' rev-cell':'');
-      td.textContent=fmtCell(dispMetric,CELLS[rawKey]??'');
-      if(editing) td.onclick=()=>startEdit(td);
-      if(next) focusNext(td);
-    }};
-    inp.onblur=()=>commit(false);
-    inp.onkeydown=e=>{{
+    td.innerHTML = '<input value="'+raw+'">';
+    const inp = td.querySelector('input'); inp.focus(); inp.select();
+    const commit = next => {{ setCell(s,p,inp.value.trim()); td.classList.remove('rev-editing'); renderCell(td,s,p); if(next) focusNext(s,p); }};
+    inp.onblur = () => commit(false);
+    inp.onkeydown = e => {{
       if(e.key==='Enter'){{e.preventDefault();commit(false);}}
       else if(e.key==='Tab'){{e.preventDefault();commit(true);}}
-      else if(e.key==='Escape'){{td.classList.remove('rev-editing');td.className=cellCls(CELLS[rawKey]??'')+(changed.has(rawKey)?' rev-changed':'')+(editing?' rev-cell':'');td.textContent=fmtCell(dispMetric,CELLS[rawKey]??'');if(editing)td.onclick=()=>startEdit(td);}}
+      else if(e.key==='Escape'){{td.classList.remove('rev-editing');renderCell(td,s,p);}}
     }};
   }}
-  function focusNext(td) {{
-    if (isRev) {{
-      const si=SOURCES.indexOf(td.dataset.s);
-      if(si<SOURCES.length-1){{const nt=$(P+'-editable').querySelector('td[data-s="'+SOURCES[si+1]+'"][data-p="'+td.dataset.p+'"]');if(nt)startEdit(nt);}}
-    }} else {{
-      const idx=ROWS.findIndex(r=>r.platform===td.dataset.pl&&r.metric===td.dataset.mt);
-      if(idx<ROWS.length-1){{const nr=ROWS[idx+1];const nt=$(P+'-editable').querySelector('td[data-pl="'+nr.platform+'"][data-mt="'+nr.metric+'"][data-pe="'+td.dataset.pe+'"]');if(nt)startEdit(nt);}}
+  function renderCell(td,s,p){{
+    const v = CELLS[key(s,p)] ?? '';
+    td.className = cellCls(v)+(changed.has(key(s,p))?' rev-changed':'')+(editing?' rev-cell':'');
+    td.textContent = fmtMoney(v);
+    if (editing) td.onclick = () => startEdit(td);
+  }}
+  function focusNext(s,p){{
+    const si = SOURCES.indexOf(s);
+    if (si < SOURCES.length-1){{
+      const nt = $('rev-editable').querySelector('td[data-s="'+SOURCES[si+1]+'"][data-p="'+p+'"]');
+      if (nt) startEdit(nt);
     }}
   }}
-  function refreshFooter(p) {{
-    if(!isRev) return;
-    const idx=PERIODS.indexOf(p);
-    const foot=$(P+'-editable').querySelector('tfoot tr');
-    if(!foot) return;
-    let sum=0; for(const s of SOURCES){{const n=parseFloat(CELLS[key(s,p)]);if(!isNaN(n))sum+=n;}}
-    foot.children[idx+1].textContent=sum.toLocaleString('en-US',{{maximumFractionDigits:0}});
+  function setCell(s,p,val){{
+    let norm = val.replace(/,/g,'').trim();
+    if (/^tbd$/i.test(norm)) norm='TBD'; else if (/^n\/?a$/i.test(norm)) norm='N/A';
+    CELLS[key(s,p)] = norm;
+    if ((ORIGINAL[key(s,p)]??'') !== norm) changed.add(key(s,p)); else changed.delete(key(s,p));
+    updateStatus(); refreshFooter(p);
   }}
-  function updateStatus() {{
-    const n=changed.size;
-    const sb=$(P+'SaveBtn'); if(sb) sb.disabled=n===0;
-    const st=$(P+'EditStatus'); if(st) st.textContent=n>0?(n+' unsaved change'+(n>1?'s':'')):(editing?'Editing':'');
+  function refreshFooter(p){{
+    const idx = PERIODS.indexOf(p);
+    const foot = $('rev-editable').querySelector('tfoot tr');
+    if (!foot) return;
+    let sum=0; for (const s of SOURCES){{ const n=parseFloat(CELLS[key(s,p)]); if(!isNaN(n)) sum+=n; }}
+    foot.children[idx+1].textContent = sum.toLocaleString('en-US',{{maximumFractionDigits:0}});
+  }}
+  function updateStatus(){{
+    const n = changed.size;
+    $('revSaveBtn').disabled = n===0;
+    $('revEditStatus').textContent = n>0 ? (n+' unsaved change'+(n>1?'s':'')) : (editing?'Editing':'');
   }}
 
-  // ── CSV generation ──
-  function toCSV() {{
-    const periodsDesc=PERIODS.slice().sort().reverse();
-    if (isRev) {{
-      const rows=[['period','source','amount']];
-      for(const p of periodsDesc) for(const s of SOURCES){{const v=CELLS[key(s,p)]??'';if(v==='')continue;rows.push([p,s,v]);}}
-      return rows.map(r=>r.join(',')).join('\\r\\n')+'\\r\\n';
-    }} else {{
-      const rows=[['period','platform','metric','value']];
-      const seen=new Set();
-      for(const pe of periodsDesc) for(const r of ROWS){{
-        const k=key(r.platform,r.metric,pe);
-        if(seen.has(k))continue;seen.add(k);
-        let v=CELLS[k]??'';if(v==='')continue;
-        if(isPct(r.metric)&&v!=='TBD'&&v!=='N/A'){{const n=parseFloat(v);if(!isNaN(n))v=(n/100).toFixed(4);}}
-        rows.push([pe,r.platform,r.metric,v]);
-      }}
-      return rows.map(r=>r.join(',')).join('\\r\\n')+'\\r\\n';
+  window.revToggleEdit = function(){{
+    editing = !editing;
+    $('revEditToggle').classList.toggle('on', editing);
+    $('revEditToggle').textContent = editing ? '✓ Editing' : '✎ Edit';
+    $('rev-readonly').style.display = editing ? 'none' : '';
+    $('rev-editable').style.display = editing ? '' : 'none';
+    $('revGhBtn').style.display = editing ? '' : 'none';
+    $('revSaveBtn').style.display = editing ? '' : 'none';
+    $('revAddMonthBtn').style.display = editing ? '' : 'none';
+    updateStatus();
+    if (editing) render();
+  }};
+
+  window.revAddMonth = function(){{
+    // Next month after the current newest period (periods are newest-first).
+    const latest = PERIODS[0];
+    let [y,m] = latest.split('-').map(Number);
+    m++; if (m>12){{ m=1; y++; }}
+    const np = y + '-' + String(m).padStart(2,'0');
+    if (PERIODS.includes(np)){{ return; }}
+    PERIODS.unshift(np);                       // add as new newest column
+    for (const s of SOURCES) CELLS[key(s,np)] = '';
+    render();
+    // scroll the grid to reveal the new leftmost column
+    const sc = $('rev-editable').querySelector('.table-scroll');
+    if (sc) sc.scrollLeft = 0;
+  }};
+
+  // CSV: period-desc, source in canonical order, skip empty cells
+  function toCSV(){{
+    const rows=[['period','source','amount']];
+    const periodsDesc = PERIODS.slice().sort().reverse();
+    for (const p of periodsDesc) for (const s of SOURCES){{
+      const v = CELLS[key(s,p)] ?? ''; if (v==='') continue;
+      rows.push([p,s,v]);
     }}
+    return rows.map(r=>r.join(',')).join('\\r\\n')+'\\r\\n';
   }}
 
-  // ── GitHub connection ──
-  const loadConn=()=>{{try{{return JSON.parse(localStorage.getItem(LS))||{{}};}}catch{{return {{}};}} }};
-  const saveConnData=c=>localStorage.setItem(LS,JSON.stringify(c));
-  function log(m){{const l=$(P+'CommitLog');if(!l)return;const d=document.createElement('div');d.textContent=new Date().toLocaleTimeString()+' — '+m;l.prepend(d);}}
+  // GitHub
+  const loadConn = () => {{ try {{ return JSON.parse(localStorage.getItem(LS))||{{}}; }} catch {{ return {{}}; }} }};
+  const saveConn = c => localStorage.setItem(LS, JSON.stringify(c));
+  function log(m){{ const l=$('revCommitLog'); const d=document.createElement('div'); d.textContent = new Date().toLocaleTimeString()+' — '+m; l.prepend(d); }}
+  window.revOpenGh = function(){{
+    const c=loadConn();
+    $('revGhRepo').value=c.repo||'raindelaymedia/roadtrippin';
+    $('revGhBranch').value=c.branch||'';
+    $('revGhPath').value=c.path||'master/shows/road_trippin/data/revenue.csv';
+    $('revGhToken').value=c.token||'';
+    $('revGhModal').classList.add('show');
+  }};
+  window.revCloseGh = () => $('revGhModal').classList.remove('show');
+  window.revSaveConn = function(){{
+    saveConn({{repo:$('revGhRepo').value.trim(),branch:$('revGhBranch').value.trim(),path:$('revGhPath').value.trim(),token:$('revGhToken').value.trim()}});
+    revCloseGh(); log('Connection saved.');
+  }};
   async function gh(url,opts,token){{
-    const r=await fetch('https://api.github.com'+url,{{...opts,headers:{{'Authorization':'Bearer '+token,'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28',...(opts.headers||{{}})}}}});
+    const r = await fetch('https://api.github.com'+url,{{...opts,headers:{{'Authorization':'Bearer '+token,'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28',...(opts.headers||{{}})}}}});
     if(!r.ok){{const e=await r.json().catch(()=>({{}}));throw new Error(r.status+' '+(e.message||r.statusText));}}
     return r.json();
   }}
-
-  // ── Public API ──
-  const editor = {{}};
-  editor.toggleEdit = function() {{
-    editing=!editing;
-    const tb=$(P+'EditToggle'); if(tb){{tb.classList.toggle('on',editing);tb.textContent=editing?'✓ Editing':'✎ Edit';}}
-    const ro=$(P+'-readonly'); if(ro) ro.style.display=editing?'none':'';
-    const ed=$(P+'-editable'); if(ed) ed.style.display=editing?'':'none';
-    const gb=$(P+'GhBtn'); if(gb) gb.style.display=editing?'':'none';
-    const sb=$(P+'SaveBtn'); if(sb) sb.style.display=editing?'':'none';
-    const ab=$(P+'AddMonthBtn'); if(ab) ab.style.display=editing?'':'none';
-    updateStatus(); if(editing) render();
-  }};
-  editor.addMonth = function() {{
-    if(!PERIODS.length) {{
-      // No existing data — start with current month
-      const now=new Date(); const np=now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0');
-      PERIODS.unshift(np);
-    }} else {{
-      const latest=PERIODS[0]; let[y,m]=latest.split('-').map(Number);
-      m++;if(m>12){{m=1;y++;}} const np=y+'-'+String(m).padStart(2,'0');
-      if(PERIODS.includes(np))return;
-      PERIODS.unshift(np);
-    }}
-    const np=PERIODS[0];
-    if(isRev){{for(const s of SOURCES)CELLS[key(s,np)]='';}}
-    else{{for(const r of ROWS)CELLS[key(r.platform,r.metric,np)]='';}}
-    render();
-    const sc=$(P+'-editable').querySelector('.table-scroll');if(sc)sc.scrollLeft=0;
-  }};
-  editor.openGh = function() {{
-    const c=loadConn();
-    $(P+'GhRepo').value=c.repo||'raindelaymedia/roadtrippin';
-    $(P+'GhBranch').value=c.branch||'';
-    $(P+'GhPath').value=c.path||cfg.defaultPath;
-    $(P+'GhToken').value=c.token||'';
-    $(P+'GhModal').classList.add('show');
-  }};
-  editor.closeGh = () => $(P+'GhModal').classList.remove('show');
-  editor.saveConn = function() {{
-    saveConnData({{repo:$(P+'GhRepo').value.trim(),branch:$(P+'GhBranch').value.trim(),path:$(P+'GhPath').value.trim(),token:$(P+'GhToken').value.trim()}});
-    editor.closeGh(); log('Connection saved.');
-  }};
-  editor.save = async function() {{
-    const c=loadConn();
-    if(!c.token||!c.repo){{alert('Set up your GitHub connection first (⚙ GitHub).');editor.openGh();return;}}
-    const st=$(P+'EditStatus');
+  window.revSave = async function(){{
+    const c = loadConn();
+    if (!c.token || !c.repo){{ alert('Set up your GitHub connection first (⚙ GitHub).'); revOpenGh(); return; }}
+    const st=$('revEditStatus');
     try {{
-      st.textContent='Saving…';$(P+'SaveBtn').disabled=true;
+      st.textContent='Saving…'; $('revSaveBtn').disabled=true;
       let branch=c.branch;
-      if(!branch){{const info=await gh('/repos/'+c.repo,{{}},c.token);branch=info.default_branch||'main';log('Branch: '+branch);}}
+      if(!branch){{ const info=await gh('/repos/'+c.repo,{{}},c.token); branch=info.default_branch||'main'; log('Branch: '+branch); }}
       let sha=null;
-      try{{const cur=await gh('/repos/'+c.repo+'/contents/'+c.path+'?ref='+branch,{{}},c.token);sha=cur.sha;}}
-      catch(e){{if(!String(e).includes('404'))throw e;}}
-      const b64=btoa(unescape(encodeURIComponent(toCSV())));
-      const body={{message:'Update '+cfg.commitLabel+' via dashboard editor ('+changed.size+' change'+(changed.size>1?'s':'')+')',content:b64,branch}};
-      if(sha)body.sha=sha;
-      const res=await gh('/repos/'+c.repo+'/contents/'+c.path,{{method:'PUT',body:JSON.stringify(body)}},c.token);
-      ORIGINAL=Object.assign({{}},CELLS);changed.clear();
-      st.textContent='Saved ✓';log('Committed '+(res.commit?.sha?.slice(0,7)||'ok')+' → '+branch);
-      render();setTimeout(updateStatus,2500);
-    }}catch(e){{
-      st.textContent='Save failed';log('ERROR: '+e.message);
+      try {{ const cur=await gh('/repos/'+c.repo+'/contents/'+c.path+'?ref='+branch,{{}},c.token); sha=cur.sha; }}
+      catch(e){{ if(!String(e).includes('404')) throw e; }}
+      const b64 = btoa(unescape(encodeURIComponent(toCSV())));
+      const body = {{message:'Update revenue.csv via dashboard editor ('+changed.size+' change'+(changed.size>1?'s':'')+')',content:b64,branch}};
+      if(sha) body.sha=sha;
+      const res = await gh('/repos/'+c.repo+'/contents/'+c.path,{{method:'PUT',body:JSON.stringify(body)}},c.token);
+      ORIGINAL = Object.assign({{}},CELLS); changed.clear();
+      st.textContent='Saved ✓'; log('Committed '+(res.commit?.sha?.slice(0,7)||'ok')+' → '+branch);
+      render(); setTimeout(updateStatus,2500);
+    }} catch(e){{
+      st.textContent='Save failed'; log('ERROR: '+e.message);
       alert('Save failed: '+e.message+'\\n\\nCheck token scope (Contents: read/write), repo, and path.');
-      $(P+'SaveBtn').disabled=false;
+      $('revSaveBtn').disabled=false;
     }}
   }};
-  return editor;
-}}
+}})();
 
-// ═══ Editor Instances ═══
-const rtRevEditor = createEditor({{
-  data: REV_EDIT_DATA, type:'rev', prefix:'rev', lsKey:'rt_rev_editor_gh',
-  defaultPath:'master/shows/road_trippin/data/revenue.csv', commitLabel:'revenue.csv'
-}});
-window.revToggleEdit = () => rtRevEditor.toggleEdit();
-window.revAddMonth   = () => rtRevEditor.addMonth();
-window.revOpenGh     = () => rtRevEditor.openGh();
-window.revCloseGh    = () => rtRevEditor.closeGh();
-window.revSaveConn   = () => rtRevEditor.saveConn();
-window.revSave       = () => rtRevEditor.save();
+// ═══ Socials Editor ═══
+(function(){{
+  const D = SOC_EDIT_DATA;
+  if (!D || !D.rows) return;
+  let PERIODS = D.periods.slice();
+  const ROWS = D.rows.slice();                 // platform / metric / label rows
+  const PDISP = D.platformDisplay || {{}};
+  let CELLS = Object.assign({{}}, D.cells);
+  let ORIGINAL = Object.assign({{}}, D.cells);
+  let editing = false;
+  const changed = new Set();
+  const LS = 'rt_soc_editor_gh';
+  const $ = id => document.getElementById(id);
+  const key = (pl,mt,pe) => pl+'|'+mt+'|'+pe;
 
-const rtSocEditor = createEditor({{
-  data: SOC_EDIT_DATA, type:'soc', prefix:'soc', lsKey:'rt_soc_editor_gh',
-  defaultPath:'master/shows/road_trippin/data/socials.csv', commitLabel:'socials.csv'
-}});
-window.socToggleEdit = () => rtSocEditor.toggleEdit();
-window.socAddMonth   = () => rtSocEditor.addMonth();
-window.socOpenGh     = () => rtSocEditor.openGh();
-window.socCloseGh    = () => rtSocEditor.closeGh();
-window.socSaveConn   = () => rtSocEditor.saveConn();
-window.socSave       = () => rtSocEditor.save();
-
-const gtRevEditor = createEditor({{
-  data: GT_REV_EDIT_DATA, type:'rev', prefix:'gtRev', lsKey:'gt_rev_editor_gh',
-  defaultPath:'master/shows/road_trippin/data/girls_tripp/revenue_gt.csv', commitLabel:'revenue_gt.csv'
-}});
-
-const gtSocEditor = createEditor({{
-  data: GT_SOC_EDIT_DATA, type:'soc', prefix:'gtSoc', lsKey:'gt_soc_editor_gh',
-  defaultPath:'master/shows/road_trippin/data/girls_tripp/socials_gt.csv', commitLabel:'socials_gt.csv'
-}});
-
-// ── Girls Tripp charts ──
-(function() {{
-  const gtM = {gt_js_M};
-  const gtVids = {gt_js_vids};
-  const gtShorts = {gt_js_shorts};
-  const gtLives = {gt_js_lives};
-  const gtSubs = {gt_js_subs};
-  const gtRevM = {gt_js_rev_m};
-  const gtRevTotals = {gt_js_rev_totals};
-
-  if (gtM.length && document.getElementById('gt-views-chart')) {{
-    new Chart(document.getElementById('gt-views-chart'), {{
-      type:'bar', data:{{labels:gtM, datasets:[
-        {{label:'VOD',data:gtVids,backgroundColor:'#2F6DDE',borderRadius:2,stack:'s'}},
-        {{label:'Shorts',data:gtShorts,backgroundColor:'#1B9B96',borderRadius:2,stack:'s'}},
-        {{label:'Live',data:gtLives,backgroundColor:'#E08C2A',borderRadius:2,stack:'s'}}
-      ]}},
-      options:{{responsive:true,maintainAspectRatio:false,
-        plugins:{{legend:{{position:'bottom',labels:{{boxWidth:10,font:{{size:11}}}}}}}},
-        scales:{{x:{{stacked:true,grid:{{display:false}}}},
-          y:{{stacked:true,ticks:{{callback:v=>v>=1e6?(v/1e6).toFixed(1)+'M':v>=1e3?(v/1e3).toFixed(0)+'K':v}}}}}}
-      }}
-    }});
+  const isPct = mt => mt==='ENGAGEMENT_RATE';
+  function fmtCell(mt, v){{
+    if (v==='' || v==null) return '';
+    if (v==='TBD'||v==='N/A') return v;
+    const n = parseFloat(v); if (isNaN(n)) return v;
+    if (isPct(mt)) return n.toFixed(2)+'%';
+    return n.toLocaleString('en-US');
   }}
-  if (gtM.length && document.getElementById('gt-subs-chart')) {{
-    new Chart(document.getElementById('gt-subs-chart'), {{
-      type:'line', data:{{labels:gtM, datasets:[
-        {{label:'Subscribers',data:gtSubs,borderColor:'#E84B8A',backgroundColor:'rgba(232,75,138,.08)',fill:true,tension:.3,pointRadius:2,borderWidth:2}}
-      ]}},
-      options:{{responsive:true,maintainAspectRatio:false,
-        plugins:{{legend:{{display:false}}}},
-        scales:{{x:{{grid:{{display:false}}}},y:{{ticks:{{callback:v=>v>=1e3?(v/1e3).toFixed(0)+'K':v}}}}}}
+  const cellCls = v => v==='' ? 'rev-empty' : (v==='TBD'||v==='N/A' ? 'rev-tbd' : '');
+
+  function render(){{
+    const host = $('soc-editable');
+    let h = '<div class="table-scroll"><table class="rev-grid"><thead><tr>'
+          + '<th class="rev-src" style="min-width:200px">Platform · Metric</th>';
+    for (const p of PERIODS) h += '<th>'+p+'</th>';
+    h += '</tr></thead><tbody>';
+    let lastPlat = null;
+    for (const row of ROWS){{
+      const {{platform, metric, label}} = row;
+      // platform divider row
+      if (platform !== lastPlat){{
+        const disp = PDISP[platform] || platform;
+        h += '<tr><td class="rev-src" style="background:var(--surface2);font-weight:700;color:var(--text)">'
+           + disp + '</td>';
+        for (let i=0;i<PERIODS.length;i++) h += '<td style="background:var(--surface2)"></td>';
+        h += '</tr>';
+        lastPlat = platform;
       }}
-    }});
-  }}
-  if (gtRevM.length && document.getElementById('gt-rev-chart')) {{
-    new Chart(document.getElementById('gt-rev-chart'), {{
-      type:'bar', data:{{labels:gtRevM, datasets:[
-        {{label:'Revenue',data:gtRevTotals,backgroundColor:'#E84B8A',borderRadius:3}}
-      ]}},
-      options:{{responsive:true,maintainAspectRatio:false,
-        plugins:{{legend:{{display:false}}}},
-        scales:{{x:{{grid:{{display:false}}}},
-          y:{{ticks:{{callback:v=>'$'+(v>=1e3?(v/1e3).toFixed(0)+'K':v)}}}}}}
+      h += '<tr><td class="rev-src" style="padding-left:22px;color:var(--text2)">'+label+'</td>';
+      for (const pe of PERIODS){{
+        const k = key(platform,metric,pe);
+        const v = CELLS[k] ?? '';
+        const ch = changed.has(k) ? ' rev-changed' : '';
+        const ec = editing ? ' rev-cell' : '';
+        h += '<td class="'+cellCls(v)+ch+ec+'" data-pl="'+platform+'" data-mt="'+metric+'" data-pe="'+pe+'">'+fmtCell(metric,v)+'</td>';
       }}
-    }});
+      h += '</tr>';
+    }}
+    h += '</tbody></table></div>';
+    host.innerHTML = h;
+    if (editing) host.querySelectorAll('td.rev-cell').forEach(td => td.onclick = () => startEdit(td));
   }}
+
+  function startEdit(td){{
+    if (!editing || td.querySelector('input')) return;
+    const pl=td.dataset.pl, mt=td.dataset.mt, pe=td.dataset.pe;
+    const raw = CELLS[key(pl,mt,pe)] ?? '';
+    td.classList.add('rev-editing');
+    td.innerHTML = '<input value="'+raw+'">';
+    const inp = td.querySelector('input'); inp.focus(); inp.select();
+    const commit = next => {{ setCell(pl,mt,pe,inp.value.trim()); td.classList.remove('rev-editing'); renderCell(td,pl,mt,pe); if(next) focusNext(pl,mt,pe); }};
+    inp.onblur = () => commit(false);
+    inp.onkeydown = e => {{
+      if(e.key==='Enter'){{e.preventDefault();commit(false);}}
+      else if(e.key==='Tab'){{e.preventDefault();commit(true);}}
+      else if(e.key==='Escape'){{td.classList.remove('rev-editing');renderCell(td,pl,mt,pe);}}
+    }};
+  }}
+  function renderCell(td,pl,mt,pe){{
+    const v = CELLS[key(pl,mt,pe)] ?? '';
+    td.className = cellCls(v)+(changed.has(key(pl,mt,pe))?' rev-changed':'')+(editing?' rev-cell':'');
+    td.textContent = fmtCell(mt,v);
+    if (editing) td.onclick = () => startEdit(td);
+  }}
+  function focusNext(pl,mt,pe){{
+    const idx = ROWS.findIndex(r => r.platform===pl && r.metric===mt);
+    if (idx < ROWS.length-1){{
+      const nr = ROWS[idx+1];
+      const nt = $('soc-editable').querySelector('td[data-pl="'+nr.platform+'"][data-mt="'+nr.metric+'"][data-pe="'+pe+'"]');
+      if (nt) startEdit(nt);
+    }}
+  }}
+  function setCell(pl,mt,pe,val){{
+    let norm = val.replace(/,/g,'').replace(/%/g,'').trim();
+    if (/^tbd$/i.test(norm)) norm='TBD'; else if (/^n[/]?a$/i.test(norm)) norm='N/A';
+    CELLS[key(pl,mt,pe)] = norm;
+    if ((ORIGINAL[key(pl,mt,pe)]??'') !== norm) changed.add(key(pl,mt,pe)); else changed.delete(key(pl,mt,pe));
+    updateStatus();
+  }}
+  function updateStatus(){{
+    const n = changed.size;
+    $('socSaveBtn').disabled = n===0;
+    $('socEditStatus').textContent = n>0 ? (n+' unsaved change'+(n>1?'s':'')) : (editing?'Editing':'');
+  }}
+
+  window.socToggleEdit = function(){{
+    editing = !editing;
+    $('socEditToggle').classList.toggle('on', editing);
+    $('socEditToggle').textContent = editing ? '✓ Editing' : '✎ Edit';
+    $('soc-readonly').style.display = editing ? 'none' : '';
+    $('soc-editable').style.display = editing ? '' : 'none';
+    $('socGhBtn').style.display = editing ? '' : 'none';
+    $('socSaveBtn').style.display = editing ? '' : 'none';
+    $('socAddMonthBtn').style.display = editing ? '' : 'none';
+    updateStatus();
+    if (editing) render();
+  }};
+
+  window.socAddMonth = function(){{
+    const latest = PERIODS[0];
+    let [y,m] = latest.split('-').map(Number);
+    m++; if (m>12){{ m=1; y++; }}
+    const np = y + '-' + String(m).padStart(2,'0');
+    if (PERIODS.includes(np)) return;
+    PERIODS.unshift(np);
+    for (const r of ROWS) CELLS[key(r.platform,r.metric,np)] = '';
+    render();
+    const sc = $('soc-editable').querySelector('.table-scroll');
+    if (sc) sc.scrollLeft = 0;
+  }};
+
+  // CSV: long format period,platform,metric,value — period-desc. ER back to fraction.
+  function toCSV(){{
+    const rows=[['period','platform','metric','value']];
+    const periodsDesc = PERIODS.slice().sort().reverse();
+    // group by period, then platform order as in ROWS, then metric
+    const seen = new Set();
+    for (const pe of periodsDesc){{
+      for (const r of ROWS){{
+        const k = key(r.platform,r.metric,pe);
+        if (seen.has(k)) continue; seen.add(k);
+        let v = CELLS[k] ?? '';
+        if (v==='') continue;
+        if (isPct(r.metric) && v!=='TBD' && v!=='N/A'){{
+          const n = parseFloat(v); if(!isNaN(n)) v = (n/100).toFixed(4);   // percent -> fraction
+        }}
+        rows.push([pe, r.platform, r.metric, v]);
+      }}
+    }}
+    return rows.map(r=>r.join(',')).join('\\r\\n')+'\\r\\n';
+  }}
+
+  const loadConn = () => {{ try {{ return JSON.parse(localStorage.getItem(LS))||{{}}; }} catch {{ return {{}}; }} }};
+  const saveConn = c => localStorage.setItem(LS, JSON.stringify(c));
+  function log(m){{ const l=$('socCommitLog'); const d=document.createElement('div'); d.textContent = new Date().toLocaleTimeString()+' — '+m; l.prepend(d); }}
+  window.socOpenGh = function(){{
+    const c=loadConn();
+    $('socGhRepo').value=c.repo||'raindelaymedia/roadtrippin';
+    $('socGhBranch').value=c.branch||'';
+    $('socGhPath').value=c.path||'master/shows/road_trippin/data/socials.csv';
+    $('socGhToken').value=c.token||'';
+    $('socGhModal').classList.add('show');
+  }};
+  window.socCloseGh = () => $('socGhModal').classList.remove('show');
+  window.socSaveConn = function(){{
+    saveConn({{repo:$('socGhRepo').value.trim(),branch:$('socGhBranch').value.trim(),path:$('socGhPath').value.trim(),token:$('socGhToken').value.trim()}});
+    socCloseGh(); log('Connection saved.');
+  }};
+  async function gh(url,opts,token){{
+    const r = await fetch('https://api.github.com'+url,{{...opts,headers:{{'Authorization':'Bearer '+token,'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28',...(opts.headers||{{}})}}}});
+    if(!r.ok){{const e=await r.json().catch(()=>({{}}));throw new Error(r.status+' '+(e.message||r.statusText));}}
+    return r.json();
+  }}
+  window.socSave = async function(){{
+    const c = loadConn();
+    if (!c.token || !c.repo){{ alert('Set up your GitHub connection first (⚙ GitHub).'); socOpenGh(); return; }}
+    const st=$('socEditStatus');
+    try {{
+      st.textContent='Saving…'; $('socSaveBtn').disabled=true;
+      let branch=c.branch;
+      if(!branch){{ const info=await gh('/repos/'+c.repo,{{}},c.token); branch=info.default_branch||'main'; log('Branch: '+branch); }}
+      let sha=null;
+      try {{ const cur=await gh('/repos/'+c.repo+'/contents/'+c.path+'?ref='+branch,{{}},c.token); sha=cur.sha; }}
+      catch(e){{ if(!String(e).includes('404')) throw e; }}
+      const b64 = btoa(unescape(encodeURIComponent(toCSV())));
+      const body = {{message:'Update socials.csv via dashboard editor ('+changed.size+' change'+(changed.size>1?'s':'')+')',content:b64,branch}};
+      if(sha) body.sha=sha;
+      const res = await gh('/repos/'+c.repo+'/contents/'+c.path,{{method:'PUT',body:JSON.stringify(body)}},c.token);
+      ORIGINAL = Object.assign({{}},CELLS); changed.clear();
+      st.textContent='Saved ✓'; log('Committed '+(res.commit?.sha?.slice(0,7)||'ok')+' → '+branch);
+      render(); setTimeout(updateStatus,2500);
+    }} catch(e){{
+      st.textContent='Save failed'; log('ERROR: '+e.message);
+      alert('Save failed: '+e.message+'\\n\\nCheck token scope (Contents: read/write), repo, and path.');
+      $('socSaveBtn').disabled=false;
+    }}
+  }};
 }})();
 </script>
 <div id="history-drawer" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:100;background:var(--surface);border-top:2px solid var(--brand);box-shadow:0 -4px 24px rgba(15,23,41,.12);">
@@ -3553,23 +3384,7 @@ def main():
     print(f"  Revenue: {len(revenue['months'])} months loaded from {revenue_path}")
     print(f"  Socials: {len(socials['months'])} months × {len(socials['platforms'])} platforms loaded from {socials_path}")
 
-    # ── Girls Tripp data ──
-    gt_data_dir = os.path.join(data_dir, "girls_tripp")
-    os.makedirs(gt_data_dir, exist_ok=True)
-    gt_tracker_path = os.path.join(gt_data_dir, "tracker_data_gt.json")
-    gt_revenue_path = os.path.join(gt_data_dir, "revenue_gt.csv")
-    gt_socials_path = os.path.join(gt_data_dir, "socials_gt.csv")
-    if os.path.exists(gt_tracker_path):
-        gt_d = extract(gt_tracker_path)
-        print(f"  Girls Tripp: {len(gt_d['months'])} months from {gt_tracker_path}")
-    else:
-        gt_d = _empty_extract()
-        print(f"  Girls Tripp: no tracker data — using empty")
-    gt_revenue = load_revenue(gt_revenue_path)
-    gt_socials = load_socials(gt_socials_path)
-
-    html = build_html(d, reports, revenue, socials, generated_at,
-                      gt_d=gt_d, gt_revenue=gt_revenue, gt_socials=gt_socials)
+    html = build_html(d, reports, revenue, socials, generated_at)
     with open(out, 'w', encoding='utf-8') as f:
         f.write(html)
 
