@@ -379,7 +379,36 @@ def build_html(d, revenue, socials, generated_at):
     else:
         socials_content = empty_state(
             "No socials data yet",
-            "Add rows to socials_sr.csv to start tracking. Format: period,platform,metric,value")
+            "Click ✎ Edit above to start entering data, or add rows to socials_sr.csv")
+
+    # ── Socials editor data ──
+    METRIC_LABELS = {'FOLLOWERS': 'Followers', 'VIEWS': 'Views', 'ENGAGEMENTS': 'Engagements',
+                     'POSTS': 'Posts', 'FOLLOWER_GAIN': 'Follower Gain', 'ENGAGEMENT_RATE': 'ER'}
+    PLAT_NAMES = {'INSTAGRAM': 'Instagram', 'TIKTOK': 'TikTok', 'X': 'X / Twitter',
+                  'YOUTUBE': 'YouTube', 'FACEBOOK': 'Facebook'}
+    if has_soc:
+        soc_edit_periods = list(reversed(socials['months']))
+        soc_edit_rows = []
+        seen = set()
+        for k in socials['data']:
+            plat, metric = k
+            if (plat, metric) not in seen:
+                seen.add((plat, metric))
+                soc_edit_rows.append({'platform': plat, 'metric': metric,
+                                      'label': METRIC_LABELS.get(metric, metric.title())})
+        soc_edit_rows.sort(key=lambda r: (r['platform'], r['metric']))
+        soc_cells = {}
+        for (plat, metric), vals in socials['data'].items():
+            for i, m in enumerate(socials['months']):
+                v = vals[i] if i < len(vals) else None
+                if v is None: v = ''
+                elif metric == 'ENGAGEMENT_RATE' and isinstance(v, (int, float)): v = f"{v*100:.2f}"
+                else: v = str(v) if isinstance(v, str) else str(int(v)) if isinstance(v, float) and v == int(v) else str(v)
+                soc_cells[f"{plat}|{metric}|{m}"] = v
+        js_soc_edit = json.dumps({'periods': soc_edit_periods, 'rows': soc_edit_rows,
+                                   'cells': soc_cells, 'platformDisplay': PLAT_NAMES})
+    else:
+        js_soc_edit = json.dumps({'periods': [], 'rows': [], 'cells': {}, 'platformDisplay': PLAT_NAMES})
 
     # ── Tracker tab ──
     if has_yt:
@@ -551,6 +580,43 @@ body{{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);li
   .metrics{{grid-template-columns:1fr 1fr}}
 }}
 
+/* ── Editor styles ── */
+.rev-edit-toggle{{font-size:11px;font-family:'DM Sans',sans-serif;font-weight:600;padding:4px 12px;border-radius:var(--rsm);border:.5px solid var(--brand);background:rgba(201,168,76,.06);color:var(--brand-deep);cursor:pointer}}
+.rev-edit-toggle.on{{background:var(--brand);color:#fff}}
+.rev-edit-btn{{font-size:11px;font-family:'DM Sans',sans-serif;font-weight:600;padding:4px 12px;border-radius:var(--rsm);border:.5px solid var(--border2);background:var(--surface);color:var(--text);cursor:pointer}}
+.rev-edit-btn:hover{{border-color:var(--text2)}}
+.rev-edit-btn.rev-save{{background:#1B9B54;border-color:#1B9B54;color:#fff}}
+.rev-edit-btn.rev-save:hover{{background:#137a41}}
+.rev-edit-btn:disabled{{opacity:.4;cursor:not-allowed}}
+.rev-edit-status{{font-size:11px;font-family:'DM Sans',sans-serif;color:var(--brand);font-weight:500}}
+.rev-grid{{border-collapse:separate;border-spacing:0;font-size:12px;font-family:'DM Mono',monospace;white-space:nowrap}}
+.rev-grid th,.rev-grid td{{padding:6px 11px;text-align:right;border:.5px solid var(--border)}}
+.rev-grid thead th{{position:sticky;top:0;z-index:3;background:var(--surface2);color:var(--text2);font-family:'DM Sans',sans-serif;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.04em}}
+.rev-grid th.rev-src,.rev-grid td.rev-src{{position:sticky;left:0;z-index:2;text-align:left;background:var(--surface);color:var(--text);font-family:'DM Sans',sans-serif;font-weight:500;min-width:150px;border-right:1px solid var(--border2)}}
+.rev-grid thead th.rev-src{{z-index:4}}
+.rev-grid td.rev-tbd{{color:var(--brand);font-style:italic}}
+.rev-grid td.rev-empty{{color:var(--text3)}}
+.rev-grid tr.rev-total td{{position:sticky;bottom:0;background:var(--surface2);font-weight:700;color:var(--text);border-top:1.5px solid var(--border2)}}
+.rev-grid td.rev-cell{{cursor:cell}}
+.rev-grid td.rev-cell:hover{{outline:1.5px solid var(--brand);outline-offset:-1.5px;background:rgba(201,168,76,.06)}}
+.rev-grid td.rev-changed{{background:rgba(201,168,76,.08);position:relative}}
+.rev-grid td.rev-changed::after{{content:'';position:absolute;top:3px;right:3px;width:4px;height:4px;border-radius:50%;background:var(--brand)}}
+.rev-grid td.rev-editing{{padding:0}}
+.rev-grid td.rev-editing input{{width:100%;border:none;background:rgba(201,168,76,.06);color:var(--text);font:inherit;font-family:'DM Mono',monospace;text-align:right;padding:6px 11px;outline:2px solid var(--brand);outline-offset:-2px}}
+.rev-modal-bg{{display:none;position:fixed;inset:0;background:rgba(15,23,41,.55);z-index:100;align-items:center;justify-content:center}}
+.rev-modal-bg.show{{display:flex}}
+.rev-modal{{background:#fff;border:1px solid var(--border);border-radius:12px;padding:22px;width:440px;max-width:92vw}}
+.rev-modal h2{{font-size:15px;margin:0 0 4px;color:var(--text);font-family:'DM Sans',sans-serif}}
+.rev-modal p{{font-size:12px;color:var(--text2);margin:0 0 14px}}
+.rev-field{{margin-bottom:11px}}
+.rev-field label{{display:block;font-size:10px;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;font-family:'DM Sans',sans-serif}}
+.rev-field input{{width:100%;font:inherit;font-size:12px;font-family:'DM Mono',monospace;padding:8px 10px;border-radius:6px;border:1px solid var(--border);background:#fafbff;color:var(--text)}}
+.rev-field input:focus{{outline:none;border-color:var(--brand)}}
+.rev-modal-actions{{display:flex;gap:8px;justify-content:flex-end;margin-top:14px}}
+.rev-warn{{font-size:11px;color:#96690c;background:#fdf6e3;border:1px solid #f0e0b0;border-radius:6px;padding:8px 10px;margin-top:4px}}
+.rev-commit-log{{font-size:11px;font-family:'DM Mono',monospace;color:var(--text2);margin-top:10px;max-height:110px;overflow:auto}}
+.rev-commit-log div{{padding:2px 0;border-bottom:.5px solid var(--border)}}
+
 .up{{color:var(--green)}}
 .down{{color:var(--red)}}
 </style>
@@ -621,10 +687,37 @@ body{{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);li
 <!-- ═══ SOCIALS ═══ -->
 <div class="page" id="page-socials">
   <div class="page-header">
-    <div class="page-title">Socials</div>
+    <div class="page-title" style="display:flex;align-items:center;gap:12px">
+      Socials
+      <button class="rev-edit-toggle" id="socEditToggle" onclick="srSocEditor.toggleEdit()">✎ Edit</button>
+      <button class="rev-edit-btn" id="socAddMonthBtn" onclick="srSocEditor.addMonth()" style="display:none">+ Add month</button>
+      <span class="rev-edit-status" id="socEditStatus"></span>
+      <span style="flex:1"></span>
+      <button class="rev-edit-btn" id="socGhBtn" onclick="srSocEditor.openGh()" style="display:none">⚙ GitHub</button>
+      <button class="rev-edit-btn rev-save" id="socSaveBtn" onclick="srSocEditor.save()" style="display:none" disabled>Save to repo</button>
+    </div>
     <div class="page-sub">{'Cross-platform social metrics' if has_soc else 'Not connected'}</div>
   </div>
-  {socials_content}
+  <div id="soc-readonly">{socials_content}</div>
+  <div id="soc-editable" style="display:none"></div>
+</div>
+
+<!-- SR Socials GitHub modal -->
+<div class="rev-modal-bg" id="socGhModal" onclick="if(event.target===this)srSocEditor.closeGh()">
+  <div class="rev-modal">
+    <h2>GitHub connection · Schultz Report Socials</h2>
+    <p>Commits <code>socials_sr.csv</code> to the repo.</p>
+    <div class="rev-field"><label>Repository</label><input id="socGhRepo" value="raindelaymedia/roadtrippin" spellcheck="false"></div>
+    <div class="rev-field"><label>Branch</label><input id="socGhBranch" placeholder="auto-detect…" spellcheck="false"></div>
+    <div class="rev-field"><label>File path</label><input id="socGhPath" value="master/shows/schultz_report/data_sr/socials_sr.csv" spellcheck="false"></div>
+    <div class="rev-field"><label>Access token</label><input id="socGhToken" type="password" placeholder="github_pat_…" spellcheck="false"></div>
+    <div class="rev-warn">⚠ Token is stored in this browser only.</div>
+    <div class="rev-modal-actions">
+      <button class="rev-edit-btn" onclick="srSocEditor.closeGh()">Cancel</button>
+      <button class="rev-edit-btn rev-save" onclick="srSocEditor.saveConn()">Save connection</button>
+    </div>
+    <div class="rev-commit-log" id="socCommitLog"></div>
+  </div>
 </div>
 
 <!-- ═══ REVENUE ═══ -->
@@ -728,6 +821,247 @@ document.addEventListener('DOMContentLoaded', function() {{
       }}
     }});
   }}
+}});
+
+// ─── Socials Editor ──
+const SOC_EDIT_DATA = {js_soc_edit};
+
+function createEditor(cfg) {{
+  const D = cfg.data;
+  if (!D) return {{}};
+  const isSoc = cfg.type === 'soc';
+  const isRev = cfg.type === 'rev';
+  if (isSoc && (!D.rows || !D.rows.length) && (!D.periods || !D.periods.length)) {{}}
+  if (isRev && (!D.sources || !D.sources.length) && (!D.periods || !D.periods.length)) {{}}
+
+  let PERIODS = D.periods ? D.periods.slice() : [];
+  const SOURCES = isRev ? (D.sources||[]).slice() : null;
+  const ROWS = isSoc ? (D.rows||[]).slice() : null;
+  const PDISP = isSoc ? (D.platformDisplay||{{}}) : null;
+  let CELLS = Object.assign({{}}, D.cells||{{}});
+  let ORIGINAL = Object.assign({{}}, D.cells||{{}});
+  let editing = false;
+  const changed = new Set();
+  const LS = cfg.lsKey;
+  const P = cfg.prefix;
+  const $ = id => document.getElementById(id);
+  const key = isRev ? ((s,p) => s+'|'+p) : ((pl,mt,pe) => pl+'|'+mt+'|'+pe);
+
+  const fmtMoney = v => {{
+    if (v===''||v==null) return '';
+    if (v==='TBD'||v==='N/A') return v;
+    const n=parseFloat(v); if(isNaN(n)) return v;
+    return n.toLocaleString('en-US',{{minimumFractionDigits:2,maximumFractionDigits:2}});
+  }};
+  const isPct = mt => mt==='ENGAGEMENT_RATE';
+  const fmtSocCell = (mt,v) => {{
+    if (v===''||v==null) return '';
+    if (v==='TBD'||v==='N/A') return v;
+    const n=parseFloat(v); if(isNaN(n)) return v;
+    if (isPct(mt)) return n.toFixed(2)+'%';
+    return n.toLocaleString('en-US');
+  }};
+  const fmtCell = isRev ? ((_,v) => fmtMoney(v)) : ((mt,v) => fmtSocCell(mt,v));
+  const cellCls = v => v==='' ? 'rev-empty' : (v==='TBD'||v==='N/A' ? 'rev-tbd' : '');
+
+  function render() {{
+    const host = $(P+'-editable');
+    if (!host) return;
+    let h = '<div class="table-scroll"><table class="rev-grid"><thead><tr>';
+    h += '<th class="rev-src">'+(isRev?'Source':'Platform · Metric')+'</th>';
+    for (const p of PERIODS) h += '<th>'+p+'</th>';
+    h += '</tr></thead><tbody>';
+    if (isRev) {{
+      for (const s of SOURCES) {{
+        h += '<tr><td class="rev-src">'+s+'</td>';
+        for (const p of PERIODS) {{
+          const k=key(s,p), v=CELLS[k]??'';
+          const ch=changed.has(k)?' rev-changed':'', ec=editing?' rev-cell':'';
+          h += '<td class="'+cellCls(v)+ch+ec+'" data-s="'+s+'" data-p="'+p+'">'+fmtCell(null,v)+'</td>';
+        }}
+        h += '</tr>';
+      }}
+      h += '</tbody><tfoot><tr class="rev-total"><td class="rev-src">TOTAL</td>';
+      for (const p of PERIODS) {{
+        let sum=0; for(const s of SOURCES){{const n=parseFloat(CELLS[key(s,p)]);if(!isNaN(n))sum+=n;}}
+        h += '<td>'+sum.toLocaleString('en-US',{{maximumFractionDigits:0}})+'</td>';
+      }}
+      h += '</tr></tfoot>';
+    }} else {{
+      let lastPlat = null;
+      for (const row of ROWS) {{
+        const {{platform,metric,label}} = row;
+        if (platform!==lastPlat) {{
+          const disp = PDISP[platform]||platform;
+          h += '<tr><td class="rev-src" style="background:var(--surface2);font-weight:700;color:var(--text)">'+disp+'</td>';
+          for(let i=0;i<PERIODS.length;i++) h+='<td style="background:var(--surface2)"></td>';
+          h += '</tr>';
+          lastPlat = platform;
+        }}
+        h += '<tr><td class="rev-src" style="padding-left:22px;color:var(--text2)">'+label+'</td>';
+        for (const pe of PERIODS) {{
+          const k=key(platform,metric,pe), v=CELLS[k]??'';
+          const ch=changed.has(k)?' rev-changed':'', ec=editing?' rev-cell':'';
+          h += '<td class="'+cellCls(v)+ch+ec+'" data-pl="'+platform+'" data-mt="'+metric+'" data-pe="'+pe+'">'+fmtCell(metric,v)+'</td>';
+        }}
+        h += '</tr>';
+      }}
+      h += '</tbody>';
+    }}
+    h += '</table></div>';
+    host.innerHTML = h;
+    if (editing) host.querySelectorAll('td.rev-cell').forEach(td => td.onclick=()=>startEdit(td));
+  }}
+
+  function startEdit(td) {{
+    if(!editing||td.querySelector('input')) return;
+    let rawKey, dispMetric;
+    if (isRev) {{ rawKey=key(td.dataset.s,td.dataset.p); dispMetric=null; }}
+    else {{ rawKey=key(td.dataset.pl,td.dataset.mt,td.dataset.pe); dispMetric=td.dataset.mt; }}
+    const raw=CELLS[rawKey]??'';
+    td.classList.add('rev-editing');
+    td.innerHTML='<input value="'+raw+'">';
+    const inp=td.querySelector('input'); inp.focus(); inp.select();
+    const commit=next=>{{
+      let norm=inp.value.trim().replace(/,/g,'');
+      if(isSoc) norm=norm.replace(/%/g,'');
+      if(/^tbd$/i.test(norm)) norm='TBD'; else if(/^n[/]?a$/i.test(norm)) norm='N/A';
+      CELLS[rawKey]=norm;
+      if((ORIGINAL[rawKey]??'')!==norm) changed.add(rawKey); else changed.delete(rawKey);
+      updateStatus();
+      if(isRev) refreshFooter(td.dataset.p);
+      td.classList.remove('rev-editing');
+      td.className=cellCls(CELLS[rawKey]??'')+(changed.has(rawKey)?' rev-changed':'')+(editing?' rev-cell':'');
+      td.textContent=fmtCell(dispMetric,CELLS[rawKey]??'');
+      if(editing) td.onclick=()=>startEdit(td);
+      if(next) focusNext(td);
+    }};
+    inp.onblur=()=>commit(false);
+    inp.onkeydown=e=>{{
+      if(e.key==='Enter'){{e.preventDefault();commit(false);}}
+      else if(e.key==='Tab'){{e.preventDefault();commit(true);}}
+      else if(e.key==='Escape'){{td.classList.remove('rev-editing');td.className=cellCls(CELLS[rawKey]??'')+(changed.has(rawKey)?' rev-changed':'')+(editing?' rev-cell':'');td.textContent=fmtCell(dispMetric,CELLS[rawKey]??'');if(editing)td.onclick=()=>startEdit(td);}}
+    }};
+  }}
+  function focusNext(td) {{
+    if (isRev) {{
+      const si=SOURCES.indexOf(td.dataset.s);
+      if(si<SOURCES.length-1){{const nt=$(P+'-editable').querySelector('td[data-s="'+SOURCES[si+1]+'"][data-p="'+td.dataset.p+'"]');if(nt)startEdit(nt);}}
+    }} else {{
+      const idx=ROWS.findIndex(r=>r.platform===td.dataset.pl&&r.metric===td.dataset.mt);
+      if(idx<ROWS.length-1){{const nr=ROWS[idx+1];const nt=$(P+'-editable').querySelector('td[data-pl="'+nr.platform+'"][data-mt="'+nr.metric+'"][data-pe="'+td.dataset.pe+'"]');if(nt)startEdit(nt);}}
+    }}
+  }}
+  function refreshFooter(p) {{
+    if(!isRev) return;
+    const idx=PERIODS.indexOf(p);
+    const foot=$(P+'-editable').querySelector('tfoot tr');
+    if(!foot) return;
+    let sum=0; for(const s of SOURCES){{const n=parseFloat(CELLS[key(s,p)]);if(!isNaN(n))sum+=n;}}
+    foot.children[idx+1].textContent=sum.toLocaleString('en-US',{{maximumFractionDigits:0}});
+  }}
+  function updateStatus() {{
+    const n=changed.size;
+    const sb=$(P+'SaveBtn'); if(sb) sb.disabled=n===0;
+    const st=$(P+'EditStatus'); if(st) st.textContent=n>0?(n+' unsaved change'+(n>1?'s':'')):(editing?'Editing':'');
+  }}
+  function toCSV() {{
+    const periodsDesc=PERIODS.slice().sort().reverse();
+    if (isRev) {{
+      const rows=[['period','source','amount']];
+      for(const p of periodsDesc) for(const s of SOURCES){{const v=CELLS[key(s,p)]??'';if(v==='')continue;rows.push([p,s,v]);}}
+      return rows.map(r=>r.join(',')).join('\\r\\n')+'\\r\\n';
+    }} else {{
+      const rows=[['period','platform','metric','value']];
+      const seen=new Set();
+      for(const pe of periodsDesc) for(const r of ROWS){{
+        const k=key(r.platform,r.metric,pe);
+        if(seen.has(k))continue;seen.add(k);
+        let v=CELLS[k]??'';if(v==='')continue;
+        if(isPct(r.metric)&&v!=='TBD'&&v!=='N/A'){{const n=parseFloat(v);if(!isNaN(n))v=(n/100).toFixed(4);}}
+        rows.push([pe,r.platform,r.metric,v]);
+      }}
+      return rows.map(r=>r.join(',')).join('\\r\\n')+'\\r\\n';
+    }}
+  }}
+  const loadConn=()=>{{try{{return JSON.parse(localStorage.getItem(LS))||{{}};}}catch{{return {{}};}} }};
+  const saveConnData=c=>localStorage.setItem(LS,JSON.stringify(c));
+  function log(m){{const l=$(P+'CommitLog');if(!l)return;const d=document.createElement('div');d.textContent=new Date().toLocaleTimeString()+' — '+m;l.prepend(d);}}
+  async function gh(url,opts,token){{
+    const r=await fetch('https://api.github.com'+url,{{...opts,headers:{{'Authorization':'Bearer '+token,'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28',...(opts.headers||{{}})}}}});
+    if(!r.ok){{const e=await r.json().catch(()=>({{}}));throw new Error(r.status+' '+(e.message||r.statusText));}}
+    return r.json();
+  }}
+  const editor = {{}};
+  editor.toggleEdit = function() {{
+    editing=!editing;
+    const tb=$(P+'EditToggle'); if(tb){{tb.classList.toggle('on',editing);tb.textContent=editing?'✓ Editing':'✎ Edit';}}
+    const ro=$(P+'-readonly'); if(ro) ro.style.display=editing?'none':'';
+    const ed=$(P+'-editable'); if(ed) ed.style.display=editing?'':'none';
+    const gb=$(P+'GhBtn'); if(gb) gb.style.display=editing?'':'none';
+    const sb=$(P+'SaveBtn'); if(sb) sb.style.display=editing?'':'none';
+    const ab=$(P+'AddMonthBtn'); if(ab) ab.style.display=editing?'':'none';
+    updateStatus(); if(editing) render();
+  }};
+  editor.addMonth = function() {{
+    if(!PERIODS.length) {{
+      const now=new Date(); const np=now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0');
+      PERIODS.unshift(np);
+    }} else {{
+      const latest=PERIODS[0]; let[y,m]=latest.split('-').map(Number);
+      m++;if(m>12){{m=1;y++;}} const np=y+'-'+String(m).padStart(2,'0');
+      if(PERIODS.includes(np))return;
+      PERIODS.unshift(np);
+    }}
+    const np=PERIODS[0];
+    if(isRev){{for(const s of SOURCES)CELLS[key(s,np)]='';}}
+    else{{for(const r of ROWS)CELLS[key(r.platform,r.metric,np)]='';}}
+    render();
+    const sc=$(P+'-editable').querySelector('.table-scroll');if(sc)sc.scrollLeft=0;
+  }};
+  editor.openGh = function() {{
+    const c=loadConn();
+    $(P+'GhRepo').value=c.repo||'raindelaymedia/roadtrippin';
+    $(P+'GhBranch').value=c.branch||'';
+    $(P+'GhPath').value=c.path||cfg.defaultPath;
+    $(P+'GhToken').value=c.token||'';
+    $(P+'GhModal').classList.add('show');
+  }};
+  editor.closeGh = () => $(P+'GhModal').classList.remove('show');
+  editor.saveConn = function() {{
+    saveConnData({{repo:$(P+'GhRepo').value.trim(),branch:$(P+'GhBranch').value.trim(),path:$(P+'GhPath').value.trim(),token:$(P+'GhToken').value.trim()}});
+    editor.closeGh(); log('Connection saved.');
+  }};
+  editor.save = async function() {{
+    const c=loadConn();
+    if(!c.token||!c.repo){{alert('Set up your GitHub connection first (⚙ GitHub).');editor.openGh();return;}}
+    const st=$(P+'EditStatus');
+    try {{
+      st.textContent='Saving…';$(P+'SaveBtn').disabled=true;
+      let branch=c.branch;
+      if(!branch){{const info=await gh('/repos/'+c.repo,{{}},c.token);branch=info.default_branch||'main';log('Branch: '+branch);}}
+      let sha=null;
+      try{{const cur=await gh('/repos/'+c.repo+'/contents/'+c.path+'?ref='+branch,{{}},c.token);sha=cur.sha;}}
+      catch(e){{if(!String(e).includes('404'))throw e;}}
+      const b64=btoa(unescape(encodeURIComponent(toCSV())));
+      const body={{message:'Update '+cfg.commitLabel+' via dashboard editor ('+changed.size+' change'+(changed.size>1?'s':'')+')',content:b64,branch}};
+      if(sha)body.sha=sha;
+      const res=await gh('/repos/'+c.repo+'/contents/'+c.path,{{method:'PUT',body:JSON.stringify(body)}},c.token);
+      ORIGINAL=Object.assign({{}},CELLS);changed.clear();
+      st.textContent='Saved ✓';log('Committed '+(res.commit?.sha?.slice(0,7)||'ok')+' → '+branch);
+      render();setTimeout(updateStatus,2500);
+    }}catch(e){{
+      st.textContent='Save failed';log('ERROR: '+e.message);
+      alert('Save failed: '+e.message+'\\n\\nCheck token scope (Contents: read/write), repo, and path.');
+      $(P+'SaveBtn').disabled=false;
+    }}
+  }};
+  return editor;
+}}
+
+const srSocEditor = createEditor({{
+  data: SOC_EDIT_DATA, type:'soc', prefix:'soc', lsKey:'sr_soc_editor_gh',
+  defaultPath:'master/shows/schultz_report/data_sr/socials_sr.csv', commitLabel:'socials_sr.csv'
 }});
 </script>
 </body></html>"""
