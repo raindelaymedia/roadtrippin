@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Girls Tripp — Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ─────────────────────────────────────────────────────────────
+   GIRLS TRIPP DASHBOARD — Rain Delay Media
+   Brand color: #E84B8A (pink)
+   ───────────────────────────────────────────────────────────── */
+:root{
+  --brand:        #E84B8A;
+  --brand-deep:   #C73B6F;
+  --brand-soft:   rgba(232,75,138,.08);
+  --brand-tint:   rgba(232,75,138,.16);
+  --bg:           #f7f8fb;
+  --surface:      #ffffff;
+  --surface2:     #eef1f7;
+  --surface3:     #dde3ee;
+  --border:       rgba(20,30,55,.08);
+  --border2:      rgba(20,30,55,.16);
+  --text:         #0f1729;
+  --text2:        #4a5468;
+  --text3:        #8a93a6;
+  --green:        #1B7A3A;
+  --red:          #BC2E3A;
+  --r:            10px;
+  --rsm:          6px;
+  --shadow:       0 1px 3px rgba(15,23,41,.06), 0 1px 2px rgba(15,23,41,.04);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.5;font-size:14px}
+
+.shell{display:flex;height:100vh;overflow:hidden}
+
+/* ── Sidebar ── */
+.sidebar{
+  width:212px; min-width:212px;
+  background:var(--surface);
+  border-right:1px solid var(--border);
+  display:flex; flex-direction:column;
+}
+.sidebar-logo{
+  padding:18px; border-bottom:1px solid var(--border);
+  display:flex; align-items:center; gap:10px;
+}
+.logo-mark{
+  width:32px; height:32px; flex-shrink:0;
+  background:var(--brand); border-radius:7px;
+  display:flex; align-items:center; justify-content:center;
+  color:#fff; font-weight:700; font-size:11px;
+  box-shadow:0 2px 4px rgba(232,75,138,.25);
+}
+.logo-text{display:flex;flex-direction:column;line-height:1.15}
+.logo-main{font-size:14px;font-weight:600;letter-spacing:-.3px;color:var(--text)}
+.logo-sub{font-size:11px;color:var(--text3);margin-top:1px}
+.nav{padding:14px 10px 10px;flex:1}
+.nav-section{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--text3);padding:8px 12px 6px;font-weight:600}
+.nav-item{
+  display:flex; align-items:center; gap:10px;
+  padding:8px 11px; border-radius:var(--rsm);
+  cursor:pointer; font-size:13px; color:var(--text2);
+  margin-bottom:1px; user-select:none;
+  transition:background .12s, color .12s;
+  position:relative;
+}
+.nav-item:hover{background:var(--surface2);color:var(--text)}
+.nav-item.active{background:var(--brand-soft);color:var(--brand);font-weight:500}
+.nav-item.active::before{
+  content:''; position:absolute; left:-10px; top:6px; bottom:6px;
+  width:3px; background:var(--brand); border-radius:0 2px 2px 0;
+}
+.nav-icon{width:15px;height:15px;opacity:.55;flex-shrink:0}
+.nav-item.active .nav-icon{opacity:1;color:var(--brand)}
+.sidebar-footer{
+  padding:14px 18px; border-top:1px solid var(--border);
+  font-size:11px; color:var(--text3);
+}
+
+/* ── Main content ── */
+.main{flex:1;overflow-y:auto;padding:28px 36px 60px}
+.page{display:none}
+.page.active{display:block}
+.page-header{margin-bottom:24px}
+.page-title{font-size:22px;font-weight:600;letter-spacing:-.4px}
+.page-sub{font-size:13px;color:var(--text3);margin-top:4px}
+
+/* ── Metric cards ── */
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-bottom:24px}
+.metric{
+  background:var(--surface); border:1px solid var(--border);
+  border-radius:var(--r); padding:16px 18px; box-shadow:var(--shadow);
+}
+.metric-label{font-size:11px;color:var(--text2);font-weight:500;text-transform:uppercase;letter-spacing:.04em}
+.metric-value{font-size:24px;font-weight:600;letter-spacing:-.4px;margin:6px 0 2px}
+.metric-delta{font-size:12px;color:var(--text3)}
+
+/* ── Cards ── */
+.card{
+  background:var(--surface); border:1px solid var(--border);
+  border-radius:var(--r); padding:20px; margin-bottom:16px;
+  box-shadow:var(--shadow);
+}
+.card-title{font-size:13px;font-weight:600;margin-bottom:14px;letter-spacing:-.1px}
+
+/* ── Empty state ── */
+.empty-state{
+  background:var(--surface); border:1px dashed var(--border2);
+  border-radius:var(--r); padding:48px 24px; text-align:center;
+  margin:16px 0;
+}
+.empty-icon{font-size:32px;margin-bottom:12px}
+.empty-msg{font-size:14px;font-weight:500;color:var(--text2)}
+.empty-sub{font-size:12px;color:var(--text3);margin-top:6px;max-width:420px;margin-left:auto;margin-right:auto}
+
+/* ── Data tables (Tracker tab) ── */
+.tracker-section{margin-bottom:24px}
+.tracker-section-title{
+  font-size:13px; font-weight:600; color:var(--text);
+  margin-bottom:10px; padding-bottom:10px;
+  border-bottom:1px solid var(--border2);
+}
+.table-scroll{overflow-x:auto;scrollbar-width:thin;scrollbar-color:rgba(0,0,0,.1) transparent}
+.data-table{border-collapse:collapse;font-size:12px;font-family:'DM Mono',monospace;white-space:nowrap}
+.data-table th{
+  background:var(--surface2); padding:7px 12px;
+  text-align:right; font-weight:600; font-size:10px;
+  color:var(--text2); border:1px solid var(--border);
+  text-transform:uppercase; letter-spacing:.06em;
+  position:sticky; top:0; z-index:2;
+}
+.data-table th:first-child{text-align:left;position:sticky;left:0;z-index:3;background:var(--surface2);min-width:150px}
+.data-table td{padding:6px 12px;text-align:right;border:.5px solid var(--border)}
+.data-table td:first-child{text-align:left;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;color:var(--text2);position:sticky;left:0;background:var(--surface);z-index:1;min-width:150px}
+.data-table tr:nth-child(even) td{background:rgba(20,30,55,.02)}
+.data-table tr:nth-child(even) td:first-child{background:#f8f9fc}
+.data-table th.lifetime-col{background:var(--surface3);border-left:1px solid var(--border2)}
+.data-table td.lifetime-col{font-weight:600;color:var(--text);background:var(--surface3)!important;border-left:1px solid var(--border2)}
+.data-table tr.total-row td{background:var(--surface2)!important;border-top:1px solid var(--border2);font-weight:600;color:var(--text)}
+.na{color:var(--text3)}
+
+/* ── Socials ── */
+.soc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.soc-card{padding:0;overflow:hidden}
+.soc-card-head{display:flex;justify-content:space-between;align-items:baseline;padding:14px 18px;border-bottom:2px solid}
+.soc-name{font-size:13px;font-weight:600}
+.soc-followers{font-size:18px;font-weight:600;letter-spacing:-.3px}
+.soc-stats{display:grid;grid-template-columns:1fr 1fr;padding:12px 18px;gap:8px}
+.soc-stat-lbl{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.04em}
+.soc-stat-val{font-size:14px;font-weight:600;margin-top:2px}
+
+/* ── Mobile ── */
+@media(max-width:740px){
+  .sidebar{width:56px;min-width:56px}
+  .logo-main,.logo-sub,.nav-item span,.sidebar-footer{display:none}
+  .nav-item{justify-content:center;padding:10px}
+  .main{padding:20px 16px 40px}
+  .metrics{grid-template-columns:1fr 1fr}
+}
+
+/* ── Editor styles ── */
+.rev-edit-toggle{font-size:11px;font-family:'DM Sans',sans-serif;font-weight:600;padding:4px 12px;border-radius:var(--rsm);border:.5px solid var(--brand);background:rgba(232,75,138,.06);color:var(--brand-deep);cursor:pointer}
+.rev-edit-toggle.on{background:var(--brand);color:#fff}
+.rev-edit-btn{font-size:11px;font-family:'DM Sans',sans-serif;font-weight:600;padding:4px 12px;border-radius:var(--rsm);border:.5px solid var(--border2);background:var(--surface);color:var(--text);cursor:pointer}
+.rev-edit-btn:hover{border-color:var(--text2)}
+.rev-edit-btn.rev-save{background:#1B9B54;border-color:#1B9B54;color:#fff}
+.rev-edit-btn.rev-save:hover{background:#137a41}
+.rev-edit-btn:disabled{opacity:.4;cursor:not-allowed}
+.rev-edit-status{font-size:11px;color:var(--brand);font-weight:500}
+.rev-grid{border-collapse:separate;border-spacing:0;font-size:12px;font-family:'DM Mono',monospace;white-space:nowrap}
+.rev-grid th,.rev-grid td{padding:6px 11px;text-align:right;border:.5px solid var(--border)}
+.rev-grid thead th{position:sticky;top:0;z-index:3;background:var(--surface2);color:var(--text2);font-family:'DM Sans',sans-serif;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+.rev-grid th.rev-src,.rev-grid td.rev-src{position:sticky;left:0;z-index:2;text-align:left;background:var(--surface);color:var(--text);font-family:'DM Sans',sans-serif;font-weight:500;min-width:150px;border-right:1px solid var(--border2)}
+.rev-grid thead th.rev-src{z-index:4}
+.rev-grid td.rev-tbd{color:var(--brand);font-style:italic}
+.rev-grid td.rev-empty{color:var(--text3)}
+.rev-grid td.rev-cell{cursor:cell}
+.rev-grid td.rev-cell:hover{outline:1.5px solid var(--brand);outline-offset:-1.5px;background:rgba(232,75,138,.06)}
+.rev-grid td.rev-changed{background:rgba(232,75,138,.08);position:relative}
+.rev-grid td.rev-changed::after{content:'';position:absolute;top:3px;right:3px;width:4px;height:4px;border-radius:50%;background:var(--brand)}
+.rev-grid td.rev-editing{padding:0}
+.rev-grid td.rev-editing input{width:100%;border:none;background:rgba(232,75,138,.06);color:var(--text);font:inherit;text-align:right;padding:6px 11px;outline:2px solid var(--brand);outline-offset:-2px}
+.rev-modal-bg{display:none;position:fixed;inset:0;background:rgba(15,23,41,.55);z-index:100;align-items:center;justify-content:center}
+.rev-modal-bg.show{display:flex}
+.rev-modal{background:#fff;border:1px solid var(--border);border-radius:12px;padding:22px;width:440px;max-width:92vw}
+.rev-modal h2{font-size:15px;margin:0 0 4px;color:var(--text)}
+.rev-modal p{font-size:12px;color:var(--text2);margin:0 0 14px}
+.rev-field{margin-bottom:11px}
+.rev-field label{display:block;font-size:10px;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px}
+.rev-field input{width:100%;font-size:12px;font-family:'DM Mono',monospace;padding:8px 10px;border-radius:6px;border:1px solid var(--border);background:#fafbff;color:var(--text)}
+.rev-field input:focus{outline:none;border-color:var(--brand)}
+.rev-modal-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:14px}
+.rev-warn{font-size:11px;color:#96690c;background:#fdf6e3;border:1px solid #f0e0b0;border-radius:6px;padding:8px 10px;margin-top:4px}
+.rev-commit-log{font-size:11px;font-family:'DM Mono',monospace;color:var(--text2);margin-top:10px;max-height:110px;overflow:auto}
+.rev-commit-log div{padding:2px 0;border-bottom:.5px solid var(--border)}
+
+.up{color:var(--green)}
+.down{color:var(--red)}
+</style>
+</head>
+<body>
+<div class="shell">
+
+<nav class="sidebar">
+  <div class="sidebar-logo">
+    <div class="logo-mark">GT</div>
+    <div class="logo-text">
+      <div class="logo-main">Girls Tripp</div>
+      <div class="logo-sub">Rain Delay Media</div>
+    </div>
+  </div>
+  <a href="../../../index.html" style="display:flex;align-items:center;gap:6px;padding:10px 18px;font-size:11px;color:var(--text3);text-decoration:none;border-bottom:1px solid var(--border);letter-spacing:.02em;font-weight:500;transition:color .12s" onmouseover="this.style.color='var(--brand)'" onmouseout="this.style.color='var(--text3)'">
+    ← RDM Network
+  </a>
+  <a href="../../../index.html" style="display:flex;align-items:center;gap:6px;padding:10px 18px;font-size:11px;color:var(--text3);text-decoration:none;border-bottom:1px solid var(--border);letter-spacing:.02em;font-weight:500;transition:color .12s" onmouseover="this.style.color='var(--brand)'" onmouseout="this.style.color='var(--text3)'">← RDM Network</a>
+    <a href="road_trippin.html" style="display:flex;align-items:center;gap:6px;padding:10px 18px;font-size:11px;color:var(--text3);text-decoration:none;border-bottom:1px solid var(--border);letter-spacing:.02em;font-weight:500;transition:color .12s" onmouseover="this.style.color='var(--brand)'" onmouseout="this.style.color='var(--text3)'">← Road Trippin'</a>
+    <div class="nav">
+    <div class="nav-section">Analytics</div>
+    <div class="nav-item active" onclick="showPage('overview',this)">
+      <svg class="nav-icon" viewBox="0 0 16 16" fill="none"><rect x="1" y="1" width="6" height="6" rx="1.5" fill="currentColor"/><rect x="9" y="1" width="6" height="6" rx="1.5" fill="currentColor" opacity=".5"/><rect x="1" y="9" width="6" height="6" rx="1.5" fill="currentColor" opacity=".5"/><rect x="9" y="9" width="6" height="6" rx="1.5" fill="currentColor" opacity=".3"/></svg>
+      <span>Overview</span>
+    </div>
+    <div class="nav-item" onclick="showPage('youtube',this)">
+      <svg class="nav-icon" viewBox="0 0 16 16" fill="none"><rect x="1" y="3" width="14" height="10" rx="2" fill="currentColor" opacity=".2"/><path d="M6.5 5.5l4 2.5-4 2.5V5.5z" fill="currentColor"/></svg>
+      <span>YouTube</span>
+    </div>
+    <div class="nav-item" onclick="showPage('socials',this)">
+      <svg class="nav-icon" viewBox="0 0 16 16" fill="none"><path d="M5 7a2 2 0 100-4 2 2 0 000 4zm6 6a2 2 0 100-4 2 2 0 000 4zm0-10a2 2 0 100 4 2 2 0 000-4zM6.6 8.5l3 2.5M9.4 5l-3 2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+      <span>Socials</span>
+    </div>
+    <div class="nav-item" onclick="showPage('revenue',this)">
+      <svg class="nav-icon" viewBox="0 0 16 16" fill="none"><path d="M8 2v12M5 5h4.5a1.5 1.5 0 010 3h-3a1.5 1.5 0 000 3H11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      <span>Revenue</span>
+    </div>
+    <div class="nav-section" style="margin-top:14px">Resources</div>
+    <div class="nav-item" onclick="showPage('tracker',this)">
+      <svg class="nav-icon" viewBox="0 0 16 16" fill="none"><rect x="1" y="1" width="14" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M1 5h14M5 5v10" stroke="currentColor" stroke-width="1.2"/></svg>
+      <span>Tracker</span>
+    </div>
+  </div>
+  <div class="sidebar-footer">Updated Sep 08, 2026</div>
+</nav>
+
+<div class="main">
+
+<!-- ═══ OVERVIEW ═══ -->
+<div class="page active" id="page-overview">
+  <div class="page-header">
+    <div class="page-title">Overview</div>
+    <div class="page-sub">All platforms · OCT – OCT</div>
+  </div>
+  
+    <div class="metrics">
+      <div class="metric">
+        <div class="metric-label">YT Subscribers</div>
+        <div class="metric-value">1</div>
+        <div class="metric-delta" style="color:var(--text2)">live count</div>
+      </div>
+      <div class="metric">
+        <div class="metric-label">YT Views</div>
+        <div class="metric-value">2</div>
+        <div class="metric-delta" style="color:var(--text2)">latest month</div>
+      </div>
+      <div class="metric">
+        <div class="metric-label">Revenue</div>
+        <div class="metric-value">$1</div>
+        <div class="metric-delta" style="color:var(--text2)">latest month</div>
+      </div>
+      <div class="metric">
+        <div class="metric-label">Social Platforms</div>
+        <div class="metric-value">1</div>
+        <div class="metric-delta" style="color:var(--text2)">tracked</div>
+      </div>
+    </div>
+  
+</div>
+
+<!-- ═══ YOUTUBE ═══ -->
+<div class="page" id="page-youtube">
+  <div class="page-header">
+    <div class="page-title">YouTube</div>
+    <div class="page-sub">Channel analytics · views, subscribers, content mix</div>
+  </div>
+  
+    <div class="metrics">
+      <div class="metric"><div class="metric-label">Subscribers</div><div class="metric-value">1</div></div>
+      <div class="metric"><div class="metric-label">VOD Views (OCT)</div><div class="metric-value">1</div></div>
+      <div class="metric"><div class="metric-label">Shorts Views (OCT)</div><div class="metric-value">1</div></div>
+      <div class="metric"><div class="metric-label">Live Views (OCT)</div><div class="metric-value">0</div></div>
+    </div>
+    <div class="card">
+      <div class="card-title">Views by Content Type</div>
+      <div style="height:320px"><canvas id="yt-views-chart"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="card-title">Subscriber Growth</div>
+      <div style="height:280px"><canvas id="yt-subs-chart"></canvas></div>
+    </div>
+</div>
+
+<!-- ═══ SOCIALS ═══ -->
+<div class="page" id="page-socials">
+  <div class="page-header">
+    <div class="page-title" style="display:flex;align-items:center;gap:12px">
+      Socials
+      <button class="rev-edit-toggle" id="socEditToggle" onclick="srSocEditor.toggleEdit()">✎ Edit</button>
+      <button class="rev-edit-btn" id="socAddMonthBtn" onclick="srSocEditor.addMonth()" style="display:none">+ Add month</button>
+      <span class="rev-edit-status" id="socEditStatus"></span>
+      <span style="flex:1"></span>
+      <button class="rev-edit-btn" id="socGhBtn" onclick="srSocEditor.openGh()" style="display:none">⚙ GitHub</button>
+      <button class="rev-edit-btn rev-save" id="socSaveBtn" onclick="srSocEditor.save()" style="display:none" disabled>Save to repo</button>
+    </div>
+    <div class="page-sub">Cross-platform social metrics · click ✎ Edit to update</div>
+  </div>
+  <div id="soc-readonly">
+    <div class="soc-grid"><div class="card soc-card"><div class="soc-card-head" style="border-color:#E08C2A"><span class="soc-name">Instagram</span><span class="soc-followers">1</span></div><div class="soc-stats"><div><div class="soc-stat-lbl">Views</div><div class="soc-stat-val">1</div></div><div><div class="soc-stat-lbl">Engagements</div><div class="soc-stat-val">1</div></div></div></div></div>
+    <div style="margin-top:20px"><div class="table-scroll"><table class="data-table"><thead><tr><th>Platform · Metric</th><th>OCT</th></tr></thead><tbody><tr><td style="font-weight:700;background:var(--surface2);color:var(--text)">Instagram</td><td style="background:var(--surface2)"></td></tr><tr><td style="padding-left:18px;color:var(--text2)">Engagements</td><td>1</td></tr><tr><td style="padding-left:18px;color:var(--text2)">Followers</td><td>1</td></tr><tr><td style="padding-left:18px;color:var(--text2)">Posts</td><td>1</td></tr><tr><td style="padding-left:18px;color:var(--text2)">Views</td><td>1</td></tr></tbody></table></div></div></div>
+  <div id="soc-editable" style="display:none"></div>
+</div>
+
+<!-- SR Socials GitHub modal -->
+<div class="rev-modal-bg" id="socGhModal" onclick="if(event.target===this)srSocEditor.closeGh()">
+  <div class="rev-modal">
+    <h2>GitHub connection · Girls Tripp Socials</h2>
+    <p>Commits <code>socials_gt.csv</code> to the repo.</p>
+    <div class="rev-field"><label>Repository</label><input id="socGhRepo" value="raindelaymedia/roadtrippin" spellcheck="false"></div>
+    <div class="rev-field"><label>Branch</label><input id="socGhBranch" placeholder="auto-detect…" spellcheck="false"></div>
+    <div class="rev-field"><label>File path</label><input id="socGhPath" value="master/shows/road_trippin/data/girls_tripp/socials_gt.csv" spellcheck="false"></div>
+    <div class="rev-field"><label>Access token</label><input id="socGhToken" type="password" placeholder="github_pat_…" spellcheck="false"></div>
+    <div class="rev-warn">⚠ Token is stored in this browser only.</div>
+    <div class="rev-modal-actions">
+      <button class="rev-edit-btn" onclick="srSocEditor.closeGh()">Cancel</button>
+      <button class="rev-edit-btn rev-save" onclick="srSocEditor.saveConn()">Save connection</button>
+    </div>
+    <div class="rev-commit-log" id="socCommitLog"></div>
+  </div>
+</div>
+
+<!-- ═══ REVENUE ═══ -->
+<div class="page" id="page-revenue">
+  <div class="page-header">
+    <div class="page-title">Revenue</div>
+    <div class="page-sub">All monthly revenue sources</div>
+  </div>
+  
+    <div class="metrics">
+      <div class="metric"><div class="metric-label">Latest (OCT)</div><div class="metric-value">$1</div></div>
+      <div class="metric"><div class="metric-label">12-mo Total</div><div class="metric-value">$1</div></div>
+      <div class="metric"><div class="metric-label">Months Tracked</div><div class="metric-value">1</div></div>
+    </div>
+    <div class="card">
+      <div class="card-title">Monthly Revenue</div>
+      <div style="height:320px"><canvas id="rev-chart"></canvas></div>
+    </div>
+</div>
+
+<!-- ═══ TRACKER ═══ -->
+<div class="page" id="page-tracker">
+  <div class="page-header">
+    <div class="page-title">Tracker</div>
+    <div class="page-sub">Full data export · newest left, oldest right</div>
+  </div>
+  <div class="tracker-section"><div class="tracker-section-title">📺 Views</div><div class="table-scroll"><table class="data-table"><thead><tr><th>📺 Views</th><th>OCT</th><th class="lifetime-col">Lifetime</th></tr></thead><tbody><tr><td>YT Videos</td><td>1</td><td class="lifetime-col">1</td></tr><tr><td>YT Shorts</td><td>1</td><td class="lifetime-col">1</td></tr><tr><td>YT Lives</td><td>0</td><td class="lifetime-col">0</td></tr></tbody></table></div></div><div class="tracker-section"><div class="tracker-section-title">👥 Subscribers</div><div class="table-scroll"><table class="data-table"><thead><tr><th>👥 Subscribers</th><th>OCT</th><th class="lifetime-col">Lifetime</th></tr></thead><tbody><tr><td>YouTube</td><td>1</td><td class="lifetime-col">1</td></tr></tbody></table></div></div><div class="tracker-section"><div class="tracker-section-title">🔑 KPIs</div><div class="table-scroll"><table class="data-table"><thead><tr><th>🔑 KPIs</th><th>OCT</th><th class="lifetime-col">Lifetime</th></tr></thead><tbody><tr><td>CTR – Videos</td><td><span class="na">—</span></td><td class="lifetime-col">—</td></tr><tr><td># of Shorts</td><td>0</td><td class="lifetime-col">0</td></tr><tr><td>Shorts % of Views</td><td>50.0%</td><td class="lifetime-col">—</td></tr><tr><td>Search % of Views</td><td><span class="na">—</span></td><td class="lifetime-col">—</td></tr></tbody></table></div></div>
+</div>
+
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script>
+// ─── Navigation ──
+function showPage(id, el) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  const page = document.getElementById('page-' + id);
+  if (page) page.classList.add('active');
+  if (el) el.classList.add('active');
+}
+
+// ─── Charts (only render if data exists) ──
+document.addEventListener('DOMContentLoaded', function() {
+  if (typeof Chart === 'undefined') return;
+
+  const M = ["OCT"];
+  const vids = [1];
+  const shorts = [1];
+  const lives = [0];
+  const subs = [1];
+  const revM = ["OCT"];
+  const revTotals = [1.0];
+
+  // YT Views stacked bar
+  if (M.length && document.getElementById('yt-views-chart')) {
+    new Chart(document.getElementById('yt-views-chart'), {
+      type: 'bar',
+      data: {
+        labels: M,
+        datasets: [
+          { label: 'VOD', data: vids, backgroundColor: '#2F6DDE', borderRadius: 2, stack: 's' },
+          { label: 'Shorts', data: shorts, backgroundColor: '#1B9B96', borderRadius: 2, stack: 's' },
+          { label: 'Live', data: lives, backgroundColor: '#E08C2A', borderRadius: 2, stack: 's' },
+        ]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 11 } } } },
+        scales: {
+          x: { stacked: true, grid: { display: false } },
+          y: { stacked: true, ticks: { callback: v => v >= 1e6 ? (v/1e6).toFixed(1)+'M' : v >= 1e3 ? (v/1e3).toFixed(0)+'K' : v } }
+        }
+      }
+    });
+  }
+
+  // YT Subscribers line
+  if (M.length && document.getElementById('yt-subs-chart')) {
+    new Chart(document.getElementById('yt-subs-chart'), {
+      type: 'line',
+      data: {
+        labels: M,
+        datasets: [{ label: 'Subscribers', data: subs, borderColor: '#E84B8A', backgroundColor: 'rgba(232,75,138,.08)', fill: true, tension: .3, pointRadius: 2, borderWidth: 2 }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: { x: { grid: { display: false } }, y: { ticks: { callback: v => v >= 1e3 ? (v/1e3).toFixed(0)+'K' : v } } }
+      }
+    });
+  }
+
+  // Revenue bar
+  if (revM.length && document.getElementById('rev-chart')) {
+    new Chart(document.getElementById('rev-chart'), {
+      type: 'bar',
+      data: {
+        labels: revM,
+        datasets: [{ label: 'Revenue', data: revTotals, backgroundColor: '#E84B8A', borderRadius: 3 }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+          x: { grid: { display: false } },
+          y: { ticks: { callback: v => '$' + (v >= 1e3 ? (v/1e3).toFixed(0)+'K' : v) } }
+        }
+      }
+    });
+  }
+});
+
+// ─── Socials Editor ──
+const SOC_EDIT_DATA = {"periods": ["2026-10"], "rows": [{"platform": "INSTAGRAM", "metric": "ENGAGEMENTS", "label": "Engagements"}, {"platform": "INSTAGRAM", "metric": "FOLLOWERS", "label": "Followers"}, {"platform": "INSTAGRAM", "metric": "POSTS", "label": "Posts"}, {"platform": "INSTAGRAM", "metric": "VIEWS", "label": "Views"}], "cells": {"INSTAGRAM|ENGAGEMENTS|2026-10": "1", "INSTAGRAM|FOLLOWERS|2026-10": "1", "INSTAGRAM|POSTS|2026-10": "1", "INSTAGRAM|VIEWS|2026-10": "1"}, "platformDisplay": {"INSTAGRAM": "Instagram", "TIKTOK": "TikTok", "X": "X / Twitter", "YOUTUBE": "YouTube", "FACEBOOK": "Facebook"}};
+
+function createEditor(cfg) {
+  const D = cfg.data;
+  if (!D) return {};
+  const isSoc = cfg.type === 'soc';
+  const isRev = cfg.type === 'rev';
+  let PERIODS = D.periods ? D.periods.slice() : [];
+  const SOURCES = isRev ? (D.sources||[]).slice() : null;
+  const ROWS = isSoc ? (D.rows||[]).slice() : null;
+  const PDISP = isSoc ? (D.platformDisplay||{}) : null;
+  let CELLS = Object.assign({}, D.cells||{});
+  let ORIGINAL = Object.assign({}, D.cells||{});
+  let editing = false;
+  const changed = new Set();
+  const LS = cfg.lsKey;
+  const P = cfg.prefix;
+  const $ = id => document.getElementById(id);
+  const key = isRev ? ((s,p) => s+'|'+p) : ((pl,mt,pe) => pl+'|'+mt+'|'+pe);
+  const isPct = mt => mt==='ENGAGEMENT_RATE';
+  const fmtSocCell = (mt,v) => {
+    if (v===''||v==null) return '';
+    if (v==='TBD'||v==='N/A') return v;
+    const n=parseFloat(v); if(isNaN(n)) return v;
+    if (isPct(mt)) return n.toFixed(2)+'%';
+    return n.toLocaleString('en-US');
+  };
+  const fmtMoney = v => {
+    if (v===''||v==null) return '';
+    if (v==='TBD'||v==='N/A') return v;
+    const n=parseFloat(v); if(isNaN(n)) return v;
+    return n.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+  };
+  const fmtCell = isRev ? ((_,v) => fmtMoney(v)) : ((mt,v) => fmtSocCell(mt,v));
+  const cellCls = v => v==='' ? 'rev-empty' : (v==='TBD'||v==='N/A' ? 'rev-tbd' : '');
+
+  function render() {
+    const host = $(P+'-editable'); if (!host) return;
+    let h = '<div class="table-scroll"><table class="rev-grid"><thead><tr>';
+    h += '<th class="rev-src">'+(isRev?'Source':'Platform · Metric')+'</th>';
+    for (const p of PERIODS) h += '<th>'+p+'</th>';
+    h += '</tr></thead><tbody>';
+    if (isSoc) {
+      let lastPlat = null;
+      for (const row of ROWS) {
+        const {platform,metric,label} = row;
+        if (platform!==lastPlat) {
+          const disp = PDISP[platform]||platform;
+          h += '<tr><td class="rev-src" style="background:var(--surface2);font-weight:700;color:var(--text)">'+disp+'</td>';
+          for(let i=0;i<PERIODS.length;i++) h+='<td style="background:var(--surface2)"></td>';
+          h += '</tr>'; lastPlat = platform;
+        }
+        h += '<tr><td class="rev-src" style="padding-left:22px;color:var(--text2)">'+label+'</td>';
+        for (const pe of PERIODS) {
+          const k=key(platform,metric,pe), v=CELLS[k]??'';
+          const ch=changed.has(k)?' rev-changed':'', ec=editing?' rev-cell':'';
+          h += '<td class="'+cellCls(v)+ch+ec+'" data-pl="'+platform+'" data-mt="'+metric+'" data-pe="'+pe+'">'+fmtCell(metric,v)+'</td>';
+        }
+        h += '</tr>';
+      }
+    }
+    h += '</tbody></table></div>';
+    host.innerHTML = h;
+    if (editing) host.querySelectorAll('td.rev-cell').forEach(td => td.onclick=()=>startEdit(td));
+  }
+
+  function startEdit(td) {
+    if(!editing||td.querySelector('input')) return;
+    let rawKey, dispMetric;
+    if (isSoc) { rawKey=key(td.dataset.pl,td.dataset.mt,td.dataset.pe); dispMetric=td.dataset.mt; }
+    else { rawKey=key(td.dataset.s,td.dataset.p); dispMetric=null; }
+    const raw=CELLS[rawKey]??'';
+    td.classList.add('rev-editing');
+    td.innerHTML='<input value="'+raw+'">';
+    const inp=td.querySelector('input'); inp.focus(); inp.select();
+    const commit=next=>{
+      let norm=inp.value.trim().replace(/,/g,'');
+      if(isSoc) norm=norm.replace(/%/g,'');
+      if(/^tbd$/i.test(norm)) norm='TBD'; else if(/^n[/]?a$/i.test(norm)) norm='N/A';
+      CELLS[rawKey]=norm;
+      if((ORIGINAL[rawKey]??'')!==norm) changed.add(rawKey); else changed.delete(rawKey);
+      updateStatus();
+      td.classList.remove('rev-editing');
+      td.className=cellCls(CELLS[rawKey]??'')+(changed.has(rawKey)?' rev-changed':'')+(editing?' rev-cell':'');
+      td.textContent=fmtCell(dispMetric,CELLS[rawKey]??'');
+      if(editing) td.onclick=()=>startEdit(td);
+      if(next) focusNext(td);
+    };
+    inp.onblur=()=>commit(false);
+    inp.onkeydown=e=>{
+      if(e.key==='Enter'){e.preventDefault();commit(false);}
+      else if(e.key==='Tab'){e.preventDefault();commit(true);}
+      else if(e.key==='Escape'){td.classList.remove('rev-editing');td.className=cellCls(CELLS[rawKey]??'')+(changed.has(rawKey)?' rev-changed':'')+(editing?' rev-cell':'');td.textContent=fmtCell(dispMetric,CELLS[rawKey]??'');if(editing)td.onclick=()=>startEdit(td);}
+    };
+  }
+  function focusNext(td) {
+    if (isSoc) {
+      const idx=ROWS.findIndex(r=>r.platform===td.dataset.pl&&r.metric===td.dataset.mt);
+      if(idx<ROWS.length-1){const nr=ROWS[idx+1];const nt=$(P+'-editable').querySelector('td[data-pl="'+nr.platform+'"][data-mt="'+nr.metric+'"][data-pe="'+td.dataset.pe+'"]');if(nt)startEdit(nt);}
+    }
+  }
+  function updateStatus() {
+    const n=changed.size;
+    const sb=$(P+'SaveBtn'); if(sb) sb.disabled=n===0;
+    const st=$(P+'EditStatus'); if(st) st.textContent=n>0?(n+' unsaved change'+(n>1?'s':'')):(editing?'Editing':'');
+  }
+  function toCSV() {
+    const periodsDesc=PERIODS.slice().sort().reverse();
+    const rows=[['period','platform','metric','value']];
+    const seen=new Set();
+    for(const pe of periodsDesc) for(const r of ROWS){
+      const k=key(r.platform,r.metric,pe);
+      if(seen.has(k))continue;seen.add(k);
+      let v=CELLS[k]??'';if(v==='')continue;
+      if(isPct(r.metric)&&v!=='TBD'&&v!=='N/A'){const n=parseFloat(v);if(!isNaN(n))v=(n/100).toFixed(4);}
+      rows.push([pe,r.platform,r.metric,v]);
+    }
+    return rows.map(r=>r.join(',')).join('\r\n')+'\r\n';
+  }
+  const loadConn=()=>{try{return JSON.parse(localStorage.getItem(LS))||{};}catch{return {};} };
+  const saveConnData=c=>localStorage.setItem(LS,JSON.stringify(c));
+  function log(m){const l=$(P+'CommitLog');if(!l)return;const d=document.createElement('div');d.textContent=new Date().toLocaleTimeString()+' — '+m;l.prepend(d);}
+  async function gh(url,opts,token){
+    const r=await fetch('https://api.github.com'+url,{...opts,headers:{'Authorization':'Bearer '+token,'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28',...(opts.headers||{})}});
+    if(!r.ok){const e=await r.json().catch(()=>({}));throw new Error(r.status+' '+(e.message||r.statusText));}
+    return r.json();
+  }
+  const editor = {};
+  editor.toggleEdit = function() {
+    editing=!editing;
+    const tb=$(P+'EditToggle'); if(tb){tb.classList.toggle('on',editing);tb.textContent=editing?'✓ Editing':'✎ Edit';}
+    const ro=$(P+'-readonly'); if(ro) ro.style.display=editing?'none':'';
+    const ed=$(P+'-editable'); if(ed) ed.style.display=editing?'':'none';
+    [P+'GhBtn',P+'SaveBtn',P+'AddMonthBtn'].forEach(id=>{const el=$(id);if(el)el.style.display=editing?'':'none';});
+    updateStatus(); if(editing) render();
+  };
+  editor.addMonth = function() {
+    if(!PERIODS.length) {
+      const now=new Date(); PERIODS.unshift(now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0'));
+    } else {
+      const latest=PERIODS[0]; let[y,m]=latest.split('-').map(Number);
+      m++;if(m>12){m=1;y++;} const np=y+'-'+String(m).padStart(2,'0');
+      if(PERIODS.includes(np))return; PERIODS.unshift(np);
+    }
+    const np=PERIODS[0];
+    if(isSoc){for(const r of ROWS)CELLS[key(r.platform,r.metric,np)]='';}
+    render();
+    const sc=$(P+'-editable').querySelector('.table-scroll');if(sc)sc.scrollLeft=0;
+  };
+  editor.openGh = function() {
+    const c=loadConn();
+    $(P+'GhRepo').value=c.repo||'raindelaymedia/roadtrippin';
+    $(P+'GhBranch').value=c.branch||'';
+    $(P+'GhPath').value=c.path||cfg.defaultPath;
+    $(P+'GhToken').value=c.token||'';
+    $(P+'GhModal').classList.add('show');
+  };
+  editor.closeGh = () => $(P+'GhModal').classList.remove('show');
+  editor.saveConn = function() {
+    saveConnData({repo:$(P+'GhRepo').value.trim(),branch:$(P+'GhBranch').value.trim(),path:$(P+'GhPath').value.trim(),token:$(P+'GhToken').value.trim()});
+    editor.closeGh(); log('Connection saved.');
+  };
+  editor.save = async function() {
+    const c=loadConn();
+    if(!c.token||!c.repo){alert('Set up GitHub connection first (⚙ GitHub).');editor.openGh();return;}
+    const st=$(P+'EditStatus');
+    try {
+      st.textContent='Saving…';$(P+'SaveBtn').disabled=true;
+      let branch=c.branch;
+      if(!branch){const info=await gh('/repos/'+c.repo,{},c.token);branch=info.default_branch||'main';log('Branch: '+branch);}
+      let sha=null;
+      try{const cur=await gh('/repos/'+c.repo+'/contents/'+c.path+'?ref='+branch,{},c.token);sha=cur.sha;}
+      catch(e){if(!String(e).includes('404'))throw e;}
+      const b64=btoa(unescape(encodeURIComponent(toCSV())));
+      const body={message:'Update '+cfg.commitLabel+' via dashboard editor ('+changed.size+' change'+(changed.size>1?'s':'')+')',content:b64,branch};
+      if(sha)body.sha=sha;
+      const res=await gh('/repos/'+c.repo+'/contents/'+c.path,{method:'PUT',body:JSON.stringify(body)},c.token);
+      ORIGINAL=Object.assign({},CELLS);changed.clear();
+      st.textContent='Saved ✓';log('Committed '+(res.commit?.sha?.slice(0,7)||'ok')+' → '+branch);
+      render();setTimeout(updateStatus,2500);
+    }catch(e){
+      st.textContent='Save failed';log('ERROR: '+e.message);
+      alert('Save failed: '+e.message+'\n\nCheck token scope (Contents: read/write), repo, and path.');
+      $(P+'SaveBtn').disabled=false;
+    }
+  };
+  return editor;
+}
+
+const srSocEditor = createEditor({
+  data: SOC_EDIT_DATA, type:'soc', prefix:'soc', lsKey:'gt_soc_editor_gh',
+  defaultPath:'master/shows/road_trippin/data/girls_tripp/socials_gt.csv', commitLabel:'socials_gt.csv'
+});
+</script>
+</body></html>
