@@ -340,16 +340,21 @@ def build_html(d, revenue, socials, generated_at):
             "Add rows to revenue_sr.csv to start tracking. Format: period,source,amount")
 
     # ── Socials tab ──
+    PLATFORM_COLORS = {
+        'INSTAGRAM': '#E08C2A', 'TIKTOK': '#7C5BD8', 'X': '#6B7280',
+        'YOUTUBE': '#2F6DDE', 'FACEBOOK': '#1877F2',
+    }
+    PLATFORM_DISPLAY = {
+        'INSTAGRAM': 'Instagram', 'TIKTOK': 'TikTok', 'X': 'X / Twitter',
+        'YOUTUBE': 'YouTube', 'FACEBOOK': 'Facebook',
+    }
+    METRIC_LABELS = {'FOLLOWERS': 'Followers', 'FOLLOWER_GAIN': 'Follower Gain',
+                     'VIEWS': 'Views', 'ENGAGEMENTS': 'Engagements', 'POSTS': 'Posts',
+                     'ENGAGEMENT_RATE': 'ER', 'TOP_POST_VIEWS': 'Top Post Views'}
+
     if has_soc:
         soc_platforms = socials['platforms']
-        PLATFORM_COLORS = {
-            'INSTAGRAM': '#E08C2A', 'TIKTOK': '#7C5BD8', 'X': '#6B7280',
-            'YOUTUBE': '#2F6DDE', 'FACEBOOK': '#1877F2',
-        }
-        PLATFORM_DISPLAY = {
-            'INSTAGRAM': 'Instagram', 'TIKTOK': 'TikTok', 'X': 'X / Twitter',
-            'YOUTUBE': 'YouTube', 'FACEBOOK': 'Facebook',
-        }
+        soc_months_display = [fmt_period(m) for m in socials['months']]
 
         def soc_latest_for(plat, metric):
             series = socials['data'].get((plat, metric), [])
@@ -357,6 +362,7 @@ def build_html(d, revenue, socials, generated_at):
                 if isinstance(v, (int, float)) and v > 0: return v
             return None
 
+        # Platform summary cards
         platform_cards = ''
         for p in soc_platforms:
             color = PLATFORM_COLORS.get(p, '#6B7280')
@@ -374,19 +380,41 @@ def build_html(d, revenue, socials, generated_at):
                 f'<div><div class="soc-stat-lbl">Engagements</div><div class="soc-stat-val">{fmt(eng)}</div></div>'
                 f'</div></div>')
 
-        socials_content = f"""
-    <div class="soc-grid">{platform_cards}</div>"""
-    else:
-        socials_content = empty_state(
-            "No socials data yet",
-            "Click ✎ Edit above to start entering data, or add rows to socials_sr.csv")
+        # Readonly data tracker table (same style as Tracker tab)
+        soc_table = '<div class="table-scroll"><table class="data-table"><thead><tr><th>Platform · Metric</th>'
+        for ml in soc_months_display:
+            soc_table += f'<th>{ml}</th>'
+        soc_table += '</tr></thead><tbody>'
+        last_plat = None
+        all_keys = sorted(socials['data'].keys(), key=lambda k: (k[0], k[1]))
+        for (plat, metric) in all_keys:
+            if plat != last_plat:
+                display = PLATFORM_DISPLAY.get(plat, plat.title())
+                soc_table += f'<tr><td style="font-weight:700;background:var(--surface2);color:var(--text)">{display}</td>'
+                for _ in socials['months']:
+                    soc_table += '<td style="background:var(--surface2)"></td>'
+                soc_table += '</tr>'
+                last_plat = plat
+            label = METRIC_LABELS.get(metric, metric.title())
+            soc_table += f'<tr><td style="padding-left:18px;color:var(--text2)">{label}</td>'
+            vals = socials['data'][(plat, metric)]
+            for vi, v in enumerate(vals):
+                if v is None:
+                    soc_table += '<td><span class="na">—</span></td>'
+                elif metric == 'ENGAGEMENT_RATE' and isinstance(v, (int, float)):
+                    soc_table += f'<td>{v*100:.2f}%</td>'
+                elif isinstance(v, (int, float)):
+                    soc_table += f'<td>{int(v):,}</td>'
+                else:
+                    soc_table += f'<td>{v}</td>'
+            soc_table += '</tr>'
+        soc_table += '</tbody></table></div>'
 
-    # ── Socials editor data ──
-    METRIC_LABELS = {'FOLLOWERS': 'Followers', 'VIEWS': 'Views', 'ENGAGEMENTS': 'Engagements',
-                     'POSTS': 'Posts', 'FOLLOWER_GAIN': 'Follower Gain', 'ENGAGEMENT_RATE': 'ER'}
-    PLAT_NAMES = {'INSTAGRAM': 'Instagram', 'TIKTOK': 'TikTok', 'X': 'X / Twitter',
-                  'YOUTUBE': 'YouTube', 'FACEBOOK': 'Facebook'}
-    if has_soc:
+        socials_content = f"""
+    <div class="soc-grid">{platform_cards}</div>
+    <div style="margin-top:20px">{soc_table}</div>"""
+
+        # Editor data prep
         soc_edit_periods = list(reversed(socials['months']))
         soc_edit_rows = []
         seen = set()
@@ -406,9 +434,12 @@ def build_html(d, revenue, socials, generated_at):
                 else: v = str(v) if isinstance(v, str) else str(int(v)) if isinstance(v, float) and v == int(v) else str(v)
                 soc_cells[f"{plat}|{metric}|{m}"] = v
         js_soc_edit = json.dumps({'periods': soc_edit_periods, 'rows': soc_edit_rows,
-                                   'cells': soc_cells, 'platformDisplay': PLAT_NAMES})
+                                   'cells': soc_cells, 'platformDisplay': PLATFORM_DISPLAY})
     else:
-        js_soc_edit = json.dumps({'periods': [], 'rows': [], 'cells': {}, 'platformDisplay': PLAT_NAMES})
+        socials_content = empty_state(
+            "No socials data yet",
+            "Click ✎ Edit to start entering data, or add rows to socials_sr.csv")
+        js_soc_edit = json.dumps({'periods': [], 'rows': [], 'cells': {}, 'platformDisplay': PLATFORM_DISPLAY})
 
     # ── Tracker tab ──
     if has_yt:
@@ -588,7 +619,7 @@ body{{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);li
 .rev-edit-btn.rev-save{{background:#1B9B54;border-color:#1B9B54;color:#fff}}
 .rev-edit-btn.rev-save:hover{{background:#137a41}}
 .rev-edit-btn:disabled{{opacity:.4;cursor:not-allowed}}
-.rev-edit-status{{font-size:11px;font-family:'DM Sans',sans-serif;color:var(--brand);font-weight:500}}
+.rev-edit-status{{font-size:11px;color:var(--brand);font-weight:500}}
 .rev-grid{{border-collapse:separate;border-spacing:0;font-size:12px;font-family:'DM Mono',monospace;white-space:nowrap}}
 .rev-grid th,.rev-grid td{{padding:6px 11px;text-align:right;border:.5px solid var(--border)}}
 .rev-grid thead th{{position:sticky;top:0;z-index:3;background:var(--surface2);color:var(--text2);font-family:'DM Sans',sans-serif;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.04em}}
@@ -596,21 +627,20 @@ body{{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);li
 .rev-grid thead th.rev-src{{z-index:4}}
 .rev-grid td.rev-tbd{{color:var(--brand);font-style:italic}}
 .rev-grid td.rev-empty{{color:var(--text3)}}
-.rev-grid tr.rev-total td{{position:sticky;bottom:0;background:var(--surface2);font-weight:700;color:var(--text);border-top:1.5px solid var(--border2)}}
 .rev-grid td.rev-cell{{cursor:cell}}
 .rev-grid td.rev-cell:hover{{outline:1.5px solid var(--brand);outline-offset:-1.5px;background:rgba(201,168,76,.06)}}
 .rev-grid td.rev-changed{{background:rgba(201,168,76,.08);position:relative}}
 .rev-grid td.rev-changed::after{{content:'';position:absolute;top:3px;right:3px;width:4px;height:4px;border-radius:50%;background:var(--brand)}}
 .rev-grid td.rev-editing{{padding:0}}
-.rev-grid td.rev-editing input{{width:100%;border:none;background:rgba(201,168,76,.06);color:var(--text);font:inherit;font-family:'DM Mono',monospace;text-align:right;padding:6px 11px;outline:2px solid var(--brand);outline-offset:-2px}}
+.rev-grid td.rev-editing input{{width:100%;border:none;background:rgba(201,168,76,.06);color:var(--text);font:inherit;text-align:right;padding:6px 11px;outline:2px solid var(--brand);outline-offset:-2px}}
 .rev-modal-bg{{display:none;position:fixed;inset:0;background:rgba(15,23,41,.55);z-index:100;align-items:center;justify-content:center}}
 .rev-modal-bg.show{{display:flex}}
 .rev-modal{{background:#fff;border:1px solid var(--border);border-radius:12px;padding:22px;width:440px;max-width:92vw}}
-.rev-modal h2{{font-size:15px;margin:0 0 4px;color:var(--text);font-family:'DM Sans',sans-serif}}
+.rev-modal h2{{font-size:15px;margin:0 0 4px;color:var(--text)}}
 .rev-modal p{{font-size:12px;color:var(--text2);margin:0 0 14px}}
 .rev-field{{margin-bottom:11px}}
-.rev-field label{{display:block;font-size:10px;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;font-family:'DM Sans',sans-serif}}
-.rev-field input{{width:100%;font:inherit;font-size:12px;font-family:'DM Mono',monospace;padding:8px 10px;border-radius:6px;border:1px solid var(--border);background:#fafbff;color:var(--text)}}
+.rev-field label{{display:block;font-size:10px;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px}}
+.rev-field input{{width:100%;font-size:12px;font-family:'DM Mono',monospace;padding:8px 10px;border-radius:6px;border:1px solid var(--border);background:#fafbff;color:var(--text)}}
 .rev-field input:focus{{outline:none;border-color:var(--brand)}}
 .rev-modal-actions{{display:flex;gap:8px;justify-content:flex-end;margin-top:14px}}
 .rev-warn{{font-size:11px;color:#96690c;background:#fdf6e3;border:1px solid #f0e0b0;border-radius:6px;padding:8px 10px;margin-top:4px}}
@@ -696,7 +726,7 @@ body{{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);li
       <button class="rev-edit-btn" id="socGhBtn" onclick="srSocEditor.openGh()" style="display:none">⚙ GitHub</button>
       <button class="rev-edit-btn rev-save" id="socSaveBtn" onclick="srSocEditor.save()" style="display:none" disabled>Save to repo</button>
     </div>
-    <div class="page-sub">{'Cross-platform social metrics' if has_soc else 'Not connected'}</div>
+    <div class="page-sub">{'Cross-platform social metrics · click ✎ Edit to update' if has_soc else 'Not connected · click ✎ Edit to start entering data'}</div>
   </div>
   <div id="soc-readonly">{socials_content}</div>
   <div id="soc-editable" style="display:none"></div>
@@ -831,9 +861,6 @@ function createEditor(cfg) {{
   if (!D) return {{}};
   const isSoc = cfg.type === 'soc';
   const isRev = cfg.type === 'rev';
-  if (isSoc && (!D.rows || !D.rows.length) && (!D.periods || !D.periods.length)) {{}}
-  if (isRev && (!D.sources || !D.sources.length) && (!D.periods || !D.periods.length)) {{}}
-
   let PERIODS = D.periods ? D.periods.slice() : [];
   const SOURCES = isRev ? (D.sources||[]).slice() : null;
   const ROWS = isSoc ? (D.rows||[]).slice() : null;
@@ -846,13 +873,6 @@ function createEditor(cfg) {{
   const P = cfg.prefix;
   const $ = id => document.getElementById(id);
   const key = isRev ? ((s,p) => s+'|'+p) : ((pl,mt,pe) => pl+'|'+mt+'|'+pe);
-
-  const fmtMoney = v => {{
-    if (v===''||v==null) return '';
-    if (v==='TBD'||v==='N/A') return v;
-    const n=parseFloat(v); if(isNaN(n)) return v;
-    return n.toLocaleString('en-US',{{minimumFractionDigits:2,maximumFractionDigits:2}});
-  }};
   const isPct = mt => mt==='ENGAGEMENT_RATE';
   const fmtSocCell = (mt,v) => {{
     if (v===''||v==null) return '';
@@ -861,33 +881,22 @@ function createEditor(cfg) {{
     if (isPct(mt)) return n.toFixed(2)+'%';
     return n.toLocaleString('en-US');
   }};
+  const fmtMoney = v => {{
+    if (v===''||v==null) return '';
+    if (v==='TBD'||v==='N/A') return v;
+    const n=parseFloat(v); if(isNaN(n)) return v;
+    return n.toLocaleString('en-US',{{minimumFractionDigits:2,maximumFractionDigits:2}});
+  }};
   const fmtCell = isRev ? ((_,v) => fmtMoney(v)) : ((mt,v) => fmtSocCell(mt,v));
   const cellCls = v => v==='' ? 'rev-empty' : (v==='TBD'||v==='N/A' ? 'rev-tbd' : '');
 
   function render() {{
-    const host = $(P+'-editable');
-    if (!host) return;
+    const host = $(P+'-editable'); if (!host) return;
     let h = '<div class="table-scroll"><table class="rev-grid"><thead><tr>';
     h += '<th class="rev-src">'+(isRev?'Source':'Platform · Metric')+'</th>';
     for (const p of PERIODS) h += '<th>'+p+'</th>';
     h += '</tr></thead><tbody>';
-    if (isRev) {{
-      for (const s of SOURCES) {{
-        h += '<tr><td class="rev-src">'+s+'</td>';
-        for (const p of PERIODS) {{
-          const k=key(s,p), v=CELLS[k]??'';
-          const ch=changed.has(k)?' rev-changed':'', ec=editing?' rev-cell':'';
-          h += '<td class="'+cellCls(v)+ch+ec+'" data-s="'+s+'" data-p="'+p+'">'+fmtCell(null,v)+'</td>';
-        }}
-        h += '</tr>';
-      }}
-      h += '</tbody><tfoot><tr class="rev-total"><td class="rev-src">TOTAL</td>';
-      for (const p of PERIODS) {{
-        let sum=0; for(const s of SOURCES){{const n=parseFloat(CELLS[key(s,p)]);if(!isNaN(n))sum+=n;}}
-        h += '<td>'+sum.toLocaleString('en-US',{{maximumFractionDigits:0}})+'</td>';
-      }}
-      h += '</tr></tfoot>';
-    }} else {{
+    if (isSoc) {{
       let lastPlat = null;
       for (const row of ROWS) {{
         const {{platform,metric,label}} = row;
@@ -895,8 +904,7 @@ function createEditor(cfg) {{
           const disp = PDISP[platform]||platform;
           h += '<tr><td class="rev-src" style="background:var(--surface2);font-weight:700;color:var(--text)">'+disp+'</td>';
           for(let i=0;i<PERIODS.length;i++) h+='<td style="background:var(--surface2)"></td>';
-          h += '</tr>';
-          lastPlat = platform;
+          h += '</tr>'; lastPlat = platform;
         }}
         h += '<tr><td class="rev-src" style="padding-left:22px;color:var(--text2)">'+label+'</td>';
         for (const pe of PERIODS) {{
@@ -906,9 +914,8 @@ function createEditor(cfg) {{
         }}
         h += '</tr>';
       }}
-      h += '</tbody>';
     }}
-    h += '</table></div>';
+    h += '</tbody></table></div>';
     host.innerHTML = h;
     if (editing) host.querySelectorAll('td.rev-cell').forEach(td => td.onclick=()=>startEdit(td));
   }}
@@ -916,8 +923,8 @@ function createEditor(cfg) {{
   function startEdit(td) {{
     if(!editing||td.querySelector('input')) return;
     let rawKey, dispMetric;
-    if (isRev) {{ rawKey=key(td.dataset.s,td.dataset.p); dispMetric=null; }}
-    else {{ rawKey=key(td.dataset.pl,td.dataset.mt,td.dataset.pe); dispMetric=td.dataset.mt; }}
+    if (isSoc) {{ rawKey=key(td.dataset.pl,td.dataset.mt,td.dataset.pe); dispMetric=td.dataset.mt; }}
+    else {{ rawKey=key(td.dataset.s,td.dataset.p); dispMetric=null; }}
     const raw=CELLS[rawKey]??'';
     td.classList.add('rev-editing');
     td.innerHTML='<input value="'+raw+'">';
@@ -929,7 +936,6 @@ function createEditor(cfg) {{
       CELLS[rawKey]=norm;
       if((ORIGINAL[rawKey]??'')!==norm) changed.add(rawKey); else changed.delete(rawKey);
       updateStatus();
-      if(isRev) refreshFooter(td.dataset.p);
       td.classList.remove('rev-editing');
       td.className=cellCls(CELLS[rawKey]??'')+(changed.has(rawKey)?' rev-changed':'')+(editing?' rev-cell':'');
       td.textContent=fmtCell(dispMetric,CELLS[rawKey]??'');
@@ -944,21 +950,10 @@ function createEditor(cfg) {{
     }};
   }}
   function focusNext(td) {{
-    if (isRev) {{
-      const si=SOURCES.indexOf(td.dataset.s);
-      if(si<SOURCES.length-1){{const nt=$(P+'-editable').querySelector('td[data-s="'+SOURCES[si+1]+'"][data-p="'+td.dataset.p+'"]');if(nt)startEdit(nt);}}
-    }} else {{
+    if (isSoc) {{
       const idx=ROWS.findIndex(r=>r.platform===td.dataset.pl&&r.metric===td.dataset.mt);
       if(idx<ROWS.length-1){{const nr=ROWS[idx+1];const nt=$(P+'-editable').querySelector('td[data-pl="'+nr.platform+'"][data-mt="'+nr.metric+'"][data-pe="'+td.dataset.pe+'"]');if(nt)startEdit(nt);}}
     }}
-  }}
-  function refreshFooter(p) {{
-    if(!isRev) return;
-    const idx=PERIODS.indexOf(p);
-    const foot=$(P+'-editable').querySelector('tfoot tr');
-    if(!foot) return;
-    let sum=0; for(const s of SOURCES){{const n=parseFloat(CELLS[key(s,p)]);if(!isNaN(n))sum+=n;}}
-    foot.children[idx+1].textContent=sum.toLocaleString('en-US',{{maximumFractionDigits:0}});
   }}
   function updateStatus() {{
     const n=changed.size;
@@ -967,22 +962,16 @@ function createEditor(cfg) {{
   }}
   function toCSV() {{
     const periodsDesc=PERIODS.slice().sort().reverse();
-    if (isRev) {{
-      const rows=[['period','source','amount']];
-      for(const p of periodsDesc) for(const s of SOURCES){{const v=CELLS[key(s,p)]??'';if(v==='')continue;rows.push([p,s,v]);}}
-      return rows.map(r=>r.join(',')).join('\\r\\n')+'\\r\\n';
-    }} else {{
-      const rows=[['period','platform','metric','value']];
-      const seen=new Set();
-      for(const pe of periodsDesc) for(const r of ROWS){{
-        const k=key(r.platform,r.metric,pe);
-        if(seen.has(k))continue;seen.add(k);
-        let v=CELLS[k]??'';if(v==='')continue;
-        if(isPct(r.metric)&&v!=='TBD'&&v!=='N/A'){{const n=parseFloat(v);if(!isNaN(n))v=(n/100).toFixed(4);}}
-        rows.push([pe,r.platform,r.metric,v]);
-      }}
-      return rows.map(r=>r.join(',')).join('\\r\\n')+'\\r\\n';
+    const rows=[['period','platform','metric','value']];
+    const seen=new Set();
+    for(const pe of periodsDesc) for(const r of ROWS){{
+      const k=key(r.platform,r.metric,pe);
+      if(seen.has(k))continue;seen.add(k);
+      let v=CELLS[k]??'';if(v==='')continue;
+      if(isPct(r.metric)&&v!=='TBD'&&v!=='N/A'){{const n=parseFloat(v);if(!isNaN(n))v=(n/100).toFixed(4);}}
+      rows.push([pe,r.platform,r.metric,v]);
     }}
+    return rows.map(r=>r.join(',')).join('\\r\\n')+'\\r\\n';
   }}
   const loadConn=()=>{{try{{return JSON.parse(localStorage.getItem(LS))||{{}};}}catch{{return {{}};}} }};
   const saveConnData=c=>localStorage.setItem(LS,JSON.stringify(c));
@@ -998,24 +987,19 @@ function createEditor(cfg) {{
     const tb=$(P+'EditToggle'); if(tb){{tb.classList.toggle('on',editing);tb.textContent=editing?'✓ Editing':'✎ Edit';}}
     const ro=$(P+'-readonly'); if(ro) ro.style.display=editing?'none':'';
     const ed=$(P+'-editable'); if(ed) ed.style.display=editing?'':'none';
-    const gb=$(P+'GhBtn'); if(gb) gb.style.display=editing?'':'none';
-    const sb=$(P+'SaveBtn'); if(sb) sb.style.display=editing?'':'none';
-    const ab=$(P+'AddMonthBtn'); if(ab) ab.style.display=editing?'':'none';
+    [P+'GhBtn',P+'SaveBtn',P+'AddMonthBtn'].forEach(id=>{{const el=$(id);if(el)el.style.display=editing?'':'none';}});
     updateStatus(); if(editing) render();
   }};
   editor.addMonth = function() {{
     if(!PERIODS.length) {{
-      const now=new Date(); const np=now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0');
-      PERIODS.unshift(np);
+      const now=new Date(); PERIODS.unshift(now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0'));
     }} else {{
       const latest=PERIODS[0]; let[y,m]=latest.split('-').map(Number);
       m++;if(m>12){{m=1;y++;}} const np=y+'-'+String(m).padStart(2,'0');
-      if(PERIODS.includes(np))return;
-      PERIODS.unshift(np);
+      if(PERIODS.includes(np))return; PERIODS.unshift(np);
     }}
     const np=PERIODS[0];
-    if(isRev){{for(const s of SOURCES)CELLS[key(s,np)]='';}}
-    else{{for(const r of ROWS)CELLS[key(r.platform,r.metric,np)]='';}}
+    if(isSoc){{for(const r of ROWS)CELLS[key(r.platform,r.metric,np)]='';}}
     render();
     const sc=$(P+'-editable').querySelector('.table-scroll');if(sc)sc.scrollLeft=0;
   }};
@@ -1034,7 +1018,7 @@ function createEditor(cfg) {{
   }};
   editor.save = async function() {{
     const c=loadConn();
-    if(!c.token||!c.repo){{alert('Set up your GitHub connection first (⚙ GitHub).');editor.openGh();return;}}
+    if(!c.token||!c.repo){{alert('Set up GitHub connection first (⚙ GitHub).');editor.openGh();return;}}
     const st=$(P+'EditStatus');
     try {{
       st.textContent='Saving…';$(P+'SaveBtn').disabled=true;
