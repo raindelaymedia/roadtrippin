@@ -33,6 +33,25 @@ SHOWS = [
         "dashboard_url": "master/shows/road_trippin/road_trippin.html",
         "color":         "#0EA5E9",         # show accent color
         "show_revenue":  True,              # only RT has a known revenue structure
+        "daughter_shows": [
+            {
+                "key":           "girls_tripp",
+                "name":          "Girls Tripp",
+                "tag":           "GT",
+                "color":         "#E84B8A",
+                "dashboard_url": "master/shows/road_trippin/girls_tripp.html",
+                "status":        "active",       # active | coming_soon
+            },
+            # Future daughter shows go here:
+            # {
+            #     "key":  "perk_show",
+            #     "name": "Perk Show (TBD)",
+            #     "tag":  "PK",
+            #     "color": "#F59E0B",
+            #     "dashboard_url": "master/shows/road_trippin/road_trippin.html",
+            #     "status": "coming_soon",
+            # },
+        ],
     },
     {
         "key":           "schultz_report",
@@ -317,6 +336,7 @@ def compute_show_summary(show, today=None, script_dir=None):
         "by_month":           dict(by_month),
         # controls whether master template renders revenue breakdown for this show
         "show_revenue":       show.get("show_revenue", False),
+        "daughter_shows":     show.get("daughter_shows", []),
     }
 
 

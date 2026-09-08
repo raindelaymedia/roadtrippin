@@ -266,21 +266,43 @@ def _render_show_card(s):
         rev_stats = f"""
     <div><div class="lbl">MTD Gross</div><div class="v">{_fmt_money_short(s['mtd_gross'])}</div></div>
     <div><div class="lbl">Lifetime</div><div class="v">{_fmt_money_short(s['cum_gross'])}</div></div>"""
+
+    # Daughter show sub-cards
+    daughters = s.get("daughter_shows", [])
+    sub_cards = ""
+    if daughters:
+        sub_items = ""
+        for d in daughters:
+            status_badge = ""
+            if d.get("status") == "coming_soon":
+                status_badge = '<span class="sub-card-soon">Coming Soon</span>'
+            sub_items += f"""
+      <a class="sub-card" href="{d.get('dashboard_url','#')}" target="_blank" rel="noopener">
+        <div class="sub-card-tag" style="background:{d['color']}">{d.get('tag','')}</div>
+        <div class="sub-card-name">{d['name']}</div>
+        {status_badge}
+        <div class="sub-card-arrow">↗</div>
+      </a>"""
+        sub_cards = f'<div class="sub-card-row">{sub_items}</div>'
+
     return f"""
-<a class="show-card" href="{s['dashboard_url']}" target="_blank" rel="noopener">
-  <div class="show-card-head">
-    <div class="show-card-tag" style="background:{s['color']}">{s.get('tag','')}</div>
-    <div>
-      <div class="show-card-name">{s['name']}</div>
+<div class="show-card-group">
+  <a class="show-card" href="{s['dashboard_url']}" target="_blank" rel="noopener">
+    <div class="show-card-head">
+      <div class="show-card-tag" style="background:{s['color']}">{s.get('tag','')}</div>
+      <div>
+        <div class="show-card-name">{s['name']}</div>
+      </div>
+      <div class="show-card-arrow">↗</div>
     </div>
-    <div class="show-card-arrow">↗</div>
-  </div>
-  <div class="show-card-stats">
-    <div><div class="lbl">YT Subs</div><div class="v">{_fmt_num_short(s['subs'])}</div></div>{rev_stats}
-    <div><div class="lbl">Eps 30d</div><div class="v">{_fmt_num(s['eps_30d'])}</div></div>
-  </div>
-  <div class="show-card-cta">Open full dashboard →</div>
-</a>"""
+    <div class="show-card-stats">
+      <div><div class="lbl">YT Subs</div><div class="v">{_fmt_num_short(s['subs'])}</div></div>{rev_stats}
+      <div><div class="lbl">Eps 30d</div><div class="v">{_fmt_num(s['eps_30d'])}</div></div>
+    </div>
+    <div class="show-card-cta">Open full dashboard →</div>
+  </a>
+  {sub_cards}
+</div>"""
 
 
 def build_master_html(rdm_summary, show_summaries, quarter_label,
@@ -708,6 +730,61 @@ def build_master_html(rdm_summary, show_summaries, quarter_label,
     border-top: 1px solid var(--border);
     font-size: 11px; font-weight: 600; color: var(--brand2);
     letter-spacing: .04em;
+  }}
+
+  /* ─── Show card group (parent + daughter shows) ─── */
+  .show-card-group {{
+    display: flex;
+    flex-direction: column;
+  }}
+  .sub-card-row {{
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+  }}
+  .sub-card {{
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    text-decoration: none;
+    transition: border-color .15s, box-shadow .15s;
+  }}
+  .sub-card:hover {{
+    border-color: var(--brand2);
+    box-shadow: 0 2px 8px rgba(0,0,0,.06);
+  }}
+  .sub-card-tag {{
+    width: 28px; height: 28px; flex-shrink: 0;
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-weight: 700; font-size: 9px;
+    letter-spacing: .03em;
+  }}
+  .sub-card-name {{
+    font-weight: 600; font-size: 13px; color: var(--ink);
+    flex: 1;
+  }}
+  .sub-card-soon {{
+    font-size: 9px; font-weight: 600;
+    color: var(--mut);
+    background: var(--bg);
+    border: 1px solid var(--border);
+    padding: 2px 6px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+  }}
+  .sub-card-arrow {{
+    font-size: 14px; color: var(--mut);
+    transition: color .15s;
+  }}
+  .sub-card:hover .sub-card-arrow {{
+    color: var(--brand2);
   }}
 
   /* ─── Coming soon block ─── */
