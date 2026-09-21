@@ -1,6 +1,7 @@
 # Secrets — never commit
 config.py
 client_secrets.json
+config_sr.py
 *.env
 
 # Python cache

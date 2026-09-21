@@ -1,0 +1,4132 @@
+{
+  "compiled": "2026-09-08T09:42:34.129856",
+  "season": {
+    "start": "2025-10",
+    "end": "2026-09",
+    "months": [
+      "2025-10",
+      "2025-11",
+      "2025-12",
+      "2026-01",
+      "2026-02",
+      "2026-03",
+      "2026-04",
+      "2026-05",
+      "2026-06",
+      "2026-07",
+      "2026-08",
+      "2026-09"
+    ]
+  },
+  "contract": {
+    "effective_date": "2025-10-01",
+    "term_years": 2,
+    "cycle_episodes": 192,
+    "cycle_weeks": 48,
+    "budget_per_cycle": 348000,
+    "budget_payments": 6,
+    "revenue_tiers": [
+      {
+        "floor": 0,
+        "ceiling": 500000,
+        "rate": 0.0
+      },
+      {
+        "floor": 500001,
+        "ceiling": 1000000,
+        "rate": 0.2
+      },
+      {
+        "floor": 1000001,
+        "ceiling": null,
+        "rate": 0.25
+      }
+    ],
+    "fanatics_impression_goal": 47000000,
+    "fanatics_term_start": "2026-02-17",
+    "fanatics_term_end": "2026-09-13",
+    "talent": [
+      "Richard Jefferson",
+      "Channing Frye",
+      "Kendrick Perkins",
+      "Allie Clifton"
+    ]
+  },
+  "youtube": {
+    "monthly": {
+      "2025-10": {
+        "vids": 951387,
+        "shorts": 542576,
+        "lives": 381,
+        "total_views": 1494344,
+        "subs_gained": 4263,
+        "subs_lost": 645,
+        "net_subs": 3618
+      },
+      "2025-11": {
+        "vids": 1237011,
+        "shorts": 920589,
+        "lives": 405,
+        "total_views": 2158005,
+        "subs_gained": 5282,
+        "subs_lost": 699,
+        "net_subs": 4583
+      },
+      "2025-12": {
+        "vids": 1819209,
+        "shorts": 1102899,
+        "lives": 365,
+        "total_views": 2922473,
+        "subs_gained": 11844,
+        "subs_lost": 823,
+        "net_subs": 11021
+      },
+      "2026-01": {
+        "vids": 733899,
+        "shorts": 1021398,
+        "lives": 90638,
+        "total_views": 1845935,
+        "subs_gained": 4655,
+        "subs_lost": 807,
+        "net_subs": 3848
+      },
+      "2026-02": {
+        "vids": 456937,
+        "shorts": 1412041,
+        "lives": 209927,
+        "total_views": 2078905,
+        "subs_gained": 4016,
+        "subs_lost": 728,
+        "net_subs": 3288
+      },
+      "2026-03": {
+        "vids": 999377,
+        "shorts": 2437458,
+        "lives": 211738,
+        "total_views": 3648573,
+        "subs_gained": 7374,
+        "subs_lost": 872,
+        "net_subs": 6502
+      },
+      "2026-04": {
+        "vids": 790809,
+        "shorts": 2731804,
+        "lives": 178277,
+        "total_views": 3700890,
+        "subs_gained": 5249,
+        "subs_lost": 764,
+        "net_subs": 4485
+      },
+      "2026-05": {
+        "vids": 697914,
+        "shorts": 2062452,
+        "lives": 164514,
+        "total_views": 2924880,
+        "subs_gained": 4213,
+        "subs_lost": 730,
+        "net_subs": 3483
+      },
+      "2026-06": {
+        "vids": 983168,
+        "shorts": 3317091,
+        "lives": 169880,
+        "total_views": 4470139,
+        "subs_gained": 6762,
+        "subs_lost": 808,
+        "net_subs": 5954
+      },
+      "2026-07": {
+        "vids": 1467445,
+        "shorts": 7373863,
+        "lives": 82434,
+        "total_views": 8923742,
+        "subs_gained": 10947,
+        "subs_lost": 1037,
+        "net_subs": 9910
+      },
+      "2026-08": {
+        "vids": 1396419,
+        "shorts": 4474835,
+        "lives": 4471,
+        "total_views": 5875725,
+        "subs_gained": 7655,
+        "subs_lost": 964,
+        "net_subs": 6691
+      },
+      "2026-09": {
+        "vids": 0,
+        "shorts": 0,
+        "lives": 0,
+        "total_views": 0,
+        "subs_gained": 0,
+        "subs_lost": 0,
+        "net_subs": 0
+      }
+    },
+    "current_subs": 180000,
+    "top_content": {
+      "2025-10": {
+        "long": [
+          {
+            "id": "DbC9gyEcwbQ",
+            "title": "Billups ARRESTED, Perk Almost FOUGHT SHAQ & Wemby DOMINATES!",
+            "published": "2025-10-24",
+            "month": "2025-10",
+            "views": 99866,
+            "likes": 1795,
+            "comments": 243,
+            "duration_sec": 3856,
+            "thumbnail": "https://i.ytimg.com/vi/DbC9gyEcwbQ/maxresdefault.jpg",
+            "url": "https://youtu.be/DbC9gyEcwbQ",
+            "type": "long"
+          },
+          {
+            "id": "CNMkqcdikug",
+            "title": "Austin Reaves All-Star Debate, Giannis\u2019 12-Step Gather & Amare CALLS OUT Carmelo\u2019s Playstyle",
+            "published": "2025-10-30",
+            "month": "2025-10",
+            "views": 46185,
+            "likes": 831,
+            "comments": 137,
+            "duration_sec": 3832,
+            "thumbnail": "https://i.ytimg.com/vi/CNMkqcdikug/maxresdefault.jpg",
+            "url": "https://youtu.be/CNMkqcdikug",
+            "type": "long"
+          },
+          {
+            "id": "YTJd5XYZ-DM",
+            "title": "Evan Mobley's Trainer is DEAD WRONG, Cooper Flagg is TOP 25?! & Wembanyama DEMANDS Help?",
+            "published": "2025-10-17",
+            "month": "2025-10",
+            "views": 41134,
+            "likes": 961,
+            "comments": 140,
+            "duration_sec": 4105,
+            "thumbnail": "https://i.ytimg.com/vi/YTJd5XYZ-DM/maxresdefault.jpg",
+            "url": "https://youtu.be/YTJd5XYZ-DM",
+            "type": "long"
+          }
+        ],
+        "mid": [
+          {
+            "id": "M66gbDu5x1g",
+            "title": "Russell Westbrook STILL Unsigned: Perk Reveals Their Broken Relationship",
+            "published": "2025-10-02",
+            "month": "2025-10",
+            "views": 92722,
+            "likes": 1089,
+            "comments": 582,
+            "duration_sec": 292,
+            "thumbnail": "https://i.ytimg.com/vi/M66gbDu5x1g/maxresdefault.jpg",
+            "url": "https://youtu.be/M66gbDu5x1g",
+            "type": "mid"
+          },
+          {
+            "id": "S3hFD-Vlgks",
+            "title": "RJ\u2019s Business Manager STOLE Millions: FBI Had Proof But Refused to Help Him in Court",
+            "published": "2025-10-24",
+            "month": "2025-10",
+            "views": 77047,
+            "likes": 883,
+            "comments": 228,
+            "duration_sec": 342,
+            "thumbnail": "https://i.ytimg.com/vi/S3hFD-Vlgks/maxresdefault.jpg",
+            "url": "https://youtu.be/S3hFD-Vlgks",
+            "type": "mid"
+          },
+          {
+            "id": "eWSQp0g8llA",
+            "title": "RJ Shuts Down \u201cFake LeBron\u201d Claims with Emotional Story",
+            "published": "2025-10-23",
+            "month": "2025-10",
+            "views": 69899,
+            "likes": 1086,
+            "comments": 256,
+            "duration_sec": 322,
+            "thumbnail": "https://i.ytimg.com/vi/eWSQp0g8llA/maxresdefault.jpg",
+            "url": "https://youtu.be/eWSQp0g8llA",
+            "type": "mid"
+          }
+        ],
+        "short": [
+          {
+            "id": "QbOI1xgQ8ZE",
+            "title": "Steph and Seth Curry On The Same Team is a PROBLEM",
+            "published": "2025-10-04",
+            "month": "2025-10",
+            "views": 241742,
+            "likes": 8390,
+            "comments": 260,
+            "duration_sec": 41,
+            "thumbnail": "https://i.ytimg.com/vi/QbOI1xgQ8ZE/maxresdefault.jpg",
+            "url": "https://youtu.be/QbOI1xgQ8ZE",
+            "type": "short"
+          },
+          {
+            "id": "ay8uUBeyRcU",
+            "title": "How James Harden Left OKC feat. Kendrick Perkins",
+            "published": "2025-10-19",
+            "month": "2025-10",
+            "views": 100327,
+            "likes": 2546,
+            "comments": 113,
+            "duration_sec": 97,
+            "thumbnail": "https://i.ytimg.com/vi/ay8uUBeyRcU/maxresdefault.jpg",
+            "url": "https://youtu.be/ay8uUBeyRcU",
+            "type": "short"
+          },
+          {
+            "id": "HuezETFg9xY",
+            "title": "Did Giannis Travel or Nah?",
+            "published": "2025-10-31",
+            "month": "2025-10",
+            "views": 34296,
+            "likes": 770,
+            "comments": 237,
+            "duration_sec": 67,
+            "thumbnail": "https://i.ytimg.com/vi/HuezETFg9xY/maxresdefault.jpg",
+            "url": "https://youtu.be/HuezETFg9xY",
+            "type": "short"
+          }
+        ]
+      },
+      "2025-11": {
+        "long": [
+          {
+            "id": "6qJqOrLxJik",
+            "title": "RJ FOUGHT Kenyon Martin!? & ENDS Draymond BEEF",
+            "published": "2025-11-26",
+            "month": "2025-11",
+            "views": 71674,
+            "likes": 1370,
+            "comments": 345,
+            "duration_sec": 2692,
+            "thumbnail": "https://i.ytimg.com/vi/6qJqOrLxJik/maxresdefault.jpg",
+            "url": "https://youtu.be/6qJqOrLxJik",
+            "type": "long"
+          },
+          {
+            "id": "0GBZDGEVs-s",
+            "title": "Lakers DOMINATE, Tony Allen DISPUTES ARREST & Westbrook PROVES He\u2019s TOP 5 PG",
+            "published": "2025-11-07",
+            "month": "2025-11",
+            "views": 43493,
+            "likes": 947,
+            "comments": 125,
+            "duration_sec": 3495,
+            "thumbnail": "https://i.ytimg.com/vi/0GBZDGEVs-s/maxresdefault.jpg",
+            "url": "https://youtu.be/0GBZDGEVs-s",
+            "type": "long"
+          },
+          {
+            "id": "7pKwtMurArc",
+            "title": "Nico FIRED TOO SOON? LeBron\u2019s Return a PROBLEM? + Perk APOLOGIZES to Heat",
+            "published": "2025-11-11",
+            "month": "2025-11",
+            "views": 43479,
+            "likes": 895,
+            "comments": 169,
+            "duration_sec": 3704,
+            "thumbnail": "https://i.ytimg.com/vi/7pKwtMurArc/maxresdefault.jpg",
+            "url": "https://youtu.be/7pKwtMurArc",
+            "type": "long"
+          }
+        ],
+        "mid": [
+          {
+            "id": "kHqq0RR6dHE",
+            "title": "Richard Jefferson Reveals What NO ONE Is Saying About Draymond vs K-Mart Bee",
+            "published": "2025-11-26",
+            "month": "2025-11",
+            "views": 311486,
+            "likes": 3810,
+            "comments": 1946,
+            "duration_sec": 996,
+            "thumbnail": "https://i.ytimg.com/vi/kHqq0RR6dHE/maxresdefault.jpg",
+            "url": "https://youtu.be/kHqq0RR6dHE",
+            "type": "mid"
+          },
+          {
+            "id": "22Dv4-Y7JtU",
+            "title": "Perk on Tony Allen Cocaine Arrest: 'The marijuana was his, BUT...'",
+            "published": "2025-11-07",
+            "month": "2025-11",
+            "views": 101011,
+            "likes": 867,
+            "comments": 356,
+            "duration_sec": 412,
+            "thumbnail": "https://i.ytimg.com/vi/22Dv4-Y7JtU/maxresdefault.jpg",
+            "url": "https://youtu.be/22Dv4-Y7JtU",
+            "type": "mid"
+          },
+          {
+            "id": "ZojqfXQwdX8",
+            "title": "Bill Simmons ADMITS Toronto Raptors Are Legit: 'I Have to Give It to Him'",
+            "published": "2025-11-26",
+            "month": "2025-11",
+            "views": 58874,
+            "likes": 1015,
+            "comments": 150,
+            "duration_sec": 317,
+            "thumbnail": "https://i.ytimg.com/vi/ZojqfXQwdX8/maxresdefault.jpg",
+            "url": "https://youtu.be/ZojqfXQwdX8",
+            "type": "mid"
+          }
+        ],
+        "short": [
+          {
+            "id": "7HuaEHVdk6c",
+            "title": "ESPN\u2019s Richard Jefferson Squashes Draymond Green & Kenyon Martin Beef! #DraymondGreen #KenyonMartin",
+            "published": "2025-11-26",
+            "month": "2025-11",
+            "views": 222885,
+            "likes": 12176,
+            "comments": 1053,
+            "duration_sec": 103,
+            "thumbnail": "https://i.ytimg.com/vi/7HuaEHVdk6c/maxresdefault.jpg",
+            "url": "https://youtu.be/7HuaEHVdk6c",
+            "type": "short"
+          },
+          {
+            "id": "os11G6WeExI",
+            "title": "ESPN\u2019s Richard Jefferson Lists His All Time Dunkers",
+            "published": "2025-11-21",
+            "month": "2025-11",
+            "views": 176129,
+            "likes": 5706,
+            "comments": 690,
+            "duration_sec": 76,
+            "thumbnail": "https://i.ytimg.com/vi/os11G6WeExI/maxresdefault.jpg",
+            "url": "https://youtu.be/os11G6WeExI",
+            "type": "short"
+          },
+          {
+            "id": "76C3tiEILWw",
+            "title": "Kevin Garnett Accused Kendrick Perkins of Being a Selfish Player",
+            "published": "2025-11-16",
+            "month": "2025-11",
+            "views": 120824,
+            "likes": 5627,
+            "comments": 309,
+            "duration_sec": 131,
+            "thumbnail": "https://i.ytimg.com/vi/76C3tiEILWw/maxresdefault.jpg",
+            "url": "https://youtu.be/76C3tiEILWw",
+            "type": "short"
+          }
+        ]
+      },
+      "2025-12": {
+        "long": [
+          {
+            "id": "zu2nhGUsJxw",
+            "title": "Did Chris Paul BACKSTAB T-Lue?! + Giannis SLEEPER Trades & LeBron Streak in DANGER!",
+            "published": "2025-12-05",
+            "month": "2025-12",
+            "views": 52787,
+            "likes": 917,
+            "comments": 164,
+            "duration_sec": 3713,
+            "thumbnail": "https://i.ytimg.com/vi/zu2nhGUsJxw/maxresdefault.jpg",
+            "url": "https://youtu.be/zu2nhGUsJxw",
+            "type": "long"
+          },
+          {
+            "id": "H0b9PIbRa9A",
+            "title": "OKC Going 80-2! Why NBA Athletes Go BROKE + WILD Locker Room SECRETS",
+            "published": "2025-12-10",
+            "month": "2025-12",
+            "views": 34984,
+            "likes": 763,
+            "comments": 143,
+            "duration_sec": 4052,
+            "thumbnail": "https://i.ytimg.com/vi/H0b9PIbRa9A/maxresdefault.jpg",
+            "url": "https://youtu.be/H0b9PIbRa9A",
+            "type": "long"
+          },
+          {
+            "id": "MkdbwBwBHLA",
+            "title": "Draymond EXPLODES on Kerr, Brooks vs LeBron NBA\u2019s BEST Rivalry + KD is MUSTY",
+            "published": "2025-12-24",
+            "month": "2025-12",
+            "views": 33730,
+            "likes": 659,
+            "comments": 114,
+            "duration_sec": 3101,
+            "thumbnail": "https://i.ytimg.com/vi/MkdbwBwBHLA/maxresdefault.jpg",
+            "url": "https://youtu.be/MkdbwBwBHLA",
+            "type": "long"
+          }
+        ],
+        "mid": [
+          {
+            "id": "HwWx5nhjCx8",
+            "title": "Perk EXPOSES What CP3 Was Doing Behind T-Lue's Back in Locker Room",
+            "published": "2025-12-05",
+            "month": "2025-12",
+            "views": 717486,
+            "likes": 8661,
+            "comments": 2070,
+            "duration_sec": 1041,
+            "thumbnail": "https://i.ytimg.com/vi/HwWx5nhjCx8/maxresdefault.jpg",
+            "url": "https://youtu.be/HwWx5nhjCx8",
+            "type": "mid"
+          },
+          {
+            "id": "FrdUVQMyMVI",
+            "title": "Why Kawhi Leonard is the Biggest Free Agency MISTAKE in NBA History",
+            "published": "2025-12-03",
+            "month": "2025-12",
+            "views": 94772,
+            "likes": 1478,
+            "comments": 475,
+            "duration_sec": 682,
+            "thumbnail": "https://i.ytimg.com/vi/FrdUVQMyMVI/maxresdefault.jpg",
+            "url": "https://youtu.be/FrdUVQMyMVI",
+            "type": "mid"
+          },
+          {
+            "id": "JCJN0n3wG88",
+            "title": "JR Smith's Surprise Entrance Has RJ & Channing in TEARS",
+            "published": "2025-12-18",
+            "month": "2025-12",
+            "views": 85989,
+            "likes": 1372,
+            "comments": 77,
+            "duration_sec": 564,
+            "thumbnail": "https://i.ytimg.com/vi/JCJN0n3wG88/maxresdefault.jpg",
+            "url": "https://youtu.be/JCJN0n3wG88",
+            "type": "mid"
+          }
+        ],
+        "short": [
+          {
+            "id": "G4hCJH8_I1M",
+            "title": "Chris Paul: Saint or Saboteur? ESPN\u2019s Kendrick Perkins Weighs In #Cp3 #ChrisPaul #Clippers",
+            "published": "2025-12-05",
+            "month": "2025-12",
+            "views": 181640,
+            "likes": 3014,
+            "comments": 292,
+            "duration_sec": 98,
+            "thumbnail": "https://i.ytimg.com/vi/G4hCJH8_I1M/maxresdefault.jpg",
+            "url": "https://youtu.be/G4hCJH8_I1M",
+            "type": "short"
+          },
+          {
+            "id": "KNIhW9GZe2s",
+            "title": "Should NBA Coaches Go Back To Wearing Suits? Or Should Coaches Like Erick Spoelstra Stay Comfy?",
+            "published": "2025-12-15",
+            "month": "2025-12",
+            "views": 140573,
+            "likes": 2765,
+            "comments": 176,
+            "duration_sec": 86,
+            "thumbnail": "https://i.ytimg.com/vi/KNIhW9GZe2s/maxresdefault.jpg",
+            "url": "https://youtu.be/KNIhW9GZe2s",
+            "type": "short"
+          },
+          {
+            "id": "DIX-1VvcjM4",
+            "title": "Lebron James\u2019 Party vs. Chris Paul\u2019s Party? Channing Explains The Difference",
+            "published": "2025-12-22",
+            "month": "2025-12",
+            "views": 66208,
+            "likes": 1316,
+            "comments": 43,
+            "duration_sec": 40,
+            "thumbnail": "https://i.ytimg.com/vi/DIX-1VvcjM4/maxresdefault.jpg",
+            "url": "https://youtu.be/DIX-1VvcjM4",
+            "type": "short"
+          }
+        ]
+      },
+      "2026-01": {
+        "long": [
+          {
+            "id": "ocQq7Qjwi38",
+            "title": "NBA STARS DUMPED! Ja Morant, Trae Young AND Zion Williamson TRADED!?",
+            "published": "2026-01-10",
+            "month": "2026-01",
+            "views": 96155,
+            "likes": 1214,
+            "comments": 193,
+            "duration_sec": 3478,
+            "thumbnail": "https://i.ytimg.com/vi/ocQq7Qjwi38/maxresdefault.jpg",
+            "url": "https://youtu.be/ocQq7Qjwi38",
+            "type": "long"
+          },
+          {
+            "id": "w7zDbaUyytM",
+            "title": "LeBron vs Jeanie BEEF, Perk DEFENDS Kuminga & Calipari GOES OFF!",
+            "published": "2026-01-24",
+            "month": "2026-01",
+            "views": 32295,
+            "likes": 777,
+            "comments": 157,
+            "duration_sec": 4606,
+            "thumbnail": "https://i.ytimg.com/vi/w7zDbaUyytM/maxresdefault.jpg",
+            "url": "https://youtu.be/w7zDbaUyytM",
+            "type": "long"
+          },
+          {
+            "id": "T3ZT60HH0Mk",
+            "title": "RJ DEFENDS Luka MVP, Paolo PROBLEMS In Orlando & Giannis to Houston HAPPENING!?",
+            "published": "2026-01-27",
+            "month": "2026-01",
+            "views": 30654,
+            "likes": 1495,
+            "comments": 129,
+            "duration_sec": 3711,
+            "thumbnail": "https://i.ytimg.com/vi/T3ZT60HH0Mk/maxresdefault.jpg",
+            "url": "https://youtu.be/T3ZT60HH0Mk",
+            "type": "long"
+          }
+        ],
+        "mid": [
+          {
+            "id": "MaurflLy1CQ",
+            "title": "RJ: Youth Basketball in America is DISGUSTING... Here's Why",
+            "published": "2026-01-02",
+            "month": "2026-01",
+            "views": 83456,
+            "likes": 1684,
+            "comments": 511,
+            "duration_sec": 634,
+            "thumbnail": "https://i.ytimg.com/vi/MaurflLy1CQ/maxresdefault.jpg",
+            "url": "https://youtu.be/MaurflLy1CQ",
+            "type": "mid"
+          },
+          {
+            "id": "0W22sknm3Qw",
+            "title": "Dillon Brooks: \"Miami Bron? You're Not Talking Trash to Him\" (He ADMITS It!)",
+            "published": "2026-01-26",
+            "month": "2026-01",
+            "views": 42117,
+            "likes": 778,
+            "comments": 205,
+            "duration_sec": 360,
+            "thumbnail": "https://i.ytimg.com/vi/0W22sknm3Qw/maxresdefault.jpg",
+            "url": "https://youtu.be/0W22sknm3Qw",
+            "type": "mid"
+          },
+          {
+            "id": "_XmSZvk02dA",
+            "title": "The Knicks Chemistry Issue Nobody Wants to Name (Perk Does)",
+            "published": "2026-01-22",
+            "month": "2026-01",
+            "views": 32803,
+            "likes": 326,
+            "comments": 119,
+            "duration_sec": 379,
+            "thumbnail": "https://i.ytimg.com/vi/_XmSZvk02dA/maxresdefault.jpg",
+            "url": "https://youtu.be/_XmSZvk02dA",
+            "type": "mid"
+          }
+        ],
+        "short": [
+          {
+            "id": "yofbyko5E3w",
+            "title": "ESPN\u2019s Richard Jefferson Calls Steve Kerr One Of Steph GREATEST COACHES In American History! #nba",
+            "published": "2026-01-21",
+            "month": "2026-01",
+            "views": 150030,
+            "likes": 3972,
+            "comments": 819,
+            "duration_sec": 85,
+            "thumbnail": "https://i.ytimg.com/vi/yofbyko5E3w/maxresdefault.jpg",
+            "url": "https://youtu.be/yofbyko5E3w",
+            "type": "short"
+          },
+          {
+            "id": "Fx4dgXuCotI",
+            "title": "ESPN\u2019s Kendrick Perkins Says LaMelo Ball Should Request Trade From Hornets #nba #lameloball",
+            "published": "2026-01-09",
+            "month": "2026-01",
+            "views": 79227,
+            "likes": 4645,
+            "comments": 505,
+            "duration_sec": 92,
+            "thumbnail": "https://i.ytimg.com/vi/Fx4dgXuCotI/maxresdefault.jpg",
+            "url": "https://youtu.be/Fx4dgXuCotI",
+            "type": "short"
+          },
+          {
+            "id": "wH5J0g50n3A",
+            "title": "ESPN\u2019s Richard Jefferson Calls LeBron The Leagues FUNNIEST Flopper #lebronjames #nba",
+            "published": "2026-01-15",
+            "month": "2026-01",
+            "views": 68980,
+            "likes": 1337,
+            "comments": 132,
+            "duration_sec": 29,
+            "thumbnail": "https://i.ytimg.com/vi/wH5J0g50n3A/maxresdefault.jpg",
+            "url": "https://youtu.be/wH5J0g50n3A",
+            "type": "short"
+          }
+        ]
+      },
+      "2026-02": {
+        "long": [
+          {
+            "id": "TqA-vIk74RQ",
+            "title": "Stacy From The Wood on Dodging DIDDY PARTIES, Hollywood BETRAYAL & Ray Allen\u2019s \u2018ACTING\u2019",
+            "published": "2026-02-22",
+            "month": "2026-02",
+            "views": 50868,
+            "likes": 1177,
+            "comments": 97,
+            "duration_sec": 4073,
+            "thumbnail": "https://i.ytimg.com/vi/TqA-vIk74RQ/maxresdefault.jpg",
+            "url": "https://youtu.be/TqA-vIk74RQ",
+            "type": "long"
+          },
+          {
+            "id": "BXezOOEMyAo",
+            "title": "NBA FIGHT NIGHT! Harden TRANSFORMS Cavs & Tatum RETURNS?!",
+            "published": "2026-02-10",
+            "month": "2026-02",
+            "views": 42242,
+            "likes": 1587,
+            "comments": 210,
+            "duration_sec": 3954,
+            "thumbnail": "https://i.ytimg.com/vi/BXezOOEMyAo/maxresdefault.jpg",
+            "url": "https://youtu.be/BXezOOEMyAo",
+            "type": "long"
+          },
+          {
+            "id": "nwyY0MZ6ITs",
+            "title": "Ja Got NO OFFERS! Cavs RECRUITING LeBron & Giannis PICKS Knicks!",
+            "published": "2026-02-06",
+            "month": "2026-02",
+            "views": 41100,
+            "likes": 1738,
+            "comments": 136,
+            "duration_sec": 3749,
+            "thumbnail": "https://i.ytimg.com/vi/nwyY0MZ6ITs/maxresdefault.jpg",
+            "url": "https://youtu.be/nwyY0MZ6ITs",
+            "type": "long"
+          }
+        ],
+        "mid": [
+          {
+            "id": "51IWPtaGV0A",
+            "title": "Perk & Channing Frye GO OFF On Deandre Ayton\u2019s Recent Comments",
+            "published": "2026-02-28",
+            "month": "2026-02",
+            "views": 46004,
+            "likes": 1270,
+            "comments": 179,
+            "duration_sec": 688,
+            "thumbnail": "https://i.ytimg.com/vi/51IWPtaGV0A/maxresdefault.jpg",
+            "url": "https://youtu.be/51IWPtaGV0A",
+            "type": "mid"
+          },
+          {
+            "id": "_2utdeWP6UI",
+            "title": "NBA Players Break Down Pistons-Hornets FIGHT!",
+            "published": "2026-02-11",
+            "month": "2026-02",
+            "views": 31644,
+            "likes": 516,
+            "comments": 314,
+            "duration_sec": 903,
+            "thumbnail": "https://i.ytimg.com/vi/_2utdeWP6UI/maxresdefault.jpg",
+            "url": "https://youtu.be/_2utdeWP6UI",
+            "type": "mid"
+          },
+          {
+            "id": "iWguCTdoyMs",
+            "title": "What Richard Jefferson Told Jaylon Tyson in the Cavs Locker Room",
+            "published": "2026-02-01",
+            "month": "2026-02",
+            "views": 18347,
+            "likes": 522,
+            "comments": 94,
+            "duration_sec": 292,
+            "thumbnail": "https://i.ytimg.com/vi/iWguCTdoyMs/maxresdefault.jpg",
+            "url": "https://youtu.be/iWguCTdoyMs",
+            "type": "mid"
+          }
+        ],
+        "short": [
+          {
+            "id": "RNnuUOuuVfo",
+            "title": "ESPN\u2019s Kendrick Perkins & Channing Frye GO OFF On Deandre Ayton\u2019s Recent Comments #lakers #nba",
+            "published": "2026-02-28",
+            "month": "2026-02",
+            "views": 249687,
+            "likes": 10515,
+            "comments": 724,
+            "duration_sec": 136,
+            "thumbnail": "https://i.ytimg.com/vi/RNnuUOuuVfo/maxresdefault.jpg",
+            "url": "https://youtu.be/RNnuUOuuVfo",
+            "type": "short"
+          },
+          {
+            "id": "hWQ8BZA_Pbc",
+            "title": "7X NBA Champion Robert Horry Says Wemby Is NOT Top 5 #nba #victorwembanyama",
+            "published": "2026-02-17",
+            "month": "2026-02",
+            "views": 160827,
+            "likes": 4428,
+            "comments": 461,
+            "duration_sec": 164,
+            "thumbnail": "https://i.ytimg.com/vi/hWQ8BZA_Pbc/maxresdefault.jpg",
+            "url": "https://youtu.be/hWQ8BZA_Pbc",
+            "type": "short"
+          },
+          {
+            "id": "0JUVBPIGUg8",
+            "title": "Celtics\u2019 Payton Pritchard Is \u201cThe Best Contract In Basketball\u201d Says Kendrick Perkins #nba #Celtics",
+            "published": "2026-02-27",
+            "month": "2026-02",
+            "views": 154857,
+            "likes": 4343,
+            "comments": 129,
+            "duration_sec": 39,
+            "thumbnail": "https://i.ytimg.com/vi/0JUVBPIGUg8/maxresdefault.jpg",
+            "url": "https://youtu.be/0JUVBPIGUg8",
+            "type": "short"
+          }
+        ]
+      },
+      "2026-03": {
+        "long": [
+          {
+            "id": "vw9rWx5Wp2A",
+            "title": "Did Kenyon Martin Do TOO MUCH? Perk's WARNING to Acho & Squashing BEEF With Killa!",
+            "published": "2026-03-22",
+            "month": "2026-03",
+            "views": 38626,
+            "likes": 1052,
+            "comments": 248,
+            "duration_sec": 4285,
+            "thumbnail": "https://i.ytimg.com/vi/vw9rWx5Wp2A/maxresdefault.jpg",
+            "url": "https://youtu.be/vw9rWx5Wp2A",
+            "type": "long"
+          },
+          {
+            "id": "4JWDNnVMjXc",
+            "title": "Who Is SAFE In NBA Expansion? How The Lakers LOCKED DOWN Houston, And Hawks STAY HOT!",
+            "published": "2026-03-17",
+            "month": "2026-03",
+            "views": 30263,
+            "likes": 930,
+            "comments": 86,
+            "duration_sec": 4351,
+            "thumbnail": "https://i.ytimg.com/vi/4JWDNnVMjXc/maxresdefault.jpg",
+            "url": "https://youtu.be/4JWDNnVMjXc",
+            "type": "long"
+          },
+          {
+            "id": "OovCMkty0MU",
+            "title": "Is Bam\u2019s 83 UNETHICAL HOOPS? Houston\u2019s FATAL Flaw & Dejounte Goes TOO FAR",
+            "published": "2026-03-12",
+            "month": "2026-03",
+            "views": 26234,
+            "likes": 1109,
+            "comments": 124,
+            "duration_sec": 4739,
+            "thumbnail": "https://i.ytimg.com/vi/OovCMkty0MU/maxresdefault.jpg",
+            "url": "https://youtu.be/OovCMkty0MU",
+            "type": "long"
+          }
+        ],
+        "mid": [
+          {
+            "id": "ePdXtNfowRo",
+            "title": "The REAL Reason Kyrie Left Cleveland, According to RJ",
+            "published": "2026-03-02",
+            "month": "2026-03",
+            "views": 373109,
+            "likes": 4714,
+            "comments": 999,
+            "duration_sec": 513,
+            "thumbnail": "https://i.ytimg.com/vi/ePdXtNfowRo/maxresdefault.jpg",
+            "url": "https://youtu.be/ePdXtNfowRo",
+            "type": "mid"
+          },
+          {
+            "id": "84XwX8zGUOk",
+            "title": "Richard Jefferson Gets EMOTIONAL Defending LeBron's Legacy",
+            "published": "2026-03-19",
+            "month": "2026-03",
+            "views": 179368,
+            "likes": 4089,
+            "comments": 624,
+            "duration_sec": 518,
+            "thumbnail": "https://i.ytimg.com/vi/84XwX8zGUOk/maxresdefault.jpg",
+            "url": "https://youtu.be/84XwX8zGUOk",
+            "type": "mid"
+          },
+          {
+            "id": "Bo_rdFgrHVI",
+            "title": "KD's Burner Account BROKE Houston's Locker Room Chemistry",
+            "published": "2026-03-13",
+            "month": "2026-03",
+            "views": 67853,
+            "likes": 1049,
+            "comments": 341,
+            "duration_sec": 759,
+            "thumbnail": "https://i.ytimg.com/vi/Bo_rdFgrHVI/maxresdefault.jpg",
+            "url": "https://youtu.be/Bo_rdFgrHVI",
+            "type": "mid"
+          }
+        ],
+        "short": [
+          {
+            "id": "UOsqGlestSU",
+            "title": "ESPN\u2019s Kendrick Perkins Speaks On The Kenyon Martin Situation & Gives The 1st Pick His Flowers",
+            "published": "2026-03-22",
+            "month": "2026-03",
+            "views": 325691,
+            "likes": 9913,
+            "comments": 538,
+            "duration_sec": 83,
+            "thumbnail": "https://i.ytimg.com/vi/UOsqGlestSU/maxresdefault.jpg",
+            "url": "https://youtu.be/UOsqGlestSU",
+            "type": "short"
+          },
+          {
+            "id": "VabbVbaoc3U",
+            "title": "ESPN\u2019s Richard Jefferson Calls Bam\u2019s 83 Point EXPLOSION Remarkable & \u201cStop The Fake Outrage\u201d #nba",
+            "published": "2026-03-14",
+            "month": "2026-03",
+            "views": 222323,
+            "likes": 11388,
+            "comments": 1003,
+            "duration_sec": 131,
+            "thumbnail": "https://i.ytimg.com/vi/VabbVbaoc3U/maxresdefault.jpg",
+            "url": "https://youtu.be/VabbVbaoc3U",
+            "type": "short"
+          },
+          {
+            "id": "bgTJnw7NRxw",
+            "title": "Is Wemby Too Arrogant? Kendrick Perkins Weighs in on The Spurs Superstar #nba",
+            "published": "2026-03-24",
+            "month": "2026-03",
+            "views": 129462,
+            "likes": 5287,
+            "comments": 402,
+            "duration_sec": 54,
+            "thumbnail": "https://i.ytimg.com/vi/bgTJnw7NRxw/maxresdefault.jpg",
+            "url": "https://youtu.be/bgTJnw7NRxw",
+            "type": "short"
+          }
+        ]
+      },
+      "2026-04": {
+        "long": [
+          {
+            "id": "k7_koMQbpcw",
+            "title": "LeBron And Ant Just STUNNED Houston & Denver + CJ the VILLIAN??",
+            "published": "2026-04-22",
+            "month": "2026-04",
+            "views": 29170,
+            "likes": 783,
+            "comments": 77,
+            "duration_sec": 4304,
+            "thumbnail": "https://i.ytimg.com/vi/k7_koMQbpcw/maxresdefault.jpg",
+            "url": "https://youtu.be/k7_koMQbpcw",
+            "type": "long"
+          },
+          {
+            "id": "OY-pMjvAl78",
+            "title": "Luka RETURNS! Draymond DEFINES This Era & PERK COOKS Paolo!",
+            "published": "2026-04-16",
+            "month": "2026-04",
+            "views": 26194,
+            "likes": 734,
+            "comments": 71,
+            "duration_sec": 5896,
+            "thumbnail": "https://i.ytimg.com/vi/OY-pMjvAl78/maxresdefault.jpg",
+            "url": "https://youtu.be/OY-pMjvAl78",
+            "type": "long"
+          },
+          {
+            "id": "Q_gPc2nsP9U",
+            "title": "Perk ADMITS He Was Wrong, KD NO SHOW& Tatum LOOKS Elite",
+            "published": "2026-04-20",
+            "month": "2026-04",
+            "views": 24717,
+            "likes": 849,
+            "comments": 60,
+            "duration_sec": 5757,
+            "thumbnail": "https://i.ytimg.com/vi/Q_gPc2nsP9U/maxresdefault.jpg",
+            "url": "https://youtu.be/Q_gPc2nsP9U",
+            "type": "long"
+          }
+        ],
+        "mid": [
+          {
+            "id": "py5lQUziTsE",
+            "title": "Perk Ran Into Ja Morant's Dad After Calling Him Out: \"I Don't Give Two F*s\"",
+            "published": "2026-04-14",
+            "month": "2026-04",
+            "views": 102195,
+            "likes": 1186,
+            "comments": 384,
+            "duration_sec": 834,
+            "thumbnail": "https://i.ytimg.com/vi/py5lQUziTsE/maxresdefault.jpg",
+            "url": "https://youtu.be/py5lQUziTsE",
+            "type": "mid"
+          },
+          {
+            "id": "DR20PV1jy9c",
+            "title": "LeBron Just Broke the Trap That Stopped Brunson, Murray & KD",
+            "published": "2026-04-22",
+            "month": "2026-04",
+            "views": 99811,
+            "likes": 1668,
+            "comments": 207,
+            "duration_sec": 429,
+            "thumbnail": "https://i.ytimg.com/vi/DR20PV1jy9c/maxresdefault.jpg",
+            "url": "https://youtu.be/DR20PV1jy9c",
+            "type": "mid"
+          },
+          {
+            "id": "rq61MdGS0U4",
+            "title": "RJ Played Against Wade in the Finals and Settles the Harden Debate",
+            "published": "2026-04-04",
+            "month": "2026-04",
+            "views": 87654,
+            "likes": 1409,
+            "comments": 702,
+            "duration_sec": 568,
+            "thumbnail": "https://i.ytimg.com/vi/rq61MdGS0U4/maxresdefault.jpg",
+            "url": "https://youtu.be/rq61MdGS0U4",
+            "type": "mid"
+          }
+        ],
+        "short": [
+          {
+            "id": "xPwrhaAV5VM",
+            "title": "Ja Morant OUT THE LEAGUE!? ESPN\u2019s Kendrick Perkins Says It\u2019s Possible #nba #JaMorant",
+            "published": "2026-04-15",
+            "month": "2026-04",
+            "views": 361045,
+            "likes": 5847,
+            "comments": 803,
+            "duration_sec": 82,
+            "thumbnail": "https://i.ytimg.com/vi/xPwrhaAV5VM/maxresdefault.jpg",
+            "url": "https://youtu.be/xPwrhaAV5VM",
+            "type": "short"
+          },
+          {
+            "id": "JsEe4qzWT40",
+            "title": "Dwayne Wade vs James Harden! Patrick Beverly Sparks The Debate #JamesHarden #DWade #NBA",
+            "published": "2026-04-03",
+            "month": "2026-04",
+            "views": 246205,
+            "likes": 6776,
+            "comments": 1030,
+            "duration_sec": 63,
+            "thumbnail": "https://i.ytimg.com/vi/JsEe4qzWT40/maxresdefault.jpg",
+            "url": "https://youtu.be/JsEe4qzWT40",
+            "type": "short"
+          },
+          {
+            "id": "SatbeQmxgN0",
+            "title": "Richard Jefferson DID WHAT!? #lol #nba #lukadoncic #lakers",
+            "published": "2026-04-15",
+            "month": "2026-04",
+            "views": 184702,
+            "likes": 2209,
+            "comments": 73,
+            "duration_sec": 18,
+            "thumbnail": "https://i.ytimg.com/vi/SatbeQmxgN0/maxresdefault.jpg",
+            "url": "https://youtu.be/SatbeQmxgN0",
+            "type": "short"
+          }
+        ]
+      },
+      "2026-05": {
+        "long": [
+          {
+            "id": "JVtMpIpnwl0",
+            "title": "We Have A Game 7! Wemby vs SGA For A Trip To The Finals! Road Trippin' In The Morning",
+            "published": "2026-05-29",
+            "month": "2026-05",
+            "views": 32872,
+            "likes": 802,
+            "comments": 180,
+            "duration_sec": 3965,
+            "thumbnail": "https://i.ytimg.com/vi/JVtMpIpnwl0/maxresdefault.jpg",
+            "url": "https://youtu.be/JVtMpIpnwl0",
+            "type": "long"
+          },
+          {
+            "id": "DnybI8N-RX4",
+            "title": "INSANE Game 7s! Breaking Down Celtics COLLAPSE, Jaylen Brown's CRASH OUT, Cavs and Pistons ADVANCE!",
+            "published": "2026-05-04",
+            "month": "2026-05",
+            "views": 25172,
+            "likes": 762,
+            "comments": 74,
+            "duration_sec": 6164,
+            "thumbnail": "https://i.ytimg.com/vi/DnybI8N-RX4/maxresdefault.jpg",
+            "url": "https://youtu.be/DnybI8N-RX4",
+            "type": "long"
+          },
+          {
+            "id": "XAL6nGH2O-Y",
+            "title": "Perk DARES Chet to GO CHECK Wemby + Who's To Blame for Cavs EPIC Meltdown??",
+            "published": "2026-05-20",
+            "month": "2026-05",
+            "views": 20885,
+            "likes": 615,
+            "comments": 59,
+            "duration_sec": 4684,
+            "thumbnail": "https://i.ytimg.com/vi/XAL6nGH2O-Y/maxresdefault.jpg",
+            "url": "https://youtu.be/XAL6nGH2O-Y",
+            "type": "long"
+          }
+        ],
+        "mid": [
+          {
+            "id": "9LFMqUAyB_U",
+            "title": "MPJ Reveals What REALLY Happened with Cam Thomas in Brooklyn",
+            "published": "2026-05-07",
+            "month": "2026-05",
+            "views": 159723,
+            "likes": 2251,
+            "comments": 468,
+            "duration_sec": 851,
+            "thumbnail": "https://i.ytimg.com/vi/9LFMqUAyB_U/maxresdefault.jpg",
+            "url": "https://youtu.be/9LFMqUAyB_U",
+            "type": "mid"
+          },
+          {
+            "id": "Z2aOtGIhWdM",
+            "title": "Kendrick Perkins Addresses VIRAL AAU Fight",
+            "published": "2026-05-27",
+            "month": "2026-05",
+            "views": 79265,
+            "likes": 1356,
+            "comments": 140,
+            "duration_sec": 636,
+            "thumbnail": "https://i.ytimg.com/vi/Z2aOtGIhWdM/maxresdefault.jpg",
+            "url": "https://youtu.be/Z2aOtGIhWdM",
+            "type": "mid"
+          },
+          {
+            "id": "GzQ4nst8_ak",
+            "title": "Perk Declares Wemby The BEST Player In The NBA & GOES OFF On Julius Randle",
+            "published": "2026-05-15",
+            "month": "2026-05",
+            "views": 25633,
+            "likes": 432,
+            "comments": 139,
+            "duration_sec": 417,
+            "thumbnail": "https://i.ytimg.com/vi/GzQ4nst8_ak/maxresdefault.jpg",
+            "url": "https://youtu.be/GzQ4nst8_ak",
+            "type": "mid"
+          }
+        ],
+        "short": [
+          {
+            "id": "7aus3KbsW_c",
+            "title": "Lakers Rebuilding!? Road Trippin Breaks Down LeBron & Lakers Next Move #nba #lakers #lebron",
+            "published": "2026-05-13",
+            "month": "2026-05",
+            "views": 224844,
+            "likes": 3506,
+            "comments": 368,
+            "duration_sec": 63,
+            "thumbnail": "https://i.ytimg.com/vi/7aus3KbsW_c/maxresdefault.jpg",
+            "url": "https://youtu.be/7aus3KbsW_c",
+            "type": "short"
+          },
+          {
+            "id": "m51RPlzYGnQ",
+            "title": "Lakers STEP UP To Defeat Rockets\u2026 OKC Next? #NBA #Lebron #Lakers #basketball",
+            "published": "2026-05-02",
+            "month": "2026-05",
+            "views": 119443,
+            "likes": 1650,
+            "comments": 103,
+            "duration_sec": 34,
+            "thumbnail": "https://i.ytimg.com/vi/m51RPlzYGnQ/maxresdefault.jpg",
+            "url": "https://youtu.be/m51RPlzYGnQ",
+            "type": "short"
+          },
+          {
+            "id": "ncc0PEKBAFY",
+            "title": "\u201cThe Spurs Looked TOO CONFIDENT\u201d Says ESPN\u2019s Kendrick Perkins #Wemby #Game7 #nba",
+            "published": "2026-05-30",
+            "month": "2026-05",
+            "views": 104110,
+            "likes": 1724,
+            "comments": 110,
+            "duration_sec": 88,
+            "thumbnail": "https://i.ytimg.com/vi/ncc0PEKBAFY/maxresdefault.jpg",
+            "url": "https://youtu.be/ncc0PEKBAFY",
+            "type": "short"
+          }
+        ]
+      },
+      "2026-06": {
+        "long": [
+          {
+            "id": "2QTpTL9bIDQ",
+            "title": "Knicks vs Spurs NBA Finals PREVIEW w/ James Worthy, Robert Horry & DeAndre Jordan",
+            "published": "2026-06-03",
+            "month": "2026-06",
+            "views": 63647,
+            "likes": 1090,
+            "comments": 238,
+            "duration_sec": 3533,
+            "thumbnail": "https://i.ytimg.com/vi/2QTpTL9bIDQ/maxresdefault.jpg",
+            "url": "https://youtu.be/2QTpTL9bIDQ",
+            "type": "long"
+          },
+          {
+            "id": "JMTK6_3HNJM",
+            "title": "LaMelo Ball TRADED To The Timberwolves, Giannis Traded To The Heat + 2016 Cavs Trip Recap",
+            "published": "2026-06-25",
+            "month": "2026-06",
+            "views": 47368,
+            "likes": 1239,
+            "comments": 96,
+            "duration_sec": 4741,
+            "thumbnail": "https://i.ytimg.com/vi/JMTK6_3HNJM/maxresdefault.jpg",
+            "url": "https://youtu.be/JMTK6_3HNJM",
+            "type": "long"
+          },
+          {
+            "id": "EZ7WjfAU1MI",
+            "title": "Knicks vs Spurs Finals SPECIAL w/ Malika Andrews, James Jones & Will Reeve",
+            "published": "2026-06-05",
+            "month": "2026-06",
+            "views": 41275,
+            "likes": 841,
+            "comments": 121,
+            "duration_sec": 3173,
+            "thumbnail": "https://i.ytimg.com/vi/EZ7WjfAU1MI/maxresdefault.jpg",
+            "url": "https://youtu.be/EZ7WjfAU1MI",
+            "type": "long"
+          }
+        ],
+        "mid": [
+          {
+            "id": "Rgjgd26MAN4",
+            "title": "Rich Paul Controls The Whole NBA And Perk Just Explained How",
+            "published": "2026-06-29",
+            "month": "2026-06",
+            "views": 88862,
+            "likes": 1021,
+            "comments": 207,
+            "duration_sec": 551,
+            "thumbnail": "https://i.ytimg.com/vi/Rgjgd26MAN4/maxresdefault.jpg",
+            "url": "https://youtu.be/Rgjgd26MAN4",
+            "type": "mid"
+          },
+          {
+            "id": "muwMeVYa7wE",
+            "title": "Kyrie Skipped This? 2016 Cavs Reunion in Scotland Had EVERYONE Talking",
+            "published": "2026-06-18",
+            "month": "2026-06",
+            "views": 82314,
+            "likes": 1212,
+            "comments": 519,
+            "duration_sec": 266,
+            "thumbnail": "https://i.ytimg.com/vi/muwMeVYa7wE/maxresdefault.jpg",
+            "url": "https://youtu.be/muwMeVYa7wE",
+            "type": "mid"
+          },
+          {
+            "id": "2vf4qDJNyOw",
+            "title": "\u201cYour Ass Never Was An Athlete Then\u201d \u2014 Perk Responds To Vince Goodwill",
+            "published": "2026-06-17",
+            "month": "2026-06",
+            "views": 77489,
+            "likes": 1746,
+            "comments": 516,
+            "duration_sec": 553,
+            "thumbnail": "https://i.ytimg.com/vi/2vf4qDJNyOw/maxresdefault.jpg",
+            "url": "https://youtu.be/2vf4qDJNyOw",
+            "type": "mid"
+          }
+        ],
+        "short": [
+          {
+            "id": "Mrjky6bXwm4",
+            "title": "ESPN\u2019s Kendrick Perkins Reacts To New York Giants\u2019 QB Jaxson Dart Introducing President Trump",
+            "published": "2026-06-01",
+            "month": "2026-06",
+            "views": 488902,
+            "likes": 18301,
+            "comments": 2655,
+            "duration_sec": 109,
+            "thumbnail": "https://i.ytimg.com/vi/Mrjky6bXwm4/maxresdefault.jpg",
+            "url": "https://youtu.be/Mrjky6bXwm4",
+            "type": "short"
+          },
+          {
+            "id": "XCtyiiCSRAk",
+            "title": "Anthony Edwards LEAVING Minnesota!? #AntMan #anthonyedwards #NBA #minnesotatimberwolves",
+            "published": "2026-06-23",
+            "month": "2026-06",
+            "views": 395608,
+            "likes": 7943,
+            "comments": 479,
+            "duration_sec": 48,
+            "thumbnail": "https://i.ytimg.com/vi/XCtyiiCSRAk/maxresdefault.jpg",
+            "url": "https://youtu.be/XCtyiiCSRAk",
+            "type": "short"
+          },
+          {
+            "id": "50MHq47IaLU",
+            "title": "Jalen Brunson & The Knicks Have Changed The NBA Narrative #knicks #nba #basketball",
+            "published": "2026-06-18",
+            "month": "2026-06",
+            "views": 347656,
+            "likes": 18505,
+            "comments": 811,
+            "duration_sec": 115,
+            "thumbnail": "https://i.ytimg.com/vi/50MHq47IaLU/maxresdefault.jpg",
+            "url": "https://youtu.be/50MHq47IaLU",
+            "type": "short"
+          }
+        ]
+      },
+      "2026-07": {
+        "long": [
+          {
+            "id": "po8YrSQivoM",
+            "title": "Boogie Cousins CALLS OUT The Lakers For Doing LeBron DIRTY",
+            "published": "2026-07-14",
+            "month": "2026-07",
+            "views": 200406,
+            "likes": 4205,
+            "comments": 1054,
+            "duration_sec": 3432,
+            "thumbnail": "https://i.ytimg.com/vi/po8YrSQivoM/maxresdefault.jpg",
+            "url": "https://youtu.be/po8YrSQivoM",
+            "type": "long"
+          },
+          {
+            "id": "PeMHxUwuByQ",
+            "title": "LeBron SIGNS With Philly! Why Didn\u2019t He Return To Miami + What\u2019s Next For The Lakers?",
+            "published": "2026-07-27",
+            "month": "2026-07",
+            "views": 181407,
+            "likes": 2964,
+            "comments": 510,
+            "duration_sec": 3721,
+            "thumbnail": "https://i.ytimg.com/vi/PeMHxUwuByQ/maxresdefault.jpg",
+            "url": "https://youtu.be/PeMHxUwuByQ",
+            "type": "long"
+          },
+          {
+            "id": "BvHw3ddSlms",
+            "title": "RT SOUNDS OFF On Ja & Kawhi Trades, LeBron Plan & More Free Agency MADNESS!",
+            "published": "2026-07-01",
+            "month": "2026-07",
+            "views": 72086,
+            "likes": 1994,
+            "comments": 151,
+            "duration_sec": 4775,
+            "thumbnail": "https://i.ytimg.com/vi/BvHw3ddSlms/maxresdefault.jpg",
+            "url": "https://youtu.be/BvHw3ddSlms",
+            "type": "long"
+          }
+        ],
+        "mid": [
+          {
+            "id": "9zaom3QbjYs",
+            "title": "Channing Breaks Down the REAL Reason Portland Saves Ja Morant",
+            "published": "2026-07-02",
+            "month": "2026-07",
+            "views": 218603,
+            "likes": 2504,
+            "comments": 408,
+            "duration_sec": 759,
+            "thumbnail": "https://i.ytimg.com/vi/9zaom3QbjYs/maxresdefault.jpg",
+            "url": "https://youtu.be/9zaom3QbjYs",
+            "type": "mid"
+          },
+          {
+            "id": "qMc2Kadj1PU",
+            "title": "RJ Says He KNOWS LeBron's Real Plan... And He's Not Telling",
+            "published": "2026-07-02",
+            "month": "2026-07",
+            "views": 205603,
+            "likes": 3785,
+            "comments": 737,
+            "duration_sec": 683,
+            "thumbnail": "https://i.ytimg.com/vi/qMc2Kadj1PU/maxresdefault.jpg",
+            "url": "https://youtu.be/qMc2Kadj1PU",
+            "type": "mid"
+          },
+          {
+            "id": "f4MfVVTJ6pY",
+            "title": "Dillon Brooks BREAKS DOWN The LeBron Meme, 3,000 Makes A Week & His NEW Villain Role",
+            "published": "2026-07-23",
+            "month": "2026-07",
+            "views": 134310,
+            "likes": 2345,
+            "comments": 298,
+            "duration_sec": 1644,
+            "thumbnail": "https://i.ytimg.com/vi/f4MfVVTJ6pY/maxresdefault.jpg",
+            "url": "https://youtu.be/f4MfVVTJ6pY",
+            "type": "mid"
+          }
+        ],
+        "short": [
+          {
+            "id": "k3pJGiIh1RE",
+            "title": "Top High School Basketball Recruit is BABY GIANNIS!? #nba #marcusspears #basketball",
+            "published": "2026-07-02",
+            "month": "2026-07",
+            "views": 1734672,
+            "likes": 37141,
+            "comments": 484,
+            "duration_sec": 51,
+            "thumbnail": "https://i.ytimg.com/vi/k3pJGiIh1RE/maxresdefault.jpg",
+            "url": "https://youtu.be/k3pJGiIh1RE",
+            "type": "short"
+          },
+          {
+            "id": "JUn4tQJ9Y60",
+            "title": "Imam Shumpert GOES OFF on Lakers Free Agency #LosAngelesLakers #lukadoncic #Lakers",
+            "published": "2026-07-02",
+            "month": "2026-07",
+            "views": 1502355,
+            "likes": 38066,
+            "comments": 3373,
+            "duration_sec": 66,
+            "thumbnail": "https://i.ytimg.com/vi/JUn4tQJ9Y60/maxresdefault.jpg",
+            "url": "https://youtu.be/JUn4tQJ9Y60",
+            "type": "short"
+          },
+          {
+            "id": "ziCh3vNf0ik",
+            "title": "LeBron\u2019s Next Move Will RUN The NBA?! #NBA #LebronJames",
+            "published": "2026-07-18",
+            "month": "2026-07",
+            "views": 493542,
+            "likes": 7053,
+            "comments": 399,
+            "duration_sec": 46,
+            "thumbnail": "https://i.ytimg.com/vi/ziCh3vNf0ik/maxresdefault.jpg",
+            "url": "https://youtu.be/ziCh3vNf0ik",
+            "type": "short"
+          }
+        ]
+      },
+      "2026-08": {
+        "long": [
+          {
+            "id": "IkDS7ZhVkA4",
+            "title": "Chris Finch: \u201cWe Did Anthony Edwards A DISSERVICE\u201d + Why LaMelo Changes Everything",
+            "published": "2026-08-06",
+            "month": "2026-08",
+            "views": 138466,
+            "likes": 2419,
+            "comments": 201,
+            "duration_sec": 2308,
+            "thumbnail": "https://i.ytimg.com/vi/IkDS7ZhVkA4/maxresdefault.jpg",
+            "url": "https://youtu.be/IkDS7ZhVkA4",
+            "type": "long"
+          },
+          {
+            "id": "MEHDJ9V-lIk",
+            "title": "\u201cI DON\u2019T BELONG HERE\u201d Carter Bryant\u2019s Rookie Struggles + Devin Vassell\u2019s BRUTAL NBA Welcome",
+            "published": "2026-08-11",
+            "month": "2026-08",
+            "views": 128827,
+            "likes": 3145,
+            "comments": 215,
+            "duration_sec": 2060,
+            "thumbnail": "https://i.ytimg.com/vi/MEHDJ9V-lIk/maxresdefault.jpg",
+            "url": "https://youtu.be/MEHDJ9V-lIk",
+            "type": "long"
+          },
+          {
+            "id": "pWCQrmx8beo",
+            "title": "Rajon Rondo Says He\u2019s READY to Be an NBA Head Coach + What He Learned From the Pelicans Interview",
+            "published": "2026-08-13",
+            "month": "2026-08",
+            "views": 114316,
+            "likes": 2165,
+            "comments": 171,
+            "duration_sec": 3008,
+            "thumbnail": "https://i.ytimg.com/vi/pWCQrmx8beo/maxresdefault.jpg",
+            "url": "https://youtu.be/pWCQrmx8beo",
+            "type": "long"
+          }
+        ],
+        "mid": [
+          {
+            "id": "YHtB62qU1r8",
+            "title": "Why Rajon Rondo Calls Philadelphia a BRILLIANT Move for LeBron",
+            "published": "2026-08-15",
+            "month": "2026-08",
+            "views": 290602,
+            "likes": 4353,
+            "comments": 508,
+            "duration_sec": 470,
+            "thumbnail": "https://i.ytimg.com/vi/YHtB62qU1r8/maxresdefault.jpg",
+            "url": "https://youtu.be/YHtB62qU1r8",
+            "type": "mid"
+          },
+          {
+            "id": "FCAC9ZyPn_4",
+            "title": "Kelly Olynyk COOKED Carter Bryant for Two Straight Weeks in Spurs Practice",
+            "published": "2026-08-11",
+            "month": "2026-08",
+            "views": 67700,
+            "likes": 843,
+            "comments": 104,
+            "duration_sec": 440,
+            "thumbnail": "https://i.ytimg.com/vi/FCAC9ZyPn_4/maxresdefault.jpg",
+            "url": "https://youtu.be/FCAC9ZyPn_4",
+            "type": "mid"
+          },
+          {
+            "id": "PVOl1jy_sPs",
+            "title": "Carter Bryant PAID for Gilbert Arenas' Sins at Arizona",
+            "published": "2026-08-12",
+            "month": "2026-08",
+            "views": 62946,
+            "likes": 838,
+            "comments": 42,
+            "duration_sec": 355,
+            "thumbnail": "https://i.ytimg.com/vi/PVOl1jy_sPs/maxresdefault.jpg",
+            "url": "https://youtu.be/PVOl1jy_sPs",
+            "type": "mid"
+          }
+        ],
+        "short": [
+          {
+            "id": "HtZ8tDkeGJY",
+            "title": "Rajon Rondo Exposes RJ\u2019s Worst Teammate Moment #nba #basketball",
+            "published": "2026-08-14",
+            "month": "2026-08",
+            "views": 500205,
+            "likes": 22150,
+            "comments": 330,
+            "duration_sec": 59,
+            "thumbnail": "https://i.ytimg.com/vi/HtZ8tDkeGJY/maxresdefault.jpg",
+            "url": "https://youtu.be/HtZ8tDkeGJY",
+            "type": "short"
+          },
+          {
+            "id": "JZgusHsQ0l4",
+            "title": "Rondo Reveals The SCARIEST LeBron James Scenario #Lebron #nba #basketball",
+            "published": "2026-08-15",
+            "month": "2026-08",
+            "views": 445757,
+            "likes": 20610,
+            "comments": 561,
+            "duration_sec": 52,
+            "thumbnail": "https://i.ytimg.com/vi/JZgusHsQ0l4/maxresdefault.jpg",
+            "url": "https://youtu.be/JZgusHsQ0l4",
+            "type": "short"
+          },
+          {
+            "id": "K1KXX7Al--U",
+            "title": "NBA Rookie\u2019s First Big Flex Isn\u2019t What You Think\u2026 #ajdybantsa #washingtonwizards #nba",
+            "published": "2026-08-04",
+            "month": "2026-08",
+            "views": 370107,
+            "likes": 8486,
+            "comments": 293,
+            "duration_sec": 57,
+            "thumbnail": "https://i.ytimg.com/vi/K1KXX7Al--U/maxresdefault.jpg",
+            "url": "https://youtu.be/K1KXX7Al--U",
+            "type": "short"
+          }
+        ]
+      },
+      "2026-09": {
+        "long": [
+          {
+            "id": "BeZUS-lZ4qs",
+            "title": "\u201cBe a STAR in Your Role\u201d - Jalen Brunson\u2019s Journey From Dallas Bench to Finals MVP",
+            "published": "2026-09-01",
+            "month": "2026-09",
+            "views": 125442,
+            "likes": 2186,
+            "comments": 230,
+            "duration_sec": 3098,
+            "thumbnail": "https://i.ytimg.com/vi/BeZUS-lZ4qs/maxresdefault.jpg",
+            "url": "https://youtu.be/BeZUS-lZ4qs",
+            "type": "long"
+          }
+        ],
+        "mid": [
+          {
+            "id": "dKoSQ-63gP4",
+            "title": "Jalen Brunson Breaks Down How the Knicks ATTACKED Wemby",
+            "published": "2026-09-01",
+            "month": "2026-09",
+            "views": 5083,
+            "likes": 81,
+            "comments": 7,
+            "duration_sec": 609,
+            "thumbnail": "https://i.ytimg.com/vi/dKoSQ-63gP4/maxresdefault.jpg",
+            "url": "https://youtu.be/dKoSQ-63gP4",
+            "type": "mid"
+          },
+          {
+            "id": "0b8eta7f8mY",
+            "title": "StarInyourRole Clip",
+            "published": "2026-09-01",
+            "month": "2026-09",
+            "views": 0,
+            "likes": 0,
+            "comments": 0,
+            "duration_sec": 527,
+            "thumbnail": "https://i9.ytimg.com/vi/0b8eta7f8mY/maxresdefault.jpg?sqp=CKjA4NQG&rs=AOn4CLC4gC4iTPbSPesEQCDXjuXt63QK7A",
+            "url": "https://youtu.be/0b8eta7f8mY",
+            "type": "mid"
+          },
+          {
+            "id": "Y8VmQ0NuFhs",
+            "title": "\u201cI Could Never Play for My Father\u201d - Jalen Brunson Explains Why He LOVES It",
+            "published": "2026-09-01",
+            "month": "2026-09",
+            "views": 0,
+            "likes": 0,
+            "comments": 0,
+            "duration_sec": 359,
+            "thumbnail": "https://i9.ytimg.com/vi/Y8VmQ0NuFhs/maxresdefault.jpg?sqp=CKjA4NQG&rs=AOn4CLA1GCeQrX6zfEKEog1_tiUuZ-F3ZA",
+            "url": "https://youtu.be/Y8VmQ0NuFhs",
+            "type": "mid"
+          }
+        ],
+        "short": [
+          {
+            "id": "bf0XSusrN3g",
+            "title": "\u201cShe Has To Raise 3 Kids\u2026\u201d Jalen Brunson EXPOSES Josh Hart #nba #basketball #JalenBrunson #Knicks",
+            "published": "2026-09-01",
+            "month": "2026-09",
+            "views": 27880,
+            "likes": 685,
+            "comments": 14,
+            "duration_sec": 37,
+            "thumbnail": "https://i.ytimg.com/vi/bf0XSusrN3g/maxresdefault.jpg",
+            "url": "https://youtu.be/bf0XSusrN3g",
+            "type": "short"
+          },
+          {
+            "id": "LXgH2eBmrF8",
+            "title": "Kendrick Perkins CRAZIEST All-Star Prediction Yet?! #nba #basketball #bostonceltics",
+            "published": "2026-09-01",
+            "month": "2026-09",
+            "views": 26780,
+            "likes": 596,
+            "comments": 45,
+            "duration_sec": 31,
+            "thumbnail": "https://i.ytimg.com/vi/LXgH2eBmrF8/maxresdefault.jpg",
+            "url": "https://youtu.be/LXgH2eBmrF8",
+            "type": "short"
+          },
+          {
+            "id": "fzzrdnfjmpA",
+            "title": "Jalen Brunson\u2019s WARNING To The Entire Knicks Roster #nba #basketball  #NewYork",
+            "published": "2026-09-01",
+            "month": "2026-09",
+            "views": 5089,
+            "likes": 185,
+            "comments": 14,
+            "duration_sec": 46,
+            "thumbnail": "https://i.ytimg.com/vi/fzzrdnfjmpA/maxresdefault.jpg",
+            "url": "https://youtu.be/fzzrdnfjmpA",
+            "type": "short"
+          }
+        ]
+      }
+    },
+    "all_videos_s1": [
+      {
+        "id": "k3pJGiIh1RE",
+        "title": "Top High School Basketball Recruit is BABY GIANNIS!? #nba #marcusspears #basketball",
+        "published": "2026-07-02",
+        "month": "2026-07",
+        "views": 1734672,
+        "likes": 37141,
+        "comments": 484,
+        "duration_sec": 51,
+        "thumbnail": "https://i.ytimg.com/vi/k3pJGiIh1RE/maxresdefault.jpg",
+        "url": "https://youtu.be/k3pJGiIh1RE",
+        "type": "short"
+      },
+      {
+        "id": "JUn4tQJ9Y60",
+        "title": "Imam Shumpert GOES OFF on Lakers Free Agency #LosAngelesLakers #lukadoncic #Lakers",
+        "published": "2026-07-02",
+        "month": "2026-07",
+        "views": 1502355,
+        "likes": 38066,
+        "comments": 3373,
+        "duration_sec": 66,
+        "thumbnail": "https://i.ytimg.com/vi/JUn4tQJ9Y60/maxresdefault.jpg",
+        "url": "https://youtu.be/JUn4tQJ9Y60",
+        "type": "short"
+      },
+      {
+        "id": "HwWx5nhjCx8",
+        "title": "Perk EXPOSES What CP3 Was Doing Behind T-Lue's Back in Locker Room",
+        "published": "2025-12-05",
+        "month": "2025-12",
+        "views": 717486,
+        "likes": 8661,
+        "comments": 2070,
+        "duration_sec": 1041,
+        "thumbnail": "https://i.ytimg.com/vi/HwWx5nhjCx8/maxresdefault.jpg",
+        "url": "https://youtu.be/HwWx5nhjCx8",
+        "type": "mid"
+      },
+      {
+        "id": "HtZ8tDkeGJY",
+        "title": "Rajon Rondo Exposes RJ\u2019s Worst Teammate Moment #nba #basketball",
+        "published": "2026-08-14",
+        "month": "2026-08",
+        "views": 500205,
+        "likes": 22150,
+        "comments": 330,
+        "duration_sec": 59,
+        "thumbnail": "https://i.ytimg.com/vi/HtZ8tDkeGJY/maxresdefault.jpg",
+        "url": "https://youtu.be/HtZ8tDkeGJY",
+        "type": "short"
+      },
+      {
+        "id": "ziCh3vNf0ik",
+        "title": "LeBron\u2019s Next Move Will RUN The NBA?! #NBA #LebronJames",
+        "published": "2026-07-18",
+        "month": "2026-07",
+        "views": 493542,
+        "likes": 7053,
+        "comments": 399,
+        "duration_sec": 46,
+        "thumbnail": "https://i.ytimg.com/vi/ziCh3vNf0ik/maxresdefault.jpg",
+        "url": "https://youtu.be/ziCh3vNf0ik",
+        "type": "short"
+      },
+      {
+        "id": "Mrjky6bXwm4",
+        "title": "ESPN\u2019s Kendrick Perkins Reacts To New York Giants\u2019 QB Jaxson Dart Introducing President Trump",
+        "published": "2026-06-01",
+        "month": "2026-06",
+        "views": 488902,
+        "likes": 18301,
+        "comments": 2655,
+        "duration_sec": 109,
+        "thumbnail": "https://i.ytimg.com/vi/Mrjky6bXwm4/maxresdefault.jpg",
+        "url": "https://youtu.be/Mrjky6bXwm4",
+        "type": "short"
+      },
+      {
+        "id": "J6rzMuvuMuo",
+        "title": "The Time DeMarcus Cousins Learned Why You NEVER Trash Talk Tim Duncan... #nba #basketball",
+        "published": "2026-07-14",
+        "month": "2026-07",
+        "views": 464486,
+        "likes": 11942,
+        "comments": 112,
+        "duration_sec": 72,
+        "thumbnail": "https://i.ytimg.com/vi/J6rzMuvuMuo/maxresdefault.jpg",
+        "url": "https://youtu.be/J6rzMuvuMuo",
+        "type": "short"
+      },
+      {
+        "id": "JZgusHsQ0l4",
+        "title": "Rondo Reveals The SCARIEST LeBron James Scenario #Lebron #nba #basketball",
+        "published": "2026-08-15",
+        "month": "2026-08",
+        "views": 445757,
+        "likes": 20610,
+        "comments": 561,
+        "duration_sec": 52,
+        "thumbnail": "https://i.ytimg.com/vi/JZgusHsQ0l4/maxresdefault.jpg",
+        "url": "https://youtu.be/JZgusHsQ0l4",
+        "type": "short"
+      },
+      {
+        "id": "XCtyiiCSRAk",
+        "title": "Anthony Edwards LEAVING Minnesota!? #AntMan #anthonyedwards #NBA #minnesotatimberwolves",
+        "published": "2026-06-23",
+        "month": "2026-06",
+        "views": 395608,
+        "likes": 7943,
+        "comments": 479,
+        "duration_sec": 48,
+        "thumbnail": "https://i.ytimg.com/vi/XCtyiiCSRAk/maxresdefault.jpg",
+        "url": "https://youtu.be/XCtyiiCSRAk",
+        "type": "short"
+      },
+      {
+        "id": "ePdXtNfowRo",
+        "title": "The REAL Reason Kyrie Left Cleveland, According to RJ",
+        "published": "2026-03-02",
+        "month": "2026-03",
+        "views": 373109,
+        "likes": 4714,
+        "comments": 999,
+        "duration_sec": 513,
+        "thumbnail": "https://i.ytimg.com/vi/ePdXtNfowRo/maxresdefault.jpg",
+        "url": "https://youtu.be/ePdXtNfowRo",
+        "type": "mid"
+      },
+      {
+        "id": "K1KXX7Al--U",
+        "title": "NBA Rookie\u2019s First Big Flex Isn\u2019t What You Think\u2026 #ajdybantsa #washingtonwizards #nba",
+        "published": "2026-08-04",
+        "month": "2026-08",
+        "views": 370107,
+        "likes": 8486,
+        "comments": 293,
+        "duration_sec": 57,
+        "thumbnail": "https://i.ytimg.com/vi/K1KXX7Al--U/maxresdefault.jpg",
+        "url": "https://youtu.be/K1KXX7Al--U",
+        "type": "short"
+      },
+      {
+        "id": "QUD-7qlFQUs",
+        "title": "The Real Reason Gilbert Arenas Went In The 2nd Round \ud83d\ude02 #nba #RichardJefferson #carterbryant",
+        "published": "2026-08-11",
+        "month": "2026-08",
+        "views": 368042,
+        "likes": 11587,
+        "comments": 74,
+        "duration_sec": 55,
+        "thumbnail": "https://i.ytimg.com/vi/QUD-7qlFQUs/maxresdefault.jpg",
+        "url": "https://youtu.be/QUD-7qlFQUs",
+        "type": "short"
+      },
+      {
+        "id": "xPwrhaAV5VM",
+        "title": "Ja Morant OUT THE LEAGUE!? ESPN\u2019s Kendrick Perkins Says It\u2019s Possible #nba #JaMorant",
+        "published": "2026-04-15",
+        "month": "2026-04",
+        "views": 361045,
+        "likes": 5847,
+        "comments": 803,
+        "duration_sec": 82,
+        "thumbnail": "https://i.ytimg.com/vi/xPwrhaAV5VM/maxresdefault.jpg",
+        "url": "https://youtu.be/xPwrhaAV5VM",
+        "type": "short"
+      },
+      {
+        "id": "HAYtxUru2wQ",
+        "title": "Richard Jefferson GOES IN On Fake NBA Narratives #NBA #lebronjames #Lebron",
+        "published": "2026-07-15",
+        "month": "2026-07",
+        "views": 347762,
+        "likes": 8116,
+        "comments": 1534,
+        "duration_sec": 79,
+        "thumbnail": "https://i.ytimg.com/vi/HAYtxUru2wQ/maxresdefault.jpg",
+        "url": "https://youtu.be/HAYtxUru2wQ",
+        "type": "short"
+      },
+      {
+        "id": "50MHq47IaLU",
+        "title": "Jalen Brunson & The Knicks Have Changed The NBA Narrative #knicks #nba #basketball",
+        "published": "2026-06-18",
+        "month": "2026-06",
+        "views": 347656,
+        "likes": 18505,
+        "comments": 811,
+        "duration_sec": 115,
+        "thumbnail": "https://i.ytimg.com/vi/50MHq47IaLU/maxresdefault.jpg",
+        "url": "https://youtu.be/50MHq47IaLU",
+        "type": "short"
+      },
+      {
+        "id": "UOsqGlestSU",
+        "title": "ESPN\u2019s Kendrick Perkins Speaks On The Kenyon Martin Situation & Gives The 1st Pick His Flowers",
+        "published": "2026-03-22",
+        "month": "2026-03",
+        "views": 325691,
+        "likes": 9913,
+        "comments": 538,
+        "duration_sec": 83,
+        "thumbnail": "https://i.ytimg.com/vi/UOsqGlestSU/maxresdefault.jpg",
+        "url": "https://youtu.be/UOsqGlestSU",
+        "type": "short"
+      },
+      {
+        "id": "kHqq0RR6dHE",
+        "title": "Richard Jefferson Reveals What NO ONE Is Saying About Draymond vs K-Mart Bee",
+        "published": "2025-11-26",
+        "month": "2025-11",
+        "views": 311486,
+        "likes": 3810,
+        "comments": 1946,
+        "duration_sec": 996,
+        "thumbnail": "https://i.ytimg.com/vi/kHqq0RR6dHE/maxresdefault.jpg",
+        "url": "https://youtu.be/kHqq0RR6dHE",
+        "type": "mid"
+      },
+      {
+        "id": "JOMMjWncBzA",
+        "title": "Kendrick Perkins CALLS OUT Luka Doncic & Lakers After Austin Reaves Signing #nba #Lakers",
+        "published": "2026-06-29",
+        "month": "2026-06",
+        "views": 295719,
+        "likes": 6698,
+        "comments": 1555,
+        "duration_sec": 75,
+        "thumbnail": "https://i.ytimg.com/vi/JOMMjWncBzA/maxresdefault.jpg",
+        "url": "https://youtu.be/JOMMjWncBzA",
+        "type": "short"
+      },
+      {
+        "id": "YHtB62qU1r8",
+        "title": "Why Rajon Rondo Calls Philadelphia a BRILLIANT Move for LeBron",
+        "published": "2026-08-15",
+        "month": "2026-08",
+        "views": 290602,
+        "likes": 4353,
+        "comments": 508,
+        "duration_sec": 470,
+        "thumbnail": "https://i.ytimg.com/vi/YHtB62qU1r8/maxresdefault.jpg",
+        "url": "https://youtu.be/YHtB62qU1r8",
+        "type": "mid"
+      },
+      {
+        "id": "hYGxcG9hdEE",
+        "title": "Iman Shumpert Shares Cavs 2016 Championship BANGER! #nba #Cavs",
+        "published": "2026-07-06",
+        "month": "2026-07",
+        "views": 265010,
+        "likes": 10421,
+        "comments": 335,
+        "duration_sec": 101,
+        "thumbnail": "https://i.ytimg.com/vi/hYGxcG9hdEE/maxresdefault.jpg",
+        "url": "https://youtu.be/hYGxcG9hdEE",
+        "type": "short"
+      },
+      {
+        "id": "Aa5QDN6HCy0",
+        "title": "Jalen Brunson MOST CLUTCH Player Ever!? \u201cHe\u2019s Built For This\u201d #NewYorkKnicks #NBA",
+        "published": "2026-06-13",
+        "month": "2026-06",
+        "views": 261793,
+        "likes": 6507,
+        "comments": 128,
+        "duration_sec": 57,
+        "thumbnail": "https://i.ytimg.com/vi/Aa5QDN6HCy0/maxresdefault.jpg",
+        "url": "https://youtu.be/Aa5QDN6HCy0",
+        "type": "short"
+      },
+      {
+        "id": "rP97ZTg5coI",
+        "title": "Is Ja Morant Memphis Grizzlies\u2019 MOST POPULAR Player? RJ & Perk Disagree #JaMorant #Nike #nba",
+        "published": "2026-07-04",
+        "month": "2026-07",
+        "views": 258760,
+        "likes": 7818,
+        "comments": 1315,
+        "duration_sec": 116,
+        "thumbnail": "https://i.ytimg.com/vi/rP97ZTg5coI/maxresdefault.jpg",
+        "url": "https://youtu.be/rP97ZTg5coI",
+        "type": "short"
+      },
+      {
+        "id": "dYnWhmnIwc8",
+        "title": "Lebron James Teaming Up with Steph Curry ? Kendrick Perkins Says it\u2019s POSSIBLE #nba",
+        "published": "2026-06-30",
+        "month": "2026-06",
+        "views": 251353,
+        "likes": 3644,
+        "comments": 205,
+        "duration_sec": 64,
+        "thumbnail": "https://i.ytimg.com/vi/dYnWhmnIwc8/maxresdefault.jpg",
+        "url": "https://youtu.be/dYnWhmnIwc8",
+        "type": "short"
+      },
+      {
+        "id": "RNnuUOuuVfo",
+        "title": "ESPN\u2019s Kendrick Perkins & Channing Frye GO OFF On Deandre Ayton\u2019s Recent Comments #lakers #nba",
+        "published": "2026-02-28",
+        "month": "2026-02",
+        "views": 249687,
+        "likes": 10515,
+        "comments": 724,
+        "duration_sec": 136,
+        "thumbnail": "https://i.ytimg.com/vi/RNnuUOuuVfo/maxresdefault.jpg",
+        "url": "https://youtu.be/RNnuUOuuVfo",
+        "type": "short"
+      },
+      {
+        "id": "JsEe4qzWT40",
+        "title": "Dwayne Wade vs James Harden! Patrick Beverly Sparks The Debate #JamesHarden #DWade #NBA",
+        "published": "2026-04-03",
+        "month": "2026-04",
+        "views": 246205,
+        "likes": 6776,
+        "comments": 1030,
+        "duration_sec": 63,
+        "thumbnail": "https://i.ytimg.com/vi/JsEe4qzWT40/maxresdefault.jpg",
+        "url": "https://youtu.be/JsEe4qzWT40",
+        "type": "short"
+      },
+      {
+        "id": "QbOI1xgQ8ZE",
+        "title": "Steph and Seth Curry On The Same Team is a PROBLEM",
+        "published": "2025-10-04",
+        "month": "2025-10",
+        "views": 241742,
+        "likes": 8390,
+        "comments": 260,
+        "duration_sec": 41,
+        "thumbnail": "https://i.ytimg.com/vi/QbOI1xgQ8ZE/maxresdefault.jpg",
+        "url": "https://youtu.be/QbOI1xgQ8ZE",
+        "type": "short"
+      },
+      {
+        "id": "do4cUugrzEw",
+        "title": "The NBA Star Nobody Could Guard \ud83d\ude33  #nba #basketball",
+        "published": "2026-07-20",
+        "month": "2026-07",
+        "views": 240473,
+        "likes": 11515,
+        "comments": 227,
+        "duration_sec": 59,
+        "thumbnail": "https://i.ytimg.com/vi/do4cUugrzEw/maxresdefault.jpg",
+        "url": "https://youtu.be/do4cUugrzEw",
+        "type": "short"
+      },
+      {
+        "id": "k2rjwlyjahc",
+        "title": "What Lakers Fans Don't Want To Admit About Luka... \ud83e\udd2b #Lakers #NBA #LeBron #lukadoncic",
+        "published": "2026-07-17",
+        "month": "2026-07",
+        "views": 229483,
+        "likes": 4163,
+        "comments": 747,
+        "duration_sec": 54,
+        "thumbnail": "https://i.ytimg.com/vi/k2rjwlyjahc/maxresdefault.jpg",
+        "url": "https://youtu.be/k2rjwlyjahc",
+        "type": "short"
+      },
+      {
+        "id": "7aus3KbsW_c",
+        "title": "Lakers Rebuilding!? Road Trippin Breaks Down LeBron & Lakers Next Move #nba #lakers #lebron",
+        "published": "2026-05-13",
+        "month": "2026-05",
+        "views": 224844,
+        "likes": 3506,
+        "comments": 368,
+        "duration_sec": 63,
+        "thumbnail": "https://i.ytimg.com/vi/7aus3KbsW_c/maxresdefault.jpg",
+        "url": "https://youtu.be/7aus3KbsW_c",
+        "type": "short"
+      },
+      {
+        "id": "NPDEMZ90B1M",
+        "title": "AJ Dybantsa vs 90s Nostalgia (IT GETS PAINFUL) #nba #washingtonwizards #90s #90snostalgia",
+        "published": "2026-07-31",
+        "month": "2026-07",
+        "views": 224250,
+        "likes": 7091,
+        "comments": 243,
+        "duration_sec": 90,
+        "thumbnail": "https://i.ytimg.com/vi/NPDEMZ90B1M/maxresdefault.jpg",
+        "url": "https://youtu.be/NPDEMZ90B1M",
+        "type": "short"
+      },
+      {
+        "id": "7HuaEHVdk6c",
+        "title": "ESPN\u2019s Richard Jefferson Squashes Draymond Green & Kenyon Martin Beef! #DraymondGreen #KenyonMartin",
+        "published": "2025-11-26",
+        "month": "2025-11",
+        "views": 222885,
+        "likes": 12176,
+        "comments": 1053,
+        "duration_sec": 103,
+        "thumbnail": "https://i.ytimg.com/vi/7HuaEHVdk6c/maxresdefault.jpg",
+        "url": "https://youtu.be/7HuaEHVdk6c",
+        "type": "short"
+      },
+      {
+        "id": "VabbVbaoc3U",
+        "title": "ESPN\u2019s Richard Jefferson Calls Bam\u2019s 83 Point EXPLOSION Remarkable & \u201cStop The Fake Outrage\u201d #nba",
+        "published": "2026-03-14",
+        "month": "2026-03",
+        "views": 222323,
+        "likes": 11388,
+        "comments": 1003,
+        "duration_sec": 131,
+        "thumbnail": "https://i.ytimg.com/vi/VabbVbaoc3U/maxresdefault.jpg",
+        "url": "https://youtu.be/VabbVbaoc3U",
+        "type": "short"
+      },
+      {
+        "id": "9zaom3QbjYs",
+        "title": "Channing Breaks Down the REAL Reason Portland Saves Ja Morant",
+        "published": "2026-07-02",
+        "month": "2026-07",
+        "views": 218603,
+        "likes": 2504,
+        "comments": 408,
+        "duration_sec": 759,
+        "thumbnail": "https://i.ytimg.com/vi/9zaom3QbjYs/maxresdefault.jpg",
+        "url": "https://youtu.be/9zaom3QbjYs",
+        "type": "mid"
+      },
+      {
+        "id": "qMc2Kadj1PU",
+        "title": "RJ Says He KNOWS LeBron's Real Plan... And He's Not Telling",
+        "published": "2026-07-02",
+        "month": "2026-07",
+        "views": 205603,
+        "likes": 3785,
+        "comments": 737,
+        "duration_sec": 683,
+        "thumbnail": "https://i.ytimg.com/vi/qMc2Kadj1PU/maxresdefault.jpg",
+        "url": "https://youtu.be/qMc2Kadj1PU",
+        "type": "mid"
+      },
+      {
+        "id": "po8YrSQivoM",
+        "title": "Boogie Cousins CALLS OUT The Lakers For Doing LeBron DIRTY",
+        "published": "2026-07-14",
+        "month": "2026-07",
+        "views": 200406,
+        "likes": 4205,
+        "comments": 1054,
+        "duration_sec": 3432,
+        "thumbnail": "https://i.ytimg.com/vi/po8YrSQivoM/maxresdefault.jpg",
+        "url": "https://youtu.be/po8YrSQivoM",
+        "type": "long"
+      },
+      {
+        "id": "oclZFI8L9Sw",
+        "title": "Ray Lewis Predicted My ENTIRE NFL Draft \ud83e\udd2f #nfl #baltimoreravens #raylewis",
+        "published": "2026-08-17",
+        "month": "2026-08",
+        "views": 197311,
+        "likes": 6341,
+        "comments": 59,
+        "duration_sec": 85,
+        "thumbnail": "https://i.ytimg.com/vi/oclZFI8L9Sw/maxresdefault.jpg",
+        "url": "https://youtu.be/oclZFI8L9Sw",
+        "type": "short"
+      },
+      {
+        "id": "HVLl_aTeQTE",
+        "title": "RJ Exposed LeBron\u2019s Secret Free Agency Phone Call #LebronJames #NBA #76ers",
+        "published": "2026-07-28",
+        "month": "2026-07",
+        "views": 188956,
+        "likes": 4170,
+        "comments": 112,
+        "duration_sec": 45,
+        "thumbnail": "https://i.ytimg.com/vi/HVLl_aTeQTE/maxresdefault.jpg",
+        "url": "https://youtu.be/HVLl_aTeQTE",
+        "type": "short"
+      },
+      {
+        "id": "SatbeQmxgN0",
+        "title": "Richard Jefferson DID WHAT!? #lol #nba #lukadoncic #lakers",
+        "published": "2026-04-15",
+        "month": "2026-04",
+        "views": 184702,
+        "likes": 2209,
+        "comments": 73,
+        "duration_sec": 18,
+        "thumbnail": "https://i.ytimg.com/vi/SatbeQmxgN0/maxresdefault.jpg",
+        "url": "https://youtu.be/SatbeQmxgN0",
+        "type": "short"
+      },
+      {
+        "id": "G4hCJH8_I1M",
+        "title": "Chris Paul: Saint or Saboteur? ESPN\u2019s Kendrick Perkins Weighs In #Cp3 #ChrisPaul #Clippers",
+        "published": "2025-12-05",
+        "month": "2025-12",
+        "views": 181640,
+        "likes": 3014,
+        "comments": 292,
+        "duration_sec": 98,
+        "thumbnail": "https://i.ytimg.com/vi/G4hCJH8_I1M/maxresdefault.jpg",
+        "url": "https://youtu.be/G4hCJH8_I1M",
+        "type": "short"
+      },
+      {
+        "id": "PeMHxUwuByQ",
+        "title": "LeBron SIGNS With Philly! Why Didn\u2019t He Return To Miami + What\u2019s Next For The Lakers?",
+        "published": "2026-07-27",
+        "month": "2026-07",
+        "views": 181407,
+        "likes": 2964,
+        "comments": 510,
+        "duration_sec": 3721,
+        "thumbnail": "https://i.ytimg.com/vi/PeMHxUwuByQ/maxresdefault.jpg",
+        "url": "https://youtu.be/PeMHxUwuByQ",
+        "type": "long"
+      },
+      {
+        "id": "2zGgUw4SUCA",
+        "title": "Kendrick Perkins Speaks On the Jaden Ivey Situation #nba #JadenIvey",
+        "published": "2026-04-01",
+        "month": "2026-04",
+        "views": 181080,
+        "likes": 5127,
+        "comments": 2250,
+        "duration_sec": 90,
+        "thumbnail": "https://i.ytimg.com/vi/2zGgUw4SUCA/maxresdefault.jpg",
+        "url": "https://youtu.be/2zGgUw4SUCA",
+        "type": "short"
+      },
+      {
+        "id": "84XwX8zGUOk",
+        "title": "Richard Jefferson Gets EMOTIONAL Defending LeBron's Legacy",
+        "published": "2026-03-19",
+        "month": "2026-03",
+        "views": 179368,
+        "likes": 4089,
+        "comments": 624,
+        "duration_sec": 518,
+        "thumbnail": "https://i.ytimg.com/vi/84XwX8zGUOk/maxresdefault.jpg",
+        "url": "https://youtu.be/84XwX8zGUOk",
+        "type": "mid"
+      },
+      {
+        "id": "os11G6WeExI",
+        "title": "ESPN\u2019s Richard Jefferson Lists His All Time Dunkers",
+        "published": "2025-11-21",
+        "month": "2025-11",
+        "views": 176129,
+        "likes": 5706,
+        "comments": 690,
+        "duration_sec": 76,
+        "thumbnail": "https://i.ytimg.com/vi/os11G6WeExI/maxresdefault.jpg",
+        "url": "https://youtu.be/os11G6WeExI",
+        "type": "short"
+      },
+      {
+        "id": "MxSJkR5NW08",
+        "title": "The 44-0 High School Team Nobody Could Beat #basketball #oakhill",
+        "published": "2026-08-16",
+        "month": "2026-08",
+        "views": 162181,
+        "likes": 4798,
+        "comments": 113,
+        "duration_sec": 53,
+        "thumbnail": "https://i.ytimg.com/vi/MxSJkR5NW08/maxresdefault.jpg",
+        "url": "https://youtu.be/MxSJkR5NW08",
+        "type": "short"
+      },
+      {
+        "id": "hWQ8BZA_Pbc",
+        "title": "7X NBA Champion Robert Horry Says Wemby Is NOT Top 5 #nba #victorwembanyama",
+        "published": "2026-02-17",
+        "month": "2026-02",
+        "views": 160827,
+        "likes": 4428,
+        "comments": 461,
+        "duration_sec": 164,
+        "thumbnail": "https://i.ytimg.com/vi/hWQ8BZA_Pbc/maxresdefault.jpg",
+        "url": "https://youtu.be/hWQ8BZA_Pbc",
+        "type": "short"
+      },
+      {
+        "id": "9LFMqUAyB_U",
+        "title": "MPJ Reveals What REALLY Happened with Cam Thomas in Brooklyn",
+        "published": "2026-05-07",
+        "month": "2026-05",
+        "views": 159723,
+        "likes": 2251,
+        "comments": 468,
+        "duration_sec": 851,
+        "thumbnail": "https://i.ytimg.com/vi/9LFMqUAyB_U/maxresdefault.jpg",
+        "url": "https://youtu.be/9LFMqUAyB_U",
+        "type": "mid"
+      },
+      {
+        "id": "C9dspBDxMJ8",
+        "title": "When You Realize You Have To Guard Grown Men in the NBA #basketball #rookie #sanantoniospurs",
+        "published": "2026-08-12",
+        "month": "2026-08",
+        "views": 156213,
+        "likes": 4649,
+        "comments": 49,
+        "duration_sec": 56,
+        "thumbnail": "https://i.ytimg.com/vi/C9dspBDxMJ8/maxresdefault.jpg",
+        "url": "https://youtu.be/C9dspBDxMJ8",
+        "type": "short"
+      },
+      {
+        "id": "0JUVBPIGUg8",
+        "title": "Celtics\u2019 Payton Pritchard Is \u201cThe Best Contract In Basketball\u201d Says Kendrick Perkins #nba #Celtics",
+        "published": "2026-02-27",
+        "month": "2026-02",
+        "views": 154857,
+        "likes": 4343,
+        "comments": 129,
+        "duration_sec": 39,
+        "thumbnail": "https://i.ytimg.com/vi/0JUVBPIGUg8/maxresdefault.jpg",
+        "url": "https://youtu.be/0JUVBPIGUg8",
+        "type": "short"
+      },
+      {
+        "id": "yofbyko5E3w",
+        "title": "ESPN\u2019s Richard Jefferson Calls Steve Kerr One Of Steph GREATEST COACHES In American History! #nba",
+        "published": "2026-01-21",
+        "month": "2026-01",
+        "views": 150030,
+        "likes": 3972,
+        "comments": 819,
+        "duration_sec": 85,
+        "thumbnail": "https://i.ytimg.com/vi/yofbyko5E3w/maxresdefault.jpg",
+        "url": "https://youtu.be/yofbyko5E3w",
+        "type": "short"
+      },
+      {
+        "id": "oujDWGTay-Q",
+        "title": "Rondo Reveals Tyrese Maxey\u2019s 5:30 AM Workouts With LeBron #nba  #philadelphia76ers #LebronJames",
+        "published": "2026-08-19",
+        "month": "2026-08",
+        "views": 145550,
+        "likes": 7911,
+        "comments": 147,
+        "duration_sec": 75,
+        "thumbnail": "https://i.ytimg.com/vi/oujDWGTay-Q/maxresdefault.jpg",
+        "url": "https://youtu.be/oujDWGTay-Q",
+        "type": "short"
+      }
+    ],
+    "daily": {
+      "2026-06-03": {
+        "total_views": 186673,
+        "watch_hrs": 18658.2,
+        "subs_gained": 349,
+        "subs_lost": 20,
+        "live_views": 392,
+        "shorts_views": 123748,
+        "vod_views": 62465
+      },
+      "2026-06-04": {
+        "total_views": 107132,
+        "watch_hrs": 2231.2,
+        "subs_gained": 175,
+        "subs_lost": 37,
+        "live_views": 202,
+        "shorts_views": 100176,
+        "vod_views": 6754
+      },
+      "2026-06-05": {
+        "total_views": 120542,
+        "watch_hrs": 8165.0,
+        "subs_gained": 166,
+        "subs_lost": 24,
+        "live_views": 199,
+        "shorts_views": 86156,
+        "vod_views": 34187
+      },
+      "2026-06-06": {
+        "total_views": 84581,
+        "watch_hrs": 2277.4,
+        "subs_gained": 103,
+        "subs_lost": 20,
+        "live_views": 157,
+        "shorts_views": 72065,
+        "vod_views": 12359
+      },
+      "2026-06-07": {
+        "total_views": 70747,
+        "watch_hrs": 1847.2,
+        "subs_gained": 92,
+        "subs_lost": 16,
+        "live_views": 155,
+        "shorts_views": 59806,
+        "vod_views": 10381
+      },
+      "2026-06-08": {
+        "total_views": 66420,
+        "watch_hrs": 1466.0,
+        "subs_gained": 68,
+        "subs_lost": 13,
+        "live_views": 154,
+        "shorts_views": 54874,
+        "vod_views": 11273
+      },
+      "2026-06-09": {
+        "total_views": 136764,
+        "watch_hrs": 7183.2,
+        "subs_gained": 137,
+        "subs_lost": 27,
+        "live_views": 20974,
+        "shorts_views": 99707,
+        "vod_views": 15887
+      },
+      "2026-06-10": {
+        "total_views": 157426,
+        "watch_hrs": 3651.5,
+        "subs_gained": 112,
+        "subs_lost": 47,
+        "live_views": 3605,
+        "shorts_views": 121242,
+        "vod_views": 26555
+      },
+      "2026-06-11": {
+        "total_views": 54680,
+        "watch_hrs": 1393.6,
+        "subs_gained": 73,
+        "subs_lost": 22,
+        "live_views": 390,
+        "shorts_views": 38678,
+        "vod_views": 13174
+      },
+      "2026-06-12": {
+        "total_views": 91999,
+        "watch_hrs": 7414.2,
+        "subs_gained": 148,
+        "subs_lost": 29,
+        "live_views": 16612,
+        "shorts_views": 54359,
+        "vod_views": 18819
+      },
+      "2026-06-13": {
+        "total_views": 198680,
+        "watch_hrs": 6041.8,
+        "subs_gained": 189,
+        "subs_lost": 30,
+        "live_views": 8966,
+        "shorts_views": 168432,
+        "vod_views": 20642
+      },
+      "2026-06-14": {
+        "total_views": 114870,
+        "watch_hrs": 2117.8,
+        "subs_gained": 97,
+        "subs_lost": 28,
+        "live_views": 991,
+        "shorts_views": 90445,
+        "vod_views": 23141
+      },
+      "2026-06-15": {
+        "total_views": 136610,
+        "watch_hrs": 9098.8,
+        "subs_gained": 302,
+        "subs_lost": 30,
+        "live_views": 14844,
+        "shorts_views": 71526,
+        "vod_views": 49426
+      },
+      "2026-06-16": {
+        "total_views": 195799,
+        "watch_hrs": 11600.2,
+        "subs_gained": 491,
+        "subs_lost": 43,
+        "live_views": 4109,
+        "shorts_views": 109891,
+        "vod_views": 81597
+      },
+      "2026-06-17": {
+        "total_views": 211087,
+        "watch_hrs": 8710.2,
+        "subs_gained": 379,
+        "subs_lost": 42,
+        "live_views": 7595,
+        "shorts_views": 146324,
+        "vod_views": 56722
+      },
+      "2026-06-18": {
+        "total_views": 325617,
+        "watch_hrs": 8551.7,
+        "subs_gained": 519,
+        "subs_lost": 33,
+        "live_views": 2430,
+        "shorts_views": 263781,
+        "vod_views": 59227
+      },
+      "2026-06-19": {
+        "total_views": 263809,
+        "watch_hrs": 6481.4,
+        "subs_gained": 398,
+        "subs_lost": 18,
+        "live_views": 1218,
+        "shorts_views": 210738,
+        "vod_views": 51700
+      },
+      "2026-06-20": {
+        "total_views": 130538,
+        "watch_hrs": 4038.1,
+        "subs_gained": 261,
+        "subs_lost": 16,
+        "live_views": 761,
+        "shorts_views": 87139,
+        "vod_views": 42610
+      },
+      "2026-06-21": {
+        "total_views": 85592,
+        "watch_hrs": 3223.9,
+        "subs_gained": 192,
+        "subs_lost": 24,
+        "live_views": 682,
+        "shorts_views": 48499,
+        "vod_views": 36173
+      },
+      "2026-06-22": {
+        "total_views": 119107,
+        "watch_hrs": 6146.6,
+        "subs_gained": 221,
+        "subs_lost": 34,
+        "live_views": 10847,
+        "shorts_views": 76835,
+        "vod_views": 31287
+      },
+      "2026-06-23": {
+        "total_views": 204953,
+        "watch_hrs": 4371.6,
+        "subs_gained": 218,
+        "subs_lost": 30,
+        "live_views": 2685,
+        "shorts_views": 170667,
+        "vod_views": 31507
+      },
+      "2026-06-24": {
+        "total_views": 140515,
+        "watch_hrs": 2392.7,
+        "subs_gained": 155,
+        "subs_lost": 20,
+        "live_views": 789,
+        "shorts_views": 122119,
+        "vod_views": 17494
+      },
+      "2026-06-25": {
+        "total_views": 131715,
+        "watch_hrs": 9924.5,
+        "subs_gained": 200,
+        "subs_lost": 28,
+        "live_views": 26047,
+        "shorts_views": 89662,
+        "vod_views": 12885
+      },
+      "2026-06-26": {
+        "total_views": 122316,
+        "watch_hrs": 7248.4,
+        "subs_gained": 191,
+        "subs_lost": 21,
+        "live_views": 9935,
+        "shorts_views": 73769,
+        "vod_views": 36946
+      },
+      "2026-06-27": {
+        "total_views": 113527,
+        "watch_hrs": 5655.1,
+        "subs_gained": 190,
+        "subs_lost": 16,
+        "live_views": 5910,
+        "shorts_views": 67680,
+        "vod_views": 38791
+      },
+      "2026-06-28": {
+        "total_views": 108914,
+        "watch_hrs": 7718.4,
+        "subs_gained": 237,
+        "subs_lost": 32,
+        "live_views": 3244,
+        "shorts_views": 56432,
+        "vod_views": 48473
+      },
+      "2026-06-29": {
+        "total_views": 180546,
+        "watch_hrs": 12348.0,
+        "subs_gained": 354,
+        "subs_lost": 37,
+        "live_views": 18399,
+        "shorts_views": 94453,
+        "vod_views": 67655
+      },
+      "2026-06-30": {
+        "total_views": 211401,
+        "watch_hrs": 7179.3,
+        "subs_gained": 252,
+        "subs_lost": 22,
+        "live_views": 6591,
+        "shorts_views": 158055,
+        "vod_views": 45346
+      },
+      "2026-07-01": {
+        "total_views": 341227,
+        "watch_hrs": 18485.7,
+        "subs_gained": 664,
+        "subs_lost": 31,
+        "live_views": 43452,
+        "shorts_views": 236536,
+        "vod_views": 60499
+      },
+      "2026-07-02": {
+        "total_views": 1615710,
+        "watch_hrs": 31966.3,
+        "subs_gained": 1782,
+        "subs_lost": 87,
+        "live_views": 12909,
+        "shorts_views": 1440247,
+        "vod_views": 162269
+      },
+      "2026-07-03": {
+        "total_views": 634682,
+        "watch_hrs": 14164.9,
+        "subs_gained": 679,
+        "subs_lost": 56,
+        "live_views": 6255,
+        "shorts_views": 536816,
+        "vod_views": 91459
+      },
+      "2026-07-04": {
+        "total_views": 554156,
+        "watch_hrs": 11623.9,
+        "subs_gained": 554,
+        "subs_lost": 50,
+        "live_views": 3211,
+        "shorts_views": 478983,
+        "vod_views": 71962
+      },
+      "2026-07-05": {
+        "total_views": 360406,
+        "watch_hrs": 7911.8,
+        "subs_gained": 379,
+        "subs_lost": 34,
+        "live_views": 2871,
+        "shorts_views": 305951,
+        "vod_views": 51584
+      },
+      "2026-07-06": {
+        "total_views": 362245,
+        "watch_hrs": 6825.9,
+        "subs_gained": 326,
+        "subs_lost": 34,
+        "live_views": 2118,
+        "shorts_views": 322970,
+        "vod_views": 36760
+      },
+      "2026-07-07": {
+        "total_views": 282776,
+        "watch_hrs": 4855.9,
+        "subs_gained": 248,
+        "subs_lost": 31,
+        "live_views": 1503,
+        "shorts_views": 260115,
+        "vod_views": 20897
+      },
+      "2026-07-08": {
+        "total_views": 133609,
+        "watch_hrs": 2630.7,
+        "subs_gained": 132,
+        "subs_lost": 26,
+        "live_views": 896,
+        "shorts_views": 119390,
+        "vod_views": 13013
+      },
+      "2026-07-09": {
+        "total_views": 180341,
+        "watch_hrs": 5245.5,
+        "subs_gained": 149,
+        "subs_lost": 26,
+        "live_views": 725,
+        "shorts_views": 150323,
+        "vod_views": 29273
+      },
+      "2026-07-10": {
+        "total_views": 123381,
+        "watch_hrs": 5168.1,
+        "subs_gained": 149,
+        "subs_lost": 19,
+        "live_views": 560,
+        "shorts_views": 90927,
+        "vod_views": 31635
+      },
+      "2026-07-11": {
+        "total_views": 122139,
+        "watch_hrs": 3008.1,
+        "subs_gained": 118,
+        "subs_lost": 18,
+        "live_views": 546,
+        "shorts_views": 106741,
+        "vod_views": 14791
+      },
+      "2026-07-12": {
+        "total_views": 115417,
+        "watch_hrs": 1975.2,
+        "subs_gained": 108,
+        "subs_lost": 16,
+        "live_views": 469,
+        "shorts_views": 106844,
+        "vod_views": 8025
+      },
+      "2026-07-13": {
+        "total_views": 95539,
+        "watch_hrs": 1403.4,
+        "subs_gained": 78,
+        "subs_lost": 12,
+        "live_views": 358,
+        "shorts_views": 89568,
+        "vod_views": 5584
+      },
+      "2026-07-14": {
+        "total_views": 225526,
+        "watch_hrs": 21279.8,
+        "subs_gained": 590,
+        "subs_lost": 40,
+        "live_views": 764,
+        "shorts_views": 145100,
+        "vod_views": 79662
+      },
+      "2026-07-15": {
+        "total_views": 268323,
+        "watch_hrs": 15237.3,
+        "subs_gained": 561,
+        "subs_lost": 47,
+        "live_views": 725,
+        "shorts_views": 174163,
+        "vod_views": 93435
+      },
+      "2026-07-16": {
+        "total_views": 314141,
+        "watch_hrs": 9808.2,
+        "subs_gained": 423,
+        "subs_lost": 37,
+        "live_views": 558,
+        "shorts_views": 253784,
+        "vod_views": 59799
+      },
+      "2026-07-17": {
+        "total_views": 298144,
+        "watch_hrs": 6440.2,
+        "subs_gained": 333,
+        "subs_lost": 21,
+        "live_views": 386,
+        "shorts_views": 256250,
+        "vod_views": 41508
+      },
+      "2026-07-18": {
+        "total_views": 302007,
+        "watch_hrs": 5447.3,
+        "subs_gained": 410,
+        "subs_lost": 40,
+        "live_views": 496,
+        "shorts_views": 271597,
+        "vod_views": 29914
+      },
+      "2026-07-19": {
+        "total_views": 244491,
+        "watch_hrs": 4711.7,
+        "subs_gained": 283,
+        "subs_lost": 24,
+        "live_views": 469,
+        "shorts_views": 219273,
+        "vod_views": 24749
+      },
+      "2026-07-20": {
+        "total_views": 396794,
+        "watch_hrs": 10976.5,
+        "subs_gained": 365,
+        "subs_lost": 49,
+        "live_views": 424,
+        "shorts_views": 351057,
+        "vod_views": 44662
+      },
+      "2026-07-21": {
+        "total_views": 224740,
+        "watch_hrs": 6845.5,
+        "subs_gained": 247,
+        "subs_lost": 31,
+        "live_views": 454,
+        "shorts_views": 184519,
+        "vod_views": 39106
+      },
+      "2026-07-22": {
+        "total_views": 85517,
+        "watch_hrs": 2847.4,
+        "subs_gained": 138,
+        "subs_lost": 20,
+        "live_views": 308,
+        "shorts_views": 63600,
+        "vod_views": 21366
+      },
+      "2026-07-23": {
+        "total_views": 135542,
+        "watch_hrs": 7450.1,
+        "subs_gained": 202,
+        "subs_lost": 30,
+        "live_views": 280,
+        "shorts_views": 86753,
+        "vod_views": 48449
+      },
+      "2026-07-24": {
+        "total_views": 148371,
+        "watch_hrs": 5531.7,
+        "subs_gained": 193,
+        "subs_lost": 21,
+        "live_views": 207,
+        "shorts_views": 112857,
+        "vod_views": 35307
+      },
+      "2026-07-25": {
+        "total_views": 147160,
+        "watch_hrs": 3534.5,
+        "subs_gained": 156,
+        "subs_lost": 32,
+        "live_views": 203,
+        "shorts_views": 127583,
+        "vod_views": 19374
+      },
+      "2026-07-26": {
+        "total_views": 134060,
+        "watch_hrs": 3477.1,
+        "subs_gained": 144,
+        "subs_lost": 32,
+        "live_views": 234,
+        "shorts_views": 116786,
+        "vod_views": 17040
+      },
+      "2026-07-27": {
+        "total_views": 229219,
+        "watch_hrs": 22322.7,
+        "subs_gained": 399,
+        "subs_lost": 40,
+        "live_views": 240,
+        "shorts_views": 148599,
+        "vod_views": 80380
+      },
+      "2026-07-28": {
+        "total_views": 302224,
+        "watch_hrs": 21541.5,
+        "subs_gained": 429,
+        "subs_lost": 44,
+        "live_views": 265,
+        "shorts_views": 220969,
+        "vod_views": 80989
+      },
+      "2026-07-29": {
+        "total_views": 221576,
+        "watch_hrs": 10947.3,
+        "subs_gained": 314,
+        "subs_lost": 39,
+        "live_views": 180,
+        "shorts_views": 161442,
+        "vod_views": 59952
+      },
+      "2026-07-30": {
+        "total_views": 173508,
+        "watch_hrs": 9365.5,
+        "subs_gained": 229,
+        "subs_lost": 27,
+        "live_views": 196,
+        "shorts_views": 118028,
+        "vod_views": 55280
+      },
+      "2026-07-31": {
+        "total_views": 154986,
+        "watch_hrs": 6651.1,
+        "subs_gained": 165,
+        "subs_lost": 23,
+        "live_views": 172,
+        "shorts_views": 116092,
+        "vod_views": 38722
+      },
+      "2026-08-01": {
+        "total_views": 135518,
+        "watch_hrs": 5751.9,
+        "subs_gained": 160,
+        "subs_lost": 24,
+        "live_views": 152,
+        "shorts_views": 89734,
+        "vod_views": 45632
+      },
+      "2026-08-02": {
+        "total_views": 106055,
+        "watch_hrs": 5038.4,
+        "subs_gained": 154,
+        "subs_lost": 27,
+        "live_views": 184,
+        "shorts_views": 63477,
+        "vod_views": 42394
+      },
+      "2026-08-03": {
+        "total_views": 79429,
+        "watch_hrs": 3986.5,
+        "subs_gained": 145,
+        "subs_lost": 18,
+        "live_views": 140,
+        "shorts_views": 47344,
+        "vod_views": 31720
+      },
+      "2026-08-04": {
+        "total_views": 130269,
+        "watch_hrs": 6295.2,
+        "subs_gained": 165,
+        "subs_lost": 18,
+        "live_views": 171,
+        "shorts_views": 94381,
+        "vod_views": 35519
+      },
+      "2026-08-05": {
+        "total_views": 146468,
+        "watch_hrs": 4677.3,
+        "subs_gained": 159,
+        "subs_lost": 25,
+        "live_views": 141,
+        "shorts_views": 118073,
+        "vod_views": 28152
+      },
+      "2026-08-06": {
+        "total_views": 272407,
+        "watch_hrs": 12977.4,
+        "subs_gained": 277,
+        "subs_lost": 34,
+        "live_views": 148,
+        "shorts_views": 209796,
+        "vod_views": 62426
+      },
+      "2026-08-07": {
+        "total_views": 237024,
+        "watch_hrs": 9321.2,
+        "subs_gained": 200,
+        "subs_lost": 27,
+        "live_views": 144,
+        "shorts_views": 188295,
+        "vod_views": 48585
+      },
+      "2026-08-08": {
+        "total_views": 173269,
+        "watch_hrs": 5533.0,
+        "subs_gained": 151,
+        "subs_lost": 28,
+        "live_views": 118,
+        "shorts_views": 144035,
+        "vod_views": 29116
+      },
+      "2026-08-09": {
+        "total_views": 129079,
+        "watch_hrs": 4548.9,
+        "subs_gained": 111,
+        "subs_lost": 22,
+        "live_views": 141,
+        "shorts_views": 103083,
+        "vod_views": 24734
+      },
+      "2026-08-10": {
+        "total_views": 97875,
+        "watch_hrs": 3550.2,
+        "subs_gained": 77,
+        "subs_lost": 19,
+        "live_views": 120,
+        "shorts_views": 78130,
+        "vod_views": 19625
+      },
+      "2026-08-11": {
+        "total_views": 263994,
+        "watch_hrs": 11802.5,
+        "subs_gained": 278,
+        "subs_lost": 30,
+        "live_views": 129,
+        "shorts_views": 206584,
+        "vod_views": 57281
+      },
+      "2026-08-12": {
+        "total_views": 326891,
+        "watch_hrs": 9951.9,
+        "subs_gained": 335,
+        "subs_lost": 39,
+        "live_views": 193,
+        "shorts_views": 262898,
+        "vod_views": 63799
+      },
+      "2026-08-13": {
+        "total_views": 223740,
+        "watch_hrs": 16931.4,
+        "subs_gained": 339,
+        "subs_lost": 53,
+        "live_views": 116,
+        "shorts_views": 131166,
+        "vod_views": 92458
+      },
+      "2026-08-14": {
+        "total_views": 379769,
+        "watch_hrs": 13703.8,
+        "subs_gained": 418,
+        "subs_lost": 28,
+        "live_views": 131,
+        "shorts_views": 305049,
+        "vod_views": 74589
+      },
+      "2026-08-15": {
+        "total_views": 473969,
+        "watch_hrs": 17641.3,
+        "subs_gained": 1026,
+        "subs_lost": 62,
+        "live_views": 168,
+        "shorts_views": 325773,
+        "vod_views": 148028
+      },
+      "2026-08-16": {
+        "total_views": 412556,
+        "watch_hrs": 14164.8,
+        "subs_gained": 820,
+        "subs_lost": 60,
+        "live_views": 164,
+        "shorts_views": 300829,
+        "vod_views": 110808
+      },
+      "2026-08-17": {
+        "total_views": 437066,
+        "watch_hrs": 11793.6,
+        "subs_gained": 629,
+        "subs_lost": 53,
+        "live_views": 205,
+        "shorts_views": 361478,
+        "vod_views": 74885
+      },
+      "2026-08-18": {
+        "total_views": 314878,
+        "watch_hrs": 9046.3,
+        "subs_gained": 432,
+        "subs_lost": 44,
+        "live_views": 120,
+        "shorts_views": 255387,
+        "vod_views": 59195
+      },
+      "2026-08-19": {
+        "total_views": 300853,
+        "watch_hrs": 6924.9,
+        "subs_gained": 323,
+        "subs_lost": 43,
+        "live_views": 142,
+        "shorts_views": 263847,
+        "vod_views": 36825
+      },
+      "2026-08-20": {
+        "total_views": 224277,
+        "watch_hrs": 5070.5,
+        "subs_gained": 215,
+        "subs_lost": 40,
+        "live_views": 152,
+        "shorts_views": 196328,
+        "vod_views": 27797
+      },
+      "2026-08-21": {
+        "total_views": 137804,
+        "watch_hrs": 3129.2,
+        "subs_gained": 150,
+        "subs_lost": 32,
+        "live_views": 135,
+        "shorts_views": 120697,
+        "vod_views": 16972
+      },
+      "2026-08-22": {
+        "total_views": 96219,
+        "watch_hrs": 2256.4,
+        "subs_gained": 130,
+        "subs_lost": 23,
+        "live_views": 90,
+        "shorts_views": 83660,
+        "vod_views": 12469
+      },
+      "2026-08-23": {
+        "total_views": 97756,
+        "watch_hrs": 2334.7,
+        "subs_gained": 104,
+        "subs_lost": 34,
+        "live_views": 104,
+        "shorts_views": 85297,
+        "vod_views": 12355
+      },
+      "2026-08-24": {
+        "total_views": 160219,
+        "watch_hrs": 3086.3,
+        "subs_gained": 137,
+        "subs_lost": 28,
+        "live_views": 162,
+        "shorts_views": 146842,
+        "vod_views": 12892
+      },
+      "2026-08-25": {
+        "total_views": 81442,
+        "watch_hrs": 2415.3,
+        "subs_gained": 97,
+        "subs_lost": 16,
+        "live_views": 132,
+        "shorts_views": 66540,
+        "vod_views": 14536
+      },
+      "2026-08-26": {
+        "total_views": 43202,
+        "watch_hrs": 1634.2,
+        "subs_gained": 72,
+        "subs_lost": 22,
+        "live_views": 144,
+        "shorts_views": 31926,
+        "vod_views": 10826
+      },
+      "2026-08-27": {
+        "total_views": 111350,
+        "watch_hrs": 5554.3,
+        "subs_gained": 109,
+        "subs_lost": 35,
+        "live_views": 250,
+        "shorts_views": 51404,
+        "vod_views": 59610
+      },
+      "2026-08-28": {
+        "total_views": 142085,
+        "watch_hrs": 6514.1,
+        "subs_gained": 199,
+        "subs_lost": 32,
+        "live_views": 172,
+        "shorts_views": 72239,
+        "vod_views": 70881
+      },
+      "2026-08-29": {
+        "total_views": 79402,
+        "watch_hrs": 3923.5,
+        "subs_gained": 143,
+        "subs_lost": 23,
+        "live_views": 128,
+        "shorts_views": 36460,
+        "vod_views": 42814
+      },
+      "2026-08-30": {
+        "total_views": 63782,
+        "watch_hrs": 2636.4,
+        "subs_gained": 100,
+        "subs_lost": 25,
+        "live_views": 175,
+        "shorts_views": 34083,
+        "vod_views": 29496
+      }
+    }
+  },
+  "socials": {
+    "2025-10": {
+      "INSTAGRAM": {
+        "FOLLOWERS": 87285.0,
+        "FOLLOWER_GAIN": 1717.0,
+        "POSTS": 40.0,
+        "VIEWS": 3253832.0,
+        "TOP_POST_VIEWS": 424907.0
+      },
+      "TIKTOK": {
+        "FOLLOWERS": 21941.0,
+        "FOLLOWER_GAIN": 648.0,
+        "POSTS": 39.0,
+        "VIEWS": 514163.0,
+        "TOP_POST_VIEWS": 138522.0
+      },
+      "X": {
+        "FOLLOWERS": 19946.0,
+        "FOLLOWER_GAIN": 112.0,
+        "POSTS": 42.0,
+        "VIEWS": 336926.0,
+        "ENGAGEMENT_RATE": 0.0083,
+        "TOP_POST_VIEWS": 83667.0
+      }
+    },
+    "2025-11": {
+      "INSTAGRAM": {
+        "FOLLOWERS": 91076.0,
+        "FOLLOWER_GAIN": 3804.0,
+        "POSTS": 46.0,
+        "VIEWS": 14488842.0,
+        "TOP_POST_VIEWS": 10563585.0
+      },
+      "TIKTOK": {
+        "FOLLOWERS": 24297.0,
+        "FOLLOWER_GAIN": 2272.0,
+        "POSTS": 29.0,
+        "VIEWS": 3937370.0,
+        "TOP_POST_VIEWS": 2412445.0
+      },
+      "X": {
+        "FOLLOWERS": 20177.0,
+        "FOLLOWER_GAIN": 231.0,
+        "POSTS": 36.0,
+        "VIEWS": 774867.0,
+        "ENGAGEMENT_RATE": 0.016,
+        "TOP_POST_VIEWS": 364500.0
+      }
+    },
+    "2025-12": {
+      "INSTAGRAM": {
+        "FOLLOWERS": 93575.0,
+        "FOLLOWER_GAIN": 2495.0,
+        "POSTS": 45.0,
+        "VIEWS": 6067589.0,
+        "TOP_POST_VIEWS": 685622.0
+      },
+      "TIKTOK": {
+        "FOLLOWERS": 25699.0,
+        "FOLLOWER_GAIN": 1402.0,
+        "POSTS": 35.0,
+        "VIEWS": 1935661.0,
+        "TOP_POST_VIEWS": 369229.0
+      },
+      "X": {
+        "FOLLOWERS": 20259.0,
+        "FOLLOWER_GAIN": 206.0,
+        "POSTS": 35.0,
+        "VIEWS": 227097.0,
+        "TOP_POST_VIEWS": 1159.0
+      }
+    },
+    "2026-01": {
+      "INSTAGRAM": {
+        "FOLLOWERS": 98509.0,
+        "FOLLOWER_GAIN": 4934.0,
+        "POSTS": 56.0,
+        "VIEWS": 5467827.0,
+        "ENGAGEMENTS": 348450.0,
+        "ENGAGEMENT_RATE": 0.0761,
+        "TOP_POST_VIEWS": 2157207.0
+      },
+      "TIKTOK": {
+        "FOLLOWERS": 28050.0,
+        "FOLLOWER_GAIN": 2415.0,
+        "POSTS": 42.0,
+        "VIEWS": 2361362.0,
+        "ENGAGEMENTS": 232208.0,
+        "ENGAGEMENT_RATE": 0.0943,
+        "TOP_POST_VIEWS": 321520.0
+      },
+      "X": {
+        "FOLLOWERS": 21806.0,
+        "FOLLOWER_GAIN": 1444.0,
+        "POSTS": 51.0,
+        "VIEWS": 1136936.0,
+        "ENGAGEMENTS": 33833.0,
+        "ENGAGEMENT_RATE": 0.0281,
+        "TOP_POST_VIEWS": 558400.0
+      },
+      "YOUTUBE": {
+        "FOLLOWERS": 139000.0,
+        "FOLLOWER_GAIN": 3848.0,
+        "POSTS": 102.0,
+        "VIEWS": 1933641.0,
+        "TOP_POST_VIEWS": 149119.0
+      }
+    },
+    "2026-02": {
+      "INSTAGRAM": {
+        "FOLLOWERS": 102490.0,
+        "FOLLOWER_GAIN": 3981.0,
+        "POSTS": 62.0,
+        "VIEWS": 5719587.0,
+        "ENGAGEMENTS": 414123.0,
+        "ENGAGEMENT_RATE": 0.0803,
+        "TOP_POST_VIEWS": 540101.0
+      },
+      "TIKTOK": {
+        "FOLLOWERS": 30553.0,
+        "FOLLOWER_GAIN": 2396.0,
+        "POSTS": 47.0,
+        "VIEWS": 2644733.0,
+        "ENGAGEMENTS": 260363.0,
+        "ENGAGEMENT_RATE": 0.0906,
+        "TOP_POST_VIEWS": 565700.0
+      },
+      "X": {
+        "FOLLOWERS": 22767.0,
+        "FOLLOWER_GAIN": 961.0,
+        "POSTS": 64.0,
+        "VIEWS": 920223.0,
+        "ENGAGEMENTS": 24119.0,
+        "ENGAGEMENT_RATE": 0.0269,
+        "TOP_POST_VIEWS": 128006.0
+      },
+      "YOUTUBE": {
+        "FOLLOWERS": 143000.0,
+        "FOLLOWER_GAIN": 3288.0,
+        "POSTS": 107.0,
+        "VIEWS": 2452727.0,
+        "TOP_POST_VIEWS": 248384.0
+      }
+    },
+    "2026-03": {
+      "INSTAGRAM": {
+        "FOLLOWERS": 107347.0,
+        "FOLLOWER_GAIN": 4822.0,
+        "POSTS": 92.0,
+        "VIEWS": 7530100.0,
+        "ENGAGEMENTS": 263613.0,
+        "ENGAGEMENT_RATE": 0.0642,
+        "TOP_POST_VIEWS": 1321647.0
+      },
+      "TIKTOK": {
+        "FOLLOWERS": 32440.0,
+        "FOLLOWER_GAIN": 1787.0,
+        "POSTS": 55.0,
+        "VIEWS": 1998538.0,
+        "ENGAGEMENTS": 92514.0,
+        "ENGAGEMENT_RATE": 0.0643,
+        "TOP_POST_VIEWS": 160700.0
+      },
+      "X": {
+        "FOLLOWERS": 23503.0,
+        "FOLLOWER_GAIN": 736.0,
+        "POSTS": 84.0,
+        "VIEWS": 1197699.0,
+        "ENGAGEMENTS": 25993.0,
+        "ENGAGEMENT_RATE": 0.0224,
+        "TOP_POST_VIEWS": 100265.0
+      },
+      "YOUTUBE": {
+        "FOLLOWERS": 149000.0,
+        "FOLLOWER_GAIN": 6502.0,
+        "POSTS": 134.0,
+        "VIEWS": 3372046.0,
+        "TOP_POST_VIEWS": 323526.0
+      }
+    },
+    "2026-04": {
+      "INSTAGRAM": {
+        "FOLLOWERS": 112471.0,
+        "FOLLOWER_GAIN": 5124.0,
+        "POSTS": 99.0,
+        "VIEWS": 15653830.0,
+        "ENGAGEMENTS": 361866.0,
+        "ENGAGEMENT_RATE": 0.0573,
+        "TOP_POST_VIEWS": 586551.0
+      },
+      "TIKTOK": {
+        "FOLLOWERS": 33847.0,
+        "FOLLOWER_GAIN": 1611.0,
+        "POSTS": 34.0,
+        "VIEWS": 1773018.0,
+        "ENGAGEMENTS": 98056.0,
+        "ENGAGEMENT_RATE": 0.0705,
+        "TOP_POST_VIEWS": 366500.0
+      },
+      "X": {
+        "FOLLOWERS": 23846.0,
+        "FOLLOWER_GAIN": 343.0,
+        "POSTS": 92.0,
+        "VIEWS": 952705.0,
+        "ENGAGEMENTS": 13730.0,
+        "ENGAGEMENT_RATE": 0.0146,
+        "TOP_POST_VIEWS": 91352.0
+      },
+      "YOUTUBE": {
+        "FOLLOWERS": 153000.0,
+        "FOLLOWER_GAIN": 4485.0,
+        "POSTS": 118.0,
+        "VIEWS": 3152267.0,
+        "TOP_POST_VIEWS": 359290.0
+      }
+    },
+    "2026-05": {
+      "INSTAGRAM": {
+        "FOLLOWERS": 117581.0,
+        "FOLLOWER_GAIN": 4955.0,
+        "POSTS": 75.0,
+        "VIEWS": 15967008.0,
+        "ENGAGEMENTS": 272817.0,
+        "ENGAGEMENT_RATE": 0.0743,
+        "TOP_POST_VIEWS": 887700.0
+      },
+      "TIKTOK": {
+        "FOLLOWERS": 36249.0,
+        "FOLLOWER_GAIN": 2120.0,
+        "POSTS": 28.0,
+        "VIEWS": 2731454.0,
+        "ENGAGEMENTS": 233415.0,
+        "ENGAGEMENT_RATE": 0.1004,
+        "TOP_POST_VIEWS": 485566.0
+      },
+      "X": {
+        "FOLLOWERS": 24887.0,
+        "FOLLOWER_GAIN": 1041.0,
+        "POSTS": 70.0,
+        "VIEWS": 1854600.0,
+        "ENGAGEMENTS": 20229.0,
+        "ENGAGEMENT_RATE": 0.0112,
+        "TOP_POST_VIEWS": 354920.0
+      },
+      "YOUTUBE": {
+        "FOLLOWERS": 156339.0,
+        "FOLLOWER_GAIN": 3483.0,
+        "POSTS": 112.0,
+        "VIEWS": 2364971.0,
+        "TOP_POST_VIEWS": 222180.0
+      },
+      "FACEBOOK": {
+        "FOLLOWERS": 3777.0,
+        "FOLLOWER_GAIN": 3531.0,
+        "POSTS": 37.0,
+        "VIEWS": 1003087.0,
+        "ENGAGEMENTS": 17888.0,
+        "ENGAGEMENT_RATE": 0.0171,
+        "TOP_POST_VIEWS": 400875.0
+      }
+    },
+    "2026-06": {
+      "INSTAGRAM": {
+        "FOLLOWERS": 125432.0,
+        "FOLLOWER_GAIN": 9128.0,
+        "POSTS": 86.0,
+        "VIEWS": 18789794.0,
+        "ENGAGEMENTS": 1104445.0,
+        "ENGAGEMENT_RATE": 0.0588,
+        "TOP_POST_VIEWS": 693922.0
+      },
+      "TIKTOK": {
+        "FOLLOWERS": 37644.0,
+        "FOLLOWER_GAIN": 1417.0,
+        "POSTS": 34.0,
+        "VIEWS": 2021531.0,
+        "ENGAGEMENTS": 158205.0,
+        "ENGAGEMENT_RATE": 0.0783,
+        "TOP_POST_VIEWS": 353532.0
+      },
+      "X": {
+        "FOLLOWERS": 25336.0,
+        "FOLLOWER_GAIN": 449.0,
+        "POSTS": 66.0,
+        "VIEWS": 1421383.0,
+        "ENGAGEMENTS": 25447.0,
+        "ENGAGEMENT_RATE": 0.0179,
+        "TOP_POST_VIEWS": 140251.0
+      },
+      "YOUTUBE": {
+        "FOLLOWERS": 162950.0,
+        "FOLLOWER_GAIN": 5954.0,
+        "POSTS": 116.0,
+        "VIEWS": 4524955.0,
+        "TOP_POST_VIEWS": 486707.0
+      },
+      "FACEBOOK": {
+        "FOLLOWERS": 5678.0,
+        "FOLLOWER_GAIN": 1922.0,
+        "POSTS": 29.0,
+        "VIEWS": 643031.0,
+        "ENGAGEMENTS": 20577.0,
+        "ENGAGEMENT_RATE": 0.032,
+        "TOP_POST_VIEWS": 231697.0
+      }
+    },
+    "2026-07": {
+      "INSTAGRAM": {
+        "FOLLOWERS": 129899.0,
+        "FOLLOWER_GAIN": 4937.0,
+        "POSTS": 81.0,
+        "VIEWS": 19200467.0,
+        "ENGAGEMENTS": 953104.0,
+        "ENGAGEMENT_RATE": 0.0496,
+        "TOP_POST_VIEWS": 2561854.0
+      },
+      "TIKTOK": {
+        "FOLLOWERS": 39381.0,
+        "FOLLOWER_GAIN": 1737.0,
+        "POSTS": 30.0,
+        "VIEWS": 2214814.0,
+        "ENGAGEMENTS": 207372.0,
+        "ENGAGEMENT_RATE": 0.0936,
+        "TOP_POST_VIEWS": 308412.0
+      },
+      "X": {
+        "FOLLOWERS": 25701.0,
+        "FOLLOWER_GAIN": 365.0,
+        "POSTS": 55.0,
+        "VIEWS": 1047656.0,
+        "ENGAGEMENTS": 21720.0,
+        "ENGAGEMENT_RATE": 0.0207,
+        "TOP_POST_VIEWS": 188761.0
+      },
+      "YOUTUBE": {
+        "FOLLOWERS": 172938.0,
+        "FOLLOWER_GAIN": 9910.0,
+        "POSTS": 84.0,
+        "VIEWS": 8937199.0,
+        "TOP_POST_VIEWS": 1644792.0
+      },
+      "FACEBOOK": {
+        "FOLLOWERS": 17646.0,
+        "FOLLOWER_GAIN": 11968.0,
+        "POSTS": 100.0,
+        "VIEWS": 7815071.0,
+        "ENGAGEMENTS": 167794.0,
+        "ENGAGEMENT_RATE": 0.0214,
+        "TOP_POST_VIEWS": 1760599.0
+      }
+    },
+    "2026-08": {
+      "INSTAGRAM": {
+        "FOLLOWERS": 132780.0,
+        "FOLLOWER_GAIN": 2881.0,
+        "POSTS": 87.0,
+        "VIEWS": 12053611.0,
+        "ENGAGEMENTS": 780582.0,
+        "ENGAGEMENT_RATE": 0.0648,
+        "TOP_POST_VIEWS": 724783.0
+      },
+      "TIKTOK": {
+        "FOLLOWERS": 40049.0,
+        "FOLLOWER_GAIN": 650.0,
+        "POSTS": 31.0,
+        "VIEWS": 1419300.0,
+        "ENGAGEMENTS": 145048.0,
+        "ENGAGEMENT_RATE": 0.1022,
+        "TOP_POST_VIEWS": 449452.0
+      },
+      "X": {
+        "FOLLOWERS": 26037.0,
+        "FOLLOWER_GAIN": 336.0,
+        "POSTS": 65.0,
+        "VIEWS": 569779.0,
+        "ENGAGEMENTS": 12407.0,
+        "ENGAGEMENT_RATE": 0.0218,
+        "TOP_POST_VIEWS": 188062.0
+      },
+      "YOUTUBE": {
+        "FOLLOWERS": 179629.0,
+        "FOLLOWER_GAIN": 6691.0,
+        "POSTS": 92.0,
+        "VIEWS": 5876392.0,
+        "TOP_POST_VIEWS": 499176.0
+      },
+      "FACEBOOK": {
+        "FOLLOWERS": 22340.0,
+        "FOLLOWER_GAIN": 4694.0,
+        "POSTS": 85.0,
+        "VIEWS": 3152187.0,
+        "ENGAGEMENTS": 83379.0,
+        "ENGAGEMENT_RATE": 0.0265,
+        "TOP_POST_VIEWS": 541143.0
+      }
+    }
+  },
+  "revenue": {
+    "2025-10": {
+      "YT_VIDEOS": 4882.45,
+      "YT_SHORTS": 108.64,
+      "YT_LIVES": 0.82,
+      "CULTURE_GENESIS": 1520.75,
+      "UPTIDES": 0.0,
+      "ACAST": 837.92,
+      "FANATICS": 0.0,
+      "SOCIAL": 0.0,
+      "MERCH": 0.0
+    },
+    "2025-11": {
+      "YT_VIDEOS": 7986.27,
+      "YT_SHORTS": 234.24,
+      "YT_LIVES": 1.29,
+      "CULTURE_GENESIS": 3155.81,
+      "UPTIDES": 0.0,
+      "ACAST": 2218.64,
+      "FANATICS": 0.0,
+      "SOCIAL": 0.0,
+      "MERCH": 0.0
+    },
+    "2025-12": {
+      "YT_VIDEOS": 14418.95,
+      "YT_SHORTS": 277.36,
+      "YT_LIVES": 1.28,
+      "CULTURE_GENESIS": 2887.07,
+      "UPTIDES": 0.0,
+      "ACAST": 1441.56,
+      "FANATICS": 0.0,
+      "SOCIAL": 0.0,
+      "MERCH": 0.0
+    },
+    "2026-01": {
+      "YT_VIDEOS": 4193.08,
+      "YT_SHORTS": 182.65,
+      "YT_LIVES": 878.91,
+      "CULTURE_GENESIS": 676.74,
+      "UPTIDES": 0.0,
+      "ACAST": 7048.49,
+      "FANATICS": 0.0,
+      "SOCIAL": 0.0,
+      "MERCH": 0.0
+    },
+    "2026-02": {
+      "YT_VIDEOS": 3528.49,
+      "YT_SHORTS": 284.47,
+      "YT_LIVES": 3774.16,
+      "CULTURE_GENESIS": 320.39,
+      "UPTIDES": 0.28,
+      "ACAST": 8361.19,
+      "FANATICS": 0.0,
+      "SOCIAL": 0.0,
+      "MERCH": 0.0,
+      "THREADS": 45000.0
+    },
+    "2026-03": {
+      "YT_VIDEOS": 5078.7,
+      "YT_SHORTS": 527.17,
+      "YT_LIVES": 2367.37,
+      "CULTURE_GENESIS": 1515.64,
+      "UPTIDES": 0.17,
+      "ACAST": 1387.11,
+      "FANATICS": 0.0,
+      "SOCIAL": 0.0,
+      "MERCH": 0.0
+    },
+    "2026-04": {
+      "YT_VIDEOS": 4413.73,
+      "YT_SHORTS": 545.95,
+      "YT_LIVES": 2023.31,
+      "CULTURE_GENESIS": 272.52,
+      "UPTIDES": 0.14,
+      "ACAST": 21.82,
+      "FANATICS": 314285.72,
+      "BACKYARD_PODCAST": 1050.0,
+      "BACKYARD_PROGRAMMATIC": 951.39,
+      "SOCIAL": 0.0,
+      "MERCH": 0.0
+    },
+    "2026-05": {
+      "YT_VIDEOS": 4739.6,
+      "YT_SHORTS": 437.29,
+      "YT_LIVES": 2199.12,
+      "CULTURE_GENESIS": 407.53,
+      "UPTIDES": 0.0,
+      "ACAST": 0.0,
+      "FANATICS": 157142.86,
+      "BACKYARD_PODCAST": 3185.0,
+      "BACKYARD_PROGRAMMATIC": 1338.46,
+      "SOCIAL": 0.0,
+      "MERCH": 0.0
+    },
+    "2026-06": {
+      "YT_VIDEOS": 6903.58,
+      "YT_SHORTS": 841.22,
+      "YT_LIVES": 2500.07,
+      "CULTURE_GENESIS": 976.36,
+      "UPTIDES": 0.0,
+      "ACAST": 0.0,
+      "FANATICS": 157142.86,
+      "BACKYARD_PODCAST": 80.01,
+      "BACKYARD_PROGRAMMATIC": 1318.57,
+      "SOCIAL": 0.0,
+      "MERCH": 0.0
+    },
+    "2026-07": {
+      "YT_VIDEOS": 10761.51,
+      "YT_SHORTS": 1525.32,
+      "YT_LIVES": 1057.12,
+      "CULTURE_GENESIS": 0.0,
+      "UPTIDES": 0.0,
+      "ACAST": 0.0,
+      "FANATICS": 157142.86,
+      "BACKYARD_PODCAST": 9595.79,
+      "BACKYARD_PROGRAMMATIC": 1158.67,
+      "SOCIAL": 0.0,
+      "MERCH": 0.0
+    },
+    "2026-08": {
+      "YT_VIDEOS": 10106.3,
+      "YT_SHORTS": 982.31,
+      "YT_LIVES": 51.45,
+      "CULTURE_GENESIS": 0.0,
+      "UPTIDES": 0.0,
+      "ACAST": 0.0,
+      "FANATICS": 157142.86,
+      "BACKYARD_PODCAST": 3351.05,
+      "BACKYARD_PROGRAMMATIC": 1537.82,
+      "SOCIAL": 0.0,
+      "MERCH": 0.0
+    }
+  },
+  "fanatics": {
+    "periods": [
+      {
+        "start": "2026-02-17",
+        "end": "2026-03-01",
+        "impressions": 4197217,
+        "yt_views": 712108,
+        "ig_views": 1606901,
+        "tiktok_views": 378050,
+        "fb_views": 0,
+        "x_imp": 196584,
+        "mega_views": 32334,
+        "group_eps": 4,
+        "solo_perk": 2,
+        "solo_chan": 0
+      },
+      {
+        "start": "2026-03-02",
+        "end": "2026-03-15",
+        "impressions": 5636845,
+        "yt_views": 851517,
+        "ig_views": 2993344,
+        "tiktok_views": 756244,
+        "fb_views": 0,
+        "x_imp": 323799,
+        "mega_views": 38294,
+        "group_eps": 4,
+        "solo_perk": 1,
+        "solo_chan": 1
+      },
+      {
+        "start": "2026-03-16",
+        "end": "2026-04-12",
+        "impressions": 16502616,
+        "yt_views": 3998477,
+        "ig_views": 4585760,
+        "tiktok_views": 1387480,
+        "fb_views": 0,
+        "x_imp": 1100981,
+        "mega_views": 71145,
+        "group_eps": 7,
+        "solo_perk": 4,
+        "solo_chan": 2
+      },
+      {
+        "start": "2026-04-13",
+        "end": "2026-05-10",
+        "impressions": 14937068,
+        "yt_views": 2983638,
+        "ig_views": 5525491,
+        "tiktok_views": 1081887,
+        "fb_views": 0,
+        "x_imp": 1545348,
+        "mega_views": 79293,
+        "group_eps": 8,
+        "solo_perk": 1,
+        "solo_chan": 1
+      },
+      {
+        "start": "2026-05-11",
+        "end": "2026-05-31",
+        "impressions": 13009427,
+        "yt_views": 1866428,
+        "ig_views": 3641703,
+        "tiktok_views": 2324000,
+        "fb_views": 1000000,
+        "x_imp": 1811882,
+        "mega_views": 47692,
+        "group_eps": 6,
+        "solo_perk": 1,
+        "solo_chan": 1
+      },
+      {
+        "start": "2026-06-01",
+        "end": "2026-06-30",
+        "impressions": 32527526,
+        "yt_views": 4013422,
+        "ig_views": 18789712,
+        "tiktok_views": 2021531,
+        "fb_views": 1000000,
+        "x_imp": 1421383,
+        "mega_views": 78971,
+        "group_eps": 9,
+        "solo_perk": 1,
+        "solo_chan": 1
+      },
+      {
+        "start": "2026-07-01",
+        "end": "2026-07-31",
+        "impressions": 44714823,
+        "yt_views": 8115349,
+        "ig_views": 19200467,
+        "tiktok_views": 2214814,
+        "fb_views": 7815071,
+        "x_imp": 1047656,
+        "mega_views": 74249,
+        "group_eps": 6,
+        "solo_perk": 1,
+        "solo_chan": 2
+      },
+      {
+        "start": "2026-08-01",
+        "end": "2026-08-31",
+        "impressions": 29438554,
+        "yt_views": 4951937,
+        "ig_views": 12053611,
+        "tiktok_views": 1419300,
+        "fb_views": 3152187,
+        "x_imp": 569779,
+        "mega_views": 87913,
+        "group_eps": 8,
+        "solo_perk": 1,
+        "solo_chan": 2
+      }
+    ],
+    "goal": 47000000,
+    "total_impressions": 160964076,
+    "total_episodes": 74
+  },
+  "concurrent": [
+    {
+      "date": "2026-01-13",
+      "title": "Schr\u00f6der vs Luka BEEF, AD DONE in Dallas & Lakers Trade HEAT",
+      "peak": 720,
+      "avg": 427
+    },
+    {
+      "date": "2026-01-20",
+      "title": "Jimmy Butler DONE, Ant Edwards ROBBED & Steph + Giannis RUMORS!?",
+      "peak": 885,
+      "avg": 627
+    },
+    {
+      "date": "2026-01-27",
+      "title": "RJ DEFENDS Luka MVP, Paolo PROBLEMS In Orlando & Giannis to Houston HAPPENING!?",
+      "peak": 1268,
+      "avg": 821
+    },
+    {
+      "date": "2026-01-30",
+      "title": "RJ DEFENDS LeBron CRYING, Ant vs SGA Gets 'PERSONAL' & Doc's Embiid SURPRISE!",
+      "peak": 1004,
+      "avg": 624
+    },
+    {
+      "date": "2026-02-03",
+      "title": "Harden to CLEVELAND, JJJ \u2018OVERHYPED!\u2019 & Stars ABANDONING Kawhi!",
+      "peak": 1869,
+      "avg": 1167
+    },
+    {
+      "date": "2026-02-06",
+      "title": "Ja Got NO OFFERS! Cavs RECRUITING LeBron & Giannis PICKS Knicks!",
+      "peak": 1736,
+      "avg": 1163
+    },
+    {
+      "date": "2026-02-10",
+      "title": "NBA FIGHT NIGHT! Harden TRANSFORMS Cavs & Tatum RETURNS?!",
+      "peak": 1751,
+      "avg": 1213
+    },
+    {
+      "date": "2026-02-13",
+      "title": "CP3 RETIRES! Wemby SAVES All-Star & QB Myth BUSTED!",
+      "peak": 1258,
+      "avg": 773
+    },
+    {
+      "date": "2026-02-20",
+      "title": "DON\u2019T TOUCH the DRAFT! Cade OVER Luka & SHUT Steph DOWN! :frog:",
+      "peak": 639,
+      "avg": 422
+    },
+    {
+      "date": "2026-02-24",
+      "title": "MVP Rules BROKEN! Jaylen PASSES Pierce!? & RJ: \u2018AAU SAVED MY LIFE!\u2019",
+      "peak": 995,
+      "avg": 760
+    },
+    {
+      "date": "2026-02-27",
+      "title": "Perk GOES OFF On Ayton, REAL Reason Kyrie Left Cavs & RJ\u2019s MVP SURPRISE!",
+      "peak": 1119,
+      "avg": 787
+    },
+    {
+      "date": "2026-03-03",
+      "title": "Peterson QUIT on Kansas! Kerr FAILED Kuminga! & Magic City CROSSES LINE!",
+      "peak": 895,
+      "avg": 682
+    },
+    {
+      "date": "2026-03-06",
+      "title": "RJ's Spurs WARNING! Tatum RETURNS! (Too Soon?) & LeBron REWRITES History!",
+      "peak": 895,
+      "avg": 682
+    },
+    {
+      "date": "2026-03-10",
+      "title": "Jayson Tatum Is BACK! SGA Calls GAME and Ties WILT! & The Knicks go 0-2 In LA",
+      "peak": 849,
+      "avg": 640
+    },
+    {
+      "date": "2026-03-12",
+      "title": "Is Bam\u2019s 83 UNETHICAL HOOPS? Houston\u2019s FATAL Flaw & Dejounte Goes TOO FAR",
+      "peak": 996,
+      "avg": 740
+    },
+    {
+      "date": "2026-03-17",
+      "title": "Who Is SAFE In NBA Expansion? How The Lakers LOCKED DOWN Houston, And Hawks STAY HOT!",
+      "peak": 1560,
+      "avg": 1149
+    },
+    {
+      "date": "2026-03-19",
+      "title": "What Does Cade's Collapsed Lung Mean For The Pistons? LeBron TURNS BACK The Clock! + Luka's MVP Case",
+      "peak": 1332,
+      "avg": 955
+    },
+    {
+      "date": "2026-03-22",
+      "title": "Did Kenyon Martin Do TOO MUCH? Perk's WARNING to Acho & Squashing BEEF With Killa!",
+      "peak": 387,
+      "avg": 286
+    },
+    {
+      "date": "2026-03-24",
+      "title": "The GREATEST Trash Talkers Of All Time! Is Wemby Top 2 And NOT 2? How Detroit SURVIVES Without Cade",
+      "peak": 1102,
+      "avg": 883
+    },
+    {
+      "date": "2026-03-26",
+      "title": "Harden NEVER Got This Credit! Luka ALREADY Top 10 EVER & Rockets FOLD Again!",
+      "peak": 858,
+      "avg": 577
+    },
+    {
+      "date": "2026-03-31",
+      "title": "What's Up With Jaden Ivey? Wemby And SGA Going BAND FOR BAND! & March MADNESS Update",
+      "peak": 1318,
+      "avg": 930
+    },
+    {
+      "date": "2026-04-02",
+      "title": "Spurs STREAKING & James Harden Vs D Wade DEBATE",
+      "peak": 805,
+      "avg": 579
+    },
+    {
+      "date": "2026-04-10",
+      "title": "Can LeBron CARRY The Lakers? What Cade's Return Means For The East, Embiid Out INDEFINITELY",
+      "peak": 812,
+      "avg": 635
+    },
+    {
+      "date": "2026-04-13",
+      "title": "Things Got WEIRD in Milwaukee, Perk QUESTONS Ja's Future + HOU vs LAL: KD's Legacy on the Line?",
+      "peak": 833,
+      "avg": 660
+    },
+    {
+      "date": "2026-04-16",
+      "title": "Luka RETURNS! Draymond DEFINES This Era & PERK COOKS Paolo!",
+      "peak": 1075,
+      "avg": 853
+    },
+    {
+      "date": "2026-04-20",
+      "title": "Perk ADMITS He Was Wrong, KD NO SHOW& Tatum LOOKS Elite",
+      "peak": 1571,
+      "avg": 1060
+    },
+    {
+      "date": "2026-04-22",
+      "title": "LeBron And Ant Just STUNNED Houston & Denver + CJ the VILLIAN??",
+      "peak": 1575,
+      "avg": 1072
+    },
+    {
+      "date": "2026-04-28",
+      "title": "Orlando Magic's UNBELIEVABLE Run, Wemby SPEAKS, Cavs v Raptors Gets INTERESTING & Cooper Flagg ROTY",
+      "peak": 1290,
+      "avg": 878
+    },
+    {
+      "date": "2026-04-30",
+      "title": "Cade & Paolo HISTORIC Night! Rockets FIGHT For Their Lives, Cavs SQUEEZING The Rope and Jokic Legacy",
+      "peak": 793,
+      "avg": 590
+    },
+    {
+      "date": "2026-05-04",
+      "title": "INSANE Game 7s! Breaking Down Celtics COLLAPSE, Jaylen Brown's CRASH OUT, Cavs and Pistons ADVANCE!",
+      "peak": 1873,
+      "avg": 1424
+    },
+    {
+      "date": "2026-05-06",
+      "title": "MPJ Opens Up on Cam Thomas & Being a #1 Option + Perk FLIPS on Spurs After Game 1",
+      "peak": 949,
+      "avg": 620
+    },
+    {
+      "date": "2026-05-12",
+      "title": "Do The Lakers Need a MAKEOVER? + Channing ROASTS Duren: \u2018You\u2019ve Been A SHART!\u2019",
+      "peak": 570,
+      "avg": 459
+    },
+    {
+      "date": "2026-05-15",
+      "title": "Harden RESCUES The Cavs In G5 + Is Rob Pelinka FINALLY On The Hot Seat?",
+      "peak": 1268,
+      "avg": 960
+    },
+    {
+      "date": "2026-05-18",
+      "title": "RJ & Channing CAN'T AGREE On Anything: SGA MVP, Ant's Handshake & The Randle Problem",
+      "peak": 1246,
+      "avg": 865
+    },
+    {
+      "date": "2026-05-20",
+      "title": "Perk DARES Chet to GO CHECK Wemby + Who's To Blame for Cavs EPIC Meltdown??",
+      "peak": 1456,
+      "avg": 1046
+    },
+    {
+      "date": "2026-05-27",
+      "title": "Perk's AAU FIGHT Goes Viral, Cavs Need To BLOW IT UP?! + Wemby Skipped Media",
+      "peak": 1036,
+      "avg": 757
+    },
+    {
+      "date": "2026-05-29",
+      "title": "We Have A Game 7! Wemby vs SGA For A Trip To The Finals! Road Trippin' In The Morning",
+      "peak": 1402,
+      "avg": 983
+    },
+    {
+      "date": "2026-06-03",
+      "title": "Knicks vs Spurs NBA Finals PREVIEW w/ James Worthy, Robert Horry & DeAndre Jordan",
+      "peak": 1058,
+      "avg": 626
+    },
+    {
+      "date": "2026-06-05",
+      "title": "Knicks vs Spurs Finals SPECIAL w/ Malika Andrews, James Jones & Will Reeve",
+      "peak": 487,
+      "avg": 293
+    },
+    {
+      "date": "2026-06-09",
+      "title": "Spurs STEAL Game 3! Knicks vs Wemby With The NBA FINALS On The LINE",
+      "peak": 1133,
+      "avg": 891
+    },
+    {
+      "date": "2026-06-12",
+      "title": "Biggest Comeback In Finals HISTORY! OG's Game-Winner & Finals MVP Race Heats Up",
+      "peak": 1268,
+      "avg": 960
+    },
+    {
+      "date": "2026-06-15",
+      "title": "Tracy Morgan Gets EMOTIONAL After Knicks Championship + The Crew DIVIDED on If Brunson is TOP 5",
+      "peak": 872,
+      "avg": 634
+    },
+    {
+      "date": "2026-06-17",
+      "title": "French Montana & Max B Want A Brunson STATUE + Perk GOES OFF On AWFUL \"Participation Trophy\" Take",
+      "peak": 473,
+      "avg": 294
+    },
+    {
+      "date": "2026-06-22",
+      "title": "Perk's Darryn Peterson KOBE Comp Gets SHUT DOWN + Jaylen Brown TALKED Himself Out Of Boston",
+      "peak": 751,
+      "avg": 518
+    }
+  ],
+  "audio": {
+    "2026-01": {
+      "total_delivery": 27
+    },
+    "2026-02": {
+      "total_delivery": 72550
+    },
+    "2026-03": {
+      "total_delivery": 91090
+    },
+    "2026-04": {
+      "total_delivery": 87353
+    },
+    "2026-05": {
+      "total_delivery": 76942
+    },
+    "2026-06": {
+      "total_delivery": 88761
+    },
+    "2026-07": {
+      "total_delivery": 85597
+    },
+    "2026-08": {
+      "total_delivery": 87913
+    }
+  },
+  "milestones": [
+    {
+      "month": "2025-10",
+      "type": "subs",
+      "label": "Crossed 100K subscribers"
+    },
+    {
+      "month": "2025-12",
+      "type": "subs",
+      "label": "Crossed 125K subscribers"
+    },
+    {
+      "month": "2026-04",
+      "type": "subs",
+      "label": "Crossed 150K subscribers"
+    },
+    {
+      "month": "2026-08",
+      "type": "subs",
+      "label": "Crossed 175K subscribers"
+    },
+    {
+      "month": "2026-07",
+      "type": "views",
+      "label": "Best YT month: 8,923,742 views"
+    },
+    {
+      "month": "2026-07",
+      "type": "shorts",
+      "label": "Best Shorts month: 7,373,863"
+    },
+    {
+      "month": "2026-07",
+      "type": "viral",
+      "label": "1,734,672 views \u2014 Top High School Basketball Recruit is BABY GIANNIS!? #nba #marcusspears #basketball",
+      "video_id": "k3pJGiIh1RE",
+      "views": 1734672
+    },
+    {
+      "month": "2026-07",
+      "type": "viral",
+      "label": "1,502,355 views \u2014 Imam Shumpert GOES OFF on Lakers Free Agency #LosAngelesLakers #lukadoncic #Lakers",
+      "video_id": "JUn4tQJ9Y60",
+      "views": 1502355
+    },
+    {
+      "month": "2025-12",
+      "type": "viral",
+      "label": "717,486 views \u2014 Perk EXPOSES What CP3 Was Doing Behind T-Lue's Back in Locker Room",
+      "video_id": "HwWx5nhjCx8",
+      "views": 717486
+    },
+    {
+      "month": "2026-08",
+      "type": "viral",
+      "label": "500,205 views \u2014 Rajon Rondo Exposes RJ\u2019s Worst Teammate Moment #nba #basketball",
+      "video_id": "HtZ8tDkeGJY",
+      "views": 500205
+    },
+    {
+      "month": "2026-07",
+      "type": "viral",
+      "label": "493,542 views \u2014 LeBron\u2019s Next Move Will RUN The NBA?! #NBA #LebronJames",
+      "video_id": "ziCh3vNf0ik",
+      "views": 493542
+    },
+    {
+      "month": "2026-05",
+      "type": "live_peak",
+      "label": "Peak concurrent: 1,873 \u2014 INSANE Game 7s! Breaking Down Celtics COLLAPSE, Jaylen Brown's CRASH OUT, Cavs and Pistons ADVANCE!"
+    },
+    {
+      "month": "2026-05",
+      "type": "revenue",
+      "label": "Crossed $500K gross revenue (RDM cut begins)"
+    }
+  ],
+  "gaps": [
+    {
+      "source": "Socials",
+      "detail": "['2026-09']"
+    },
+    {
+      "source": "Revenue",
+      "detail": "['2026-09']"
+    },
+    {
+      "source": "Audio",
+      "detail": "['2025-10', '2025-11', '2025-12', '2026-09']"
+    }
+  ]
+}

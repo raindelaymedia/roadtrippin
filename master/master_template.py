@@ -340,6 +340,35 @@ def build_master_html(rdm_summary, show_summaries, quarter_label,
 """
 
     split_panels = "\n".join(_render_split_panel(s) for s in show_summaries if s.get("show_revenue", False))
+
+    # S1 shelved summary
+    s1_data = rdm.get("s1_final", {})
+    s1_gross = s1_data.get("gross_revenue", 0)
+    s1_term = s1_data.get("term", "Oct 2025 – Sep 2026")
+    s1_imp = s1_data.get("fanatics_impressions", 0)
+    _s1_cut = s1_data.get("rdm_cut", 0)
+
+    s1_block = ""
+    if s1_gross > 0:
+        s1_block = f"""
+<div class="s1-summary">
+  <details>
+    <summary class="s1-header">
+      <span class="s1-badge">S1 COMPLETE</span>
+      <span class="s1-title">Season 1 Revenue Summary · {s1_term}</span>
+      <span class="s1-arrow">▸</span>
+    </summary>
+    <div class="s1-body">
+      <div class="s1-grid">
+        <div><div class="s1-lbl">Gross Revenue</div><div class="s1-val">{_fmt_money(s1_gross, 2)}</div></div>
+        <div><div class="s1-lbl">RDM Cut (earned)</div><div class="s1-val">{_fmt_money(_s1_cut, 2)}</div></div>
+        <div><div class="s1-lbl">Fanatics Impressions</div><div class="s1-val">{_fmt_num_short(s1_imp)}</div></div>
+        <div><div class="s1-lbl">Current Tier</div><div class="s1-val">25% (above $1M)</div></div>
+      </div>
+    </div>
+  </details>
+</div>
+"""
     show_cards   = "\n".join(_render_show_card(s)   for s in show_summaries)
 
     return f"""<!doctype html>
@@ -787,6 +816,68 @@ def build_master_html(rdm_summary, show_summaries, quarter_label,
     color: var(--brand2);
   }}
 
+  /* ─── S1 Shelved Summary ─── */
+  .s1-summary {{
+    margin-bottom: 16px;
+  }}
+  .s1-header {{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 18px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    cursor: pointer;
+    list-style: none;
+  }}
+  .s1-header::-webkit-details-marker {{ display: none; }}
+  .s1-badge {{
+    font-size: 9px;
+    font-weight: 700;
+    background: #16A34A;
+    color: #fff;
+    padding: 3px 8px;
+    border-radius: 4px;
+    letter-spacing: .06em;
+  }}
+  .s1-title {{
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink);
+    flex: 1;
+  }}
+  .s1-arrow {{
+    font-size: 12px;
+    color: var(--mut);
+    transition: transform .2s;
+  }}
+  details[open] .s1-arrow {{ transform: rotate(90deg); }}
+  .s1-body {{
+    padding: 16px 18px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 var(--radius) var(--radius);
+  }}
+  .s1-grid {{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+  }}
+  .s1-lbl {{
+    font-size: 10px;
+    color: var(--mut);
+    text-transform: uppercase;
+    letter-spacing: .06em;
+  }}
+  .s1-val {{
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--ink);
+    font-family: 'JetBrains Mono', monospace;
+  }}
+
   /* ─── Coming soon block ─── */
   .coming-soon {{
     background: var(--surface);
@@ -855,8 +946,9 @@ def build_master_html(rdm_summary, show_summaries, quarter_label,
 
   <div class="sec-h">
     <h2>★ Revenue Split Tracker</h2>
-    <span class="r">Lifetime cumulative · auditable math for invoicing</span>
+    <span class="r">Season 2 · contract to date</span>
   </div>
+  {s1_block}
   {split_panels}
 
   <div class="sec-h">

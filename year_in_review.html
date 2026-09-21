@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Road Trippin' — Season 1 Year in Review</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0A0E1A;--s1:#12162A;--s2:#1A1F36;--bdr:rgba(255,255,255,.05);--t:#EEEEE8;--t2:#8891A5;--t3:#505870;--gold:#C9A84C;--r:10px}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--t);overflow-x:hidden}
+a{color:inherit}
+
+/* Hero */
+.hero{text-align:center;padding:120px 24px 80px;position:relative}
+.hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 50% 30%,rgba(201,168,76,.06) 0%,transparent 70%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:0;left:15%;right:15%;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.htag{font-size:11px;text-transform:uppercase;letter-spacing:.3em;color:var(--gold);font-weight:600;margin-bottom:16px}
+h1{font-size:clamp(40px,8vw,72px);font-weight:800;letter-spacing:-2px;line-height:1.05}
+h1 em{font-style:normal;color:var(--gold)}
+.hsub{font-size:16px;color:var(--t2);margin:8px 0 48px}
+.hgrid{display:flex;justify-content:center;gap:44px;flex-wrap:wrap}
+.hstat{text-align:center}
+.hval{font-size:36px;font-weight:800;letter-spacing:-.5px}
+.hlbl{font-size:10px;color:var(--t3);text-transform:uppercase;letter-spacing:.12em;margin-top:2px}
+
+/* Charts */
+.charts-sec{max-width:900px;margin:40px auto;padding:0 24px}
+.chart-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.chart-box{background:var(--s1);border:1px solid var(--bdr);border-radius:var(--r);padding:18px}
+.chart-box.wide{grid-column:span 2}
+.chart-lbl{font-size:11px;font-weight:600;color:var(--t2);margin-bottom:10px;text-transform:uppercase;letter-spacing:.05em}
+
+/* Chapters */
+.chapter{max-width:800px;margin:0 auto;padding:60px 24px 20px}
+.ch-header{text-align:center;margin-bottom:40px}
+.ch-line{width:3px;height:40px;margin:0 auto 16px;border-radius:2px}
+.ch-title{font-size:clamp(28px,5vw,42px);font-weight:800;letter-spacing:-1px}
+.ch-subtitle{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;margin-top:4px}
+.ch-desc{font-size:14px;color:var(--t2);margin-top:8px;max-width:500px;margin-left:auto;margin-right:auto}
+
+/* Event track */
+.ev-track{position:relative;padding:20px 0}
+.ev-track::before{content:'';position:absolute;left:50%;top:0;bottom:0;width:2px;background:linear-gradient(var(--ch-color,var(--gold)),rgba(255,255,255,.03));transform:translateX(-50%)}
+
+.ev{position:relative;display:flex;margin-bottom:32px}
+.ev-left{justify-content:flex-end;padding-right:calc(50% + 28px)}
+.ev-right{justify-content:flex-start;padding-left:calc(50% + 28px)}
+.ev-dot{position:absolute;left:50%;top:20px;width:14px;height:14px;border-radius:50%;background:var(--bg);border:3px solid;transform:translateX(-50%);z-index:2}
+.ev-card{background:var(--s1);border:1px solid var(--bdr);border-radius:var(--r);padding:18px;max-width:340px;transition:transform .25s,border-color .25s}
+.ev-card:hover{transform:translateY(-2px);border-color:rgba(255,255,255,.12)}
+.ev-date{font-size:10px;color:var(--t3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
+.ev-icon{font-size:24px;margin-bottom:6px}
+.ev-title{font-size:16px;font-weight:700;letter-spacing:-.2px;margin-bottom:6px}
+.ev-desc{font-size:12px;color:var(--t2);line-height:1.5}
+.ev-thumb{width:100%;border-radius:6px;margin-top:10px;display:block}
+
+/* Top videos */
+.top-sec{max-width:800px;margin:40px auto;padding:0 24px}
+.top-sec h2{font-size:20px;font-weight:800;text-align:center;margin-bottom:20px}
+.t10{display:flex;gap:12px;align-items:center;background:var(--s1);border:1px solid var(--bdr);border-radius:var(--r);padding:12px;margin-bottom:8px;transition:transform .15s}
+.t10:hover{transform:translateX(4px)}
+.t10-rank{font-size:18px;font-weight:800;color:var(--gold);min-width:32px;text-align:center}
+.t10 img{width:120px;height:68px;object-fit:cover;border-radius:6px;flex-shrink:0}
+.t10-info{flex:1;font-size:12px;color:var(--t2)}
+.t10-title{font-size:11px;color:var(--t3);margin-top:2px;line-height:1.3}
+.t10-date{font-size:10px;color:var(--t3);margin-top:2px}
+.badge{font-size:8px;font-weight:700;background:#1B9B96;color:#fff;padding:1px 5px;border-radius:3px}
+
+.foot{text-align:center;padding:60px 24px;font-size:11px;color:var(--t3);border-top:1px solid var(--bdr);margin-top:40px}
+.fade-in{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:700px){
+  .hgrid{flex-direction:column;gap:16px}
+  .chart-row{grid-template-columns:1fr}.chart-box.wide{grid-column:span 1}
+  .ev-track::before{left:20px}
+  .ev-left,.ev-right{padding-left:48px;padding-right:0;justify-content:flex-start}
+  .ev-dot{left:20px}
+  .ev-card{max-width:100%}
+  .t10 img{width:80px;height:45px}
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="htag">Rain Delay Media presents</div>
+  <h1>Season <em>One</em></h1>
+  <div class="hsub">Road Trippin' · October 2025 — September 2026</div>
+  <div class="hgrid">
+    <div class="hstat"><div class="hval">—</div><div class="hlbl">YouTube Views</div></div>
+    <div class="hstat"><div class="hval">0K</div><div class="hlbl">Subscribers</div></div>
+    <div class="hstat"><div class="hval">$0</div><div class="hlbl">Revenue</div></div>
+    <div class="hstat"><div class="hval">—</div><div class="hlbl">Impressions</div></div>
+    <div class="hstat"><div class="hval">0</div><div class="hlbl">Videos</div></div>
+  </div>
+</div>
+
+<div class="charts-sec">
+  <div class="chart-row">
+    <div class="chart-box wide"><div class="chart-lbl">YouTube Views by Content Type</div><div style="height:260px"><canvas id="c1"></canvas></div></div>
+  </div>
+  <div class="chart-row">
+    <div class="chart-box"><div class="chart-lbl">Subscriber Growth</div><div style="height:200px"><canvas id="c2"></canvas></div></div>
+    <div class="chart-box"><div class="chart-lbl">Monthly Revenue</div><div style="height:200px"><canvas id="c3"></canvas></div></div>
+  </div>
+</div>
+
+
+        <div class="chapter" id="ch-foundation">
+          <div class="ch-header fade-in">
+            <div class="ch-line" style="background:#C9A84C"></div>
+            <h2 class="ch-title">The Foundation</h2>
+            <div class="ch-subtitle" style="color:#C9A84C">October – December 2025</div>
+            <div class="ch-desc">Building the format, growing the audience, finding the voice.</div>
+          </div>
+          <div class="ev-track" style="--ch-color:#C9A84C">
+            
+            <div class="ev ev-left fade-in">
+              <div class="ev-dot" style="border-color:#C9A84C"></div>
+              <div class="ev-card">
+                <div class="ev-date">Oct 01, 2025</div>
+                <div class="ev-icon">🚀</div>
+                <div class="ev-title">Season 1 Begins</div>
+                <div class="ev-desc">Rain Delay Media begins production of Road Trippin' Season 2 cycle.</div>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="chapter" id="ch-going_live">
+          <div class="ch-header fade-in">
+            <div class="ch-line" style="background:#2F6DDE"></div>
+            <h2 class="ch-title">Going Live</h2>
+            <div class="ch-subtitle" style="color:#2F6DDE">January – February 2026</div>
+            <div class="ch-desc">Live episodes launch. Fanatics deal signed. Everything accelerates.</div>
+          </div>
+          <div class="ev-track" style="--ch-color:#2F6DDE">
+            
+            <div class="ev ev-left fade-in">
+              <div class="ev-dot" style="border-color:#2F6DDE"></div>
+              <div class="ev-card">
+                <div class="ev-date">Feb 17, 2026</div>
+                <div class="ev-icon">💰</div>
+                <div class="ev-title">Fanatics Partnership Begins</div>
+                <div class="ev-desc">Presenting sponsorship deal goes live. 47M impression target set for 7-month term.</div>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="chapter" id="ch-breakout">
+          <div class="ch-header fade-in">
+            <div class="ch-line" style="background:#1B9B96"></div>
+            <h2 class="ch-title">The Breakout</h2>
+            <div class="ch-subtitle" style="color:#1B9B96">March – May 2026</div>
+            <div class="ch-desc">Shorts strategy explodes. Revenue crosses $500K. Playoffs drive record engagement.</div>
+          </div>
+          <div class="ev-track" style="--ch-color:#1B9B96">
+            
+          </div>
+        </div>
+        <div class="chapter" id="ch-peak">
+          <div class="ch-header fade-in">
+            <div class="ch-line" style="background:#E08C2A"></div>
+            <h2 class="ch-title">Peak Season</h2>
+            <div class="ch-subtitle" style="color:#E08C2A">June – August 2026</div>
+            <div class="ch-desc">Best numbers across every metric. Free agency content goes massive. Rondo takes August.</div>
+          </div>
+          <div class="ev-track" style="--ch-color:#E08C2A">
+            
+          </div>
+        </div>
+        <div class="chapter" id="ch-finale">
+          <div class="ch-header fade-in">
+            <div class="ch-line" style="background:#E84B8A"></div>
+            <h2 class="ch-title">Season Finale</h2>
+            <div class="ch-subtitle" style="color:#E84B8A">September 2026</div>
+            <div class="ch-desc">Delivering the final numbers. Looking ahead to Season 2.</div>
+          </div>
+          <div class="ev-track" style="--ch-color:#E84B8A">
+            
+            <div class="ev ev-left fade-in">
+              <div class="ev-dot" style="border-color:#E84B8A"></div>
+              <div class="ev-card">
+                <div class="ev-date">Sep 13, 2026</div>
+                <div class="ev-icon">📋</div>
+                <div class="ev-title">Season 1 Complete</div>
+                <div class="ev-desc">Final data collection and report delivery.</div>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+
+<div class="top-sec">
+  <h2>🏆 Top 10 Videos of Season 1</h2>
+  
+</div>
+
+<div class="foot">
+  Road Trippin' Show · Season 1 · Produced by Rain Delay Media<br>
+  Generated September 13, 2026
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+const L=["OCT '25", "NOV '25", "DEC '25", "JAN '26", "FEB '26", "MAR '26", "APR '26", "MAY '26", "JUN '26", "JUL '26", "AUG '26", "SEP '26"],gc='rgba(255,255,255,.04)',tc='#505870',
+fK=v=>v>=1e6?(v/1e6).toFixed(1)+'M':v>=1e3?(v/1e3).toFixed(0)+'K':v;
+new Chart(document.getElementById('c1'),{type:'bar',data:{labels:L,datasets:[
+{label:'VOD',data:[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],backgroundColor:'#2F6DDE',borderRadius:3,stack:'s'},
+{label:'Shorts',data:[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],backgroundColor:'#1B9B96',borderRadius:3,stack:'s'},
+{label:'Live',data:[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],backgroundColor:'#E08C2A',borderRadius:3,stack:'s'}
+]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{color:tc,boxWidth:10,font:{size:11}}}},scales:{x:{stacked:true,grid:{display:false},ticks:{color:tc}},y:{stacked:true,grid:{color:gc},ticks:{color:tc,callback:fK}}}}});
+new Chart(document.getElementById('c2'),{type:'line',data:{labels:L,datasets:[{data:[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],borderColor:'#C9A84C',backgroundColor:'rgba(201,168,76,.08)',fill:true,tension:.35,pointRadius:3,borderWidth:2}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{display:false},ticks:{color:tc}},y:{grid:{color:gc},ticks:{color:tc,callback:fK}}}}});
+new Chart(document.getElementById('c3'),{type:'bar',data:{labels:L,datasets:[{data:[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],backgroundColor:'#C9A84C',borderRadius:3}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{display:false},ticks:{color:tc}},y:{grid:{color:gc},ticks:{color:tc,callback:v=>'$'+fK(v)}}}}});
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.1,rootMargin:'0px 0px -50px 0px'});
+document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
