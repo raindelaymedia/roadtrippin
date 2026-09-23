@@ -687,6 +687,57 @@ def pull_reporting_api(creds, data_dir):
     return result
 
 
+# ─── Collab Traffic Sources ──────────────────────────────────────
+def pull_collab_sources(creds, start, end):
+    """Pull views that came from other YouTube channels (Traffic Source → Channel pages).
+    Used to track what % of views on daughter shows come from RT collabs.
+    Returns dict keyed by month with collab views, total views, collab %, and top referring channels.
+    """
+    from collections import defaultdict
+    try:
+        yt_analytics = build_api("youtubeAnalytics", "v2", credentials=creds)
+        # Total views per day (for denominator)
+        resp_total = yt_analytics.reports().query(
+            ids="channel==MINE", startDate=start, endDate=end,
+            metrics="views", dimensions="day", sort="day").execute()
+        daily_total = defaultdict(int)
+        for row in resp_total.get("rows", []):
+            daily_total[row[0][:7]] += row[1]
+
+        # Views from YT_CHANNEL traffic source, broken down by referring channel
+        resp_collab = yt_analytics.reports().query(
+            ids="channel==MINE", startDate=start, endDate=end,
+            metrics="views",
+            dimensions="day,insightTrafficSourceDetail",
+            filters="insightTrafficSourceType==YT_CHANNEL",
+            sort="day").execute()
+
+        monthly_channels = defaultdict(lambda: defaultdict(int))
+        monthly_collab_total = defaultdict(int)
+        for row in resp_collab.get("rows", []):
+            month = row[0][:7]
+            channel_name = row[1]
+            views = row[2]
+            monthly_channels[month][channel_name] += views
+            monthly_collab_total[month] += views
+
+        data = {}
+        for m in sorted(set(list(daily_total.keys()) + list(monthly_collab_total.keys()))):
+            total = daily_total.get(m, 0)
+            collab = monthly_collab_total.get(m, 0)
+            top_channels = sorted(monthly_channels.get(m, {}).items(), key=lambda x: -x[1])[:5]
+            data[m] = {
+                "total_views": total,
+                "collab_views": collab,
+                "collab_pct": round(collab / total, 4) if total > 0 else 0,
+                "top_channels": [{"name": ch, "views": v} for ch, v in top_channels],
+            }
+        return data
+    except Exception as e:
+        print(f"  ⚠ Collab sources failed: {e}")
+        return {}
+
+
 # ─── Megaphone ───────────────────────────────────────────────────
 def pull_megaphone_api(token, network_id, podcast_id, n_months=22):
     """Pull episode counts per month from Megaphone API.
@@ -1228,6 +1279,20 @@ def main():
             print(f"  ✗ Reporting API failed: {e}")
             reporting_data = {}
 
+    # Collab traffic sources
+    print("  Pulling collab traffic sources...")
+    collab_data = pull_collab_sources(creds, start, end)
+    if collab_data:
+        latest = sorted(collab_data.keys())[-1]
+        c = collab_data[latest]
+        print(f"  ✓ Collab sources: {len(collab_data)} months")
+        print(f"    Latest ({latest}): {c['collab_pct']*100:.1f}% from channel pages ({c['collab_views']:,} of {c['total_views']:,})")
+        if c.get('top_channels'):
+            for ch in c['top_channels'][:3]:
+                print(f"      {ch['name']}: {ch['views']:,}")
+    else:
+        print("  ⚠ No collab data returned")
+
     print("\n[2/3] Megaphone...")
     print(f"  Monthly CSV: {args.megaphone_monthly}")
     mega = load_megaphone_monthly(args.megaphone_monthly)
@@ -1301,6 +1366,12 @@ def main():
             "ctr":          {m: reporting_data.get(m, {}).get("ctr") for m in months},
             "search_pct":   {m: reporting_data.get(m, {}).get("search_pct") for m in months},
             "tv_pct":       {m: reporting_data.get(m, {}).get("tv_pct") for m in months},
+        },
+        "collab": {
+            "collab_views":  {m: collab_data.get(m, {}).get("collab_views") for m in months},
+            "collab_pct":    {m: collab_data.get(m, {}).get("collab_pct") for m in months},
+            "total_views":   {m: collab_data.get(m, {}).get("total_views") for m in months},
+            "top_channels":  {m: collab_data.get(m, {}).get("top_channels", []) for m in months},
         },
         "best_of": {
             "label": date_range_label,

@@ -70,29 +70,19 @@ SHOWS = [
 
 # Revenue-split tiers per RT × RDM contract §5.1
 # Progressive: each tier rate applies only to the slice of cumulative gross
-# that falls in that band. S1 ended above $1M, so S2 is entirely in the 25% tier.
+# that falls in that band.
 SPLIT_TIERS = [
     (0,           500_000,        0.00),
     (500_000,     1_000_000,      0.20),
     (1_000_000,   float("inf"),   0.25),
 ]
 
-# S1 cumulative carries forward for tier calculation
-S1_CUMULATIVE_GROSS = 1_142_288.23  # final S1 gross — all S2 revenue stacks on top
-
-# Season 1 final totals (Oct 2025 – Sep 13, 2026) — shelved for reference
-S1_FINAL = {
-    "gross_revenue": 1_142_288.23,
-    "rdm_cut":       (500_000 * 0.00) + (500_000 * 0.20) + (142_288.23 * 0.25),  # $135,572.06
-    "fanatics_impressions": 160_964_076,
-    "term": "Oct 2025 – Sep 13, 2026",
-    "status": "complete",
-}
-
-# Season 2 begins after Fanatics S1 term ends.
-# Per §5.2 tiers are cumulative across the full 2-year Term, so S1's $1.14M
-# means every S2 dollar is at the 25% rate automatically.
-CONTRACT_START = "2026-10"          # S2: Oct 2026 onward
+# Current contract (Production Services Agreement, Cycle 2-3) began Oct 1, 2025.
+# Per §5.2 "Gross Revenue" is revenue during the Term, so the split thresholds
+# start from Oct 2025. Pre-Oct-2025 revenue does NOT count toward the tiers.
+# Quarters are anchored to this date in 3-month blocks:
+# Q1 = Oct-Dec 2025, Q2 = Jan-Mar 2026, Q3 = Apr-Jun 2026, etc.
+CONTRACT_START = "2025-10"          # YYYY-MM, inclusive
 
 
 def contract_quarters(through_month):
@@ -125,16 +115,12 @@ def contract_quarters(through_month):
 
 # ─── Math ────────────────────────────────────────────────────────────────
 def split_at(cum_gross):
-    """Total RDM cut owed at a given cumulative-gross level.
-    S2 revenue stacks on top of S1's $1.14M, so we add the base before
-    calculating, then subtract the S1 cut to get only S2's portion."""
-    total_cum = S1_CUMULATIVE_GROSS + cum_gross
+    """Total RDM cut owed at a given cumulative-gross level (lifetime)."""
     total = 0.0
     for low, high, rate in SPLIT_TIERS:
-        if total_cum > low:
-            total += (min(total_cum, high) - low) * rate
-    # Subtract what was already earned in S1
-    return total - S1_FINAL["rdm_cut"]
+        if cum_gross > low:
+            total += (min(cum_gross, high) - low) * rate
+    return total
 
 
 def cut_during(cum_start, cum_end):
@@ -372,7 +358,6 @@ def compute_rdm_summary(show_summaries):
         "network_subs":         sum(s["subs"]            for s in show_summaries),
         "network_q_cut":        sum(s["rdm_cut_quarter"] for s in show_summaries),
         "network_lifetime_cut": sum(s["rdm_cut_lifetime"] for s in show_summaries),
-        "s1_final":             S1_FINAL,
     }
 
 

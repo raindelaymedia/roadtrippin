@@ -224,6 +224,51 @@ def pull_traffic_sources(yt_analytics, start, end):
     return data
 
 
+def pull_collab_sources(yt_analytics, start, end):
+    """Pull views from other YouTube channels (Traffic Source → Channel pages).
+    Tracks collab dependency — what % of views come from channel page referrals.
+    """
+    from collections import defaultdict
+    data = {}
+    try:
+        # Total views per day
+        resp_total = yt_analytics.reports().query(
+            ids="channel==MINE", startDate=start, endDate=end,
+            metrics="views", dimensions="day", sort="day").execute()
+        daily_total = defaultdict(int)
+        for row in resp_total.get("rows", []):
+            daily_total[row[0][:7]] += row[1]
+
+        # Views from YT_CHANNEL source, by referring channel
+        resp_collab = yt_analytics.reports().query(
+            ids="channel==MINE", startDate=start, endDate=end,
+            metrics="views",
+            dimensions="day,insightTrafficSourceDetail",
+            filters="insightTrafficSourceType==YT_CHANNEL",
+            sort="day").execute()
+
+        monthly_channels = defaultdict(lambda: defaultdict(int))
+        monthly_collab = defaultdict(int)
+        for row in resp_collab.get("rows", []):
+            month = row[0][:7]
+            monthly_channels[month][row[1]] += row[2]
+            monthly_collab[month] += row[2]
+
+        for m in sorted(set(list(daily_total.keys()) + list(monthly_collab.keys()))):
+            total = daily_total.get(m, 0)
+            collab = monthly_collab.get(m, 0)
+            top = sorted(monthly_channels.get(m, {}).items(), key=lambda x: -x[1])[:5]
+            data[m] = {
+                "total_views": total,
+                "collab_views": collab,
+                "collab_pct": round(collab / total, 4) if total > 0 else 0,
+                "top_channels": [{"name": ch, "views": v} for ch, v in top],
+            }
+    except Exception as e:
+        print(f"  ⚠ Collab sources failed: {e}")
+    return data
+
+
 def pull_top_content(youtube, months, top_n=10):
     """Walk uploads, classify, return top N per type per month + full video list."""
     oldest = min(months) if months else "1970-01"
@@ -417,6 +462,17 @@ def main():
     else:
         print(f"  ⚠ No traffic source data returned")
 
+    # Collab traffic sources
+    print("  Pulling collab traffic sources...")
+    collab_data = pull_collab_sources(yt_analytics, start, end)
+    if collab_data:
+        latest = sorted(collab_data.keys())[-1]
+        c = collab_data[latest]
+        print(f"  ✓ Collab sources: {len(collab_data)} months")
+        print(f"    Latest ({latest}): {c['collab_pct']*100:.1f}% from channel pages ({c['collab_views']:,} of {c['total_views']:,})")
+    else:
+        print("  ⚠ No collab data returned")
+
     # ── Build tracker JSON ──
     print("\n[2/2] Building tracker_data_sr.json...")
 
@@ -451,6 +507,12 @@ def main():
             "browse_pct":    {m: traffic.get(m, {}).get("browse_pct") for m in months},
             # Full source breakdown per month for deep dives
             "sources":       {m: traffic.get(m, {}).get("sources") for m in months},
+        },
+        "collab": {
+            "collab_views":  {m: collab_data.get(m, {}).get("collab_views") for m in months},
+            "collab_pct":    {m: collab_data.get(m, {}).get("collab_pct") for m in months},
+            "total_views":   {m: collab_data.get(m, {}).get("total_views") for m in months},
+            "top_channels":  {m: collab_data.get(m, {}).get("top_channels", []) for m in months},
         },
         "best_of": {
             "label": best_of_label,
