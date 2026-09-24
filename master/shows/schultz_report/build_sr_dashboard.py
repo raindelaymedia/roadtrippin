@@ -94,6 +94,8 @@ def extract(path):
         'audience_eps':  series(['audience', 'eps']),
         'audience_vods': series(['audience', 'vods']),
         'audience_lives': series(['audience', 'lives']),
+        'traffic': j.get('traffic', {}),
+        'collab': j.get('collab', {}),
     }
 
 
@@ -256,9 +258,9 @@ def build_html(d, revenue, socials, generated_at):
       <div class="metric">
         <div class="metric-label">YT Views</div>
         <div class="metric-value">{fmt(sum(filter(None, [
-            d['vids'][-1] if d['vids'] else None,
-            d['shorts'][-1] if d['shorts'] else None,
-            d['lives'][-1] if d['lives'] else None]))) if has_yt else '—'}</div>
+            d['vids'][0] if d['vids'] else None,
+            d['shorts'][0] if d['shorts'] else None,
+            d['lives'][0] if d['lives'] else None]))) if has_yt else '—'}</div>
         <div class="metric-delta" style="color:var(--text2)">{'latest month' if has_yt else 'not connected'}</div>
       </div>
       <div class="metric">
@@ -293,12 +295,27 @@ def build_html(d, revenue, socials, generated_at):
         js_shorts = jsa(shorts_full)
         js_lives = jsa(lives_full)
         js_subs = jsa(subs_full)
+
+        # Traffic data (paid vs organic)
+        traffic = d.get('traffic', {})
+        traffic_organic = []
+        traffic_paid = []
+        for m_ in reversed(d['months']):
+            traffic_organic.append(round((traffic.get('organic_pct', {}).get(m_) or 0) * 100, 1))
+            traffic_paid.append(round((traffic.get('paid_pct', {}).get(m_) or 0) * 100, 1))
+        js_traffic_organic = jsa(traffic_organic)
+        js_traffic_paid = jsa(traffic_paid)
+        has_traffic = any(v > 0 for v in traffic_organic + traffic_paid)
+
+        # Latest organic %
+        latest_organic = traffic_organic[-1] if traffic_organic else 0
+        latest_paid = traffic_paid[-1] if traffic_paid else 0
         yt_content = f"""
     <div class="metrics">
       <div class="metric"><div class="metric-label">Subscribers</div><div class="metric-value">{fmt(yt_subs_now)}</div></div>
       <div class="metric"><div class="metric-label">VOD Views ({latest_mo})</div><div class="metric-value">{fmt(d['vids'][0] if d['vids'] else None)}</div></div>
       <div class="metric"><div class="metric-label">Shorts Views ({latest_mo})</div><div class="metric-value">{fmt(d['shorts'][0] if d['shorts'] else None)}</div></div>
-      <div class="metric"><div class="metric-label">Live Views ({latest_mo})</div><div class="metric-value">{fmt(d['lives'][0] if d['lives'] else None)}</div></div>
+      <div class="metric"><div class="metric-label">Organic ({latest_mo})</div><div class="metric-value">{latest_organic:.0f}%</div><div class="metric-delta" style="color:{'var(--green)' if latest_organic >= 50 else 'var(--red)'}">{latest_paid:.0f}% paid</div></div>
     </div>
     <div class="card">
       <div class="card-title">Views by Content Type</div>
@@ -307,9 +324,14 @@ def build_html(d, revenue, socials, generated_at):
     <div class="card">
       <div class="card-title">Subscriber Growth</div>
       <div style="height:280px"><canvas id="yt-subs-chart"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="card-title">Traffic Sources · Paid vs Organic</div>
+      <div style="height:280px"><canvas id="traffic-chart"></canvas></div>
     </div>"""
     else:
         js_M = '[]'; js_vids = '[]'; js_shorts = '[]'; js_lives = '[]'; js_subs = '[]'
+        js_traffic_organic = '[]'; js_traffic_paid = '[]'
         chart_px = 500
         yt_content = empty_state(
             "YouTube Analytics not connected yet",
@@ -350,7 +372,9 @@ def build_html(d, revenue, socials, generated_at):
     }
     METRIC_LABELS = {'FOLLOWERS': 'Followers', 'FOLLOWER_GAIN': 'Follower Gain',
                      'VIEWS': 'Views', 'ENGAGEMENTS': 'Engagements', 'POSTS': 'Posts',
-                     'ENGAGEMENT_RATE': 'ER', 'TOP_POST_VIEWS': 'Top Post Views'}
+                     'ENGAGEMENT_RATE': 'ER', 'TOP_POST_VIEWS': 'Top Post Views',
+                     'VIEWS_VIDS': 'YT VOD Views', 'VIEWS_SHORTS': 'YT Shorts Views',
+                     'ENGAGED_VIEWS_VIDS': 'Engaged VOD', 'ENGAGED_VIEWS_SHORTS': 'Engaged Shorts'}
 
     if has_soc:
         soc_platforms = socials['platforms']
@@ -362,13 +386,12 @@ def build_html(d, revenue, socials, generated_at):
                 if isinstance(v, (int, float)) and v > 0: return v
             return None
 
-        # Platform summary cards
         platform_cards = ''
         for p in soc_platforms:
             color = PLATFORM_COLORS.get(p, '#6B7280')
             display = PLATFORM_DISPLAY.get(p, p.title())
             followers = soc_latest_for(p, 'FOLLOWERS')
-            views = soc_latest_for(p, 'VIEWS')
+            views = soc_latest_for(p, 'VIEWS') or soc_latest_for(p, 'VIEWS_VIDS')
             eng = soc_latest_for(p, 'ENGAGEMENTS')
             platform_cards += (
                 f'<div class="card soc-card">'
@@ -380,7 +403,7 @@ def build_html(d, revenue, socials, generated_at):
                 f'<div><div class="soc-stat-lbl">Engagements</div><div class="soc-stat-val">{fmt(eng)}</div></div>'
                 f'</div></div>')
 
-        # Readonly data tracker table (same style as Tracker tab)
+        # Readonly data tracker table
         soc_table = '<div class="table-scroll"><table class="data-table"><thead><tr><th>Platform · Metric</th>'
         for ml in soc_months_display:
             soc_table += f'<th>{ml}</th>'
@@ -390,15 +413,15 @@ def build_html(d, revenue, socials, generated_at):
         for (plat, metric) in all_keys:
             if plat != last_plat:
                 display = PLATFORM_DISPLAY.get(plat, plat.title())
-                soc_table += f'<tr><td style="font-weight:700;background:var(--surface2);color:var(--text)">{display}</td>'
+                soc_table += f'<tr><td style="font-weight:700;background:#161680;color:var(--text)">{display}</td>'
                 for _ in socials['months']:
-                    soc_table += '<td style="background:var(--surface2)"></td>'
+                    soc_table += '<td style="background:#161680"></td>'
                 soc_table += '</tr>'
                 last_plat = plat
-            label = METRIC_LABELS.get(metric, metric.title())
+            label = METRIC_LABELS.get(metric, metric.replace('_',' ').title())
             soc_table += f'<tr><td style="padding-left:18px;color:var(--text2)">{label}</td>'
             vals = socials['data'][(plat, metric)]
-            for vi, v in enumerate(vals):
+            for v in vals:
                 if v is None:
                     soc_table += '<td><span class="na">—</span></td>'
                 elif metric == 'ENGAGEMENT_RATE' and isinstance(v, (int, float)):
@@ -413,33 +436,10 @@ def build_html(d, revenue, socials, generated_at):
         socials_content = f"""
     <div class="soc-grid">{platform_cards}</div>
     <div style="margin-top:20px">{soc_table}</div>"""
-
-        # Editor data prep
-        soc_edit_periods = list(reversed(socials['months']))
-        soc_edit_rows = []
-        seen = set()
-        for k in socials['data']:
-            plat, metric = k
-            if (plat, metric) not in seen:
-                seen.add((plat, metric))
-                soc_edit_rows.append({'platform': plat, 'metric': metric,
-                                      'label': METRIC_LABELS.get(metric, metric.title())})
-        soc_edit_rows.sort(key=lambda r: (r['platform'], r['metric']))
-        soc_cells = {}
-        for (plat, metric), vals in socials['data'].items():
-            for i, m in enumerate(socials['months']):
-                v = vals[i] if i < len(vals) else None
-                if v is None: v = ''
-                elif metric == 'ENGAGEMENT_RATE' and isinstance(v, (int, float)): v = f"{v*100:.2f}"
-                else: v = str(v) if isinstance(v, str) else str(int(v)) if isinstance(v, float) and v == int(v) else str(v)
-                soc_cells[f"{plat}|{metric}|{m}"] = v
-        js_soc_edit = json.dumps({'periods': soc_edit_periods, 'rows': soc_edit_rows,
-                                   'cells': soc_cells, 'platformDisplay': PLATFORM_DISPLAY})
     else:
         socials_content = empty_state(
             "No socials data yet",
-            "Click ✎ Edit to start entering data, or add rows to socials_sr.csv")
-        js_soc_edit = json.dumps({'periods': [], 'rows': [], 'cells': {}, 'platformDisplay': PLATFORM_DISPLAY})
+            "Add rows to socials_sr.csv to start tracking")
 
     # ── Tracker tab ──
     if has_yt:
@@ -454,35 +454,38 @@ def build_html(d, revenue, socials, generated_at):
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>The Schultz Report — Dashboard</title>
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@400;500&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* ─────────────────────────────────────────────────────────────
    THE SCHULTZ REPORT DASHBOARD — Rain Delay Media
    Brand color: #C9A84C (gold)
    ───────────────────────────────────────────────────────────── */
 :root{{
-  --brand:        #C9A84C;
-  --brand-deep:   #A8873A;
-  --brand-soft:   rgba(201,168,76,.08);
-  --brand-tint:   rgba(201,168,76,.16);
-  --bg:           #f7f8fb;
-  --surface:      #ffffff;
-  --surface2:     #eef1f7;
-  --surface3:     #dde3ee;
-  --border:       rgba(20,30,55,.08);
-  --border2:      rgba(20,30,55,.16);
-  --text:         #0f1729;
-  --text2:        #4a5468;
-  --text3:        #8a93a6;
-  --green:        #1B7A3A;
-  --red:          #BC2E3A;
+  --brand:        #E8C840;
+  --brand-deep:   #C9A830;
+  --brand-soft:   rgba(232,200,64,.10);
+  --brand-tint:   rgba(232,200,64,.18);
+  --bg:           #11116b;
+  --surface:      rgba(255,255,255,.06);
+  --surface2:     rgba(255,255,255,.10);
+  --surface3:     rgba(255,255,255,.14);
+  --border:       rgba(255,255,255,.10);
+  --border2:      rgba(255,255,255,.18);
+  --text:         #FFFFFF;
+  --text2:        #FFFFFF;
+  --text3:        #f2f2f2;
+  --green:        #34D058;
+  --red:          #F85149;
   --r:            10px;
   --rsm:          6px;
-  --shadow:       0 1px 3px rgba(15,23,41,.06), 0 1px 2px rgba(15,23,41,.04);
+  --shadow:       0 1px 3px rgba(0,0,0,.3), 0 1px 2px rgba(0,0,0,.2);
 }}
 *{{margin:0;padding:0;box-sizing:border-box}}
-body{{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.5;font-size:14px}}
+body{{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.5;font-size:14px;position:relative}}
+body::before{{content:'';position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;background:url("data:image/jpeg;base64,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") repeat;background-size:700px auto;opacity:.3}}
+body > *{{position:relative;z-index:1}}
 
 .shell{{display:flex;height:100vh;overflow:hidden}}
 
@@ -501,14 +504,14 @@ body{{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);li
   width:32px; height:32px; flex-shrink:0;
   background:var(--brand); border-radius:7px;
   display:flex; align-items:center; justify-content:center;
-  color:#fff; font-weight:700; font-size:11px;
-  box-shadow:0 2px 4px rgba(201,168,76,.25);
+  color:#11116b; font-family:'Oswald',sans-serif; font-weight:700; font-size:12px;
+  box-shadow:0 2px 4px rgba(232,200,64,.3);
 }}
 .logo-text{{display:flex;flex-direction:column;line-height:1.15}}
 .logo-main{{font-size:14px;font-weight:600;letter-spacing:-.3px;color:var(--text)}}
 .logo-sub{{font-size:11px;color:var(--text3);margin-top:1px}}
 .nav{{padding:14px 10px 10px;flex:1}}
-.nav-section{{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--text3);padding:8px 12px 6px;font-weight:600}}
+.nav-section{{font-family:'Oswald',sans-serif;font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--text3);padding:8px 12px 6px;font-weight:600}}
 .nav-item{{
   display:flex; align-items:center; gap:10px;
   padding:8px 11px; border-radius:var(--rsm);
@@ -545,7 +548,7 @@ body{{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);li
   border-radius:var(--r); padding:16px 18px; box-shadow:var(--shadow);
 }}
 .metric-label{{font-size:11px;color:var(--text2);font-weight:500;text-transform:uppercase;letter-spacing:.04em}}
-.metric-value{{font-size:24px;font-weight:600;letter-spacing:-.4px;margin:6px 0 2px}}
+.metric-value{{font-family:'Oswald',sans-serif;font-size:26px;font-weight:600;letter-spacing:-.3px;margin:6px 0 2px}}
 .metric-delta{{font-size:12px;color:var(--text3)}}
 
 /* ── Cards ── */
@@ -575,20 +578,20 @@ body{{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);li
 }}
 .table-scroll{{overflow-x:auto;scrollbar-width:thin;scrollbar-color:rgba(0,0,0,.1) transparent}}
 .data-table{{border-collapse:collapse;font-size:12px;font-family:'DM Mono',monospace;white-space:nowrap}}
-.data-table th{{
+.data-table th{{background:#161680;
   background:var(--surface2); padding:7px 12px;
   text-align:right; font-weight:600; font-size:10px;
   color:var(--text2); border:1px solid var(--border);
   text-transform:uppercase; letter-spacing:.06em;
   position:sticky; top:0; z-index:2;
 }}
-.data-table th:first-child{{text-align:left;position:sticky;left:0;z-index:3;background:var(--surface2);min-width:150px}}
+.data-table th:first-child{{text-align:left;position:sticky;left:0;z-index:3;background:#161680;min-width:150px}}
 .data-table td{{padding:6px 12px;text-align:right;border:.5px solid var(--border)}}
-.data-table td:first-child{{text-align:left;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;color:var(--text2);position:sticky;left:0;background:var(--surface);z-index:1;min-width:150px}}
-.data-table tr:nth-child(even) td{{background:rgba(20,30,55,.02)}}
-.data-table tr:nth-child(even) td:first-child{{background:#f8f9fc}}
-.data-table th.lifetime-col{{background:var(--surface3);border-left:1px solid var(--border2)}}
-.data-table td.lifetime-col{{font-weight:600;color:var(--text);background:var(--surface3)!important;border-left:1px solid var(--border2)}}
+.data-table td:first-child{{text-align:left;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;color:var(--text2);position:sticky;left:0;background:#11116b;z-index:1;min-width:150px}}
+.data-table tr:nth-child(even) td{{background:rgba(255,255,255,.03)}}
+.data-table tr:nth-child(even) td:first-child{{background:#141470}}
+.data-table th.lifetime-col{{background:#1a1a85;border-left:1px solid var(--border2)}}
+.data-table td.lifetime-col{{font-weight:600;color:var(--text);background:#1a1a85!important;border-left:1px solid var(--border2)}}
 .data-table tr.total-row td{{background:var(--surface2)!important;border-top:1px solid var(--border2);font-weight:600;color:var(--text)}}
 .na{{color:var(--text3)}}
 
@@ -610,42 +613,6 @@ body{{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);li
   .main{{padding:20px 16px 40px}}
   .metrics{{grid-template-columns:1fr 1fr}}
 }}
-
-/* ── Editor styles ── */
-.rev-edit-toggle{{font-size:11px;font-family:'DM Sans',sans-serif;font-weight:600;padding:4px 12px;border-radius:var(--rsm);border:.5px solid var(--brand);background:rgba(201,168,76,.06);color:var(--brand-deep);cursor:pointer}}
-.rev-edit-toggle.on{{background:var(--brand);color:#fff}}
-.rev-edit-btn{{font-size:11px;font-family:'DM Sans',sans-serif;font-weight:600;padding:4px 12px;border-radius:var(--rsm);border:.5px solid var(--border2);background:var(--surface);color:var(--text);cursor:pointer}}
-.rev-edit-btn:hover{{border-color:var(--text2)}}
-.rev-edit-btn.rev-save{{background:#1B9B54;border-color:#1B9B54;color:#fff}}
-.rev-edit-btn.rev-save:hover{{background:#137a41}}
-.rev-edit-btn:disabled{{opacity:.4;cursor:not-allowed}}
-.rev-edit-status{{font-size:11px;color:var(--brand);font-weight:500}}
-.rev-grid{{border-collapse:separate;border-spacing:0;font-size:12px;font-family:'DM Mono',monospace;white-space:nowrap}}
-.rev-grid th,.rev-grid td{{padding:6px 11px;text-align:right;border:.5px solid var(--border)}}
-.rev-grid thead th{{position:sticky;top:0;z-index:3;background:var(--surface2);color:var(--text2);font-family:'DM Sans',sans-serif;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.04em}}
-.rev-grid th.rev-src,.rev-grid td.rev-src{{position:sticky;left:0;z-index:2;text-align:left;background:var(--surface);color:var(--text);font-family:'DM Sans',sans-serif;font-weight:500;min-width:150px;border-right:1px solid var(--border2)}}
-.rev-grid thead th.rev-src{{z-index:4}}
-.rev-grid td.rev-tbd{{color:var(--brand);font-style:italic}}
-.rev-grid td.rev-empty{{color:var(--text3)}}
-.rev-grid td.rev-cell{{cursor:cell}}
-.rev-grid td.rev-cell:hover{{outline:1.5px solid var(--brand);outline-offset:-1.5px;background:rgba(201,168,76,.06)}}
-.rev-grid td.rev-changed{{background:rgba(201,168,76,.08);position:relative}}
-.rev-grid td.rev-changed::after{{content:'';position:absolute;top:3px;right:3px;width:4px;height:4px;border-radius:50%;background:var(--brand)}}
-.rev-grid td.rev-editing{{padding:0}}
-.rev-grid td.rev-editing input{{width:100%;border:none;background:rgba(201,168,76,.06);color:var(--text);font:inherit;text-align:right;padding:6px 11px;outline:2px solid var(--brand);outline-offset:-2px}}
-.rev-modal-bg{{display:none;position:fixed;inset:0;background:rgba(15,23,41,.55);z-index:100;align-items:center;justify-content:center}}
-.rev-modal-bg.show{{display:flex}}
-.rev-modal{{background:#fff;border:1px solid var(--border);border-radius:12px;padding:22px;width:440px;max-width:92vw}}
-.rev-modal h2{{font-size:15px;margin:0 0 4px;color:var(--text)}}
-.rev-modal p{{font-size:12px;color:var(--text2);margin:0 0 14px}}
-.rev-field{{margin-bottom:11px}}
-.rev-field label{{display:block;font-size:10px;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px}}
-.rev-field input{{width:100%;font-size:12px;font-family:'DM Mono',monospace;padding:8px 10px;border-radius:6px;border:1px solid var(--border);background:#fafbff;color:var(--text)}}
-.rev-field input:focus{{outline:none;border-color:var(--brand)}}
-.rev-modal-actions{{display:flex;gap:8px;justify-content:flex-end;margin-top:14px}}
-.rev-warn{{font-size:11px;color:#96690c;background:#fdf6e3;border:1px solid #f0e0b0;border-radius:6px;padding:8px 10px;margin-top:4px}}
-.rev-commit-log{{font-size:11px;font-family:'DM Mono',monospace;color:var(--text2);margin-top:10px;max-height:110px;overflow:auto}}
-.rev-commit-log div{{padding:2px 0;border-bottom:.5px solid var(--border)}}
 
 .up{{color:var(--green)}}
 .down{{color:var(--red)}}
@@ -717,37 +684,10 @@ body{{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);li
 <!-- ═══ SOCIALS ═══ -->
 <div class="page" id="page-socials">
   <div class="page-header">
-    <div class="page-title" style="display:flex;align-items:center;gap:12px">
-      Socials
-      <button class="rev-edit-toggle" id="socEditToggle" onclick="srSocEditor.toggleEdit()">✎ Edit</button>
-      <button class="rev-edit-btn" id="socAddMonthBtn" onclick="srSocEditor.addMonth()" style="display:none">+ Add month</button>
-      <span class="rev-edit-status" id="socEditStatus"></span>
-      <span style="flex:1"></span>
-      <button class="rev-edit-btn" id="socGhBtn" onclick="srSocEditor.openGh()" style="display:none">⚙ GitHub</button>
-      <button class="rev-edit-btn rev-save" id="socSaveBtn" onclick="srSocEditor.save()" style="display:none" disabled>Save to repo</button>
-    </div>
-    <div class="page-sub">{'Cross-platform social metrics · click ✎ Edit to update' if has_soc else 'Not connected · click ✎ Edit to start entering data'}</div>
+    <div class="page-title">Socials</div>
+    <div class="page-sub">{'Cross-platform social metrics' if has_soc else 'Not connected'}</div>
   </div>
-  <div id="soc-readonly">{socials_content}</div>
-  <div id="soc-editable" style="display:none"></div>
-</div>
-
-<!-- SR Socials GitHub modal -->
-<div class="rev-modal-bg" id="socGhModal" onclick="if(event.target===this)srSocEditor.closeGh()">
-  <div class="rev-modal">
-    <h2>GitHub connection · Schultz Report Socials</h2>
-    <p>Commits <code>socials_sr.csv</code> to the repo.</p>
-    <div class="rev-field"><label>Repository</label><input id="socGhRepo" value="raindelaymedia/roadtrippin" spellcheck="false"></div>
-    <div class="rev-field"><label>Branch</label><input id="socGhBranch" placeholder="auto-detect…" spellcheck="false"></div>
-    <div class="rev-field"><label>File path</label><input id="socGhPath" value="master/shows/schultz_report/data_sr/socials_sr.csv" spellcheck="false"></div>
-    <div class="rev-field"><label>Access token</label><input id="socGhToken" type="password" placeholder="github_pat_…" spellcheck="false"></div>
-    <div class="rev-warn">⚠ Token is stored in this browser only.</div>
-    <div class="rev-modal-actions">
-      <button class="rev-edit-btn" onclick="srSocEditor.closeGh()">Cancel</button>
-      <button class="rev-edit-btn rev-save" onclick="srSocEditor.saveConn()">Save connection</button>
-    </div>
-    <div class="rev-commit-log" id="socCommitLog"></div>
-  </div>
+  {socials_content}
 </div>
 
 <!-- ═══ REVENUE ═══ -->
@@ -810,8 +750,8 @@ document.addEventListener('DOMContentLoaded', function() {{
         responsive: true, maintainAspectRatio: false,
         plugins: {{ legend: {{ position: 'bottom', labels: {{ boxWidth: 10, font: {{ size: 11 }} }} }} }},
         scales: {{
-          x: {{ stacked: true, grid: {{ display: false }} }},
-          y: {{ stacked: true, ticks: {{ callback: v => v >= 1e6 ? (v/1e6).toFixed(1)+'M' : v >= 1e3 ? (v/1e3).toFixed(0)+'K' : v }} }}
+          x: {{ stacked: true, grid: {{ display: false }}, ticks: {{ color:'#f2f2f2' }} }},
+          y: {{ stacked: true, ticks: {{ color:'#f2f2f2',callback: v => v >= 1e6 ? (v/1e6).toFixed(1)+'M' : v >= 1e3 ? (v/1e3).toFixed(0)+'K' : v }} }}
         }}
       }}
     }});
@@ -828,7 +768,8 @@ document.addEventListener('DOMContentLoaded', function() {{
       options: {{
         responsive: true, maintainAspectRatio: false,
         plugins: {{ legend: {{ display: false }} }},
-        scales: {{ x: {{ grid: {{ display: false }} }}, y: {{ ticks: {{ callback: v => v >= 1e3 ? (v/1e3).toFixed(0)+'K' : v }} }} }}
+        scales: {{ x: {{ grid: {{ display: false }}, ticks: {{ color:'#f2f2f2' }} }},
+        y: {{ ticks: {{ color:'#f2f2f2', callback: v => v >= 1e3 ? (v/1e3).toFixed(0)+'K' : v }} }} }}
       }}
     }});
   }}
@@ -851,201 +792,30 @@ document.addEventListener('DOMContentLoaded', function() {{
       }}
     }});
   }}
-}});
 
-// ─── Socials Editor ──
-const SOC_EDIT_DATA = {js_soc_edit};
-
-function createEditor(cfg) {{
-  const D = cfg.data;
-  if (!D) return {{}};
-  const isSoc = cfg.type === 'soc';
-  const isRev = cfg.type === 'rev';
-  let PERIODS = D.periods ? D.periods.slice() : [];
-  const SOURCES = isRev ? (D.sources||[]).slice() : null;
-  const ROWS = isSoc ? (D.rows||[]).slice() : null;
-  const PDISP = isSoc ? (D.platformDisplay||{{}}) : null;
-  let CELLS = Object.assign({{}}, D.cells||{{}});
-  let ORIGINAL = Object.assign({{}}, D.cells||{{}});
-  let editing = false;
-  const changed = new Set();
-  const LS = cfg.lsKey;
-  const P = cfg.prefix;
-  const $ = id => document.getElementById(id);
-  const key = isRev ? ((s,p) => s+'|'+p) : ((pl,mt,pe) => pl+'|'+mt+'|'+pe);
-  const isPct = mt => mt==='ENGAGEMENT_RATE';
-  const fmtSocCell = (mt,v) => {{
-    if (v===''||v==null) return '';
-    if (v==='TBD'||v==='N/A') return v;
-    const n=parseFloat(v); if(isNaN(n)) return v;
-    if (isPct(mt)) return n.toFixed(2)+'%';
-    return n.toLocaleString('en-US');
-  }};
-  const fmtMoney = v => {{
-    if (v===''||v==null) return '';
-    if (v==='TBD'||v==='N/A') return v;
-    const n=parseFloat(v); if(isNaN(n)) return v;
-    return n.toLocaleString('en-US',{{minimumFractionDigits:2,maximumFractionDigits:2}});
-  }};
-  const fmtCell = isRev ? ((_,v) => fmtMoney(v)) : ((mt,v) => fmtSocCell(mt,v));
-  const cellCls = v => v==='' ? 'rev-empty' : (v==='TBD'||v==='N/A' ? 'rev-tbd' : '');
-
-  function render() {{
-    const host = $(P+'-editable'); if (!host) return;
-    let h = '<div class="table-scroll"><table class="rev-grid"><thead><tr>';
-    h += '<th class="rev-src">'+(isRev?'Source':'Platform · Metric')+'</th>';
-    for (const p of PERIODS) h += '<th>'+p+'</th>';
-    h += '</tr></thead><tbody>';
-    if (isSoc) {{
-      let lastPlat = null;
-      for (const row of ROWS) {{
-        const {{platform,metric,label}} = row;
-        if (platform!==lastPlat) {{
-          const disp = PDISP[platform]||platform;
-          h += '<tr><td class="rev-src" style="background:var(--surface2);font-weight:700;color:var(--text)">'+disp+'</td>';
-          for(let i=0;i<PERIODS.length;i++) h+='<td style="background:var(--surface2)"></td>';
-          h += '</tr>'; lastPlat = platform;
+  // Traffic Sources chart (paid vs organic)
+  const tOrganic = {js_traffic_organic};
+  const tPaid = {js_traffic_paid};
+  if (M.length && document.getElementById('traffic-chart') && (tOrganic.some(v=>v>0) || tPaid.some(v=>v>0))) {{
+    new Chart(document.getElementById('traffic-chart'), {{
+      type: 'bar',
+      data: {{
+        labels: M,
+        datasets: [
+          {{ label: 'Organic %', data: tOrganic, backgroundColor: '#34D058', borderRadius: 2, stack: 's' }},
+          {{ label: 'Paid %', data: tPaid, backgroundColor: '#F85149', borderRadius: 2, stack: 's' }},
+        ]
+      }},
+      options: {{
+        responsive: true, maintainAspectRatio: false,
+        plugins: {{ legend: {{ position: 'bottom', labels: {{ color: '#f2f2f2', boxWidth: 10, font: {{ size: 11 }} }} }} }},
+        scales: {{
+          x: {{ stacked: true, grid: {{ display: false }}, ticks: {{ color: '#f2f2f2' }} }},
+          y: {{ stacked: true, max: 100, grid: {{ color: 'rgba(255,255,255,.06)' }}, ticks: {{ color: '#f2f2f2', callback: v => v + '%' }} }}
         }}
-        h += '<tr><td class="rev-src" style="padding-left:22px;color:var(--text2)">'+label+'</td>';
-        for (const pe of PERIODS) {{
-          const k=key(platform,metric,pe), v=CELLS[k]??'';
-          const ch=changed.has(k)?' rev-changed':'', ec=editing?' rev-cell':'';
-          h += '<td class="'+cellCls(v)+ch+ec+'" data-pl="'+platform+'" data-mt="'+metric+'" data-pe="'+pe+'">'+fmtCell(metric,v)+'</td>';
-        }}
-        h += '</tr>';
       }}
-    }}
-    h += '</tbody></table></div>';
-    host.innerHTML = h;
-    if (editing) host.querySelectorAll('td.rev-cell').forEach(td => td.onclick=()=>startEdit(td));
+    }});
   }}
-
-  function startEdit(td) {{
-    if(!editing||td.querySelector('input')) return;
-    let rawKey, dispMetric;
-    if (isSoc) {{ rawKey=key(td.dataset.pl,td.dataset.mt,td.dataset.pe); dispMetric=td.dataset.mt; }}
-    else {{ rawKey=key(td.dataset.s,td.dataset.p); dispMetric=null; }}
-    const raw=CELLS[rawKey]??'';
-    td.classList.add('rev-editing');
-    td.innerHTML='<input value="'+raw+'">';
-    const inp=td.querySelector('input'); inp.focus(); inp.select();
-    const commit=next=>{{
-      let norm=inp.value.trim().replace(/,/g,'');
-      if(isSoc) norm=norm.replace(/%/g,'');
-      if(/^tbd$/i.test(norm)) norm='TBD'; else if(/^n[/]?a$/i.test(norm)) norm='N/A';
-      CELLS[rawKey]=norm;
-      if((ORIGINAL[rawKey]??'')!==norm) changed.add(rawKey); else changed.delete(rawKey);
-      updateStatus();
-      td.classList.remove('rev-editing');
-      td.className=cellCls(CELLS[rawKey]??'')+(changed.has(rawKey)?' rev-changed':'')+(editing?' rev-cell':'');
-      td.textContent=fmtCell(dispMetric,CELLS[rawKey]??'');
-      if(editing) td.onclick=()=>startEdit(td);
-      if(next) focusNext(td);
-    }};
-    inp.onblur=()=>commit(false);
-    inp.onkeydown=e=>{{
-      if(e.key==='Enter'){{e.preventDefault();commit(false);}}
-      else if(e.key==='Tab'){{e.preventDefault();commit(true);}}
-      else if(e.key==='Escape'){{td.classList.remove('rev-editing');td.className=cellCls(CELLS[rawKey]??'')+(changed.has(rawKey)?' rev-changed':'')+(editing?' rev-cell':'');td.textContent=fmtCell(dispMetric,CELLS[rawKey]??'');if(editing)td.onclick=()=>startEdit(td);}}
-    }};
-  }}
-  function focusNext(td) {{
-    if (isSoc) {{
-      const idx=ROWS.findIndex(r=>r.platform===td.dataset.pl&&r.metric===td.dataset.mt);
-      if(idx<ROWS.length-1){{const nr=ROWS[idx+1];const nt=$(P+'-editable').querySelector('td[data-pl="'+nr.platform+'"][data-mt="'+nr.metric+'"][data-pe="'+td.dataset.pe+'"]');if(nt)startEdit(nt);}}
-    }}
-  }}
-  function updateStatus() {{
-    const n=changed.size;
-    const sb=$(P+'SaveBtn'); if(sb) sb.disabled=n===0;
-    const st=$(P+'EditStatus'); if(st) st.textContent=n>0?(n+' unsaved change'+(n>1?'s':'')):(editing?'Editing':'');
-  }}
-  function toCSV() {{
-    const periodsDesc=PERIODS.slice().sort().reverse();
-    const rows=[['period','platform','metric','value']];
-    const seen=new Set();
-    for(const pe of periodsDesc) for(const r of ROWS){{
-      const k=key(r.platform,r.metric,pe);
-      if(seen.has(k))continue;seen.add(k);
-      let v=CELLS[k]??'';if(v==='')continue;
-      if(isPct(r.metric)&&v!=='TBD'&&v!=='N/A'){{const n=parseFloat(v);if(!isNaN(n))v=(n/100).toFixed(4);}}
-      rows.push([pe,r.platform,r.metric,v]);
-    }}
-    return rows.map(r=>r.join(',')).join('\\r\\n')+'\\r\\n';
-  }}
-  const loadConn=()=>{{try{{return JSON.parse(localStorage.getItem(LS))||{{}};}}catch{{return {{}};}} }};
-  const saveConnData=c=>localStorage.setItem(LS,JSON.stringify(c));
-  function log(m){{const l=$(P+'CommitLog');if(!l)return;const d=document.createElement('div');d.textContent=new Date().toLocaleTimeString()+' — '+m;l.prepend(d);}}
-  async function gh(url,opts,token){{
-    const r=await fetch('https://api.github.com'+url,{{...opts,headers:{{'Authorization':'Bearer '+token,'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28',...(opts.headers||{{}})}}}});
-    if(!r.ok){{const e=await r.json().catch(()=>({{}}));throw new Error(r.status+' '+(e.message||r.statusText));}}
-    return r.json();
-  }}
-  const editor = {{}};
-  editor.toggleEdit = function() {{
-    editing=!editing;
-    const tb=$(P+'EditToggle'); if(tb){{tb.classList.toggle('on',editing);tb.textContent=editing?'✓ Editing':'✎ Edit';}}
-    const ro=$(P+'-readonly'); if(ro) ro.style.display=editing?'none':'';
-    const ed=$(P+'-editable'); if(ed) ed.style.display=editing?'':'none';
-    [P+'GhBtn',P+'SaveBtn',P+'AddMonthBtn'].forEach(id=>{{const el=$(id);if(el)el.style.display=editing?'':'none';}});
-    updateStatus(); if(editing) render();
-  }};
-  editor.addMonth = function() {{
-    if(!PERIODS.length) {{
-      const now=new Date(); PERIODS.unshift(now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0'));
-    }} else {{
-      const latest=PERIODS[0]; let[y,m]=latest.split('-').map(Number);
-      m++;if(m>12){{m=1;y++;}} const np=y+'-'+String(m).padStart(2,'0');
-      if(PERIODS.includes(np))return; PERIODS.unshift(np);
-    }}
-    const np=PERIODS[0];
-    if(isSoc){{for(const r of ROWS)CELLS[key(r.platform,r.metric,np)]='';}}
-    render();
-    const sc=$(P+'-editable').querySelector('.table-scroll');if(sc)sc.scrollLeft=0;
-  }};
-  editor.openGh = function() {{
-    const c=loadConn();
-    $(P+'GhRepo').value=c.repo||'raindelaymedia/roadtrippin';
-    $(P+'GhBranch').value=c.branch||'';
-    $(P+'GhPath').value=c.path||cfg.defaultPath;
-    $(P+'GhToken').value=c.token||'';
-    $(P+'GhModal').classList.add('show');
-  }};
-  editor.closeGh = () => $(P+'GhModal').classList.remove('show');
-  editor.saveConn = function() {{
-    saveConnData({{repo:$(P+'GhRepo').value.trim(),branch:$(P+'GhBranch').value.trim(),path:$(P+'GhPath').value.trim(),token:$(P+'GhToken').value.trim()}});
-    editor.closeGh(); log('Connection saved.');
-  }};
-  editor.save = async function() {{
-    const c=loadConn();
-    if(!c.token||!c.repo){{alert('Set up GitHub connection first (⚙ GitHub).');editor.openGh();return;}}
-    const st=$(P+'EditStatus');
-    try {{
-      st.textContent='Saving…';$(P+'SaveBtn').disabled=true;
-      let branch=c.branch;
-      if(!branch){{const info=await gh('/repos/'+c.repo,{{}},c.token);branch=info.default_branch||'main';log('Branch: '+branch);}}
-      let sha=null;
-      try{{const cur=await gh('/repos/'+c.repo+'/contents/'+c.path+'?ref='+branch,{{}},c.token);sha=cur.sha;}}
-      catch(e){{if(!String(e).includes('404'))throw e;}}
-      const b64=btoa(unescape(encodeURIComponent(toCSV())));
-      const body={{message:'Update '+cfg.commitLabel+' via dashboard editor ('+changed.size+' change'+(changed.size>1?'s':'')+')',content:b64,branch}};
-      if(sha)body.sha=sha;
-      const res=await gh('/repos/'+c.repo+'/contents/'+c.path,{{method:'PUT',body:JSON.stringify(body)}},c.token);
-      ORIGINAL=Object.assign({{}},CELLS);changed.clear();
-      st.textContent='Saved ✓';log('Committed '+(res.commit?.sha?.slice(0,7)||'ok')+' → '+branch);
-      render();setTimeout(updateStatus,2500);
-    }}catch(e){{
-      st.textContent='Save failed';log('ERROR: '+e.message);
-      alert('Save failed: '+e.message+'\\n\\nCheck token scope (Contents: read/write), repo, and path.');
-      $(P+'SaveBtn').disabled=false;
-    }}
-  }};
-  return editor;
-}}
-
-const srSocEditor = createEditor({{
-  data: SOC_EDIT_DATA, type:'soc', prefix:'soc', lsKey:'sr_soc_editor_gh',
-  defaultPath:'master/shows/schultz_report/data_sr/socials_sr.csv', commitLabel:'socials_sr.csv'
 }});
 </script>
 </body></html>"""
