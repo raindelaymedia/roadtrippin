@@ -278,7 +278,7 @@ def history_cumulative(rows):
     as total-clip-short (the stored full column does not reconcile; total/clip/
     short do). Impressions come straight from the stored per-period column."""
     def s(col):
-        return sum(int(r[col]) for r in rows) if rows else 0
+        return sum(int(float(r[col])) for r in rows) if rows else 0
     def s_opt(col):
         # tolerate rows that predate a column (e.g. fb_views backfill)
         return sum(int(r.get(col) or 0) for r in rows) if rows else 0
@@ -415,7 +415,8 @@ def assemble(period_raw, manual, cum_prior, top_content, start, end, generated,
     # ---- impressions ----
     if this_imp is None:
         other_tp = (period_raw["mega_views"] + period_raw["ig_views"]
-                    + period_raw["tiktok_views"] + period_raw["x_imp"])
+            + period_raw["tiktok_views"] + period_raw["x_imp"]
+            + period_raw.get("fb_views", 0))
         this_imp = period_impressions(
             period_raw["yt_full_views"], period_raw["yt_clip_views"], period_raw["yt_short_views"],
             manual["group_eps"], manual["solo_perk"] + manual["solo_chan"],
@@ -423,7 +424,7 @@ def assemble(period_raw, manual, cum_prior, top_content, start, end, generated,
     total_imp = cum_prior["impressions"] + ap * this_imp
 
     clips_short_imp = (cum_clip + cum_short) * MULT_CLIPS_SHORTS
-    other_imp = cum_mega + cum_ig + cum_tt + cum_x
+    other_imp = cum_mega + cum_ig + cum_tt + cum_x + cum_fb
     full_ep_imp = total_imp - clips_short_imp - other_imp   # residual → matches headline exactly
 
     # ---- header metrics ----

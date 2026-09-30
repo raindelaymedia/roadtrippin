@@ -1281,7 +1281,10 @@ def main():
 
     # Collab traffic sources
     print("  Pulling collab traffic sources...")
-    collab_data = pull_collab_sources(creds, start, end)
+    # Collab pull is day-based, so run it through yesterday — `end` is the 1st of
+    # this month (needed for month-dimension queries) and would cut off the current month.
+    day_end = (datetime.now() - timedelta(days=1)).strftime("%Y-%m-%d")
+    collab_data = pull_collab_sources(creds, start, day_end)
     if collab_data:
         latest = sorted(collab_data.keys())[-1]
         c = collab_data[latest]

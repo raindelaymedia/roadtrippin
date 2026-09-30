@@ -90,13 +90,14 @@ def main():
             subs_curve[m_] = running
             running -= (tracker['yt']['subs_gained'].get(m_) or 0) - (tracker['yt']['subs_lost'].get(m_) or 0)
 
-    # Revenue
+    # Revenue: Fanatics only (source == FANATICS); N/A and TBD rows are skipped
     revenue = defaultdict(float)
     for r in revenue_raw:
         p = r.get("period","").strip()
-        if S1_START <= p <= S1_END:
-            try: revenue[p] += float(r.get("amount","0").strip())
-            except: pass
+        if not (S1_START <= p <= S1_END): continue
+        if r.get("source","").strip().upper() != "FANATICS": continue
+        try: revenue[p] += float(r.get("amount","0").strip().replace(",","").replace("$",""))
+        except ValueError: pass
 
     # Fanatics
     fan_imp = sum(ti(r,"impressions") for r in fanatics_raw)
@@ -122,19 +123,30 @@ def main():
     s1_rev = sum(revenue.values())
     s1_vids_count = len(all_vids)
 
-    print(f"  Views: {s1_views:,}  Subs: {current_subs:,}  Revenue: ${s1_rev:,.0f}  Impressions: {fan_imp:,}")
+    print(f"  Views: {s1_views:,}  Subs: {current_subs:,}  Fanatics revenue: ${s1_rev:,.0f}  Impressions: {fan_imp:,}")
 
     # ── Build events ──
     events = []
 
+    def chapter_for(month):
+        mm = int(month[5:7])
+        if month <= "2025-12": return "foundation"
+        if mm <= 2: return "going_live"
+        if mm <= 5: return "breakout"
+        if mm <= 8: return "peak"
+        return "finale"
+
+    # Subscriber milestones: first month the end-of-month count clears each threshold
+    for threshold in (125_000, 150_000, 175_000):
+        crossed = next((m_ for m_ in S1_MONTHS if subs_curve.get(m_, 0) >= threshold), None)
+        if crossed and subs_curve.get(S1_MONTHS[0], 0) < threshold:
+            events.append({"date":f"{crossed}-15","chapter":chapter_for(crossed),"type":"milestone","icon":"🎯",
+                "title":f"{threshold//1000}K Subscribers","desc":f"Channel crosses {threshold:,} YouTube subscribers.",
+                "month_only":True})
+
     # Contract start
     events.append({"date":"2025-10-01","chapter":"foundation","type":"milestone","icon":"🚀",
         "title":"Season 1 Begins","desc":"Rain Delay Media begins production of Road Trippin' Season 2 cycle."})
-
-    # 125K subs
-    if subs_curve.get("2025-12",0) >= 125000:
-        events.append({"date":"2025-12-15","chapter":"foundation","type":"milestone","icon":"🎯",
-            "title":"125K Subscribers","desc":"Channel crosses 125,000 YouTube subscribers."})
 
     # Perk CP3 viral clip (Dec 2025)
     perk_cp3 = [v for v in all_vids if "CP3" in v.get("title","") and "T-Lue" in v.get("title","")]
@@ -170,11 +182,6 @@ def main():
             "title":v["title"][:55],"desc":f'{fmt(v["views"])} views.',
             "vid_id":v.get("id"),"views":v["views"]})
 
-    # 150K subs
-    if subs_curve.get("2026-04",0) >= 150000:
-        events.append({"date":"2026-04-15","chapter":"breakout","type":"milestone","icon":"🎯",
-            "title":"150K Subscribers","desc":"Channel crosses 150,000 YouTube subscribers."})
-
     # Ja Morant short (Apr)
     ja = [v for v in all_vids if "Ja Morant" in v.get("title","") and v.get("published","").startswith("2026-04")]
     if ja:
@@ -182,15 +189,6 @@ def main():
         events.append({"date":v["published"],"chapter":"breakout","type":"viral","icon":"🔥",
             "title":v["title"][:55],"desc":f'{fmt(v["views"])} views.',
             "vid_id":v.get("id"),"views":v["views"]})
-
-    # Revenue $500K milestone (May)
-    cum_rev = 0
-    for m_ in S1_MONTHS:
-        cum_rev += revenue.get(m_, 0)
-        if cum_rev >= 500000:
-            events.append({"date":f"{m_}-15","chapter":"breakout","type":"milestone","icon":"💰",
-                "title":"$500K Gross Revenue","desc":"Cumulative S1 revenue crosses $500K. RDM participation begins per contract §5.1."})
-            break
 
     # Game 7s peak concurrent (May)
     game7 = [c for c in concurrent if c["peak"] > 1800]
@@ -214,15 +212,10 @@ def main():
         v = giannis[0]
         desc = f'{fmt(v["views"])} views'
         if shumpert:
-            desc += f' + Shumpert clip at {fmt(shumpert[0]["views"])}. Combined 3.2M views in 24 hours — biggest day in show history.'
+            desc += f' + Shumpert clip at {fmt(shumpert[0]["views"])}. Combined {fmt(v["views"] + shumpert[0]["views"])} views — biggest day in show history.'
         events.append({"date":v["published"],"chapter":"peak","type":"viral","icon":"🔥🔥",
             "title":"Baby Giannis Goes Viral","desc":desc,
             "vid_id":v.get("id"),"views":v["views"]})
-
-    # 175K subs
-    if subs_curve.get("2026-08",0) >= 175000:
-        events.append({"date":"2026-08-15","chapter":"peak","type":"milestone","icon":"🎯",
-            "title":"175K Subscribers","desc":"Channel crosses 175,000 YouTube subscribers."})
 
     # Rondo August
     rondo_vids = [v for v in all_vids if "Rondo" in v.get("title","") and v.get("published","").startswith("2026-08")]
@@ -243,10 +236,12 @@ def main():
         "title":"Perk's Prediction Goes Viral","desc":"585K views on Instagram. 'Remember when Perk said this back in 2025? Looking back, Big Perk might've actually undersold it.' The Thunder-PG saga, revisited."})
 
     # Brunson episode — biggest episode of the season, saved the best for last
+    brunson = next((v for v in all_vids if v.get("id") == "BeZUS-lZ4qs"), {})
     events.append({"date":"2026-09-08","chapter":"finale","type":"viral","icon":"👑",
         "title":"Saved the Best for Last",
-        "desc":"The Jalen Brunson episode becomes the biggest full episode of Season 1. Opening Night vs Philly, his dad on the Knicks bench, and why he's not ducking any smoke. The perfect way to close the year.",
-        "vid_id":"BeZUS-lZ4qs","views":0})
+        "desc":"The Jalen Brunson episode becomes the biggest full episode of Season 1. Opening Night vs Philly, his dad on the Knicks bench, and why he's not ducking any smoke. The perfect way to close the year."
+            + (f' {fmt(brunson["views"])} views.' if brunson.get("views") else ""),
+        "vid_id":"BeZUS-lZ4qs","views":brunson.get("views",0)})
 
     # Season 2 tease
     events.append({"date":"2026-09-14","chapter":"finale","type":"milestone","icon":"🚀",
@@ -262,7 +257,7 @@ def main():
         {"key":"going_live","title":"Going Live","subtitle":"January – February 2026",
          "desc":"Live episodes launch. Fanatics deal signed. Everything accelerates.","color":"#2F6DDE"},
         {"key":"breakout","title":"The Breakout","subtitle":"March – May 2026",
-         "desc":"Shorts strategy explodes. Revenue crosses $500K. Playoffs drive record engagement.","color":"#1B9B96"},
+         "desc":"Shorts strategy explodes. Playoffs drive record engagement.","color":"#1B9B96"},
         {"key":"peak","title":"Peak Season","subtitle":"June – August 2026",
          "desc":"Best numbers across every metric. Free agency content goes massive. Rondo takes August.","color":"#E08C2A"},
         {"key":"finale","title":"Season Finale","subtitle":"September 2026",
@@ -284,7 +279,7 @@ def main():
                 vid_thumb = f'<a href="https://youtube.com/watch?v={e["vid_id"]}" target="_blank"><img class="ev-thumb" src="https://i.ytimg.com/vi/{e["vid_id"]}/mqdefault.jpg" loading="lazy"></a>'
 
             date_display = e["date"]
-            try: date_display = datetime.strptime(e["date"], "%Y-%m-%d").strftime("%b %d, %Y")
+            try: date_display = datetime.strptime(e["date"], "%Y-%m-%d").strftime("%B %Y" if e.get("month_only") else "%b %d, %Y")
             except: pass
 
             event_cards += f'''
@@ -320,7 +315,11 @@ def main():
     chart_shorts = jsa([yt.get(m_,{}).get("shorts",0) for m_ in S1_MONTHS])
     chart_lives = jsa([yt.get(m_,{}).get("lives",0) for m_ in S1_MONTHS])
     chart_subs = jsa([subs_curve.get(m_,0) for m_ in S1_MONTHS])
-    chart_rev = jsa([revenue.get(m_,0) for m_ in S1_MONTHS])
+    chart_rev = jsa([round(revenue.get(m_,0), 2) for m_ in S1_MONTHS])
+    _cum = 0; _cum_rev = []
+    for m_ in S1_MONTHS:
+        _cum += revenue.get(m_, 0); _cum_rev.append(round(_cum, 2))
+    chart_rev_cum = jsa(_cum_rev)
 
     html = f'''<!DOCTYPE html>
 <html lang="en">
@@ -347,10 +346,6 @@ body::before{{
   opacity:.7;mix-blend-mode:screen;
 }}
 body::after{{
-  content:'';position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;
-  background:radial-gradient(ellipse at 50% 30%,rgba(201,168,76,.04) 0%,transparent 60%);
-}}
-body::after{{
   content:'';position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.35;
   background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.08'/%3E%3C/svg%3E");
 }}
@@ -361,7 +356,7 @@ body > *{{position:relative;z-index:1}}
 .star-sm{{font-size:12px;opacity:.08}}
 
 /* ── Hero ── */
-.hero{{text-align:center;padding:100px 24px 80px;position:relative;overflow:hidden}}
+.hero{{text-align:center;padding:100px 24px 80px;position:relative;overflow:hidden;background:radial-gradient(ellipse at 50% 40%,rgba(201,168,76,.08) 0%,transparent 65%)}}
 .hero::after{{content:'';position:absolute;bottom:0;left:10%;right:10%;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}}
 .hero-stars{{position:absolute;top:0;left:0;right:0;bottom:0;pointer-events:none}}
 .htag{{font-family:'Oswald',sans-serif;font-size:13px;text-transform:uppercase;letter-spacing:.35em;color:var(--gold);font-weight:500;margin-bottom:16px}}
@@ -456,8 +451,8 @@ h1 em{{font-style:normal;color:var(--gold)}}
   <div class="hgrid">
     <div class="hstat"><div class="hval">{fmt(s1_views)}</div><div class="hlbl">YouTube Views</div></div>
     <div class="hstat"><div class="hval">{current_subs//1000}K</div><div class="hlbl">Subscribers</div></div>
-    <div class="hstat"><div class="hval">{fmt_money(s1_rev)}</div><div class="hlbl">Revenue</div></div>
-    <div class="hstat"><div class="hval">{fmt(fan_imp)}</div><div class="hlbl">Impressions</div></div>
+    <div class="hstat"><div class="hval">{fmt_money(s1_rev)}</div><div class="hlbl">Fanatics Revenue</div></div>
+    <div class="hstat"><div class="hval">{fmt(fan_imp)}</div><div class="hlbl">Fanatics Impressions</div></div>
     <div class="hstat"><div class="hval">{s1_vids_count:,}</div><div class="hlbl">Videos</div></div>
   </div>
 </div>
@@ -468,7 +463,7 @@ h1 em{{font-style:normal;color:var(--gold)}}
   </div>
   <div class="chart-row">
     <div class="chart-box"><div class="chart-lbl">Subscriber Growth</div><div style="height:200px"><canvas id="c2"></canvas></div></div>
-    <div class="chart-box"><div class="chart-lbl">Monthly Revenue</div><div style="height:200px"><canvas id="c3"></canvas></div></div>
+    <div class="chart-box"><div class="chart-lbl">Monthly Fanatics Revenue</div><div style="height:200px"><canvas id="c3"></canvas></div></div>
   </div>
 </div>
 
@@ -486,7 +481,7 @@ h1 em{{font-style:normal;color:var(--gold)}}
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <script>
-const L={chart_labels},gc='rgba(255,255,255,.04)',tc='#505870',
+const L={chart_labels},gc='rgba(255,255,255,.06)',tc='#C8C8C2',
 fK=v=>v>=1e6?(v/1e6).toFixed(1)+'M':v>=1e3?(v/1e3).toFixed(0)+'K':v;
 new Chart(document.getElementById('c1'),{{type:'bar',data:{{labels:L,datasets:[
 {{label:'VOD',data:{chart_vods},backgroundColor:'#2F6DDE',borderRadius:3,stack:'s'}},
@@ -494,7 +489,7 @@ new Chart(document.getElementById('c1'),{{type:'bar',data:{{labels:L,datasets:[
 {{label:'Live',data:{chart_lives},backgroundColor:'#E08C2A',borderRadius:3,stack:'s'}}
 ]}},options:{{responsive:true,maintainAspectRatio:false,plugins:{{legend:{{position:'bottom',labels:{{color:tc,boxWidth:10,font:{{size:11}}}}}}}},scales:{{x:{{stacked:true,grid:{{display:false}},ticks:{{color:tc}}}},y:{{stacked:true,grid:{{color:gc}},ticks:{{color:tc,callback:fK}}}}}}}}}});
 new Chart(document.getElementById('c2'),{{type:'line',data:{{labels:L,datasets:[{{data:{chart_subs},borderColor:'#C9A84C',backgroundColor:'rgba(201,168,76,.08)',fill:true,tension:.35,pointRadius:3,borderWidth:2}}]}},options:{{responsive:true,maintainAspectRatio:false,plugins:{{legend:{{display:false}}}},scales:{{x:{{grid:{{display:false}},ticks:{{color:tc}}}},y:{{grid:{{color:gc}},ticks:{{color:tc,callback:fK}}}}}}}}}});
-new Chart(document.getElementById('c3'),{{type:'bar',data:{{labels:L,datasets:[{{data:{chart_rev},backgroundColor:'#C9A84C',borderRadius:3}}]}},options:{{responsive:true,maintainAspectRatio:false,plugins:{{legend:{{display:false}}}},scales:{{x:{{grid:{{display:false}},ticks:{{color:tc}}}},y:{{grid:{{color:gc}},ticks:{{color:tc,callback:v=>'$'+fK(v)}}}}}}}}}});
+new Chart(document.getElementById('c3'),{{type:'bar',data:{{labels:L,datasets:[{{label:'Monthly',data:{chart_rev},backgroundColor:'rgba(201,168,76,.35)',borderRadius:3,order:2}},{{label:'Cumulative',type:'line',data:{chart_rev_cum},borderColor:'#C9A84C',backgroundColor:'transparent',tension:.3,pointRadius:3,borderWidth:2,order:1}}]}},options:{{responsive:true,maintainAspectRatio:false,plugins:{{legend:{{position:'bottom',labels:{{color:tc,boxWidth:10,font:{{size:11}}}}}},tooltip:{{callbacks:{{label:c=>c.dataset.label+': $'+c.parsed.y.toLocaleString(undefined,{{maximumFractionDigits:0}})}}}}}},scales:{{x:{{grid:{{display:false}},ticks:{{color:tc}}}},y:{{grid:{{color:gc}},ticks:{{color:tc,callback:v=>'$'+fK(v)}}}}}}}}}});
 const obs=new IntersectionObserver(es=>es.forEach(e=>{{if(e.isIntersecting)e.target.classList.add('visible')}}),{{threshold:.1,rootMargin:'0px 0px -50px 0px'}});
 document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
 </script>

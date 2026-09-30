@@ -27,15 +27,43 @@ body{font-family:'DM Sans',sans-serif;color:var(--t);background:var(--bg);paddin
 
 .foot{text-align:center;font-size:9px;color:var(--t3);margin-top:14px;padding-top:8px;border-top:1px solid var(--bdr)}
 .table-scroll{overflow-x:auto;scrollbar-width:thin}
-.dtable{border-collapse:collapse;font-size:11px;font-family:'DM Mono',monospace;white-space:nowrap;width:100%}
-.dtable th{background:var(--s1);padding:6px 10px;text-align:right;font-size:9px;font-weight:600;color:var(--t2);text-transform:uppercase;letter-spacing:.04em;border-bottom:1.5px solid var(--bdr);font-family:'DM Sans',sans-serif}
-.dtable td{padding:5px 10px;text-align:right;border-bottom:.5px solid var(--bdr)}
-.dtable th.sticky,.dtable td.sticky{text-align:left;position:sticky;left:0;background:var(--bg);z-index:1;font-family:'DM Sans',sans-serif;font-weight:500;min-width:110px}
+.dtable{border-collapse:collapse;font-size:10.5px;font-family:'DM Mono',monospace;white-space:nowrap;width:100%}
+.dtable th{background:var(--s1);padding:6px 7px;text-align:right;font-size:9px;font-weight:600;color:var(--t2);text-transform:uppercase;letter-spacing:.04em;border-bottom:1.5px solid var(--bdr);font-family:'DM Sans',sans-serif}
+.dtable td{padding:5px 7px;text-align:right;border-bottom:.5px solid var(--bdr)}
+.dtable th.sticky,.dtable td.sticky{text-align:left;position:sticky;left:0;background:var(--bg);z-index:1;font-family:'DM Sans',sans-serif;font-weight:500;min-width:100px}
 .dtable tr:nth-child(even) td{background:#fafbfc}
 .dtable tr:nth-child(even) td.sticky{background:#fafbfc}
 .dtable .total-row td{background:var(--s1)!important;border-top:1.5px solid var(--bdr);font-weight:600}
 .dtable .total-row td.sticky{background:var(--s1)!important}
 .gold{color:var(--gold);font-weight:700}
+
+.ct{background:var(--s1);border:1px solid var(--bdr);border-radius:8px;padding:16px 18px;margin-bottom:14px}
+.ct-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px}
+.ct-title{font-size:13px;font-weight:700}
+.ct-note{font-size:10px;color:var(--t3)}
+.split{display:flex;height:26px;border-radius:5px;overflow:hidden;gap:1px;background:#fff}
+.seg{min-width:2px}
+.split-marks{display:flex;font-size:10px;font-weight:600;margin-top:5px}
+.split-marks .m-show{color:#123E8C}
+.split-marks .m-social{color:#A8791E;text-align:right}
+.ct-cols{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+.ct-col{background:#fff;border:1px solid var(--bdr);border-radius:6px;padding:12px 14px}
+.ct-col.show{border-top:3px solid #123E8C}
+.ct-col.social{border-top:3px solid var(--gold)}
+.ct-big{display:flex;align-items:baseline;gap:10px;margin-bottom:2px}
+.ct-big .v{font-size:24px;font-weight:800;letter-spacing:-.5px}
+.ct-big .p{font-size:12px;font-weight:600;color:var(--t2)}
+.ct-sub{font-size:11px;color:var(--t2);margin-bottom:10px}
+.ct-sub b{color:var(--green)}
+.lg-row{display:grid;grid-template-columns:12px 1fr auto 48px;gap:8px;align-items:center;font-size:11px;padding:3px 0;border-top:.5px solid var(--bdr)}
+.lg-row:first-child{border-top:none}
+.sw{width:10px;height:10px;border-radius:2px}
+.lg-val{font-family:'DM Mono',monospace;font-weight:500}
+.lg-pct{font-family:'DM Mono',monospace;color:var(--t3);text-align:right}
+.dtable .grp-row th{text-align:center;font-size:9px;border-bottom:none;padding-bottom:2px}
+.dtable th.grp-show{color:#123E8C;border-bottom:2px solid #123E8C}
+.dtable th.grp-social{color:#A8791E;border-bottom:2px solid var(--gold)}
+.dtable .grp-start{border-left:1px solid var(--bdr)}
 </style>
 </head>
 <body>
@@ -73,133 +101,191 @@ body{font-family:'DM Sans',sans-serif;color:var(--t);background:var(--bg);paddin
   </div>
 </div>
 
+<div class="ct">
+  <div class="ct-head">
+    <div class="ct-title">Where the 170.8M impressions came from</div>
+    <div class="ct-note">Share of total contracted impressions</div>
+  </div>
+  <div class="split"><div class="seg" style="flex:14627339;background:#123E8C" title="Full episodes: 14,627,339 (8.6%)"></div><div class="seg" style="flex:8998795;background:#2F6DDE" title="YouTube clips: 8,998,795 (5.3%)"></div><div class="seg" style="flex:40083691;background:#8DB0EF" title="YouTube Shorts: 40,083,691 (23.5%)"></div><div class="seg" style="flex:530048;background:#7C5BD8" title="Podcast: 530,048 (0.3%)"></div><div class="seg" style="flex:71330800;background:#C9A84C" title="Instagram: 71,330,800 (41.8%)"></div><div class="seg" style="flex:12371561;background:#DDBF73" title="TikTok: 12,371,561 (7.2%)"></div><div class="seg" style="flex:14583248;background:#E08C2A" title="Facebook: 14,583,248 (8.5%)"></div><div class="seg" style="flex:8275204;background:#EFB77A" title="X: 8,275,204 (4.8%)"></div></div>
+  <div class="split-marks">
+    <div class="m-show" style="flex:64239873">The show · 38%</div>
+    <div class="m-social" style="flex:106560813">Off-YouTube social · 62%</div>
+  </div>
+  <div class="ct-cols">
+    <div class="ct-col show">
+      <div class="ct-big"><span class="v">64.2M</span><span class="p">137% of the 47M goal</span></div>
+      <div class="ct-sub">The show: full episodes, clips and Shorts on YouTube, plus the podcast. <b>Clears the goal on its own.</b></div>
+      <div class="lg-row"><span class="sw" style="background:#123E8C"></span><span class="lg-name">Full episodes</span><span class="lg-val">14.6M</span><span class="lg-pct">8.6%</span></div><div class="lg-row"><span class="sw" style="background:#2F6DDE"></span><span class="lg-name">YouTube clips</span><span class="lg-val">9.0M</span><span class="lg-pct">5.3%</span></div><div class="lg-row"><span class="sw" style="background:#8DB0EF"></span><span class="lg-name">YouTube Shorts</span><span class="lg-val">40.1M</span><span class="lg-pct">23.5%</span></div><div class="lg-row"><span class="sw" style="background:#7C5BD8"></span><span class="lg-name">Podcast</span><span class="lg-val">0.5M</span><span class="lg-pct">0.3%</span></div>
+    </div>
+    <div class="ct-col social">
+      <div class="ct-big"><span class="v">106.6M</span><span class="p">227% of the 47M goal</span></div>
+      <div class="ct-sub">Promo clips posted to Instagram, TikTok, Facebook and X.</div>
+      <div class="lg-row"><span class="sw" style="background:#C9A84C"></span><span class="lg-name">Instagram</span><span class="lg-val">71.3M</span><span class="lg-pct">41.8%</span></div><div class="lg-row"><span class="sw" style="background:#DDBF73"></span><span class="lg-name">TikTok</span><span class="lg-val">12.4M</span><span class="lg-pct">7.2%</span></div><div class="lg-row"><span class="sw" style="background:#E08C2A"></span><span class="lg-name">Facebook</span><span class="lg-val">14.6M</span><span class="lg-pct">8.5%</span></div><div class="lg-row"><span class="sw" style="background:#EFB77A"></span><span class="lg-name">X</span><span class="lg-val">8.3M</span><span class="lg-pct">4.8%</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="charts" style="margin-bottom:14px">
+  <div class="chart-box" style="grid-column:span 2">
+    <div class="chart-label">Impressions per Period by Content Type</div>
+    <div style="height:210px"><canvas id="c-ct"></canvas></div>
+  </div>
+</div>
+
 <div class="charts">
   <div class="chart-box" style="grid-column:span 2">
-    <div class="chart-label">Period-by-Period Delivery Breakdown</div>
+    <div class="chart-label">Period-by-Period Views & Downloads by Content Type</div>
     <div class="table-scroll"><table class="dtable">
-      <thead><tr>
+      <thead><tr class="grp-row">
+        <th class="sticky"></th>
+        <th colspan="4" class="grp grp-show">The show: YouTube + podcast</th>
+        <th colspan="4" class="grp grp-social">Off-YouTube social</th>
+        <th colspan="3" class="grp">Totals</th>
+      </tr><tr>
         <th class="sticky">Period</th>
-        <th>YouTube</th>
-        <th>Instagram</th>
+        <th class="grp-start">Full eps</th>
+        <th>Clips</th>
+        <th>Shorts</th>
+        <th>Podcast</th>
+        <th class="grp-start">Instagram</th>
         <th>TikTok</th>
         <th>Facebook</th>
         <th>X</th>
-        <th>Podcast</th>
-        <th>Period V&D</th>
+        <th class="grp-start">Period V&D</th>
         <th>Impressions</th>
         <th>Cum. Impressions</th>
       </tr></thead>
       <tbody>
       <tr>
           <td class="sticky">Feb 17–Mar 01</td>
-          <td>712,108</td>
-          <td>1,606,901</td>
+          <td class="grp-start">152,352</td>
+          <td>276,357</td>
+          <td>283,399</td>
+          <td>32,334</td>
+          <td class="grp-start">1,606,901</td>
           <td>378,050</td>
           <td>0</td>
           <td>196,584</td>
-          <td>32,334</td>
-          <td><b>2,925,977</b></td>
+          <td class="grp-start"><b>2,925,977</b></td>
           <td>4,197,217</td>
           <td class="gold">4,197,217</td>
         </tr><tr>
           <td class="sticky">Mar 02–Mar 15</td>
-          <td>851,517</td>
-          <td>2,993,344</td>
+          <td class="grp-start">84,246</td>
+          <td>251,951</td>
+          <td>732,605</td>
+          <td>38,294</td>
+          <td class="grp-start">2,993,344</td>
           <td>756,244</td>
           <td>0</td>
           <td>323,799</td>
-          <td>38,294</td>
-          <td><b>4,963,198</b></td>
+          <td class="grp-start"><b>5,180,483</b></td>
           <td>5,636,845</td>
           <td class="gold">9,834,062</td>
         </tr><tr>
           <td class="sticky">Mar 16–Apr 12</td>
-          <td>3,998,477</td>
-          <td>4,585,760</td>
+          <td class="grp-start">370,653</td>
+          <td>979,336</td>
+          <td>2,648,488</td>
+          <td>71,145</td>
+          <td class="grp-start">4,585,760</td>
           <td>1,387,480</td>
           <td>0</td>
           <td>1,100,981</td>
-          <td>71,145</td>
-          <td><b>11,143,843</b></td>
+          <td class="grp-start"><b>11,143,843</b></td>
           <td>16,502,616</td>
           <td class="gold">26,336,678</td>
         </tr><tr>
           <td class="sticky">Apr 13–May 10</td>
-          <td>2,983,638</td>
-          <td>5,525,491</td>
+          <td class="grp-start">201,028</td>
+          <td>422,671</td>
+          <td>2,359,939</td>
+          <td>79,293</td>
+          <td class="grp-start">5,525,491</td>
           <td>1,081,887</td>
           <td>0</td>
           <td>1,545,348</td>
-          <td>79,293</td>
-          <td><b>11,215,657</b></td>
+          <td class="grp-start"><b>11,215,657</b></td>
           <td>14,937,068</td>
           <td class="gold">41,273,746</td>
         </tr><tr>
           <td class="sticky">May 11–May 31</td>
-          <td>1,866,428</td>
-          <td>3,641,703</td>
+          <td class="grp-start">120,345</td>
+          <td>325,176</td>
+          <td>1,420,907</td>
+          <td>47,692</td>
+          <td class="grp-start">3,641,703</td>
           <td>2,324,000</td>
           <td>758,123</td>
           <td>1,811,882</td>
-          <td>47,692</td>
-          <td><b>10,449,828</b></td>
+          <td class="grp-start"><b>10,449,828</b></td>
           <td>13,009,427</td>
           <td class="gold">54,283,173</td>
         </tr><tr>
           <td class="sticky">Jun 01–Jun 30</td>
-          <td>4,013,422</td>
-          <td>18,789,712</td>
+          <td class="grp-start">311,427</td>
+          <td>712,296</td>
+          <td>2,989,699</td>
+          <td>78,971</td>
+          <td class="grp-start">18,789,712</td>
           <td>2,021,531</td>
           <td>1,241,877</td>
           <td>1,421,383</td>
-          <td>78,971</td>
-          <td><b>27,566,896</b></td>
+          <td class="grp-start"><b>27,566,896</b></td>
           <td>32,527,526</td>
           <td class="gold">86,810,699</td>
         </tr><tr>
           <td class="sticky">Jul 01–Jul 31</td>
-          <td>8,115,349</td>
-          <td>19,200,467</td>
+          <td class="grp-start">526,502</td>
+          <td>915,461</td>
+          <td>6,673,386</td>
+          <td>74,249</td>
+          <td class="grp-start">19,200,467</td>
           <td>2,214,814</td>
           <td>7,815,071</td>
           <td>1,047,656</td>
-          <td>74,249</td>
-          <td><b>38,467,606</b></td>
+          <td class="grp-start"><b>38,467,606</b></td>
           <td>44,714,823</td>
           <td class="gold">131,525,522</td>
         </tr><tr>
           <td class="sticky">Aug 01–Aug 31</td>
-          <td>4,951,937</td>
-          <td>12,053,611</td>
+          <td class="grp-start">627,752</td>
+          <td>495,727</td>
+          <td>3,828,458</td>
+          <td>87,913</td>
+          <td class="grp-start">12,053,611</td>
           <td>1,419,300</td>
           <td>3,152,187</td>
           <td>569,779</td>
-          <td>87,913</td>
-          <td><b>22,234,727</b></td>
+          <td class="grp-start"><b>22,234,727</b></td>
           <td>29,438,554</td>
           <td class="gold">160,964,076</td>
         </tr><tr>
           <td class="sticky">Sep 01–Sep 13</td>
-          <td>1,539,864</td>
-          <td>2,933,811</td>
+          <td class="grp-start">331,724</td>
+          <td>408,625</td>
+          <td>799,515</td>
+          <td>20,157</td>
+          <td class="grp-start">2,933,811</td>
           <td>788,255</td>
           <td>1,615,990</td>
           <td>257,792</td>
-          <td>20,157</td>
-          <td><b>7,155,869</b></td>
+          <td class="grp-start"><b>7,155,869</b></td>
           <td>9,836,610</td>
           <td class="gold">170,800,686</td>
         </tr>
       </tbody>
       <tfoot><tr class="total-row">
         <td class="sticky"><b>TOTAL</b></td>
-        <td>29,032,740</td>
-        <td>71,330,800</td>
+        <td class="grp-start">2,726,029</td>
+        <td>4,787,600</td>
+        <td>21,736,396</td>
+        <td>530,048</td>
+        <td class="grp-start">71,330,800</td>
         <td>12,371,561</td>
         <td>14,583,248</td>
         <td>8,275,204</td>
-        <td>530,048</td>
-        <td><b>136,123,601</b></td>
+        <td class="grp-start"><b>136,340,886</b></td>
         <td><b>170,800,686</b></td>
         <td class="gold"><b>363% of 47M</b></td>
       </tr></tfoot>
@@ -226,8 +312,11 @@ body{font-family:'DM Sans',sans-serif;color:var(--t);background:var(--bg);paddin
   </div>
 </div>
 
+<div class="foot" style="text-align:left;border-top:none;margin-top:10px;padding-top:0">
+  Impressions: podcast and off-YouTube platforms count 1x. YouTube impressions per period are split across full episodes (6x group, 5x solo; live streams are included in the full-episode playlist), clips and Shorts (2x) by weighted views, and tie to each period's reported total.
+</div>
 <div class="foot">
-  Road Trippin' × Fanatics Sportsbook · Presenting Partnership · Rain Delay Media · Confidential · Generated September 14, 2026
+  Road Trippin' × Fanatics Sportsbook · Presenting Partnership · Rain Delay Media · Confidential · Generated September 26, 2026
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
@@ -235,6 +324,27 @@ body{font-family:'DM Sans',sans-serif;color:var(--t);background:var(--bg);paddin
 const L=["Feb 17\u2013Mar 01", "Mar 02\u2013Mar 15", "Mar 16\u2013Apr 12", "Apr 13\u2013May 10", "May 11\u2013May 31", "Jun 01\u2013Jun 30", "Jul 01\u2013Jul 31", "Aug 01\u2013Aug 31", "Sep 01\u2013Sep 13"];
 const tc='#8a93a6',gc='#f0f1f3';
 const fK=v=>v>=1e6?(v/1e6).toFixed(0)+'M':v>=1e3?(v/1e3).toFixed(0)+'K':v;
+
+// Impressions by content type: YouTube + podcast (blues/purple) vs off-YouTube social (golds)
+new Chart(document.getElementById('c-ct'),{
+  type:'bar',
+  data:{labels:L,datasets:[
+    {label:'Full episodes',data:[863549, 297610, 2063599, 1161436, 731986, 1764384, 2359473, 3569492, 1815810],backgroundColor:'#123E8C',stack:'s'},
+    {label:'YouTube clips',data:[552856, 314135, 1968931, 842060, 687948, 1387203, 1447962, 984335, 813365],backgroundColor:'#2F6DDE',stack:'s'},
+    {label:'YouTube Shorts',data:[566943, 913419, 5324720, 4701553, 3006093, 5822465, 10555131, 7601937, 1591430],backgroundColor:'#8DB0EF',stack:'s'},
+    {label:'Podcast',data:[32334, 38294, 71145, 79293, 47692, 78971, 74249, 87913, 20157],backgroundColor:'#7C5BD8',stack:'s'},
+    {label:'Instagram',data:[1606901, 2993344, 4585760, 5525491, 3641703, 18789712, 19200467, 12053611, 2933811],backgroundColor:'#C9A84C',stack:'s'},
+    {label:'TikTok',data:[378050, 756244, 1387480, 1081887, 2324000, 2021531, 2214814, 1419300, 788255],backgroundColor:'#DDBF73',stack:'s'},
+    {label:'Facebook',data:[0, 0, 0, 0, 758123, 1241877, 7815071, 3152187, 1615990],backgroundColor:'#E08C2A',stack:'s'},
+    {label:'X',data:[196584, 323799, 1100981, 1545348, 1811882, 1421383, 1047656, 569779, 257792],backgroundColor:'#EFB77A',stack:'s'}
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{position:'right',labels:{boxWidth:10,font:{size:10}}},
+      tooltip:{callbacks:{label:c=>c.dataset.label+': '+c.parsed.y.toLocaleString()}}},
+    scales:{x:{stacked:true,grid:{display:false},ticks:{color:tc,font:{size:8},maxRotation:45}},
+      y:{stacked:true,grid:{color:gc},ticks:{color:tc,callback:fK}}}
+  }
+});
 
 // Impressions: bar per period + cumulative line
 new Chart(document.getElementById('c-imp'),{

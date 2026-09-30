@@ -1472,7 +1472,7 @@ body > *{{position:relative;z-index:1}}
 .rev-edit-status{{font-size:11px;font-family:'DM Sans',sans-serif;color:var(--gold);font-weight:500}}
 .rev-grid{{border-collapse:separate;border-spacing:0;font-size:12px;font-family:'DM Mono',monospace;white-space:nowrap}}
 .rev-grid th,.rev-grid td{{padding:6px 11px;text-align:right;border:.5px solid var(--border)}}
-.rev-grid thead th{{position:sticky;top:0;z-index:3;background:var(--surface2);color:var(--text2);font-family:'DM Sans',sans-serif;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.04em}}
+.rev-grid thead th{{position:sticky;top:0;z-index:3;background:#1a1a16;color:var(--text2);font-family:'DM Sans',sans-serif;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.04em}}
 .rev-grid th.rev-src,.rev-grid td.rev-src{{position:sticky;left:0;z-index:2;text-align:left;background:var(--surface);color:var(--text);font-family:'DM Sans',sans-serif;font-weight:500;min-width:150px;border-right:1px solid var(--border2)}}
 .rev-grid thead th.rev-src{{z-index:4}}
 .rev-grid td.rev-tbd{{color:var(--gold);font-style:italic}}
@@ -1519,22 +1519,22 @@ body > *{{position:relative;z-index:1}}
 .table-scroll::-webkit-scrollbar{{height:4px}}
 .table-scroll::-webkit-scrollbar-thumb{{background:rgba(0,0,0,.1);border-radius:2px}}
 .data-table{{border-collapse:collapse;font-size:12px;font-family:'DM Mono',monospace;white-space:nowrap}}
-.data-table th{{
+.data-table th{{background:#1a1a16;
   background:var(--surface2); padding:7px 12px;
   text-align:right; font-weight:600; font-size:10px;
   color:var(--text2); border:1px solid var(--border);
   text-transform:uppercase; letter-spacing:.06em;
   white-space:nowrap; position:sticky; top:0; z-index:2;
 }}
-.data-table th:first-child{{text-align:left;position:sticky;left:0;z-index:3;background:var(--surface2);min-width:150px}}
+.data-table th:first-child{{text-align:left;position:sticky;left:0;z-index:3;background:#1a1a16;min-width:150px}}
 .data-table td{{padding:6px 12px;text-align:right;border:.5px solid var(--border);background:transparent}}
 .data-table td:first-child{{text-align:left;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;color:var(--text2);position:sticky;left:0;background:var(--bg);z-index:1;min-width:150px}}
 .data-table tr:nth-child(even) td{{background:rgba(255,255,255,.03)}}
 .data-table tr:nth-child(even) td:first-child{{background:#151515}}
 .data-table tr:nth-child(even) td:first-child{{background:#f8f9fc}}
-.data-table th.lifetime-col{{background:var(--surface3);border-left:1px solid var(--border2)}}
+.data-table th.lifetime-col{{background:#222218;border-left:1px solid var(--border2)}}
 .data-table td.lifetime-col{{
-  font-weight:600; color:var(--text); background:var(--surface3)!important;
+  font-weight:600; color:var(--text); background:#222218!important;
   border-left:1px solid var(--border2);
 }}
 .data-table tr.total-row td{{

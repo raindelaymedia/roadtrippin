@@ -1,37 +1,1682 @@
 {
-  "generated": "2026-08-26T00:00:00",
-  "months": ["2026-10"],
+  "generated": "2026-09-28T19:09:58.619101",
+  "channel_id": "UCLh4znMEEDzabMHw-Ob0Cpg",
+  "rt_channel_id": "UCSes4X8uDrpc4X46hJKjejg",
+  "months": [
+    "2026-09"
+  ],
   "yt": {
-    "vids": {"2026-10": 1},
-    "shorts": {"2026-10": 1},
-    "lives": {"2026-10": 0},
-    "subs_gained": {"2026-10": 1},
-    "subs_lost": {"2026-10": 0}
+    "vids": {
+      "2026-09": 9255
+    },
+    "shorts": {
+      "2026-09": 13688
+    },
+    "lives": {
+      "2026-09": 0
+    },
+    "subs_gained": {
+      "2026-09": 165
+    },
+    "subs_lost": {
+      "2026-09": 4
+    },
+    "watch_hrs": {
+      "2026-09": 1049.6
+    }
   },
   "audio": {
-    "downloads": {},
-    "streams": {},
-    "episodes": {}
+    "downloads": {
+      "2026-09": null
+    },
+    "streams": {
+      "2026-09": null
+    },
+    "episodes": {
+      "2026-09": null
+    }
   },
   "kpis": {
-    "shorts_count": {"2026-10": 0},
-    "ctr": {},
-    "search_pct": {},
-    "tv_pct": {}
+    "shorts_count": {
+      "2026-09": 27
+    },
+    "ctr": {
+      "2026-09": null
+    },
+    "search_pct": {
+      "2026-09": 0.0375
+    },
+    "tv_pct": {
+      "2026-09": 0.129
+    }
+  },
+  "collab": {
+    "total_views": {
+      "2026-09": 22939
+    },
+    "rt_views": {
+      "2026-09": 1131
+    },
+    "rt_pct": {
+      "2026-09": 0.0493
+    },
+    "rt_by_source": {
+      "2026-09": {
+        "suggested": 0,
+        "channel_page": 1131
+      }
+    },
+    "collab_views": {
+      "2026-09": 1401
+    },
+    "collab_pct": {
+      "2026-09": 0.0611
+    },
+    "top_channels": {
+      "2026-09": [
+        {
+          "id": "UCSes4X8uDrpc4X46hJKjejg",
+          "name": "Road Trippin' Show",
+          "views": 1131,
+          "is_rt": true
+        },
+        {
+          "id": "UCNu8NgZMcU4VIds-8LjcnMA",
+          "name": "iHeart Women's Sports",
+          "views": 41,
+          "is_rt": false
+        },
+        {
+          "id": "UCDTQREvNrpuZjD5teG8o2aA",
+          "name": "The Daily W",
+          "views": 26,
+          "is_rt": false
+        },
+        {
+          "id": "UCgnWegEYcbBRzyzcWc6O2jw",
+          "name": "Keep The Vision",
+          "views": 18,
+          "is_rt": false
+        },
+        {
+          "id": "UCi9ACGG8NptsQhaMyezITEw",
+          "name": "Yahoo! Sports",
+          "views": 17,
+          "is_rt": false
+        }
+      ]
+    },
+    "detail_coverage": {
+      "2026-09": {
+        "suggested": 0.3464,
+        "channel_page": 0.9993
+      }
+    }
+  },
+  "traffic_sources": {
+    "2026-09": {
+      "NO_LINK_OTHER": 162,
+      "SUBSCRIBER": 6607,
+      "YT_SEARCH": 861,
+      "YT_OTHER_PAGE": 232,
+      "SHORTS": 12678,
+      "YT_CHANNEL": 1380,
+      "EXT_URL": 61,
+      "SOUND_PAGE": 3,
+      "SHORTS_CONTENT_LINKS": 15,
+      "PLAYLIST": 62,
+      "NOTIFICATION": 9,
+      "RELATED_VIDEO": 869
+    }
   },
   "best_of": {
-    "label": "",
-    "long": [],
-    "mid": [],
-    "short": []
+    "label": "Sep 01 \u2013 Sep 28, 2026",
+    "long": [
+      {
+        "id": "HoIt4473r94",
+        "title": "Caitlin Clark vs. A'ja Wilson + Ryan Ruocco's Case for a 5-Game WNBA First Round",
+        "published": "2026-09-25",
+        "views": 8416,
+        "likes": 179,
+        "thumbnail": "https://i.ytimg.com/vi/HoIt4473r94/maxresdefault.jpg",
+        "url": "https://youtu.be/HoIt4473r94",
+        "type": "LONG",
+        "show": "GT"
+      },
+      {
+        "id": "5X4z2LMziCs",
+        "title": "Caitlin Clark's Defense Deserves CREDIT + Why Team USA NEEDED Chelsea Gray",
+        "published": "2026-09-17",
+        "views": 3675,
+        "likes": 54,
+        "thumbnail": "https://i.ytimg.com/vi/5X4z2LMziCs/maxresdefault.jpg",
+        "url": "https://youtu.be/5X4z2LMziCs",
+        "type": "LONG",
+        "show": "GT"
+      }
+    ],
+    "mid": [
+      {
+        "id": "v_O4wjgvkrs",
+        "title": "Caitlin Clark Didn't Need 30 Points to Give Team USA What It Needed",
+        "published": "2026-09-18",
+        "views": 569,
+        "likes": 7,
+        "thumbnail": "https://i.ytimg.com/vi/v_O4wjgvkrs/maxresdefault.jpg",
+        "url": "https://youtu.be/v_O4wjgvkrs",
+        "type": "MID",
+        "show": "GT"
+      },
+      {
+        "id": "0CTl8q2bURs",
+        "title": "Breanna Stewart Told Ryan Ruocco: \"I\u2019m Built for This\"",
+        "published": "2026-09-19",
+        "views": 405,
+        "likes": 2,
+        "thumbnail": "https://i.ytimg.com/vi/0CTl8q2bURs/maxresdefault.jpg",
+        "url": "https://youtu.be/0CTl8q2bURs",
+        "type": "MID",
+        "show": "GT"
+      },
+      {
+        "id": "r8G0COTZo2U",
+        "title": "Why Ryan Ruocco Says Cathy Engelbert Deserves Credit for the WNBA's Growth",
+        "published": "2026-09-20",
+        "views": 123,
+        "likes": 0,
+        "thumbnail": "https://i.ytimg.com/vi/r8G0COTZo2U/maxresdefault.jpg",
+        "url": "https://youtu.be/r8G0COTZo2U",
+        "type": "MID",
+        "show": "GT"
+      },
+      {
+        "id": "5s9Q_6X-DF0",
+        "title": "Candace Parker on Why Her First Championship Was the Hardest",
+        "published": "2026-09-16",
+        "views": 96,
+        "likes": 4,
+        "thumbnail": "https://i.ytimg.com/vi/5s9Q_6X-DF0/maxresdefault.jpg",
+        "url": "https://youtu.be/5s9Q_6X-DF0",
+        "type": "MID",
+        "show": "GT"
+      },
+      {
+        "id": "blPdCzCO8po",
+        "title": "Can Caitlin Clark's Fever Beat the Aces? Ryan Ruocco's Biggest Question Is Aliyah Boston",
+        "published": "2026-09-28",
+        "views": 32,
+        "likes": 2,
+        "thumbnail": "https://i.ytimg.com/vi/blPdCzCO8po/maxresdefault.jpg",
+        "url": "https://youtu.be/blPdCzCO8po",
+        "type": "MID",
+        "show": "GT"
+      }
+    ],
+    "short": [
+      {
+        "id": "QsBA6J2uEJw",
+        "title": "Is this the most dominant performance of the season?! #caitlinclark #wnba #basketball",
+        "published": "2026-09-20",
+        "views": 1609,
+        "likes": 66,
+        "thumbnail": "https://i.ytimg.com/vi/QsBA6J2uEJw/maxresdefault.jpg",
+        "url": "https://youtu.be/QsBA6J2uEJw",
+        "type": "SHORT",
+        "show": "GT"
+      },
+      {
+        "id": "mx4bUJHe_Wk",
+        "title": "Why The 2026 WNBA Playoffs Will Be Completely Different #wnba #caitlinclark",
+        "published": "2026-09-25",
+        "views": 1591,
+        "likes": 16,
+        "thumbnail": "https://i.ytimg.com/vi/mx4bUJHe_Wk/maxresdefault.jpg",
+        "url": "https://youtu.be/mx4bUJHe_Wk",
+        "type": "SHORT",
+        "show": "GT"
+      },
+      {
+        "id": "wwHB5T5vou8",
+        "title": "The RECORD BREAKING Truth About Angel Reese #wnba #basketball",
+        "published": "2026-09-20",
+        "views": 1481,
+        "likes": 33,
+        "thumbnail": "https://i.ytimg.com/vi/wwHB5T5vou8/maxresdefault.jpg",
+        "url": "https://youtu.be/wwHB5T5vou8",
+        "type": "SHORT",
+        "show": "GT"
+      },
+      {
+        "id": "RnLhjqA_Ano",
+        "title": "Caitlin Clark & Kelsey Mitchell The GREATEST Backcourt EVER?! #WNBA #CaitlinClark #KelseyMitchell",
+        "published": "2026-09-14",
+        "views": 1436,
+        "likes": 34,
+        "thumbnail": "https://i.ytimg.com/vi/RnLhjqA_Ano/maxresdefault.jpg",
+        "url": "https://youtu.be/RnLhjqA_Ano",
+        "type": "SHORT",
+        "show": "GT"
+      },
+      {
+        "id": "mCpIWxs13fs",
+        "title": "The Most UNDERRATED Winner In Basketball History",
+        "published": "2026-09-21",
+        "views": 1396,
+        "likes": 19,
+        "thumbnail": "https://i.ytimg.com/vi/mCpIWxs13fs/maxresdefault.jpg",
+        "url": "https://youtu.be/mCpIWxs13fs",
+        "type": "SHORT",
+        "show": "GT"
+      }
+    ]
   },
   "audience": {
-    "eps": {},
-    "vods": {},
-    "lives": {}
+    "eps": {
+      "2026-09": 2
+    },
+    "vods": {
+      "2026-09": 14
+    },
+    "lives": {
+      "2026-09": 2
+    }
   },
-  "top_content_monthly": {},
-  "all_videos": [],
-  "current_subs": 1,
-  "daily_yt": {}
+  "top_content_monthly": {
+    "2026-09": {
+      "long": [
+        {
+          "id": "HoIt4473r94",
+          "title": "Caitlin Clark vs. A'ja Wilson + Ryan Ruocco's Case for a 5-Game WNBA First Round",
+          "published": "2026-09-25",
+          "month": "2026-09",
+          "views": 8416,
+          "likes": 179,
+          "comments": 50,
+          "duration_sec": 3605,
+          "thumbnail": "https://i.ytimg.com/vi/HoIt4473r94/maxresdefault.jpg",
+          "url": "https://youtu.be/HoIt4473r94",
+          "type": "long"
+        },
+        {
+          "id": "5X4z2LMziCs",
+          "title": "Caitlin Clark's Defense Deserves CREDIT + Why Team USA NEEDED Chelsea Gray",
+          "published": "2026-09-17",
+          "month": "2026-09",
+          "views": 3675,
+          "likes": 54,
+          "comments": 15,
+          "duration_sec": 3931,
+          "thumbnail": "https://i.ytimg.com/vi/5X4z2LMziCs/maxresdefault.jpg",
+          "url": "https://youtu.be/5X4z2LMziCs",
+          "type": "long"
+        }
+      ],
+      "mid": [
+        {
+          "id": "v_O4wjgvkrs",
+          "title": "Caitlin Clark Didn't Need 30 Points to Give Team USA What It Needed",
+          "published": "2026-09-18",
+          "month": "2026-09",
+          "views": 569,
+          "likes": 7,
+          "comments": 1,
+          "duration_sec": 410,
+          "thumbnail": "https://i.ytimg.com/vi/v_O4wjgvkrs/maxresdefault.jpg",
+          "url": "https://youtu.be/v_O4wjgvkrs",
+          "type": "mid"
+        },
+        {
+          "id": "0CTl8q2bURs",
+          "title": "Breanna Stewart Told Ryan Ruocco: \"I\u2019m Built for This\"",
+          "published": "2026-09-19",
+          "month": "2026-09",
+          "views": 405,
+          "likes": 2,
+          "comments": 1,
+          "duration_sec": 618,
+          "thumbnail": "https://i.ytimg.com/vi/0CTl8q2bURs/maxresdefault.jpg",
+          "url": "https://youtu.be/0CTl8q2bURs",
+          "type": "mid"
+        },
+        {
+          "id": "r8G0COTZo2U",
+          "title": "Why Ryan Ruocco Says Cathy Engelbert Deserves Credit for the WNBA's Growth",
+          "published": "2026-09-20",
+          "month": "2026-09",
+          "views": 123,
+          "likes": 0,
+          "comments": 0,
+          "duration_sec": 574,
+          "thumbnail": "https://i.ytimg.com/vi/r8G0COTZo2U/maxresdefault.jpg",
+          "url": "https://youtu.be/r8G0COTZo2U",
+          "type": "mid"
+        },
+        {
+          "id": "5s9Q_6X-DF0",
+          "title": "Candace Parker on Why Her First Championship Was the Hardest",
+          "published": "2026-09-16",
+          "month": "2026-09",
+          "views": 96,
+          "likes": 4,
+          "comments": 1,
+          "duration_sec": 270,
+          "thumbnail": "https://i.ytimg.com/vi/5s9Q_6X-DF0/maxresdefault.jpg",
+          "url": "https://youtu.be/5s9Q_6X-DF0",
+          "type": "mid"
+        },
+        {
+          "id": "blPdCzCO8po",
+          "title": "Can Caitlin Clark's Fever Beat the Aces? Ryan Ruocco's Biggest Question Is Aliyah Boston",
+          "published": "2026-09-28",
+          "month": "2026-09",
+          "views": 32,
+          "likes": 2,
+          "comments": 0,
+          "duration_sec": 536,
+          "thumbnail": "https://i.ytimg.com/vi/blPdCzCO8po/maxresdefault.jpg",
+          "url": "https://youtu.be/blPdCzCO8po",
+          "type": "mid"
+        },
+        {
+          "id": "2aEUA6zNeX0",
+          "title": "Why Minnesota Should Worry About Breanna Stewart's No. 8 Liberty",
+          "published": "2026-09-28",
+          "month": "2026-09",
+          "views": 30,
+          "likes": 3,
+          "comments": 0,
+          "duration_sec": 756,
+          "thumbnail": "https://i.ytimg.com/vi/2aEUA6zNeX0/maxresdefault.jpg",
+          "url": "https://youtu.be/2aEUA6zNeX0",
+          "type": "mid"
+        },
+        {
+          "id": "Psht8qGHdig",
+          "title": "PaigeGoldenState GT Clip",
+          "published": "2026-09-28",
+          "month": "2026-09",
+          "views": 0,
+          "likes": 0,
+          "comments": 0,
+          "duration_sec": 492,
+          "thumbnail": "https://i9.ytimg.com/vi/Psht8qGHdig/maxresdefault.jpg?sqp=CPDi69UG&rs=AOn4CLD_Za1Ad6FE1t6hPCXkv12KQwV3nQ",
+          "url": "https://youtu.be/Psht8qGHdig",
+          "type": "mid"
+        },
+        {
+          "id": "IB0Qc05GW-s",
+          "title": "FromWattsToHallOfFame GT Clip",
+          "published": "2026-09-15",
+          "month": "2026-09",
+          "views": 0,
+          "likes": 0,
+          "comments": 0,
+          "duration_sec": 262,
+          "thumbnail": "https://i9.ytimg.com/vi/IB0Qc05GW-s/maxresdefault.jpg?sqp=CPDi69UG&rs=AOn4CLAVF-Bs0O91fzyKBjq-a0YF3s91Bg",
+          "url": "https://youtu.be/IB0Qc05GW-s",
+          "type": "mid"
+        },
+        {
+          "id": "eoEP2zU1HRQ",
+          "title": "StoryBehindYouBet GT Clip",
+          "published": "2026-09-14",
+          "month": "2026-09",
+          "views": 0,
+          "likes": 0,
+          "comments": 0,
+          "duration_sec": 315,
+          "thumbnail": "https://i9.ytimg.com/vi/eoEP2zU1HRQ/maxresdefault.jpg?sqp=CPDi69UG&rs=AOn4CLCdVSkrRhmNWZAvOgHGyQ3Z6SWDAg",
+          "url": "https://youtu.be/eoEP2zU1HRQ",
+          "type": "mid"
+        },
+        {
+          "id": "-lJauQxSixM",
+          "title": "TSpoonCanCoachEveryPlayerSameWay GT Clip",
+          "published": "2026-09-14",
+          "month": "2026-09",
+          "views": 0,
+          "likes": 0,
+          "comments": 0,
+          "duration_sec": 336,
+          "thumbnail": "https://i9.ytimg.com/vi/-lJauQxSixM/maxresdefault.jpg?sqp=CPDi69UG&rs=AOn4CLCpjQtG9aITwP3V3KF-J_g6Z0Yl9w",
+          "url": "https://youtu.be/-lJauQxSixM",
+          "type": "mid"
+        }
+      ],
+      "short": [
+        {
+          "id": "QsBA6J2uEJw",
+          "title": "Is this the most dominant performance of the season?! #caitlinclark #wnba #basketball",
+          "published": "2026-09-20",
+          "month": "2026-09",
+          "views": 1609,
+          "likes": 66,
+          "comments": 6,
+          "duration_sec": 44,
+          "thumbnail": "https://i.ytimg.com/vi/QsBA6J2uEJw/maxresdefault.jpg",
+          "url": "https://youtu.be/QsBA6J2uEJw",
+          "type": "short"
+        },
+        {
+          "id": "mx4bUJHe_Wk",
+          "title": "Why The 2026 WNBA Playoffs Will Be Completely Different #wnba #caitlinclark",
+          "published": "2026-09-25",
+          "month": "2026-09",
+          "views": 1591,
+          "likes": 16,
+          "comments": 1,
+          "duration_sec": 28,
+          "thumbnail": "https://i.ytimg.com/vi/mx4bUJHe_Wk/maxresdefault.jpg",
+          "url": "https://youtu.be/mx4bUJHe_Wk",
+          "type": "short"
+        },
+        {
+          "id": "wwHB5T5vou8",
+          "title": "The RECORD BREAKING Truth About Angel Reese #wnba #basketball",
+          "published": "2026-09-20",
+          "month": "2026-09",
+          "views": 1481,
+          "likes": 33,
+          "comments": 1,
+          "duration_sec": 54,
+          "thumbnail": "https://i.ytimg.com/vi/wwHB5T5vou8/maxresdefault.jpg",
+          "url": "https://youtu.be/wwHB5T5vou8",
+          "type": "short"
+        },
+        {
+          "id": "RnLhjqA_Ano",
+          "title": "Caitlin Clark & Kelsey Mitchell The GREATEST Backcourt EVER?! #WNBA #CaitlinClark #KelseyMitchell",
+          "published": "2026-09-14",
+          "month": "2026-09",
+          "views": 1436,
+          "likes": 34,
+          "comments": 2,
+          "duration_sec": 53,
+          "thumbnail": "https://i.ytimg.com/vi/RnLhjqA_Ano/maxresdefault.jpg",
+          "url": "https://youtu.be/RnLhjqA_Ano",
+          "type": "short"
+        },
+        {
+          "id": "mCpIWxs13fs",
+          "title": "The Most UNDERRATED Winner In Basketball History",
+          "published": "2026-09-21",
+          "month": "2026-09",
+          "views": 1396,
+          "likes": 19,
+          "comments": 1,
+          "duration_sec": 42,
+          "thumbnail": "https://i.ytimg.com/vi/mCpIWxs13fs/maxresdefault.jpg",
+          "url": "https://youtu.be/mCpIWxs13fs",
+          "type": "short"
+        },
+        {
+          "id": "d1xwBqP0U9s",
+          "title": "Is Stewie the GREATEST Winner in Women's Basketball History? #wnba #basketball",
+          "published": "2026-09-18",
+          "month": "2026-09",
+          "views": 1308,
+          "likes": 12,
+          "comments": 3,
+          "duration_sec": 57,
+          "thumbnail": "https://i.ytimg.com/vi/d1xwBqP0U9s/maxresdefault.jpg",
+          "url": "https://youtu.be/d1xwBqP0U9s",
+          "type": "short"
+        },
+        {
+          "id": "Ibm3c9nG9D4",
+          "title": "Did Caitlin Clark Just Prove Every HATER Wrong!?  #wnba #caitlinclark",
+          "published": "2026-09-17",
+          "month": "2026-09",
+          "views": 1158,
+          "likes": 37,
+          "comments": 2,
+          "duration_sec": 59,
+          "thumbnail": "https://i.ytimg.com/vi/Ibm3c9nG9D4/maxresdefault.jpg",
+          "url": "https://youtu.be/Ibm3c9nG9D4",
+          "type": "short"
+        },
+        {
+          "id": "3f5w8wfShNU",
+          "title": "The Truth About Cathy Engelbert\u2019s WNBA Legacy (Night and Day Difference!) #wnba #caitlinclark",
+          "published": "2026-09-22",
+          "month": "2026-09",
+          "views": 1058,
+          "likes": 7,
+          "comments": 3,
+          "duration_sec": 54,
+          "thumbnail": "https://i.ytimg.com/vi/3f5w8wfShNU/maxresdefault.jpg",
+          "url": "https://youtu.be/3f5w8wfShNU",
+          "type": "short"
+        },
+        {
+          "id": "f5Z3149s-XM",
+          "title": "Stewie Carried NY With 27 & 14 But Atlanta Stole The Win! #wnba #basketball #breannastewart",
+          "published": "2026-09-22",
+          "month": "2026-09",
+          "views": 1054,
+          "likes": 18,
+          "comments": 2,
+          "duration_sec": 49,
+          "thumbnail": "https://i.ytimg.com/vi/f5Z3149s-XM/maxresdefault.jpg",
+          "url": "https://youtu.be/f5Z3149s-XM",
+          "type": "short"
+        },
+        {
+          "id": "xgS8iYrh5BU",
+          "title": "Girls Tripp Has Its Own Channel | WNBA Podcast with Allie Clifton & Jordan Robinson",
+          "published": "2026-09-16",
+          "month": "2026-09",
+          "views": 876,
+          "likes": 10,
+          "comments": 1,
+          "duration_sec": 36,
+          "thumbnail": "https://i.ytimg.com/vi/xgS8iYrh5BU/maxresdefault.jpg",
+          "url": "https://youtu.be/xgS8iYrh5BU",
+          "type": "short"
+        }
+      ]
+    }
+  },
+  "all_videos": [
+    {
+      "id": "B3IybxBfoQI",
+      "title": "The Indiana Fever NEED This From Lexie Hull in Game 2! #wnba #caitlinclark",
+      "published": "2026-09-28",
+      "month": "2026-09",
+      "views": 2,
+      "likes": 0,
+      "comments": 0,
+      "duration_sec": 49,
+      "thumbnail": "https://i.ytimg.com/vi/B3IybxBfoQI/maxresdefault.jpg",
+      "url": "https://youtu.be/B3IybxBfoQI",
+      "type": "short"
+    },
+    {
+      "id": "2aEUA6zNeX0",
+      "title": "Why Minnesota Should Worry About Breanna Stewart's No. 8 Liberty",
+      "published": "2026-09-28",
+      "month": "2026-09",
+      "views": 30,
+      "likes": 3,
+      "comments": 0,
+      "duration_sec": 756,
+      "thumbnail": "https://i.ytimg.com/vi/2aEUA6zNeX0/maxresdefault.jpg",
+      "url": "https://youtu.be/2aEUA6zNeX0",
+      "type": "mid"
+    },
+    {
+      "id": "blPdCzCO8po",
+      "title": "Can Caitlin Clark's Fever Beat the Aces? Ryan Ruocco's Biggest Question Is Aliyah Boston",
+      "published": "2026-09-28",
+      "month": "2026-09",
+      "views": 32,
+      "likes": 2,
+      "comments": 0,
+      "duration_sec": 536,
+      "thumbnail": "https://i.ytimg.com/vi/blPdCzCO8po/maxresdefault.jpg",
+      "url": "https://youtu.be/blPdCzCO8po",
+      "type": "mid"
+    },
+    {
+      "id": "Psht8qGHdig",
+      "title": "PaigeGoldenState GT Clip",
+      "published": "2026-09-28",
+      "month": "2026-09",
+      "views": 0,
+      "likes": 0,
+      "comments": 0,
+      "duration_sec": 492,
+      "thumbnail": "https://i9.ytimg.com/vi/Psht8qGHdig/maxresdefault.jpg?sqp=CPDi69UG&rs=AOn4CLD_Za1Ad6FE1t6hPCXkv12KQwV3nQ",
+      "url": "https://youtu.be/Psht8qGHdig",
+      "type": "mid"
+    },
+    {
+      "id": "udCbXUSSs8E",
+      "title": "Beat the Best to Be the Best: Liberty Take Game 1! \ud83d\udd25 #wnba #Lynx #basketball",
+      "published": "2026-09-28",
+      "month": "2026-09",
+      "views": 660,
+      "likes": 14,
+      "comments": 1,
+      "duration_sec": 52,
+      "thumbnail": "https://i.ytimg.com/vi/udCbXUSSs8E/maxresdefault.jpg",
+      "url": "https://youtu.be/udCbXUSSs8E",
+      "type": "short"
+    },
+    {
+      "id": "mx4bUJHe_Wk",
+      "title": "Why The 2026 WNBA Playoffs Will Be Completely Different #wnba #caitlinclark",
+      "published": "2026-09-25",
+      "month": "2026-09",
+      "views": 1591,
+      "likes": 16,
+      "comments": 1,
+      "duration_sec": 28,
+      "thumbnail": "https://i.ytimg.com/vi/mx4bUJHe_Wk/maxresdefault.jpg",
+      "url": "https://youtu.be/mx4bUJHe_Wk",
+      "type": "short"
+    },
+    {
+      "id": "HoIt4473r94",
+      "title": "Caitlin Clark vs. A'ja Wilson + Ryan Ruocco's Case for a 5-Game WNBA First Round",
+      "published": "2026-09-25",
+      "month": "2026-09",
+      "views": 8416,
+      "likes": 179,
+      "comments": 50,
+      "duration_sec": 3605,
+      "thumbnail": "https://i.ytimg.com/vi/HoIt4473r94/maxresdefault.jpg",
+      "url": "https://youtu.be/HoIt4473r94",
+      "type": "long"
+    },
+    {
+      "id": "sHD_NChQ6HE",
+      "title": "Give Kara Lawson Her FLOWERS! \ud83d\udc90 Why Her Gold Medal Coaching Was A Masterclass #wnba #caitlinclark",
+      "published": "2026-09-23",
+      "month": "2026-09",
+      "views": 727,
+      "likes": 4,
+      "comments": 2,
+      "duration_sec": 45,
+      "thumbnail": "https://i.ytimg.com/vi/sHD_NChQ6HE/maxresdefault.jpg",
+      "url": "https://youtu.be/sHD_NChQ6HE",
+      "type": "short"
+    },
+    {
+      "id": "f5Z3149s-XM",
+      "title": "Stewie Carried NY With 27 & 14 But Atlanta Stole The Win! #wnba #basketball #breannastewart",
+      "published": "2026-09-22",
+      "month": "2026-09",
+      "views": 1054,
+      "likes": 18,
+      "comments": 2,
+      "duration_sec": 49,
+      "thumbnail": "https://i.ytimg.com/vi/f5Z3149s-XM/maxresdefault.jpg",
+      "url": "https://youtu.be/f5Z3149s-XM",
+      "type": "short"
+    },
+    {
+      "id": "3f5w8wfShNU",
+      "title": "The Truth About Cathy Engelbert\u2019s WNBA Legacy (Night and Day Difference!) #wnba #caitlinclark",
+      "published": "2026-09-22",
+      "month": "2026-09",
+      "views": 1058,
+      "likes": 7,
+      "comments": 3,
+      "duration_sec": 54,
+      "thumbnail": "https://i.ytimg.com/vi/3f5w8wfShNU/maxresdefault.jpg",
+      "url": "https://youtu.be/3f5w8wfShNU",
+      "type": "short"
+    },
+    {
+      "id": "mCpIWxs13fs",
+      "title": "The Most UNDERRATED Winner In Basketball History",
+      "published": "2026-09-21",
+      "month": "2026-09",
+      "views": 1396,
+      "likes": 19,
+      "comments": 1,
+      "duration_sec": 42,
+      "thumbnail": "https://i.ytimg.com/vi/mCpIWxs13fs/maxresdefault.jpg",
+      "url": "https://youtu.be/mCpIWxs13fs",
+      "type": "short"
+    },
+    {
+      "id": "r8G0COTZo2U",
+      "title": "Why Ryan Ruocco Says Cathy Engelbert Deserves Credit for the WNBA's Growth",
+      "published": "2026-09-20",
+      "month": "2026-09",
+      "views": 123,
+      "likes": 0,
+      "comments": 0,
+      "duration_sec": 574,
+      "thumbnail": "https://i.ytimg.com/vi/r8G0COTZo2U/maxresdefault.jpg",
+      "url": "https://youtu.be/r8G0COTZo2U",
+      "type": "mid"
+    },
+    {
+      "id": "QsBA6J2uEJw",
+      "title": "Is this the most dominant performance of the season?! #caitlinclark #wnba #basketball",
+      "published": "2026-09-20",
+      "month": "2026-09",
+      "views": 1609,
+      "likes": 66,
+      "comments": 6,
+      "duration_sec": 44,
+      "thumbnail": "https://i.ytimg.com/vi/QsBA6J2uEJw/maxresdefault.jpg",
+      "url": "https://youtu.be/QsBA6J2uEJw",
+      "type": "short"
+    },
+    {
+      "id": "wwHB5T5vou8",
+      "title": "The RECORD BREAKING Truth About Angel Reese #wnba #basketball",
+      "published": "2026-09-20",
+      "month": "2026-09",
+      "views": 1481,
+      "likes": 33,
+      "comments": 1,
+      "duration_sec": 54,
+      "thumbnail": "https://i.ytimg.com/vi/wwHB5T5vou8/maxresdefault.jpg",
+      "url": "https://youtu.be/wwHB5T5vou8",
+      "type": "short"
+    },
+    {
+      "id": "0CTl8q2bURs",
+      "title": "Breanna Stewart Told Ryan Ruocco: \"I\u2019m Built for This\"",
+      "published": "2026-09-19",
+      "month": "2026-09",
+      "views": 405,
+      "likes": 2,
+      "comments": 1,
+      "duration_sec": 618,
+      "thumbnail": "https://i.ytimg.com/vi/0CTl8q2bURs/maxresdefault.jpg",
+      "url": "https://youtu.be/0CTl8q2bURs",
+      "type": "mid"
+    },
+    {
+      "id": "d1xwBqP0U9s",
+      "title": "Is Stewie the GREATEST Winner in Women's Basketball History? #wnba #basketball",
+      "published": "2026-09-18",
+      "month": "2026-09",
+      "views": 1308,
+      "likes": 12,
+      "comments": 3,
+      "duration_sec": 57,
+      "thumbnail": "https://i.ytimg.com/vi/d1xwBqP0U9s/maxresdefault.jpg",
+      "url": "https://youtu.be/d1xwBqP0U9s",
+      "type": "short"
+    },
+    {
+      "id": "v_O4wjgvkrs",
+      "title": "Caitlin Clark Didn't Need 30 Points to Give Team USA What It Needed",
+      "published": "2026-09-18",
+      "month": "2026-09",
+      "views": 569,
+      "likes": 7,
+      "comments": 1,
+      "duration_sec": 410,
+      "thumbnail": "https://i.ytimg.com/vi/v_O4wjgvkrs/maxresdefault.jpg",
+      "url": "https://youtu.be/v_O4wjgvkrs",
+      "type": "mid"
+    },
+    {
+      "id": "J5puuaJZqr0",
+      "title": "The TRUTH About International Basketball vs. The NBA! #wnba #basketball",
+      "published": "2026-09-18",
+      "month": "2026-09",
+      "views": 36,
+      "likes": 0,
+      "comments": 0,
+      "duration_sec": 23,
+      "thumbnail": "https://i9.ytimg.com/vi/J5puuaJZqr0/maxresdefault.jpg?sqp=CPDi69UG&rs=AOn4CLAY-_5tRS7dTnOqKBTIqSCZcE16-A",
+      "url": "https://youtu.be/J5puuaJZqr0",
+      "type": "short"
+    },
+    {
+      "id": "XK8WS2KSuTc",
+      "title": "Why Chelsea Gray Is The Most Clutch Player Ever #wnba #caitlinclark #LasVegasAces",
+      "published": "2026-09-17",
+      "month": "2026-09",
+      "views": 7,
+      "likes": 0,
+      "comments": 0,
+      "duration_sec": 39,
+      "thumbnail": "https://i.ytimg.com/vi/XK8WS2KSuTc/maxresdefault.jpg",
+      "url": "https://youtu.be/XK8WS2KSuTc",
+      "type": "short"
+    },
+    {
+      "id": "Ibm3c9nG9D4",
+      "title": "Did Caitlin Clark Just Prove Every HATER Wrong!?  #wnba #caitlinclark",
+      "published": "2026-09-17",
+      "month": "2026-09",
+      "views": 1158,
+      "likes": 37,
+      "comments": 2,
+      "duration_sec": 59,
+      "thumbnail": "https://i.ytimg.com/vi/Ibm3c9nG9D4/maxresdefault.jpg",
+      "url": "https://youtu.be/Ibm3c9nG9D4",
+      "type": "short"
+    },
+    {
+      "id": "5X4z2LMziCs",
+      "title": "Caitlin Clark's Defense Deserves CREDIT + Why Team USA NEEDED Chelsea Gray",
+      "published": "2026-09-17",
+      "month": "2026-09",
+      "views": 3675,
+      "likes": 54,
+      "comments": 15,
+      "duration_sec": 3931,
+      "thumbnail": "https://i.ytimg.com/vi/5X4z2LMziCs/maxresdefault.jpg",
+      "url": "https://youtu.be/5X4z2LMziCs",
+      "type": "long"
+    },
+    {
+      "id": "xgS8iYrh5BU",
+      "title": "Girls Tripp Has Its Own Channel | WNBA Podcast with Allie Clifton & Jordan Robinson",
+      "published": "2026-09-16",
+      "month": "2026-09",
+      "views": 876,
+      "likes": 10,
+      "comments": 1,
+      "duration_sec": 36,
+      "thumbnail": "https://i.ytimg.com/vi/xgS8iYrh5BU/maxresdefault.jpg",
+      "url": "https://youtu.be/xgS8iYrh5BU",
+      "type": "short"
+    },
+    {
+      "id": "22l5sEyk5rs",
+      "title": "Are The Minnesota Lynx The ONLY Flawless Team In The WNBA?! #WNBA #MinnesotaLynx #NapheesaCollier",
+      "published": "2026-09-16",
+      "month": "2026-09",
+      "views": 32,
+      "likes": 0,
+      "comments": 0,
+      "duration_sec": 43,
+      "thumbnail": "https://i.ytimg.com/vi/22l5sEyk5rs/maxresdefault.jpg",
+      "url": "https://youtu.be/22l5sEyk5rs",
+      "type": "short"
+    },
+    {
+      "id": "5s9Q_6X-DF0",
+      "title": "Candace Parker on Why Her First Championship Was the Hardest",
+      "published": "2026-09-16",
+      "month": "2026-09",
+      "views": 96,
+      "likes": 4,
+      "comments": 1,
+      "duration_sec": 270,
+      "thumbnail": "https://i.ytimg.com/vi/5s9Q_6X-DF0/maxresdefault.jpg",
+      "url": "https://youtu.be/5s9Q_6X-DF0",
+      "type": "mid"
+    },
+    {
+      "id": "igZDxtDoFGk",
+      "title": "Can Paige Bueckers PULL OFF A First-Round Shock?! #WNBA #PaigeBueckers #WNBAPlayoffs",
+      "published": "2026-09-16",
+      "month": "2026-09",
+      "views": 195,
+      "likes": 2,
+      "comments": 0,
+      "duration_sec": 51,
+      "thumbnail": "https://i.ytimg.com/vi/igZDxtDoFGk/maxresdefault.jpg",
+      "url": "https://youtu.be/igZDxtDoFGk",
+      "type": "short"
+    },
+    {
+      "id": "uWx5FFJ2_g0",
+      "title": "JuJu Watkins To The LA Sparks Would BREAK The WNBA!",
+      "published": "2026-09-16",
+      "month": "2026-09",
+      "views": 50,
+      "likes": 1,
+      "comments": 0,
+      "duration_sec": 23,
+      "thumbnail": "https://i.ytimg.com/vi/uWx5FFJ2_g0/maxresdefault.jpg",
+      "url": "https://youtu.be/uWx5FFJ2_g0",
+      "type": "short"
+    },
+    {
+      "id": "AQQnS0tzBLk",
+      "title": "Should Nneka Ogwumike Be The NEXT WNBA Commissioner?!     #wnba  #basketball #GirlsTripp",
+      "published": "2026-09-15",
+      "month": "2026-09",
+      "views": 7,
+      "likes": 0,
+      "comments": 0,
+      "duration_sec": 37,
+      "thumbnail": "https://i.ytimg.com/vi/AQQnS0tzBLk/maxresdefault.jpg",
+      "url": "https://youtu.be/AQQnS0tzBLk",
+      "type": "short"
+    },
+    {
+      "id": "m4RO-ogJaYg",
+      "title": "Are The Indiana Fever ACTUALLY Title Contenders?! #WNBA #IndianaFever #CaitlinClark #KelseyMitchell",
+      "published": "2026-09-15",
+      "month": "2026-09",
+      "views": 10,
+      "likes": 1,
+      "comments": 0,
+      "duration_sec": 35,
+      "thumbnail": "https://i.ytimg.com/vi/m4RO-ogJaYg/maxresdefault.jpg",
+      "url": "https://youtu.be/m4RO-ogJaYg",
+      "type": "short"
+    },
+    {
+      "id": "I-HQL3kIfSc",
+      "title": "Teresa Weatherspoon Gets Completely REAL On Her Chicago Exit",
+      "published": "2026-09-15",
+      "month": "2026-09",
+      "views": 515,
+      "likes": 9,
+      "comments": 0,
+      "duration_sec": 55,
+      "thumbnail": "https://i.ytimg.com/vi/I-HQL3kIfSc/maxresdefault.jpg",
+      "url": "https://youtu.be/I-HQL3kIfSc",
+      "type": "short"
+    },
+    {
+      "id": "IB0Qc05GW-s",
+      "title": "FromWattsToHallOfFame GT Clip",
+      "published": "2026-09-15",
+      "month": "2026-09",
+      "views": 0,
+      "likes": 0,
+      "comments": 0,
+      "duration_sec": 262,
+      "thumbnail": "https://i9.ytimg.com/vi/IB0Qc05GW-s/maxresdefault.jpg?sqp=CPDi69UG&rs=AOn4CLAVF-Bs0O91fzyKBjq-a0YF3s91Bg",
+      "url": "https://youtu.be/IB0Qc05GW-s",
+      "type": "mid"
+    },
+    {
+      "id": "MwXveWRp1AM",
+      "title": "\u201cShe Said \u2018Just Lead Me\u2019\u201d Teresa Weatherspoon On Chennedy Carter #WNBA #ChicagoSky #WomensBasketball",
+      "published": "2026-09-14",
+      "month": "2026-09",
+      "views": 206,
+      "likes": 7,
+      "comments": 1,
+      "duration_sec": 70,
+      "thumbnail": "https://i.ytimg.com/vi/MwXveWRp1AM/maxresdefault.jpg",
+      "url": "https://youtu.be/MwXveWRp1AM",
+      "type": "short"
+    },
+    {
+      "id": "eoEP2zU1HRQ",
+      "title": "StoryBehindYouBet GT Clip",
+      "published": "2026-09-14",
+      "month": "2026-09",
+      "views": 0,
+      "likes": 0,
+      "comments": 0,
+      "duration_sec": 315,
+      "thumbnail": "https://i9.ytimg.com/vi/eoEP2zU1HRQ/maxresdefault.jpg?sqp=CPDi69UG&rs=AOn4CLCdVSkrRhmNWZAvOgHGyQ3Z6SWDAg",
+      "url": "https://youtu.be/eoEP2zU1HRQ",
+      "type": "mid"
+    },
+    {
+      "id": "-lJauQxSixM",
+      "title": "TSpoonCanCoachEveryPlayerSameWay GT Clip",
+      "published": "2026-09-14",
+      "month": "2026-09",
+      "views": 0,
+      "likes": 0,
+      "comments": 0,
+      "duration_sec": 336,
+      "thumbnail": "https://i9.ytimg.com/vi/-lJauQxSixM/maxresdefault.jpg?sqp=CPDi69UG&rs=AOn4CLCpjQtG9aITwP3V3KF-J_g6Z0Yl9w",
+      "url": "https://youtu.be/-lJauQxSixM",
+      "type": "mid"
+    },
+    {
+      "id": "jlpiNl1Rwqc",
+      "title": "StateOfHoustonCometsDynasty GT Clip",
+      "published": "2026-09-14",
+      "month": "2026-09",
+      "views": 0,
+      "likes": 0,
+      "comments": 0,
+      "duration_sec": 429,
+      "thumbnail": "https://i9.ytimg.com/vi/jlpiNl1Rwqc/maxresdefault.jpg?sqp=CPDi69UG&rs=AOn4CLAW9E_gyZwmtp1xGN80fcPAAt4iUg",
+      "url": "https://youtu.be/jlpiNl1Rwqc",
+      "type": "mid"
+    },
+    {
+      "id": "tqpQewQX_h8",
+      "title": "TheyToldMeICouldntHaveBoth GT Clip",
+      "published": "2026-09-14",
+      "month": "2026-09",
+      "views": 0,
+      "likes": 0,
+      "comments": 0,
+      "duration_sec": 253,
+      "thumbnail": "https://i9.ytimg.com/vi/tqpQewQX_h8/maxresdefault.jpg?sqp=CPDi69UG&rs=AOn4CLAW2ovRxsMz-F1WxPPrAZKr3i_zNQ",
+      "url": "https://youtu.be/tqpQewQX_h8",
+      "type": "mid"
+    },
+    {
+      "id": "rdrf1qscQos",
+      "title": "A\u2019ja\u2019s Award To Lose Or Is Stewie Right There? #WNBA #AjaWilson #BreannaStewart #WNBAMVP #GirlsTripp",
+      "published": "2026-09-14",
+      "month": "2026-09",
+      "views": 0,
+      "likes": 0,
+      "comments": 0,
+      "duration_sec": 55,
+      "thumbnail": "https://i9.ytimg.com/vi/rdrf1qscQos/maxresdefault.jpg?sqp=CPDi69UG&rs=AOn4CLBCMHAQmnE_OWRvagcR-Xh0ngvkBw",
+      "url": "https://youtu.be/rdrf1qscQos",
+      "type": "short"
+    },
+    {
+      "id": "BcakqhGvp6s",
+      "title": "Can Paige Bueckers PULL OFF A First-Round Shock?! #WNBA #PaigeBueckers #WNBAPlayoffs",
+      "published": "2026-09-14",
+      "month": "2026-09",
+      "views": 0,
+      "likes": 0,
+      "comments": 0,
+      "duration_sec": 64,
+      "thumbnail": "https://i9.ytimg.com/vi/BcakqhGvp6s/maxresdefault.jpg?sqp=CPDi69UG&rs=AOn4CLBZzYoK5utRMvUVyxSHK1DepYP9sQ",
+      "url": "https://youtu.be/BcakqhGvp6s",
+      "type": "short"
+    },
+    {
+      "id": "-V5ipn_DXqs",
+      "title": "Should Nneka Ogwumike Be The NEXT WNBA Commissioner?! #WNBA #NnekaOgwumike #WNBAPlayers #GirlsTripp",
+      "published": "2026-09-14",
+      "month": "2026-09",
+      "views": 0,
+      "likes": 0,
+      "comments": 0,
+      "duration_sec": 32,
+      "thumbnail": "https://i9.ytimg.com/vi/-V5ipn_DXqs/maxresdefault.jpg?sqp=CPDi69UG&rs=AOn4CLAb9c_lZavO9q9yGZdEoSrFan9--A",
+      "url": "https://youtu.be/-V5ipn_DXqs",
+      "type": "short"
+    },
+    {
+      "id": "fSDB__vdRIY",
+      "title": "Are The Minnesota Lynx The ONLY Flawless Team In The WNBA?! #WNBA #MinnesotaLynx #NapheesaCollier",
+      "published": "2026-09-14",
+      "month": "2026-09",
+      "views": 0,
+      "likes": 0,
+      "comments": 0,
+      "duration_sec": 45,
+      "thumbnail": "https://i9.ytimg.com/vi/fSDB__vdRIY/maxresdefault.jpg?sqp=CPDi69UG&rs=AOn4CLAqBxlHsb5Gs3rz3TtNvpeBJA54Yg",
+      "url": "https://youtu.be/fSDB__vdRIY",
+      "type": "short"
+    },
+    {
+      "id": "5S2Qd26Gpwc",
+      "title": "JuJu Watkins To The LA Sparks Would BREAK The WNBA! WNBA #JuJuWatkins #LASparks #WNBAProspects",
+      "published": "2026-09-14",
+      "month": "2026-09",
+      "views": 0,
+      "likes": 0,
+      "comments": 0,
+      "duration_sec": 26,
+      "thumbnail": "https://i9.ytimg.com/vi/5S2Qd26Gpwc/maxresdefault.jpg?sqp=CPDi69UG&rs=AOn4CLDlsdTEOiLHwjwhA34JFHBLw1l7TA",
+      "url": "https://youtu.be/5S2Qd26Gpwc",
+      "type": "short"
+    },
+    {
+      "id": "RnLhjqA_Ano",
+      "title": "Caitlin Clark & Kelsey Mitchell The GREATEST Backcourt EVER?! #WNBA #CaitlinClark #KelseyMitchell",
+      "published": "2026-09-14",
+      "month": "2026-09",
+      "views": 1436,
+      "likes": 34,
+      "comments": 2,
+      "duration_sec": 53,
+      "thumbnail": "https://i.ytimg.com/vi/RnLhjqA_Ano/maxresdefault.jpg",
+      "url": "https://youtu.be/RnLhjqA_Ano",
+      "type": "short"
+    }
+  ],
+  "current_subs": 195,
+  "daily_yt": {
+    "2026-06-29": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-06-30": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-07-01": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-07-02": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-07-03": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-07-04": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-07-05": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-07-06": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-07-07": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-07-08": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-07-09": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-07-10": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-07-11": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-07-12": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-07-13": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-07-14": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-07-15": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-07-16": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-07-17": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-07-18": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-07-19": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-07-20": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-07-21": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-07-22": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-07-23": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-07-24": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-07-25": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-07-26": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-07-27": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-07-28": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-07-29": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-07-30": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-07-31": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-08-01": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-08-02": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-08-03": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-08-04": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-08-05": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-08-06": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-08-07": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-08-08": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-08-09": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-08-10": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-08-11": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-08-12": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-08-13": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-08-14": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-08-15": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-08-16": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-08-17": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-08-18": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-08-19": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-08-20": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-08-21": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-08-22": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-08-23": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-08-24": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-08-25": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-08-26": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-08-27": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-08-28": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-08-29": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-08-30": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-08-31": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-09-01": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-09-02": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-09-03": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-09-04": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-09-05": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-09-06": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-09-07": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-09-08": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-09-09": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-09-10": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-09-11": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-09-12": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-09-13": {
+      "total_views": 0,
+      "watch_hrs": 0.0,
+      "subs_gained": 0,
+      "subs_lost": 0
+    },
+    "2026-09-14": {
+      "total_views": 1432,
+      "watch_hrs": 9.4,
+      "subs_gained": 3,
+      "subs_lost": 0,
+      "shorts_views": 1432
+    },
+    "2026-09-15": {
+      "total_views": 25,
+      "watch_hrs": 0.1,
+      "subs_gained": 2,
+      "subs_lost": 0,
+      "shorts_views": 25
+    },
+    "2026-09-16": {
+      "total_views": 1271,
+      "watch_hrs": 4.6,
+      "subs_gained": 32,
+      "subs_lost": 2,
+      "shorts_views": 857,
+      "vod_views": 414
+    },
+    "2026-09-17": {
+      "total_views": 1564,
+      "watch_hrs": 37.0,
+      "subs_gained": 23,
+      "subs_lost": 0,
+      "shorts_views": 1049,
+      "vod_views": 515
+    },
+    "2026-09-18": {
+      "total_views": 543,
+      "watch_hrs": 12.3,
+      "subs_gained": 10,
+      "subs_lost": 0,
+      "shorts_views": 244,
+      "vod_views": 299
+    },
+    "2026-09-19": {
+      "total_views": 577,
+      "watch_hrs": 7.8,
+      "subs_gained": 4,
+      "subs_lost": 0,
+      "shorts_views": 455,
+      "vod_views": 122
+    },
+    "2026-09-20": {
+      "total_views": 5685,
+      "watch_hrs": 202.2,
+      "subs_gained": 29,
+      "subs_lost": 0,
+      "shorts_views": 3669,
+      "vod_views": 2016
+    },
+    "2026-09-21": {
+      "total_views": 888,
+      "watch_hrs": 60.7,
+      "subs_gained": 9,
+      "subs_lost": 0,
+      "shorts_views": 157,
+      "vod_views": 731
+    },
+    "2026-09-22": {
+      "total_views": 3949,
+      "watch_hrs": 39.5,
+      "subs_gained": 7,
+      "subs_lost": 1,
+      "shorts_views": 3288,
+      "vod_views": 661
+    },
+    "2026-09-23": {
+      "total_views": 756,
+      "watch_hrs": 9.1,
+      "subs_gained": 3,
+      "subs_lost": 0,
+      "shorts_views": 484,
+      "vod_views": 272
+    },
+    "2026-09-24": {
+      "total_views": 412,
+      "watch_hrs": 8.4,
+      "subs_gained": 1,
+      "subs_lost": 0,
+      "shorts_views": 288,
+      "vod_views": 128
+    },
+    "2026-09-25": {
+      "total_views": 2891,
+      "watch_hrs": 203.2,
+      "subs_gained": 11,
+      "subs_lost": 0,
+      "shorts_views": 1428,
+      "vod_views": 1463
+    },
+    "2026-09-26": {
+      "total_views": 2946,
+      "watch_hrs": 455.3,
+      "subs_gained": 31,
+      "subs_lost": 1,
+      "shorts_views": 312,
+      "vod_views": 2634
+    }
+  }
 }

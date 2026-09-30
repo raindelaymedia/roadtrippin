@@ -81,7 +81,7 @@ def pull_monthly(yt_analytics, start, end):
     resp = yt_analytics.reports().query(
         ids=f"channel==MINE", startDate=start, endDate=end,
         metrics="views,estimatedMinutesWatched,subscribersGained,subscribersLost",
-        dimensions="month", sort="month").execute()
+        dimensions="month", sort="month").execute(num_retries=3)
     data = {}
     for row in resp.get("rows", []):
         data[row[0]] = {"views": row[1], "watch_hrs": round(row[2]/60, 1),
@@ -93,7 +93,7 @@ def pull_content_type(yt_analytics, start, end):
     resp = yt_analytics.reports().query(
         ids=f"channel==MINE", startDate=start, endDate=end,
         metrics="views,estimatedMinutesWatched",
-        dimensions="month,creatorContentType", sort="month").execute()
+        dimensions="month,creatorContentType", sort="month").execute(num_retries=3)
     KEY_MAP = {"videoOnDemand": "VIDEO_ON_DEMAND", "shorts": "SHORTS", "liveStream": "LIVE_STREAM"}
     data = defaultdict(lambda: {"VIDEO_ON_DEMAND": 0, "SHORTS": 0, "LIVE_STREAM": 0})
     for row in resp.get("rows", []):
@@ -106,7 +106,7 @@ def pull_daily(yt_analytics, start, end):
     resp = yt_analytics.reports().query(
         ids=f"channel==MINE", startDate=start, endDate=end,
         metrics="views,estimatedMinutesWatched,subscribersGained,subscribersLost",
-        dimensions="day", sort="day").execute()
+        dimensions="day", sort="day").execute(num_retries=3)
     data = {}
     for row in resp.get("rows", []):
         data[row[0]] = {"total_views": row[1], "watch_hrs": round(row[2]/60, 1),
@@ -118,7 +118,7 @@ def pull_daily_content_type(yt_analytics, start, end):
     resp = yt_analytics.reports().query(
         ids=f"channel==MINE", startDate=start, endDate=end,
         metrics="views",
-        dimensions="day,creatorContentType", sort="day").execute()
+        dimensions="day,creatorContentType", sort="day").execute(num_retries=3)
     KEY_MAP = {"videoOnDemand": "vod_views", "shorts": "shorts_views", "liveStream": "live_views"}
     data = defaultdict(dict)
     for row in resp.get("rows", []):
@@ -129,22 +129,22 @@ def pull_daily_content_type(yt_analytics, start, end):
 
 
 def pull_subscriber_total(youtube):
-    resp = youtube.channels().list(part="statistics", id=CHANNEL_ID).execute()
+    resp = youtube.channels().list(part="statistics", id=CHANNEL_ID).execute(num_retries=3)
     return int(resp["items"][0]["statistics"].get("subscriberCount", 0))
 
 
 def pull_shorts_count(youtube):
-    ch = youtube.channels().list(part="contentDetails", id=CHANNEL_ID).execute()
+    ch = youtube.channels().list(part="contentDetails", id=CHANNEL_ID).execute(num_retries=3)
     uploads_id = ch["items"][0]["contentDetails"]["relatedPlaylists"]["uploads"]
     counts = defaultdict(int)
     next_page = None
     while True:
         resp = youtube.playlistItems().list(
             part="contentDetails", playlistId=uploads_id,
-            maxResults=50, pageToken=next_page).execute()
+            maxResults=50, pageToken=next_page).execute(num_retries=3)
         video_ids = [it["contentDetails"]["videoId"] for it in resp["items"]]
         details = youtube.videos().list(
-            part="contentDetails,snippet", id=",".join(video_ids)).execute()
+            part="contentDetails,snippet", id=",".join(video_ids)).execute(num_retries=3)
         for vid in details["items"]:
             dur = vid.get("contentDetails", {}).get("duration", "")
             if not dur: continue
@@ -179,7 +179,7 @@ def pull_traffic_sources(yt_analytics, start, end):
         resp = yt_analytics.reports().query(
             ids=f"channel==MINE", startDate=start, endDate=end,
             metrics="views",
-            dimensions="day,insightTrafficSourceType", sort="day").execute()
+            dimensions="day,insightTrafficSourceType", sort="day").execute(num_retries=3)
 
         monthly = defaultdict(lambda: defaultdict(int))
         for row in resp.get("rows", []):
@@ -234,7 +234,7 @@ def pull_collab_sources(yt_analytics, start, end):
         # Total views per day
         resp_total = yt_analytics.reports().query(
             ids="channel==MINE", startDate=start, endDate=end,
-            metrics="views", dimensions="day", sort="day").execute()
+            metrics="views", dimensions="day", sort="day").execute(num_retries=3)
         daily_total = defaultdict(int)
         for row in resp_total.get("rows", []):
             daily_total[row[0][:7]] += row[1]
@@ -245,7 +245,7 @@ def pull_collab_sources(yt_analytics, start, end):
             metrics="views",
             dimensions="day,insightTrafficSourceDetail",
             filters="insightTrafficSourceType==YT_CHANNEL",
-            sort="day").execute()
+            sort="day").execute(num_retries=3)
 
         monthly_channels = defaultdict(lambda: defaultdict(int))
         monthly_collab = defaultdict(int)
@@ -274,7 +274,7 @@ def pull_top_content(youtube, months, top_n=10):
     oldest = min(months) if months else "1970-01"
     cutoff = f"{oldest}-01T00:00:00Z"
 
-    ch = youtube.channels().list(part="contentDetails", id=CHANNEL_ID).execute()
+    ch = youtube.channels().list(part="contentDetails", id=CHANNEL_ID).execute(num_retries=3)
     uploads_id = ch["items"][0]["contentDetails"]["relatedPlaylists"]["uploads"]
 
     videos = []
@@ -282,12 +282,12 @@ def pull_top_content(youtube, months, top_n=10):
     while True:
         resp = youtube.playlistItems().list(
             part="contentDetails,snippet", playlistId=uploads_id,
-            maxResults=50, pageToken=next_page).execute()
+            maxResults=50, pageToken=next_page).execute(num_retries=3)
         video_ids = [it["contentDetails"]["videoId"] for it in resp["items"]]
         if not video_ids: break
 
         details = youtube.videos().list(
-            part="snippet,statistics,contentDetails", id=",".join(video_ids)).execute()
+            part="snippet,statistics,contentDetails", id=",".join(video_ids)).execute(num_retries=3)
 
         stop = False
         for v in details.get("items", []):
@@ -332,7 +332,7 @@ def pull_top_content(youtube, months, top_n=10):
 def pull_best_of(youtube, months, n_months=1):
     """Current month's best-performing content by type."""
     target = months[:n_months]
-    ch = youtube.channels().list(part="contentDetails", id=CHANNEL_ID).execute()
+    ch = youtube.channels().list(part="contentDetails", id=CHANNEL_ID).execute(num_retries=3)
     uploads_id = ch["items"][0]["contentDetails"]["relatedPlaylists"]["uploads"]
     oldest = min(target) if target else datetime.now().strftime("%Y-%m")
     cutoff = f"{oldest}-01T00:00:00Z"
@@ -342,11 +342,11 @@ def pull_best_of(youtube, months, n_months=1):
     while True:
         resp = youtube.playlistItems().list(
             part="contentDetails", playlistId=uploads_id,
-            maxResults=50, pageToken=next_page).execute()
+            maxResults=50, pageToken=next_page).execute(num_retries=3)
         ids = [it["contentDetails"]["videoId"] for it in resp["items"]]
         if not ids: break
         details = youtube.videos().list(
-            part="snippet,statistics,contentDetails", id=",".join(ids)).execute()
+            part="snippet,statistics,contentDetails", id=",".join(ids)).execute(num_retries=3)
         stop = False
         for v in details.get("items", []):
             pub = v["snippet"].get("publishedAt", "")
@@ -397,8 +397,9 @@ def main():
     yt_analytics = build_api("youtubeAnalytics", "v2", credentials=creds)
 
     start = f"{months[-1]}-01"
-    end = datetime.now().replace(day=1).strftime("%Y-%m-%d")
-    print(f"  Date range: {start} → {end}")
+    end = datetime.now().replace(day=1).strftime("%Y-%m-%d")   # month-dimension queries need 1st-of-month
+    day_end = (datetime.now() - timedelta(days=1)).strftime("%Y-%m-%d")  # day-dimension queries: through yesterday
+    print(f"  Date range: {start} → {end} (daily-based pulls through {day_end})")
 
     # Monthly totals
     print("  Pulling monthly totals...")
@@ -449,7 +450,7 @@ def main():
 
     # Traffic sources (paid vs organic — critical for SR)
     print("  Pulling traffic sources (paid vs organic)...")
-    traffic = pull_traffic_sources(yt_analytics, start, end)
+    traffic = pull_traffic_sources(yt_analytics, start, day_end)
     if traffic:
         latest = sorted(traffic.keys())[-1]
         t = traffic[latest]
@@ -464,7 +465,7 @@ def main():
 
     # Collab traffic sources
     print("  Pulling collab traffic sources...")
-    collab_data = pull_collab_sources(yt_analytics, start, end)
+    collab_data = pull_collab_sources(yt_analytics, start, day_end)
     if collab_data:
         latest = sorted(collab_data.keys())[-1]
         c = collab_data[latest]

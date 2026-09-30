@@ -54,6 +54,27 @@ jobs:
         working-directory: master/shows/road_trippin
         run: python build_rt_dashboard.py
 
+      # ── Girls Tripp ────────────────────────────────────────
+      # continue-on-error: a GT hiccup shouldn't block the RT/SR refresh + commit
+      - name: Write GT config_gt.py from secret
+        env:
+          CONFIG_GT_PY: ${{ secrets.CONFIG_GT_PY }}
+        run: |
+          printf "%s" "$CONFIG_GT_PY" > master/shows/road_trippin/config_gt.py
+          test -s master/shows/road_trippin/config_gt.py || { echo "config_gt.py is empty — check the CONFIG_GT_PY secret"; exit 1; }
+          echo "✓ GT config_gt.py written ($(wc -c < master/shows/road_trippin/config_gt.py) bytes)"
+
+      - name: Run GT tracker (pulls YT API data + RT attribution)
+        id: gt_tracker
+        continue-on-error: true
+        working-directory: master/shows/road_trippin
+        run: python build_gt_tracker.py
+
+      - name: Rebuild Girls Tripp dashboard
+        continue-on-error: true
+        working-directory: master/shows/road_trippin
+        run: python build_gt_dashboard.py
+
       # ── The Schultz Report ─────────────────────────────────
       - name: Write SR config_sr.py from secret
         env:
@@ -84,6 +105,7 @@ jobs:
           # never commit the secret configs back to the repo
           rm -f master/shows/road_trippin/config.py
           rm -f master/shows/schultz_report/config_sr.py
+          rm -f master/shows/road_trippin/config_gt.py
           git add -A
           if git diff --staged --quiet; then
             echo "No changes to commit — data hasn't moved since last refresh."

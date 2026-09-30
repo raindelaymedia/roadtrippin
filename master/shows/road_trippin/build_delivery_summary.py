@@ -125,6 +125,64 @@ def main():
     imp_goal = 47_000_000
     imp_pct = final_imp / imp_goal * 100
 
+    # ── Delivery by content type ─────────────────────────────────
+    # Off-YouTube platforms and podcast count 1x, so their impressions are exact.
+    # The YouTube share of each period's reported impressions is the remainder,
+    # split across full episodes / clips / shorts by multiplier-weighted views
+    # (full eps 6x group / 5x solo, clips & shorts 2x). This keeps every bucket
+    # tied to the impressions already reported for that period.
+    ct = {k: [] for k in ("full", "clip", "short", "pod", "ig", "tt", "fb", "x")}
+    yt_full_v, yt_clip_v, yt_short_v = [], [], []
+    for i, r in enumerate(rows):
+        fv, cv, sv = ti(r, "yt_full_views"), ti(r, "yt_clip_views"), ti(r, "yt_short_views")
+        yt_full_v.append(fv); yt_clip_v.append(cv); yt_short_v.append(sv)
+        off = ig_views[i] + tt_views[i] + fb_views[i] + x_imp[i]
+        yt_imp = impressions[i] - off - mega_views[i]
+        solo = solo_perk[i] + solo_chan[i]
+        n = group_eps[i] + solo
+        blend = (group_eps[i] * 6 + solo * 5) / n if n else 6
+        wf, wc, ws = fv * blend, cv * 2, sv * 2
+        wt = wf + wc + ws
+        f_imp = round(yt_imp * wf / wt) if wt else 0
+        c_imp = round(yt_imp * wc / wt) if wt else 0
+        ct["full"].append(f_imp); ct["clip"].append(c_imp)
+        ct["short"].append(yt_imp - f_imp - c_imp)
+        ct["pod"].append(mega_views[i]); ct["ig"].append(ig_views[i])
+        ct["tt"].append(tt_views[i]); ct["fb"].append(fb_views[i]); ct["x"].append(x_imp[i])
+
+    T = {k: sum(v) for k, v in ct.items()}
+    show_imp = T["full"] + T["clip"] + T["short"] + T["pod"]
+    social_imp = T["ig"] + T["tt"] + T["fb"] + T["x"]
+    yt_imp_total = T["full"] + T["clip"] + T["short"]
+    pct = lambda v: v / final_imp * 100
+    gpct = lambda v: v / imp_goal * 100
+    fm = lambda v: f"{v/1e6:.1f}M"
+
+    split_segments = [
+        ("Full episodes", T["full"], "#123E8C"),
+        ("YouTube clips", T["clip"], "#2F6DDE"),
+        ("YouTube Shorts", T["short"], "#8DB0EF"),
+        ("Podcast", T["pod"], "#7C5BD8"),
+        ("Instagram", T["ig"], "#C9A84C"),
+        ("TikTok", T["tt"], "#DDBF73"),
+        ("Facebook", T["fb"], "#E08C2A"),
+        ("X", T["x"], "#EFB77A"),
+    ]
+    split_bar = "".join(
+        f'<div class="seg" style="flex:{v};background:{c}" title="{name}: {v:,} ({pct(v):.1f}%)"></div>'
+        for name, v, c in split_segments if v > 0)
+
+    def legend_rows(items):
+        out = ""
+        for name, v, c in items:
+            out += (f'<div class="lg-row"><span class="sw" style="background:{c}"></span>'
+                    f'<span class="lg-name">{name}</span>'
+                    f'<span class="lg-val">{fm(v)}</span>'
+                    f'<span class="lg-pct">{pct(v):.1f}%</span></div>')
+        return out
+    show_legend = legend_rows(split_segments[:4])
+    social_legend = legend_rows(split_segments[4:])
+
     # Build delivery table rows
     delivery_table_rows = ""
     cum_vd = 0
@@ -133,13 +191,15 @@ def main():
         cum_vd += period_vd
         delivery_table_rows += f'''<tr>
           <td class="sticky">{period_labels[i]}</td>
-          <td>{yt_total[i]:,}</td>
-          <td>{ig_views[i]:,}</td>
+          <td class="grp-start">{yt_full_v[i]:,}</td>
+          <td>{yt_clip_v[i]:,}</td>
+          <td>{yt_short_v[i]:,}</td>
+          <td>{mega_views[i]:,}</td>
+          <td class="grp-start">{ig_views[i]:,}</td>
           <td>{tt_views[i]:,}</td>
           <td>{fb_views[i]:,}</td>
           <td>{x_imp[i]:,}</td>
-          <td>{mega_views[i]:,}</td>
-          <td><b>{period_vd:,}</b></td>
+          <td class="grp-start"><b>{period_vd:,}</b></td>
           <td>{impressions[i]:,}</td>
           <td class="gold">{cum_impressions[i]:,}</td>
         </tr>'''
@@ -175,15 +235,43 @@ body{{font-family:'DM Sans',sans-serif;color:var(--t);background:var(--bg);paddi
 
 .foot{{text-align:center;font-size:9px;color:var(--t3);margin-top:14px;padding-top:8px;border-top:1px solid var(--bdr)}}
 .table-scroll{{overflow-x:auto;scrollbar-width:thin}}
-.dtable{{border-collapse:collapse;font-size:11px;font-family:'DM Mono',monospace;white-space:nowrap;width:100%}}
-.dtable th{{background:var(--s1);padding:6px 10px;text-align:right;font-size:9px;font-weight:600;color:var(--t2);text-transform:uppercase;letter-spacing:.04em;border-bottom:1.5px solid var(--bdr);font-family:'DM Sans',sans-serif}}
-.dtable td{{padding:5px 10px;text-align:right;border-bottom:.5px solid var(--bdr)}}
-.dtable th.sticky,.dtable td.sticky{{text-align:left;position:sticky;left:0;background:var(--bg);z-index:1;font-family:'DM Sans',sans-serif;font-weight:500;min-width:110px}}
+.dtable{{border-collapse:collapse;font-size:10.5px;font-family:'DM Mono',monospace;white-space:nowrap;width:100%}}
+.dtable th{{background:var(--s1);padding:6px 7px;text-align:right;font-size:9px;font-weight:600;color:var(--t2);text-transform:uppercase;letter-spacing:.04em;border-bottom:1.5px solid var(--bdr);font-family:'DM Sans',sans-serif}}
+.dtable td{{padding:5px 7px;text-align:right;border-bottom:.5px solid var(--bdr)}}
+.dtable th.sticky,.dtable td.sticky{{text-align:left;position:sticky;left:0;background:var(--bg);z-index:1;font-family:'DM Sans',sans-serif;font-weight:500;min-width:100px}}
 .dtable tr:nth-child(even) td{{background:#fafbfc}}
 .dtable tr:nth-child(even) td.sticky{{background:#fafbfc}}
 .dtable .total-row td{{background:var(--s1)!important;border-top:1.5px solid var(--bdr);font-weight:600}}
 .dtable .total-row td.sticky{{background:var(--s1)!important}}
 .gold{{color:var(--gold);font-weight:700}}
+
+.ct{{background:var(--s1);border:1px solid var(--bdr);border-radius:8px;padding:16px 18px;margin-bottom:14px}}
+.ct-head{{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px}}
+.ct-title{{font-size:13px;font-weight:700}}
+.ct-note{{font-size:10px;color:var(--t3)}}
+.split{{display:flex;height:26px;border-radius:5px;overflow:hidden;gap:1px;background:#fff}}
+.seg{{min-width:2px}}
+.split-marks{{display:flex;font-size:10px;font-weight:600;margin-top:5px}}
+.split-marks .m-show{{color:#123E8C}}
+.split-marks .m-social{{color:#A8791E;text-align:right}}
+.ct-cols{{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}}
+.ct-col{{background:#fff;border:1px solid var(--bdr);border-radius:6px;padding:12px 14px}}
+.ct-col.show{{border-top:3px solid #123E8C}}
+.ct-col.social{{border-top:3px solid var(--gold)}}
+.ct-big{{display:flex;align-items:baseline;gap:10px;margin-bottom:2px}}
+.ct-big .v{{font-size:24px;font-weight:800;letter-spacing:-.5px}}
+.ct-big .p{{font-size:12px;font-weight:600;color:var(--t2)}}
+.ct-sub{{font-size:11px;color:var(--t2);margin-bottom:10px}}
+.ct-sub b{{color:var(--green)}}
+.lg-row{{display:grid;grid-template-columns:12px 1fr auto 48px;gap:8px;align-items:center;font-size:11px;padding:3px 0;border-top:.5px solid var(--bdr)}}
+.lg-row:first-child{{border-top:none}}
+.sw{{width:10px;height:10px;border-radius:2px}}
+.lg-val{{font-family:'DM Mono',monospace;font-weight:500}}
+.lg-pct{{font-family:'DM Mono',monospace;color:var(--t3);text-align:right}}
+.dtable .grp-row th{{text-align:center;font-size:9px;border-bottom:none;padding-bottom:2px}}
+.dtable th.grp-show{{color:#123E8C;border-bottom:2px solid #123E8C}}
+.dtable th.grp-social{{color:#A8791E;border-bottom:2px solid var(--gold)}}
+.dtable .grp-start{{border-left:1px solid var(--bdr)}}
 </style>
 </head>
 <body>
@@ -221,19 +309,57 @@ body{{font-family:'DM Sans',sans-serif;color:var(--t);background:var(--bg);paddi
   </div>
 </div>
 
+<div class="ct">
+  <div class="ct-head">
+    <div class="ct-title">Where the {final_imp/1e6:.1f}M impressions came from</div>
+    <div class="ct-note">Share of total contracted impressions</div>
+  </div>
+  <div class="split">{split_bar}</div>
+  <div class="split-marks">
+    <div class="m-show" style="flex:{show_imp}">The show · {pct(show_imp):.0f}%</div>
+    <div class="m-social" style="flex:{social_imp}">Off-YouTube social · {pct(social_imp):.0f}%</div>
+  </div>
+  <div class="ct-cols">
+    <div class="ct-col show">
+      <div class="ct-big"><span class="v">{fm(show_imp)}</span><span class="p">{gpct(show_imp):.0f}% of the 47M goal</span></div>
+      <div class="ct-sub">The show: full episodes, clips and Shorts on YouTube, plus the podcast. <b>Clears the goal on its own.</b></div>
+      {show_legend}
+    </div>
+    <div class="ct-col social">
+      <div class="ct-big"><span class="v">{fm(social_imp)}</span><span class="p">{gpct(social_imp):.0f}% of the 47M goal</span></div>
+      <div class="ct-sub">Promo clips posted to Instagram, TikTok, Facebook and X.</div>
+      {social_legend}
+    </div>
+  </div>
+</div>
+
+<div class="charts" style="margin-bottom:14px">
+  <div class="chart-box" style="grid-column:span 2">
+    <div class="chart-label">Impressions per Period by Content Type</div>
+    <div style="height:210px"><canvas id="c-ct"></canvas></div>
+  </div>
+</div>
+
 <div class="charts">
   <div class="chart-box" style="grid-column:span 2">
-    <div class="chart-label">Period-by-Period Delivery Breakdown</div>
+    <div class="chart-label">Period-by-Period Views & Downloads by Content Type</div>
     <div class="table-scroll"><table class="dtable">
-      <thead><tr>
+      <thead><tr class="grp-row">
+        <th class="sticky"></th>
+        <th colspan="4" class="grp grp-show">The show: YouTube + podcast</th>
+        <th colspan="4" class="grp grp-social">Off-YouTube social</th>
+        <th colspan="3" class="grp">Totals</th>
+      </tr><tr>
         <th class="sticky">Period</th>
-        <th>YouTube</th>
-        <th>Instagram</th>
+        <th class="grp-start">Full eps</th>
+        <th>Clips</th>
+        <th>Shorts</th>
+        <th>Podcast</th>
+        <th class="grp-start">Instagram</th>
         <th>TikTok</th>
         <th>Facebook</th>
         <th>X</th>
-        <th>Podcast</th>
-        <th>Period V&D</th>
+        <th class="grp-start">Period V&D</th>
         <th>Impressions</th>
         <th>Cum. Impressions</th>
       </tr></thead>
@@ -242,13 +368,15 @@ body{{font-family:'DM Sans',sans-serif;color:var(--t);background:var(--bg);paddi
       </tbody>
       <tfoot><tr class="total-row">
         <td class="sticky"><b>TOTAL</b></td>
-        <td>{sum(yt_total):,}</td>
-        <td>{sum(ig_views):,}</td>
+        <td class="grp-start">{sum(yt_full_v):,}</td>
+        <td>{sum(yt_clip_v):,}</td>
+        <td>{sum(yt_short_v):,}</td>
+        <td>{sum(mega_views):,}</td>
+        <td class="grp-start">{sum(ig_views):,}</td>
         <td>{sum(tt_views):,}</td>
         <td>{sum(fb_views):,}</td>
         <td>{sum(x_imp):,}</td>
-        <td>{sum(mega_views):,}</td>
-        <td><b>{sum(yt_total)+sum(ig_views)+sum(tt_views)+sum(fb_views)+sum(x_imp)+sum(mega_views):,}</b></td>
+        <td class="grp-start"><b>{sum(yt_total)+sum(ig_views)+sum(tt_views)+sum(fb_views)+sum(x_imp)+sum(mega_views):,}</b></td>
         <td><b>{final_imp:,}</b></td>
         <td class="gold"><b>{imp_pct:.0f}% of 47M</b></td>
       </tr></tfoot>
@@ -275,6 +403,9 @@ body{{font-family:'DM Sans',sans-serif;color:var(--t);background:var(--bg);paddi
   </div>
 </div>
 
+<div class="foot" style="text-align:left;border-top:none;margin-top:10px;padding-top:0">
+  Impressions: podcast and off-YouTube platforms count 1x. YouTube impressions per period are split across full episodes (6x group, 5x solo; live streams are included in the full-episode playlist), clips and Shorts (2x) by weighted views, and tie to each period's reported total.
+</div>
 <div class="foot">
   Road Trippin' × Fanatics Sportsbook · Presenting Partnership · Rain Delay Media · Confidential · Generated {datetime.now().strftime("%B %d, %Y")}
 </div>
@@ -284,6 +415,27 @@ body{{font-family:'DM Sans',sans-serif;color:var(--t);background:var(--bg);paddi
 const L={jsa(period_labels)};
 const tc='#8a93a6',gc='#f0f1f3';
 const fK=v=>v>=1e6?(v/1e6).toFixed(0)+'M':v>=1e3?(v/1e3).toFixed(0)+'K':v;
+
+// Impressions by content type: YouTube + podcast (blues/purple) vs off-YouTube social (golds)
+new Chart(document.getElementById('c-ct'),{{
+  type:'bar',
+  data:{{labels:L,datasets:[
+    {{label:'Full episodes',data:{jsa(ct["full"])},backgroundColor:'#123E8C',stack:'s'}},
+    {{label:'YouTube clips',data:{jsa(ct["clip"])},backgroundColor:'#2F6DDE',stack:'s'}},
+    {{label:'YouTube Shorts',data:{jsa(ct["short"])},backgroundColor:'#8DB0EF',stack:'s'}},
+    {{label:'Podcast',data:{jsa(ct["pod"])},backgroundColor:'#7C5BD8',stack:'s'}},
+    {{label:'Instagram',data:{jsa(ct["ig"])},backgroundColor:'#C9A84C',stack:'s'}},
+    {{label:'TikTok',data:{jsa(ct["tt"])},backgroundColor:'#DDBF73',stack:'s'}},
+    {{label:'Facebook',data:{jsa(ct["fb"])},backgroundColor:'#E08C2A',stack:'s'}},
+    {{label:'X',data:{jsa(ct["x"])},backgroundColor:'#EFB77A',stack:'s'}}
+  ]}},
+  options:{{responsive:true,maintainAspectRatio:false,
+    plugins:{{legend:{{position:'right',labels:{{boxWidth:10,font:{{size:10}}}}}},
+      tooltip:{{callbacks:{{label:c=>c.dataset.label+': '+c.parsed.y.toLocaleString()}}}}}},
+    scales:{{x:{{stacked:true,grid:{{display:false}},ticks:{{color:tc,font:{{size:8}},maxRotation:45}}}},
+      y:{{stacked:true,grid:{{color:gc}},ticks:{{color:tc,callback:fK}}}}}}
+  }}
+}});
 
 // Impressions: bar per period + cumulative line
 new Chart(document.getElementById('c-imp'),{{

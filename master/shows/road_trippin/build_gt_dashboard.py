@@ -10,9 +10,57 @@ Usage:
 """
 
 import argparse
+import base64
 import json
 import os
 from datetime import datetime
+
+
+# ─── Brand assets (assets/girls_tripp/, embedded as data URIs) ───
+ASSET_FILES = {
+    "marble":     "gt_marble.jpg",   # background texture
+    "wordmark":   "wordmark.png",    # stacked serif GIRLS TRIPP (black)
+    "monogram":   "monogram.png",    # GT monogram (pink + black) — favicon
+    "basketball": "basketball.png",  # edge-strip tile (icon + spacing)
+    "mic":        "mic.png",         # live-stream icon
+}
+ASSETS = {}
+
+
+def find_assets_dir(script_dir, override=None):
+    """First folder that actually contains the marble file."""
+    candidates = [override] if override else []
+    candidates += [
+        os.path.join(script_dir, "assets", "girls_tripp"),
+        os.path.join(script_dir, "assets"),
+        os.path.join(script_dir, "girls_tripp", "assets"),
+        os.path.join(script_dir, "data", "girls_tripp", "assets"),
+        os.path.join(script_dir, "data", "girls_tripp"),
+    ]
+    for c in candidates:
+        if c and os.path.exists(os.path.join(c, ASSET_FILES["marble"])):
+            return c
+    print("Assets: not found. Looked in:")
+    for c in candidates:
+        print(f"  - {c}")
+    return None
+
+
+def load_assets(folder):
+    """Read brand assets into data URIs. Missing files are skipped and the
+    dashboard falls back to plain styling for that element."""
+    if not folder:
+        return
+    print(f"Assets: {folder}")
+    mime = {".png": "image/png", ".jpg": "image/jpeg", ".jpeg": "image/jpeg"}
+    for key, fname in ASSET_FILES.items():
+        path = os.path.join(folder, fname)
+        if os.path.exists(path):
+            with open(path, "rb") as f:
+                b64 = base64.b64encode(f.read()).decode()
+            ASSETS[key] = f"data:{mime[os.path.splitext(fname)[1].lower()]};base64,{b64}"
+    missing = [f for k, f in ASSET_FILES.items() if k not in ASSETS]
+    print(f"Assets: {len(ASSETS)}/{len(ASSET_FILES)} loaded" + (f" (missing: {', '.join(missing)})" if missing else ""))
 
 
 # ─── Data loaders (same contract as RT) ──────────────────────────
@@ -94,6 +142,12 @@ def extract(path):
         'audience_eps':  series(['audience', 'eps']),
         'audience_vods': series(['audience', 'vods']),
         'audience_lives': series(['audience', 'lives']),
+        'rt_views':      series(['collab', 'rt_views']),
+        'rt_pct':        series(['collab', 'rt_pct']),
+        'rt_total':      series(['collab', 'total_views']),
+        'rt_by_source':  series(['collab', 'rt_by_source'], {}),
+        'rt_top_channels': series(['collab', 'top_channels'], []),
+        'rt_coverage':   series(['collab', 'detail_coverage'], {}),
     }
 
 
@@ -108,6 +162,8 @@ def _empty_extract():
         'subs_gained': [], 'subs_lost': [], 'current_subs': 0,
         'daily_yt': {}, 'audience_eps': [], 'audience_vods': [],
         'audience_lives': [],
+        'rt_views': [], 'rt_pct': [], 'rt_total': [], 'rt_by_source': [],
+        'rt_top_channels': [], 'rt_coverage': [],
     }
 
 
@@ -223,7 +279,60 @@ def empty_state(message, sub=""):
             f'{sub_html}</div>')
 
 
+# ─── Road Trippin' attribution card ─────────────────────────────
+
+RT_SOURCE_LABELS = [('suggested', 'Suggested videos'), ('channel_page', 'Channel page')]
+
+
+def _rt_card(d, rt_idx):
+    """YouTube-tab card: share of GT views referred by Road Trippin'."""
+    if rt_idx is None:
+        return ''
+    rows = ''
+    for i, m in enumerate(d['months']):
+        pct = d['rt_pct'][i]
+        if pct is None:
+            continue
+        by = d['rt_by_source'][i] or {}
+        cells = ''.join(f'<td>{fmt(by.get(k))}</td>' for k, _ in RT_SOURCE_LABELS)
+        rows += (f'<tr><td>{fmt_period(m)}</td><td>{fmt(d["rt_total"][i])}</td>'
+                 f'<td><b>{fmt(d["rt_views"][i])}</b></td><td><b>{fmt(pct, pct=True)}</b></td>{cells}</tr>')
+    heads = ''.join(f'<th>{lbl}</th>' for _, lbl in RT_SOURCE_LABELS)
+
+    others = [c for c in (d['rt_top_channels'][rt_idx] or []) if not c.get('is_rt')][:3]
+    others_txt = ', '.join(f"{c['name']} ({fmt(c['views'])})" for c in others) or 'none'
+    by = d['rt_by_source'][rt_idx] or {}
+    lead = max(RT_SOURCE_LABELS, key=lambda kv: by.get(kv[0]) or 0)[1] if any(by.values()) else '—'
+    m_lbl = fmt_period(d['months'][rt_idx])
+
+    return f"""
+    <div class="card">
+      <div class="card-title">Views from Road Trippin'</div>
+      <div class="metrics" style="margin-bottom:16px">
+        <div class="metric"><div class="metric-label">% of views ({m_lbl})</div><div class="metric-value">{fmt(d['rt_pct'][rt_idx], pct=True)}</div><div class="metric-delta">{fmt(d['rt_views'][rt_idx])} of {fmt(d['rt_total'][rt_idx])}</div></div>
+        <div class="metric"><div class="metric-label">Biggest driver ({m_lbl})</div><div class="metric-value" style="font-size:20px">{lead}</div><div class="metric-delta">RT videos pointing to GT</div></div>
+        <div class="metric"><div class="metric-label">Other referring channels</div><div class="metric-value" style="font-size:13px;font-weight:500;line-height:1.4">{others_txt}</div><div class="metric-delta">{m_lbl}</div></div>
+      </div>
+      <div style="height:280px"><canvas id="yt-rt-chart"></canvas></div>
+      <div style="overflow-x:auto;margin-top:16px">
+        <table class="data-table">
+          <thead><tr><th>Month</th><th>Total views</th><th>From RT</th><th>% from RT</th>{heads}</tr></thead>
+          <tbody>{rows}</tbody>
+        </table>
+      </div>
+      <div style="font-size:11px;color:var(--text3);margin-top:10px">
+        Counts views from GT videos suggested alongside RT videos, plus clicks through from RT's channel page.
+        YouTube reports the top 25 referrers per source each month, so smaller referrers can be missed and the RT share is a floor.
+      </div>
+    </div>"""
+
+
 # ─── HTML builder ────────────────────────────────────────────────
+
+def _mic():
+    return (f'<img src="{ASSETS["mic"]}" alt="" style="height:12px;width:auto;vertical-align:-1px;margin-right:6px">'
+            if "mic" in ASSETS else '')
+
 
 def build_html(d, revenue, socials, generated_at):
     has_yt   = bool(d['months'])
@@ -244,6 +353,13 @@ def build_html(d, revenue, socials, generated_at):
         M, M_display, latest_mo = [], [], '—'
         overview_sub = "No data connected yet — metrics will appear here once data pipelines are live"
 
+    # ── Road Trippin' attribution (latest complete month) ──
+    this_month = datetime.now().strftime("%Y-%m")
+    rt_idx = next((i for i, m in enumerate(d['months'])
+                   if m != this_month and i < len(d['rt_pct']) and d['rt_pct'][i] is not None), None)
+    has_rt = rt_idx is not None
+    rt_label = fmt_period(d['months'][rt_idx]) if has_rt else '—'
+
     # ── Overview tab content ──
     if has_data:
         overview_metrics = f"""
@@ -260,6 +376,11 @@ def build_html(d, revenue, socials, generated_at):
             d['shorts'][-1] if d['shorts'] else None,
             d['lives'][-1] if d['lives'] else None]))) if has_yt else '—'}</div>
         <div class="metric-delta" style="color:var(--text2)">{'latest month' if has_yt else 'not connected'}</div>
+      </div>
+      <div class="metric">
+        <div class="metric-label">Views from Road Trippin'</div>
+        <div class="metric-value">{fmt(d['rt_pct'][rt_idx], pct=True) if has_rt else '—'}</div>
+        <div class="metric-delta" style="color:var(--text2)">{f"{rt_label} · {fmt(d['rt_views'][rt_idx])} views" if has_rt else 'not connected'}</div>
       </div>
       <div class="metric">
         <div class="metric-label">Revenue</div>
@@ -293,12 +414,16 @@ def build_html(d, revenue, socials, generated_at):
         js_shorts = jsa(shorts_full)
         js_lives = jsa(lives_full)
         js_subs = jsa(subs_full)
+        js_rt_views = jsa(list(reversed(d['rt_views'])))
+        js_rt_other = jsa(list(reversed([(t - r) if (t is not None and r is not None) else None
+                                         for t, r in zip(d['rt_total'], d['rt_views'])])))
+        js_rt_pct = jsa(list(reversed([round(p * 100, 1) if p is not None else None for p in d['rt_pct']])))
         yt_content = f"""
     <div class="metrics">
       <div class="metric"><div class="metric-label">Subscribers</div><div class="metric-value">{fmt(yt_subs_now)}</div></div>
       <div class="metric"><div class="metric-label">VOD Views ({latest_mo})</div><div class="metric-value">{fmt(d['vids'][0] if d['vids'] else None)}</div></div>
       <div class="metric"><div class="metric-label">Shorts Views ({latest_mo})</div><div class="metric-value">{fmt(d['shorts'][0] if d['shorts'] else None)}</div></div>
-      <div class="metric"><div class="metric-label">Live Views ({latest_mo})</div><div class="metric-value">{fmt(d['lives'][0] if d['lives'] else None)}</div></div>
+      <div class="metric"><div class="metric-label">{_mic()}Live Views ({latest_mo})</div><div class="metric-value">{fmt(d['lives'][0] if d['lives'] else None)}</div></div>
     </div>
     <div class="card">
       <div class="card-title">Views by Content Type</div>
@@ -307,9 +432,11 @@ def build_html(d, revenue, socials, generated_at):
     <div class="card">
       <div class="card-title">Subscriber Growth</div>
       <div style="height:280px"><canvas id="yt-subs-chart"></canvas></div>
-    </div>"""
+    </div>
+    {_rt_card(d, rt_idx)}"""
     else:
         js_M = '[]'; js_vids = '[]'; js_shorts = '[]'; js_lives = '[]'; js_subs = '[]'
+        js_rt_views = '[]'; js_rt_other = '[]'; js_rt_pct = '[]'
         chart_px = 500
         yt_content = empty_state(
             "YouTube Analytics not connected yet",
@@ -454,22 +581,26 @@ def build_html(d, revenue, socials, generated_at):
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Girls Tripp — Dashboard</title>
+{f'<link rel="icon" type="image/png" href="{ASSETS["monogram"]}">' if "monogram" in ASSETS else ''}
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,700;125,800;125,900&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 /* ─────────────────────────────────────────────────────────────
    GIRLS TRIPP DASHBOARD — Rain Delay Media
-   Brand color: #E84B8A (pink)
+   Brand: pink #FF4370 · black #0B0B0B · white marble
+   Display type: Archivo Extended (stand-in for Akzidenz-Grotesk BQ Extended)
    ───────────────────────────────────────────────────────────── */
 :root{{
-  --brand:        #E84B8A;
-  --brand-deep:   #C73B6F;
-  --brand-soft:   rgba(232,75,138,.08);
-  --brand-tint:   rgba(232,75,138,.16);
-  --bg:           #f7f8fb;
+  --brand:        #FF4370;
+  --brand-deep:   #D92F5A;
+  --ink:          #0B0B0B;
+  --display:      'Archivo','Arial Black',sans-serif;
+  --brand-soft:   rgba(255,67,112,.08);
+  --brand-tint:   rgba(255,67,112,.16);
+  --bg:           #f1f1ef;
   --surface:      #ffffff;
-  --surface2:     #eef1f7;
-  --surface3:     #dde3ee;
+  --surface2:     #f1f1ef;
+  --surface3:     #e2e2de;
   --border:       rgba(20,30,55,.08);
   --border2:      rgba(20,30,55,.16);
   --text:         #0f1729;
@@ -479,36 +610,49 @@ def build_html(d, revenue, socials, generated_at):
   --red:          #BC2E3A;
   --r:            10px;
   --rsm:          6px;
-  --shadow:       0 1px 3px rgba(15,23,41,.06), 0 1px 2px rgba(15,23,41,.04);
+  --shadow:       0 2px 10px rgba(11,11,11,.06), 0 1px 2px rgba(11,11,11,.05);
 }}
 *{{margin:0;padding:0;box-sizing:border-box}}
-body{{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.5;font-size:14px}}
+body{{font-family:'DM Sans',sans-serif;background:var(--bg) {f'url({ASSETS["marble"]}) center/cover fixed' if "marble" in ASSETS else ''};color:var(--text);line-height:1.5;font-size:14px}}
+{f""".edge-strip{{position:fixed;top:0;bottom:0;width:22px;z-index:5;pointer-events:none;
+  background:url({ASSETS["basketball"]}) center top/22px 40px repeat-y;
+  -webkit-mask:linear-gradient(transparent,#000 40px,#000 calc(100% - 40px),transparent);
+          mask:linear-gradient(transparent,#000 40px,#000 calc(100% - 40px),transparent);
+  opacity:.9}}
+.edge-strip.left{{left:6px}}
+.shell{{padding-left:34px}}
+.edge-strip.right{{right:6px}}""" if "basketball" in ASSETS else ''}
 
 .shell{{display:flex;height:100vh;overflow:hidden}}
 
 /* ── Sidebar ── */
 .sidebar{{
   width:212px; min-width:212px;
-  background:var(--surface);
-  border-right:1px solid var(--border);
+  background:rgba(255,255,255,.86); backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);
+  border-right:1px solid var(--border); border-left:1px solid var(--border);
   display:flex; flex-direction:column;
 }}
 .sidebar-logo{{
   padding:18px; border-bottom:1px solid var(--border);
   display:flex; align-items:center; gap:10px;
 }}
+.sidebar-brand{{padding:22px 18px 16px;border-bottom:1px solid var(--border);text-align:center}}
+.sidebar-brand img{{width:128px;height:auto;display:block;margin:0 auto}}
+.sidebar-brand .tag{{margin-top:12px}}
+.tag{{display:inline-block;background:var(--brand);color:var(--ink);font-family:var(--display);font-stretch:125%;
+  font-weight:800;font-size:9.5px;letter-spacing:.05em;text-transform:uppercase;padding:3px 8px;line-height:1.3}}
 .logo-mark{{
   width:32px; height:32px; flex-shrink:0;
   background:var(--brand); border-radius:7px;
   display:flex; align-items:center; justify-content:center;
   color:#fff; font-weight:700; font-size:11px;
-  box-shadow:0 2px 4px rgba(232,75,138,.25);
+  box-shadow:0 2px 4px rgba(255,67,112,.25);
 }}
 .logo-text{{display:flex;flex-direction:column;line-height:1.15}}
 .logo-main{{font-size:14px;font-weight:600;letter-spacing:-.3px;color:var(--text)}}
 .logo-sub{{font-size:11px;color:var(--text3);margin-top:1px}}
 .nav{{padding:14px 10px 10px;flex:1}}
-.nav-section{{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--text3);padding:8px 12px 6px;font-weight:600}}
+.nav-section{{font-family:var(--display);font-stretch:125%;font-size:9.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink);padding:8px 12px 6px;font-weight:800}}
 .nav-item{{
   display:flex; align-items:center; gap:10px;
   padding:8px 11px; border-radius:var(--rsm);
@@ -517,44 +661,48 @@ body{{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);li
   transition:background .12s, color .12s;
   position:relative;
 }}
-.nav-item:hover{{background:var(--surface2);color:var(--text)}}
-.nav-item.active{{background:var(--brand-soft);color:var(--brand);font-weight:500}}
+.nav-item:hover{{background:rgba(11,11,11,.05);color:var(--ink)}}
+.nav-item.active{{background:var(--brand);color:var(--ink);font-weight:600}}
 .nav-item.active::before{{
   content:''; position:absolute; left:-10px; top:6px; bottom:6px;
-  width:3px; background:var(--brand); border-radius:0 2px 2px 0;
+  width:3px; background:var(--ink); border-radius:0 2px 2px 0;
 }}
 .nav-icon{{width:15px;height:15px;opacity:.55;flex-shrink:0}}
-.nav-item.active .nav-icon{{opacity:1;color:var(--brand)}}
+.nav-item.active .nav-icon{{opacity:1;color:var(--ink)}}
 .sidebar-footer{{
   padding:14px 18px; border-top:1px solid var(--border);
   font-size:11px; color:var(--text3);
 }}
 
 /* ── Main content ── */
-.main{{flex:1;overflow-y:auto;padding:28px 36px 60px}}
+.main{{flex:1;overflow-y:auto;padding:30px 48px 60px 36px}}
 .page{{display:none}}
 .page.active{{display:block}}
 .page-header{{margin-bottom:24px}}
-.page-title{{font-size:22px;font-weight:600;letter-spacing:-.4px}}
-.page-sub{{font-size:13px;color:var(--text3);margin-top:4px}}
+.page-title{{font-family:var(--display);font-stretch:125%;font-size:28px;font-weight:900;letter-spacing:-.2px;text-transform:uppercase;color:var(--ink);line-height:1.05}}
+.page-sub{{display:inline-block;margin-top:10px;background:var(--brand);color:var(--ink);font-family:var(--display);font-stretch:125%;
+  font-weight:800;font-size:10px;letter-spacing:.05em;text-transform:uppercase;padding:3px 9px}}
 
 /* ── Metric cards ── */
 .metrics{{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-bottom:24px}}
 .metric{{
-  background:var(--surface); border:1px solid var(--border);
+  background:rgba(255,255,255,.94); border:1px solid var(--border);
   border-radius:var(--r); padding:16px 18px; box-shadow:var(--shadow);
 }}
 .metric-label{{font-size:11px;color:var(--text2);font-weight:500;text-transform:uppercase;letter-spacing:.04em}}
-.metric-value{{font-size:24px;font-weight:600;letter-spacing:-.4px;margin:6px 0 2px}}
+.metric-value{{font-family:var(--display);font-stretch:125%;font-size:24px;font-weight:800;letter-spacing:-.3px;margin:8px 0 2px;color:var(--ink)}}
 .metric-delta{{font-size:12px;color:var(--text3)}}
 
 /* ── Cards ── */
 .card{{
-  background:var(--surface); border:1px solid var(--border);
+  background:rgba(255,255,255,.94); border:1px solid var(--border);
   border-radius:var(--r); padding:20px; margin-bottom:16px;
   box-shadow:var(--shadow);
 }}
-.card-title{{font-size:13px;font-weight:600;margin-bottom:14px;letter-spacing:-.1px}}
+.card-title{{font-family:var(--display);font-stretch:125%;font-size:12px;font-weight:800;margin-bottom:16px;letter-spacing:.03em;
+  text-transform:uppercase;color:var(--ink);display:flex;align-items:center;gap:8px}}
+.card-title::before{{content:'';width:14px;height:5px;background:var(--brand);flex-shrink:0}}
+.tracker-section-title{{font-family:var(--display);font-stretch:125%;text-transform:uppercase;letter-spacing:.03em;font-size:12px!important;font-weight:800!important}}
 
 /* ── Empty state ── */
 .empty-state{{
@@ -586,7 +734,7 @@ body{{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);li
 .data-table td{{padding:6px 12px;text-align:right;border:.5px solid var(--border)}}
 .data-table td:first-child{{text-align:left;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;color:var(--text2);position:sticky;left:0;background:var(--surface);z-index:1;min-width:150px}}
 .data-table tr:nth-child(even) td{{background:rgba(20,30,55,.02)}}
-.data-table tr:nth-child(even) td:first-child{{background:#f8f9fc}}
+.data-table tr:nth-child(even) td:first-child{{background:#fafaf8}}
 .data-table th.lifetime-col{{background:var(--surface3);border-left:1px solid var(--border2)}}
 .data-table td.lifetime-col{{font-weight:600;color:var(--text);background:var(--surface3)!important;border-left:1px solid var(--border2)}}
 .data-table tr.total-row td{{background:var(--surface2)!important;border-top:1px solid var(--border2);font-weight:600;color:var(--text)}}
@@ -612,7 +760,7 @@ body{{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);li
 }}
 
 /* ── Editor styles ── */
-.rev-edit-toggle{{font-size:11px;font-family:'DM Sans',sans-serif;font-weight:600;padding:4px 12px;border-radius:var(--rsm);border:.5px solid var(--brand);background:rgba(232,75,138,.06);color:var(--brand-deep);cursor:pointer}}
+.rev-edit-toggle{{font-size:11px;font-family:'DM Sans',sans-serif;font-weight:600;padding:4px 12px;border-radius:var(--rsm);border:.5px solid var(--brand);background:rgba(255,67,112,.06);color:var(--brand-deep);cursor:pointer}}
 .rev-edit-toggle.on{{background:var(--brand);color:#fff}}
 .rev-edit-btn{{font-size:11px;font-family:'DM Sans',sans-serif;font-weight:600;padding:4px 12px;border-radius:var(--rsm);border:.5px solid var(--border2);background:var(--surface);color:var(--text);cursor:pointer}}
 .rev-edit-btn:hover{{border-color:var(--text2)}}
@@ -628,11 +776,11 @@ body{{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);li
 .rev-grid td.rev-tbd{{color:var(--brand);font-style:italic}}
 .rev-grid td.rev-empty{{color:var(--text3)}}
 .rev-grid td.rev-cell{{cursor:cell}}
-.rev-grid td.rev-cell:hover{{outline:1.5px solid var(--brand);outline-offset:-1.5px;background:rgba(232,75,138,.06)}}
-.rev-grid td.rev-changed{{background:rgba(232,75,138,.08);position:relative}}
+.rev-grid td.rev-cell:hover{{outline:1.5px solid var(--brand);outline-offset:-1.5px;background:rgba(255,67,112,.06)}}
+.rev-grid td.rev-changed{{background:rgba(255,67,112,.08);position:relative}}
 .rev-grid td.rev-changed::after{{content:'';position:absolute;top:3px;right:3px;width:4px;height:4px;border-radius:50%;background:var(--brand)}}
 .rev-grid td.rev-editing{{padding:0}}
-.rev-grid td.rev-editing input{{width:100%;border:none;background:rgba(232,75,138,.06);color:var(--text);font:inherit;text-align:right;padding:6px 11px;outline:2px solid var(--brand);outline-offset:-2px}}
+.rev-grid td.rev-editing input{{width:100%;border:none;background:rgba(255,67,112,.06);color:var(--text);font:inherit;text-align:right;padding:6px 11px;outline:2px solid var(--brand);outline-offset:-2px}}
 .rev-modal-bg{{display:none;position:fixed;inset:0;background:rgba(15,23,41,.55);z-index:100;align-items:center;justify-content:center}}
 .rev-modal-bg.show{{display:flex}}
 .rev-modal{{background:#fff;border:1px solid var(--border);border-radius:12px;padding:22px;width:440px;max-width:92vw}}
@@ -652,19 +800,20 @@ body{{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);li
 </style>
 </head>
 <body>
+{'<div class="edge-strip left"></div><div class="edge-strip right"></div>' if "basketball" in ASSETS else ''}
 <div class="shell">
 
 <nav class="sidebar">
-  <div class="sidebar-logo">
+  {(f'''<div class="sidebar-brand">
+    <img src="{ASSETS["wordmark"]}" alt="Girls Tripp">
+    <div class="tag">Rain Delay Media</div>
+  </div>''') if "wordmark" in ASSETS else '''<div class="sidebar-logo">
     <div class="logo-mark">GT</div>
     <div class="logo-text">
       <div class="logo-main">Girls Tripp</div>
       <div class="logo-sub">Rain Delay Media</div>
     </div>
-  </div>
-  <a href="../../../index.html" style="display:flex;align-items:center;gap:6px;padding:10px 18px;font-size:11px;color:var(--text3);text-decoration:none;border-bottom:1px solid var(--border);letter-spacing:.02em;font-weight:500;transition:color .12s" onmouseover="this.style.color='var(--brand)'" onmouseout="this.style.color='var(--text3)'">
-    ← RDM Network
-  </a>
+  </div>'''}
   <a href="../../../index.html" style="display:flex;align-items:center;gap:6px;padding:10px 18px;font-size:11px;color:var(--text3);text-decoration:none;border-bottom:1px solid var(--border);letter-spacing:.02em;font-weight:500;transition:color .12s" onmouseover="this.style.color='var(--brand)'" onmouseout="this.style.color='var(--text3)'">← RDM Network</a>
     <a href="road_trippin.html" style="display:flex;align-items:center;gap:6px;padding:10px 18px;font-size:11px;color:var(--text3);text-decoration:none;border-bottom:1px solid var(--border);letter-spacing:.02em;font-weight:500;transition:color .12s" onmouseover="this.style.color='var(--brand)'" onmouseout="this.style.color='var(--text3)'">← Road Trippin'</a>
     <div class="nav">
@@ -787,12 +936,15 @@ function showPage(id, el) {{
 // ─── Charts (only render if data exists) ──
 document.addEventListener('DOMContentLoaded', function() {{
   if (typeof Chart === 'undefined') return;
+  Chart.defaults.font.family = "'DM Sans', sans-serif";
+  Chart.defaults.color = '#4a5468';
 
   const M = {js_M};
   const vids = {js_vids};
   const shorts = {js_shorts};
   const lives = {js_lives};
   const subs = {js_subs};
+  const rtViews = {js_rt_views}, rtOther = {js_rt_other}, rtPct = {js_rt_pct};
   const revM = {js_rev_m};
   const revTotals = {js_rev_totals};
 
@@ -803,9 +955,9 @@ document.addEventListener('DOMContentLoaded', function() {{
       data: {{
         labels: M,
         datasets: [
-          {{ label: 'VOD', data: vids, backgroundColor: '#2F6DDE', borderRadius: 2, stack: 's' }},
-          {{ label: 'Shorts', data: shorts, backgroundColor: '#1B9B96', borderRadius: 2, stack: 's' }},
-          {{ label: 'Live', data: lives, backgroundColor: '#E08C2A', borderRadius: 2, stack: 's' }},
+          {{ label: 'VOD', data: vids, backgroundColor: '#0B0B0B', borderRadius: 2, stack: 's' }},
+          {{ label: 'Shorts', data: shorts, backgroundColor: '#FF4370', borderRadius: 2, stack: 's' }},
+          {{ label: 'Live', data: lives, backgroundColor: '#B8B8B4', borderRadius: 2, stack: 's' }},
         ]
       }},
       options: {{
@@ -825,12 +977,38 @@ document.addEventListener('DOMContentLoaded', function() {{
       type: 'line',
       data: {{
         labels: M,
-        datasets: [{{ label: 'Subscribers', data: subs, borderColor: '#E84B8A', backgroundColor: 'rgba(232,75,138,.08)', fill: true, tension: .3, pointRadius: 2, borderWidth: 2 }}]
+        datasets: [{{ label: 'Subscribers', data: subs, borderColor: '#FF4370', backgroundColor: 'rgba(255,67,112,.08)', fill: true, tension: .3, pointRadius: 2, borderWidth: 2 }}]
       }},
       options: {{
         responsive: true, maintainAspectRatio: false,
         plugins: {{ legend: {{ display: false }} }},
         scales: {{ x: {{ grid: {{ display: false }} }}, y: {{ ticks: {{ callback: v => v >= 1e3 ? (v/1e3).toFixed(0)+'K' : v }} }} }}
+      }}
+    }});
+  }}
+
+  // Views from Road Trippin': stacked bar + % line
+  if (M.length && document.getElementById('yt-rt-chart')) {{
+    new Chart(document.getElementById('yt-rt-chart'), {{
+      type: 'bar',
+      data: {{
+        labels: M,
+        datasets: [
+          {{ label: "From Road Trippin'", data: rtViews, backgroundColor: '#C9A84C', borderRadius: 2, stack: 's', order: 2 }},
+          {{ label: 'All other views', data: rtOther, backgroundColor: '#D6D6D2', borderRadius: 2, stack: 's', order: 2 }},
+          {{ label: "% from RT", data: rtPct, type: 'line', yAxisID: 'y1', borderColor: '#FF4370', backgroundColor: '#FF4370',
+             tension: .3, pointRadius: 3, borderWidth: 2, spanGaps: true, order: 1 }},
+        ]
+      }},
+      options: {{
+        responsive: true, maintainAspectRatio: false,
+        plugins: {{ legend: {{ position: 'bottom', labels: {{ boxWidth: 10, font: {{ size: 11 }} }} }},
+          tooltip: {{ callbacks: {{ label: c => c.dataset.yAxisID === 'y1' ? ' ' + c.parsed.y + '% from RT' : ' ' + c.dataset.label + ': ' + (c.parsed.y ?? 0).toLocaleString() }} }} }},
+        scales: {{
+          x: {{ stacked: true, grid: {{ display: false }} }},
+          y: {{ stacked: true, ticks: {{ callback: v => v >= 1e6 ? (v/1e6).toFixed(1)+'M' : v >= 1e3 ? (v/1e3).toFixed(0)+'K' : v }} }},
+          y1: {{ position: 'right', min: 0, grid: {{ display: false }}, ticks: {{ callback: v => v + '%' }} }}
+        }}
       }}
     }});
   }}
@@ -841,7 +1019,7 @@ document.addEventListener('DOMContentLoaded', function() {{
       type: 'bar',
       data: {{
         labels: revM,
-        datasets: [{{ label: 'Revenue', data: revTotals, backgroundColor: '#E84B8A', borderRadius: 3 }}]
+        datasets: [{{ label: 'Revenue', data: revTotals, backgroundColor: '#FF4370', borderRadius: 3 }}]
       }},
       options: {{
         responsive: true, maintainAspectRatio: false,
@@ -1107,6 +1285,7 @@ def main():
     parser.add_argument("--revenue",  default=None)
     parser.add_argument("--socials",  default=None)
     parser.add_argument("--output",   default="girls_tripp.html")
+    parser.add_argument("--assets",   default=None, help="Folder with gt_marble.jpg, wordmark.png, etc.")
     args = parser.parse_args()
 
     script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -1120,6 +1299,7 @@ def main():
     print("=" * 55)
     print("GIRLS TRIPP — DASHBOARD GENERATOR")
     print("=" * 55)
+    load_assets(find_assets_dir(script_dir, args.assets))
 
     # Tracker: load if present, otherwise use empty
     if os.path.exists(tracker_path):

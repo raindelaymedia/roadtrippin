@@ -23,10 +23,6 @@ body::before{
   opacity:.7;mix-blend-mode:screen;
 }
 body::after{
-  content:'';position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;
-  background:radial-gradient(ellipse at 50% 30%,rgba(201,168,76,.04) 0%,transparent 60%);
-}
-body::after{
   content:'';position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.35;
   background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.08'/%3E%3C/svg%3E");
 }
@@ -37,7 +33,7 @@ body > *{position:relative;z-index:1}
 .star-sm{font-size:12px;opacity:.08}
 
 /* ── Hero ── */
-.hero{text-align:center;padding:100px 24px 80px;position:relative;overflow:hidden}
+.hero{text-align:center;padding:100px 24px 80px;position:relative;overflow:hidden;background:radial-gradient(ellipse at 50% 40%,rgba(201,168,76,.08) 0%,transparent 65%)}
 .hero::after{content:'';position:absolute;bottom:0;left:10%;right:10%;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
 .hero-stars{position:absolute;top:0;left:0;right:0;bottom:0;pointer-events:none}
 .htag{font-family:'Oswald',sans-serif;font-size:13px;text-transform:uppercase;letter-spacing:.35em;color:var(--gold);font-weight:500;margin-bottom:16px}
@@ -130,11 +126,11 @@ h1 em{font-style:normal;color:var(--gold)}
   <h1>Season <em>One</em></h1>
   <div class="hsub">Road Trippin' · October 2025 — September 2026</div>
   <div class="hgrid">
-    <div class="hstat"><div class="hval">41.7M</div><div class="hlbl">YouTube Views</div></div>
+    <div class="hstat"><div class="hval">42.3M</div><div class="hlbl">YouTube Views</div></div>
     <div class="hstat"><div class="hval">181K</div><div class="hlbl">Subscribers</div></div>
-    <div class="hstat"><div class="hval">$1.15M</div><div class="hlbl">Revenue</div></div>
-    <div class="hstat"><div class="hval">170.8M</div><div class="hlbl">Impressions</div></div>
-    <div class="hstat"><div class="hval">1,101</div><div class="hlbl">Videos</div></div>
+    <div class="hstat"><div class="hval">$1.10M</div><div class="hlbl">Fanatics Revenue</div></div>
+    <div class="hstat"><div class="hval">170.8M</div><div class="hlbl">Fanatics Impressions</div></div>
+    <div class="hstat"><div class="hval">1,113</div><div class="hlbl">Videos</div></div>
   </div>
 </div>
 
@@ -144,7 +140,7 @@ h1 em{font-style:normal;color:var(--gold)}
   </div>
   <div class="chart-row">
     <div class="chart-box"><div class="chart-lbl">Subscriber Growth</div><div style="height:200px"><canvas id="c2"></canvas></div></div>
-    <div class="chart-box"><div class="chart-lbl">Monthly Revenue</div><div style="height:200px"><canvas id="c3"></canvas></div></div>
+    <div class="chart-box"><div class="chart-lbl">Monthly Fanatics Revenue</div><div style="height:200px"><canvas id="c3"></canvas></div></div>
   </div>
 </div>
 
@@ -174,14 +170,14 @@ h1 em{font-style:normal;color:var(--gold)}
                 <div class="ev-date">Dec 05, 2025</div>
                 <div class="ev-icon">🔥</div>
                 <div class="ev-title">Perk EXPOSES What CP3 Was Doing Behind T-Lue's Back in </div>
-                <div class="ev-desc">718.2K views — first major viral clip of S1.</div>
+                <div class="ev-desc">718.8K views — first major viral clip of S1.</div>
                 <a href="https://youtube.com/watch?v=HwWx5nhjCx8" target="_blank"><img class="ev-thumb" src="https://i.ytimg.com/vi/HwWx5nhjCx8/mqdefault.jpg" loading="lazy"></a>
               </div>
             </div>
             <div class="ev ev-left fade-in">
               <div class="ev-dot" style="border-color:#C9A84C"></div>
               <div class="ev-card">
-                <div class="ev-date">Dec 15, 2025</div>
+                <div class="ev-date">December 2025</div>
                 <div class="ev-icon">🎯</div>
                 <div class="ev-title">125K Subscribers</div>
                 <div class="ev-desc">Channel crosses 125,000 YouTube subscribers.</div>
@@ -236,7 +232,7 @@ h1 em{font-style:normal;color:var(--gold)}
             <div class="ch-line" style="background:#1B9B96"></div>
             <h2 class="ch-title">The Breakout</h2>
             <div class="ch-subtitle" style="color:#1B9B96">March – May 2026</div>
-            <div class="ch-desc">Shorts strategy explodes. Revenue crosses $500K. Playoffs drive record engagement.</div>
+            <div class="ch-desc">Shorts strategy explodes. Playoffs drive record engagement.</div>
           </div>
           <div class="ev-track" style="--ch-color:#1B9B96">
             
@@ -256,14 +252,14 @@ h1 em{font-style:normal;color:var(--gold)}
                 <div class="ev-date">Mar 02, 2026</div>
                 <div class="ev-icon">🔥</div>
                 <div class="ev-title">The REAL Reason Kyrie Left Cleveland, According to RJ</div>
-                <div class="ev-desc">373.7K views.</div>
+                <div class="ev-desc">374.2K views.</div>
                 <a href="https://youtube.com/watch?v=ePdXtNfowRo" target="_blank"><img class="ev-thumb" src="https://i.ytimg.com/vi/ePdXtNfowRo/mqdefault.jpg" loading="lazy"></a>
               </div>
             </div>
             <div class="ev ev-left fade-in">
               <div class="ev-dot" style="border-color:#1B9B96"></div>
               <div class="ev-card">
-                <div class="ev-date">Apr 15, 2026</div>
+                <div class="ev-date">April 2026</div>
                 <div class="ev-icon">🎯</div>
                 <div class="ev-title">150K Subscribers</div>
                 <div class="ev-desc">Channel crosses 150,000 YouTube subscribers.</div>
@@ -278,16 +274,6 @@ h1 em{font-style:normal;color:var(--gold)}
                 <div class="ev-title">Ja Morant OUT THE LEAGUE!? ESPN’s Kendrick Perkins Says</div>
                 <div class="ev-desc">361.1K views.</div>
                 <a href="https://youtube.com/watch?v=xPwrhaAV5VM" target="_blank"><img class="ev-thumb" src="https://i.ytimg.com/vi/xPwrhaAV5VM/mqdefault.jpg" loading="lazy"></a>
-              </div>
-            </div>
-            <div class="ev ev-left fade-in">
-              <div class="ev-dot" style="border-color:#1B9B96"></div>
-              <div class="ev-card">
-                <div class="ev-date">May 15, 2026</div>
-                <div class="ev-icon">💰</div>
-                <div class="ev-title">$500K Gross Revenue</div>
-                <div class="ev-desc">Cumulative S1 revenue crosses $500K. RDM participation begins per contract §5.1.</div>
-                
               </div>
             </div>
           </div>
@@ -317,7 +303,7 @@ h1 em{font-style:normal;color:var(--gold)}
                 <div class="ev-date">Jul 02, 2026</div>
                 <div class="ev-icon">🔥🔥</div>
                 <div class="ev-title">Baby Giannis Goes Viral</div>
-                <div class="ev-desc">1.7M views + Shumpert clip at 1.5M. Combined 3.2M views in 24 hours — biggest day in show history.</div>
+                <div class="ev-desc">1.7M views + Shumpert clip at 1.5M. Combined 3.2M views — biggest day in show history.</div>
                 <a href="https://youtube.com/watch?v=k3pJGiIh1RE" target="_blank"><img class="ev-thumb" src="https://i.ytimg.com/vi/k3pJGiIh1RE/mqdefault.jpg" loading="lazy"></a>
               </div>
             </div>
@@ -334,7 +320,7 @@ h1 em{font-style:normal;color:var(--gold)}
             <div class="ev ev-right fade-in">
               <div class="ev-dot" style="border-color:#E08C2A"></div>
               <div class="ev-card">
-                <div class="ev-date">Aug 15, 2026</div>
+                <div class="ev-date">August 2026</div>
                 <div class="ev-icon">🎯</div>
                 <div class="ev-title">175K Subscribers</div>
                 <div class="ev-desc">Channel crosses 175,000 YouTube subscribers.</div>
@@ -365,10 +351,10 @@ h1 em{font-style:normal;color:var(--gold)}
             <div class="ev ev-right fade-in">
               <div class="ev-dot" style="border-color:#E84B8A"></div>
               <div class="ev-card">
-                <div class="ev-date">Sep 02, 2026</div>
+                <div class="ev-date">Sep 08, 2026</div>
                 <div class="ev-icon">👑</div>
                 <div class="ev-title">Saved the Best for Last</div>
-                <div class="ev-desc">The Jalen Brunson episode becomes the biggest full episode of Season 1. Opening Night vs Philly, his dad on the Knicks bench, and why he's not ducking any smoke. The perfect way to close the year.</div>
+                <div class="ev-desc">The Jalen Brunson episode becomes the biggest full episode of Season 1. Opening Night vs Philly, his dad on the Knicks bench, and why he's not ducking any smoke. The perfect way to close the year. 331.9K views.</div>
                 <a href="https://youtube.com/watch?v=BeZUS-lZ4qs" target="_blank"><img class="ev-thumb" src="https://i.ytimg.com/vi/BeZUS-lZ4qs/mqdefault.jpg" loading="lazy"></a>
               </div>
             </div>
@@ -397,25 +383,25 @@ h1 em{font-style:normal;color:var(--gold)}
 
 <div class="top-sec">
   <h2>🏆 Top 10 Videos of Season 1</h2>
-  <div class="t10 fade-in"><div class="t10-rank">#1</div><a href="https://youtube.com/watch?v=k3pJGiIh1RE" target="_blank"><img src="https://i.ytimg.com/vi/k3pJGiIh1RE/mqdefault.jpg" loading="lazy"></a><div class="t10-info"><span class="badge">SHORT</span> <b>1.7M</b><div class="t10-title">Top High School Basketball Recruit is BABY GIANNIS!? #nba #m</div><div class="t10-date">2026-07-02</div></div></div><div class="t10 fade-in"><div class="t10-rank">#2</div><a href="https://youtube.com/watch?v=JUn4tQJ9Y60" target="_blank"><img src="https://i.ytimg.com/vi/JUn4tQJ9Y60/mqdefault.jpg" loading="lazy"></a><div class="t10-info"><span class="badge">SHORT</span> <b>1.5M</b><div class="t10-title">Imam Shumpert GOES OFF on Lakers Free Agency #LosAngelesLake</div><div class="t10-date">2026-07-02</div></div></div><div class="t10 fade-in"><div class="t10-rank">#3</div><a href="https://youtube.com/watch?v=HwWx5nhjCx8" target="_blank"><img src="https://i.ytimg.com/vi/HwWx5nhjCx8/mqdefault.jpg" loading="lazy"></a><div class="t10-info"><span class="badge">MID</span> <b>718.2K</b><div class="t10-title">Perk EXPOSES What CP3 Was Doing Behind T-Lue's Back in Locke</div><div class="t10-date">2025-12-05</div></div></div><div class="t10 fade-in"><div class="t10-rank">#4</div><a href="https://youtube.com/watch?v=HtZ8tDkeGJY" target="_blank"><img src="https://i.ytimg.com/vi/HtZ8tDkeGJY/mqdefault.jpg" loading="lazy"></a><div class="t10-info"><span class="badge">SHORT</span> <b>515.5K</b><div class="t10-title">Rajon Rondo Exposes RJ’s Worst Teammate Moment #nba #basketb</div><div class="t10-date">2026-08-14</div></div></div><div class="t10 fade-in"><div class="t10-rank">#5</div><a href="https://youtube.com/watch?v=ziCh3vNf0ik" target="_blank"><img src="https://i.ytimg.com/vi/ziCh3vNf0ik/mqdefault.jpg" loading="lazy"></a><div class="t10-info"><span class="badge">SHORT</span> <b>493.6K</b><div class="t10-title">LeBron’s Next Move Will RUN The NBA?! #NBA #LebronJames</div><div class="t10-date">2026-07-18</div></div></div><div class="t10 fade-in"><div class="t10-rank">#6</div><a href="https://youtube.com/watch?v=Mrjky6bXwm4" target="_blank"><img src="https://i.ytimg.com/vi/Mrjky6bXwm4/mqdefault.jpg" loading="lazy"></a><div class="t10-info"><span class="badge">SHORT</span> <b>489.0K</b><div class="t10-title">ESPN’s Kendrick Perkins Reacts To New York Giants’ QB Jaxson</div><div class="t10-date">2026-06-01</div></div></div><div class="t10 fade-in"><div class="t10-rank">#7</div><a href="https://youtube.com/watch?v=J6rzMuvuMuo" target="_blank"><img src="https://i.ytimg.com/vi/J6rzMuvuMuo/mqdefault.jpg" loading="lazy"></a><div class="t10-info"><span class="badge">SHORT</span> <b>465.4K</b><div class="t10-title">The Time DeMarcus Cousins Learned Why You NEVER Trash Talk T</div><div class="t10-date">2026-07-14</div></div></div><div class="t10 fade-in"><div class="t10-rank">#8</div><a href="https://youtube.com/watch?v=JZgusHsQ0l4" target="_blank"><img src="https://i.ytimg.com/vi/JZgusHsQ0l4/mqdefault.jpg" loading="lazy"></a><div class="t10-info"><span class="badge">SHORT</span> <b>461.3K</b><div class="t10-title">Rondo Reveals The SCARIEST LeBron James Scenario #Lebron #nb</div><div class="t10-date">2026-08-15</div></div></div><div class="t10 fade-in"><div class="t10-rank">#9</div><a href="https://youtube.com/watch?v=XCtyiiCSRAk" target="_blank"><img src="https://i.ytimg.com/vi/XCtyiiCSRAk/mqdefault.jpg" loading="lazy"></a><div class="t10-info"><span class="badge">SHORT</span> <b>395.7K</b><div class="t10-title">Anthony Edwards LEAVING Minnesota!? #AntMan #anthonyedwards </div><div class="t10-date">2026-06-23</div></div></div><div class="t10 fade-in"><div class="t10-rank">#10</div><a href="https://youtube.com/watch?v=ePdXtNfowRo" target="_blank"><img src="https://i.ytimg.com/vi/ePdXtNfowRo/mqdefault.jpg" loading="lazy"></a><div class="t10-info"><span class="badge">MID</span> <b>373.7K</b><div class="t10-title">The REAL Reason Kyrie Left Cleveland, According to RJ</div><div class="t10-date">2026-03-02</div></div></div>
+  <div class="t10 fade-in"><div class="t10-rank">#1</div><a href="https://youtube.com/watch?v=k3pJGiIh1RE" target="_blank"><img src="https://i.ytimg.com/vi/k3pJGiIh1RE/mqdefault.jpg" loading="lazy"></a><div class="t10-info"><span class="badge">SHORT</span> <b>1.7M</b><div class="t10-title">Top High School Basketball Recruit is BABY GIANNIS!? #nba #m</div><div class="t10-date">2026-07-02</div></div></div><div class="t10 fade-in"><div class="t10-rank">#2</div><a href="https://youtube.com/watch?v=JUn4tQJ9Y60" target="_blank"><img src="https://i.ytimg.com/vi/JUn4tQJ9Y60/mqdefault.jpg" loading="lazy"></a><div class="t10-info"><span class="badge">SHORT</span> <b>1.5M</b><div class="t10-title">Imam Shumpert GOES OFF on Lakers Free Agency #LosAngelesLake</div><div class="t10-date">2026-07-02</div></div></div><div class="t10 fade-in"><div class="t10-rank">#3</div><a href="https://youtube.com/watch?v=HwWx5nhjCx8" target="_blank"><img src="https://i.ytimg.com/vi/HwWx5nhjCx8/mqdefault.jpg" loading="lazy"></a><div class="t10-info"><span class="badge">MID</span> <b>718.8K</b><div class="t10-title">Perk EXPOSES What CP3 Was Doing Behind T-Lue's Back in Locke</div><div class="t10-date">2025-12-05</div></div></div><div class="t10 fade-in"><div class="t10-rank">#4</div><a href="https://youtube.com/watch?v=HtZ8tDkeGJY" target="_blank"><img src="https://i.ytimg.com/vi/HtZ8tDkeGJY/mqdefault.jpg" loading="lazy"></a><div class="t10-info"><span class="badge">SHORT</span> <b>520.3K</b><div class="t10-title">Rajon Rondo Exposes RJ’s Worst Teammate Moment #nba #basketb</div><div class="t10-date">2026-08-14</div></div></div><div class="t10 fade-in"><div class="t10-rank">#5</div><a href="https://youtube.com/watch?v=ziCh3vNf0ik" target="_blank"><img src="https://i.ytimg.com/vi/ziCh3vNf0ik/mqdefault.jpg" loading="lazy"></a><div class="t10-info"><span class="badge">SHORT</span> <b>493.6K</b><div class="t10-title">LeBron’s Next Move Will RUN The NBA?! #NBA #LebronJames</div><div class="t10-date">2026-07-18</div></div></div><div class="t10 fade-in"><div class="t10-rank">#6</div><a href="https://youtube.com/watch?v=Mrjky6bXwm4" target="_blank"><img src="https://i.ytimg.com/vi/Mrjky6bXwm4/mqdefault.jpg" loading="lazy"></a><div class="t10-info"><span class="badge">SHORT</span> <b>489.3K</b><div class="t10-title">ESPN’s Kendrick Perkins Reacts To New York Giants’ QB Jaxson</div><div class="t10-date">2026-06-01</div></div></div><div class="t10 fade-in"><div class="t10-rank">#7</div><a href="https://youtube.com/watch?v=JZgusHsQ0l4" target="_blank"><img src="https://i.ytimg.com/vi/JZgusHsQ0l4/mqdefault.jpg" loading="lazy"></a><div class="t10-info"><span class="badge">SHORT</span> <b>468.6K</b><div class="t10-title">Rondo Reveals The SCARIEST LeBron James Scenario #Lebron #nb</div><div class="t10-date">2026-08-15</div></div></div><div class="t10 fade-in"><div class="t10-rank">#8</div><a href="https://youtube.com/watch?v=J6rzMuvuMuo" target="_blank"><img src="https://i.ytimg.com/vi/J6rzMuvuMuo/mqdefault.jpg" loading="lazy"></a><div class="t10-info"><span class="badge">SHORT</span> <b>466.2K</b><div class="t10-title">The Time DeMarcus Cousins Learned Why You NEVER Trash Talk T</div><div class="t10-date">2026-07-14</div></div></div><div class="t10 fade-in"><div class="t10-rank">#9</div><a href="https://youtube.com/watch?v=XCtyiiCSRAk" target="_blank"><img src="https://i.ytimg.com/vi/XCtyiiCSRAk/mqdefault.jpg" loading="lazy"></a><div class="t10-info"><span class="badge">SHORT</span> <b>395.7K</b><div class="t10-title">Anthony Edwards LEAVING Minnesota!? #AntMan #anthonyedwards </div><div class="t10-date">2026-06-23</div></div></div><div class="t10 fade-in"><div class="t10-rank">#10</div><a href="https://youtube.com/watch?v=ePdXtNfowRo" target="_blank"><img src="https://i.ytimg.com/vi/ePdXtNfowRo/mqdefault.jpg" loading="lazy"></a><div class="t10-info"><span class="badge">MID</span> <b>374.2K</b><div class="t10-title">The REAL Reason Kyrie Left Cleveland, According to RJ</div><div class="t10-date">2026-03-02</div></div></div>
 </div>
 
 <div class="foot">
   Road Trippin' Show · Season 1 · Produced by Rain Delay Media<br>
-  Generated September 14, 2026
+  Generated September 28, 2026
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <script>
-const L=["OCT '25", "NOV '25", "DEC '25", "JAN '26", "FEB '26", "MAR '26", "APR '26", "MAY '26", "JUN '26", "JUL '26", "AUG '26", "SEP '26"],gc='rgba(255,255,255,.04)',tc='#505870',
+const L=["OCT '25", "NOV '25", "DEC '25", "JAN '26", "FEB '26", "MAR '26", "APR '26", "MAY '26", "JUN '26", "JUL '26", "AUG '26", "SEP '26"],gc='rgba(255,255,255,.06)',tc='#C8C8C2',
 fK=v=>v>=1e6?(v/1e6).toFixed(1)+'M':v>=1e3?(v/1e3).toFixed(0)+'K':v;
 new Chart(document.getElementById('c1'),{type:'bar',data:{labels:L,datasets:[
-{label:'VOD',data:[951387, 1237011, 1819209, 733899, 456937, 999377, 790809, 697914, 983168, 1467445, 1419146, 773885],backgroundColor:'#2F6DDE',borderRadius:3,stack:'s'},
-{label:'Shorts',data:[542576, 920589, 1102899, 1021398, 1412041, 2437458, 2731804, 2062452, 3317091, 7373863, 4512685, 817553],backgroundColor:'#1B9B96',borderRadius:3,stack:'s'},
-{label:'Live',data:[381, 405, 365, 90638, 209927, 211738, 178277, 164514, 169880, 82434, 4620, 1913],backgroundColor:'#E08C2A',borderRadius:3,stack:'s'}
+{label:'VOD',data:[951387, 1237011, 1819209, 733899, 456937, 999377, 790809, 697914, 983168, 1467445, 1419146, 1152951],backgroundColor:'#2F6DDE',borderRadius:3,stack:'s'},
+{label:'Shorts',data:[542576, 920589, 1102899, 1021398, 1412041, 2437458, 2731804, 2062452, 3317091, 7373863, 4512685, 1019632],backgroundColor:'#1B9B96',borderRadius:3,stack:'s'},
+{label:'Live',data:[381, 405, 365, 90638, 209927, 211738, 178277, 164514, 169880, 82434, 4620, 3880],backgroundColor:'#E08C2A',borderRadius:3,stack:'s'}
 ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{color:tc,boxWidth:10,font:{size:11}}}},scales:{x:{stacked:true,grid:{display:false},ticks:{color:tc}},y:{stacked:true,grid:{color:gc},ticks:{color:tc,callback:fK}}}}});
-new Chart(document.getElementById('c2'),{type:'line',data:{labels:L,datasets:[{data:[119701, 124284, 135305, 139153, 142441, 148943, 153428, 156911, 162865, 172775, 179506, 181000],borderColor:'#C9A84C',backgroundColor:'rgba(201,168,76,.08)',fill:true,tension:.35,pointRadius:3,borderWidth:2}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{display:false},ticks:{color:tc}},y:{grid:{color:gc},ticks:{color:tc,callback:fK}}}}});
-new Chart(document.getElementById('c3'),{type:'bar',data:{labels:L,datasets:[{data:[7350.58, 13596.25, 19026.220000000005, 12979.869999999999, 61268.979999999996, 10876.16, 323564.57999999996, 169449.86, 169762.67, 182845.85, 173171.78999999998, 10754.43],backgroundColor:'#C9A84C',borderRadius:3}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{display:false},ticks:{color:tc}},y:{grid:{color:gc},ticks:{color:tc,callback:v=>'$'+fK(v)}}}}});
+new Chart(document.getElementById('c2'),{type:'line',data:{labels:L,datasets:[{data:[119304, 123887, 134908, 138756, 142044, 148546, 153031, 156514, 162468, 172378, 179109, 181000],borderColor:'#C9A84C',backgroundColor:'rgba(201,168,76,.08)',fill:true,tension:.35,pointRadius:3,borderWidth:2}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{display:false},ticks:{color:tc}},y:{grid:{color:gc},ticks:{color:tc,callback:fK}}}}});
+new Chart(document.getElementById('c3'),{type:'bar',data:{labels:L,datasets:[{label:'Monthly',data:[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 314285.72, 157142.86, 157142.86, 157142.86, 157142.86, 157142.86],backgroundColor:'rgba(201,168,76,.35)',borderRadius:3,order:2},{label:'Cumulative',type:'line',data:[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 314285.72, 471428.58, 628571.44, 785714.3, 942857.16, 1100000.02],borderColor:'#C9A84C',backgroundColor:'transparent',tension:.3,pointRadius:3,borderWidth:2,order:1}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{color:tc,boxWidth:10,font:{size:11}}},tooltip:{callbacks:{label:c=>c.dataset.label+': $'+c.parsed.y.toLocaleString(undefined,{maximumFractionDigits:0})}}},scales:{x:{grid:{display:false},ticks:{color:tc}},y:{grid:{color:gc},ticks:{color:tc,callback:v=>'$'+fK(v)}}}}});
 const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.1,rootMargin:'0px 0px -50px 0px'});
 document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
 </script>
