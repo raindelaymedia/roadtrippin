@@ -146,6 +146,83 @@ def load_socials(csv_path):
     return {'months': months, 'platforms': platforms, 'data': data}
 
 
+# ─── Engaged vs regular views (manual Studio pull, stored in the socials file) ──
+# The API doesn't expose engaged views, so they're entered by hand in the
+# socials CSV as YOUTUBE rows:  VIEWS_<T>  and  ENGAGED_VIEWS_<T>
+# for T in VIDS / SHORTS / LIVES. This helper is self-contained so the RT and
+# GT dashboards can copy it as-is.
+ENGAGED_TYPES = [('VIDS', 'Videos'), ('SHORTS', 'Shorts'), ('LIVES', 'Lives')]
+
+
+def engaged_views(socials, months):
+    """{type: {'views': [...], 'engaged': [...], 'rate': [...]}} aligned to `months`
+    (any order). Only content types with at least one value are returned."""
+    idx = {m: i for i, m in enumerate(socials.get('months', []))}
+
+    def get(metric, m):
+        series = socials.get('data', {}).get(('YOUTUBE', metric))
+        i = idx.get(m)
+        v = series[i] if series is not None and i is not None else None
+        return v if isinstance(v, (int, float)) else None
+
+    out = {}
+    for t, _ in ENGAGED_TYPES:
+        views = [get(f'VIEWS_{t}', m) for m in months]
+        eng = [get(f'ENGAGED_VIEWS_{t}', m) for m in months]
+        if any(v is not None for v in views + eng):
+            out[t] = {'views': views, 'engaged': eng,
+                      'rate': [(e / v) if (e is not None and v) else None for v, e in zip(views, eng)]}
+    return out
+
+
+def _engaged_card(socials):
+    """YouTube-tab card + chart data for engaged vs regular views."""
+    months = socials.get('months', [])            # ascending
+    ev = engaged_views(socials, months)
+    if not ev:
+        return '', '[]', '{}'
+    keep = [i for i, m in enumerate(months) if any(ev[t]['views'][i] is not None or ev[t]['engaged'][i] is not None for t in ev)]
+    months = [months[i] for i in keep]
+    for t in ev:
+        for k in ev[t]:
+            ev[t][k] = [ev[t][k][i] for i in keep]
+    names = dict(ENGAGED_TYPES)
+
+    metrics = ''
+    for t in ev:
+        last = next((i for i in range(len(months) - 1, -1, -1) if ev[t]['rate'][i] is not None), None)
+        if last is None:
+            continue
+        metrics += (f'<div class="metric"><div class="metric-label">Engaged · {names[t]} ({fmt_period(months[last])})</div>'
+                    f'<div class="metric-value">{ev[t]["rate"][last] * 100:.0f}%</div>'
+                    f'<div class="metric-delta">{fmt(ev[t]["engaged"][last])} of {fmt(ev[t]["views"][last])} views</div></div>')
+
+    head = ''.join(f'<th>{names[t]} views</th><th>{names[t]} engaged</th><th>{names[t]} %</th>' for t in ev)
+    rows = ''
+    for i in range(len(months) - 1, -1, -1):
+        cells = ''
+        for t in ev:
+            v, e, r = ev[t]['views'][i], ev[t]['engaged'][i], ev[t]['rate'][i]
+            cells += (f'<td>{fmt(v) if v is not None else "—"}</td><td>{fmt(e) if e is not None else "—"}</td>'
+                      f'<td><b>{f"{r * 100:.1f}%" if r is not None else "—"}</b></td>')
+        rows += f'<tr><td>{fmt_period(months[i])}</td>{cells}</tr>'
+
+    card = f"""
+    <div class="card">
+      <div class="card-title">Engaged vs All Views</div>
+      <div class="metrics" style="margin-bottom:16px">{metrics}</div>
+      <div style="height:260px"><canvas id="engaged-chart"></canvas></div>
+      <div class="table-scroll" style="margin-top:16px"><table class="data-table">
+        <thead><tr><th>Month</th>{head}</tr></thead><tbody>{rows}</tbody></table></div>
+      <div style="font-size:11px;color:var(--text3);margin-top:10px">
+        Entered by hand from YouTube Studio (the API doesn't report engaged views) — edit on the Socials tab under YouTube.
+      </div>
+    </div>"""
+    labels = json.dumps([fmt_period(m) for m in months])
+    series = json.dumps({names[t]: [round(r * 100, 1) if r is not None else None for r in ev[t]['rate']] for t in ev})
+    return card, labels, series
+
+
 def load_revenue(csv_path):
     """Load flat revenue CSV → {months, sources, totals, order}."""
     import csv as _csv
@@ -307,15 +384,21 @@ def build_html(d, revenue, socials, generated_at):
         js_traffic_paid = jsa(traffic_paid)
         has_traffic = any(v > 0 for v in traffic_organic + traffic_paid)
 
-        # Latest organic %
-        latest_organic = traffic_organic[-1] if traffic_organic else 0
-        latest_paid = traffic_paid[-1] if traffic_paid else 0
+        # Latest organic % = most recent month that actually has traffic data.
+        # (On the 1st of a month the new month has no data yet, which used to
+        # show up as 0% organic.)
+        _months_asc = list(reversed(d['months']))
+        _t_idx = next((i for i in range(len(traffic_organic) - 1, -1, -1)
+                       if traffic_organic[i] + traffic_paid[i] > 0), None)
+        latest_organic = traffic_organic[_t_idx] if _t_idx is not None else 0
+        latest_paid = traffic_paid[_t_idx] if _t_idx is not None else 0
+        latest_traffic_month = fmt_period(_months_asc[_t_idx]) if _t_idx is not None else ''
         yt_content = f"""
     <div class="metrics">
       <div class="metric"><div class="metric-label">Subscribers</div><div class="metric-value">{fmt(yt_subs_now)}</div></div>
       <div class="metric"><div class="metric-label">VOD Views ({latest_mo})</div><div class="metric-value">{fmt(d['vids'][0] if d['vids'] else None)}</div></div>
       <div class="metric"><div class="metric-label">Shorts Views ({latest_mo})</div><div class="metric-value">{fmt(d['shorts'][0] if d['shorts'] else None)}</div></div>
-      <div class="metric"><div class="metric-label">Organic ({latest_mo})</div><div class="metric-value">{latest_organic:.0f}%</div><div class="metric-delta" style="color:{'var(--green)' if latest_organic >= 50 else 'var(--red)'}">{latest_paid:.0f}% paid</div></div>
+      <div class="metric"><div class="metric-label">Organic ({latest_traffic_month or latest_mo})</div><div class="metric-value">{latest_organic:.0f}%</div><div class="metric-delta" style="color:{'var(--green)' if latest_organic >= 50 else 'var(--red)'}">{latest_paid:.0f}% paid</div></div>
     </div>
     <div class="card">
       <div class="card-title">Views by Content Type</div>
@@ -336,6 +419,9 @@ def build_html(d, revenue, socials, generated_at):
         yt_content = empty_state(
             "YouTube Analytics not connected yet",
             "Once the YT API credentials are added to config, data will populate automatically.")
+
+    engaged_card, js_eng_labels, js_eng_series = _engaged_card(socials)
+    yt_content += engaged_card
 
     # ── Revenue tab ──
     if has_rev:
@@ -368,7 +454,7 @@ def build_html(d, revenue, socials, generated_at):
     }
     PLATFORM_DISPLAY = {
         'INSTAGRAM': 'Instagram', 'TIKTOK': 'TikTok', 'X': 'X / Twitter',
-        'YOUTUBE': 'YouTube', 'FACEBOOK': 'Facebook', 'THREADS': 'Threads',
+        'YOUTUBE': 'YouTube · manual from Studio', 'FACEBOOK': 'Facebook', 'THREADS': 'Threads',
         # Jordan Schultz's personal accounts (JS_ prefix in socials_sr.csv)
         'JS_INSTAGRAM': 'Jordan · Instagram', 'JS_TIKTOK': 'Jordan · TikTok', 'JS_X': 'Jordan · X',
         'JS_FACEBOOK': 'Jordan · Facebook', 'JS_THREADS': 'Jordan · Threads',
@@ -426,7 +512,7 @@ def build_html(d, revenue, socials, generated_at):
     </div>"""
 
     if has_soc:
-        soc_platforms = socials['platforms']
+        soc_platforms = [p for p in socials['platforms'] if p != 'YOUTUBE']   # YouTube lives on its own tab
         soc_months_display = [fmt_period(m) for m in socials['months']]
 
         def soc_latest_for(plat, metric):
@@ -460,6 +546,8 @@ def build_html(d, revenue, socials, generated_at):
         last_plat = None
         all_keys = sorted(socials['data'].keys(), key=lambda k: (k[0], k[1]))
         for (plat, metric) in all_keys:
+            if plat == 'YOUTUBE':
+                continue
             if plat != last_plat:
                 display = PLATFORM_DISPLAY.get(plat, plat.title())
                 soc_table += f'<tr><td style="font-weight:700;background:#161680;color:var(--text)">{display}</td>'
@@ -494,7 +582,7 @@ def build_html(d, revenue, socials, generated_at):
 
     # ── Tracker tab ──
     if has_yt:
-        tracker_content = _tracker_tables(d, M_display)
+        tracker_content = _tracker_tables(d, M_display, socials)
     else:
         tracker_content = empty_state(
             "Tracker data will appear here once YouTube + Megaphone pipelines are connected")
@@ -1115,6 +1203,23 @@ document.addEventListener('DOMContentLoaded', function() {{
     }});
   }}
 
+  // Engaged vs all views — engaged rate by content type
+  const engL = {js_eng_labels}, engS = {js_eng_series};
+  if (engL.length && document.getElementById('engaged-chart')) {{
+    const engColors = {{'Videos': '#E8C840', 'Shorts': '#f2f2f2', 'Lives': '#7FA7FF'}};
+    new Chart(document.getElementById('engaged-chart'), {{
+      type: 'line',
+      data: {{ labels: engL, datasets: Object.keys(engS).map(k => ({{
+        label: k + ' engaged %', data: engS[k], borderColor: engColors[k] || '#E8C840',
+        backgroundColor: engColors[k] || '#E8C840', tension: .3, pointRadius: 4, borderWidth: 2, spanGaps: true }})) }},
+      options: {{ responsive: true, maintainAspectRatio: false,
+        plugins: {{ legend: {{ position: 'bottom', labels: {{ color: '#f2f2f2', boxWidth: 10 }} }},
+          tooltip: {{ callbacks: {{ label: c => ' ' + c.dataset.label + ': ' + c.parsed.y + '%' }} }} }},
+        scales: {{ x: {{ ticks: {{ color: '#f2f2f2' }}, grid: {{ display: false }} }},
+          y: {{ min: 0, max: 100, ticks: {{ color: '#f2f2f2', callback: v => v + '%' }}, grid: {{ color: 'rgba(255,255,255,.08)' }} }} }} }}
+    }});
+  }}
+
   // Traffic Sources chart (paid vs organic)
   const tOrganic = {js_traffic_organic};
   const tPaid = {js_traffic_paid};
@@ -1143,7 +1248,7 @@ document.addEventListener('DOMContentLoaded', function() {{
 </body></html>"""
 
 
-def _tracker_tables(d, M_display):
+def _tracker_tables(d, M_display, socials=None):
     """Build the Tracker tab data tables — same layout as RT."""
     def table_html(title, icon, rows, months):
         header = ('<tr><th>' + icon + ' ' + title + '</th>' +
@@ -1177,6 +1282,7 @@ def _tracker_tables(d, M_display):
             ('YT Shorts', d['shorts'], 'int'),
             ('YT Lives', d['lives'], 'int'),
         ], M_display) +
+        _engaged_tracker_rows(table_html, d, M_display, socials) +
         table_html('Subscribers', '👥', [
             ('YouTube', d['yt_subs'], 'int'),
         ], M_display) +
@@ -1187,6 +1293,20 @@ def _tracker_tables(d, M_display):
             ('Search % of Views', d['srch_pct'], 'pct'),
         ], M_display)
     )
+
+
+def _engaged_tracker_rows(table_html, d, M_display, socials):
+    """Tracker section for the manual engaged-views rows, aligned to the tracker's months."""
+    ev = engaged_views(socials or {}, d['months'])
+    if not ev:
+        return ''
+    names = dict(ENGAGED_TYPES)
+    rows = []
+    for t in ev:
+        rows += [(f'{names[t]} – all views (Studio)', ev[t]['views'], 'int'),
+                 (f'{names[t]} – engaged views', ev[t]['engaged'], 'int'),
+                 (f'{names[t]} – engaged %', ev[t]['rate'], 'pct')]
+    return table_html('Engaged Views', '🎯', rows, M_display)
 
 
 # ─── Main ────────────────────────────────────────────────────────
