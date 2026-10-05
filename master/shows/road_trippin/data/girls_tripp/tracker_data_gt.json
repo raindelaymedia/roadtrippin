@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-05T17:55:44.545415",
+  "generated": "2026-10-05T19:01:58.966095",
   "channel_id": "UCLh4znMEEDzabMHw-Ob0Cpg",
   "rt_channel_id": "UCSes4X8uDrpc4X46hJKjejg",
   "months": [
@@ -8,11 +8,11 @@
   ],
   "yt": {
     "vids": {
-      "2026-10": 9979,
+      "2026-10": 10708,
       "2026-09": 21558
     },
     "shorts": {
-      "2026-10": 2851,
+      "2026-10": 3057,
       "2026-09": 20659
     },
     "lives": {
@@ -20,15 +20,15 @@
       "2026-09": 0
     },
     "subs_gained": {
-      "2026-10": 60,
+      "2026-10": 63,
       "2026-09": 254
     },
     "subs_lost": {
-      "2026-10": 9,
+      "2026-10": 10,
       "2026-09": 9
     },
     "watch_hrs": {
-      "2026-10": 989.8,
+      "2026-10": 1010.8,
       "2026-09": 2068.6
     }
   },
@@ -56,21 +56,21 @@
       "2026-09": null
     },
     "search_pct": {
-      "2026-10": 0.0425,
+      "2026-10": 0.0418,
       "2026-09": 0.0495
     },
     "tv_pct": {
-      "2026-10": 0.294,
+      "2026-10": 0.2848,
       "2026-09": 0.1865
     }
   },
   "collab": {
     "total_views": {
-      "2026-10": 12830,
+      "2026-10": 13765,
       "2026-09": 42101
     },
     "rt_views": {
-      "2026-10": 12,
+      "2026-10": 13,
       "2026-09": 1166
     },
     "rt_pct": {
@@ -80,7 +80,7 @@
     "rt_by_source": {
       "2026-10": {
         "suggested": 0,
-        "channel_page": 12
+        "channel_page": 13
       },
       "2026-09": {
         "suggested": 0,
@@ -88,11 +88,11 @@
       }
     },
     "collab_views": {
-      "2026-10": 478,
+      "2026-10": 486,
       "2026-09": 1779
     },
     "collab_pct": {
-      "2026-10": 0.0373,
+      "2026-10": 0.0353,
       "2026-09": 0.0423
     },
     "top_channels": {
@@ -110,15 +110,15 @@
           "is_rt": false
         },
         {
-          "id": "UCVK6fL3c4mTXKQYmfUUWGlw",
-          "name": "Keep The Vision REACTED",
-          "views": 57,
-          "is_rt": false
-        },
-        {
           "id": "UCPzp2k1LSr1ctDEsOhg4-aw",
           "name": "Mick Talks Hoops",
           "views": 52,
+          "is_rt": false
+        },
+        {
+          "id": "UCVK6fL3c4mTXKQYmfUUWGlw",
+          "name": "Keep The Vision REACTED",
+          "views": 47,
           "is_rt": false
         },
         {
@@ -163,8 +163,8 @@
     },
     "detail_coverage": {
       "2026-10": {
-        "suggested": 0.3202,
-        "channel_page": 0.9942
+        "suggested": 0.3183,
+        "channel_page": 0.9949
       },
       "2026-09": {
         "suggested": 0.1575,
@@ -174,18 +174,18 @@
   },
   "traffic_sources": {
     "2026-10": {
-      "NO_LINK_OTHER": 110,
-      "SUBSCRIBER": 7748,
-      "YT_CHANNEL": 171,
-      "YT_SEARCH": 545,
-      "RELATED_VIDEO": 1699,
-      "YT_OTHER_PAGE": 148,
+      "NO_LINK_OTHER": 141,
+      "SUBSCRIBER": 8361,
+      "YT_CHANNEL": 197,
+      "YT_SEARCH": 575,
+      "RELATED_VIDEO": 1731,
+      "YT_OTHER_PAGE": 164,
       "EXT_URL": 11,
-      "PLAYLIST": 55,
-      "NOTIFICATION": 10,
-      "END_SCREEN": 16,
-      "SHORTS": 2311,
-      "SHORTS_CONTENT_LINKS": 5,
+      "PLAYLIST": 56,
+      "NOTIFICATION": 16,
+      "END_SCREEN": 17,
+      "SHORTS": 2489,
+      "SHORTS_CONTENT_LINKS": 6,
       "HASHTAGS": 1
     },
     "2026-09": {
@@ -496,7 +496,7 @@
           "likes": 0,
           "comments": 0,
           "duration_sec": 492,
-          "thumbnail": "https://i9.ytimg.com/vi/Psht8qGHdig/maxresdefault.jpg?sqp=CPTIj9YG&rs=AOn4CLCttFG5BRtYIxVq5rEETbWKcfn5iA",
+          "thumbnail": "https://i9.ytimg.com/vi/Psht8qGHdig/maxresdefault.jpg?sqp=CLDnj9YG&rs=AOn4CLAyF5E5uAcU9oGl-m3L3IfttDU7sQ",
           "url": "https://youtu.be/Psht8qGHdig",
           "type": "mid"
         },
@@ -509,7 +509,7 @@
           "likes": 0,
           "comments": 0,
           "duration_sec": 262,
-          "thumbnail": "https://i9.ytimg.com/vi/IB0Qc05GW-s/maxresdefault.jpg?sqp=CPTIj9YG&rs=AOn4CLAXhaaKFKKXzrddFhemmMcqJGvPew",
+          "thumbnail": "https://i9.ytimg.com/vi/IB0Qc05GW-s/maxresdefault.jpg?sqp=CLDnj9YG&rs=AOn4CLBiDHwgTwNVF3PrQDNKGoNOa9rtPg",
           "url": "https://youtu.be/IB0Qc05GW-s",
           "type": "mid"
         },
@@ -522,7 +522,7 @@
           "likes": 0,
           "comments": 0,
           "duration_sec": 315,
-          "thumbnail": "https://i9.ytimg.com/vi/eoEP2zU1HRQ/maxresdefault.jpg?sqp=CPTIj9YG&rs=AOn4CLACHfvV20mvnuj7YTVau4CZTm9Fug",
+          "thumbnail": "https://i9.ytimg.com/vi/eoEP2zU1HRQ/maxresdefault.jpg?sqp=CLDnj9YG&rs=AOn4CLCM4VgtEHbz5w3cgNweL1OE2ygxgg",
           "url": "https://youtu.be/eoEP2zU1HRQ",
           "type": "mid"
         },
@@ -535,7 +535,7 @@
           "likes": 0,
           "comments": 0,
           "duration_sec": 336,
-          "thumbnail": "https://i9.ytimg.com/vi/-lJauQxSixM/maxresdefault.jpg?sqp=CPTIj9YG&rs=AOn4CLC1cD52VkFbzRn4OpdUvTUplLkfYQ",
+          "thumbnail": "https://i9.ytimg.com/vi/-lJauQxSixM/maxresdefault.jpg?sqp=CLDnj9YG&rs=AOn4CLBSfkkaqwdM-36EOIo97raoBhPAJA",
           "url": "https://youtu.be/-lJauQxSixM",
           "type": "mid"
         }
@@ -827,7 +827,7 @@
       "likes": 0,
       "comments": 0,
       "duration_sec": 492,
-      "thumbnail": "https://i9.ytimg.com/vi/Psht8qGHdig/maxresdefault.jpg?sqp=CPTIj9YG&rs=AOn4CLCttFG5BRtYIxVq5rEETbWKcfn5iA",
+      "thumbnail": "https://i9.ytimg.com/vi/Psht8qGHdig/maxresdefault.jpg?sqp=CLDnj9YG&rs=AOn4CLAyF5E5uAcU9oGl-m3L3IfttDU7sQ",
       "url": "https://youtu.be/Psht8qGHdig",
       "type": "mid"
     },
@@ -1009,7 +1009,7 @@
       "likes": 0,
       "comments": 0,
       "duration_sec": 23,
-      "thumbnail": "https://i9.ytimg.com/vi/J5puuaJZqr0/maxresdefault.jpg?sqp=CPTIj9YG&rs=AOn4CLB-J_6zPZk4STIP31FxwRj2ZO78eQ",
+      "thumbnail": "https://i9.ytimg.com/vi/J5puuaJZqr0/maxresdefault.jpg?sqp=CLDnj9YG&rs=AOn4CLAQs0Pjz9Fvtf-rT2EZZ8YQikHStg",
       "url": "https://youtu.be/J5puuaJZqr0",
       "type": "short"
     },
@@ -1165,7 +1165,7 @@
       "likes": 0,
       "comments": 0,
       "duration_sec": 262,
-      "thumbnail": "https://i9.ytimg.com/vi/IB0Qc05GW-s/maxresdefault.jpg?sqp=CPTIj9YG&rs=AOn4CLAXhaaKFKKXzrddFhemmMcqJGvPew",
+      "thumbnail": "https://i9.ytimg.com/vi/IB0Qc05GW-s/maxresdefault.jpg?sqp=CLDnj9YG&rs=AOn4CLBiDHwgTwNVF3PrQDNKGoNOa9rtPg",
       "url": "https://youtu.be/IB0Qc05GW-s",
       "type": "mid"
     },
@@ -1191,7 +1191,7 @@
       "likes": 0,
       "comments": 0,
       "duration_sec": 315,
-      "thumbnail": "https://i9.ytimg.com/vi/eoEP2zU1HRQ/maxresdefault.jpg?sqp=CPTIj9YG&rs=AOn4CLACHfvV20mvnuj7YTVau4CZTm9Fug",
+      "thumbnail": "https://i9.ytimg.com/vi/eoEP2zU1HRQ/maxresdefault.jpg?sqp=CLDnj9YG&rs=AOn4CLCM4VgtEHbz5w3cgNweL1OE2ygxgg",
       "url": "https://youtu.be/eoEP2zU1HRQ",
       "type": "mid"
     },
@@ -1204,7 +1204,7 @@
       "likes": 0,
       "comments": 0,
       "duration_sec": 336,
-      "thumbnail": "https://i9.ytimg.com/vi/-lJauQxSixM/maxresdefault.jpg?sqp=CPTIj9YG&rs=AOn4CLC1cD52VkFbzRn4OpdUvTUplLkfYQ",
+      "thumbnail": "https://i9.ytimg.com/vi/-lJauQxSixM/maxresdefault.jpg?sqp=CLDnj9YG&rs=AOn4CLBSfkkaqwdM-36EOIo97raoBhPAJA",
       "url": "https://youtu.be/-lJauQxSixM",
       "type": "mid"
     },
@@ -1217,7 +1217,7 @@
       "likes": 0,
       "comments": 0,
       "duration_sec": 429,
-      "thumbnail": "https://i9.ytimg.com/vi/jlpiNl1Rwqc/maxresdefault.jpg?sqp=CPTIj9YG&rs=AOn4CLAwbl96BvMXDThzOTFT3H7K-WwhBg",
+      "thumbnail": "https://i9.ytimg.com/vi/jlpiNl1Rwqc/maxresdefault.jpg?sqp=CLDnj9YG&rs=AOn4CLDlyZ_lQcuSUhXFnSDaSl3XflMALA",
       "url": "https://youtu.be/jlpiNl1Rwqc",
       "type": "mid"
     },
@@ -1230,7 +1230,7 @@
       "likes": 0,
       "comments": 0,
       "duration_sec": 253,
-      "thumbnail": "https://i9.ytimg.com/vi/tqpQewQX_h8/maxresdefault.jpg?sqp=CPTIj9YG&rs=AOn4CLDfZFFnJK7OOFK980VqvjrB0dUD3Q",
+      "thumbnail": "https://i9.ytimg.com/vi/tqpQewQX_h8/maxresdefault.jpg?sqp=CLDnj9YG&rs=AOn4CLAy4NoIyxG2dkM30lkoNdeWZ941DQ",
       "url": "https://youtu.be/tqpQewQX_h8",
       "type": "mid"
     },
@@ -1243,7 +1243,7 @@
       "likes": 0,
       "comments": 0,
       "duration_sec": 55,
-      "thumbnail": "https://i9.ytimg.com/vi/rdrf1qscQos/maxresdefault.jpg?sqp=CPTIj9YG&rs=AOn4CLCtbxjpT-0YjusGYGlNzGSWA7ZBaA",
+      "thumbnail": "https://i9.ytimg.com/vi/rdrf1qscQos/maxresdefault.jpg?sqp=CLDnj9YG&rs=AOn4CLCpaMbt9YmUkRUa5nChOGWo6spTLw",
       "url": "https://youtu.be/rdrf1qscQos",
       "type": "short"
     },
@@ -1256,7 +1256,7 @@
       "likes": 0,
       "comments": 0,
       "duration_sec": 64,
-      "thumbnail": "https://i9.ytimg.com/vi/BcakqhGvp6s/maxresdefault.jpg?sqp=CPTIj9YG&rs=AOn4CLB6b4GHB0Q1gUr4q-9mul3qmpxQcA",
+      "thumbnail": "https://i9.ytimg.com/vi/BcakqhGvp6s/maxresdefault.jpg?sqp=CLDnj9YG&rs=AOn4CLD3p4D-mNntlSF_K4-8G7Uo52WYtg",
       "url": "https://youtu.be/BcakqhGvp6s",
       "type": "short"
     },
@@ -1269,7 +1269,7 @@
       "likes": 0,
       "comments": 0,
       "duration_sec": 32,
-      "thumbnail": "https://i9.ytimg.com/vi/-V5ipn_DXqs/maxresdefault.jpg?sqp=CPTIj9YG&rs=AOn4CLAm0CQntZzAidQAk5Itx_8SfDUr5w",
+      "thumbnail": "https://i9.ytimg.com/vi/-V5ipn_DXqs/maxresdefault.jpg?sqp=CLDnj9YG&rs=AOn4CLCqaThgB1lkmN2jah-_ERMqIyJDFA",
       "url": "https://youtu.be/-V5ipn_DXqs",
       "type": "short"
     },
@@ -1282,7 +1282,7 @@
       "likes": 0,
       "comments": 0,
       "duration_sec": 45,
-      "thumbnail": "https://i9.ytimg.com/vi/fSDB__vdRIY/maxresdefault.jpg?sqp=CPTIj9YG&rs=AOn4CLBFE8iENMhIzafhTaOABr3rUcsujw",
+      "thumbnail": "https://i9.ytimg.com/vi/fSDB__vdRIY/maxresdefault.jpg?sqp=CLDnj9YG&rs=AOn4CLCjPk09mAZhSqrIBbH4hggIADYjdg",
       "url": "https://youtu.be/fSDB__vdRIY",
       "type": "short"
     },
@@ -1295,7 +1295,7 @@
       "likes": 0,
       "comments": 0,
       "duration_sec": 26,
-      "thumbnail": "https://i9.ytimg.com/vi/5S2Qd26Gpwc/maxresdefault.jpg?sqp=CPTIj9YG&rs=AOn4CLDLZP10srDohrv91wPTPj9h4aHD7w",
+      "thumbnail": "https://i9.ytimg.com/vi/5S2Qd26Gpwc/maxresdefault.jpg?sqp=CLDnj9YG&rs=AOn4CLBABLvVmPjHDS0Vca0FwRe6sWpaSw",
       "url": "https://youtu.be/5S2Qd26Gpwc",
       "type": "short"
     },
@@ -1313,7 +1313,7 @@
       "type": "short"
     }
   ],
-  "current_subs": 299,
+  "current_subs": 300,
   "daily_yt": {
     "2026-07-06": {
       "total_views": 0,
@@ -1884,6 +1884,14 @@
       "subs_lost": 5,
       "shorts_views": 341,
       "vod_views": 1235
+    },
+    "2026-10-03": {
+      "total_views": 935,
+      "watch_hrs": 20.9,
+      "subs_gained": 3,
+      "subs_lost": 1,
+      "shorts_views": 206,
+      "vod_views": 729
     }
   }
 }
