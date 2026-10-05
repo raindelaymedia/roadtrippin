@@ -37,6 +37,30 @@ jobs:
             openpyxl \
             python-dateutil
 
+      # ── Socials: platform APIs → each show's socials CSV ───
+      # Runs before every dashboard build so they pick up today's numbers.
+      # Add a show's token here (and its key to --show) as each account connects.
+      - name: Sync socials from platform APIs
+        continue-on-error: true
+        env:
+          IG_TOKEN_GT: ${{ secrets.IG_TOKEN_GT }}
+          TOKEN_OUT_DIR: ${{ runner.temp }}/tokens
+        run: python master/sync_socials.py --show gt
+
+      # Instagram tokens expire after 60 days unless refreshed. The sync refreshes
+      # them; this saves the refreshed ones back to the repo's secrets.
+      - name: Save refreshed API tokens to secrets
+        if: always()
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ secrets.SECRETS_PAT }}
+        run: |
+          for f in "$RUNNER_TEMP"/tokens/*; do
+            [ -f "$f" ] || continue
+            gh secret set "$(basename "$f")" < "$f"
+            echo "✓ refreshed $(basename "$f")"
+          done
+
       # ── Road Trippin' ──────────────────────────────────────
       - name: Write RT config.py from secret
         env:

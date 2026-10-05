@@ -4,6 +4,7 @@ config_gt.py
 config_fr.py
 client_secrets.json
 config_sr.py
+config_socials.py
 *.env
 
 # Python cache
