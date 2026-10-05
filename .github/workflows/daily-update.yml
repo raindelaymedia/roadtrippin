@@ -44,8 +44,9 @@ jobs:
         continue-on-error: true
         env:
           IG_TOKEN_GT: ${{ secrets.IG_TOKEN_GT }}
+          IG_TOKEN_SR: ${{ secrets.IG_TOKEN_SR }}
           TOKEN_OUT_DIR: ${{ runner.temp }}/tokens
-        run: python master/sync_socials.py --show gt
+        run: python master/sync_socials.py --show gt sr
 
       # Instagram tokens expire after 60 days unless refreshed. The sync refreshes
       # them; this saves the refreshed ones back to the repo's secrets.
