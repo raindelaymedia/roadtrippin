@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-07T16:08:03.031682",
+  "generated": "2026-10-08T16:09:10.060666",
   "channel_id": "UCLh4znMEEDzabMHw-Ob0Cpg",
   "rt_channel_id": "UCSes4X8uDrpc4X46hJKjejg",
   "months": [
@@ -8,11 +8,11 @@
   ],
   "yt": {
     "vids": {
-      "2026-10": 11105,
+      "2026-10": 11278,
       "2026-09": 21473
     },
     "shorts": {
-      "2026-10": 3183,
+      "2026-10": 3204,
       "2026-09": 20628
     },
     "lives": {
@@ -20,15 +20,15 @@
       "2026-09": 0
     },
     "subs_gained": {
-      "2026-10": 65,
+      "2026-10": 68,
       "2026-09": 254
     },
     "subs_lost": {
-      "2026-10": 11,
+      "2026-10": 13,
       "2026-09": 9
     },
     "watch_hrs": {
-      "2026-10": 1027.5,
+      "2026-10": 1031.9,
       "2026-09": 2068.6
     }
   },
@@ -56,161 +56,60 @@
       "2026-09": null
     },
     "search_pct": {
-      "2026-10": 0.0425,
-      "2026-09": 0.0495
+      "2026-10": null,
+      "2026-09": null
     },
     "tv_pct": {
-      "2026-10": 0.2809,
-      "2026-09": 0.1865
+      "2026-10": null,
+      "2026-09": null
     }
   },
   "collab": {
     "total_views": {
-      "2026-10": 14281,
-      "2026-09": 42101
+      "2026-10": null,
+      "2026-09": null
     },
     "rt_views": {
-      "2026-10": 17,
-      "2026-09": 1166
+      "2026-10": null,
+      "2026-09": null
     },
     "rt_pct": {
-      "2026-10": 0.0012,
-      "2026-09": 0.0277
+      "2026-10": null,
+      "2026-09": null
     },
     "rt_by_source": {
-      "2026-10": {
-        "suggested": 0,
-        "channel_page": 17
-      },
-      "2026-09": {
-        "suggested": 0,
-        "channel_page": 1166
-      }
+      "2026-10": null,
+      "2026-09": null
     },
     "collab_views": {
-      "2026-10": 494,
-      "2026-09": 1779
+      "2026-10": null,
+      "2026-09": null
     },
     "collab_pct": {
-      "2026-10": 0.0346,
-      "2026-09": 0.0423
+      "2026-10": null,
+      "2026-09": null
     },
     "top_channels": {
-      "2026-10": [
-        {
-          "id": "UCUcUtJQNQFFtKWIRRuC7ojw",
-          "name": "Robin Lundberg",
-          "views": 72,
-          "is_rt": false
-        },
-        {
-          "id": "UCm1sEMq9UEuri4Cxupk4SKg",
-          "name": "Behind the Line",
-          "views": 63,
-          "is_rt": false
-        },
-        {
-          "id": "UCPzp2k1LSr1ctDEsOhg4-aw",
-          "name": "Mick Talks Hoops",
-          "views": 52,
-          "is_rt": false
-        },
-        {
-          "id": "UCVK6fL3c4mTXKQYmfUUWGlw",
-          "name": "Keep The Vision REACTED",
-          "views": 47,
-          "is_rt": false
-        },
-        {
-          "id": "UC2FefohmBAtGBvZ8QHiy30A",
-          "name": "Indiana Fever",
-          "views": 31,
-          "is_rt": false
-        }
-      ],
-      "2026-09": [
-        {
-          "id": "UCSes4X8uDrpc4X46hJKjejg",
-          "name": "Road Trippin' Show",
-          "views": 1166,
-          "is_rt": true
-        },
-        {
-          "id": "UCgnWegEYcbBRzyzcWc6O2jw",
-          "name": "Keep The Vision",
-          "views": 83,
-          "is_rt": false
-        },
-        {
-          "id": "UCVK6fL3c4mTXKQYmfUUWGlw",
-          "name": "Keep The Vision REACTED",
-          "views": 58,
-          "is_rt": false
-        },
-        {
-          "id": "UCc0FWk1sCveLeP-lNgxl4SA",
-          "name": "Linda Cohn",
-          "views": 55,
-          "is_rt": false
-        },
-        {
-          "id": "UCNu8NgZMcU4VIds-8LjcnMA",
-          "name": "iHeart Women's Sports",
-          "views": 51,
-          "is_rt": false
-        }
-      ]
+      "2026-10": null,
+      "2026-09": null
     },
     "detail_coverage": {
-      "2026-10": {
-        "suggested": 0.317,
-        "channel_page": 0.9956
-      },
-      "2026-09": {
-        "suggested": 0.1575,
-        "channel_page": 0.9994
-      }
+      "2026-10": null,
+      "2026-09": null
     }
   },
   "traffic_sources": {
-    "2026-10": {
-      "NO_LINK_OTHER": 170,
-      "SUBSCRIBER": 8663,
-      "YT_CHANNEL": 228,
-      "YT_SEARCH": 607,
-      "RELATED_VIDEO": 1757,
-      "YT_OTHER_PAGE": 170,
-      "EXT_URL": 10,
-      "PLAYLIST": 62,
-      "NOTIFICATION": 19,
-      "END_SCREEN": 17,
-      "SHORTS": 2571,
-      "SHORTS_CONTENT_LINKS": 6,
-      "HASHTAGS": 1
-    },
-    "2026-09": {
-      "NO_LINK_OTHER": 331,
-      "SUBSCRIBER": 14418,
-      "YT_SEARCH": 2084,
-      "YT_OTHER_PAGE": 386,
-      "SHORTS": 18545,
-      "YT_CHANNEL": 1708,
-      "EXT_URL": 83,
-      "SOUND_PAGE": 5,
-      "SHORTS_CONTENT_LINKS": 21,
-      "PLAYLIST": 111,
-      "NOTIFICATION": 34,
-      "RELATED_VIDEO": 4375
-    }
+    "2026-10": {},
+    "2026-09": {}
   },
   "best_of": {
-    "label": "Oct 01 \u2013 Oct 07, 2026",
+    "label": "Oct 01 \u2013 Oct 08, 2026",
     "long": [
       {
         "id": "oDGR63HP8TM",
         "title": "Caitlin Clark Shines in Game 2, Now It\u2019s Winner-Take-All vs. Vegas",
         "published": "2026-10-01",
-        "views": 6540,
+        "views": 6567,
         "likes": 134,
         "thumbnail": "https://i.ytimg.com/vi/oDGR63HP8TM/maxresdefault.jpg",
         "url": "https://youtu.be/oDGR63HP8TM",
@@ -223,7 +122,7 @@
         "id": "9eJ2AYxdf8c",
         "title": "Caitlin Clark Answers the Call in Game 2: Winner-Take-All vs. Vegas",
         "published": "2026-10-01",
-        "views": 2139,
+        "views": 2141,
         "likes": 23,
         "thumbnail": "https://i.ytimg.com/vi/9eJ2AYxdf8c/maxresdefault.jpg",
         "url": "https://youtu.be/9eJ2AYxdf8c",
@@ -234,7 +133,7 @@
         "id": "ASUwvRi-JN4",
         "title": "Ryan Ruocco Says New York Has NO CEILING",
         "published": "2026-10-01",
-        "views": 653,
+        "views": 656,
         "likes": 1,
         "thumbnail": "https://i.ytimg.com/vi/ASUwvRi-JN4/maxresdefault.jpg",
         "url": "https://youtu.be/ASUwvRi-JN4",
@@ -247,7 +146,7 @@
         "id": "XCVxbVp6zcw",
         "title": "Caitlin Clark\u2019s MASSIVE Playoff Milestone Changes Everything! #caitlinclark #wnba #ajawilson",
         "published": "2026-10-01",
-        "views": 3773,
+        "views": 3775,
         "likes": 126,
         "thumbnail": "https://i.ytimg.com/vi/XCVxbVp6zcw/maxresdefault.jpg",
         "url": "https://youtu.be/XCVxbVp6zcw",
@@ -258,7 +157,7 @@
         "id": "av2j5mbIq4E",
         "title": "Rookie of the Year\u2019s BRUTAL Playoff Lesson #wnba #oliviamiles #ajawilson",
         "published": "2026-10-01",
-        "views": 1489,
+        "views": 1491,
         "likes": 26,
         "thumbnail": "https://i.ytimg.com/vi/av2j5mbIq4E/maxresdefault.jpg",
         "url": "https://youtu.be/av2j5mbIq4E",
@@ -269,7 +168,7 @@
         "id": "hUt7HWFdw1o",
         "title": "Why a Tough elimination game is Just the Beginning! Cynthia Cooper on Olivia Miles #wnba #basketball",
         "published": "2026-10-02",
-        "views": 61,
+        "views": 62,
         "likes": 2,
         "thumbnail": "https://i.ytimg.com/vi/hUt7HWFdw1o/maxresdefault.jpg",
         "url": "https://youtu.be/hUt7HWFdw1o",
@@ -300,7 +199,7 @@
           "title": "Caitlin Clark Shines in Game 2, Now It\u2019s Winner-Take-All vs. Vegas",
           "published": "2026-10-01",
           "month": "2026-10",
-          "views": 6540,
+          "views": 6567,
           "likes": 134,
           "comments": 41,
           "duration_sec": 4389,
@@ -315,7 +214,7 @@
           "title": "Caitlin Clark Answers the Call in Game 2: Winner-Take-All vs. Vegas",
           "published": "2026-10-01",
           "month": "2026-10",
-          "views": 2139,
+          "views": 2141,
           "likes": 23,
           "comments": 3,
           "duration_sec": 450,
@@ -328,7 +227,7 @@
           "title": "Ryan Ruocco Says New York Has NO CEILING",
           "published": "2026-10-01",
           "month": "2026-10",
-          "views": 653,
+          "views": 656,
           "likes": 1,
           "comments": 0,
           "duration_sec": 464,
@@ -343,7 +242,7 @@
           "title": "Caitlin Clark\u2019s MASSIVE Playoff Milestone Changes Everything! #caitlinclark #wnba #ajawilson",
           "published": "2026-10-01",
           "month": "2026-10",
-          "views": 3773,
+          "views": 3775,
           "likes": 126,
           "comments": 15,
           "duration_sec": 44,
@@ -356,7 +255,7 @@
           "title": "Rookie of the Year\u2019s BRUTAL Playoff Lesson #wnba #oliviamiles #ajawilson",
           "published": "2026-10-01",
           "month": "2026-10",
-          "views": 1489,
+          "views": 1491,
           "likes": 26,
           "comments": 16,
           "duration_sec": 71,
@@ -369,7 +268,7 @@
           "title": "Why a Tough elimination game is Just the Beginning! Cynthia Cooper on Olivia Miles #wnba #basketball",
           "published": "2026-10-02",
           "month": "2026-10",
-          "views": 61,
+          "views": 62,
           "likes": 2,
           "comments": 0,
           "duration_sec": 28,
@@ -386,7 +285,7 @@
           "title": "Caitlin Clark vs. A'ja Wilson + Ryan Ruocco's Case for a 5-Game WNBA First Round",
           "published": "2026-09-25",
           "month": "2026-09",
-          "views": 10948,
+          "views": 10965,
           "likes": 217,
           "comments": 50,
           "duration_sec": 3605,
@@ -399,7 +298,7 @@
           "title": "Caitlin Clark's Defense Deserves CREDIT + Why Team USA NEEDED Chelsea Gray",
           "published": "2026-09-17",
           "month": "2026-09",
-          "views": 3924,
+          "views": 3935,
           "likes": 55,
           "comments": 15,
           "duration_sec": 3931,
@@ -414,7 +313,7 @@
           "title": "Can Caitlin Clark's Fever Beat the Aces? Ryan Ruocco's Biggest Question Is Aliyah Boston",
           "published": "2026-09-28",
           "month": "2026-09",
-          "views": 5897,
+          "views": 5899,
           "likes": 65,
           "comments": 39,
           "duration_sec": 536,
@@ -427,7 +326,7 @@
           "title": "Caitlin Clark Didn't Need 30 Points to Give Team USA What It Needed",
           "published": "2026-09-18",
           "month": "2026-09",
-          "views": 622,
+          "views": 623,
           "likes": 9,
           "comments": 1,
           "duration_sec": 410,
@@ -453,7 +352,7 @@
           "title": "Why Minnesota Should Worry About Breanna Stewart's No. 8 Liberty",
           "published": "2026-09-28",
           "month": "2026-09",
-          "views": 317,
+          "views": 318,
           "likes": 5,
           "comments": 0,
           "duration_sec": 756,
@@ -479,7 +378,7 @@
           "title": "Candace Parker on Why Her First Championship Was the Hardest",
           "published": "2026-09-16",
           "month": "2026-09",
-          "views": 132,
+          "views": 133,
           "likes": 5,
           "comments": 2,
           "duration_sec": 270,
@@ -496,7 +395,7 @@
           "likes": 0,
           "comments": 0,
           "duration_sec": 492,
-          "thumbnail": "https://i9.ytimg.com/vi/Psht8qGHdig/maxresdefault.jpg?sqp=CKzbmdYG&rs=AOn4CLA4fIJRpCVZinphDIOhXLnIi4ii3A",
+          "thumbnail": "https://i9.ytimg.com/vi/Psht8qGHdig/maxresdefault.jpg?sqp=CKz-ntYG&rs=AOn4CLAFf7g5edmdFQW7hQcsVGS_MA8okQ",
           "url": "https://youtu.be/Psht8qGHdig",
           "type": "mid"
         },
@@ -509,7 +408,7 @@
           "likes": 0,
           "comments": 0,
           "duration_sec": 262,
-          "thumbnail": "https://i9.ytimg.com/vi/IB0Qc05GW-s/maxresdefault.jpg?sqp=CKzbmdYG&rs=AOn4CLA-1Kd5UkRXlvXHTFyGbfa0_ai2kw",
+          "thumbnail": "https://i9.ytimg.com/vi/IB0Qc05GW-s/maxresdefault.jpg?sqp=CKz-ntYG&rs=AOn4CLDn3AEL_9N53fQOvI1Rsdw97pxroA",
           "url": "https://youtu.be/IB0Qc05GW-s",
           "type": "mid"
         },
@@ -522,7 +421,7 @@
           "likes": 0,
           "comments": 0,
           "duration_sec": 315,
-          "thumbnail": "https://i9.ytimg.com/vi/eoEP2zU1HRQ/maxresdefault.jpg?sqp=CKzbmdYG&rs=AOn4CLCoPryMLgPzJk0kw1-W7PB0HleSvw",
+          "thumbnail": "https://i9.ytimg.com/vi/eoEP2zU1HRQ/maxresdefault.jpg?sqp=CKz-ntYG&rs=AOn4CLCL9k_pOwziHgvQAylykyFihDakFQ",
           "url": "https://youtu.be/eoEP2zU1HRQ",
           "type": "mid"
         },
@@ -535,7 +434,7 @@
           "likes": 0,
           "comments": 0,
           "duration_sec": 336,
-          "thumbnail": "https://i9.ytimg.com/vi/-lJauQxSixM/maxresdefault.jpg?sqp=CKzbmdYG&rs=AOn4CLAoq7nVOTvD9umy1KpacmMkvF_QIQ",
+          "thumbnail": "https://i9.ytimg.com/vi/-lJauQxSixM/maxresdefault.jpg?sqp=CKz-ntYG&rs=AOn4CLB_mTHHVbYoZVhJ3bZDQPuDJM2B1A",
           "url": "https://youtu.be/-lJauQxSixM",
           "type": "mid"
         }
@@ -546,7 +445,7 @@
           "title": "The Fever\u2019s Only Hope: Stopping A\u2019ja Wilson! #caitlinclark #wnba #ajawilson",
           "published": "2026-09-29",
           "month": "2026-09",
-          "views": 1888,
+          "views": 1889,
           "likes": 47,
           "comments": 8,
           "duration_sec": 44,
@@ -559,9 +458,9 @@
           "title": "Why The 2026 WNBA Playoffs Will Be Completely Different #wnba #caitlinclark",
           "published": "2026-09-25",
           "month": "2026-09",
-          "views": 1825,
+          "views": 1843,
           "likes": 19,
-          "comments": 1,
+          "comments": 2,
           "duration_sec": 28,
           "thumbnail": "https://i.ytimg.com/vi/mx4bUJHe_Wk/maxresdefault.jpg",
           "url": "https://youtu.be/mx4bUJHe_Wk",
@@ -624,7 +523,7 @@
           "title": "Indiana Fever & Minnesota Lynx Just Changed Everything! #wnba #caitlinclark #ajawilson",
           "published": "2026-09-30",
           "month": "2026-09",
-          "views": 1368,
+          "views": 1370,
           "likes": 19,
           "comments": 1,
           "duration_sec": 52,
@@ -663,7 +562,7 @@
           "title": "Girls Tripp Has Its Own Channel | WNBA Podcast with Allie Clifton & Jordan Robinson",
           "published": "2026-09-16",
           "month": "2026-09",
-          "views": 1085,
+          "views": 1101,
           "likes": 12,
           "comments": 1,
           "duration_sec": 36,
@@ -680,7 +579,7 @@
       "title": "Why a Tough elimination game is Just the Beginning! Cynthia Cooper on Olivia Miles #wnba #basketball",
       "published": "2026-10-02",
       "month": "2026-10",
-      "views": 61,
+      "views": 62,
       "likes": 2,
       "comments": 0,
       "duration_sec": 28,
@@ -693,7 +592,7 @@
       "title": "Ryan Ruocco Says New York Has NO CEILING",
       "published": "2026-10-01",
       "month": "2026-10",
-      "views": 653,
+      "views": 656,
       "likes": 1,
       "comments": 0,
       "duration_sec": 464,
@@ -706,7 +605,7 @@
       "title": "Caitlin Clark Answers the Call in Game 2: Winner-Take-All vs. Vegas",
       "published": "2026-10-01",
       "month": "2026-10",
-      "views": 2139,
+      "views": 2141,
       "likes": 23,
       "comments": 3,
       "duration_sec": 450,
@@ -719,7 +618,7 @@
       "title": "Caitlin Clark Shines in Game 2, Now It\u2019s Winner-Take-All vs. Vegas",
       "published": "2026-10-01",
       "month": "2026-10",
-      "views": 6540,
+      "views": 6567,
       "likes": 134,
       "comments": 41,
       "duration_sec": 4389,
@@ -732,7 +631,7 @@
       "title": "Rookie of the Year\u2019s BRUTAL Playoff Lesson #wnba #oliviamiles #ajawilson",
       "published": "2026-10-01",
       "month": "2026-10",
-      "views": 1489,
+      "views": 1491,
       "likes": 26,
       "comments": 16,
       "duration_sec": 71,
@@ -745,7 +644,7 @@
       "title": "Caitlin Clark\u2019s MASSIVE Playoff Milestone Changes Everything! #caitlinclark #wnba #ajawilson",
       "published": "2026-10-01",
       "month": "2026-10",
-      "views": 3773,
+      "views": 3775,
       "likes": 126,
       "comments": 15,
       "duration_sec": 44,
@@ -758,7 +657,7 @@
       "title": "Indiana Fever & Minnesota Lynx Just Changed Everything! #wnba #caitlinclark #ajawilson",
       "published": "2026-09-30",
       "month": "2026-09",
-      "views": 1368,
+      "views": 1370,
       "likes": 19,
       "comments": 1,
       "duration_sec": 52,
@@ -771,7 +670,7 @@
       "title": "The Fever\u2019s Only Hope: Stopping A\u2019ja Wilson! #caitlinclark #wnba #ajawilson",
       "published": "2026-09-29",
       "month": "2026-09",
-      "views": 1888,
+      "views": 1889,
       "likes": 47,
       "comments": 8,
       "duration_sec": 44,
@@ -784,7 +683,7 @@
       "title": "The Indiana Fever NEED This From Lexie Hull in Game 2! #wnba #caitlinclark",
       "published": "2026-09-28",
       "month": "2026-09",
-      "views": 103,
+      "views": 104,
       "likes": 4,
       "comments": 1,
       "duration_sec": 49,
@@ -797,7 +696,7 @@
       "title": "Why Minnesota Should Worry About Breanna Stewart's No. 8 Liberty",
       "published": "2026-09-28",
       "month": "2026-09",
-      "views": 317,
+      "views": 318,
       "likes": 5,
       "comments": 0,
       "duration_sec": 756,
@@ -810,7 +709,7 @@
       "title": "Can Caitlin Clark's Fever Beat the Aces? Ryan Ruocco's Biggest Question Is Aliyah Boston",
       "published": "2026-09-28",
       "month": "2026-09",
-      "views": 5897,
+      "views": 5899,
       "likes": 65,
       "comments": 39,
       "duration_sec": 536,
@@ -827,7 +726,7 @@
       "likes": 0,
       "comments": 0,
       "duration_sec": 492,
-      "thumbnail": "https://i9.ytimg.com/vi/Psht8qGHdig/maxresdefault.jpg?sqp=CKzbmdYG&rs=AOn4CLA4fIJRpCVZinphDIOhXLnIi4ii3A",
+      "thumbnail": "https://i9.ytimg.com/vi/Psht8qGHdig/maxresdefault.jpg?sqp=CKz-ntYG&rs=AOn4CLAFf7g5edmdFQW7hQcsVGS_MA8okQ",
       "url": "https://youtu.be/Psht8qGHdig",
       "type": "mid"
     },
@@ -836,7 +735,7 @@
       "title": "Beat the Best to Be the Best: Liberty Take Game 1! \ud83d\udd25 #wnba #Lynx #basketball",
       "published": "2026-09-28",
       "month": "2026-09",
-      "views": 979,
+      "views": 980,
       "likes": 17,
       "comments": 2,
       "duration_sec": 52,
@@ -849,9 +748,9 @@
       "title": "Why The 2026 WNBA Playoffs Will Be Completely Different #wnba #caitlinclark",
       "published": "2026-09-25",
       "month": "2026-09",
-      "views": 1825,
+      "views": 1843,
       "likes": 19,
-      "comments": 1,
+      "comments": 2,
       "duration_sec": 28,
       "thumbnail": "https://i.ytimg.com/vi/mx4bUJHe_Wk/maxresdefault.jpg",
       "url": "https://youtu.be/mx4bUJHe_Wk",
@@ -862,7 +761,7 @@
       "title": "Caitlin Clark vs. A'ja Wilson + Ryan Ruocco's Case for a 5-Game WNBA First Round",
       "published": "2026-09-25",
       "month": "2026-09",
-      "views": 10948,
+      "views": 10965,
       "likes": 217,
       "comments": 50,
       "duration_sec": 3605,
@@ -992,7 +891,7 @@
       "title": "Caitlin Clark Didn't Need 30 Points to Give Team USA What It Needed",
       "published": "2026-09-18",
       "month": "2026-09",
-      "views": 622,
+      "views": 623,
       "likes": 9,
       "comments": 1,
       "duration_sec": 410,
@@ -1009,7 +908,7 @@
       "likes": 0,
       "comments": 0,
       "duration_sec": 23,
-      "thumbnail": "https://i9.ytimg.com/vi/J5puuaJZqr0/maxresdefault.jpg?sqp=CKzbmdYG&rs=AOn4CLDua3jjjlP4CHQCKU5MewPkeDpXow",
+      "thumbnail": "https://i9.ytimg.com/vi/J5puuaJZqr0/maxresdefault.jpg?sqp=CKz-ntYG&rs=AOn4CLBp-OldIhaNT7KBiDt_tUp4SuGlyw",
       "url": "https://youtu.be/J5puuaJZqr0",
       "type": "short"
     },
@@ -1044,7 +943,7 @@
       "title": "Caitlin Clark's Defense Deserves CREDIT + Why Team USA NEEDED Chelsea Gray",
       "published": "2026-09-17",
       "month": "2026-09",
-      "views": 3924,
+      "views": 3935,
       "likes": 55,
       "comments": 15,
       "duration_sec": 3931,
@@ -1057,7 +956,7 @@
       "title": "Girls Tripp Has Its Own Channel | WNBA Podcast with Allie Clifton & Jordan Robinson",
       "published": "2026-09-16",
       "month": "2026-09",
-      "views": 1085,
+      "views": 1101,
       "likes": 12,
       "comments": 1,
       "duration_sec": 36,
@@ -1083,7 +982,7 @@
       "title": "Candace Parker on Why Her First Championship Was the Hardest",
       "published": "2026-09-16",
       "month": "2026-09",
-      "views": 132,
+      "views": 133,
       "likes": 5,
       "comments": 2,
       "duration_sec": 270,
@@ -1109,7 +1008,7 @@
       "title": "JuJu Watkins To The LA Sparks Would BREAK The WNBA!",
       "published": "2026-09-16",
       "month": "2026-09",
-      "views": 52,
+      "views": 53,
       "likes": 1,
       "comments": 0,
       "duration_sec": 23,
@@ -1122,7 +1021,7 @@
       "title": "Should Nneka Ogwumike Be The NEXT WNBA Commissioner?!     #wnba  #basketball #GirlsTripp",
       "published": "2026-09-15",
       "month": "2026-09",
-      "views": 7,
+      "views": 8,
       "likes": 0,
       "comments": 0,
       "duration_sec": 37,
@@ -1135,7 +1034,7 @@
       "title": "Are The Indiana Fever ACTUALLY Title Contenders?! #WNBA #IndianaFever #CaitlinClark #KelseyMitchell",
       "published": "2026-09-15",
       "month": "2026-09",
-      "views": 10,
+      "views": 11,
       "likes": 1,
       "comments": 0,
       "duration_sec": 35,
@@ -1165,7 +1064,7 @@
       "likes": 0,
       "comments": 0,
       "duration_sec": 262,
-      "thumbnail": "https://i9.ytimg.com/vi/IB0Qc05GW-s/maxresdefault.jpg?sqp=CKzbmdYG&rs=AOn4CLA-1Kd5UkRXlvXHTFyGbfa0_ai2kw",
+      "thumbnail": "https://i9.ytimg.com/vi/IB0Qc05GW-s/maxresdefault.jpg?sqp=CKz-ntYG&rs=AOn4CLDn3AEL_9N53fQOvI1Rsdw97pxroA",
       "url": "https://youtu.be/IB0Qc05GW-s",
       "type": "mid"
     },
@@ -1191,7 +1090,7 @@
       "likes": 0,
       "comments": 0,
       "duration_sec": 315,
-      "thumbnail": "https://i9.ytimg.com/vi/eoEP2zU1HRQ/maxresdefault.jpg?sqp=CKzbmdYG&rs=AOn4CLCoPryMLgPzJk0kw1-W7PB0HleSvw",
+      "thumbnail": "https://i9.ytimg.com/vi/eoEP2zU1HRQ/maxresdefault.jpg?sqp=CKz-ntYG&rs=AOn4CLCL9k_pOwziHgvQAylykyFihDakFQ",
       "url": "https://youtu.be/eoEP2zU1HRQ",
       "type": "mid"
     },
@@ -1204,7 +1103,7 @@
       "likes": 0,
       "comments": 0,
       "duration_sec": 336,
-      "thumbnail": "https://i9.ytimg.com/vi/-lJauQxSixM/maxresdefault.jpg?sqp=CKzbmdYG&rs=AOn4CLAoq7nVOTvD9umy1KpacmMkvF_QIQ",
+      "thumbnail": "https://i9.ytimg.com/vi/-lJauQxSixM/maxresdefault.jpg?sqp=CKz-ntYG&rs=AOn4CLB_mTHHVbYoZVhJ3bZDQPuDJM2B1A",
       "url": "https://youtu.be/-lJauQxSixM",
       "type": "mid"
     },
@@ -1217,7 +1116,7 @@
       "likes": 0,
       "comments": 0,
       "duration_sec": 429,
-      "thumbnail": "https://i9.ytimg.com/vi/jlpiNl1Rwqc/maxresdefault.jpg?sqp=CKzbmdYG&rs=AOn4CLArM-EAtc-w_DL0ucIR0oY74WSaXw",
+      "thumbnail": "https://i9.ytimg.com/vi/jlpiNl1Rwqc/maxresdefault.jpg?sqp=CKz-ntYG&rs=AOn4CLBgrNUNojAg74IrTRGlVwli2Aveag",
       "url": "https://youtu.be/jlpiNl1Rwqc",
       "type": "mid"
     },
@@ -1230,7 +1129,7 @@
       "likes": 0,
       "comments": 0,
       "duration_sec": 253,
-      "thumbnail": "https://i9.ytimg.com/vi/tqpQewQX_h8/maxresdefault.jpg?sqp=CKzbmdYG&rs=AOn4CLDGXhVzceyFDSpFbtybK6nwlabFAQ",
+      "thumbnail": "https://i9.ytimg.com/vi/tqpQewQX_h8/maxresdefault.jpg?sqp=CKz-ntYG&rs=AOn4CLDthYJRCJghmQ14qB_zUBguwToL5A",
       "url": "https://youtu.be/tqpQewQX_h8",
       "type": "mid"
     },
@@ -1243,7 +1142,7 @@
       "likes": 0,
       "comments": 0,
       "duration_sec": 55,
-      "thumbnail": "https://i9.ytimg.com/vi/rdrf1qscQos/maxresdefault.jpg?sqp=CKzbmdYG&rs=AOn4CLB0GVwLMEFujVa4C4ZV08MMqtgJTw",
+      "thumbnail": "https://i9.ytimg.com/vi/rdrf1qscQos/maxresdefault.jpg?sqp=CKz-ntYG&rs=AOn4CLDJhXIkGhBzknXnzYsY7d9CIleDlQ",
       "url": "https://youtu.be/rdrf1qscQos",
       "type": "short"
     },
@@ -1256,7 +1155,7 @@
       "likes": 0,
       "comments": 0,
       "duration_sec": 64,
-      "thumbnail": "https://i9.ytimg.com/vi/BcakqhGvp6s/maxresdefault.jpg?sqp=CKzbmdYG&rs=AOn4CLCqPXodtYWoxvRABIceJj3Yi0MG1w",
+      "thumbnail": "https://i9.ytimg.com/vi/BcakqhGvp6s/maxresdefault.jpg?sqp=CKz-ntYG&rs=AOn4CLDJPQdKV602znoXaBJ5wWuDIpWqFA",
       "url": "https://youtu.be/BcakqhGvp6s",
       "type": "short"
     },
@@ -1269,7 +1168,7 @@
       "likes": 0,
       "comments": 0,
       "duration_sec": 32,
-      "thumbnail": "https://i9.ytimg.com/vi/-V5ipn_DXqs/maxresdefault.jpg?sqp=CKzbmdYG&rs=AOn4CLBSpfjTX-PyerWN7zuAIWW_7FE_zQ",
+      "thumbnail": "https://i9.ytimg.com/vi/-V5ipn_DXqs/maxresdefault.jpg?sqp=CKz-ntYG&rs=AOn4CLCLF4zVzpEqu3aJ3XnqwyxyDEL-hQ",
       "url": "https://youtu.be/-V5ipn_DXqs",
       "type": "short"
     },
@@ -1282,7 +1181,7 @@
       "likes": 0,
       "comments": 0,
       "duration_sec": 45,
-      "thumbnail": "https://i9.ytimg.com/vi/fSDB__vdRIY/maxresdefault.jpg?sqp=CKzbmdYG&rs=AOn4CLAtYCaBkgux83lFAC2zvGP-m2cYCQ",
+      "thumbnail": "https://i9.ytimg.com/vi/fSDB__vdRIY/maxresdefault.jpg?sqp=CKz-ntYG&rs=AOn4CLD5uU3S7pplkh3Nc6VkK2lmO35zQQ",
       "url": "https://youtu.be/fSDB__vdRIY",
       "type": "short"
     },
@@ -1295,7 +1194,7 @@
       "likes": 0,
       "comments": 0,
       "duration_sec": 26,
-      "thumbnail": "https://i9.ytimg.com/vi/5S2Qd26Gpwc/maxresdefault.jpg?sqp=CKzbmdYG&rs=AOn4CLAlFxn5pND7Mx1opQs_e94UqskI5A",
+      "thumbnail": "https://i9.ytimg.com/vi/5S2Qd26Gpwc/maxresdefault.jpg?sqp=CKz-ntYG&rs=AOn4CLAHH7SRmHGSxUhOV64x6fNknRVRFQ",
       "url": "https://youtu.be/5S2Qd26Gpwc",
       "type": "short"
     },
@@ -1313,14 +1212,8 @@
       "type": "short"
     }
   ],
-  "current_subs": 301,
+  "current_subs": 303,
   "daily_yt": {
-    "2026-07-08": {
-      "total_views": 0,
-      "watch_hrs": 0.0,
-      "subs_gained": 0,
-      "subs_lost": 0
-    },
     "2026-07-09": {
       "total_views": 0,
       "watch_hrs": 0.0,
@@ -1870,8 +1763,8 @@
       "watch_hrs": 49.2,
       "subs_gained": 6,
       "subs_lost": 5,
-      "shorts_views": 341,
-      "vod_views": 1235
+      "shorts_views": 340,
+      "vod_views": 1229
     },
     "2026-10-03": {
       "total_views": 935,
@@ -1888,6 +1781,14 @@
       "subs_lost": 1,
       "shorts_views": 126,
       "vod_views": 397
+    },
+    "2026-10-05": {
+      "total_views": 201,
+      "watch_hrs": 4.3,
+      "subs_gained": 3,
+      "subs_lost": 2,
+      "shorts_views": 22,
+      "vod_views": 179
     }
   }
 }
