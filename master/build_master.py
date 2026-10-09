@@ -80,15 +80,46 @@ SPLIT_TIERS = [
 # Current contract (Production Services Agreement, Cycle 2-3) began Oct 1, 2025.
 # Per §5.2 "Gross Revenue" is revenue during the Term, so the split thresholds
 # start from Oct 2025. Pre-Oct-2025 revenue does NOT count toward the tiers.
-# Quarters are anchored to this date in 3-month blocks:
-# Q1 = Oct-Dec 2025, Q2 = Jan-Mar 2026, Q3 = Apr-Jun 2026, etc.
+# Quarters are anchored to this date in 3-month blocks, grouped into contract
+# years of four quarters each:
+#   Year 1 = Oct 2025 – Sep 2026 (Q1 Oct-Dec … Q4 Jul-Sep)
+#   Year 2 = Oct 2026 – Sep 2027
+# The split tiers are cumulative across the whole term, so Year 2 starts
+# where Year 1 ended (already in the 25% band).
 CONTRACT_START = "2025-10"          # YYYY-MM, inclusive
+
+# YouTube AdSense and Culture Genesis (AdSense + direct-sold ads) pay out
+# mid-way through the following month, after the invoice goes out. From
+# LAG_FROM onward, a quarter's last-month rows from these sources are billed
+# with the NEXT quarter instead. (Q1–Q3 of Year 1 were invoiced with their
+# own quarter-end figures, so the rule starts with Sep 2026.)
+LAGGED_SOURCES = {"YT_VIDEOS", "YT_SHORTS", "YT_LIVES", "CULTURE_GENESIS"}
+LAG_FROM       = "2026-09"
+
+
+def _add_months(ym, n):
+    y, m = int(ym[:4]), int(ym[5:7]) - 1 + n
+    return f"{y + m // 12:04d}-{m % 12 + 1:02d}"
+
+
+def _is_quarter_end(ym):
+    """True if `ym` is the third month of a contract quarter."""
+    diff = (int(ym[:4]) * 12 + int(ym[5:7])) - (int(CONTRACT_START[:4]) * 12 + int(CONTRACT_START[5:7]))
+    return diff >= 0 and diff % 3 == 2
+
+
+def billing_month(row):
+    """Month a revenue row is billed in (its period, unless deferred)."""
+    p = row["period"]
+    if row["source"] in LAGGED_SOURCES and p >= LAG_FROM and _is_quarter_end(p):
+        return _add_months(p, 1)
+    return p
 
 
 def contract_quarters(through_month):
-    """Yield (label, start_YYYY_MM, end_YYYY_MM, end_date) for every contract
+    """Yield (label, start_YYYY_MM, end_YYYY_MM, end_date, year) for every contract
     quarter from CONTRACT_START up to and including the one containing
-    `through_month`. Anchored to Oct 2025, rolling forward in 3-month blocks."""
+    `through_month`. Labels restart at Q1 each contract year."""
     start_y, start_m = int(CONTRACT_START[:4]), int(CONTRACT_START[5:7])
     ty, tm = int(through_month[:4]), int(through_month[5:7])
     q = 1
@@ -105,7 +136,7 @@ def contract_quarters(through_month):
             end_date = date(ey, 12, 31)
         else:
             end_date = date(ey, em + 1, 1) - __import__("datetime").timedelta(days=1)
-        yield (f"Q{q}", f"{y:04d}-{m:02d}", f"{ey:04d}-{em:02d}", end_date)
+        yield (f"Q{(q - 1) % 4 + 1}", f"{y:04d}-{m:02d}", f"{ey:04d}-{em:02d}", end_date, (q - 1) // 4 + 1)
         q += 1
         m += 3
         if m > 12:
@@ -194,20 +225,33 @@ def compute_show_summary(show, today=None, script_dir=None):
     for r in revenue:
         by_month[r["period"]] += r["amount"]
 
-    # Contract-era months only feed the split math.
-    by_month_c = {m: v for m, v in by_month.items() if m >= CONTRACT_START}
+    # Contract-era revenue feeds the split math, bucketed by BILLING month
+    # (late-reported YouTube / Culture Genesis roll into the next quarter — see LAG_FROM).
+    by_month_c = defaultdict(float)
+    deferred   = []
+    for r in revenue:
+        if r["period"] < CONTRACT_START:
+            continue
+        bm = billing_month(r)
+        by_month_c[bm] += r["amount"]
+        if bm != r["period"]:
+            deferred.append({**r, "billed_in": bm})
+    by_month_c = dict(by_month_c)
     mtd_gross  = by_month.get(cur_month, 0.0)
 
     # ── Bucket contract revenue into anchored quarters ──
     latest_rev_month = max(by_month_c) if by_month_c else cur_month
     through = max(latest_rev_month, cur_month)
     quarters = []
-    for label, qs, qe, qend_date in contract_quarters(through):
+    for label, qs, qe, qend_date, year_n in contract_quarters(through):
         q_rev = sum(v for m, v in by_month_c.items() if qs <= m <= qe)
         complete = today > qend_date
         quarters.append({
-            "label": label, "start": qs, "end": qe,
+            "label": label, "full_label": f"Y{year_n} {label}", "year": year_n,
+            "start": qs, "end": qe,
             "end_date": qend_date, "revenue": q_rev, "complete": complete,
+            "deferred_out": [d for d in deferred if qs <= d["period"] <= qe and not (qs <= d["billed_in"] <= qe)],
+            "deferred_in":  [d for d in deferred if qs <= d["billed_in"] <= qe and not (qs <= d["period"] <= qe)],
         })
 
     # Tally = COMPLETED quarters only. Partial (in-progress) quarter is tracked
@@ -242,14 +286,14 @@ def compute_show_summary(show, today=None, script_dir=None):
         last_q = completed[-1]
         cum_before_q = cum_completed - last_q["revenue"]
         cum_thru_now = cum_completed
-        q_label   = last_q["label"]
+        q_label   = last_q["full_label"]
         q_start_d = _ym_to_date(last_q["start"], first=True)
         q_end_d   = last_q["end_date"]
         q_revenue = last_q["revenue"]
         rdm_q_cut = cut_during(cum_before_q, cum_thru_now)
     else:
         cum_before_q = cum_thru_now = 0.0
-        q_label = "Q1"; q_start_d = _ym_to_date(CONTRACT_START, first=True)
+        q_label = "Y1 Q1"; q_start_d = _ym_to_date(CONTRACT_START, first=True)
         q_end_d = _ym_to_date(CONTRACT_START, first=False)
         q_revenue = 0.0; rdm_q_cut = 0.0
 
@@ -267,6 +311,26 @@ def compute_show_summary(show, today=None, script_dir=None):
         (m for m in sorted(by_month_c) if _cum_through(by_month_c, m) >= 1_000_000),
         None,
     )
+
+    # ── Contract years: active one gets the live panel, earlier ones get shelved ──
+    years = []
+    for yn in sorted({q["year"] for q in quarters}):
+        yq   = [q for q in quarters if q["year"] == yn]
+        done = [q for q in yq if q["complete"]]
+        y_start = _add_months(CONTRACT_START, 12 * (yn - 1))
+        y_end   = _add_months(y_start, 11)
+        years.append({
+            "n": yn, "label": f"Year {yn}", "start": y_start, "end": y_end,
+            "quarters": yq,
+            "gross": sum(q["revenue"] for q in done),          # completed quarters
+            "booked": sum(q["revenue"] for q in yq),           # incl. in-progress
+            "rdm_cut": sum(q["rdm_cut"] for q in done),
+            "complete": len(done) == 4,
+            "cum_end": done[-1]["cum_after"] if done else (yq[0]["cum_before"] if yq else 0.0),
+            "crossed_500k": crossed_500k_month if crossed_500k_month and y_start <= crossed_500k_month <= y_end else None,
+            "crossed_1m":   crossed_1m_month if crossed_1m_month and y_start <= crossed_1m_month <= y_end else None,
+        })
+    active_year = next((y for y in years if y["start"] <= cur_month <= y["end"]), years[-1] if years else None)
 
     # ── Audience / content ──
     subs       = tracker.get("current_subs", 0) or 0
@@ -295,6 +359,10 @@ def compute_show_summary(show, today=None, script_dir=None):
         "contract_start":     CONTRACT_START,
         "quarters":           quarters,               # all quarters w/ complete flag
         "partial_quarter":    partial,                # in-progress quarter or None
+        "years":              years,                  # per contract year rollup
+        "active_year":        active_year,
+        "deferred":           deferred,               # rows billed in a later quarter
+        "last_completed":     completed[-1] if completed else None,
         # threshold context
         "tier_index":         tier_idx,
         "tier_rate":          tier_rate,
@@ -393,6 +461,13 @@ def main():
         print(f"  Lifetime gross:   ${s['cum_gross']:>15,.2f}")
         print(f"  {s['quarter_label']:<10} revenue: ${s['quarter_revenue']:>15,.2f}")
         print(f"  RDM Q cut:        ${s['rdm_cut_quarter']:>15,.2f}")
+        lq = s.get("last_completed")
+        if lq and lq["deferred_out"]:
+            amt = sum(d["amount"] for d in lq["deferred_out"])
+            print(f"  Deferred to next: ${amt:>15,.2f}  (late-reported YouTube / Culture Genesis)")
+        for y in s.get("years", []):
+            state = "complete" if y["complete"] else "active"
+            print(f"  {y['label']} ({state}): gross ${y['gross']:,.2f} · RDM cut ${y['rdm_cut']:,.2f}")
         print(f"  Subs:             {s['subs']:>16,}")
         print()
 
@@ -411,12 +486,12 @@ def main():
     if ref and ref.get("quarters"):
         completed_qs = [q for q in ref["quarters"] if q["complete"]]
         hq = completed_qs[-1] if completed_qs else ref["quarters"][0]
-        q_label  = hq["label"]
+        q_label  = hq["full_label"]
         q_start_d = _ym_to_date(hq["start"], first=True)
         q_end_d   = hq["end_date"]
         quarter_window = f"{_md(q_start_d)} – {_mdy(q_end_d)}"
     else:
-        q_label, quarter_window = "Q1", ""
+        q_label, quarter_window = "Y1 Q1", ""
 
     html = build_master_html(
         rdm_summary    = rdm,

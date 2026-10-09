@@ -82,6 +82,80 @@ def _render_split_tier_bar(cum_gross):
     </div>"""
 
 
+def _deferred_sum(rows):
+    return sum(r["amount"] for r in rows)
+
+
+def _deferred_out_note(q):
+    """Under the invoice block: what was held back from this quarter."""
+    if not q or not q.get("deferred_out"):
+        return ""
+    months = sorted({r["period"] for r in q["deferred_out"]})
+    when = ", ".join(_fmt_month_label(m) for m in months)
+    return f"""
+    <div class="deferred-note">
+      <strong>Not in this invoice:</strong> {when} YouTube and Culture Genesis earnings ({_fmt_money(_deferred_sum(q['deferred_out']), 2)} so far).
+      These pay out mid-month, after the invoice goes out, so they are billed with the next quarter.
+    </div>"""
+
+
+def _deferred_in_note(q):
+    if not q or not q.get("deferred_in"):
+        return ""
+    months = sorted({r["period"] for r in q["deferred_in"]})
+    when = ", ".join(_fmt_month_label(m) for m in months)
+    return (f" Includes {_fmt_money(_deferred_sum(q['deferred_in']), 2)} of {when} YouTube / Culture Genesis "
+            f"carried over from the previous quarter.")
+
+
+def _render_year_shelf(y):
+    """Collapsed summary of a finished (or past) contract year."""
+    rows = []
+    for q in y["quarters"]:
+        win = f"{_fmt_month_label(q['start'])[:3]} – {_fmt_month_label(q['end'])[:3]} {q['end'][:4]}"
+        cut = q.get("rdm_cut", 0.0) if q["complete"] else None
+        note = ""
+        if q.get("deferred_out"):
+            note = f'<div class="qb-note">excl. {_fmt_money(_deferred_sum(q["deferred_out"]), 2)} late YouTube / CG → next quarter</div>'
+        rows.append(
+            f'<tr><td class="qb-q">{q["label"]}</td><td class="qb-win">{win}{note}</td>'
+            f'<td class="qb-rev">{_fmt_money(q["revenue"], 2)}</td>'
+            f'<td class="qb-cum">{_fmt_money(q["cum_after"], 2)}</td>'
+            f'<td class="qb-cut">{_fmt_money(cut, 2) if cut is not None else "—"}</td></tr>')
+    milestones = []
+    if y.get("crossed_500k"):
+        milestones.append(f"$500K in {_fmt_month_label(y['crossed_500k'])}")
+    if y.get("crossed_1m"):
+        milestones.append(f"$1M in {_fmt_month_label(y['crossed_1m'])}")
+    badge = "COMPLETE" if y["complete"] else "CLOSED"
+    return f"""
+<div class="s1-summary">
+  <details>
+    <summary class="s1-header">
+      <span class="s1-badge">{y['label'].upper()} {badge}</span>
+      <span class="s1-title">{y['label']} Revenue Summary · {_fmt_month_label(y['start'])} – {_fmt_month_label(y['end'])}</span>
+      <span class="s1-arrow">▸</span>
+    </summary>
+    <div class="s1-body">
+      <div class="s1-grid">
+        <div><div class="s1-lbl">Gross Revenue</div><div class="s1-val">{_fmt_money(y['gross'], 2)}</div></div>
+        <div><div class="s1-lbl">RDM Cut (earned)</div><div class="s1-val">{_fmt_money(y['rdm_cut'], 2)}</div></div>
+        <div><div class="s1-lbl">Cumulative at Year End</div><div class="s1-val">{_fmt_money(y['cum_end'], 2)}</div></div>
+        <div><div class="s1-lbl">Tier Milestones</div><div class="s1-val" style="font-size:13px">{' · '.join(milestones) or '—'}</div></div>
+      </div>
+      <table class="qb-table" style="margin-top:16px">
+        <thead><tr><th>Qtr</th><th>Window</th><th>Revenue</th><th>Cumulative</th><th class="th-cut">RDM cut</th></tr></thead>
+        <tbody>{''.join(rows)}</tbody>
+        <tfoot><tr>
+          <td colspan="4" style="text-align:right;font-weight:600">{y['label']} RDM cut:</td>
+          <td class="qb-cut" style="font-weight:700">{_fmt_money(y['rdm_cut'], 2)}</td>
+        </tr></tfoot>
+      </table>
+    </div>
+  </details>
+</div>"""
+
+
 def _render_split_panel(s):
     """One full Revenue Split Tracker block for a single show."""
     cum = s["cum_gross"]
@@ -100,6 +174,16 @@ def _render_split_panel(s):
     else:
         status_color = "#16A34A"
         status_text  = f"Past $1M — earning 25% on every dollar over $1M ({_fmt_money_short(s['past_1m'])} past so far)"
+
+    year = s.get("active_year") or {}
+    if year and year.get("gross", 0) <= 0.01:
+        nxt = next((q for q in year.get("quarters", []) if not q["complete"]), None)
+        year_status = (f"First quarter closes {_fmt_month_label(nxt['end'])} — "
+                       f"every dollar earns {rate_pct}%") if nxt else ""
+    else:
+        year_status = "Earned on completed quarters"
+    shelves = "\n".join(_render_year_shelf(y) for y in s.get("years", [])
+                         if y is not year and y["n"] < year.get("n", 0))
 
     # Quarter-cut math breakdown
     cum_start = s["cum_before_quarter"]
@@ -150,16 +234,17 @@ def _render_split_panel(s):
     <div class="partial-quarter">
       <div class="partial-dot"></div>
       <div class="partial-body">
-        <div class="partial-lbl">{partial['label']} in progress
+        <div class="partial-lbl">{partial['full_label']} in progress
           <span class="mut">({pq_start} – {pq_end})</span></div>
         <div class="partial-note">{_fmt_money(partial['revenue'], 2)} booked so far —
-          <strong>not yet counted</strong> in the tally above. Rolls in once the quarter closes.</div>
+          <strong>not yet counted</strong> in the tally above. Rolls in once the quarter closes.{_deferred_in_note(partial)}</div>
       </div>
     </div>"""
 
     # Quarter-by-quarter breakdown table (every contract quarter, incl. partial).
+    year = s.get("active_year") or {}
     q_rows = []
-    for q in s.get("quarters", []):
+    for q in (year.get("quarters") or s.get("quarters", [])):
         if q.get("provisional"):
             cut_cell = '<td class="qb-cut qb-pending">—</td>'
             status_cell = '<span class="qb-badge qb-badge-live">In progress</span>'
@@ -180,7 +265,7 @@ def _render_split_panel(s):
         )
     quarters_html = f"""
     <div class="quarter-ledger">
-      <div class="lbl bd-lbl">Quarter-by-quarter ledger</div>
+      <div class="lbl bd-lbl">{year.get('label', 'Contract')} quarter-by-quarter ledger</div>
       <table class="qb-table">
         <thead><tr>
           <th>Qtr</th><th>Window</th><th>Revenue</th>
@@ -188,8 +273,8 @@ def _render_split_panel(s):
         </tr></thead>
         <tbody>{"".join(q_rows)}</tbody>
         <tfoot><tr>
-          <td colspan="4" style="text-align:right;font-weight:600">RDM cut, completed quarters:</td>
-          <td class="qb-cut" style="font-weight:700">{_fmt_money(s['rdm_cut_lifetime'], 2)}</td>
+          <td colspan="4" style="text-align:right;font-weight:600">{year.get('label', 'Contract')} RDM cut, completed quarters:</td>
+          <td class="qb-cut" style="font-weight:700">{_fmt_money(year.get('rdm_cut', s['rdm_cut_lifetime']), 2)}</td>
           <td></td>
         </tr></tfoot>
       </table>
@@ -201,7 +286,8 @@ def _render_split_panel(s):
     <div class="split-show-tag" style="background:{s['color']}">{s.get('tag','')}</div>
     <div>
       <h3 class="split-show-name">{s['name']}</h3>
-      <div class="split-show-sub">Revenue Split Tracker · contract to date (since {_fmt_month_label(s.get('contract_start', s['launch']))})</div>
+      <div class="split-show-sub">Revenue Split Tracker · {year.get('label', '')} · {_fmt_month_label(year.get('start', s['contract_start']))} – {_fmt_month_label(year.get('end', s['contract_start']))}
+        · split carries over across the full term</div>
     </div>
     <div class="split-rate-pill" style="background:{status_color}">
       Current rate: {rate_pct}%
@@ -210,14 +296,14 @@ def _render_split_panel(s):
 
   <div class="split-headline">
     <div class="split-headline-l">
-      <div class="lbl">Contract gross revenue <span class="mut">(completed quarters)</span></div>
-      <div class="val">{_fmt_money(cum, 2)}</div>
-      <div class="status" style="color:{status_color}">{status_text}</div>
+      <div class="lbl">{year.get('label', 'Contract')} gross revenue <span class="mut">(completed quarters)</span></div>
+      <div class="val">{_fmt_money(year.get('gross', cum), 2)}</div>
+      <div class="status" style="color:{status_color}">Contract to date: {_fmt_money(cum, 2)} · {status_text}</div>
     </div>
     <div class="split-headline-r">
-      <div class="lbl">RDM cut to date</div>
-      <div class="val val-rdm">{_fmt_money(s['rdm_cut_lifetime'], 2)}</div>
-      <div class="status">Earned on completed quarters</div>
+      <div class="lbl">{year.get('label', 'Contract')} RDM cut to date</div>
+      <div class="val val-rdm">{_fmt_money(year.get('rdm_cut', s['rdm_cut_lifetime']), 2)}</div>
+      <div class="status">{year_status}</div>
     </div>
   </div>
 
@@ -227,7 +313,7 @@ def _render_split_panel(s):
     <div class="split-quarter-head">
       <div>
         <div class="lbl">{s['quarter_label']} <span class="mut">({s['quarter_start']} – {s['quarter_end']})</span></div>
-        <div class="quarter-title">RDM Cut for Current Quarter</div>
+        <div class="quarter-title">RDM Cut · Latest Closed Quarter (to invoice)</div>
       </div>
       <div class="quarter-cut-box">
         <div class="lbl">Owed to RDM</div>
@@ -252,10 +338,12 @@ def _render_split_panel(s):
         </tr></tfoot>
       </table>
     </div>
+    {_deferred_out_note(s.get("last_completed"))}
     {partial_html}
     {quarters_html}
   </div>
 </section>
+{shelves}
 """
 
 
@@ -340,35 +428,10 @@ def build_master_html(rdm_summary, show_summaries, quarter_label,
 """
 
     split_panels = "\n".join(_render_split_panel(s) for s in show_summaries if s.get("show_revenue", False))
+    _ay = next((s.get("active_year") for s in show_summaries if s.get("active_year")), None)
+    year_tag = (f"Contract {_ay['label']} · {_fmt_month_label(_ay['start'])} → {_fmt_month_label(_ay['end'])}"
+                if _ay else "Contract to date")
 
-    # S1 shelved summary
-    s1_data = rdm.get("s1_final", {})
-    s1_gross = s1_data.get("gross_revenue", 0)
-    s1_term = s1_data.get("term", "Oct 2025 – Sep 2026")
-    s1_imp = s1_data.get("fanatics_impressions", 0)
-    _s1_cut = s1_data.get("rdm_cut", 0)
-
-    s1_block = ""
-    if s1_gross > 0:
-        s1_block = f"""
-<div class="s1-summary">
-  <details>
-    <summary class="s1-header">
-      <span class="s1-badge">S1 COMPLETE</span>
-      <span class="s1-title">Season 1 Revenue Summary · {s1_term}</span>
-      <span class="s1-arrow">▸</span>
-    </summary>
-    <div class="s1-body">
-      <div class="s1-grid">
-        <div><div class="s1-lbl">Gross Revenue</div><div class="s1-val">{_fmt_money(s1_gross, 2)}</div></div>
-        <div><div class="s1-lbl">RDM Cut (earned)</div><div class="s1-val">{_fmt_money(_s1_cut, 2)}</div></div>
-        <div><div class="s1-lbl">Fanatics Impressions</div><div class="s1-val">{_fmt_num_short(s1_imp)}</div></div>
-        <div><div class="s1-lbl">Current Tier</div><div class="s1-val">25% (above $1M)</div></div>
-      </div>
-    </div>
-  </details>
-</div>
-"""
     show_cards   = "\n".join(_render_show_card(s)   for s in show_summaries)
 
     return f"""<!doctype html>
@@ -816,9 +879,15 @@ def build_master_html(rdm_summary, show_summaries, quarter_label,
     color: var(--brand2);
   }}
 
-  /* ─── S1 Shelved Summary ─── */
+  .deferred-note {{
+    margin-top: 12px; padding: 10px 14px; font-size: 12.5px; color: var(--text2);
+    background: #FFFBEB; border: 1px solid #FDE68A; border-radius: 8px;
+  }}
+  .qb-note {{ font-size: 10.5px; color: var(--mut); margin-top: 2px; }}
+
+  /* ─── Shelved contract years ─── */
   .s1-summary {{
-    margin-bottom: 16px;
+    margin: 16px 0;
   }}
   .s1-header {{
     display: flex;
@@ -938,7 +1007,7 @@ def build_master_html(rdm_summary, show_summaries, quarter_label,
     </div>
     <div class="page-h-pills">
       <div class="quarter-pill">Current quarter: <strong>{quarter_label}</strong> · {quarter_window}</div>
-      <div class="fanatics-pill">★ Fanatics S2 · Oct 1, 2025 → Sep 30, 2026</div>
+      <div class="fanatics-pill">★ {year_tag}</div>
     </div>
   </div>
 
@@ -946,9 +1015,8 @@ def build_master_html(rdm_summary, show_summaries, quarter_label,
 
   <div class="sec-h">
     <h2>★ Revenue Split Tracker</h2>
-    <span class="r">Season 2 · contract to date</span>
+    <span class="r">{year_tag}</span>
   </div>
-  {s1_block}
   {split_panels}
 
   <div class="sec-h">
