@@ -30,8 +30,9 @@ Tokens — one name per account, e.g. IG_TOKEN_GT:
         IG_TOKEN_GT = "..."
         IG_TOKEN_RT = "..."
 The environment wins if both exist. Instagram tokens expire after 60 days unless
-refreshed, so each run refreshes them; if TOKEN_OUT_DIR is set, the refreshed token
-is written there as a file named after the secret so the workflow can save it back.
+refreshed. ONLY the workflow refreshes them (when TOKEN_OUT_DIR is set): the new
+token is written there and saved back to GitHub secrets. Local runs never refresh,
+so your laptop and GitHub can't knock each other's tokens out.
 """
 
 import argparse
@@ -50,6 +51,7 @@ SHOWS = {
     "gt": {"csv": "master/shows/road_trippin/data/girls_tripp/socials_gt.csv", "instagram": {"env": "IG_TOKEN_GT"}},
     "rt": {"csv": "master/shows/road_trippin/data/socials.csv",               "instagram": {"env": "IG_TOKEN_RT"}},
     "sr": {"csv": "master/shows/schultz_report/data_sr/socials_sr.csv",       "instagram": {"env": "IG_TOKEN_SR"}},
+    "fr": {"csv": "master/shows/road_trippin/data/football_related/data_fr/socials_fr.csv", "instagram": {"env": "IG_TOKEN_FR"}},
 }
 LOCAL_CONFIG = os.path.join(ROOT, "master", "config_socials.py")   # gitignored
 FINALIZE_DAYS = 3        # re-finalize last month on the 1st–3rd
@@ -181,10 +183,10 @@ class IG:
             return None
 
 
-def sync_instagram(spec, rows, today, dry_run=False):
+def sync_instagram(spec, rows, today, refresh=False):
     token = load_token(spec)
     if not token:
-        raise RuntimeError(f"no token ({spec['env']} isn't a secret here and isn't in master/config_socials.py)")
+        raise LookupError(f"no {spec['env']} (not a secret here, not in master/config_socials.py) — skipped")
     ig = IG(token)
     me = ig.get("me", fields="user_id,username,followers_count")
     uid = me["user_id"]
@@ -213,7 +215,7 @@ def sync_instagram(spec, rows, today, dry_run=False):
         report.append(ym)
 
     new_token, expires = None, None
-    if not dry_run:
+    if refresh:
         try:
             new_token, expires = ig.refresh()
         except RuntimeError as e:
@@ -226,7 +228,8 @@ def sync_instagram(spec, rows, today, dry_run=False):
 # ═════════════════════════════════════════════════════════════════
 def main():
     ap = argparse.ArgumentParser(description="Sync platform APIs into each show's socials CSV")
-    ap.add_argument("--show", nargs="+", required=True, choices=sorted(SHOWS))
+    ap.add_argument("--show", nargs="+", default=sorted(SHOWS), choices=sorted(SHOWS),
+                    help="Shows to sync (default: all; shows without a token are skipped)")
     ap.add_argument("--dry-run", action="store_true")
     args = ap.parse_args()
 
@@ -240,11 +243,14 @@ def main():
         path = os.path.join(ROOT, cfg["csv"])
         rows = read_rows(path)
         print(f"\n[{show.upper()}] {cfg['csv']}")
+        changed = False
 
         if "instagram" in cfg:
             try:
-                values, who, months, new_token, expires = sync_instagram(cfg["instagram"], rows, today, args.dry_run)
+                values, who, months, new_token, expires = sync_instagram(cfg["instagram"], rows, today,
+                                                                       refresh=bool(token_out) and not args.dry_run)
                 rows = upsert(rows, "INSTAGRAM", values)
+                changed = True
                 print(f"  ✓ Instagram {who} · months {', '.join(months)}")
                 for (p, m), v in sorted(values.items(), reverse=True):
                     print(f"      {p} {m:<15} {v:>12,}")
@@ -254,11 +260,13 @@ def main():
                         f.write(new_token)
                 if expires:
                     print(f"      token good for another {int(expires) // 86400} days")
-            except Exception as e:      # one platform failing shouldn't stop the others
+            except LookupError as e:     # account not connected yet — not an error
+                print(f"  · Instagram: {e}")
+            except Exception as e:       # one platform failing shouldn't stop the others
                 failed += 1
                 print(f"  ✗ Instagram: {e}")
 
-        if not args.dry_run:
+        if changed and not args.dry_run:      # only touch files that actually got new data
             write_rows(path, rows)
 
     print("\n" + "=" * 60 + ("\nDry run — no files changed." if args.dry_run else "") )

@@ -100,6 +100,29 @@ jobs:
         working-directory: master/shows/road_trippin
         run: python build_gt_dashboard.py
 
+      # ── Football Related ───────────────────────────────────
+      # continue-on-error: a new show shouldn't block the RT/SR refresh + commit
+      - name: Write FR config_fr.py from secret
+        id: fr_config
+        continue-on-error: true
+        env:
+          CONFIG_FR_PY: ${{ secrets.CONFIG_FR_PY }}
+        run: |
+          printf "%s" "$CONFIG_FR_PY" > master/shows/road_trippin/data/football_related/config_fr.py
+          test -s master/shows/road_trippin/data/football_related/config_fr.py || { echo "config_fr.py is empty — check the CONFIG_FR_PY secret"; exit 1; }
+          echo "✓ FR config_fr.py written ($(wc -c < master/shows/road_trippin/data/football_related/config_fr.py) bytes)"
+
+      - name: Run FR tracker (pulls YT API data + RT attribution)
+        if: steps.fr_config.outcome == 'success'
+        continue-on-error: true
+        working-directory: master/shows/road_trippin/data/football_related
+        run: python build_fr_tracker.py
+
+      - name: Rebuild Football Related dashboard
+        continue-on-error: true
+        working-directory: master/shows/road_trippin/data/football_related
+        run: python build_fr_dashboard.py
+
       # ── The Schultz Report ─────────────────────────────────
       - name: Write SR config_sr.py from secret
         env:
@@ -131,6 +154,7 @@ jobs:
           rm -f master/shows/road_trippin/config.py
           rm -f master/shows/schultz_report/config_sr.py
           rm -f master/shows/road_trippin/config_gt.py
+          rm -f master/shows/road_trippin/data/football_related/config_fr.py
           git add -A
           if git diff --staged --quiet; then
             echo "No changes to commit — data hasn't moved since last refresh."

@@ -42,6 +42,14 @@ SHOWS = [
                 "dashboard_url": "master/shows/road_trippin/girls_tripp.html",
                 "status":        "active",       # active | coming_soon
             },
+            {
+                "key":           "football_related",
+                "name":          "Football Related",
+                "tag":           "FR",
+                "color":         "#1E7A46",      # placeholder until FR brand colors are set
+                "dashboard_url": "master/shows/road_trippin/data/football_related/football_related.html",
+                "status":        "active",
+            },
             # Future daughter shows go here:
             # {
             #     "key":  "perk_show",
