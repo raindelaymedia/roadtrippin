@@ -3200,7 +3200,7 @@ function cubeApplyPreset(preset) {{
     if (sc) sc.scrollLeft = 0;
   }};
 
-  // CSV: period-desc, source in canonical order, skip empty cells
+  // CSV: period-desc, source in canonical order, skip empty cells.
   function toCSV(){{
     const rows=[['period','source','amount']];
     const periodsDesc = PERIODS.slice().sort().reverse();
@@ -3209,6 +3209,21 @@ function cubeApplyPreset(preset) {{
       rows.push([p,s,v]);
     }}
     return rows.map(r=>r.join(',')).join('\\r\\n')+'\\r\\n';
+  }}
+  // Save = the CURRENT file on GitHub with only the cells edited here applied. Anything
+  // else in the file (rows this page doesn't show, or values updated since it was built)
+  // is left alone, so a save from an outdated page can't delete or revert data.
+  function applyEdits(existing){{
+    if (!existing.trim()) return toCSV();
+    const lines = existing.split(/\\r?\\n/).filter(l=>l.trim());
+    const out = [lines[0]], at = {{}};
+    for (const l of lines.slice(1)){{ const f=l.split(','); at[key(f[1],f[0])]=out.length; out.push(f); }}
+    for (const k of changed){{
+      const [s,p] = k.split('|'), v = CELLS[k] ?? '';
+      if (k in at) out[at[k]] = v==='' ? null : [p,s,v];
+      else if (v!=='') out.push([p,s,v]);
+    }}
+    return out.filter(r=>r!==null).map(r=>Array.isArray(r)?r.join(','):r).join('\\r\\n')+'\\r\\n';
   }}
 
   // GitHub
@@ -3241,10 +3256,11 @@ function cubeApplyPreset(preset) {{
       st.textContent='Saving…'; $('revSaveBtn').disabled=true;
       let branch=c.branch;
       if(!branch){{ const info=await gh('/repos/'+c.repo,{{}},c.token); branch=info.default_branch||'main'; log('Branch: '+branch); }}
-      let sha=null;
-      try {{ const cur=await gh('/repos/'+c.repo+'/contents/'+c.path+'?ref='+branch,{{}},c.token); sha=cur.sha; }}
+      let sha=null, existing='';
+      try {{ const cur=await gh('/repos/'+c.repo+'/contents/'+c.path+'?ref='+branch,{{}},c.token); sha=cur.sha;
+             existing = cur.content ? decodeURIComponent(escape(atob(cur.content.replace(/\\n/g,'')))) : ''; }}
       catch(e){{ if(!String(e).includes('404')) throw e; }}
-      const b64 = btoa(unescape(encodeURIComponent(toCSV())));
+      const b64 = btoa(unescape(encodeURIComponent(applyEdits(existing))));
       const body = {{message:'Update revenue.csv via dashboard editor ('+changed.size+' change'+(changed.size>1?'s':'')+')',content:b64,branch}};
       if(sha) body.sha=sha;
       const res = await gh('/repos/'+c.repo+'/contents/'+c.path,{{method:'PUT',body:JSON.stringify(body)}},c.token);
@@ -3386,6 +3402,10 @@ function cubeApplyPreset(preset) {{
   }};
 
   // CSV: long format period,platform,metric,value — period-desc. ER back to fraction.
+  const toFile = (mt,v) => {{
+    if (isPct(mt) && v!=='' && v!=='TBD' && v!=='N/A'){{ const n=parseFloat(v); if(!isNaN(n)) return (n/100).toFixed(4); }}
+    return v;
+  }};
   function toCSV(){{
     const rows=[['period','platform','metric','value']];
     const periodsDesc = PERIODS.slice().sort().reverse();
@@ -3404,6 +3424,22 @@ function cubeApplyPreset(preset) {{
       }}
     }}
     return rows.map(r=>r.join(',')).join('\\r\\n')+'\\r\\n';
+  }}
+  // Save = the CURRENT file on GitHub with only the cells edited here applied. Anything
+  // else in the file (rows this page doesn't show, values the daily sync updated since
+  // the page was built) is left alone, so a save from an outdated page can't delete or
+  // revert data.
+  function applyEdits(existing){{
+    if (!existing.trim()) return toCSV();
+    const lines = existing.split(/\\r?\\n/).filter(l=>l.trim());
+    const out = [lines[0]], at = {{}};
+    for (const l of lines.slice(1)){{ const f=l.split(','); at[key(f[1],f[2],f[0])]=out.length; out.push(f); }}
+    for (const k of changed){{
+      const [pl,mt,pe] = k.split('|'), v = toFile(mt, CELLS[k] ?? '');
+      if (k in at) out[at[k]] = v==='' ? null : [pe,pl,mt,v];
+      else if (v!=='') out.push([pe,pl,mt,v]);
+    }}
+    return out.filter(r=>r!==null).map(r=>Array.isArray(r)?r.join(','):r).join('\\r\\n')+'\\r\\n';
   }}
 
   const loadConn = () => {{ try {{ return JSON.parse(localStorage.getItem(LS))||{{}}; }} catch {{ return {{}}; }} }};
@@ -3435,10 +3471,11 @@ function cubeApplyPreset(preset) {{
       st.textContent='Saving…'; $('socSaveBtn').disabled=true;
       let branch=c.branch;
       if(!branch){{ const info=await gh('/repos/'+c.repo,{{}},c.token); branch=info.default_branch||'main'; log('Branch: '+branch); }}
-      let sha=null;
-      try {{ const cur=await gh('/repos/'+c.repo+'/contents/'+c.path+'?ref='+branch,{{}},c.token); sha=cur.sha; }}
+      let sha=null, existing='';
+      try {{ const cur=await gh('/repos/'+c.repo+'/contents/'+c.path+'?ref='+branch,{{}},c.token); sha=cur.sha;
+             existing = cur.content ? decodeURIComponent(escape(atob(cur.content.replace(/\\n/g,'')))) : ''; }}
       catch(e){{ if(!String(e).includes('404')) throw e; }}
-      const b64 = btoa(unescape(encodeURIComponent(toCSV())));
+      const b64 = btoa(unescape(encodeURIComponent(applyEdits(existing))));
       const body = {{message:'Update socials.csv via dashboard editor ('+changed.size+' change'+(changed.size>1?'s':'')+')',content:b64,branch}};
       if(sha) body.sha=sha;
       const res = await gh('/repos/'+c.repo+'/contents/'+c.path,{{method:'PUT',body:JSON.stringify(body)}},c.token);
