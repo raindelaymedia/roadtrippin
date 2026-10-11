@@ -440,6 +440,10 @@ def build_html(d, revenue, socials, generated_at):
     has_rt = rt_idx is not None
     rt_label = fmt_period(d['months'][rt_idx]) if has_rt else '—'
 
+    # ── Podcast (latest month with a Megaphone export) ──
+    aud_idx = next((i for i, v in enumerate(d['l_total']) if v is not None), None)
+    has_aud = aud_idx is not None
+
     # ── Overview tab content ──
     if has_data:
         overview_metrics = f"""
@@ -461,6 +465,11 @@ def build_html(d, revenue, socials, generated_at):
         <div class="metric-label">Views from Road Trippin'</div>
         <div class="metric-value">{fmt(d['rt_pct'][rt_idx], pct=True) if has_rt else '—'}</div>
         <div class="metric-delta" style="color:var(--text2)">{f"{rt_label} · {fmt(d['rt_views'][rt_idx])} views" if has_rt else 'not connected'}</div>
+      </div>
+      <div class="metric">
+        <div class="metric-label">Podcast Downloads</div>
+        <div class="metric-value">{fmt(d['l_total'][aud_idx]) if has_aud else '—'}</div>
+        <div class="metric-delta" style="color:var(--text2)">{f"{fmt_period(d['months'][aud_idx])} · Megaphone" if has_aud else 'not connected'}</div>
       </div>
       <div class="metric">
         <div class="metric-label">Revenue</div>
@@ -1412,6 +1421,12 @@ def _tracker_tables(d, M_display, socials=None):
             ('YT Lives', d['lives'], 'int'),
         ], M_display) +
         _engaged_section(table_html, d, socials) +
+        (table_html('Podcast (Megaphone)', '🎙️', [
+            ('Downloads', d['l_total'], 'int'),
+            ('Streams', d['spotify'], 'int'),
+            ('Episodes', d['l_eps'], 'int'),
+            ('Downloads per episode', d['l_perep'], 'int'),
+        ], M_display) if any(v is not None for v in d['l_total']) else '') +
         table_html('Subscribers', '👥', [
             ('YouTube', d['yt_subs'], 'int'),
         ], M_display) +

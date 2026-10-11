@@ -370,6 +370,51 @@ def derive_from_videos(videos, episode_ids):
     return dict(shorts_count), dict(lives), live_excluded, dict(eps), dict(vods), top, best, clean
 
 
+# ─── Audio (Megaphone) ───────────────────────────────────────────
+def load_megaphone_monthly(path):
+    """data/girls_tripp/megaphone_monthly_gt.csv — the monthly Megaphone export, same
+    columns as RT's megaphone_monthly.csv. Returns {YYYY-MM: {downloads, streams}}."""
+    import csv
+    if not os.path.exists(path):
+        return {}
+    num = lambda s: int(float(str(s or 0).replace(",", "") or 0))
+    out = {}
+    with open(path, encoding="utf-8-sig") as f:
+        for r in csv.DictReader(f):
+            m = (r.get("MONTH") or "").strip()[:7]
+            if m:
+                out[m] = {"downloads": num(r.get("TOTAL DOWNLOADS") or r.get("DOWNLOADS")),
+                          "streams": num(r.get("TOTAL STREAMS") or r.get("STREAMS"))}
+    return out
+
+
+def megaphone_episode_counts():
+    """Episodes published per month on the Girls Tripp Megaphone feed (uses the
+    Megaphone token in RT's config.py; skipped if it isn't there)."""
+    import requests
+    try:
+        import config as rt_cfg
+        base, net = rt_cfg.MEGAPHONE_API_BASE.rstrip("/"), rt_cfg.MEGAPHONE_NETWORK_ID
+        h = {"Authorization": f"Token token={rt_cfg.MEGAPHONE_TOKEN}"}
+    except (ImportError, AttributeError):
+        return {}
+    pods = requests.get(f"{base}/networks/{net}/podcasts", headers=h, timeout=30).json()
+    pid = next((p["id"] for p in pods if p["title"].lower().startswith("girls tripp")), None)
+    if not pid:
+        return {}
+    counts = defaultdict(int)
+    page = 1
+    while True:
+        eps = requests.get(f"{base}/networks/{net}/podcasts/{pid}/episodes", headers=h,
+                           params={"per_page": 500, "page": page}, timeout=60).json()
+        for e in eps:
+            if e.get("pubdate") and not e.get("draft") and e.get("episodeType") != "trailer":
+                counts[e["pubdate"][:7]] += 1
+        if len(eps) < 500:
+            return dict(counts)
+        page += 1
+
+
 # ─── Main ────────────────────────────────────────────────────────
 def main():
     ap = argparse.ArgumentParser(description="Girls Tripp — YouTube Tracker Builder")
@@ -443,6 +488,12 @@ def main():
         if c:
             print(f"    {m}: {c['rt_pct']*100:5.1f}% from RT ({c['rt_views']:,} of {c['total_views']:,})")
 
+    print("\n[Audio] Megaphone")
+    mega_path = os.path.join(script_dir, "data", "girls_tripp", "megaphone_monthly_gt.csv")
+    mega = load_megaphone_monthly(mega_path)
+    print(f"  {'✓' if mega else '·'} Monthly export: {sorted(mega) or 'none'} ({os.path.basename(mega_path)})")
+    mega_eps = step("Episodes per month (Megaphone API)", megaphone_episode_counts, {})
+
     kpis = {"shorts_count": {}, "ctr": {}, "search_pct": {}, "tv_pct": {}}
     for m in months:
         t, d = traffic.get(m, {}), device.get(m, {})
@@ -466,9 +517,9 @@ def main():
             "subs_lost":   {m: monthly.get(m, {}).get("subs_lost") for m in months},
             "watch_hrs":   {m: monthly.get(m, {}).get("watch_hrs") for m in months},
         },
-        "audio": {"downloads": {m: None for m in months},
-                  "streams":   {m: None for m in months},
-                  "episodes":  {m: None for m in months}},
+        "audio": {"downloads": {m: mega.get(m, {}).get("downloads") for m in months},
+                  "streams":   {m: mega.get(m, {}).get("streams") for m in months},
+                  "episodes":  {m: (mega_eps.get(m, 0) if m in mega else mega_eps.get(m)) for m in months}},
         "kpis": kpis,
         "collab": {
             key: {m: collab.get(m, {}).get(key) for m in months}
