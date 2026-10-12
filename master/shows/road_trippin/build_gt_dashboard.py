@@ -15,6 +15,8 @@ import json
 import os
 from datetime import datetime
 
+import megaphone_audio
+
 
 # ─── Brand assets (assets/girls_tripp/, embedded as data URIs) ───
 ASSET_FILES = {
@@ -414,7 +416,67 @@ def _mic():
             if "mic" in ASSETS else '')
 
 
-def build_html(d, revenue, socials, generated_at):
+def _audio_page(aud):
+    """Audio tab: Megaphone monthly delivery, listener reach, per-episode downloads and
+    listen vs watch time, plus the full monthly table (same as RT's)."""
+    if not aud['months']:
+        return empty_state("No Megaphone data yet", "Add a month to data/girls_tripp/megaphone_monthly_gt.csv")
+    lm = fmt_period(aud['latest'])
+    now = lambda k: aud[k][-1]
+    prev = lambda k: aud[k][-2] if len(aud[k]) > 1 else None
+
+    def delta(k):
+        a, b = now(k), prev(k)
+        if a is None or not b:
+            return '<span style="color:var(--text2)">first month</span>' if b is None else '—'
+        d = a - b
+        return f'<span class="{"up" if d >= 0 else "down"}">{"+" if d >= 0 else ""}{fmt(d)} vs prev</span>'
+
+    avg, wp = now('avg_min'), now('watch_pct')
+    muted = lambda s: f'<span style="color:var(--text2)">{s}</span>'
+    metric = lambda label, val, sub: (f'<div class="metric"><div class="metric-label">{label}</div>'
+                                      f'<div class="metric-value">{val}</div><div class="metric-delta">{sub}</div></div>')
+    metrics = (
+        metric(f'Total delivery ({lm})', fmt(now('delivery')), delta('delivery'))
+        + metric(f'Downloads ({lm})', fmt(now('downloads')), delta('downloads'))
+        + metric(f'Spotify streams ({lm})', fmt(now('streams')), delta('streams'))
+        + metric(f'Listener reach ({lm})', fmt(now('reach')), muted('downloads + Spotify · not deduplicated'))
+        + metric(f'Avg time per listener ({lm})', f'{avg:.0f} min' if avg else '—',
+                 muted(f'{wp*100:.0f}% watched · {100-wp*100:.0f}% listened') if wp else '—')
+        + metric(f'Per episode ({lm})', fmt(now('perep')), muted(f"{now('eps') or '—'} eps"))
+    )
+    cols = list(reversed(range(len(aud['months']))))       # newest first
+    rows = [('Total delivery', 'delivery', 'int'), ('Downloads', 'downloads', 'int'),
+            ('Spotify streams', 'streams', 'int'), ('Spotify plays', 'plays', 'int'),
+            ('Downloads reach', 'reach_dl', 'int'), ('Spotify reach', 'reach_st', 'int'),
+            ('Episodes', 'eps', 'int'), ('Downloads per episode', 'perep', 'int'),
+            ('Hours listened', 'listen_hrs', 'dec'), ('Hours watched', 'watch_hrs', 'dec'),
+            ('Avg minutes per listener', 'avg_min', 'dec'), ('Watched %', 'watch_pct', 'pct')]
+    cell = lambda v, t: ('<span class="na">—</span>' if v is None else f'{v*100:.1f}%' if t == 'pct'
+                         else f'{v:,.1f}' if t == 'dec' else f'{int(round(v)):,}')
+    table = ('<thead><tr><th>Megaphone</th>' + ''.join(f'<th>{fmt_period(aud["months"][i])}</th>' for i in cols)
+             + '</tr></thead><tbody>'
+             + ''.join(f'<tr><td>{lbl}</td>' + ''.join(f'<td>{cell(aud[k][i], t)}</td>' for i in cols) + '</tr>'
+                       for lbl, k, t in rows) + '</tbody>')
+    has = lambda *ks: any(v is not None for k in ks for v in aud[k])
+    def chart(cid, h=240, need=(), msg='Not in the Megaphone screens yet'):
+        if need and not has(*need):
+            return f'<div style="height:{h}px;display:flex;align-items:center;justify-content:center;color:var(--text3);font-size:12px">{msg}</div>'
+        return f'<div style="position:relative;height:{h}px"><canvas id="{cid}"></canvas></div>'
+    sub = lambda s: f'<div style="font-size:11px;color:var(--text3);margin:-10px 0 12px">{s}</div>'
+    return f"""
+    <div class="metrics" style="grid-template-columns:repeat(auto-fit,minmax(150px,1fr))">{metrics}</div>
+    <div class="card"><div class="card-title">Monthly Delivery</div>{sub('Downloads (all platforms) + Spotify streams · Megaphone')}{chart('aud-total', 260)}</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px">
+      <div class="card"><div class="card-title">Listener Reach</div>{sub('Monthly unique listeners by source')}{chart('aud-reach', need=('reach_dl', 'reach_st'), msg="Listener reach not in the Megaphone screens yet")}</div>
+      <div class="card"><div class="card-title">Downloads per Episode</div>{sub('Downloads ÷ episodes published that month')}{chart('aud-perep', need=('perep',), msg="Needs episode counts (filled in by the tracker)")}</div>
+    </div>
+    <div class="card"><div class="card-title">Time Spent</div>{sub('Hours listened (audio, or video not on screen) vs watched (video on screen)')}{chart('aud-time', need=('listen_hrs', 'watch_hrs'), msg="Watch / listen time not in the Megaphone screens yet")}</div>
+    <div class="card"><div class="card-title">Monthly Detail</div>{sub("From the monthly Megaphone screens · reach isn't deduplicated across sources")}
+      <div class="table-scroll"><table class="data-table">{table}</table></div></div>"""
+
+
+def build_html(d, revenue, socials, generated_at, audio=None):
     has_yt   = bool(d['months'])
     has_rev  = bool(revenue.get('months'))
     has_soc  = bool(socials.get('months'))
@@ -443,6 +505,13 @@ def build_html(d, revenue, socials, generated_at):
     # ── Podcast (latest month with a Megaphone export) ──
     aud_idx = next((i for i, v in enumerate(d['l_total']) if v is not None), None)
     has_aud = aud_idx is not None
+
+    # ── Audio tab (Megaphone monthly file) ──
+    aud = megaphone_audio.series(audio or {"months": [], "rows": {}}, dict(zip(d['months'], d['l_eps'])))
+    audio_content = _audio_page(aud)
+    js_aud = json.dumps({k: aud[k] for k in ('downloads', 'streams', 'reach_dl', 'reach_st',
+                                              'perep', 'listen_hrs', 'watch_hrs')}
+                        | {'months': [fmt_period(m) for m in aud['months']]})
 
     # ── Overview tab content ──
     if has_data:
@@ -932,6 +1001,10 @@ body{{font-family:'DM Sans',sans-serif;background:var(--bg) {f'url({ASSETS["marb
       <svg class="nav-icon" viewBox="0 0 16 16" fill="none"><rect x="1" y="3" width="14" height="10" rx="2" fill="currentColor" opacity=".2"/><path d="M6.5 5.5l4 2.5-4 2.5V5.5z" fill="currentColor"/></svg>
       <span>YouTube</span>
     </div>
+    <div class="nav-item" onclick="showPage('audio',this)">
+      <svg class="nav-icon" viewBox="0 0 16 16" fill="none"><rect x="5.5" y="1.5" width="5" height="8" rx="2.5" stroke="currentColor" stroke-width="1.5"/><path d="M3 8a5 5 0 0010 0M8 13v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      <span>Audio</span>
+    </div>
     <div class="nav-item" onclick="showPage('socials',this)">
       <svg class="nav-icon" viewBox="0 0 16 16" fill="none"><path d="M5 7a2 2 0 100-4 2 2 0 000 4zm6 6a2 2 0 100-4 2 2 0 000 4zm0-10a2 2 0 100 4 2 2 0 000-4zM6.6 8.5l3 2.5M9.4 5l-3 2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
       <span>Socials</span>
@@ -969,6 +1042,15 @@ body{{font-family:'DM Sans',sans-serif;background:var(--bg) {f'url({ASSETS["marb
     <div class="page-sub">{'Channel analytics · views, subscribers, content mix' if has_yt else 'Not connected'}</div>
   </div>
   {yt_content}
+</div>
+
+<!-- ═══ AUDIO ═══ -->
+<div class="page" id="page-audio">
+  <div class="page-header">
+    <div class="page-title">Audio</div>
+    <div class="page-sub">Megaphone · downloads, Spotify streams, listener reach and time spent</div>
+  </div>
+  {audio_content}
 </div>
 
 <!-- ═══ SOCIALS ═══ -->
@@ -1044,6 +1126,31 @@ document.addEventListener('DOMContentLoaded', function() {{
   if (typeof Chart === 'undefined') return;
   Chart.defaults.font.family = "'DM Sans', sans-serif";
   Chart.defaults.color = '#4a5468';
+
+  // Audio tab — Megaphone monthly file (its own month axis: months with audio data)
+  const AUD = {js_aud};
+  if (AUD.months.length) {{
+    const C = {{ downloads:'#0B0B0B', spotify:'#FF4370', listen:'#0B0B0B', watch:'#FF4370' }};
+    const nnA = a => a.map(v => v === null ? NaN : v);
+    const kfmt = v => v >= 1e6 ? (v/1e6).toFixed(1)+'M' : v >= 1e3 ? (v/1e3).toFixed(0)+'K' : v;
+    const aopts = (stacked, unit, legend=true) => ({{
+      responsive: true, maintainAspectRatio: false, interaction: {{ mode:'index', intersect:false }},
+      plugins: {{
+        legend: {{ display: legend, position:'top', align:'end', labels: {{ boxWidth:10, boxHeight:10 }} }},
+        tooltip: {{ callbacks: {{ label: c => ' ' + c.dataset.label + ': ' +
+          (isNaN(c.parsed.y) ? 'No data' : Math.round(c.parsed.y).toLocaleString() + (unit||'')) }} }}
+      }},
+      scales: {{ x: {{ stacked, grid: {{ display:false }} }}, y: {{ stacked, min:0, ticks: {{ callback: kfmt }} }} }}
+    }});
+    const bar = (label, data, color) => ({{ label, data:nnA(data), backgroundColor:color, borderRadius:2, maxBarThickness:56 }});
+    const line = (label, data, color) => ({{ label, data:nnA(data), borderColor:color, backgroundColor:color,
+                                             borderWidth:2, tension:.3, pointRadius:4, pointHoverRadius:6, spanGaps:true }});
+    const mk = (id, type, datasets, o) => {{ const el = document.getElementById(id); if (el) new Chart(el, {{ type, data:{{ labels:AUD.months, datasets }}, options:o }}); }};
+    mk('aud-total', 'bar', [bar('Downloads', AUD.downloads, C.downloads), bar('Spotify streams', AUD.streams, C.spotify)], aopts(true));
+    mk('aud-reach', 'line', [line('Downloads reach', AUD.reach_dl, C.downloads), line('Spotify reach', AUD.reach_st, C.spotify)], aopts(false));
+    mk('aud-perep', 'line', [line('Downloads per episode', AUD.perep, C.downloads)], aopts(false, '', false));
+    mk('aud-time', 'bar', [bar('Hours listened', AUD.listen_hrs, C.listen), bar('Hours watched', AUD.watch_hrs, C.watch)], aopts(true, ' hrs'));
+  }}
 
   const M = {js_M};
   const vids = {js_vids};
@@ -1472,6 +1579,10 @@ def main():
         d = _empty_extract()
         print(f"Tracker: not found ({tracker_path}) — using empty data")
 
+    # Audio straight from the Megaphone file, so a dashboard build shows the latest paste
+    audio = megaphone_audio.load(os.path.join(data_dir, "megaphone_monthly_gt.csv"))
+    megaphone_audio.apply_to_extract(d, audio)
+    print(f"Audio:   {len(audio['months'])} month(s) from megaphone_monthly_gt.csv")
     revenue = load_revenue(revenue_path)
     socials = load_socials(socials_path)
     generated_at = datetime.now().strftime("%b %d, %Y")
@@ -1479,7 +1590,7 @@ def main():
     print(f"Revenue: {len(revenue['months'])} months from {revenue_path}")
     print(f"Socials: {len(socials['months'])} months × {len(socials['platforms'])} platforms from {socials_path}")
 
-    html = build_html(d, revenue, socials, generated_at)
+    html = build_html(d, revenue, socials, generated_at, audio)
     with open(out, 'w', encoding='utf-8') as f:
         f.write(html)
 

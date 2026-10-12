@@ -19,6 +19,8 @@ import json
 import os
 from datetime import datetime
 
+import megaphone_audio
+
 
 # ─── Rain Delay brand notes (implement in future stylesheet) ─────
 # Site: raindelaymedia.com
@@ -705,7 +707,73 @@ def reports_html(reports):
     return fanatics + embed
 
 
-def build_html(d, reports, revenue, socials, generated_at):
+def audio_page(aud):
+    """Audio tab: Megaphone monthly delivery, listener reach, per-episode downloads and
+    listen vs watch time, plus the full monthly table."""
+    if not aud['months']:
+        return ('<div class="card"><div class="card-title">No Megaphone data yet</div>'
+                '<div class="card-sub">Add a month to data/megaphone_monthly.csv.</div></div>')
+    lm = fmt_period(aud['latest'])
+    now = lambda k: aud[k][-1]
+    avg = now('avg_min')
+    wp = now('watch_pct')
+    metric = lambda label, val, sub: (f'<div class="metric"><div class="metric-label">{label}</div>'
+                                      f'<div class="metric-value">{val}</div><div class="metric-delta">{sub}</div></div>')
+    muted = lambda s: f'<span style="color:var(--text2)">{s}</span>'
+    metrics = (
+        metric(f'Total delivery ({lm})', fmt(now('delivery')), delta_str(aud['delivery']))
+        + metric(f'Downloads ({lm})', fmt(now('downloads')), delta_str(aud['downloads']))
+        + metric(f'Spotify streams ({lm})', fmt(now('streams')), delta_str(aud['streams']))
+        + metric(f'Listener reach ({lm})', fmt(now('reach')), muted('downloads + Spotify · not deduplicated'))
+        + metric(f'Avg time per listener ({lm})', f'{avg:.0f} min' if avg else '—',
+                 muted(f'{wp*100:.0f}% watched · {100-wp*100:.0f}% listened') if wp else '—')
+        + metric(f'Per episode ({lm})', fmt(now('perep')), muted(f"{now('eps') or '—'} eps"))
+    )
+    cols = list(reversed(range(len(aud['months']))))       # newest first
+    rows = [('Total delivery', 'delivery', 'int'), ('Downloads', 'downloads', 'int'),
+            ('Spotify streams', 'streams', 'int'), ('Spotify plays', 'plays', 'int'),
+            ('Downloads reach', 'reach_dl', 'int'), ('Spotify reach', 'reach_st', 'int'),
+            ('Episodes', 'eps', 'int'), ('Downloads per episode', 'perep', 'int'),
+            ('Hours listened', 'listen_hrs', 'int'), ('Hours watched', 'watch_hrs', 'int'),
+            ('Avg minutes per listener', 'avg_min', 'dec'), ('Watched %', 'watch_pct', 'pct')]
+    cell = lambda v, t: ('—' if v is None else f'{v*100:.1f}%' if t == 'pct'
+                         else f'{v:.1f}' if t == 'dec' else f'{int(round(v)):,}')
+    table = ('<tr><th>Megaphone</th>' + ''.join(f'<th>{fmt_period(aud["months"][i])}</th>' for i in cols) + '</tr>'
+             + ''.join(f'<tr><td>{lbl}</td>' + ''.join(f'<td>{cell(aud[k][i], t)}</td>' for i in cols) + '</tr>'
+                       for lbl, k, t in rows))
+    # Fits the card: the audio history is short, so no scrolling timeline here
+    has = lambda *ks: any(v is not None for k in ks for v in aud[k])
+    def chart(cid, h=220, need=(), msg='Not in the Megaphone screens yet'):
+        if need and not has(*need):
+            return f'<div style="height:{h}px;display:flex;align-items:center;justify-content:center;color:var(--text3);font-size:12px">{msg}</div>'
+        return f'<div style="position:relative;height:{h}px;width:100%"><canvas id="{cid}"></canvas></div>'
+    return f"""
+  <div class="metrics">{metrics}</div>
+  <div class="card mb12">
+    <div class="card-header"><span class="card-title">Monthly delivery</span><span class="card-sub">Downloads (all platforms) + Spotify streams · Megaphone</span><button class="expand-btn" onclick="openHistory('audio','')" title="Full history">↗</button></div>
+    {chart('audioTotal', 260)}
+  </div>
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-header"><span class="card-title">Listener reach</span><span class="card-sub">Monthly unique listeners by source</span></div>
+      {chart('audioReach', need=('reach_dl', 'reach_st'), msg="Listener reach not in the Megaphone screens yet")}
+    </div>
+    <div class="card">
+      <div class="card-header"><span class="card-title">Downloads per episode</span><button class="expand-btn" onclick="openHistory('perep','')" title="Full history">↗</button></div>
+      {chart('audioPerEp', need=('perep',), msg="Needs episode counts (filled in by the tracker)")}
+    </div>
+  </div>
+  <div class="card mb12">
+    <div class="card-header"><span class="card-title">Time spent</span><span class="card-sub">Hours listened (audio, or video not on screen) vs watched (video on screen)</span></div>
+    {chart('audioTime', need=('listen_hrs', 'watch_hrs'), msg="Watch / listen time not in the Megaphone screens yet")}
+  </div>
+  <div class="card">
+    <div class="card-header"><span class="card-title">Monthly detail</span><span class="card-sub">From the monthly Megaphone screens · reach isn't deduplicated across sources</span></div>
+    <div class="table-scroll"><table class="data-table">{table}</table></div>
+  </div>"""
+
+
+def build_html(d, reports, revenue, socials, generated_at, audio=None):
     M_raw = d['months']  # newest first: ['2026-05', '2026-04', ...]
     n = len(M_raw)
 
@@ -778,6 +846,13 @@ def build_html(d, reports, revenue, socials, generated_at):
 
     chart_px    = max(n * 46, 500)
     chart_px_12 = max(WINDOW * 46, 500)
+
+    # ── Audio tab (Megaphone monthly file) ──
+    aud = megaphone_audio.series(audio or {"months": [], "rows": {}}, dict(zip(d['months'], d['eps'])))
+    audio_html = audio_page(aud)
+    js_aud = json.dumps({k: aud[k] for k in ('downloads', 'streams', 'reach_dl', 'reach_st',
+                                              'perep', 'listen_hrs', 'watch_hrs')}
+                        | {'months': [fmt_period(m) for m in aud['months']]})
 
     # Platform reach — pull latest follower counts from socials.csv (fallback to xlsx if missing)
     def soc_latest(platform, metric):
@@ -1970,38 +2045,8 @@ body > *{{position:relative;z-index:1}}
 
 <!-- ═══ AUDIO ═══ -->
 <div class="page" id="page-audio">
-  <div class="page-header"><div class="page-title">Audio</div><div class="page-sub">Megaphone downloads, streams, per-episode performance</div></div>
-  <div class="metrics">
-    <div class="metric">
-      <div class="metric-label">Downloads ({latest_mo})</div>
-      <div class="metric-value">{fmt(listens_now)}</div>
-      <div class="metric-delta">{delta_str(ltotal_full)}</div>
-    </div>
-    <div class="metric">
-      <div class="metric-label">Streams ({latest_mo})</div>
-      <div class="metric-value">{fmt(streams_now)}</div>
-      <div class="metric-delta" style="color:var(--text2)">Spotify + Apple</div>
-    </div>
-    <div class="metric">
-      <div class="metric-label">Per-ep ({latest_mo})</div>
-      <div class="metric-value">{fmt(latest(d['l_perep']))}</div>
-      <div class="metric-delta" style="color:var(--text2)">{eps_now} eps</div>
-    </div>
-  </div>
-  <div class="card mb12">
-    <div class="card-header"><span class="card-title">Total downloads</span><span class="card-sub">Megaphone</span><button class="expand-btn" onclick="openHistory('audio','')" title="Full history">↗</button></div>
-    <div class="chart-outer-lg" style="height:260px"><div style="position:relative;width:{chart_px}px;height:100%"><canvas id="audioTotal"></canvas></div></div>
-  </div>
-  <div class="grid-2">
-    <div class="card">
-      <div class="card-header"><span class="card-title">Streams</span><span class="card-sub">Spotify + Apple</span><button class="expand-btn" onclick="openHistory('streams','')" title="Full history">↗</button></div>
-      <div class="chart-outer" style="height:220px"><div style="position:relative;width:{chart_px}px;height:100%"><canvas id="audioStrm"></canvas></div></div>
-    </div>
-    <div class="card">
-      <div class="card-header"><span class="card-title">Per-episode listens</span><button class="expand-btn" onclick="openHistory('perep','')" title="Full history">↗</button></div>
-      <div class="chart-outer" style="height:220px"><div style="position:relative;width:{chart_px}px;height:100%"><canvas id="audioPerEp"></canvas></div></div>
-    </div>
-  </div>
+  <div class="page-header"><div class="page-title">Audio</div><div class="page-sub">Megaphone · downloads, Spotify streams, listener reach and time spent</div></div>
+{audio_html}
 </div>
 
 <!-- ═══ SOCIALS ═══ -->
@@ -2577,6 +2622,45 @@ function mkStacked(id) {{
   ]}}, options:o }});
 }}
 
+/* ─── Audio tab (Megaphone) — its own month axis, only months with audio data ─── */
+const AUD = {js_aud};
+const AUD_C = {{ downloads:'#1B7A3A', spotify:'#1B9B96', listen:'#2F6DDE', watch:'#E08C2A' }};
+function audOpts(stacked, unit) {{
+  const o = opts(false);
+  o.plugins.legend = {{ display:true, position:'top', align:'end',
+    labels:{{ color:tc, boxWidth:10, boxHeight:10, font:{{ size:11 }} }} }};
+  o.interaction = {{ mode:'index', intersect:false }};
+  o.plugins.tooltip.callbacks.label = c => {{
+    const v = c.parsed.y;
+    return ' ' + c.dataset.label + ': ' + (v == null || isNaN(v) ? 'No data' : Math.round(v).toLocaleString() + (unit||''));
+  }};
+  if (stacked) {{ o.scales.x.stacked = true; o.scales.y.stacked = true; }}
+  return o;
+}}
+function audBar(label, data, color) {{
+  return {{ label, data:nn(data), backgroundColor:color, borderRadius:2, borderColor:'transparent', borderWidth:{{ top:2 }}, stack:'s' }};
+}}
+function audLine(label, data, color) {{
+  return {{ label, data:nn(data), borderColor:color, backgroundColor:color, borderWidth:2, tension:.3,
+            pointRadius:4, pointHoverRadius:6, spanGaps:true }};
+}}
+function mkAudio() {{
+  if (!AUD.months.length) return;
+  const g = id => document.getElementById(id);   // sized by its card, not the 12-month timeline width
+  const L = AUD.months, c1 = g('audioTotal'), c2 = g('audioReach'), c3 = g('audioPerEp'), c4 = g('audioTime');
+  if (c1) new Chart(c1, {{ type:'bar', data:{{ labels:L, datasets:[
+    audBar('Downloads', AUD.downloads, AUD_C.downloads), audBar('Spotify streams', AUD.streams, AUD_C.spotify) ]}},
+    options:audOpts(true) }});
+  if (c2) new Chart(c2, {{ type:'line', data:{{ labels:L, datasets:[
+    audLine('Downloads reach', AUD.reach_dl, AUD_C.downloads), audLine('Spotify reach', AUD.reach_st, AUD_C.spotify) ]}},
+    options:audOpts(false) }});
+  if (c3) {{ const o = audOpts(false); o.plugins.legend.display = false;
+    new Chart(c3, {{ type:'line', data:{{ labels:L, datasets:[ audLine('Downloads per episode', AUD.perep, AUD_C.downloads) ]}}, options:o }}); }}
+  if (c4) new Chart(c4, {{ type:'bar', data:{{ labels:L, datasets:[
+    audBar('Hours listened', AUD.listen_hrs, AUD_C.listen), audBar('Hours watched', AUD.watch_hrs, AUD_C.watch) ]}},
+    options:audOpts(true, ' hrs') }});
+}}
+
 function initCharts() {{
   mkStacked('ovStacked');
   const totals = M.map((_,i) => (VIDS[i]||0)+(SHORTS[i]||0)+(LIVES[i]||0)||NaN);
@@ -2605,9 +2689,8 @@ function initCharts() {{
           y: {{ min: 0, max: 100, ticks: {{ color: '#f2f2f2', callback: v => v + '%' }}, grid: {{ color: 'rgba(255,255,255,.06)' }} }} }} }}
     }});
   }}
-  mkBar('audioTotal', LTOTAL, '#1B7A3A');
-  mkBar('audioStrm', LSTRM, '#1B9B96');
-  mkLine('audioPerEp', PEREP, '#1B7A3A', 'rgba(27,122,58,.08)');
+  // Audio tab — Megaphone monthly file (own month axis: only months with audio data)
+  mkAudio();
 
   // Revenue charts — 12-month default on-page, full history via ↗ drawer
   if (typeof REV_M12 !== 'undefined' && REV_M12.length > 0) {{
@@ -3514,6 +3597,7 @@ def main():
     parser.add_argument("--tracker", default=None, help="Path to tracker_data.json")
     parser.add_argument("--revenue", default=None)
     parser.add_argument("--socials", default=None)
+    parser.add_argument("--megaphone", default=None, help="Path to megaphone_monthly.csv")
     parser.add_argument("--output",  default="road_trippin.html")
     args = parser.parse_args()
 
@@ -3537,6 +3621,9 @@ def main():
     print(f"Tracker: {args.tracker}")
 
     d = extract(args.tracker)
+    # Audio straight from the Megaphone file, so a dashboard build shows the latest paste
+    audio = megaphone_audio.load(args.megaphone or os.path.join(data_dir, "megaphone_monthly.csv"))
+    megaphone_audio.apply_to_extract(d, audio)
     reports = scan_reports(data_dir)
     revenue_path = args.revenue or os.path.join(data_dir, "revenue.csv")
     revenue = load_revenue(revenue_path)
@@ -3546,13 +3633,14 @@ def main():
 
     print(f"  Months:  {len(d['months'])}  ({d['months'][-1]} → {d['months'][0]})")
     print(f"  YT data: {'yes' if any(v for v in d['vids'] if v) else 'no'}")
-    print(f"  Audio:   {'yes' if any(v for v in d['l_total'] if v) else 'no'}")
+    print(f"  Audio:   {len(audio['months'])} months from megaphone_monthly.csv"
+          f" ({audio['months'][0]} → {audio['months'][-1]})" if audio['months'] else "  Audio:   none")
     print(f"  Subs:    {d['current_subs']:,}")
     print(f"  Reports: {sum(len(v) for v in reports.values())} found")
     print(f"  Revenue: {len(revenue['months'])} months loaded from {revenue_path}")
     print(f"  Socials: {len(socials['months'])} months × {len(socials['platforms'])} platforms loaded from {socials_path}")
 
-    html = build_html(d, reports, revenue, socials, generated_at)
+    html = build_html(d, reports, revenue, socials, generated_at, audio)
     with open(out, 'w', encoding='utf-8') as f:
         f.write(html)
 
