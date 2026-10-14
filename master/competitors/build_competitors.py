@@ -24,6 +24,7 @@ import os
 import statistics
 from collections import defaultdict
 from datetime import date, datetime, timedelta
+from zoneinfo import ZoneInfo
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 DATA = os.path.join(HERE, "data")
@@ -31,6 +32,12 @@ OUT = os.path.join(HERE, "competitors.html")
 WINDOW = 28
 INACTIVE_DAYS = 30
 EPISODE_MIN_SEC = 20 * 60
+AGES = (1, 3, 7)            # episode views measured this many days after upload
+BREAKOUT_X = 3.0            # breakout = at least this many x the show's normal
+BREAKOUT_AGE = 2            # ... measured at 48 hours
+BREAKOUT_MIN_VIEWS = 1000   # ignore tiny numbers
+BASELINE_MIN = 5            # uploads needed for a same-age baseline
+ET = ZoneInfo("America/New_York")
 FORMATS = [("episode", "Episodes", "#1E3A5F"), ("clip", "Clips", "#3B82F6"), ("short", "Shorts", "#C9A84C")]
 
 
@@ -64,6 +71,12 @@ def md(iso):
     return f"{d.strftime('%b')} {d.day}"
 
 
+def hms(secs):
+    h, rem = divmod(int(secs), 3600)
+    m, s = divmod(rem, 60)
+    return f"{h}:{m:02d}:{s:02d}" if h else f"{m}:{s:02d}"
+
+
 def video_format(secs):
     return "short" if secs <= 180 else "clip" if secs <= EPISODE_MIN_SEC else "episode"
 
@@ -91,6 +104,42 @@ def gained(daily, dates, cid, days, field="views"):
     return a - b if a is not None and b is not None else None
 
 
+def views_at(vdaily, v, age):
+    """Views in the snapshot taken `age` days after upload (None if that day wasn't captured)."""
+    d = (datetime.strptime(v["published"], "%Y-%m-%d").date() + timedelta(days=age)).isoformat()
+    return vdaily.get(d, {}).get(v["video_id"])
+
+
+def find_breakouts(vids, vdaily, today, views_now):
+    """Uploads from the last 7 days doing >= BREAKOUT_X x the show's normal at 48 hours.
+    Normal = median views of the same show's same-format uploads at the same age; until
+    there are BASELINE_MIN of those, the show's recent median (older uploads, so a
+    conservative bar)."""
+    out = []
+    week = (today - timedelta(days=6)).isoformat()
+    for v in vids:
+        if v["published"] < week:
+            continue
+        age_now = (today - datetime.strptime(v["published"], "%Y-%m-%d").date()).days
+        a = min(BREAKOUT_AGE, age_now)
+        val = views_at(vdaily, v, a)
+        if val is None or val < BREAKOUT_MIN_VIEWS:
+            continue
+        same = [o for o in vids if o["video_id"] != v["video_id"] and o["format"] == v["format"]]
+        base = [x for x in (views_at(vdaily, o, a) for o in same) if x is not None]
+        method = "same age"
+        if len(base) < BASELINE_MIN:
+            base = [views_now[o["video_id"]] for o in same if views_now.get(o["video_id"]) is not None
+                    and (today - datetime.strptime(o["published"], "%Y-%m-%d").date()).days >= a]
+            method = "recent median"
+        if len(base) < 3:
+            continue
+        med = statistics.median(base)
+        if med > 0 and val / med >= BREAKOUT_X:
+            out.append({**v, "at": val, "age": a, "ratio": val / med, "normal": med, "method": method})
+    return out
+
+
 def summarize(shows, daily, videos, vdaily):
     dates = sorted(daily)
     d1 = dates[-1]
@@ -100,15 +149,20 @@ def summarize(shows, daily, videos, vdaily):
     views_now = vdaily.get(d1, {})
     by_channel = defaultdict(list)
     for vid, v in videos.items():
-        if v["published"] >= since and vid in views_now:
+        if vid in views_now:     # every tracked upload (last ~35 days); 28-day stats filter below
             by_channel[v["channel_id"]].append({**v, "views": views_now[vid] or 0,
                                                 "format": video_format(num(v["duration_sec"]) or 0)})
     rows = []
     for s in shows:
         cid = s["channel_id"]
         c = daily[d1].get(cid, {})
-        vs = by_channel.get(cid, [])
+        tracked = by_channel.get(cid, [])
+        vs = [v for v in tracked if v["published"] >= since]
         eps = [v["views"] for v in vs if v["format"] == "episode"]
+        ep_age = {}
+        for a in AGES:
+            xs = [x for x in (views_at(vdaily, v, a) for v in tracked if v["format"] == "episode") if x is not None]
+            ep_age[a] = (round(statistics.median(xs)) if xs else None, len(xs))
         last = c.get("last_upload") or ""
         rows.append({
             **s, "ours": s["ours"] == "1",
@@ -123,6 +177,8 @@ def summarize(shows, daily, videos, vdaily):
             "last_upload": last,
             "inactive": bool(last) and (today - datetime.strptime(last, "%Y-%m-%d").date()).days > INACTIVE_DAYS,
             "top": sorted((v for v in vs if v["published"] >= week), key=lambda v: -v["views"])[:3],
+            "ep_age": ep_age,
+            "breakouts": find_breakouts(tracked, vdaily, today, views_now),
         })
     for r in rows:
         r["upload_views_total"] = sum(r["upload_views"].values())
@@ -172,7 +228,9 @@ def group_html(group, rows, dates, trend, gi):
                  + cell(r["subs"]) + cell(r["gain7"], "" if have7 else "pending")
                  + cell(r["gain28"], "" if have28 else "pending")
                  + f'<td class="n">{up["episode"]} · {up["clip"]} · {up["short"]}</td>'
-                 + cell(r["upload_views_total"]) + cell(r["median_ep"])
+                 + cell(r["upload_views_total"])
+                 + (f'<td class="n">{fmt(r["ep_age"][7][0])}<div class="sub">{r["ep_age"][7][1]} ep</div></td>'
+                    if r["ep_age"][7][1] else '<td class="n pending">—</td>')
                  + f'<td class="n">{r["eps_week"] if up["episode"] else "—"}</td></tr>')
 
     # Charts data
@@ -188,6 +246,37 @@ def group_html(group, rows, dates, trend, gi):
         f'<td><a href="https://youtu.be/{v["video_id"]}" target="_blank" rel="noopener">{v["title"]}</a>'
         f'<div class="sub">{v["show"]} · {md(v["published"])} · {dict((f, l) for f, l, _ in FORMATS)[v["format"]][:-1]}</div></td></tr>'
         for v in top) or '<tr><td colspan="2" class="sub">No uploads in the last 7 days.</td></tr>'
+
+    # Episode views by age (day 1 / 3 / 7), shows with any measured episode
+    aged = [r for r in g if any(r["ep_age"][a][1] for a in AGES)]
+    aged.sort(key=lambda r: (r["ep_age"][7][0] is None, -(r["ep_age"][7][0] or 0), -(r["ep_age"][1][0] or 0)))
+    top7 = max([r["ep_age"][7][0] or 0 for r in aged] + [1])
+    age_rows = "".join(
+        f'<tr class="{"ours" if r["ours"] else ""}"><td class="sh">{"★ " if r["ours"] else ""}{r["show"]}</td>'
+        + "".join(f'<td class="n">{fmt(r["ep_age"][a][0])}<div class="sub">{r["ep_age"][a][1] or "no"} ep</div></td>' for a in AGES)
+        + f'<td class="barcell"><div class="bar" style="width:{(r["ep_age"][7][0] or 0) / top7 * 100:.0f}%"></div></td></tr>'
+        for r in aged) or (f'<tr><td class="sub" colspan="5">Fills in as episodes reach day 1, 3 and 7 '
+                           f'(tracking since {md(dates[0])}).</td></tr>')
+
+    # Breakouts across the group
+    bo = sorted((dict(b, show=r["show"], ours=r["ours"]) for r in g for b in r["breakouts"]),
+                key=lambda b: -b["ratio"])[:8]
+
+    def when(b):
+        if b.get("published_at"):
+            t = datetime.strptime(b["published_at"], "%Y-%m-%dT%H:%M")
+            return f'{t.strftime("%a")} {md(b["published"])} · {t.strftime("%I:%M %p").lstrip("0")} ET'
+        return md(b["published"])
+
+    fmt_name = {f: l[:-1] for f, l, _ in FORMATS}
+    no_bo = f"No uploads from the last 7 days are running {BREAKOUT_X:.0f}× their show's normal."
+    bo_rows = "".join(
+        f'<tr class="{"ours" if b["ours"] else ""}"><td class="n"><span class="x">{b["ratio"]:.1f}×</span></td>'
+        f'<td><a href="https://youtu.be/{b["video_id"]}" target="_blank" rel="noopener">{b["title"]}</a>'
+        f'<div class="sub">{b["show"]} · {fmt_name[b["format"]]} · {hms(num(b["duration_sec"]) or 0)} · {when(b)}<br>'
+        f'{fmt(b["at"])} views at {"48h" if b["age"] == 2 else str(b["age"] * 24) + "h"} vs normal {fmt(b["normal"])}'
+        f'{" (rough: recent median)" if b["method"] != "same age" else ""}</div></td></tr>'
+        for b in bo) or f'<tr><td class="sub" colspan="2">{no_bo}</td></tr>'
 
     trend_block = (f'<canvas id="trend{gi}"></canvas>' if len(dates) >= 3 else
                    f'<div class="pending-box">Daily views gained starts drawing after a few days of snapshots '
@@ -206,8 +295,19 @@ def group_html(group, rows, dates, trend, gi):
       <div class="scroll"><table class="lb">
         <thead><tr><th>#</th><th>Show</th><th class="n">Subscribers</th><th class="n">Views gained · 7d</th><th class="n">Views gained · 28d</th>
           <th class="n">Uploads 28d<br><span class="sub">ep · clip · short</span></th><th class="n">Views on 28d uploads</th>
-          <th class="n">Median views / episode</th><th class="n">Episodes / week</th></tr></thead>
+          <th class="n">Episode views<br><span class="sub">day 7 · median</span></th><th class="n">Episodes / week</th></tr></thead>
         <tbody>{body}</tbody></table></div>
+    </div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-h"><h3>Episode views by age</h3><span class="r">median views of full episodes 1, 3 and 7 days after upload</span></div>
+        <div class="scroll"><table class="lb age"><thead><tr><th>Show</th><th class="n">Day 1</th><th class="n">Day 3</th><th class="n">Day 7</th><th></th></tr></thead>
+          <tbody>{age_rows}</tbody></table></div>
+      </div>
+      <div class="card">
+        <div class="card-h"><h3>Breakouts · last 7 days</h3><span class="r">{BREAKOUT_X:.0f}×+ the show's normal at 48 hours</span></div>
+        <table class="top">{bo_rows}</table>
+      </div>
     </div>
     <div class="grid2">
       <div class="card">
@@ -228,6 +328,21 @@ def build():
     if not daily:
         raise SystemExit("No snapshots yet — run collect_competitors.py first.")
     rows, dates, trend = summarize(shows, daily, videos, vdaily)
+    # Missed-day guard: every day from the first snapshot to today should have one
+    today_et = datetime.now(ET).date()
+    first = datetime.strptime(dates[0], "%Y-%m-%d").date()
+    expected = [(first + timedelta(days=i)).isoformat() for i in range((today_et - first).days + 1)]
+    have = set(dates) & set(vdaily)
+    gaps = [d for d in expected if d not in have]
+    stale = dates[-1] < today_et.isoformat()
+    if gaps:
+        print(f"::warning::Competitor snapshot missing for {', '.join(gaps)}")
+    alert = ""
+    if gaps:
+        head = "Today's snapshot is missing." if stale else "History has gaps."
+        alert = (f'<div class="alert"><b>{head}</b> No snapshot for {", ".join(md(d) for d in gaps)}. '
+                 "Those days can't be recovered: check the \"Snapshot competitor channels\" step "
+                 "in the daily workflow.</div>")
     groups = list(dict.fromkeys(s["group"] for s in shows))
     tabs = "".join(f'<button class="tab{" on" if i == 0 else ""}" data-g="{i}">{g}</button>' for i, g in enumerate(groups))
     sections = "".join(group_html(g, rows, dates, trend, i) for i, g in enumerate(groups))
@@ -250,6 +365,12 @@ def build():
   .lead {{ color:var(--text2); margin-bottom:16px; }}
   .note {{ background:var(--surface); border:1px solid var(--border); border-left:3px solid var(--gold); border-radius:var(--radius);
           padding:10px 14px; color:var(--text2); margin-bottom:16px; font-size:12px; line-height:1.5; }}
+  .alert {{ background:#FEF2F2; border:1px solid #FECACA; border-left:3px solid #DC2626; border-radius:var(--radius);
+           padding:10px 14px; color:#7F1D1D; margin-bottom:16px; font-size:12px; line-height:1.5; }}
+  .x {{ display:inline-block; font-weight:800; color:#065F46; background:#D1FAE5; padding:2px 6px; border-radius:4px; }}
+  .age td.barcell {{ width:28%; }}
+  .bar {{ height:8px; border-radius:4px; background:var(--brand); min-width:2px; }}
+  tr.ours .bar {{ background:var(--gold); }}
   .tabs {{ display:flex; gap:6px; flex-wrap:wrap; margin-bottom:16px; }}
   .tab {{ border:1px solid var(--border); background:var(--surface); color:var(--text2); padding:7px 14px; border-radius:999px;
          font:600 12px Inter,sans-serif; cursor:pointer; }}
@@ -288,6 +409,7 @@ def build():
   <a class="back" href="../../index.html">← RDM Network</a>
   <h1>Competitive Landscape</h1>
   <div class="lead">Public YouTube stats for {len(shows)} shows · our shows marked ★ · snapshot {md(dates[-1])} · tracking since {md(dates[0])} ({days} day{'s' if days != 1 else ''})</div>
+  {alert}
   {'' if days > 28 else f'<div class="note"><b>History is building.</b> "Views gained" needs earlier snapshots: 7-day figures fill in from {md((datetime.strptime(dates[0], "%Y-%m-%d") + timedelta(days=7)).strftime("%Y-%m-%d"))}, 28-day from {md((datetime.strptime(dates[0], "%Y-%m-%d") + timedelta(days=28)).strftime("%Y-%m-%d"))}. Until then, shows rank by the views their last-28-day uploads have now.</div>'}
   <div class="tabs">{tabs}</div>
   <div class="legend" id="legend">{legend}</div>

@@ -8,7 +8,7 @@ because this runs every day: start it early, never skip.
 
 Writes (all under master/competitors/data/):
     channel_daily.csv            date, channel_id, subs, views, videos, last_upload  (one row per channel per day)
-    videos.csv                   video_id, channel_id, published, duration_sec, live, title
+    videos.csv                   video_id, channel_id, published, published_at (ET), duration_sec, live, title
     video_daily/YYYY-MM-DD.csv   video_id, views, likes, comments  — videos published in the
                                  last VIDEO_WINDOW_DAYS, one file per day (history is never rewritten)
 
@@ -19,6 +19,7 @@ Cost: ~1 unit per 50 channels + ~2 units per page of 50 recent uploads — well 
 Usage (from repo root):
     python master/competitors/collect_competitors.py
     python master/competitors/collect_competitors.py --dry-run
+    python master/competitors/collect_competitors.py --force     # replace today's snapshot
 """
 
 import argparse
@@ -26,6 +27,7 @@ import csv
 import importlib.util
 import os
 import re
+import time
 from datetime import date, datetime, timedelta
 from zoneinfo import ZoneInfo
 
@@ -54,11 +56,21 @@ def load_key():
 
 
 def get(endpoint, key, **params):
-    r = requests.get(f"{API}/{endpoint}", params={**params, "key": key}, timeout=30)
-    j = r.json()
-    if "error" in j:
-        raise RuntimeError(f"{endpoint}: {j['error'].get('message', r.status_code)}")
-    return j
+    """GET with 3 tries — the API throws the occasional transient 5xx / timeout."""
+    last = None
+    for attempt in range(3):
+        try:
+            r = requests.get(f"{API}/{endpoint}", params={**params, "key": key}, timeout=30)
+            j = r.json()
+            if "error" not in j:
+                return j
+            last = f"{endpoint}: {j['error'].get('message', r.status_code)}"
+            if r.status_code < 500:
+                break                       # quota / bad request — retrying won't help
+        except (requests.RequestException, ValueError) as e:
+            last = f"{endpoint}: {e}"
+        time.sleep(2 * (attempt + 1))
+    raise RuntimeError(last)
 
 
 def iso_sec(iso):
@@ -71,6 +83,10 @@ def iso_sec(iso):
 
 def et_date(iso):
     return datetime.fromisoformat(iso.replace("Z", "+00:00")).astimezone(ET).date().isoformat()
+
+
+def et_time(iso):
+    return datetime.fromisoformat(iso.replace("Z", "+00:00")).astimezone(ET).strftime("%Y-%m-%dT%H:%M")
 
 
 def read_csv(path):
@@ -91,6 +107,7 @@ def write_csv(path, fields, rows):
 def main():
     ap = argparse.ArgumentParser(description="Daily public YouTube snapshot of competitor channels")
     ap.add_argument("--dry-run", action="store_true", help="Pull and summarize, write nothing")
+    ap.add_argument("--force", action="store_true", help="Replace today's snapshot if it already exists")
     args = ap.parse_args()
 
     key = load_key()
@@ -101,6 +118,11 @@ def main():
     ids = [s["channel_id"] for s in shows]
     today = datetime.now(ET).date()
     cutoff = (today - timedelta(days=VIDEO_WINDOW_DAYS)).isoformat()
+    # One snapshot per day, taken by the 09:00 UTC workflow. A later manual run would swap
+    # in values from a different time of day and skew the day-over-day changes.
+    if os.path.exists(os.path.join(DATA, "video_daily", f"{today.isoformat()}.csv")) and not (args.force or args.dry_run):
+        print(f"Snapshot for {today} already saved — skipping (use --force to replace it).")
+        return
     print(f"COMPETITOR SNAPSHOT · {today} · {len(ids)} channels")
 
     # 1. Channel totals (1 unit per 50 channels)
@@ -109,6 +131,8 @@ def main():
         for c in get("channels", key, part="statistics,contentDetails", id=",".join(ids[i:i + 50]),
                      maxResults=50).get("items", []):
             channels[c["id"]] = c
+    if not channels:
+        raise SystemExit("::error::Competitor snapshot: no channels returned — nothing saved (gap in history)")
     missing = [s["show"] for s in shows if s["channel_id"] not in channels]
     if missing:
         print(f"  ⚠ not returned: {', '.join(missing)}")
@@ -171,10 +195,11 @@ def main():
     for vid, v in details.items():
         meta[vid] = {"video_id": vid, "channel_id": recent[vid],
                      "published": et_date(v["snippet"]["publishedAt"]),
+                     "published_at": et_time(v["snippet"]["publishedAt"]),
                      "duration_sec": iso_sec(v["contentDetails"].get("duration")),
                      "live": int(bool((v.get("liveStreamingDetails") or {}).get("actualStartTime"))),
                      "title": v["snippet"]["title"]}
-    write_csv(v_path, ["video_id", "channel_id", "published", "duration_sec", "live", "title"],
+    write_csv(v_path, ["video_id", "channel_id", "published", "published_at", "duration_sec", "live", "title"],
               sorted(meta.values(), key=lambda r: (r["published"], r["video_id"])))
 
     # video_daily/<date>.csv — today's views for every recent upload
