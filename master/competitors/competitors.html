@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Competitive Landscape — Rain Delay Media</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#F6F7F9; --surface:#FFFFFF; --surface2:#F1F3F6; --border:#E2E5EA; --ink:#0F172A; --text:#1E293B;
+          --text2:#475569; --mut:#94A3B8; --brand:#1E3A5F; --gold:#C9A84C; --gold-soft:#FBF6E8; --radius:10px; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:'Inter',-apple-system,system-ui,sans-serif; color:var(--text); background:var(--bg); font-size:13px; }
+  .wrap { max-width:1180px; margin:0 auto; padding:28px 20px 60px; }
+  a { color:inherit; }
+  .back { font-size:12px; color:var(--text2); text-decoration:none; }
+  h1 { font-size:26px; margin:10px 0 4px; color:var(--ink); letter-spacing:-.01em; }
+  .lead { color:var(--text2); margin-bottom:16px; }
+  .note { background:var(--surface); border:1px solid var(--border); border-left:3px solid var(--gold); border-radius:var(--radius);
+          padding:10px 14px; color:var(--text2); margin-bottom:16px; font-size:12px; line-height:1.5; }
+  .tabs { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:16px; }
+  .tab { border:1px solid var(--border); background:var(--surface); color:var(--text2); padding:7px 14px; border-radius:999px;
+         font:600 12px Inter,sans-serif; cursor:pointer; }
+  .tab.on { background:var(--brand); border-color:var(--brand); color:#fff; }
+  .tiles { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:12px; margin-bottom:12px; }
+  .tile { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:14px 16px; }
+  .ours-tile { border-color:var(--gold); background:var(--gold-soft); }
+  .t-l { font-size:11px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--text2); }
+  .t-v { font-size:28px; font-weight:800; color:var(--ink); margin:4px 0; } .t-v small { font-size:13px; color:var(--mut); font-weight:600; }
+  .t-s { font-size:12px; color:var(--text2); line-height:1.5; }
+  .card { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:16px 18px; margin-bottom:12px; }
+  .card-h { display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap; margin-bottom:10px; }
+  .card-h h3 { margin:0; font-size:14px; color:var(--ink); } .card-h .r { font-size:11px; color:var(--mut); }
+  .legend { display:flex; gap:14px; font-size:11px; color:var(--text2); margin:-2px 0 8px; }
+  .legend i { display:inline-block; width:10px; height:10px; border-radius:2px; margin-right:5px; vertical-align:-1px; }
+  .grid2 { display:grid; grid-template-columns:repeat(auto-fit,minmax(340px,1fr)); gap:12px; }
+  .scroll { overflow-x:auto; }
+  table { border-collapse:collapse; width:100%; }
+  .lb th { font-size:10.5px; text-transform:uppercase; letter-spacing:.05em; color:var(--mut); font-weight:700; text-align:left;
+           padding:8px 10px; border-bottom:1px solid var(--border); white-space:nowrap; vertical-align:bottom; }
+  .lb td { padding:9px 10px; border-bottom:1px solid var(--surface2); vertical-align:top; }
+  .n { text-align:right !important; font-variant-numeric:tabular-nums; white-space:nowrap; }
+  .rk { color:var(--mut); width:28px; }
+  .sh a { font-weight:600; color:var(--ink); text-decoration:none; } .sh a:hover { text-decoration:underline; }
+  .sub { font-size:11px; color:var(--mut); font-weight:400; text-transform:none; letter-spacing:0; }
+  tr.ours td { background:var(--gold-soft); }
+  .pending { color:var(--mut); }
+  .badge { font-size:10px; color:#92400E; background:#FEF3C7; padding:1px 6px; border-radius:4px; }
+  .top td { padding:7px 6px; border-bottom:1px solid var(--surface2); vertical-align:top; font-size:12px; }
+  .top a { color:var(--ink); text-decoration:none; } .top a:hover { text-decoration:underline; }
+  .top td.n { width:64px; font-weight:700; color:var(--ink); }
+  .pending-box { height:100%; display:flex; align-items:center; justify-content:center; text-align:center; color:var(--mut); padding:0 30px; }
+  .foot { margin-top:22px; font-size:11px; color:var(--mut); line-height:1.6; }
+  @media (max-width:560px) { .wrap { padding:18px 16px 40px; } h1 { font-size:21px; } }
+</style></head><body><div class="wrap">
+  <a class="back" href="../../index.html">← RDM Network</a>
+  <h1>Competitive Landscape</h1>
+  <div class="lead">Public YouTube stats for 29 shows · our shows marked ★ · snapshot Oct 13 · tracking since Oct 13 (1 day)</div>
+  <div class="note"><b>History is building.</b> "Views gained" needs earlier snapshots: 7-day figures fill in from Oct 20, 28-day from Nov 10. Until then, shows rank by the views their last-28-day uploads have now.</div>
+  <div class="tabs"><button class="tab on" data-g="0">Basketball</button><button class="tab" data-g="1">Football</button><button class="tab" data-g="2">Women's</button></div>
+  <div class="legend" id="legend"><span><i style="background:#1E3A5F"></i>Episodes</span><span><i style="background:#3B82F6"></i>Clips</span><span><i style="background:#C9A84C"></i>Shorts</span></div>
+  
+  <section class="group" id="g0" >
+    <div class="tiles">
+      <div class="tile ours-tile">
+        <div class="t-l">★ Road Trippin'</div>
+        <div class="t-v">#5 <small>of 12</small></div>
+        <div class="t-s">views on last-28-day uploads · 786K
+          <br>Leader: Gil's Arena · 28.3M</div>
+      </div></div>
+    <div class="card">
+      <div class="card-h"><h3>Views on uploads from the last 28 days</h3><span class="r">current views of everything published Sep 16 – Oct 13, by format</span></div>
+      <div style="position:relative;height:300px"><canvas id="bars0"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="card-h"><h3>Leaderboard</h3><span class="r">sorted by views on last-28-day uploads (views gained ranks from Nov 10)</span></div>
+      <div class="scroll"><table class="lb">
+        <thead><tr><th>#</th><th>Show</th><th class="n">Subscribers</th><th class="n">Views gained · 7d</th><th class="n">Views gained · 28d</th>
+          <th class="n">Uploads 28d<br><span class="sub">ep · clip · short</span></th><th class="n">Views on 28d uploads</th>
+          <th class="n">Median views / episode</th><th class="n">Episodes / week</th></tr></thead>
+        <tbody><tr class=""><td class="rk">1</td><td class="sh"><a href="https://www.youtube.com/channel/UCAvjYgmwadC682OoC4Cc6TQ" target="_blank" rel="noopener">Gil's Arena</a><div class="sub">Former players · <span class="sub">last upload Oct 13</span></div></td><td class="n ">1.3M</td><td class="n pending">—</td><td class="n pending">—</td><td class="n">73 · 13 · 58</td><td class="n ">28.3M</td><td class="n ">250K</td><td class="n">18.2</td></tr><tr class=""><td class="rk">2</td><td class="sh"><a href="https://www.youtube.com/channel/UCQoxJOkwaCgyzQtiuAIDcuw" target="_blank" rel="noopener">Club Shay Shay</a><div class="sub">Former players · <span class="sub">last upload Oct 13</span></div></td><td class="n ">4.3M</td><td class="n pending">—</td><td class="n pending">—</td><td class="n">5 · 30 · 38</td><td class="n ">17.3M</td><td class="n ">903K</td><td class="n">1.2</td></tr><tr class=""><td class="rk">3</td><td class="sh"><a href="https://www.youtube.com/channel/UC2ozVs4pg2K3uFLw6-0ayCQ" target="_blank" rel="noopener">All the Smoke</a><div class="sub">Former players · <span class="sub">last upload Oct 13</span></div></td><td class="n ">1.4M</td><td class="n pending">—</td><td class="n pending">—</td><td class="n">6 · 16 · 98</td><td class="n ">8.5M</td><td class="n ">166K</td><td class="n">1.5</td></tr><tr class=""><td class="rk">4</td><td class="sh"><a href="https://www.youtube.com/channel/UCBNqqomXKPSWvcQDXOkRvRA" target="_blank" rel="noopener">The Draymond Green Show</a><div class="sub">Former players · <span class="sub">last upload Oct 13</span></div></td><td class="n ">270K</td><td class="n pending">—</td><td class="n pending">—</td><td class="n">8 · 1 · 23</td><td class="n ">1.2M</td><td class="n ">29K</td><td class="n">2.0</td></tr><tr class="ours"><td class="rk">5</td><td class="sh"><a href="https://www.youtube.com/channel/UCSes4X8uDrpc4X46hJKjejg" target="_blank" rel="noopener">★ Road Trippin'</a><div class="sub">Former players · <span class="sub">last upload Oct 13</span></div></td><td class="n ">182K</td><td class="n pending">—</td><td class="n pending">—</td><td class="n">2 · 7 · 21</td><td class="n ">786K</td><td class="n ">7.6K</td><td class="n">0.5</td></tr><tr class=""><td class="rk">6</td><td class="sh"><a href="https://www.youtube.com/channel/UCS5fdgvuA-fCPZQsk0unKnw" target="_blank" rel="noopener">The Zach Lowe Show</a><div class="sub">Media · <span class="sub">last upload Oct 13</span></div></td><td class="n ">66K</td><td class="n pending">—</td><td class="n pending">—</td><td class="n">0 · 0 · 20</td><td class="n ">407K</td><td class="n ">—</td><td class="n">—</td></tr><tr class=""><td class="rk">7</td><td class="sh"><a href="https://www.youtube.com/channel/UCa9W_cPwwbDlwBwHOd1YWoQ" target="_blank" rel="noopener">KG Certified</a><div class="sub">Former players · <span class="sub">last upload Oct 13</span></div></td><td class="n ">265K</td><td class="n pending">—</td><td class="n pending">—</td><td class="n">0 · 2 · 14</td><td class="n ">389K</td><td class="n ">—</td><td class="n">—</td></tr><tr class=""><td class="rk">8</td><td class="sh"><a href="https://www.youtube.com/channel/UCwZo_mDI4fOIp-g18kinGBw" target="_blank" rel="noopener">Run It Back</a><div class="sub">Former players · <span class="sub">last upload Oct 2</span></div></td><td class="n ">295K</td><td class="n pending">—</td><td class="n pending">—</td><td class="n">0 · 0 · 10</td><td class="n ">79K</td><td class="n ">—</td><td class="n">—</td></tr><tr class=""><td class="rk">9</td><td class="sh"><a href="https://www.youtube.com/channel/UC_MXNS3qkraCAEebdScjAPA" target="_blank" rel="noopener">Podcast P with Paul George</a><div class="sub">Former players · <span class="badge">inactive · last Oct 2</span></div></td><td class="n ">800K</td><td class="n pending">—</td><td class="n pending">—</td><td class="n">0 · 0 · 0</td><td class="n ">0</td><td class="n ">—</td><td class="n">—</td></tr><tr class=""><td class="rk">10</td><td class="sh"><a href="https://www.youtube.com/channel/UCDEA1ZnPxXWJNJ_VFQ0aCfQ" target="_blank" rel="noopener">Point Forward</a><div class="sub">Former players · <span class="badge">inactive · last Aug 7</span></div></td><td class="n ">91K</td><td class="n pending">—</td><td class="n pending">—</td><td class="n">0 · 0 · 0</td><td class="n ">0</td><td class="n ">—</td><td class="n">—</td></tr><tr class=""><td class="rk">11</td><td class="sh"><a href="https://www.youtube.com/channel/UCIOXmaExi4DjLHGyGvnu3bw" target="_blank" rel="noopener">The Big Podcast with Shaq</a><div class="sub">Former players · <span class="badge">inactive · last Sep 5</span></div></td><td class="n ">442K</td><td class="n pending">—</td><td class="n pending">—</td><td class="n">0 · 0 · 0</td><td class="n ">0</td><td class="n ">—</td><td class="n">—</td></tr><tr class=""><td class="rk">12</td><td class="sh"><a href="https://www.youtube.com/channel/UCrUJ2hRTGLEaozZZ8cp5u0A" target="_blank" rel="noopener">The OGs</a><div class="sub">Former players · <span class="badge">inactive · last Sep 3</span></div></td><td class="n ">131K</td><td class="n pending">—</td><td class="n pending">—</td><td class="n">0 · 0 · 0</td><td class="n ">0</td><td class="n ">—</td><td class="n">—</td></tr></tbody></table></div>
+    </div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-h"><h3>Views gained per day</h3><span class="r">top 6 by last-7-day gains</span></div>
+        <div style="position:relative;height:260px"><div class="pending-box">Daily views gained starts drawing after a few days of snapshots (tracking since Oct 13).</div></div>
+      </div>
+      <div class="card">
+        <div class="card-h"><h3>Top uploads · last 7 days</h3><span class="r">current views</span></div>
+        <table class="top"><tr class=""><td class="n">903K</td><td><a href="https://youtu.be/2i3tLbO0LYA" target="_blank" rel="noopener">Nick "Swaggy P" Young On Kobe Bryant, LeBron James, Lakers, Warriors, Dating, Cheating & NBA Today</a><div class="sub">Club Shay Shay · Oct 7 · Episode</div></td></tr><tr class=""><td class="n">474K</td><td><a href="https://youtu.be/GxXqXEXZzZ8" target="_blank" rel="noopener">Boogie Cousins DOES NOT Claim the Kings</a><div class="sub">Gil's Arena · Oct 12 · Short</div></td></tr><tr class=""><td class="n">443K</td><td><a href="https://youtu.be/tG-JDWgaEh4" target="_blank" rel="noopener">Michael Strahan’s WILDEST Lawrence Taylor Stories 😭</a><div class="sub">All the Smoke · Oct 7 · Short</div></td></tr><tr class=""><td class="n">319K</td><td><a href="https://youtu.be/YH1QiH2_6ZM" target="_blank" rel="noopener">Kyrie Irving's RETURN, PG's Boston Debut & Jaylen Brown's Expectations Have The Arena HOT!</a><div class="sub">Gil's Arena · Oct 12 · Episode</div></td></tr><tr class=""><td class="n">282K</td><td><a href="https://youtu.be/XovVev1nwto" target="_blank" rel="noopener">Bron's 76ers Looking ELITE,  AJ Dybantsa's Wizards Debut & NY'S CONTRACT CRISIS Sets The Arena Off!</a><div class="sub">Gil's Arena · Oct 9 · Episode</div></td></tr><tr class=""><td class="n">262K</td><td><a href="https://youtu.be/KLmuho8vZ9k" target="_blank" rel="noopener">Jerome Bettis was sure he'd fumbled his ENTIRE legacy 😳</a><div class="sub">All the Smoke · Oct 8 · Short</div></td></tr><tr class=""><td class="n">194K</td><td><a href="https://youtu.be/64vAfPGhF8M" target="_blank" rel="noopener">Kendrick Lamar Is Nick "Swaggy P" Young’s Cousin & He Needs To Get Drake Again For Barking At Woman</a><div class="sub">Club Shay Shay · Oct 8 · Clip</div></td></tr><tr class=""><td class="n">193K</td><td><a href="https://youtu.be/CjGtvBXrjjQ" target="_blank" rel="noopener">Michael Jordan does NOT play around when it comes to golf 😬</a><div class="sub">All the Smoke · Oct 8 · Short</div></td></tr><tr class=""><td class="n">130K</td><td><a href="https://youtu.be/baB_7LycY9Y" target="_blank" rel="noopener">Nick "Swaggy P" Young’s Friends Beat Up D’Angelo Russell’s Brother At Lakers Game I CLUB SHAY SHAY</a><div class="sub">Club Shay Shay · Oct 8 · Clip</div></td></tr><tr class=""><td class="n">85K</td><td><a href="https://youtu.be/HRNMrhUW76s" target="_blank" rel="noopener">Deni Avdija on Becoming an NBA All-Star, Playing In NBA Playoffs & Hilarious Draymond Green Story</a><div class="sub">The Draymond Green Show · Oct 11 · Episode</div></td></tr></table>
+      </div>
+    </div>
+    <script type="application/json" id="data0">{"labels": ["Gil's Arena", "Club Shay Shay", "All the Smoke", "The Draymond Green Show", "\u2605 Road Trippin'", "The Zach Lowe Show", "KG Certified", "Run It Back"], "bars": {"episode": [21082007, 6485195, 1268801, 318803, 15167, 0, 0, 0], "clip": [2773406, 5918090, 1349747, 33105, 475793, 0, 11806, 0], "short": [4489469, 4937360, 5931003, 883900, 295226, 406891, 377170, 79105]}, "trend": [], "days": []}</script>
+  </section>
+  <section class="group" id="g1" hidden>
+    <div class="tiles">
+      <div class="tile ours-tile">
+        <div class="t-l">★ The Schultz Report</div>
+        <div class="t-v">#9 <small>of 13</small></div>
+        <div class="t-s">views on last-28-day uploads · 1.1M
+          <br>Leader: The Pat McAfee Show · 29.5M</div>
+      </div>
+      <div class="tile ours-tile">
+        <div class="t-l">★ Football Related</div>
+        <div class="t-v">#12 <small>of 13</small></div>
+        <div class="t-s">views on last-28-day uploads · 21K
+          <br>Leader: The Pat McAfee Show · 29.5M</div>
+      </div></div>
+    <div class="card">
+      <div class="card-h"><h3>Views on uploads from the last 28 days</h3><span class="r">current views of everything published Sep 16 – Oct 13, by format</span></div>
+      <div style="position:relative;height:420px"><canvas id="bars1"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="card-h"><h3>Leaderboard</h3><span class="r">sorted by views on last-28-day uploads (views gained ranks from Nov 10)</span></div>
+      <div class="scroll"><table class="lb">
+        <thead><tr><th>#</th><th>Show</th><th class="n">Subscribers</th><th class="n">Views gained · 7d</th><th class="n">Views gained · 28d</th>
+          <th class="n">Uploads 28d<br><span class="sub">ep · clip · short</span></th><th class="n">Views on 28d uploads</th>
+          <th class="n">Median views / episode</th><th class="n">Episodes / week</th></tr></thead>
+        <tbody><tr class=""><td class="rk">1</td><td class="sh"><a href="https://www.youtube.com/channel/UCxcTeAKWJca6XyJ37_ZoKIQ" target="_blank" rel="noopener">The Pat McAfee Show</a><div class="sub">Insiders & interview · <span class="sub">last upload Oct 13</span></div></td><td class="n ">3.0M</td><td class="n pending">—</td><td class="n pending">—</td><td class="n">27 · 85 · 21</td><td class="n ">29.5M</td><td class="n ">484K</td><td class="n">6.8</td></tr><tr class=""><td class="rk">2</td><td class="sh"><a href="https://www.youtube.com/channel/UCqMtxjKnR7ySbEZSs2N-v0Q" target="_blank" rel="noopener">The Rich Eisen Show</a><div class="sub">Insiders & interview · <span class="sub">last upload Oct 13</span></div></td><td class="n ">1.1M</td><td class="n pending">—</td><td class="n pending">—</td><td class="n">30 · 321 · 69</td><td class="n ">22.0M</td><td class="n ">19K</td><td class="n">7.5</td></tr><tr class=""><td class="rk">3</td><td class="sh"><a href="https://www.youtube.com/channel/UCVRm2Ho8cL3lvWDyp2ayuFw" target="_blank" rel="noopener">New Heights</a><div class="sub">Former players · <span class="sub">last upload Oct 13</span></div></td><td class="n ">3.2M</td><td class="n pending">—</td><td class="n pending">—</td><td class="n">10 · 19 · 39</td><td class="n ">11.9M</td><td class="n ">358K</td><td class="n">2.5</td></tr><tr class=""><td class="rk">4</td><td class="sh"><a href="https://www.youtube.com/channel/UCUnxiP7q4RDDyeioZFZLnXA" target="_blank" rel="noopener">The Pivot</a><div class="sub">Former players · <span class="sub">last upload Oct 13</span></div></td><td class="n ">1.6M</td><td class="n pending">—</td><td class="n pending">—</td><td class="n">5 · 17 · 42</td><td class="n ">8.2M</td><td class="n ">437K</td><td class="n">1.2</td></tr><tr class=""><td class="rk">5</td><td class="sh"><a href="https://www.youtube.com/channel/UCmNMxZqiWk3ZX8SDhSgLHlQ" target="_blank" rel="noopener">4th&1 with Cam Newton</a><div class="sub">Former players · <span class="sub">last upload Oct 13</span></div></td><td class="n ">575K</td><td class="n pending">—</td><td class="n pending">—</td><td class="n">14 · 29 · 25</td><td class="n ">4.7M</td><td class="n ">44K</td><td class="n">3.5</td></tr><tr class=""><td class="rk">6</td><td class="sh"><a href="https://www.youtube.com/channel/UCylgcI1N1S3zHljDO8eW-Qg" target="_blank" rel="noopener">Bussin' With The Boys</a><div class="sub">Former players · <span class="sub">last upload Oct 13</span></div></td><td class="n ">735K</td><td class="n pending">—</td><td class="n pending">—</td><td class="n">22 · 18 · 112</td><td class="n ">3.2M</td><td class="n ">52K</td><td class="n">5.5</td></tr><tr class=""><td class="rk">7</td><td class="sh"><a href="https://www.youtube.com/channel/UC3X-L84yCBq0XUd1Whe5u7A" target="_blank" rel="noopener">Up & Adams</a><div class="sub">Insiders & interview · <span class="sub">last upload Oct 13</span></div></td><td class="n ">545K</td><td class="n pending">—</td><td class="n pending">—</td><td class="n">18 · 72 · 85</td><td class="n ">1.9M</td><td class="n ">9.9K</td><td class="n">4.5</td></tr><tr class=""><td class="rk">8</td><td class="sh"><a href="https://www.youtube.com/channel/UC9PKpPDyCi_Jck8j3e6N-_g" target="_blank" rel="noopener">Pardon My Take</a><div class="sub">Insiders & interview · <span class="sub">last upload Oct 13</span></div></td><td class="n ">670K</td><td class="n pending">—</td><td class="n pending">—</td><td class="n">16 · 2 · 60</td><td class="n ">1.3M</td><td class="n ">3.6K</td><td class="n">4.0</td></tr><tr class="ours"><td class="rk">9</td><td class="sh"><a href="https://www.youtube.com/channel/UCD50DP5meQbRD0ug-dm1p1g" target="_blank" rel="noopener">★ The Schultz Report</a><div class="sub">Insiders & interview · <span class="sub">last upload Oct 13</span></div></td><td class="n ">36K</td><td class="n pending">—</td><td class="n pending">—</td><td class="n">9 · 19 · 62</td><td class="n ">1.1M</td><td class="n ">729</td><td class="n">2.2</td></tr><tr class=""><td class="rk">10</td><td class="sh"><a href="https://www.youtube.com/channel/UCgxWFAA-wuB7osdiAJyLOcw" target="_blank" rel="noopener">Green Light with Chris Long</a><div class="sub">Former players · <span class="sub">last upload Oct 13</span></div></td><td class="n ">292K</td><td class="n pending">—</td><td class="n pending">—</td><td class="n">13 · 0 · 27</td><td class="n ">983K</td><td class="n ">42K</td><td class="n">3.2</td></tr><tr class=""><td class="rk">11</td><td class="sh"><a href="https://www.youtube.com/channel/UCYIU0Kg5Lzziasl94RepyZw" target="_blank" rel="noopener">The Ringer NFL Show</a><div class="sub">Insiders & interview · <span class="sub">last upload Oct 13</span></div></td><td class="n ">14K</td><td class="n pending">—</td><td class="n pending">—</td><td class="n">0 · 0 · 33</td><td class="n ">57K</td><td class="n ">—</td><td class="n">—</td></tr><tr class="ours"><td class="rk">12</td><td class="sh"><a href="https://www.youtube.com/channel/UCWcbo7_7Qiu0VtXPjpp-SDA" target="_blank" rel="noopener">★ Football Related</a><div class="sub">Former players · <span class="sub">last upload Oct 11</span></div></td><td class="n ">223</td><td class="n pending">—</td><td class="n pending">—</td><td class="n">1 · 3 · 10</td><td class="n ">21K</td><td class="n ">4.2K</td><td class="n">0.2</td></tr><tr class=""><td class="rk">13</td><td class="sh"><a href="https://www.youtube.com/channel/UC4qMMCxdNfU6cwpaXZOyUSg" target="_blank" rel="noopener">I AM ATHLETE</a><div class="sub">Former players · <span class="badge">inactive · last Apr 14</span></div></td><td class="n ">1.0M</td><td class="n pending">—</td><td class="n pending">—</td><td class="n">0 · 0 · 0</td><td class="n ">0</td><td class="n ">—</td><td class="n">—</td></tr></tbody></table></div>
+    </div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-h"><h3>Views gained per day</h3><span class="r">top 6 by last-7-day gains</span></div>
+        <div style="position:relative;height:260px"><div class="pending-box">Daily views gained starts drawing after a few days of snapshots (tracking since Oct 13).</div></div>
+      </div>
+      <div class="card">
+        <div class="card-h"><h3>Top uploads · last 7 days</h3><span class="r">current views</span></div>
+        <table class="top"><tr class=""><td class="n">547K</td><td><a href="https://youtu.be/e99wjeT5-LM" target="_blank" rel="noopener">What Is Carlie Irsay-Gordon REALLY Doing On The Colts Sideline?</a><div class="sub">The Pat McAfee Show · Oct 8 · Clip</div></td></tr><tr class=""><td class="n">529K</td><td><a href="https://youtu.be/sxQLjN9pJ_g" target="_blank" rel="noopener">The Pat McAfee Show Live | Monday October 12th 2026</a><div class="sub">The Pat McAfee Show · Oct 12 · Episode</div></td></tr><tr class=""><td class="n">462K</td><td><a href="https://youtu.be/wDCmL-nJsdk" target="_blank" rel="noopener">The Pat McAfee Show Live | Thursday October 8th 2026</a><div class="sub">The Pat McAfee Show · Oct 8 · Episode</div></td></tr><tr class=""><td class="n">424K</td><td><a href="https://youtu.be/4eWTvtRklTg" target="_blank" rel="noopener">Rich Eisen Agrees: The Cowboys’ TNF Loss at Home to the 0-4 Buccaneers Was Indeed “Embarrassing”</a><div class="sub">The Rich Eisen Show · Oct 9 · Clip</div></td></tr><tr class=""><td class="n">391K</td><td><a href="https://youtu.be/AGrl7_3Jsco" target="_blank" rel="noopener">Jeremy Shockey WAS The Party 🤣🎉 #shorts</a><div class="sub">4th&1 with Cam Newton · Oct 8 · Short</div></td></tr><tr class=""><td class="n">354K</td><td><a href="https://youtu.be/Q-Pp-gqUDA8" target="_blank" rel="noopener">BigXthaThug shares why he loves to be naked and believes he was a nudist in his previous life.</a><div class="sub">The Pivot · Oct 10 · Short</div></td></tr><tr class=""><td class="n">339K</td><td><a href="https://youtu.be/88dSK8-n9Ac" target="_blank" rel="noopener">4-0 Chiefs, Lane Johnson Retires, Big Boy Plays, Ref Fights & Staying Positive w/Ben Affleck</a><div class="sub">New Heights · Oct 7 · Episode</div></td></tr><tr class=""><td class="n">293K</td><td><a href="https://youtu.be/3KXiWz6UXUs" target="_blank" rel="noopener">Cam’s Current Top 5 NFL QBs 🤯 #shorts</a><div class="sub">4th&1 with Cam Newton · Oct 8 · Short</div></td></tr><tr class=""><td class="n">276K</td><td><a href="https://youtu.be/XXbjTVxtNqM" target="_blank" rel="noopener">Punch outs all the rage in NFL Ryan Clark and Fred Taylor demonstrate the art of peanut punch</a><div class="sub">The Pivot · Oct 13 · Short</div></td></tr><tr class=""><td class="n">272K</td><td><a href="https://youtu.be/S-NRJsGv7zY" target="_blank" rel="noopener">A Wild, Wild NFL Week 5 | Overreaction Monday with Rich Eisen & Chris Brockman</a><div class="sub">The Rich Eisen Show · Oct 12 · Episode</div></td></tr></table>
+      </div>
+    </div>
+    <script type="application/json" id="data1">{"labels": ["The Pat McAfee Show", "The Rich Eisen Show", "New Heights", "The Pivot", "4th&1 with Cam Newton", "Bussin' With The Boys", "Up & Adams", "Pardon My Take", "\u2605 The Schultz Report", "Green Light with Chris Long", "The Ringer NFL Show", "\u2605 Football Related"], "bars": {"episode": [11844512, 1854179, 3210635, 2316796, 669395, 1229717, 225444, 425500, 13709, 598149, 0, 4206], "clip": [15217262, 16366299, 1836880, 738964, 1946747, 238569, 921436, 161645, 28870, 0, 0, 1097], "short": [2470220, 3805915, 6843001, 5097854, 2128637, 1772768, 743145, 745062, 1022912, 385102, 57353, 15510]}, "trend": [], "days": []}</script>
+  </section>
+  <section class="group" id="g2" hidden>
+    <div class="tiles">
+      <div class="tile ours-tile">
+        <div class="t-l">★ Girls Tripp</div>
+        <div class="t-v">#2 <small>of 4</small></div>
+        <div class="t-s">views on last-28-day uploads · 122K
+          <br>Leader: Post Moves · 1.5M</div>
+      </div></div>
+    <div class="card">
+      <div class="card-h"><h3>Views on uploads from the last 28 days</h3><span class="r">current views of everything published Sep 16 – Oct 13, by format</span></div>
+      <div style="position:relative;height:220px"><canvas id="bars2"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="card-h"><h3>Leaderboard</h3><span class="r">sorted by views on last-28-day uploads (views gained ranks from Nov 10)</span></div>
+      <div class="scroll"><table class="lb">
+        <thead><tr><th>#</th><th>Show</th><th class="n">Subscribers</th><th class="n">Views gained · 7d</th><th class="n">Views gained · 28d</th>
+          <th class="n">Uploads 28d<br><span class="sub">ep · clip · short</span></th><th class="n">Views on 28d uploads</th>
+          <th class="n">Median views / episode</th><th class="n">Episodes / week</th></tr></thead>
+        <tbody><tr class=""><td class="rk">1</td><td class="sh"><a href="https://www.youtube.com/channel/UCghI5-8s9Y93VuNcKzF8JIQ" target="_blank" rel="noopener">Post Moves</a><div class="sub">Women's basketball · <span class="sub">last upload Oct 13</span></div></td><td class="n ">57K</td><td class="n pending">—</td><td class="n pending">—</td><td class="n">4 · 7 · 42</td><td class="n ">1.5M</td><td class="n ">54K</td><td class="n">1.0</td></tr><tr class="ours"><td class="rk">2</td><td class="sh"><a href="https://www.youtube.com/channel/UCLh4znMEEDzabMHw-Ob0Cpg" target="_blank" rel="noopener">★ Girls Tripp</a><div class="sub">Women's basketball · <span class="sub">last upload Oct 12</span></div></td><td class="n ">463</td><td class="n pending">—</td><td class="n pending">—</td><td class="n">4 · 10 · 26</td><td class="n ">122K</td><td class="n ">8.9K</td><td class="n">1.0</td></tr><tr class=""><td class="rk">3</td><td class="sh"><a href="https://www.youtube.com/channel/UCzpZgXng_znmhmEy6epSxUw" target="_blank" rel="noopener">No Offseason</a><div class="sub">Women's basketball · <span class="sub">last upload Oct 13</span></div></td><td class="n ">7.4K</td><td class="n pending">—</td><td class="n pending">—</td><td class="n">12 · 0 · 10</td><td class="n ">121K</td><td class="n ">8.3K</td><td class="n">3.0</td></tr><tr class=""><td class="rk">4</td><td class="sh"><a href="https://www.youtube.com/channel/UCVrzAZB3LbXuBa7mDi3shEw" target="_blank" rel="noopener">Unapologetically Angel</a><div class="sub">Women's basketball · <span class="badge">inactive · last Jun 1</span></div></td><td class="n ">165K</td><td class="n pending">—</td><td class="n pending">—</td><td class="n">0 · 0 · 0</td><td class="n ">0</td><td class="n ">—</td><td class="n">—</td></tr></tbody></table></div>
+    </div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-h"><h3>Views gained per day</h3><span class="r">top 6 by last-7-day gains</span></div>
+        <div style="position:relative;height:260px"><div class="pending-box">Daily views gained starts drawing after a few days of snapshots (tracking since Oct 13).</div></div>
+      </div>
+      <div class="card">
+        <div class="card-h"><h3>Top uploads · last 7 days</h3><span class="r">current views</span></div>
+        <table class="top"><tr class=""><td class="n">99K</td><td><a href="https://youtu.be/BAW8hAIA63E" target="_blank" rel="noopener">A’ja Wilson Confronts Fever Fan, What Caitlin Clark Said to Candace + WNBA Semifinals Game 1 | Ep.51</a><div class="sub">Post Moves · Oct 7 · Episode</div></td></tr><tr class=""><td class="n">96K</td><td><a href="https://youtu.be/6f_nx_kERqA" target="_blank" rel="noopener">Will Kelsey Mitchell stay in Indianapolis next season?</a><div class="sub">Post Moves · Oct 8 · Short</div></td></tr><tr class=""><td class="n">53K</td><td><a href="https://youtu.be/jZNW_AiGmoE" target="_blank" rel="noopener">Candace and AB break down what really happened between A'ja Wilson and the Indiana Fever fan 👀👀</a><div class="sub">Post Moves · Oct 7 · Short</div></td></tr><tr class="ours"><td class="n">35K</td><td><a href="https://youtu.be/JTunoanIuYs" target="_blank" rel="noopener">DPOY Angel Reese Is DOMINATING! Can Anyone Stop Atlanta?! #wnba #newyorkliberty</a><div class="sub">Girls Tripp · Oct 8 · Short</div></td></tr><tr class="ours"><td class="n">14K</td><td><a href="https://youtu.be/R7HsD45pedw" target="_blank" rel="noopener">Ryan Ruocco Calls Liberty’s Timeout Mistake “INDEFENSIBLE” + Valkyries Go Up 2-0</a><div class="sub">Girls Tripp · Oct 8 · Episode</div></td></tr><tr class=""><td class="n">8.5K</td><td><a href="https://youtu.be/medALxUKYdE" target="_blank" rel="noopener">Can the Aces & Liberty Save Their Seasons?</a><div class="sub">No Offseason · Oct 9 · Episode</div></td></tr><tr class=""><td class="n">8.0K</td><td><a href="https://youtu.be/rWwySgQgF7I" target="_blank" rel="noopener">Should the Fever Move On From Sophie Cunningham?</a><div class="sub">No Offseason · Oct 8 · Episode</div></td></tr><tr class=""><td class="n">5.0K</td><td><a href="https://youtu.be/RH1UAbn7d08" target="_blank" rel="noopener">How the Valkyries and Dream Are Redefining Winning in the WNBA</a><div class="sub">No Offseason · Oct 13 · Episode</div></td></tr><tr class="ours"><td class="n">4.5K</td><td><a href="https://youtu.be/tR8q4e204AQ" target="_blank" rel="noopener">The Valkyries Have Everything the Defending Champs Don’t</a><div class="sub">Girls Tripp · Oct 9 · Clip</div></td></tr></table>
+      </div>
+    </div>
+    <script type="application/json" id="data2">{"labels": ["Post Moves", "\u2605 Girls Tripp", "No Offseason"], "bars": {"episode": [243102, 36142, 106652], "clip": [51176, 15614, 0], "short": [1226416, 70724, 14599]}, "trend": [], "days": []}</script>
+  </section>
+  <div class="foot">
+    Internal use only. Views gained = change in the channel's public total view count. Formats by length: Short ≤ 3:00 · Clip 3:01–20:00 · Episode &gt; 20:00.
+    Subscriber counts are rounded by YouTube (3 significant figures). Channel totals cover everything on the channel, so shows on shared
+    network channels aren't tracked. Updated daily by the RDM workflow.
+  </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+const FORMATS = [["episode", "Episodes", "#1E3A5F"], ["clip", "Clips", "#3B82F6"], ["short", "Shorts", "#C9A84C"]];
+const K = v => Math.abs(v) >= 1e6 ? (v/1e6).toFixed(1)+'M' : Math.abs(v) >= 1e3 ? (v/1e3).toFixed(0)+'K' : v;
+const TREND_C = ['#1E3A5F','#3B82F6','#0EA5E9','#64748B','#94A3B8','#CBD5E1'];
+Chart.defaults.font.family = "'Inter', system-ui, sans-serif"; Chart.defaults.color = '#475569';
+const drawn = {};
+function draw(i) {
+  if (drawn[i]) return; drawn[i] = true;
+  const D = JSON.parse(document.getElementById('data'+i).textContent);
+  new Chart(document.getElementById('bars'+i), {
+    type:'bar',
+    data:{ labels:D.labels, datasets:FORMATS.map(([f,l,c]) => ({ label:l, data:D.bars[f], backgroundColor:c, borderRadius:3,
+      borderColor:'#FFFFFF', borderWidth:{ left:0, right:2, top:0, bottom:0 }, borderSkipped:false, maxBarThickness:22 })) },
+    options:{ indexAxis:'y', responsive:true, maintainAspectRatio:false, interaction:{ mode:'index', intersect:false, axis:'y' },
+      plugins:{ legend:{ display:false }, tooltip:{ callbacks:{ label:c => ' '+c.dataset.label+': '+Math.round(c.parsed.x).toLocaleString(),
+        footer:items => 'Total: '+items.reduce((a,c)=>a+c.parsed.x,0).toLocaleString() } } },
+      scales:{ x:{ stacked:true, grid:{ color:'#EEF1F5' }, ticks:{ callback:K } },
+               y:{ stacked:true, grid:{ display:false }, ticks:{ font:c => ({ weight: String(D.labels[c.index]).startsWith('★') ? '700' : '400' }),
+                    color:c => String(D.labels[c.index]).startsWith('★') ? '#0F172A' : '#475569' } } } }
+  });
+  const t = document.getElementById('trend'+i);
+  if (t && D.trend.length) new Chart(t, {
+    type:'line',
+    data:{ labels:D.days, datasets:D.trend.map((s,j) => ({ label:s.label, data:s.data, borderWidth:s.ours?3:2,
+      borderColor:s.ours?'#C9A84C':TREND_C[j%TREND_C.length], backgroundColor:s.ours?'#C9A84C':TREND_C[j%TREND_C.length],
+      pointRadius:3, pointHoverRadius:5, tension:.25, spanGaps:true })) },
+    options:{ responsive:true, maintainAspectRatio:false, interaction:{ mode:'index', intersect:false },
+      plugins:{ legend:{ position:'bottom', labels:{ boxWidth:10, boxHeight:10, font:{ size:11 } } },
+        tooltip:{ callbacks:{ label:c => ' '+c.dataset.label+': '+(c.parsed.y==null?'—':Math.round(c.parsed.y).toLocaleString()) } } },
+      scales:{ x:{ grid:{ display:false } }, y:{ beginAtZero:true, grid:{ color:'#EEF1F5' }, ticks:{ callback:K } } } }
+  });
+}
+document.querySelectorAll('.tab').forEach(b => b.onclick = () => {
+  document.querySelectorAll('.tab').forEach(x => x.classList.toggle('on', x === b));
+  document.querySelectorAll('.group').forEach((s,i) => s.hidden = String(i) !== b.dataset.g);
+  draw(+b.dataset.g);
+});
+draw(0);
+</script>
+</body></html>

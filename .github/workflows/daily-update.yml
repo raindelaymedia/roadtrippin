@@ -140,6 +140,19 @@ jobs:
         working-directory: master/shows/schultz_report
         run: python build_sr_dashboard.py
 
+      # ── Competitive landscape (internal) ───────────────────
+      # Public YouTube stats for competitor channels, own Cloud project + key.
+      # The API only returns today's totals, so a skipped day is a gap in history.
+      - name: Snapshot competitor channels
+        continue-on-error: true
+        env:
+          YT_API_KEY_COMPETITORS: ${{ secrets.YT_API_KEY_COMPETITORS }}
+        run: python master/competitors/collect_competitors.py
+
+      - name: Rebuild competitive landscape page
+        continue-on-error: true
+        run: python master/competitors/build_competitors.py
+
       # ── Master ─────────────────────────────────────────────
       - name: Rebuild RDM master dashboard
         working-directory: master
