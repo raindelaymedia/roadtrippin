@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T16:45:31.821600",
+  "generated": "2026-10-14T00:19:10.632086",
   "channel_id": "UCWcbo7_7Qiu0VtXPjpp-SDA",
   "rt_channel_id": "UCSes4X8uDrpc4X46hJKjejg",
   "months": [
@@ -7,22 +7,22 @@
   ],
   "yt": {
     "vids": {
-      "2026-10": 4896
+      "2026-10": 5153
     },
     "shorts": {
-      "2026-10": 11023
+      "2026-10": 12679
     },
     "lives": {
       "2026-10": 0
     },
     "subs_gained": {
-      "2026-10": 198
+      "2026-10": 206
     },
     "subs_lost": {
       "2026-10": 4
     },
     "watch_hrs": {
-      "2026-10": 231.8
+      "2026-10": 252.0
     }
   },
   "audio": {
@@ -44,7 +44,7 @@
       "2026-10": null
     },
     "search_pct": {
-      "2026-10": 0.0384
+      "2026-10": 0.0376
     },
     "tv_pct": {
       "2026-10": 0.0333
@@ -52,38 +52,50 @@
   },
   "collab": {
     "total_views": {
-      "2026-10": 15869
+      "2026-10": 17782
     },
     "rt_views": {
-      "2026-10": 603
+      "2026-10": 611
     },
     "rt_pct": {
-      "2026-10": 0.038
+      "2026-10": 0.0344
     },
     "rt_by_source": {
       "2026-10": {
         "suggested": 0,
-        "channel_page": 603
+        "channel_page": 611
       }
     },
     "collab_views": {
-      "2026-10": 653
+      "2026-10": 676
     },
     "collab_pct": {
-      "2026-10": 0.0411
+      "2026-10": 0.038
     },
     "top_channels": {
       "2026-10": [
         {
           "id": "UCSes4X8uDrpc4X46hJKjejg",
           "name": "Road Trippin' Show",
-          "views": 603,
+          "views": 611,
           "is_rt": true
         },
         {
           "id": "UCVRm2Ho8cL3lvWDyp2ayuFw",
           "name": "New Heights",
-          "views": 16,
+          "views": 23,
+          "is_rt": false
+        },
+        {
+          "id": "UCylgcI1N1S3zHljDO8eW-Qg",
+          "name": "Bussin' With The Boys",
+          "views": 6,
+          "is_rt": false
+        },
+        {
+          "id": "UCAYhrZ3EQZBriZU5JEbQ7Yg",
+          "name": "Nuthouse Sports",
+          "views": 5,
           "is_rt": false
         },
         {
@@ -91,56 +103,55 @@
           "name": "NFL on FOX",
           "views": 5,
           "is_rt": false
-        },
-        {
-          "id": "UCAYhrZ3EQZBriZU5JEbQ7Yg",
-          "name": "Nuthouse Sports",
-          "views": 4,
-          "is_rt": false
-        },
-        {
-          "id": "UCylgcI1N1S3zHljDO8eW-Qg",
-          "name": "Bussin' With The Boys",
-          "views": 4,
-          "is_rt": false
         }
       ]
     },
     "detail_coverage": {
       "2026-10": {
-        "suggested": 0.6747,
+        "suggested": 0.5565,
         "channel_page": 1.0
       }
     }
   },
   "traffic_sources": {
     "2026-10": {
-      "NO_LINK_OTHER": 116,
-      "SUBSCRIBER": 3403,
-      "YT_CHANNEL": 1055,
-      "YT_SEARCH": 610,
-      "RELATED_VIDEO": 83,
-      "YT_OTHER_PAGE": 113,
-      "EXT_URL": 92,
+      "NO_LINK_OTHER": 128,
+      "SUBSCRIBER": 3590,
+      "YT_CHANNEL": 1096,
+      "YT_SEARCH": 669,
+      "RELATED_VIDEO": 124,
+      "YT_OTHER_PAGE": 126,
+      "EXT_URL": 93,
       "PLAYLIST": 47,
-      "SHORTS": 10315,
-      "SOUND_PAGE": 2,
-      "NOTIFICATION": 19,
-      "SHORTS_CONTENT_LINKS": 10,
+      "SHORTS": 11869,
+      "SOUND_PAGE": 3,
+      "NOTIFICATION": 21,
+      "SHORTS_CONTENT_LINKS": 12,
       "END_SCREEN": 4
     }
   },
   "best_of": {
-    "label": "Oct 01 \u2013 Oct 13, 2026",
+    "label": "Oct 01 \u2013 Oct 14, 2026",
     "long": [
       {
         "id": "5cmEznkoK9k",
         "title": "Everyone Knew Zack Martin Was Dating Tyler Eifert's Sister\u2026 Except Tyler",
         "published": "2026-10-08",
-        "views": 4162,
+        "views": 4206,
         "likes": 41,
         "thumbnail": "https://i.ytimg.com/vi/5cmEznkoK9k/maxresdefault.jpg",
         "url": "https://youtu.be/5cmEznkoK9k",
+        "type": "LONG",
+        "show": "FR"
+      },
+      {
+        "id": "aVsKEwZRytM",
+        "title": "FR 20261012 Ep2 v3",
+        "published": "2026-10-13",
+        "views": 0,
+        "likes": 0,
+        "thumbnail": "https://i9.ytimg.com/vi/aVsKEwZRytM/maxresdefault.jpg?sqp=CISTu9YG&rs=AOn4CLCyAckkim4ZVk58xWfCW9RFw-DfXg",
+        "url": "https://youtu.be/aVsKEwZRytM",
         "type": "LONG",
         "show": "FR"
       }
@@ -150,8 +161,8 @@
         "id": "DptsIiJcaWs",
         "title": "Zack Martin Kicked Down Tyler Eifert\u2019s Door at Notre Dame",
         "published": "2026-10-11",
-        "views": 433,
-        "likes": 6,
+        "views": 533,
+        "likes": 7,
         "thumbnail": "https://i.ytimg.com/vi/DptsIiJcaWs/maxresdefault.jpg",
         "url": "https://youtu.be/DptsIiJcaWs",
         "type": "MID",
@@ -161,7 +172,7 @@
         "id": "vt-XiWC7wyU",
         "title": "Tyler Eifert Got Ragdolled in His Second NFL Game",
         "published": "2026-10-09",
-        "views": 331,
+        "views": 373,
         "likes": 2,
         "thumbnail": "https://i.ytimg.com/vi/vt-XiWC7wyU/maxresdefault.jpg",
         "url": "https://youtu.be/vt-XiWC7wyU",
@@ -172,7 +183,7 @@
         "id": "SN7zjZcHgrQ",
         "title": "What Happens to an NFL Player\u2019s Body After Retirement?",
         "published": "2026-10-10",
-        "views": 164,
+        "views": 185,
         "likes": 0,
         "thumbnail": "https://i.ytimg.com/vi/SN7zjZcHgrQ/maxresdefault.jpg",
         "url": "https://youtu.be/SN7zjZcHgrQ",
@@ -185,8 +196,8 @@
         "id": "B75cCYKybHQ",
         "title": "The Craziest Offensive Line Stat in NFL History #nfl #collegefootball #dallascowboys",
         "published": "2026-10-11",
-        "views": 2752,
-        "likes": 97,
+        "views": 2962,
+        "likes": 102,
         "thumbnail": "https://i.ytimg.com/vi/B75cCYKybHQ/maxresdefault.jpg",
         "url": "https://youtu.be/B75cCYKybHQ",
         "type": "SHORT",
@@ -207,7 +218,7 @@
         "id": "4m2-sZ9AhKg",
         "title": "Eating 5,000 Calories A Day Just To Play Football #nfl #cfb #notredame #cowboys #bengals",
         "published": "2026-10-10",
-        "views": 1619,
+        "views": 1646,
         "likes": 41,
         "thumbnail": "https://i.ytimg.com/vi/4m2-sZ9AhKg/maxresdefault.jpg",
         "url": "https://youtu.be/4m2-sZ9AhKg",
@@ -257,12 +268,25 @@
           "title": "Everyone Knew Zack Martin Was Dating Tyler Eifert's Sister\u2026 Except Tyler",
           "published": "2026-10-08",
           "month": "2026-10",
-          "views": 4162,
+          "views": 4206,
           "likes": 41,
           "comments": 10,
           "duration_sec": 4019,
           "thumbnail": "https://i.ytimg.com/vi/5cmEznkoK9k/maxresdefault.jpg",
           "url": "https://youtu.be/5cmEznkoK9k",
+          "type": "long"
+        },
+        {
+          "id": "aVsKEwZRytM",
+          "title": "FR 20261012 Ep2 v3",
+          "published": "2026-10-13",
+          "month": "2026-10",
+          "views": 0,
+          "likes": 0,
+          "comments": 0,
+          "duration_sec": 4281,
+          "thumbnail": "https://i9.ytimg.com/vi/aVsKEwZRytM/maxresdefault.jpg?sqp=CISTu9YG&rs=AOn4CLCyAckkim4ZVk58xWfCW9RFw-DfXg",
+          "url": "https://youtu.be/aVsKEwZRytM",
           "type": "long"
         }
       ],
@@ -272,8 +296,8 @@
           "title": "Zack Martin Kicked Down Tyler Eifert\u2019s Door at Notre Dame",
           "published": "2026-10-11",
           "month": "2026-10",
-          "views": 433,
-          "likes": 6,
+          "views": 533,
+          "likes": 7,
           "comments": 2,
           "duration_sec": 230,
           "thumbnail": "https://i.ytimg.com/vi/DptsIiJcaWs/maxresdefault.jpg",
@@ -285,7 +309,7 @@
           "title": "Tyler Eifert Got Ragdolled in His Second NFL Game",
           "published": "2026-10-09",
           "month": "2026-10",
-          "views": 331,
+          "views": 373,
           "likes": 2,
           "comments": 0,
           "duration_sec": 377,
@@ -298,7 +322,7 @@
           "title": "What Happens to an NFL Player\u2019s Body After Retirement?",
           "published": "2026-10-10",
           "month": "2026-10",
-          "views": 164,
+          "views": 185,
           "likes": 0,
           "comments": 0,
           "duration_sec": 315,
@@ -313,8 +337,8 @@
           "title": "The Craziest Offensive Line Stat in NFL History #nfl #collegefootball #dallascowboys",
           "published": "2026-10-11",
           "month": "2026-10",
-          "views": 2752,
-          "likes": 97,
+          "views": 2962,
+          "likes": 102,
           "comments": 1,
           "duration_sec": 49,
           "thumbnail": "https://i.ytimg.com/vi/B75cCYKybHQ/maxresdefault.jpg",
@@ -339,7 +363,7 @@
           "title": "Eating 5,000 Calories A Day Just To Play Football #nfl #cfb #notredame #cowboys #bengals",
           "published": "2026-10-10",
           "month": "2026-10",
-          "views": 1619,
+          "views": 1646,
           "likes": 41,
           "comments": 0,
           "duration_sec": 68,
@@ -404,7 +428,7 @@
           "title": "From Notre Dame Roommates to the NFL, to the Mic: Welcome to Football Related #NFL #CFB",
           "published": "2026-10-04",
           "month": "2026-10",
-          "views": 1278,
+          "views": 1279,
           "likes": 32,
           "comments": 4,
           "duration_sec": 35,
@@ -417,7 +441,7 @@
           "title": "When Pranking Your Roommate Goes Way Too Far #nfl #bengals #cowboys #notredame",
           "published": "2026-10-09",
           "month": "2026-10",
-          "views": 1198,
+          "views": 1200,
           "likes": 32,
           "comments": 0,
           "duration_sec": 59,
@@ -430,7 +454,7 @@
           "title": "Welcome to Football Related!",
           "published": "2026-10-04",
           "month": "2026-10",
-          "views": 876,
+          "views": 897,
           "likes": 23,
           "comments": 7,
           "duration_sec": 55,
@@ -443,12 +467,25 @@
   },
   "all_videos": [
     {
+      "id": "aVsKEwZRytM",
+      "title": "FR 20261012 Ep2 v3",
+      "published": "2026-10-13",
+      "month": "2026-10",
+      "views": 0,
+      "likes": 0,
+      "comments": 0,
+      "duration_sec": 4281,
+      "thumbnail": "https://i9.ytimg.com/vi/aVsKEwZRytM/maxresdefault.jpg?sqp=CISTu9YG&rs=AOn4CLCyAckkim4ZVk58xWfCW9RFw-DfXg",
+      "url": "https://youtu.be/aVsKEwZRytM",
+      "type": "long"
+    },
+    {
       "id": "B75cCYKybHQ",
       "title": "The Craziest Offensive Line Stat in NFL History #nfl #collegefootball #dallascowboys",
       "published": "2026-10-11",
       "month": "2026-10",
-      "views": 2752,
-      "likes": 97,
+      "views": 2962,
+      "likes": 102,
       "comments": 1,
       "duration_sec": 49,
       "thumbnail": "https://i.ytimg.com/vi/B75cCYKybHQ/maxresdefault.jpg",
@@ -460,8 +497,8 @@
       "title": "Zack Martin Kicked Down Tyler Eifert\u2019s Door at Notre Dame",
       "published": "2026-10-11",
       "month": "2026-10",
-      "views": 433,
-      "likes": 6,
+      "views": 533,
+      "likes": 7,
       "comments": 2,
       "duration_sec": 230,
       "thumbnail": "https://i.ytimg.com/vi/DptsIiJcaWs/maxresdefault.jpg",
@@ -473,7 +510,7 @@
       "title": "Eating 5,000 Calories A Day Just To Play Football #nfl #cfb #notredame #cowboys #bengals",
       "published": "2026-10-10",
       "month": "2026-10",
-      "views": 1619,
+      "views": 1646,
       "likes": 41,
       "comments": 0,
       "duration_sec": 68,
@@ -486,7 +523,7 @@
       "title": "What Happens to an NFL Player\u2019s Body After Retirement?",
       "published": "2026-10-10",
       "month": "2026-10",
-      "views": 164,
+      "views": 185,
       "likes": 0,
       "comments": 0,
       "duration_sec": 315,
@@ -499,7 +536,7 @@
       "title": "When Pranking Your Roommate Goes Way Too Far #nfl #bengals #cowboys #notredame",
       "published": "2026-10-09",
       "month": "2026-10",
-      "views": 1198,
+      "views": 1200,
       "likes": 32,
       "comments": 0,
       "duration_sec": 59,
@@ -512,7 +549,7 @@
       "title": "Tyler Eifert Got Ragdolled in His Second NFL Game",
       "published": "2026-10-09",
       "month": "2026-10",
-      "views": 331,
+      "views": 373,
       "likes": 2,
       "comments": 0,
       "duration_sec": 377,
@@ -577,7 +614,7 @@
       "title": "Everyone Knew Zack Martin Was Dating Tyler Eifert's Sister\u2026 Except Tyler",
       "published": "2026-10-08",
       "month": "2026-10",
-      "views": 4162,
+      "views": 4206,
       "likes": 41,
       "comments": 10,
       "duration_sec": 4019,
@@ -603,7 +640,7 @@
       "title": "From Notre Dame Roommates to the NFL, to the Mic: Welcome to Football Related #NFL #CFB",
       "published": "2026-10-04",
       "month": "2026-10",
-      "views": 1278,
+      "views": 1279,
       "likes": 32,
       "comments": 4,
       "duration_sec": 35,
@@ -616,7 +653,7 @@
       "title": "Welcome to Football Related!",
       "published": "2026-10-04",
       "month": "2026-10",
-      "views": 876,
+      "views": 897,
       "likes": 23,
       "comments": 7,
       "duration_sec": 55,
@@ -625,14 +662,8 @@
       "type": "short"
     }
   ],
-  "current_subs": 220,
+  "current_subs": 223,
   "daily_yt": {
-    "2026-07-14": {
-      "total_views": 0,
-      "watch_hrs": 0.0,
-      "subs_gained": 0,
-      "subs_lost": 0
-    },
     "2026-07-15": {
       "total_views": 0,
       "watch_hrs": 0.0,
@@ -1175,6 +1206,14 @@
       "subs_lost": 1,
       "shorts_views": 1383,
       "vod_views": 565
+    },
+    "2026-10-11": {
+      "total_views": 1913,
+      "watch_hrs": 20.2,
+      "subs_gained": 8,
+      "subs_lost": 0,
+      "shorts_views": 1656,
+      "vod_views": 257
     }
   }
 }
