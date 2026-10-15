@@ -15,6 +15,10 @@ video.list.
                → shows which account is connected + its latest videos with exact views.
      status    python master/tiktok_auth.py status
                → every connected account and whether its connection still works.
+  4. views     python master/tiktok_auth.py views sr <tiktok url or video id> [...]
+               → exact views / likes / comments / shares for specific videos. Each video must be
+                 read with ITS OWN account's connection (SR videos with sr, Jordan's with js).
+     In code:  from tiktok_auth import video_stats;  video_stats("sr", ["7693209430162230541", ...])
 
 Accounts are short labels: js (@realjordanschultz), sr (Schultz Report), rt, gt …
 Needs TT_CLIENT_KEY and TT_CLIENT_SECRET in master/config_socials.py (gitignored).
@@ -96,11 +100,34 @@ def api(tok, method, path, **kw):
     return j.get("data", {})
 
 
+def video_id(url_or_id):
+    m = re.search(r"(\d{15,25})", str(url_or_id))
+    return m.group(1) if m else None
+
+
+def video_stats(account, ids):
+    """Exact stats for specific videos owned by `account`: {video_id: {views, likes, comments, shares, title, created}}.
+    Videos that aren't this account's (or are deleted/private) are simply missing from the result."""
+    cfg = config()
+    tok = access_token(cfg, account)
+    ids = [i for i in dict.fromkeys(video_id(x) for x in ids) if i]
+    out = {}
+    for i in range(0, len(ids), 20):                    # video/query takes up to 20 IDs
+        vids = api(tok, "POST", "/video/query/",
+                   params={"fields": "id,title,create_time,view_count,like_count,comment_count,share_count"},
+                   json={"filters": {"video_ids": ids[i:i + 20]}}).get("videos", [])
+        for v in vids:
+            out[v["id"]] = {"views": v.get("view_count"), "likes": v.get("like_count"),
+                            "comments": v.get("comment_count"), "shares": v.get("share_count"),
+                            "title": v.get("title") or "", "created": v.get("create_time")}
+    return out
+
+
 def main():
     ap = argparse.ArgumentParser(description="Connect a TikTok account to the RDM analytics app")
-    ap.add_argument("step", choices=["link", "exchange", "test", "status"])
+    ap.add_argument("step", choices=["link", "exchange", "test", "status", "views"])
     ap.add_argument("account", nargs="?", help="short label, e.g. js, sr, rt, gt")
-    ap.add_argument("code", nargs="?", help="authorization code from the return page (exchange)")
+    ap.add_argument("code", nargs="*", help="exchange: the authorization code · views: video URLs or IDs")
     args = ap.parse_args()
     cfg = config()
     for k in ("TT_CLIENT_KEY", "TT_CLIENT_SECRET"):
@@ -136,7 +163,7 @@ def main():
     if args.step == "exchange":
         if not args.code:
             raise SystemExit("Paste the code from the return page: exchange <account> <code>")
-        code = urllib.parse.unquote(args.code.strip())
+        code = urllib.parse.unquote(args.code[0].strip())
         j = exchange(cfg, {"grant_type": "authorization_code", "code": code, "redirect_uri": REDIRECT_URI})
         save_token(token_name(args.account), j["refresh_token"])
         scopes = j.get("scope", "")
@@ -146,6 +173,20 @@ def main():
         if missing:
             print(f"  ⚠ missing scopes: {', '.join(sorted(missing))} — re-check the app's scopes and re-authorize")
         cfg = config()
+
+    if args.step == "views":
+        if not args.code:
+            raise SystemExit("Give video URLs or IDs: views <account> <url> [<url> ...]")
+        stats = video_stats(args.account, args.code)
+        for x in args.code:
+            vid = video_id(x)
+            st = stats.get(vid)
+            if st:
+                print(f"  {vid}  views {st['views']:>9,}  likes {st['likes']:>7,}  comments {st['comments']:>5,}  "
+                      f"shares {st['shares']:>5,}  {st['title'][:45]}")
+            else:
+                print(f"  {vid or x}  not found — not this account's video, or deleted/private")
+        return
 
     tok = access_token(cfg, args.account)
     user = api(tok, "GET", "/user/info/", params={
