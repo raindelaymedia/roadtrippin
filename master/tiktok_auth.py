@@ -13,6 +13,8 @@ video.list.
                  master/config_socials.py as TT_TOKEN_JS. Never printed.
   3. test      python master/tiktok_auth.py test js
                → shows which account is connected + its latest videos with exact views.
+     status    python master/tiktok_auth.py status
+               → every connected account and whether its connection still works.
 
 Accounts are short labels: js (@realjordanschultz), sr (Schultz Report), rt, gt …
 Needs TT_CLIENT_KEY and TT_CLIENT_SECRET in master/config_socials.py (gitignored).
@@ -96,14 +98,31 @@ def api(tok, method, path, **kw):
 
 def main():
     ap = argparse.ArgumentParser(description="Connect a TikTok account to the RDM analytics app")
-    ap.add_argument("step", choices=["link", "exchange", "test"])
-    ap.add_argument("account", help="short label, e.g. js, sr, rt, gt")
+    ap.add_argument("step", choices=["link", "exchange", "test", "status"])
+    ap.add_argument("account", nargs="?", help="short label, e.g. js, sr, rt, gt")
     ap.add_argument("code", nargs="?", help="authorization code from the return page (exchange)")
     args = ap.parse_args()
     cfg = config()
     for k in ("TT_CLIENT_KEY", "TT_CLIENT_SECRET"):
         if not getattr(cfg, k, None):
             raise SystemExit(f"Add {k} to master/config_socials.py first")
+
+    if args.step == "status":
+        names = sorted(n for n in dir(cfg) if n.startswith("TT_TOKEN_") and getattr(cfg, n))
+        if not names:
+            print("No TikTok accounts connected yet. Start with: python master/tiktok_auth.py link sr")
+            return
+        for n in names:
+            acct = n[len("TT_TOKEN_"):].lower()
+            try:
+                tok = access_token(cfg, acct)
+                u = api(tok, "GET", "/user/info/", params={"fields": "display_name,username,follower_count,video_count"}).get("user", {})
+                print(f"  ✓ {acct:<4} @{u.get('username', '?'):<22} {u.get('follower_count', 0):>9,} followers · {u.get('video_count', 0):,} videos")
+            except SystemExit as e:
+                print(f"  ✗ {acct:<4} {e}")
+        return
+    if not args.account:
+        raise SystemExit("Which account? e.g. python master/tiktok_auth.py link sr")
 
     if args.step == "link":
         q = urllib.parse.urlencode({"client_key": cfg.TT_CLIENT_KEY, "scope": SCOPES, "response_type": "code",
