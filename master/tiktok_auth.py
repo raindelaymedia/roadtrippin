@@ -116,8 +116,8 @@ def main():
             acct = n[len("TT_TOKEN_"):].lower()
             try:
                 tok = access_token(cfg, acct)
-                u = api(tok, "GET", "/user/info/", params={"fields": "display_name,username,follower_count,video_count"}).get("user", {})
-                print(f"  ✓ {acct:<4} @{u.get('username', '?'):<22} {u.get('follower_count', 0):>9,} followers · {u.get('video_count', 0):,} videos")
+                u = api(tok, "GET", "/user/info/", params={"fields": "display_name,follower_count,video_count"}).get("user", {})
+                print(f"  ✓ {acct:<4} {u.get('display_name', '?'):<24} {u.get('follower_count', 0):>9,} followers · {u.get('video_count', 0):,} videos")
             except SystemExit as e:
                 print(f"  ✗ {acct:<4} {e}")
         return
@@ -149,8 +149,8 @@ def main():
 
     tok = access_token(cfg, args.account)
     user = api(tok, "GET", "/user/info/", params={
-        "fields": "open_id,display_name,username,follower_count,likes_count,video_count"}).get("user", {})
-    print(f"\nAccount: {user.get('display_name')} (@{user.get('username', '?')}) · "
+        "fields": "open_id,display_name,follower_count,likes_count,video_count"}).get("user", {})
+    print(f"\nAccount: {user.get('display_name')} · "
           f"{user.get('follower_count', 0):,} followers · {user.get('likes_count', 0):,} likes · {user.get('video_count', 0):,} videos")
     vids = api(tok, "POST", "/video/list/",
                params={"fields": "id,title,create_time,view_count,like_count,comment_count,share_count,share_url"},
