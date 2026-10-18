@@ -31,6 +31,7 @@ import importlib.util
 import os
 import re
 import sys
+import types
 import urllib.parse
 
 import requests
@@ -45,9 +46,15 @@ API = "https://open.tiktokapis.com/v2"
 
 
 def config():
-    spec = importlib.util.spec_from_file_location("config_socials", CONFIG)
-    mod = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(mod)
+    """master/config_socials.py, with TT_* environment variables (GitHub secrets) taking precedence."""
+    mod = types.SimpleNamespace()
+    if os.path.exists(CONFIG):
+        spec = importlib.util.spec_from_file_location("config_socials", CONFIG)
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+    for k, v in os.environ.items():
+        if k.startswith("TT_") and v:
+            setattr(mod, k, v)
     return mod
 
 
@@ -87,7 +94,14 @@ def access_token(cfg, account):
         raise SystemExit(f"No {token_name(account)} in config_socials.py — run: link {account}, then exchange {account} <code>")
     j = exchange(cfg, {"grant_type": "refresh_token", "refresh_token": refresh})
     if j.get("refresh_token") and j["refresh_token"] != refresh:
-        save_token(token_name(account), j["refresh_token"])
+        out = os.environ.get("TOKEN_OUT_DIR")      # workflow: saved back to GitHub secrets by the next step
+        if out:
+            os.makedirs(out, exist_ok=True)
+            with open(os.path.join(out, token_name(account)), "w") as f:
+                f.write(j["refresh_token"])
+        else:
+            save_token(token_name(account), j["refresh_token"])
+        setattr(cfg, token_name(account), j["refresh_token"])
     return j["access_token"]
 
 

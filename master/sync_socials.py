@@ -5,7 +5,7 @@ Pulls account-level social metrics from platform APIs and writes them into each
 show's socials CSV, so the dashboards (which already read those files) stay
 current with no manual entry. Runs in the daily workflow BEFORE the dashboard builds.
 
-Platforms so far: Instagram (Instagram API with Instagram Login).
+Platforms so far: Instagram (Instagram API with Instagram Login), TikTok (RDM SOCIALS app, master/tiktok_auth.py).
 Add a platform by writing one more sync_<platform>() and listing it in SHOWS.
 
 What gets written, per show, for the CURRENT month (month to date):
@@ -15,6 +15,9 @@ What gets written, per show, for the CURRENT month (month to date):
     TOP_POST_VIEWS ... lifetime views of this month's best post
     FOLLOWERS ........ follower count today (the last run of the month = month-end count)
     FOLLOWER_GAIN .... FOLLOWERS minus last month's FOLLOWERS (when last month has one)
+TikTok's API has no account views-by-day, so its VIEWS / ENGAGEMENTS are the LIFETIME views / likes+comments+
+shares of the videos published that month, and every run saves a per-video snapshot (<snapshots>/daily/DATE.csv)
+so views during any period can be worked out later.
 On the 1st–3rd of a month it also re-finalizes LAST month's VIEWS / ENGAGEMENTS /
 POSTS / TOP_POST_VIEWS (Instagram can lag ~48h). Last month's FOLLOWERS is left as
 the final daily value. Older months are never touched, and rows for other
@@ -50,7 +53,8 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))   # repo root
 SHOWS = {
     "gt": {"csv": "master/shows/road_trippin/data/girls_tripp/socials_gt.csv", "instagram": {"env": "IG_TOKEN_GT"}},
     "rt": {"csv": "master/shows/road_trippin/data/socials.csv",               "instagram": {"env": "IG_TOKEN_RT"}},
-    "sr": {"csv": "master/shows/schultz_report/data_sr/socials_sr.csv",       "instagram": {"env": "IG_TOKEN_SR"}},
+    "sr": {"csv": "master/shows/schultz_report/data_sr/socials_sr.csv",       "instagram": {"env": "IG_TOKEN_SR"},
+           "tiktok": {"account": "sr", "snapshots": "master/shows/schultz_report/data_sr/tiktok"}},
     "fr": {"csv": "master/shows/road_trippin/data/football_related/data_fr/socials_fr.csv", "instagram": {"env": "IG_TOKEN_FR"}},
 }
 LOCAL_CONFIG = os.path.join(ROOT, "master", "config_socials.py")   # gitignored
@@ -224,6 +228,55 @@ def sync_instagram(spec, rows, today, refresh=False):
 
 
 # ═════════════════════════════════════════════════════════════════
+# TikTok
+# ═════════════════════════════════════════════════════════════════
+def sync_tiktok(spec, rows, today, dry_run=False):
+    sys.path.insert(0, os.path.join(ROOT, "master"))
+    import tiktok_auth as tt
+    cfg = tt.config()
+    if not getattr(cfg, tt.token_name(spec["account"]), None):
+        raise LookupError(f"no {tt.token_name(spec['account'])} (not a secret here, not in master/config_socials.py) — skipped")
+    tok = tt.access_token(cfg, spec["account"])
+    user = tt.api(tok, "GET", "/user/info/", params={"fields": "display_name,follower_count,video_count"}).get("user", {})
+    vids, cursor = [], None
+    while True:                                     # every video, newest first (the account is small)
+        body = {"max_count": 20, **({"cursor": cursor} if cursor else {})}
+        page = tt.api(tok, "POST", "/video/list/", json=body, params={
+            "fields": "id,create_time,view_count,like_count,comment_count,share_count,share_url"})
+        vids += page.get("videos", [])
+        if not page.get("has_more") or not page.get("videos"):
+            break
+        cursor = page.get("cursor")
+    for v in vids:
+        v["date"] = datetime.fromtimestamp(v["create_time"], timezone.utc).date().isoformat()
+
+    if spec.get("snapshots") and not dry_run:      # per-video lifetime counts as of today (never rewritten)
+        d = os.path.join(ROOT, spec["snapshots"], "daily")
+        os.makedirs(d, exist_ok=True)
+        with open(os.path.join(d, f"{today.isoformat()}.csv"), "w", newline="", encoding="utf-8") as f:
+            w = csv.writer(f, lineterminator="\r\n")
+            w.writerow(["video_id", "created", "views", "likes", "comments", "shares", "url"])
+            w.writerows([v["id"], v["date"], v.get("view_count", 0), v.get("like_count", 0),
+                         v.get("comment_count", 0), v.get("share_count", 0), v.get("share_url", "")] for v in vids)
+
+    cur = today.strftime("%Y-%m")
+    months = [cur] + ([prev_month(cur)] if today.day <= FINALIZE_DAYS else [])
+    values = {}
+    for ym in months:
+        mv = [v for v in vids if v["date"][:7] == ym]
+        values[(ym, "POSTS")] = len(mv)
+        values[(ym, "VIEWS")] = sum(v.get("view_count", 0) for v in mv)
+        values[(ym, "ENGAGEMENTS")] = sum(v.get("like_count", 0) + v.get("comment_count", 0) + v.get("share_count", 0) for v in mv)
+        values[(ym, "TOP_POST_VIEWS")] = max((v.get("view_count", 0) for v in mv), default=0)
+        if ym == cur:
+            values[(ym, "FOLLOWERS")] = user.get("follower_count", 0)
+            pf = cell(rows, prev_month(ym), "TIKTOK", "FOLLOWERS")
+            if pf is not None:
+                values[(ym, "FOLLOWER_GAIN")] = user.get("follower_count", 0) - int(pf)
+    return values, f"{user.get('display_name')} · {len(vids)} videos", months
+
+
+# ═════════════════════════════════════════════════════════════════
 # Main
 # ═════════════════════════════════════════════════════════════════
 def main():
@@ -265,6 +318,20 @@ def main():
             except Exception as e:       # one platform failing shouldn't stop the others
                 failed += 1
                 print(f"  ✗ Instagram: {e}")
+
+        if "tiktok" in cfg:
+            try:
+                values, who, months = sync_tiktok(cfg["tiktok"], rows, today, args.dry_run)
+                rows = upsert(rows, "TIKTOK", values)
+                changed = True
+                print(f"  ✓ TikTok {who} · months {', '.join(months)}")
+                for (p, m), v in sorted(values.items(), reverse=True):
+                    print(f"      {p} {m:<15} {v:>12,}")
+            except LookupError as e:
+                print(f"  · TikTok: {e}")
+            except (Exception, SystemExit) as e:   # tiktok_auth raises SystemExit on API errors
+                failed += 1
+                print(f"  ✗ TikTok: {e}")
 
         if changed and not args.dry_run:      # only touch files that actually got new data
             write_rows(path, rows)
