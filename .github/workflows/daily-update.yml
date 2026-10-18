@@ -48,8 +48,9 @@ jobs:
           TT_CLIENT_KEY: ${{ secrets.TT_CLIENT_KEY }}
           TT_CLIENT_SECRET: ${{ secrets.TT_CLIENT_SECRET }}
           TT_TOKEN_SR: ${{ secrets.TT_TOKEN_SR }}
+          TT_TOKEN_RT: ${{ secrets.TT_TOKEN_RT }}
           TOKEN_OUT_DIR: ${{ runner.temp }}/tokens
-        run: python master/sync_socials.py --show gt sr
+        run: python master/sync_socials.py --show gt sr rt
 
       # Instagram tokens expire after 60 days unless refreshed. The sync refreshes
       # them; this saves the refreshed ones back to the repo's secrets. Same for a

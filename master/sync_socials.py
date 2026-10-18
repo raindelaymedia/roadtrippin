@@ -15,9 +15,9 @@ What gets written, per show, for the CURRENT month (month to date):
     TOP_POST_VIEWS ... lifetime views of this month's best post
     FOLLOWERS ........ follower count today (the last run of the month = month-end count)
     FOLLOWER_GAIN .... FOLLOWERS minus last month's FOLLOWERS (when last month has one)
-TikTok's API has no account views-by-day, so its VIEWS / ENGAGEMENTS are the LIFETIME views / likes+comments+
-shares of the videos published that month, and every run saves a per-video snapshot (<snapshots>/daily/DATE.csv)
-so views during any period can be worked out later.
+TikTok's API has no account views-by-day, so its VIEWS / ENGAGEMENTS for a month = the sum of every video's
+lifetime count now minus that sum at the end of last month (kept as LIFETIME_VIEWS / LIFETIME_ENGAGEMENTS rows).
+Every run also saves a per-video snapshot (<snapshots>/daily/DATE.csv).
 On the 1st–3rd of a month it also re-finalizes LAST month's VIEWS / ENGAGEMENTS /
 POSTS / TOP_POST_VIEWS (Instagram can lag ~48h). Last month's FOLLOWERS is left as
 the final daily value. Older months are never touched, and rows for other
@@ -52,7 +52,8 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))   # repo root
 # Show → where its socials CSV lives and where its Instagram token comes from.
 SHOWS = {
     "gt": {"csv": "master/shows/road_trippin/data/girls_tripp/socials_gt.csv", "instagram": {"env": "IG_TOKEN_GT"}},
-    "rt": {"csv": "master/shows/road_trippin/data/socials.csv",               "instagram": {"env": "IG_TOKEN_RT"}},
+    "rt": {"csv": "master/shows/road_trippin/data/socials.csv",               "instagram": {"env": "IG_TOKEN_RT"},
+           "tiktok": {"account": "rt", "snapshots": "master/shows/road_trippin/data/tiktok"}},
     "sr": {"csv": "master/shows/schultz_report/data_sr/socials_sr.csv",       "instagram": {"env": "IG_TOKEN_SR"},
            "tiktok": {"account": "sr", "snapshots": "master/shows/schultz_report/data_sr/tiktok"}},
     "fr": {"csv": "master/shows/road_trippin/data/football_related/data_fr/socials_fr.csv", "instagram": {"env": "IG_TOKEN_FR"}},
@@ -262,12 +263,27 @@ def sync_tiktok(spec, rows, today, dry_run=False):
     cur = today.strftime("%Y-%m")
     months = [cur] + ([prev_month(cur)] if today.day <= FINALIZE_DAYS else [])
     values = {}
-    for ym in months:
+    for ym in months:                               # posts published in the month
         mv = [v for v in vids if v["date"][:7] == ym]
         values[(ym, "POSTS")] = len(mv)
-        values[(ym, "VIEWS")] = sum(v.get("view_count", 0) for v in mv)
-        values[(ym, "ENGAGEMENTS")] = sum(v.get("like_count", 0) + v.get("comment_count", 0) + v.get("share_count", 0) for v in mv)
         values[(ym, "TOP_POST_VIEWS")] = max((v.get("view_count", 0) for v in mv), default=0)
+
+    # Views / engagements DURING the month = account lifetime total now − the total at last month's end.
+    # LIFETIME_* rows hold each month's closing total (the last run of the month; the run on the 1st,
+    # ~05:00 ET, closes the month just ended). Deleted videos drop out of the total, so a month with a
+    # deletion can read low.
+    totals = {"VIEWS": sum(v.get("view_count", 0) for v in vids),
+              "ENGAGEMENTS": sum(v.get("like_count", 0) + v.get("comment_count", 0) + v.get("share_count", 0) for v in vids)}
+    close = prev_month(cur) if today.day == 1 else cur
+    for metric, total in totals.items():
+        values[(close, f"LIFETIME_{metric}")] = total
+        base = cell(rows, prev_month(close), "TIKTOK", f"LIFETIME_{metric}")
+        if base is not None:
+            values[(close, metric)] = max(total - int(base), 0)
+        else:
+            print(f"    ⚠ TikTok {metric}: no LIFETIME_{metric} for {prev_month(close)} — can't work out {close}'s yet")
+
+    for ym in months:
         if ym == cur:
             values[(ym, "FOLLOWERS")] = user.get("follower_count", 0)
             pf = cell(rows, prev_month(ym), "TIKTOK", "FOLLOWERS")
