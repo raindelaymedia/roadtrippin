@@ -8,7 +8,8 @@ Pulls every post on the Sprout-connected profiles since CAMPAIGN_START that carr
     data_sr/sprout/daily/YYYY-MM-DD.csv      that day's lifetime views per post (history for
                                              "views during a period" — never rewritten)
 
-Only sponsor-tagged posts are kept: on Jordan's personal accounts that's the show content. Runs in
+Only sponsor-tagged posts are kept: on Jordan's personal accounts that's the show content. YouTube is
+skipped: the SR channel is counted from YouTube itself (all of it is integrated), so Sprout would double count. Runs in
 the daily workflow (SPROUT_TOKEN secret) and is pushed to raindelaymedia/The-Schultz-Report with the
 other SR data. Uses master/sprout.py.
 
@@ -28,6 +29,8 @@ sys.path.insert(0, MASTER)
 from sprout import Sprout   # noqa: E402
 
 CAMPAIGN_START = "2026-09-01"
+SKIP_NETWORKS = {"youtube"}             # counted from YouTube directly
+SR_HANDLES = {"theschultzreport"}       # the show's accounts; everything else is Jordan's (X @Schultz_Report is HIS)
 SPONSOR_TAGS = ["Chime", "Fanatics", "Hims", "Lowe's"]
 OUT = os.path.join(HERE, "data_sr", "sprout")
 ET = ZoneInfo("America/New_York")
@@ -37,7 +40,7 @@ NETWORK = {"fb_instagram_account": "INSTAGRAM", "instagram": "INSTAGRAM", "tikto
 
 def main():
     sp = Sprout()
-    profiles = sp.profiles()
+    profiles = [p for p in sp.profiles() if p.get("network_type") not in SKIP_NETWORKS]
     by_id = {p["customer_profile_id"]: p for p in profiles}
     tags = {t["tag_id"]: t["text"] for t in sp.tags() if t.get("text") in SPONSOR_TAGS}
     today = datetime.now(ET).date()
@@ -57,7 +60,7 @@ def main():
             "url": p.get("perma_link"), "created": (p.get("created_time") or "")[:10],
             "profile": prof.get("native_name"), "profile_id": p.get("customer_profile_id"),
             "network": NETWORK.get(prof.get("network_type"), (prof.get("network_type") or "").upper()),
-            "owner": "SR" if (prof.get("native_name") or "").lower() in ("theschultzreport", "schultz_report") else "JS",
+            "owner": "SR" if (prof.get("native_name") or "").lower() in SR_HANDLES else "JS",
             "sponsors": sorted({tags[int(t["id"])] for t in (p.get("internal", {}).get("tags") or [])
                                 if int(t["id"]) in tags}),
             "views": views, "impressions": m.get("lifetime.impressions"), "video_views": m.get("lifetime.video_views"),
