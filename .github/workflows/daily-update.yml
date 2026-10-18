@@ -140,6 +140,47 @@ jobs:
         working-directory: master/shows/schultz_report
         run: python build_sr_dashboard.py
 
+      # ── SR → shared Schultz repo ───────────────────────────
+      # Every SR key lives here; the shared repo (raindelaymedia/The-Schultz-Report) has none.
+      # This pulls Sprout (Jordan's sponsor-tagged posts) and pushes the SR data files there.
+      - name: Pull Sprout (sponsor-tagged posts)
+        continue-on-error: true
+        env:
+          SPROUT_TOKEN: ${{ secrets.SPROUT_TOKEN }}
+        run: python master/shows/schultz_report/pull_sprout_sr.py
+
+      - name: Check out the shared Schultz repo
+        id: shared_checkout
+        continue-on-error: true
+        uses: actions/checkout@v4
+        with:
+          repository: raindelaymedia/The-Schultz-Report
+          token: ${{ secrets.SHARED_REPO_PAT }}
+          path: _shared
+
+      - name: Push SR data to the shared Schultz repo
+        if: steps.shared_checkout.outcome == 'success'
+        continue-on-error: true
+        run: |
+          S=master/shows/schultz_report/data_sr
+          D=_shared/schultz_report/data_sr/from_rdm
+          mkdir -p "$D/reports"
+          # copy whatever exists — a missing file must not block the rest
+          for f in "$S/tracker_data_sr.json" "$S/socials_sr.csv" "$S"/fanatics_*.csv; do [ -f "$f" ] && cp "$f" "$D/"; done
+          [ -d "$S/sprout" ] && cp -r "$S/sprout" "$D/"
+          # final Fanatics reports only, once committed here (drafts stay local)
+          [ -d "$S/reports/fanatics" ] && cp -r "$S/reports/fanatics" "$D/reports/" || true
+          cd _shared
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add schultz_report/data_sr/from_rdm
+          if git diff --staged --quiet; then echo "Shared repo already up to date"
+          else git commit -m "RDM daily SR data (from raindelaymedia/roadtrippin)" && git push && echo "✓ pushed to The-Schultz-Report"; fi
+
+      - name: Remove the shared checkout
+        if: always()
+        run: rm -rf _shared
+
       # ── Competitive landscape (internal) ───────────────────
       # Public YouTube stats for competitor channels, own Cloud project + key.
       # The API only returns today's totals, so a skipped day is a gap in history.
