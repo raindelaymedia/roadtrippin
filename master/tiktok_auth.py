@@ -31,6 +31,7 @@ import importlib.util
 import os
 import re
 import sys
+import time
 import types
 import urllib.parse
 
@@ -106,9 +107,14 @@ def access_token(cfg, account):
 
 
 def api(tok, method, path, **kw):
-    r = requests.request(method, f"{API}{path}", headers={"Authorization": f"Bearer {tok}"}, timeout=30, **kw)
-    j = r.json()
-    err = j.get("error", {})
+    for wait in (30, 60, 120, None):               # TikTok throttles bursts: back off and retry
+        r = requests.request(method, f"{API}{path}", headers={"Authorization": f"Bearer {tok}"}, timeout=30, **kw)
+        j = r.json()
+        err = j.get("error", {})
+        if err.get("code") != "rate_limit_exceeded" or wait is None:
+            break
+        print(f"    TikTok rate limit on {path} — waiting {wait}s")
+        time.sleep(wait)
     if err.get("code") not in (None, "ok"):
         raise SystemExit(f"TikTok API {path}: {err.get('code')} — {err.get('message')}")
     return j.get("data", {})

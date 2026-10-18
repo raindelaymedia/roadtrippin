@@ -43,6 +43,7 @@ import csv
 import importlib.util
 import os
 import sys
+import time
 from datetime import date, datetime, timedelta, timezone
 
 import requests
@@ -248,6 +249,7 @@ def sync_tiktok(spec, rows, today, dry_run=False):
         if not page.get("has_more") or not page.get("videos"):
             break
         cursor = page.get("cursor")
+        time.sleep(1)                               # stay well under TikTok's per-minute limit
     for v in vids:
         v["date"] = datetime.fromtimestamp(v["create_time"], timezone.utc).date().isoformat()
 
