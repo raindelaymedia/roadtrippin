@@ -101,6 +101,14 @@ def read_rows(path):
         return list(csv.DictReader(f))
 
 
+def read_rows_any(path):
+    """Any CSV as a list of dicts ([] if missing)."""
+    if not os.path.exists(path):
+        return []
+    with open(path, encoding="utf-8-sig") as f:
+        return list(csv.DictReader(f))
+
+
 def upsert(rows, platform, values):
     """values: {(period, metric): value}. Replaces those cells, keeps everything else."""
     keys = {(p, platform, m) for (p, m) in values}
@@ -261,6 +269,18 @@ def sync_tiktok(spec, rows, today, dry_run=False):
             w.writerow(["video_id", "created", "views", "likes", "comments", "shares", "url"])
             w.writerows([v["id"], v["date"], v.get("view_count", 0), v.get("like_count", 0),
                          v.get("comment_count", 0), v.get("share_count", 0), v.get("share_url", "")] for v in vids)
+        # one row per day: account totals (followers + lifetime counts) — the base for growth over any window
+        acct = os.path.join(ROOT, spec["snapshots"], "account_daily.csv")
+        hist = {r["date"]: r for r in read_rows_any(acct)}
+        hist[today.isoformat()] = {
+            "date": today.isoformat(), "followers": user.get("follower_count", 0), "videos": len(vids),
+            "lifetime_views": sum(v.get("view_count", 0) for v in vids),
+            "lifetime_engagements": sum(v.get("like_count", 0) + v.get("comment_count", 0) + v.get("share_count", 0) for v in vids)}
+        with open(acct, "w", newline="", encoding="utf-8") as f:
+            w = csv.DictWriter(f, fieldnames=["date", "followers", "videos", "lifetime_views", "lifetime_engagements"],
+                               lineterminator="\r\n")
+            w.writeheader()
+            w.writerows(hist[k] for k in sorted(hist))
 
     cur = today.strftime("%Y-%m")
     months = [cur] + ([prev_month(cur)] if today.day <= FINALIZE_DAYS else [])

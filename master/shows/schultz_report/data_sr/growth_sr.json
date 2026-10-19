@@ -1,0 +1,61 @@
+{
+ "start": "2026-08-18",
+ "window_days": 14,
+ "through": "2026-10-18",
+ "pulled": "2026-10-19T18:29+00:00",
+ "instagram": {
+  "followers_now": 2160,
+  "windows": [
+   {
+    "start": "2026-08-18",
+    "end": "2026-08-31",
+    "partial": false,
+    "views": 545831,
+    "interactions": 30735,
+    "follows": 1185,
+    "unfollows": 511,
+    "net_followers": 674
+   },
+   {
+    "start": "2026-09-01",
+    "end": "2026-09-14",
+    "partial": false,
+    "views": 834767,
+    "interactions": 44400,
+    "follows": 729,
+    "unfollows": 455,
+    "net_followers": 274
+   },
+   {
+    "start": "2026-09-15",
+    "end": "2026-09-28",
+    "partial": false,
+    "views": 526832,
+    "interactions": 32766,
+    "follows": 3237,
+    "unfollows": 2105,
+    "net_followers": 1132
+   },
+   {
+    "start": "2026-09-29",
+    "end": "2026-10-12",
+    "partial": false,
+    "views": 1147809,
+    "interactions": 67597,
+    "follows": 1604,
+    "unfollows": 1414,
+    "net_followers": 190
+   },
+   {
+    "start": "2026-10-13",
+    "end": "2026-10-18",
+    "partial": true,
+    "views": 494792,
+    "interactions": 32147,
+    "follows": 423,
+    "unfollows": 488,
+    "net_followers": -65
+   }
+  ]
+ }
+}

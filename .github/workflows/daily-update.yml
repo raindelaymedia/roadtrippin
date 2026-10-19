@@ -164,6 +164,12 @@ jobs:
       # Every SR key lives here; the shared repo (raindelaymedia/The-Schultz-Report) has none.
       # This pulls Sprout (Jordan's sponsor-tagged posts) and pushes the SR data files there
       # (the shared repo was checked out to _shared/ before the SR dashboard build).
+      - name: Pull SR growth windows (Instagram, two-week windows since Aug 18)
+        continue-on-error: true
+        env:
+          IG_TOKEN_SR: ${{ secrets.IG_TOKEN_SR }}
+        run: python master/shows/schultz_report/pull_growth_sr.py
+
       - name: Pull Sprout (sponsor-tagged posts)
         continue-on-error: true
         env:
@@ -178,7 +184,7 @@ jobs:
           D=_shared/schultz_report/data_sr/from_rdm
           mkdir -p "$D/reports"
           # copy whatever exists — a missing file must not block the rest
-          for f in "$S/tracker_data_sr.json" "$S/socials_sr.csv" "$S"/fanatics_*.csv; do [ -f "$f" ] && cp "$f" "$D/"; done
+          for f in "$S/tracker_data_sr.json" "$S/socials_sr.csv" "$S/growth_sr.json" "$S"/fanatics_*.csv; do [ -f "$f" ] && cp "$f" "$D/"; done
           [ -d "$S/sprout" ] && cp -r "$S/sprout" "$D/"
           [ -d "$S/tiktok" ] && cp -r "$S/tiktok" "$D/"
           # final Fanatics reports only, once committed here (drafts stay local)

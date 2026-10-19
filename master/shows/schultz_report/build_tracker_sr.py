@@ -414,7 +414,7 @@ def main():
     # Daily (last 90 days)
     print("  Pulling daily data (last 90 days)...")
     daily_end = (datetime.now() - timedelta(days=1)).strftime("%Y-%m-%d")
-    daily_start = (datetime.now() - timedelta(days=91)).strftime("%Y-%m-%d")
+    daily_start = min(RDM_START, (datetime.now() - timedelta(days=91)).strftime("%Y-%m-%d"))   # always back to the RDM start (growth view)
     daily_totals = pull_daily(yt_analytics, daily_start, daily_end)
     daily_types = pull_daily_content_type(yt_analytics, daily_start, daily_end)
     daily_yt = {}
