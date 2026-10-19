@@ -54,8 +54,8 @@ def config():
         mod = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(mod)
     for k, v in os.environ.items():
-        if k.startswith("TT_") and v:
-            setattr(mod, k, v)
+        if k.startswith("TT_") and v.strip().strip('"').strip("'").strip():
+            setattr(mod, k, v.strip().strip('"').strip("'").strip())   # forgive quotes/spaces pasted into a secret
     return mod
 
 
