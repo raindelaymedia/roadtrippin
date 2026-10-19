@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-18T18:58:45.537531",
+  "generated": "2026-10-19T15:04:26.162999",
   "channel_id": "UCWcbo7_7Qiu0VtXPjpp-SDA",
   "rt_channel_id": "UCSes4X8uDrpc4X46hJKjejg",
   "months": [
@@ -7,22 +7,22 @@
   ],
   "yt": {
     "vids": {
-      "2026-10": 9087
+      "2026-10": 9523
     },
     "shorts": {
-      "2026-10": 20318
+      "2026-10": 22368
     },
     "lives": {
       "2026-10": 0
     },
     "subs_gained": {
-      "2026-10": 292
+      "2026-10": 304
     },
     "subs_lost": {
-      "2026-10": 5
+      "2026-10": 7
     },
     "watch_hrs": {
-      "2026-10": 533.1
+      "2026-10": 583.1
     }
   },
   "audio": {
@@ -44,46 +44,46 @@
       "2026-10": null
     },
     "search_pct": {
-      "2026-10": 0.0494
+      "2026-10": 0.0568
     },
     "tv_pct": {
-      "2026-10": 0.0455
+      "2026-10": 0.0477
     }
   },
   "collab": {
     "total_views": {
-      "2026-10": 29395
+      "2026-10": 31882
     },
     "rt_views": {
-      "2026-10": 814
+      "2026-10": 830
     },
     "rt_pct": {
-      "2026-10": 0.0277
+      "2026-10": 0.026
     },
     "rt_by_source": {
       "2026-10": {
         "suggested": 0,
-        "channel_page": 814
+        "channel_page": 830
       }
     },
     "collab_views": {
-      "2026-10": 963
+      "2026-10": 983
     },
     "collab_pct": {
-      "2026-10": 0.0328
+      "2026-10": 0.0308
     },
     "top_channels": {
       "2026-10": [
         {
           "id": "UCSes4X8uDrpc4X46hJKjejg",
           "name": "Road Trippin' Show",
-          "views": 814,
+          "views": 830,
           "is_rt": true
         },
         {
           "id": "UCVRm2Ho8cL3lvWDyp2ayuFw",
           "name": "New Heights",
-          "views": 69,
+          "views": 72,
           "is_rt": false
         },
         {
@@ -108,37 +108,37 @@
     },
     "detail_coverage": {
       "2026-10": {
-        "suggested": 0.4276,
+        "suggested": 0.3973,
         "channel_page": 1.0
       }
     }
   },
   "traffic_sources": {
     "2026-10": {
-      "NO_LINK_OTHER": 232,
-      "SUBSCRIBER": 6420,
-      "YT_CHANNEL": 1655,
-      "YT_SEARCH": 1453,
-      "RELATED_VIDEO": 463,
-      "YT_OTHER_PAGE": 216,
-      "EXT_URL": 155,
-      "PLAYLIST": 65,
-      "SHORTS": 18647,
+      "NO_LINK_OTHER": 227,
+      "SUBSCRIBER": 6721,
+      "YT_CHANNEL": 1716,
+      "YT_SEARCH": 1810,
+      "RELATED_VIDEO": 521,
+      "YT_OTHER_PAGE": 238,
+      "EXT_URL": 159,
+      "PLAYLIST": 69,
+      "SHORTS": 20327,
       "SOUND_PAGE": 3,
-      "NOTIFICATION": 32,
-      "SHORTS_CONTENT_LINKS": 32,
-      "END_SCREEN": 22
+      "NOTIFICATION": 34,
+      "SHORTS_CONTENT_LINKS": 33,
+      "END_SCREEN": 24
     }
   },
   "best_of": {
-    "label": "Oct 01 \u2013 Oct 18, 2026",
+    "label": "Oct 01 \u2013 Oct 19, 2026",
     "long": [
       {
         "id": "5cmEznkoK9k",
         "title": "Everyone Knew Zack Martin Was Dating Tyler Eifert's Sister\u2026 Except Tyler",
         "published": "2026-10-08",
-        "views": 4658,
-        "likes": 45,
+        "views": 4687,
+        "likes": 46,
         "thumbnail": "https://i.ytimg.com/vi/5cmEznkoK9k/maxresdefault.jpg",
         "url": "https://youtu.be/5cmEznkoK9k",
         "type": "LONG",
@@ -148,8 +148,8 @@
         "id": "aVsKEwZRytM",
         "title": "Zack Martin & Tyler Eifert on Notre Dame Rivalries and NFL Training Camps",
         "published": "2026-10-14",
-        "views": 2028,
-        "likes": 48,
+        "views": 2075,
+        "likes": 49,
         "thumbnail": "https://i.ytimg.com/vi/aVsKEwZRytM/maxresdefault.jpg",
         "url": "https://youtu.be/aVsKEwZRytM",
         "type": "LONG",
@@ -161,7 +161,7 @@
         "id": "DptsIiJcaWs",
         "title": "Zack Martin Kicked Down Tyler Eifert\u2019s Door at Notre Dame",
         "published": "2026-10-11",
-        "views": 914,
+        "views": 924,
         "likes": 8,
         "thumbnail": "https://i.ytimg.com/vi/DptsIiJcaWs/maxresdefault.jpg",
         "url": "https://youtu.be/DptsIiJcaWs",
@@ -172,7 +172,7 @@
         "id": "vt-XiWC7wyU",
         "title": "Tyler Eifert Got Ragdolled in His Second NFL Game",
         "published": "2026-10-09",
-        "views": 571,
+        "views": 583,
         "likes": 3,
         "thumbnail": "https://i.ytimg.com/vi/vt-XiWC7wyU/maxresdefault.jpg",
         "url": "https://youtu.be/vt-XiWC7wyU",
@@ -183,7 +183,7 @@
         "id": "SN7zjZcHgrQ",
         "title": "What Happens to an NFL Player\u2019s Body After Retirement?",
         "published": "2026-10-10",
-        "views": 442,
+        "views": 454,
         "likes": 1,
         "thumbnail": "https://i.ytimg.com/vi/SN7zjZcHgrQ/maxresdefault.jpg",
         "url": "https://youtu.be/SN7zjZcHgrQ",
@@ -191,24 +191,24 @@
         "show": "FR"
       },
       {
-        "id": "xVePtknKgYs",
-        "title": "The Worst Game Zack Martin Ever Played",
-        "published": "2026-10-15",
-        "views": 152,
-        "likes": 3,
-        "thumbnail": "https://i.ytimg.com/vi/xVePtknKgYs/maxresdefault.jpg",
-        "url": "https://youtu.be/xVePtknKgYs",
+        "id": "agY3fbMMBLU",
+        "title": "Why Zack Martin Thinks Notre Dame Can Win It All",
+        "published": "2026-10-17",
+        "views": 204,
+        "likes": 0,
+        "thumbnail": "https://i.ytimg.com/vi/agY3fbMMBLU/maxresdefault.jpg",
+        "url": "https://youtu.be/agY3fbMMBLU",
         "type": "MID",
         "show": "FR"
       },
       {
-        "id": "agY3fbMMBLU",
-        "title": "Why Zack Martin Thinks Notre Dame Can Win It All",
-        "published": "2026-10-17",
-        "views": 38,
-        "likes": 0,
-        "thumbnail": "https://i.ytimg.com/vi/agY3fbMMBLU/maxresdefault.jpg",
-        "url": "https://youtu.be/agY3fbMMBLU",
+        "id": "xVePtknKgYs",
+        "title": "The Worst Game Zack Martin Ever Played",
+        "published": "2026-10-15",
+        "views": 198,
+        "likes": 3,
+        "thumbnail": "https://i.ytimg.com/vi/xVePtknKgYs/maxresdefault.jpg",
+        "url": "https://youtu.be/xVePtknKgYs",
         "type": "MID",
         "show": "FR"
       }
@@ -218,7 +218,7 @@
         "id": "B75cCYKybHQ",
         "title": "The Craziest Offensive Line Stat in NFL History #nfl #collegefootball #dallascowboys",
         "published": "2026-10-11",
-        "views": 3464,
+        "views": 3468,
         "likes": 112,
         "thumbnail": "https://i.ytimg.com/vi/B75cCYKybHQ/maxresdefault.jpg",
         "url": "https://youtu.be/B75cCYKybHQ",
@@ -229,8 +229,8 @@
         "id": "ro6UxEdmQjY",
         "title": "Michigan vs. Notre Dame: The 2011 Heartbreaker ESPN Instant Classic #football #collegefootball",
         "published": "2026-10-15",
-        "views": 2347,
-        "likes": 42,
+        "views": 2456,
+        "likes": 44,
         "thumbnail": "https://i.ytimg.com/vi/ro6UxEdmQjY/maxresdefault.jpg",
         "url": "https://youtu.be/ro6UxEdmQjY",
         "type": "SHORT",
@@ -240,7 +240,7 @@
         "id": "UA2h8E7u7xs",
         "title": "Cincinnati Bengals\u2019 Tyler Eifert Was the Last to Know His Teammate Dated His Sister #nfl",
         "published": "2026-10-08",
-        "views": 2058,
+        "views": 2059,
         "likes": 35,
         "thumbnail": "https://i.ytimg.com/vi/UA2h8E7u7xs/maxresdefault.jpg",
         "url": "https://youtu.be/UA2h8E7u7xs",
@@ -251,7 +251,7 @@
         "id": "4m2-sZ9AhKg",
         "title": "Eating 5,000 Calories A Day Just To Play Football #nfl #cfb #notredame #cowboys #bengals",
         "published": "2026-10-10",
-        "views": 1718,
+        "views": 1720,
         "likes": 43,
         "thumbnail": "https://i.ytimg.com/vi/4m2-sZ9AhKg/maxresdefault.jpg",
         "url": "https://youtu.be/4m2-sZ9AhKg",
@@ -262,8 +262,8 @@
         "id": "q3N8i0I52qs",
         "title": "The Wild Notre Dame Recruiting Story That Changed Everything #cfb #ncaa #football",
         "published": "2026-10-16",
-        "views": 1523,
-        "likes": 19,
+        "views": 1580,
+        "likes": 21,
         "thumbnail": "https://i.ytimg.com/vi/q3N8i0I52qs/maxresdefault.jpg",
         "url": "https://youtu.be/q3N8i0I52qs",
         "type": "SHORT",
@@ -290,8 +290,8 @@
           "title": "Everyone Knew Zack Martin Was Dating Tyler Eifert's Sister\u2026 Except Tyler",
           "published": "2026-10-08",
           "month": "2026-10",
-          "views": 4658,
-          "likes": 45,
+          "views": 4687,
+          "likes": 46,
           "comments": 10,
           "duration_sec": 4019,
           "thumbnail": "https://i.ytimg.com/vi/5cmEznkoK9k/maxresdefault.jpg",
@@ -303,8 +303,8 @@
           "title": "Zack Martin & Tyler Eifert on Notre Dame Rivalries and NFL Training Camps",
           "published": "2026-10-14",
           "month": "2026-10",
-          "views": 2028,
-          "likes": 48,
+          "views": 2075,
+          "likes": 49,
           "comments": 7,
           "duration_sec": 4281,
           "thumbnail": "https://i.ytimg.com/vi/aVsKEwZRytM/maxresdefault.jpg",
@@ -318,7 +318,7 @@
           "title": "Zack Martin Kicked Down Tyler Eifert\u2019s Door at Notre Dame",
           "published": "2026-10-11",
           "month": "2026-10",
-          "views": 914,
+          "views": 924,
           "likes": 8,
           "comments": 2,
           "duration_sec": 230,
@@ -331,7 +331,7 @@
           "title": "Tyler Eifert Got Ragdolled in His Second NFL Game",
           "published": "2026-10-09",
           "month": "2026-10",
-          "views": 571,
+          "views": 583,
           "likes": 3,
           "comments": 0,
           "duration_sec": 377,
@@ -344,7 +344,7 @@
           "title": "What Happens to an NFL Player\u2019s Body After Retirement?",
           "published": "2026-10-10",
           "month": "2026-10",
-          "views": 442,
+          "views": 454,
           "likes": 1,
           "comments": 0,
           "duration_sec": 315,
@@ -353,29 +353,29 @@
           "type": "mid"
         },
         {
+          "id": "agY3fbMMBLU",
+          "title": "Why Zack Martin Thinks Notre Dame Can Win It All",
+          "published": "2026-10-17",
+          "month": "2026-10",
+          "views": 204,
+          "likes": 0,
+          "comments": 1,
+          "duration_sec": 248,
+          "thumbnail": "https://i.ytimg.com/vi/agY3fbMMBLU/maxresdefault.jpg",
+          "url": "https://youtu.be/agY3fbMMBLU",
+          "type": "mid"
+        },
+        {
           "id": "xVePtknKgYs",
           "title": "The Worst Game Zack Martin Ever Played",
           "published": "2026-10-15",
           "month": "2026-10",
-          "views": 152,
+          "views": 198,
           "likes": 3,
           "comments": 0,
           "duration_sec": 279,
           "thumbnail": "https://i.ytimg.com/vi/xVePtknKgYs/maxresdefault.jpg",
           "url": "https://youtu.be/xVePtknKgYs",
-          "type": "mid"
-        },
-        {
-          "id": "agY3fbMMBLU",
-          "title": "Why Zack Martin Thinks Notre Dame Can Win It All",
-          "published": "2026-10-17",
-          "month": "2026-10",
-          "views": 38,
-          "likes": 0,
-          "comments": 0,
-          "duration_sec": 248,
-          "thumbnail": "https://i.ytimg.com/vi/agY3fbMMBLU/maxresdefault.jpg",
-          "url": "https://youtu.be/agY3fbMMBLU",
           "type": "mid"
         },
         {
@@ -387,7 +387,7 @@
           "likes": 0,
           "comments": 0,
           "duration_sec": 276,
-          "thumbnail": "https://i9.ytimg.com/vi/LOF5zQ29YKo/maxresdefault.jpg?sqp=CISs1NYG&rs=AOn4CLBVX17RfcP5K8pGiabMDN7xx_MZ-w",
+          "thumbnail": "https://i9.ytimg.com/vi/LOF5zQ29YKo/maxresdefault.jpg?sqp=CPDg2NYG&rs=AOn4CLAg87SFMq_FYChof5QiDdx56gMhvg",
           "url": "https://youtu.be/LOF5zQ29YKo",
           "type": "mid"
         }
@@ -398,7 +398,7 @@
           "title": "The Craziest Offensive Line Stat in NFL History #nfl #collegefootball #dallascowboys",
           "published": "2026-10-11",
           "month": "2026-10",
-          "views": 3464,
+          "views": 3468,
           "likes": 112,
           "comments": 1,
           "duration_sec": 49,
@@ -411,8 +411,8 @@
           "title": "Michigan vs. Notre Dame: The 2011 Heartbreaker ESPN Instant Classic #football #collegefootball",
           "published": "2026-10-15",
           "month": "2026-10",
-          "views": 2347,
-          "likes": 42,
+          "views": 2456,
+          "likes": 44,
           "comments": 0,
           "duration_sec": 36,
           "thumbnail": "https://i.ytimg.com/vi/ro6UxEdmQjY/maxresdefault.jpg",
@@ -424,7 +424,7 @@
           "title": "Cincinnati Bengals\u2019 Tyler Eifert Was the Last to Know His Teammate Dated His Sister #nfl",
           "published": "2026-10-08",
           "month": "2026-10",
-          "views": 2058,
+          "views": 2059,
           "likes": 35,
           "comments": 0,
           "duration_sec": 67,
@@ -437,7 +437,7 @@
           "title": "Eating 5,000 Calories A Day Just To Play Football #nfl #cfb #notredame #cowboys #bengals",
           "published": "2026-10-10",
           "month": "2026-10",
-          "views": 1718,
+          "views": 1720,
           "likes": 43,
           "comments": 1,
           "duration_sec": 68,
@@ -450,12 +450,25 @@
           "title": "The Wild Notre Dame Recruiting Story That Changed Everything #cfb #ncaa #football",
           "published": "2026-10-16",
           "month": "2026-10",
-          "views": 1523,
-          "likes": 19,
+          "views": 1580,
+          "likes": 21,
           "comments": 0,
           "duration_sec": 53,
           "thumbnail": "https://i.ytimg.com/vi/q3N8i0I52qs/maxresdefault.jpg",
           "url": "https://youtu.be/q3N8i0I52qs",
+          "type": "short"
+        },
+        {
+          "id": "xMkGp2liSOg",
+          "title": "\"Quit Making Excuses!\" Calling Out Dak Prescott & Cowboys After a Brutal Loss #nfl #football",
+          "published": "2026-10-14",
+          "month": "2026-10",
+          "views": 1419,
+          "likes": 35,
+          "comments": 1,
+          "duration_sec": 44,
+          "thumbnail": "https://i.ytimg.com/vi/xMkGp2liSOg/maxresdefault.jpg",
+          "url": "https://youtu.be/xMkGp2liSOg",
           "type": "short"
         },
         {
@@ -469,19 +482,6 @@
           "duration_sec": 37,
           "thumbnail": "https://i.ytimg.com/vi/p8_zj73fyfw/maxresdefault.jpg",
           "url": "https://youtu.be/p8_zj73fyfw",
-          "type": "short"
-        },
-        {
-          "id": "xMkGp2liSOg",
-          "title": "\"Quit Making Excuses!\" Calling Out Dak Prescott & Cowboys After a Brutal Loss #nfl #football",
-          "published": "2026-10-14",
-          "month": "2026-10",
-          "views": 1417,
-          "likes": 34,
-          "comments": 1,
-          "duration_sec": 44,
-          "thumbnail": "https://i.ytimg.com/vi/xMkGp2liSOg/maxresdefault.jpg",
-          "url": "https://youtu.be/xMkGp2liSOg",
           "type": "short"
         },
         {
@@ -511,16 +511,16 @@
           "type": "short"
         },
         {
-          "id": "mL9QANCarR8",
-          "title": "\"I Am NOT Ready For the NFL!\" #football #bengals #cowboys #notredame",
-          "published": "2026-10-05",
+          "id": "vKEME6GW2Vk",
+          "title": "From Notre Dame Roommates to the NFL, to the Mic: Welcome to Football Related #NFL #CFB",
+          "published": "2026-10-04",
           "month": "2026-10",
-          "views": 1304,
-          "likes": 25,
-          "comments": 0,
-          "duration_sec": 45,
-          "thumbnail": "https://i.ytimg.com/vi/mL9QANCarR8/maxresdefault.jpg",
-          "url": "https://youtu.be/mL9QANCarR8",
+          "views": 1305,
+          "likes": 32,
+          "comments": 4,
+          "duration_sec": 35,
+          "thumbnail": "https://i.ytimg.com/vi/vKEME6GW2Vk/maxresdefault.jpg",
+          "url": "https://youtu.be/vKEME6GW2Vk",
           "type": "short"
         }
       ]
@@ -532,9 +532,9 @@
       "title": "Why Zack Martin Thinks Notre Dame Can Win It All",
       "published": "2026-10-17",
       "month": "2026-10",
-      "views": 38,
+      "views": 204,
       "likes": 0,
-      "comments": 0,
+      "comments": 1,
       "duration_sec": 248,
       "thumbnail": "https://i.ytimg.com/vi/agY3fbMMBLU/maxresdefault.jpg",
       "url": "https://youtu.be/agY3fbMMBLU",
@@ -545,8 +545,8 @@
       "title": "The NFL Training Camp Debate: Grind It Out or Stay Fresh? #football #collegefootball #notredame",
       "published": "2026-10-17",
       "month": "2026-10",
-      "views": 1070,
-      "likes": 12,
+      "views": 1076,
+      "likes": 13,
       "comments": 0,
       "duration_sec": 58,
       "thumbnail": "https://i.ytimg.com/vi/E5KA3m-xd2A/maxresdefault.jpg",
@@ -558,8 +558,8 @@
       "title": "The Wild Notre Dame Recruiting Story That Changed Everything #cfb #ncaa #football",
       "published": "2026-10-16",
       "month": "2026-10",
-      "views": 1523,
-      "likes": 19,
+      "views": 1580,
+      "likes": 21,
       "comments": 0,
       "duration_sec": 53,
       "thumbnail": "https://i.ytimg.com/vi/q3N8i0I52qs/maxresdefault.jpg",
@@ -571,7 +571,7 @@
       "title": "The Worst Game Zack Martin Ever Played",
       "published": "2026-10-15",
       "month": "2026-10",
-      "views": 152,
+      "views": 198,
       "likes": 3,
       "comments": 0,
       "duration_sec": 279,
@@ -584,8 +584,8 @@
       "title": "Michigan vs. Notre Dame: The 2011 Heartbreaker ESPN Instant Classic #football #collegefootball",
       "published": "2026-10-15",
       "month": "2026-10",
-      "views": 2347,
-      "likes": 42,
+      "views": 2456,
+      "likes": 44,
       "comments": 0,
       "duration_sec": 36,
       "thumbnail": "https://i.ytimg.com/vi/ro6UxEdmQjY/maxresdefault.jpg",
@@ -601,7 +601,7 @@
       "likes": 0,
       "comments": 0,
       "duration_sec": 276,
-      "thumbnail": "https://i9.ytimg.com/vi/LOF5zQ29YKo/maxresdefault.jpg?sqp=CISs1NYG&rs=AOn4CLBVX17RfcP5K8pGiabMDN7xx_MZ-w",
+      "thumbnail": "https://i9.ytimg.com/vi/LOF5zQ29YKo/maxresdefault.jpg?sqp=CPDg2NYG&rs=AOn4CLAg87SFMq_FYChof5QiDdx56gMhvg",
       "url": "https://youtu.be/LOF5zQ29YKo",
       "type": "mid"
     },
@@ -610,8 +610,8 @@
       "title": "The Worst Football Game Dallas Cowboys\u2019 Zack Martin Ever Played #nfl #cfb #notredame",
       "published": "2026-10-15",
       "month": "2026-10",
-      "views": 1069,
-      "likes": 39,
+      "views": 1080,
+      "likes": 40,
       "comments": 1,
       "duration_sec": 75,
       "thumbnail": "https://i.ytimg.com/vi/ysFIXGJ8hD4/maxresdefault.jpg",
@@ -623,8 +623,8 @@
       "title": "\"Quit Making Excuses!\" Calling Out Dak Prescott & Cowboys After a Brutal Loss #nfl #football",
       "published": "2026-10-14",
       "month": "2026-10",
-      "views": 1417,
-      "likes": 34,
+      "views": 1419,
+      "likes": 35,
       "comments": 1,
       "duration_sec": 44,
       "thumbnail": "https://i.ytimg.com/vi/xMkGp2liSOg/maxresdefault.jpg",
@@ -636,8 +636,8 @@
       "title": "Zack Martin & Tyler Eifert on Notre Dame Rivalries and NFL Training Camps",
       "published": "2026-10-14",
       "month": "2026-10",
-      "views": 2028,
-      "likes": 48,
+      "views": 2075,
+      "likes": 49,
       "comments": 7,
       "duration_sec": 4281,
       "thumbnail": "https://i.ytimg.com/vi/aVsKEwZRytM/maxresdefault.jpg",
@@ -649,7 +649,7 @@
       "title": "The Craziest Offensive Line Stat in NFL History #nfl #collegefootball #dallascowboys",
       "published": "2026-10-11",
       "month": "2026-10",
-      "views": 3464,
+      "views": 3468,
       "likes": 112,
       "comments": 1,
       "duration_sec": 49,
@@ -662,7 +662,7 @@
       "title": "Zack Martin Kicked Down Tyler Eifert\u2019s Door at Notre Dame",
       "published": "2026-10-11",
       "month": "2026-10",
-      "views": 914,
+      "views": 924,
       "likes": 8,
       "comments": 2,
       "duration_sec": 230,
@@ -675,7 +675,7 @@
       "title": "Eating 5,000 Calories A Day Just To Play Football #nfl #cfb #notredame #cowboys #bengals",
       "published": "2026-10-10",
       "month": "2026-10",
-      "views": 1718,
+      "views": 1720,
       "likes": 43,
       "comments": 1,
       "duration_sec": 68,
@@ -688,7 +688,7 @@
       "title": "What Happens to an NFL Player\u2019s Body After Retirement?",
       "published": "2026-10-10",
       "month": "2026-10",
-      "views": 442,
+      "views": 454,
       "likes": 1,
       "comments": 0,
       "duration_sec": 315,
@@ -714,7 +714,7 @@
       "title": "Tyler Eifert Got Ragdolled in His Second NFL Game",
       "published": "2026-10-09",
       "month": "2026-10",
-      "views": 571,
+      "views": 583,
       "likes": 3,
       "comments": 0,
       "duration_sec": 377,
@@ -766,7 +766,7 @@
       "title": "Cincinnati Bengals\u2019 Tyler Eifert Was the Last to Know His Teammate Dated His Sister #nfl",
       "published": "2026-10-08",
       "month": "2026-10",
-      "views": 2058,
+      "views": 2059,
       "likes": 35,
       "comments": 0,
       "duration_sec": 67,
@@ -779,8 +779,8 @@
       "title": "Everyone Knew Zack Martin Was Dating Tyler Eifert's Sister\u2026 Except Tyler",
       "published": "2026-10-08",
       "month": "2026-10",
-      "views": 4658,
-      "likes": 45,
+      "views": 4687,
+      "likes": 46,
       "comments": 10,
       "duration_sec": 4019,
       "thumbnail": "https://i.ytimg.com/vi/5cmEznkoK9k/maxresdefault.jpg",
@@ -805,7 +805,7 @@
       "title": "From Notre Dame Roommates to the NFL, to the Mic: Welcome to Football Related #NFL #CFB",
       "published": "2026-10-04",
       "month": "2026-10",
-      "views": 1304,
+      "views": 1305,
       "likes": 32,
       "comments": 4,
       "duration_sec": 35,
@@ -818,7 +818,7 @@
       "title": "Welcome to Football Related!",
       "published": "2026-10-04",
       "month": "2026-10",
-      "views": 1020,
+      "views": 1023,
       "likes": 25,
       "comments": 8,
       "duration_sec": 55,
@@ -827,14 +827,8 @@
       "type": "short"
     }
   ],
-  "current_subs": 301,
+  "current_subs": 304,
   "daily_yt": {
-    "2026-07-19": {
-      "total_views": 0,
-      "watch_hrs": 0.0,
-      "subs_gained": 0,
-      "subs_lost": 0
-    },
     "2026-07-20": {
       "total_views": 0,
       "watch_hrs": 0.0,
@@ -1373,12 +1367,12 @@
       "vod_views": 663
     },
     "2026-10-14": {
-      "total_views": 3061,
-      "watch_hrs": 116.9,
+      "total_views": 3051,
+      "watch_hrs": 114.4,
       "subs_gained": 31,
       "subs_lost": 1,
-      "shorts_views": 1482,
-      "vod_views": 1579
+      "shorts_views": 1478,
+      "vod_views": 1573
     },
     "2026-10-15": {
       "total_views": 5074,
@@ -1387,6 +1381,14 @@
       "subs_lost": 0,
       "shorts_views": 4079,
       "vod_views": 995
+    },
+    "2026-10-16": {
+      "total_views": 2496,
+      "watch_hrs": 52.4,
+      "subs_gained": 12,
+      "subs_lost": 2,
+      "shorts_views": 2054,
+      "vod_views": 442
     }
   }
 }
