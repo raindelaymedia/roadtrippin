@@ -141,19 +141,6 @@ jobs:
         working-directory: master/shows/schultz_report
         run: python build_tracker_sr.py
 
-      - name: Rebuild Schultz Report dashboard
-        working-directory: master/shows/schultz_report
-        run: python build_sr_dashboard.py
-
-      # ── SR → shared Schultz repo ───────────────────────────
-      # Every SR key lives here; the shared repo (raindelaymedia/The-Schultz-Report) has none.
-      # This pulls Sprout (Jordan's sponsor-tagged posts) and pushes the SR data files there.
-      - name: Pull Sprout (sponsor-tagged posts)
-        continue-on-error: true
-        env:
-          SPROUT_TOKEN: ${{ secrets.SPROUT_TOKEN }}
-        run: python master/shows/schultz_report/pull_sprout_sr.py
-
       - name: Check out the shared Schultz repo
         id: shared_checkout
         continue-on-error: true
@@ -162,6 +149,26 @@ jobs:
           repository: raindelaymedia/The-Schultz-Report
           token: ${{ secrets.SHARED_REPO_PAT }}
           path: _shared
+
+      # Manual SR numbers (X, engaged views, Jordan's X) are entered on the shared dashboard
+      - name: Pull Schultz-side manual inputs from the shared repo
+        if: steps.shared_checkout.outcome == 'success'
+        continue-on-error: true
+        run: python master/shows/schultz_report/pull_shared_inputs_sr.py
+
+      - name: Rebuild Schultz Report dashboard
+        working-directory: master/shows/schultz_report
+        run: python build_sr_dashboard.py
+
+      # ── SR → shared Schultz repo ───────────────────────────
+      # Every SR key lives here; the shared repo (raindelaymedia/The-Schultz-Report) has none.
+      # This pulls Sprout (Jordan's sponsor-tagged posts) and pushes the SR data files there
+      # (the shared repo was checked out to _shared/ before the SR dashboard build).
+      - name: Pull Sprout (sponsor-tagged posts)
+        continue-on-error: true
+        env:
+          SPROUT_TOKEN: ${{ secrets.SPROUT_TOKEN }}
+        run: python master/shows/schultz_report/pull_sprout_sr.py
 
       - name: Push SR data to the shared Schultz repo
         if: steps.shared_checkout.outcome == 'success'
