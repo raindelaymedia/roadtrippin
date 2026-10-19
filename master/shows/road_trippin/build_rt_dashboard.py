@@ -662,7 +662,10 @@ def table_html(title, icon, rows, months, total_labels=None):
                 cells += f'<td>{v*100:.1f}%</td>'
             elif isinstance(v, (int, float)):
                 cells += f'<td>{int(v):,}</td>'
-                lifetime_sum += v
+                if fmt_type == 'level':          # a count on a date (subscribers): lifetime = latest
+                    lifetime_sum = lifetime_sum or v   # months run newest → oldest
+                else:
+                    lifetime_sum += v
                 if total_labels and label in total_labels and total_by_month is not None and i < len(total_by_month):
                     total_by_month[i] += v
             else:
@@ -895,9 +898,9 @@ def build_html(d, reports, revenue, socials, generated_at, audio=None):
             ('Total Listens', d['l_total'], 'int'),
         ], M_display) +
         table_html('Subscribers', '👥', [
-            ('YouTube', d['yt_subs'], 'int'),
-            ('Apple Podcasts', d['apple_subs'], 'int'),
-            ('Spotify', d['spotify_subs'], 'int'),
+            ('YouTube', d['yt_subs'], 'level'),
+            ('Apple Podcasts', d['apple_subs'], 'level'),
+            ('Spotify', d['spotify_subs'], 'level'),
         ], M_display) +
         table_html('KPIs', '🔑', [
             ('CTR – Videos', d['ctr_vid'], 'pct'),

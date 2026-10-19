@@ -1391,7 +1391,10 @@ def _tracker_tables(d, M_display, socials=None):
                     cells += f'<td>{v*100:.1f}%</td>'
                 elif isinstance(v, (int, float)):
                     cells += f'<td>{int(v):,}</td>'
-                    lifetime += v
+                    if fmt_type == 'level':          # a count on a date (subscribers): lifetime = latest
+                        lifetime = lifetime or v      # months run newest → oldest
+                    else:
+                        lifetime += v
                 else:
                     cells += f'<td>{v}</td>'
             lt_cell = (f'<td class="lifetime-col">{int(lifetime):,}</td>'
@@ -1409,7 +1412,7 @@ def _tracker_tables(d, M_display, socials=None):
         ], M_display) +
         _engaged_section(table_html, d, socials) +
         table_html('Subscribers', '👥', [
-            ('YouTube', d['yt_subs'], 'int'),
+            ('YouTube', d['yt_subs'], 'level'),
         ], M_display) +
         table_html('KPIs', '🔑', [
             ('CTR – Videos', d['ctr_vid'], 'pct'),
