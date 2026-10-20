@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-20T18:19:07.182883",
+  "generated": "2026-10-20T18:56:18.056106",
   "channel_id": "UCWcbo7_7Qiu0VtXPjpp-SDA",
   "rt_channel_id": "UCSes4X8uDrpc4X46hJKjejg",
   "months": [
@@ -137,7 +137,7 @@
         "id": "5cmEznkoK9k",
         "title": "Everyone Knew Zack Martin Was Dating Tyler Eifert's Sister\u2026 Except Tyler",
         "published": "2026-10-08",
-        "views": 4719,
+        "views": 4721,
         "likes": 46,
         "thumbnail": "https://i.ytimg.com/vi/5cmEznkoK9k/maxresdefault.jpg",
         "url": "https://youtu.be/5cmEznkoK9k",
@@ -148,7 +148,7 @@
         "id": "aVsKEwZRytM",
         "title": "Zack Martin & Tyler Eifert on Notre Dame Rivalries and NFL Training Camps",
         "published": "2026-10-14",
-        "views": 2124,
+        "views": 2127,
         "likes": 51,
         "thumbnail": "https://i.ytimg.com/vi/aVsKEwZRytM/maxresdefault.jpg",
         "url": "https://youtu.be/aVsKEwZRytM",
@@ -229,7 +229,7 @@
         "id": "ro6UxEdmQjY",
         "title": "Michigan vs. Notre Dame: The 2011 Heartbreaker ESPN Instant Classic #football #collegefootball",
         "published": "2026-10-15",
-        "views": 2529,
+        "views": 2532,
         "likes": 46,
         "thumbnail": "https://i.ytimg.com/vi/ro6UxEdmQjY/maxresdefault.jpg",
         "url": "https://youtu.be/ro6UxEdmQjY",
@@ -251,7 +251,7 @@
         "id": "q3N8i0I52qs",
         "title": "The Wild Notre Dame Recruiting Story That Changed Everything #cfb #ncaa #football",
         "published": "2026-10-16",
-        "views": 1780,
+        "views": 1791,
         "likes": 22,
         "thumbnail": "https://i.ytimg.com/vi/q3N8i0I52qs/maxresdefault.jpg",
         "url": "https://youtu.be/q3N8i0I52qs",
@@ -290,7 +290,7 @@
           "title": "Everyone Knew Zack Martin Was Dating Tyler Eifert's Sister\u2026 Except Tyler",
           "published": "2026-10-08",
           "month": "2026-10",
-          "views": 4719,
+          "views": 4721,
           "likes": 46,
           "comments": 10,
           "duration_sec": 4019,
@@ -303,7 +303,7 @@
           "title": "Zack Martin & Tyler Eifert on Notre Dame Rivalries and NFL Training Camps",
           "published": "2026-10-14",
           "month": "2026-10",
-          "views": 2124,
+          "views": 2127,
           "likes": 51,
           "comments": 7,
           "duration_sec": 4281,
@@ -411,7 +411,7 @@
           "title": "Michigan vs. Notre Dame: The 2011 Heartbreaker ESPN Instant Classic #football #collegefootball",
           "published": "2026-10-15",
           "month": "2026-10",
-          "views": 2529,
+          "views": 2532,
           "likes": 46,
           "comments": 0,
           "duration_sec": 36,
@@ -437,7 +437,7 @@
           "title": "The Wild Notre Dame Recruiting Story That Changed Everything #cfb #ncaa #football",
           "published": "2026-10-16",
           "month": "2026-10",
-          "views": 1780,
+          "views": 1791,
           "likes": 22,
           "comments": 0,
           "duration_sec": 53,
@@ -571,7 +571,7 @@
       "title": "The Wild Notre Dame Recruiting Story That Changed Everything #cfb #ncaa #football",
       "published": "2026-10-16",
       "month": "2026-10",
-      "views": 1780,
+      "views": 1791,
       "likes": 22,
       "comments": 0,
       "duration_sec": 53,
@@ -597,7 +597,7 @@
       "title": "Michigan vs. Notre Dame: The 2011 Heartbreaker ESPN Instant Classic #football #collegefootball",
       "published": "2026-10-15",
       "month": "2026-10",
-      "views": 2529,
+      "views": 2532,
       "likes": 46,
       "comments": 0,
       "duration_sec": 36,
@@ -636,7 +636,7 @@
       "title": "Zack Martin & Tyler Eifert on Notre Dame Rivalries and NFL Training Camps",
       "published": "2026-10-14",
       "month": "2026-10",
-      "views": 2124,
+      "views": 2127,
       "likes": 51,
       "comments": 7,
       "duration_sec": 4281,
@@ -779,7 +779,7 @@
       "title": "Everyone Knew Zack Martin Was Dating Tyler Eifert's Sister\u2026 Except Tyler",
       "published": "2026-10-08",
       "month": "2026-10",
-      "views": 4719,
+      "views": 4721,
       "likes": 46,
       "comments": 10,
       "duration_sec": 4019,
@@ -1392,5 +1392,46 @@
       "shorts_views": 287,
       "vod_views": 239
     }
+  },
+  "yt_kpis": {
+    "monthly": {
+      "2026-10": {
+        "VIDS": {
+          "views": 9762,
+          "engaged_views": 3585,
+          "watch_hours": 465.1,
+          "avg_view_sec": 463,
+          "avg_pct_viewed": 17.58,
+          "likes": 133,
+          "comments": 26,
+          "shares": 59
+        },
+        "SHORTS": {
+          "views": 22655,
+          "engaged_views": 14057,
+          "watch_hours": 138.1,
+          "avg_view_sec": 34,
+          "avg_pct_viewed": 66.61,
+          "likes": 558,
+          "comments": 11,
+          "shares": 6
+        },
+        "ALL": {
+          "views": 32417,
+          "engaged_views": 17642,
+          "watch_hours": 603.2,
+          "avg_view_sec": 67,
+          "avg_pct_viewed": 51.85,
+          "likes": 691,
+          "comments": 37,
+          "shares": 65
+        }
+      }
+    },
+    "reach": {},
+    "reach_through": null,
+    "notes": [
+      "0 new day(s) cached \u00b7 0 days total"
+    ]
   }
 }
