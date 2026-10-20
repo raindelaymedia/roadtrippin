@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-20T18:56:13.110584",
+  "generated": "2026-10-20T19:18:20.037543",
   "channel_id": "UCLh4znMEEDzabMHw-Ob0Cpg",
   "rt_channel_id": "UCSes4X8uDrpc4X46hJKjejg",
   "months": [
@@ -8,11 +8,11 @@
   ],
   "yt": {
     "vids": {
-      "2026-10": 43283,
+      "2026-10": 72676,
       "2026-09": 21473
     },
     "shorts": {
-      "2026-10": 67212,
+      "2026-10": 94090,
       "2026-09": 20628
     },
     "lives": {
@@ -20,15 +20,15 @@
       "2026-09": 0
     },
     "subs_gained": {
-      "2026-10": 345,
+      "2026-10": 648,
       "2026-09": 254
     },
     "subs_lost": {
-      "2026-10": 34,
+      "2026-10": 41,
       "2026-09": 9
     },
     "watch_hrs": {
-      "2026-10": 4277.9,
+      "2026-10": 8312.8,
       "2026-09": 2068.6
     }
   },
@@ -56,31 +56,31 @@
       "2026-09": null
     },
     "search_pct": {
-      "2026-10": 0.0608,
+      "2026-10": 0.0528,
       "2026-09": 0.0495
     },
     "tv_pct": {
-      "2026-10": 0.1258,
+      "2026-10": 0.1444,
       "2026-09": 0.1865
     }
   },
   "collab": {
     "total_views": {
-      "2026-10": 110463,
+      "2026-10": 166734,
       "2026-09": 42101
     },
     "rt_views": {
-      "2026-10": 349,
+      "2026-10": 379,
       "2026-09": 1166
     },
     "rt_pct": {
-      "2026-10": 0.0032,
+      "2026-10": 0.0023,
       "2026-09": 0.0277
     },
     "rt_by_source": {
       "2026-10": {
         "suggested": 0,
-        "channel_page": 349
+        "channel_page": 379
       },
       "2026-09": {
         "suggested": 0,
@@ -88,11 +88,11 @@
       }
     },
     "collab_views": {
-      "2026-10": 1246,
+      "2026-10": 1735,
       "2026-09": 1779
     },
     "collab_pct": {
-      "2026-10": 0.0113,
+      "2026-10": 0.0104,
       "2026-09": 0.0423
     },
     "top_channels": {
@@ -100,31 +100,31 @@
         {
           "id": "UCSes4X8uDrpc4X46hJKjejg",
           "name": "Road Trippin' Show",
-          "views": 349,
+          "views": 379,
           "is_rt": true
         },
         {
           "id": "UCiWLfSweyRNmLpgEHekhoAg",
           "name": "ESPN",
-          "views": 153,
+          "views": 371,
           "is_rt": false
         },
         {
           "id": "UCodJ1G8PNIaHNcIIbqE-7pw",
           "name": "No Hesitation with Sophie Cunningham & Drew Hanlen",
-          "views": 130,
+          "views": 149,
+          "is_rt": false
+        },
+        {
+          "id": "UCgZgm6v8ENPzFTgzLjgipRQ",
+          "name": "NBA TV",
+          "views": 98,
           "is_rt": false
         },
         {
           "id": "UCzpZgXng_znmhmEy6epSxUw",
           "name": "No Offseason: The Athletic Women's Basketball Show",
-          "views": 73,
-          "is_rt": false
-        },
-        {
-          "id": "UCm1sEMq9UEuri4Cxupk4SKg",
-          "name": "Behind the Line",
-          "views": 63,
+          "views": 74,
           "is_rt": false
         }
       ],
@@ -163,8 +163,8 @@
     },
     "detail_coverage": {
       "2026-10": {
-        "suggested": 0.1916,
-        "channel_page": 0.9847
+        "suggested": 0.2085,
+        "channel_page": 0.9834
       },
       "2026-09": {
         "suggested": 0.1575,
@@ -174,20 +174,21 @@
   },
   "traffic_sources": {
     "2026-10": {
-      "NO_LINK_OTHER": 747,
-      "SUBSCRIBER": 35498,
-      "YT_CHANNEL": 1960,
-      "YT_SEARCH": 6711,
-      "RELATED_VIDEO": 5638,
-      "YT_OTHER_PAGE": 830,
-      "EXT_URL": 517,
-      "PLAYLIST": 258,
-      "NOTIFICATION": 104,
-      "END_SCREEN": 86,
-      "SHORTS": 58015,
-      "SHORTS_CONTENT_LINKS": 81,
+      "NO_LINK_OTHER": 1447,
+      "SUBSCRIBER": 63195,
+      "YT_CHANNEL": 2884,
+      "YT_SEARCH": 8797,
+      "RELATED_VIDEO": 10090,
+      "YT_OTHER_PAGE": 1508,
+      "EXT_URL": 696,
+      "PLAYLIST": 330,
+      "NOTIFICATION": 133,
+      "END_SCREEN": 157,
+      "SHORTS": 77342,
+      "SHORTS_CONTENT_LINKS": 134,
       "HASHTAGS": 2,
-      "SOUND_PAGE": 16
+      "SOUND_PAGE": 18,
+      "LIVE_REDIRECT": 1
     },
     "2026-09": {
       "NO_LINK_OTHER": 331,
@@ -211,7 +212,7 @@
         "id": "JX0ny1fN-4A",
         "title": "Kelsey Plum: How Golden State Held Atlanta Scoreless in the Final 3 Minutes",
         "published": "2026-10-18",
-        "views": 44457,
+        "views": 44527,
         "likes": 611,
         "thumbnail": "https://i.ytimg.com/vi/JX0ny1fN-4A/maxresdefault.jpg",
         "url": "https://youtu.be/JX0ny1fN-4A",
@@ -222,7 +223,7 @@
         "id": "Ou5lbJW-uZI",
         "title": "Golden State or Atlanta? Sue Bird Says the WNBA Finals Hinge on ONE Thing",
         "published": "2026-10-15",
-        "views": 15947,
+        "views": 15951,
         "likes": 275,
         "thumbnail": "https://i.ytimg.com/vi/Ou5lbJW-uZI/maxresdefault.jpg",
         "url": "https://youtu.be/Ou5lbJW-uZI",
@@ -303,8 +304,8 @@
         "id": "qPR-1_8iJaU",
         "title": "Kelsey Plum Just Named the WNBA's Next Superstar! #AtlantaDream #Valkyries #GabbyWilliams",
         "published": "2026-10-18",
-        "views": 74063,
-        "likes": 1742,
+        "views": 74272,
+        "likes": 1746,
         "thumbnail": "https://i.ytimg.com/vi/qPR-1_8iJaU/maxresdefault.jpg",
         "url": "https://youtu.be/qPR-1_8iJaU",
         "type": "SHORT",
@@ -336,7 +337,7 @@
         "id": "R7dw-Pci1KM",
         "title": "The BIGGEST Surprise of the WNBA Playoffs #atlantadream #goldenstatevalkyries",
         "published": "2026-10-14",
-        "views": 4757,
+        "views": 4760,
         "likes": 125,
         "thumbnail": "https://i.ytimg.com/vi/R7dw-Pci1KM/maxresdefault.jpg",
         "url": "https://youtu.be/R7dw-Pci1KM",
@@ -347,7 +348,7 @@
         "id": "xGlX462y6jo",
         "title": "No Excuses! The Brutal Truth Behind New York's Elimination #wnba #basketball #angelreese #nyliberty",
         "published": "2026-10-10",
-        "views": 4640,
+        "views": 4641,
         "likes": 104,
         "thumbnail": "https://i.ytimg.com/vi/xGlX462y6jo/maxresdefault.jpg",
         "url": "https://youtu.be/xGlX462y6jo",
@@ -378,7 +379,7 @@
           "title": "Kelsey Plum: How Golden State Held Atlanta Scoreless in the Final 3 Minutes",
           "published": "2026-10-18",
           "month": "2026-10",
-          "views": 44457,
+          "views": 44527,
           "likes": 611,
           "comments": 184,
           "duration_sec": 2932,
@@ -391,7 +392,7 @@
           "title": "Golden State or Atlanta? Sue Bird Says the WNBA Finals Hinge on ONE Thing",
           "published": "2026-10-15",
           "month": "2026-10",
-          "views": 15947,
+          "views": 15951,
           "likes": 275,
           "comments": 37,
           "duration_sec": 2958,
@@ -486,8 +487,8 @@
           "title": "Kelsey Plum Just Named the WNBA's Next Superstar! #AtlantaDream #Valkyries #GabbyWilliams",
           "published": "2026-10-18",
           "month": "2026-10",
-          "views": 74063,
-          "likes": 1742,
+          "views": 74272,
+          "likes": 1746,
           "comments": 127,
           "duration_sec": 42,
           "thumbnail": "https://i.ytimg.com/vi/qPR-1_8iJaU/maxresdefault.jpg",
@@ -525,7 +526,7 @@
           "title": "The BIGGEST Surprise of the WNBA Playoffs #atlantadream #goldenstatevalkyries",
           "published": "2026-10-14",
           "month": "2026-10",
-          "views": 4757,
+          "views": 4760,
           "likes": 125,
           "comments": 10,
           "duration_sec": 20,
@@ -538,7 +539,7 @@
           "title": "No Excuses! The Brutal Truth Behind New York's Elimination #wnba #basketball #angelreese #nyliberty",
           "published": "2026-10-10",
           "month": "2026-10",
-          "views": 4640,
+          "views": 4641,
           "likes": 104,
           "comments": 9,
           "duration_sec": 33,
@@ -603,7 +604,7 @@
           "title": "How Sue Bird Started The Ultimate WNBA Tunnel Fit Revolution #fashion #angelreese #wnbafinals",
           "published": "2026-10-16",
           "month": "2026-10",
-          "views": 3371,
+          "views": 3397,
           "likes": 83,
           "comments": 1,
           "duration_sec": 30,
@@ -730,7 +731,7 @@
           "likes": 0,
           "comments": 0,
           "duration_sec": 262,
-          "thumbnail": "https://i9.ytimg.com/vi/IB0Qc05GW-s/maxresdefault.jpg?sqp=CITy3tYG&rs=AOn4CLBKTti6uoNBQTzpNp5h_2Ks4fJUnA",
+          "thumbnail": "https://i9.ytimg.com/vi/IB0Qc05GW-s/maxresdefault.jpg?sqp=CLT73tYG&rs=AOn4CLAaEzXy1yNgbCmUZ38xv4RrQ64BNA",
           "url": "https://youtu.be/IB0Qc05GW-s",
           "type": "mid"
         },
@@ -743,7 +744,7 @@
           "likes": 0,
           "comments": 0,
           "duration_sec": 315,
-          "thumbnail": "https://i9.ytimg.com/vi/eoEP2zU1HRQ/maxresdefault.jpg?sqp=CITy3tYG&rs=AOn4CLD8sRNgiye8wAJw4HrJZu5_C72NCw",
+          "thumbnail": "https://i9.ytimg.com/vi/eoEP2zU1HRQ/maxresdefault.jpg?sqp=CLT73tYG&rs=AOn4CLDDLCFIWc6mfs3Q4v_FIdAsTwZfSg",
           "url": "https://youtu.be/eoEP2zU1HRQ",
           "type": "mid"
         },
@@ -756,7 +757,7 @@
           "likes": 0,
           "comments": 0,
           "duration_sec": 336,
-          "thumbnail": "https://i9.ytimg.com/vi/-lJauQxSixM/maxresdefault.jpg?sqp=CITy3tYG&rs=AOn4CLCJna2Gkabb12E87-V9tv_EzDGzzg",
+          "thumbnail": "https://i9.ytimg.com/vi/-lJauQxSixM/maxresdefault.jpg?sqp=CLT73tYG&rs=AOn4CLDxbVyhBlKZd5au9ZUnJ8r-lcD21A",
           "url": "https://youtu.be/-lJauQxSixM",
           "type": "mid"
         },
@@ -769,7 +770,7 @@
           "likes": 0,
           "comments": 0,
           "duration_sec": 429,
-          "thumbnail": "https://i9.ytimg.com/vi/jlpiNl1Rwqc/maxresdefault.jpg?sqp=CITy3tYG&rs=AOn4CLAvwmnPK0TxrwRdXyiEZupjcgoQew",
+          "thumbnail": "https://i9.ytimg.com/vi/jlpiNl1Rwqc/maxresdefault.jpg?sqp=CLT73tYG&rs=AOn4CLAW4K8xIU76xOITKGthWHITtxt7oQ",
           "url": "https://youtu.be/jlpiNl1Rwqc",
           "type": "mid"
         }
@@ -780,7 +781,7 @@
           "title": "The Fever\u2019s Only Hope: Stopping A\u2019ja Wilson! #caitlinclark #wnba #ajawilson",
           "published": "2026-09-29",
           "month": "2026-09",
-          "views": 1945,
+          "views": 1946,
           "likes": 48,
           "comments": 8,
           "duration_sec": 44,
@@ -793,7 +794,7 @@
           "title": "Why The 2026 WNBA Playoffs Will Be Completely Different #wnba #caitlinclark",
           "published": "2026-09-25",
           "month": "2026-09",
-          "views": 1941,
+          "views": 1938,
           "likes": 20,
           "comments": 3,
           "duration_sec": 28,
@@ -832,7 +833,7 @@
           "title": "Girls Tripp Has Its Own Channel | WNBA Podcast with Allie Clifton & Jordan Robinson",
           "published": "2026-09-16",
           "month": "2026-09",
-          "views": 1561,
+          "views": 1554,
           "likes": 19,
           "comments": 1,
           "duration_sec": 36,
@@ -953,8 +954,8 @@
       "title": "Kelsey Plum Just Named the WNBA's Next Superstar! #AtlantaDream #Valkyries #GabbyWilliams",
       "published": "2026-10-18",
       "month": "2026-10",
-      "views": 74063,
-      "likes": 1742,
+      "views": 74272,
+      "likes": 1746,
       "comments": 127,
       "duration_sec": 42,
       "thumbnail": "https://i.ytimg.com/vi/qPR-1_8iJaU/maxresdefault.jpg",
@@ -966,7 +967,7 @@
       "title": "Kelsey Plum: How Golden State Held Atlanta Scoreless in the Final 3 Minutes",
       "published": "2026-10-18",
       "month": "2026-10",
-      "views": 44457,
+      "views": 44527,
       "likes": 611,
       "comments": 184,
       "duration_sec": 2932,
@@ -992,7 +993,7 @@
       "title": "Sue Bird reveals the WNBA star who reminds her of HERSELF! #wnba  #caitlinclark #OliviaMiles",
       "published": "2026-10-16",
       "month": "2026-10",
-      "views": 2556,
+      "views": 2570,
       "likes": 44,
       "comments": 7,
       "duration_sec": 36,
@@ -1005,7 +1006,7 @@
       "title": "How Sue Bird Started The Ultimate WNBA Tunnel Fit Revolution #fashion #angelreese #wnbafinals",
       "published": "2026-10-16",
       "month": "2026-10",
-      "views": 3371,
+      "views": 3397,
       "likes": 83,
       "comments": 1,
       "duration_sec": 30,
@@ -1044,7 +1045,7 @@
       "title": "Golden State or Atlanta? Sue Bird Says the WNBA Finals Hinge on ONE Thing",
       "published": "2026-10-15",
       "month": "2026-10",
-      "views": 15947,
+      "views": 15951,
       "likes": 275,
       "comments": 37,
       "duration_sec": 2958,
@@ -1057,7 +1058,7 @@
       "title": "The BIGGEST Surprise of the WNBA Playoffs #atlantadream #goldenstatevalkyries",
       "published": "2026-10-14",
       "month": "2026-10",
-      "views": 4757,
+      "views": 4760,
       "likes": 125,
       "comments": 10,
       "duration_sec": 20,
@@ -1070,7 +1071,7 @@
       "title": "The WNBA Coaching Battle We Didn't Know We Needed! #valkyrie #Aces",
       "published": "2026-10-12",
       "month": "2026-10",
-      "views": 2424,
+      "views": 2428,
       "likes": 76,
       "comments": 1,
       "duration_sec": 27,
@@ -1096,7 +1097,7 @@
       "title": "No Excuses! The Brutal Truth Behind New York's Elimination #wnba #basketball #angelreese #nyliberty",
       "published": "2026-10-10",
       "month": "2026-10",
-      "views": 4640,
+      "views": 4641,
       "likes": 104,
       "comments": 9,
       "duration_sec": 33,
@@ -1122,7 +1123,7 @@
       "title": "The Timeout Blunder That Almost Cost EVERYTHING! \ud83c\udfc0 #wnba #nyliberty #newyorkliberty #angelreese",
       "published": "2026-10-09",
       "month": "2026-10",
-      "views": 2377,
+      "views": 2378,
       "likes": 41,
       "comments": 5,
       "duration_sec": 52,
@@ -1278,7 +1279,7 @@
       "title": "The Fever\u2019s Only Hope: Stopping A\u2019ja Wilson! #caitlinclark #wnba #ajawilson",
       "published": "2026-09-29",
       "month": "2026-09",
-      "views": 1945,
+      "views": 1946,
       "likes": 48,
       "comments": 8,
       "duration_sec": 44,
@@ -1343,7 +1344,7 @@
       "title": "Why The 2026 WNBA Playoffs Will Be Completely Different #wnba #caitlinclark",
       "published": "2026-09-25",
       "month": "2026-09",
-      "views": 1941,
+      "views": 1938,
       "likes": 20,
       "comments": 3,
       "duration_sec": 28,
@@ -1503,7 +1504,7 @@
       "likes": 0,
       "comments": 0,
       "duration_sec": 23,
-      "thumbnail": "https://i9.ytimg.com/vi/J5puuaJZqr0/maxresdefault.jpg?sqp=CITy3tYG&rs=AOn4CLAVzcxOGUwlmVQVj6NgwZeZOboXlA",
+      "thumbnail": "https://i9.ytimg.com/vi/J5puuaJZqr0/maxresdefault.jpg?sqp=CLT73tYG&rs=AOn4CLCwx1Tj5IhVZvmARDOUhxODD8KWZQ",
       "url": "https://youtu.be/J5puuaJZqr0",
       "type": "short"
     },
@@ -1551,7 +1552,7 @@
       "title": "Girls Tripp Has Its Own Channel | WNBA Podcast with Allie Clifton & Jordan Robinson",
       "published": "2026-09-16",
       "month": "2026-09",
-      "views": 1561,
+      "views": 1554,
       "likes": 19,
       "comments": 1,
       "duration_sec": 36,
@@ -1659,7 +1660,7 @@
       "likes": 0,
       "comments": 0,
       "duration_sec": 262,
-      "thumbnail": "https://i9.ytimg.com/vi/IB0Qc05GW-s/maxresdefault.jpg?sqp=CITy3tYG&rs=AOn4CLBKTti6uoNBQTzpNp5h_2Ks4fJUnA",
+      "thumbnail": "https://i9.ytimg.com/vi/IB0Qc05GW-s/maxresdefault.jpg?sqp=CLT73tYG&rs=AOn4CLAaEzXy1yNgbCmUZ38xv4RrQ64BNA",
       "url": "https://youtu.be/IB0Qc05GW-s",
       "type": "mid"
     },
@@ -1685,7 +1686,7 @@
       "likes": 0,
       "comments": 0,
       "duration_sec": 315,
-      "thumbnail": "https://i9.ytimg.com/vi/eoEP2zU1HRQ/maxresdefault.jpg?sqp=CITy3tYG&rs=AOn4CLD8sRNgiye8wAJw4HrJZu5_C72NCw",
+      "thumbnail": "https://i9.ytimg.com/vi/eoEP2zU1HRQ/maxresdefault.jpg?sqp=CLT73tYG&rs=AOn4CLDDLCFIWc6mfs3Q4v_FIdAsTwZfSg",
       "url": "https://youtu.be/eoEP2zU1HRQ",
       "type": "mid"
     },
@@ -1698,7 +1699,7 @@
       "likes": 0,
       "comments": 0,
       "duration_sec": 336,
-      "thumbnail": "https://i9.ytimg.com/vi/-lJauQxSixM/maxresdefault.jpg?sqp=CITy3tYG&rs=AOn4CLCJna2Gkabb12E87-V9tv_EzDGzzg",
+      "thumbnail": "https://i9.ytimg.com/vi/-lJauQxSixM/maxresdefault.jpg?sqp=CLT73tYG&rs=AOn4CLDxbVyhBlKZd5au9ZUnJ8r-lcD21A",
       "url": "https://youtu.be/-lJauQxSixM",
       "type": "mid"
     },
@@ -1711,7 +1712,7 @@
       "likes": 0,
       "comments": 0,
       "duration_sec": 429,
-      "thumbnail": "https://i9.ytimg.com/vi/jlpiNl1Rwqc/maxresdefault.jpg?sqp=CITy3tYG&rs=AOn4CLAvwmnPK0TxrwRdXyiEZupjcgoQew",
+      "thumbnail": "https://i9.ytimg.com/vi/jlpiNl1Rwqc/maxresdefault.jpg?sqp=CLT73tYG&rs=AOn4CLAW4K8xIU76xOITKGthWHITtxt7oQ",
       "url": "https://youtu.be/jlpiNl1Rwqc",
       "type": "mid"
     },
@@ -1724,7 +1725,7 @@
       "likes": 0,
       "comments": 0,
       "duration_sec": 253,
-      "thumbnail": "https://i9.ytimg.com/vi/tqpQewQX_h8/maxresdefault.jpg?sqp=CITy3tYG&rs=AOn4CLAW19E5hh5q6SLv-w8u4WKjzDFyMw",
+      "thumbnail": "https://i9.ytimg.com/vi/tqpQewQX_h8/maxresdefault.jpg?sqp=CLT73tYG&rs=AOn4CLAGUirXUSuNYgRAAxMuTRCDHxhOeA",
       "url": "https://youtu.be/tqpQewQX_h8",
       "type": "mid"
     },
@@ -1737,7 +1738,7 @@
       "likes": 0,
       "comments": 0,
       "duration_sec": 55,
-      "thumbnail": "https://i9.ytimg.com/vi/rdrf1qscQos/maxresdefault.jpg?sqp=CITy3tYG&rs=AOn4CLD-HyZJROZYCz_Kq_BfnIStbxtE5w",
+      "thumbnail": "https://i9.ytimg.com/vi/rdrf1qscQos/maxresdefault.jpg?sqp=CLT73tYG&rs=AOn4CLC6hQX3IGjJEAaCKsMO5QtuXojHFQ",
       "url": "https://youtu.be/rdrf1qscQos",
       "type": "short"
     },
@@ -1750,7 +1751,7 @@
       "likes": 0,
       "comments": 0,
       "duration_sec": 64,
-      "thumbnail": "https://i9.ytimg.com/vi/BcakqhGvp6s/maxresdefault.jpg?sqp=CITy3tYG&rs=AOn4CLCcBYNHwIYoxHbVanNeBMe0z9XD2A",
+      "thumbnail": "https://i9.ytimg.com/vi/BcakqhGvp6s/maxresdefault.jpg?sqp=CLT73tYG&rs=AOn4CLAx2Sc6SyNXg073brJVQGAytscfDw",
       "url": "https://youtu.be/BcakqhGvp6s",
       "type": "short"
     },
@@ -1763,7 +1764,7 @@
       "likes": 0,
       "comments": 0,
       "duration_sec": 32,
-      "thumbnail": "https://i9.ytimg.com/vi/-V5ipn_DXqs/maxresdefault.jpg?sqp=CITy3tYG&rs=AOn4CLC7yTcHpkwi1GPHeXOS2VKPjGS2fQ",
+      "thumbnail": "https://i9.ytimg.com/vi/-V5ipn_DXqs/maxresdefault.jpg?sqp=CLT73tYG&rs=AOn4CLB8HgkoJnxRGhnMwlUIiKRiOV3w8Q",
       "url": "https://youtu.be/-V5ipn_DXqs",
       "type": "short"
     },
@@ -1776,7 +1777,7 @@
       "likes": 0,
       "comments": 0,
       "duration_sec": 45,
-      "thumbnail": "https://i9.ytimg.com/vi/fSDB__vdRIY/maxresdefault.jpg?sqp=CITy3tYG&rs=AOn4CLCZ2e75TL8XAgS8kQKJlqDj3RLmOQ",
+      "thumbnail": "https://i9.ytimg.com/vi/fSDB__vdRIY/maxresdefault.jpg?sqp=CLT73tYG&rs=AOn4CLCao28qRIfPC12gVQ1m0IxOdGKKYg",
       "url": "https://youtu.be/fSDB__vdRIY",
       "type": "short"
     },
@@ -1789,7 +1790,7 @@
       "likes": 0,
       "comments": 0,
       "duration_sec": 26,
-      "thumbnail": "https://i9.ytimg.com/vi/5S2Qd26Gpwc/maxresdefault.jpg?sqp=CITy3tYG&rs=AOn4CLA9UBps60U_7cf-EC9BDOR6Ct0srA",
+      "thumbnail": "https://i9.ytimg.com/vi/5S2Qd26Gpwc/maxresdefault.jpg?sqp=CLT73tYG&rs=AOn4CLAARL8Px5_sQgqt2bY_uiiVjBAvgw",
       "url": "https://youtu.be/5S2Qd26Gpwc",
       "type": "short"
     },
@@ -1807,7 +1808,7 @@
       "type": "short"
     }
   ],
-  "current_subs": 1060,
+  "current_subs": 1070,
   "daily_yt": {
     "2026-07-21": {
       "total_views": 0,
@@ -2408,6 +2409,14 @@
       "subs_lost": 0,
       "shorts_views": 1653,
       "vod_views": 2605
+    },
+    "2026-10-18": {
+      "total_views": 56271,
+      "watch_hrs": 4034.9,
+      "subs_gained": 303,
+      "subs_lost": 7,
+      "shorts_views": 26878,
+      "vod_views": 29393
     }
   },
   "yt_kpis": {
@@ -2446,34 +2455,34 @@
       },
       "2026-10": {
         "VIDS": {
-          "views": 43283,
-          "engaged_views": 22116,
-          "watch_hours": 3895.8,
-          "avg_view_sec": 631,
-          "avg_pct_viewed": 22.27,
-          "likes": 633,
-          "comments": 121,
-          "shares": 44
+          "views": 72676,
+          "engaged_views": 39775,
+          "watch_hours": 7774.6,
+          "avg_view_sec": 701,
+          "avg_pct_viewed": 24.4,
+          "likes": 1084,
+          "comments": 212,
+          "shares": 117
         },
         "SHORTS": {
-          "views": 67212,
-          "engaged_views": 34529,
-          "watch_hours": 381.9,
-          "avg_view_sec": 39,
-          "avg_pct_viewed": 101.34999999999998,
-          "likes": 2081,
-          "comments": 106,
-          "shares": 55
+          "views": 94090,
+          "engaged_views": 49051,
+          "watch_hours": 538.0,
+          "avg_view_sec": 38,
+          "avg_pct_viewed": 95.5,
+          "likes": 2776,
+          "comments": 142,
+          "shares": 76
         },
         "ALL": {
-          "views": 110495,
-          "engaged_views": 56645,
-          "watch_hours": 4277.7,
-          "avg_view_sec": 139,
-          "avg_pct_viewed": 70.37,
-          "likes": 2714,
-          "comments": 227,
-          "shares": 99
+          "views": 166766,
+          "engaged_views": 88826,
+          "watch_hours": 8312.6,
+          "avg_view_sec": 179,
+          "avg_pct_viewed": 64.51,
+          "likes": 3860,
+          "comments": 354,
+          "shares": 193
         }
       }
     },
