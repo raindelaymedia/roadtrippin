@@ -29,6 +29,7 @@ sys.path.insert(0, MASTER)
 from sprout import Sprout   # noqa: E402
 
 CAMPAIGN_START = "2026-09-01"
+GROWTH_START = "2026-08-18"             # start of the RDM term (account growth)
 SKIP_NETWORKS = {"youtube"}             # counted from YouTube directly
 SR_HANDLES = {"theschultzreport"}       # the show's accounts; everything else is Jordan's (X @Schultz_Report is HIS)
 SPONSOR_TAGS = ["Chime", "Fanatics", "Hims", "Lowe's"]
@@ -80,6 +81,22 @@ def main():
         w = csv.writer(f)
         w.writerow(["url", "views", "impressions"])
         w.writerows([r["url"], r["views"], r["impressions"]] for r in out)
+
+    # Account-level daily metrics (followers, net growth, impressions/views) since the RDM start
+    prof_ids = [p["customer_profile_id"] for p in profiles]
+    daily = sp.daily(prof_ids, GROWTH_START, end, ["lifetime_snapshot.followers_count", "net_follower_growth",
+                                                   "impressions", "video_views", "views"])
+    with open(os.path.join(OUT, "profiles_daily.csv"), "w", encoding="utf-8", newline="") as f:
+        w = csv.writer(f, lineterminator="\r\n")
+        w.writerow(["date", "profile_id", "network", "handle", "owner", "followers", "net_follower_growth",
+                    "impressions", "video_views", "views"])
+        for r in sorted(daily, key=lambda r: (r["date"] or "", r["profile_id"] or 0)):
+            prof, m = by_id.get(r["profile_id"], {}), r["metrics"]
+            handle = prof.get("native_name") or ""
+            w.writerow([(r["date"] or "")[:10], r["profile_id"], NETWORK.get(prof.get("network_type"), ""), handle,
+                        "SR" if handle.lower() in SR_HANDLES else "JS", m.get("lifetime_snapshot.followers_count"),
+                        m.get("net_follower_growth"), m.get("impressions"), m.get("video_views"), m.get("views")])
+    print(f"  profiles_daily.csv · {len(daily)} profile-days since {GROWTH_START}")
 
     summary = {}
     for r in out:
