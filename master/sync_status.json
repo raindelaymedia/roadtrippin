@@ -1,0 +1,17 @@
+{
+ "run": "2026-10-20T18:16+00:00",
+ "where": "github-actions",
+ "shows": {
+  "gt": {
+   "instagram": "ok @girlstripppod"
+  },
+  "sr": {
+   "instagram": "ok @theschultzreport",
+   "tiktok": "ok The Schultz Report \u00b7 56 videos"
+  },
+  "rt": {
+   "instagram": "skipped: no IG_TOKEN_RT (not a secret here, not in master/config_socials.py) \u2014 skipped",
+   "tiktok": "error: SystemExit: TikTok token error: Refresh token is invalid or expired."
+  }
+ }
+}
