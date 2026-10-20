@@ -314,6 +314,23 @@ def engaged_views(socials, months):
     return out
 
 
+def fill_api_views(socials, d):
+    """All-views half of the engaged-views pairs from the YouTube API: for a month that has ENGAGED_VIEWS_<T>
+    but no VIEWS_<T>, use the tracker's monthly views (matches Studio within a fraction of a percent).
+    A value entered by hand still wins. So only engaged views need entering."""
+    months, data = socials.get('months', []), socials.get('data', {})
+    api = {t: dict(zip(d.get('months', []), d.get(k, []))) for t, k in (('VIDS', 'vids'), ('SHORTS', 'shorts'), ('LIVES', 'lives'))}
+    for t, by_month in api.items():
+        eng = data.get(('YOUTUBE', f'ENGAGED_VIEWS_{t}'))
+        if not eng:
+            continue
+        views = data.setdefault(('YOUTUBE', f'VIEWS_{t}'), [None] * len(months))
+        for i, m in enumerate(months):
+            if isinstance(eng[i], (int, float)) and not isinstance(views[i], (int, float)) and by_month.get(m) is not None:
+                views[i] = by_month[m]
+    return socials
+
+
 def _engaged_card(socials):
     """YouTube-tab card + chart data for engaged vs all views."""
     months = socials.get('months', [])            # ascending
@@ -1592,6 +1609,8 @@ def main():
 
     print(f"Revenue: {len(revenue['months'])} months from {revenue_path}")
     print(f"Socials: {len(socials['months'])} months × {len(socials['platforms'])} platforms from {socials_path}")
+
+    fill_api_views(socials, d)   # API fills all-views where only engaged views were entered
 
     html = build_html(d, revenue, socials, generated_at, audio)
     with open(out, 'w', encoding='utf-8') as f:
