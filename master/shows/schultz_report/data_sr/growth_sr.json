@@ -1,10 +1,10 @@
 {
  "start": "2026-08-18",
  "window_days": 14,
- "through": "2026-10-18",
- "pulled": "2026-10-19T18:29+00:00",
+ "through": "2026-10-19",
+ "pulled": "2026-10-20T14:09+00:00",
  "instagram": {
-  "followers_now": 2160,
+  "followers_now": 2118,
   "windows": [
    {
     "start": "2026-08-18",
@@ -48,13 +48,13 @@
    },
    {
     "start": "2026-10-13",
-    "end": "2026-10-18",
+    "end": "2026-10-19",
     "partial": true,
-    "views": 494792,
-    "interactions": 32147,
-    "follows": 423,
-    "unfollows": 488,
-    "net_followers": -65
+    "views": 532073,
+    "interactions": 33972,
+    "follows": 431,
+    "unfollows": 545,
+    "net_followers": -114
    }
   ]
  }
