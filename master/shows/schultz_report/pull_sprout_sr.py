@@ -43,7 +43,9 @@ def main():
     sp = Sprout()
     profiles = [p for p in sp.profiles() if p.get("network_type") not in SKIP_NETWORKS]
     by_id = {p["customer_profile_id"]: p for p in profiles}
-    tags = {t["tag_id"]: t["text"] for t in sp.tags() if t.get("text") in SPONSOR_TAGS}
+    # Show content = any CAMPAIGN tag (Fanatics, Hims, Chime, Lowe's, Unbranded ...) - one tag per post in Sprout.
+    # LABEL tags (High Priority, Customer Feedback) are workflow flags, not content, and are ignored.
+    tags = {t["tag_id"]: t["text"] for t in sp.tags() if t.get("type") == "CAMPAIGN" or t.get("text") in SPONSOR_TAGS}
     today = datetime.now(ET).date()
     end = (today - timedelta(days=1)).isoformat()
     print(f"SPROUT · {len(profiles)} profiles · tags {', '.join(tags.values())} · posts {CAMPAIGN_START} → {end}")

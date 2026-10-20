@@ -41,6 +41,7 @@ so your laptop and GitHub can't knock each other's tokens out.
 import argparse
 import csv
 import importlib.util
+import json
 import os
 import sys
 import time
@@ -327,6 +328,7 @@ def main():
     today = date.today()
     token_out = os.environ.get("TOKEN_OUT_DIR")
     failed = 0
+    status = {}          # show -> platform -> 'ok ...' / 'skipped: ...' / 'error: ...'  (master/sync_status.json)
     print("=" * 60 + f"\nSOCIAL SYNC · {today}\n" + "=" * 60)
 
     for show in args.show:
@@ -343,6 +345,7 @@ def main():
                 rows = upsert(rows, "INSTAGRAM", values)
                 changed = True
                 print(f"  ✓ Instagram {who} · months {', '.join(months)}")
+                status.setdefault(show, {})['instagram'] = f'ok {who}'
                 for (p, m), v in sorted(values.items(), reverse=True):
                     print(f"      {p} {m:<15} {v:>12,}")
                 if new_token and token_out:
@@ -353,9 +356,11 @@ def main():
                     print(f"      token good for another {int(expires) // 86400} days")
             except LookupError as e:     # account not connected yet — not an error
                 print(f"  · Instagram: {e}")
+                status.setdefault(show, {})['instagram'] = f'skipped: {e}'
             except Exception as e:       # one platform failing shouldn't stop the others
                 failed += 1
                 print(f"  ✗ Instagram: {e}")
+                status.setdefault(show, {})['instagram'] = f'error: {e}'
 
         if "tiktok" in cfg:
             try:
@@ -363,18 +368,25 @@ def main():
                 rows = upsert(rows, "TIKTOK", values)
                 changed = True
                 print(f"  ✓ TikTok {who} · months {', '.join(months)}")
+                status.setdefault(show, {})['tiktok'] = f'ok {who}'
                 for (p, m), v in sorted(values.items(), reverse=True):
                     print(f"      {p} {m:<15} {v:>12,}")
             except LookupError as e:
                 print(f"  · TikTok: {e}")
+                status.setdefault(show, {})['tiktok'] = f'skipped: {e}'
             except (Exception, SystemExit) as e:   # tiktok_auth raises SystemExit on API errors
                 failed += 1
                 print(f"  ✗ TikTok: {e}")
+                status.setdefault(show, {})['tiktok'] = f'error: {type(e).__name__}: {e}'
 
         if changed and not args.dry_run:      # only touch files that actually got new data
             write_rows(path, rows)
 
     print("\n" + "=" * 60 + ("\nDry run — no files changed." if args.dry_run else "") )
+    if not args.dry_run:     # what each platform did, readable without the Actions log (never contains secrets)
+        with open(os.path.join(ROOT, 'master', 'sync_status.json'), 'w', encoding='utf-8') as f:
+            json.dump({'run': datetime.now(timezone.utc).isoformat(timespec='minutes'),
+                       'where': 'github-actions' if os.environ.get('GITHUB_ACTIONS') else 'local', 'shows': status}, f, indent=1)
     sys.exit(1 if failed else 0)
 
 
