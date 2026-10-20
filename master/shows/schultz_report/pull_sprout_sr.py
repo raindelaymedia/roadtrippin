@@ -55,7 +55,11 @@ def main():
     for p in posts:
         prof = by_id.get(p.get("customer_profile_id"), {})
         m = p.get("metrics", {})
-        views = m.get("lifetime.views") or m.get("lifetime.video_views") or m.get("lifetime.impressions") or 0
+        net = NETWORK.get(prof.get("network_type"), "")
+        if net == "X":                          # X is measured in impressions (how the team and the reports count it)
+            views = m.get("lifetime.impressions") or 0
+        else:
+            views = m.get("lifetime.views") or m.get("lifetime.video_views") or m.get("lifetime.impressions") or 0
         out.append({
             "url": p.get("perma_link"), "created": (p.get("created_time") or "")[:10],
             "profile": prof.get("native_name"), "profile_id": p.get("customer_profile_id"),
