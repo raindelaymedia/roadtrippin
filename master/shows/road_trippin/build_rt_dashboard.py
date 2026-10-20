@@ -141,6 +141,7 @@ def extract(path):
         'best_of_label': best_of_label,
         'top_content_monthly': j.get('top_content_monthly', {}),
         'all_videos':   _load_all_videos(j),
+        'yt_kpis':      j.get('yt_kpis') or {},
         'subs_gained':  subs_gained,
         'subs_lost':    subs_lost,
         'current_subs': current_subs,
@@ -553,11 +554,34 @@ def audience_table_html(d, socials, M_raw, M_display):
 ENGAGED_TYPES = [('VIDS', 'Videos'), ('SHORTS', 'Shorts'), ('LIVES', 'Lives')]
 
 
+def _yt_kpi_card(d):
+    """YouTube KPIs card (master/yt_kpis.py, or common/ in the shared repo)."""
+    import sys as _sys
+    m = os.path.dirname(os.path.abspath(__file__))
+    while m != os.path.dirname(m):
+        for c in (m, os.path.join(m, "common")):
+            if os.path.exists(os.path.join(c, "yt_kpis.py")):
+                _sys.path.insert(0, c)
+                import yt_kpis
+                return yt_kpis.kpi_html(d.get('yt_kpis'), fmt)
+        m = os.path.dirname(m)
+    return ''
+
+
 def fill_api_views(socials, d):
     """All-views half of the engaged-views pairs from the YouTube API: for a month that has ENGAGED_VIEWS_<T>
     but no VIEWS_<T>, use the tracker's monthly views (matches Studio within a fraction of a percent).
-    A value entered by hand still wins. So only engaged views need entering."""
+    Engaged views themselves come from the API's engagedViews. A value entered by hand still wins."""
     months, data = socials.get('months', []), socials.get('data', {})
+    kp = (d.get('yt_kpis') or {}).get('monthly') or {}
+    for t in ('VIDS', 'SHORTS', 'LIVES'):          # engaged views straight from the API (engagedViews)
+        api_eng = {m: (kp.get(m, {}).get(t) or {}).get('engaged_views') for m in months}
+        if not any(v is not None for v in api_eng.values()):
+            continue
+        eng = data.setdefault(('YOUTUBE', f'ENGAGED_VIEWS_{t}'), [None] * len(months))
+        for i, m in enumerate(months):
+            if not isinstance(eng[i], (int, float)) and api_eng.get(m) is not None:
+                eng[i] = api_eng[m]
     api = {t: dict(zip(d.get('months', []), d.get(k, []))) for t, k in (('VIDS', 'vids'), ('SHORTS', 'shorts'), ('LIVES', 'lives'))}
     for t, by_month in api.items():
         eng = data.get(('YOUTUBE', f'ENGAGED_VIEWS_{t}'))
@@ -930,6 +954,7 @@ def build_html(d, reports, revenue, socials, generated_at, audio=None):
     )
 
     engaged_card, js_eng_labels, js_eng_series = engaged_card_html(socials)
+    engaged_card = _yt_kpi_card(d) + engaged_card
 
     # ─── Audience ──────────────────────────────────────────────
     audience_table = audience_table_html(d, socials, M_raw, M_display)

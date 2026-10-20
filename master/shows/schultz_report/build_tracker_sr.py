@@ -533,6 +533,18 @@ def main():
     }
 
     json_out = os.path.join(DATA_DIR, "tracker_data_sr.json")
+    # YouTube KPIs — engaged views, watch time, retention, likes, impressions/CTR (master/yt_kpis.py)
+    try:
+        import sys as _sys
+        _m = os.path.dirname(os.path.abspath(__file__))
+        while not os.path.exists(os.path.join(_m, "yt_kpis.py")) and os.path.dirname(_m) != _m:
+            _m = os.path.dirname(_m)
+        _sys.path.insert(0, _m)
+        import yt_kpis
+        tracker["yt_kpis"] = yt_kpis.collect(creds, tracker.get("months", []),
+                                         os.path.join(os.path.dirname(json_out), "yt_reach_daily.csv"), tracker.get("all_videos", []))
+    except Exception as _e:
+        print(f"  ✗ YouTube KPIs skipped: {_e}")
     with open(json_out, "w", encoding="utf-8") as f:
         json.dump(tracker, f, indent=2, default=str)
 

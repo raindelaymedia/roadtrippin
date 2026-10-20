@@ -137,6 +137,7 @@ def extract(path):
         'best_of_label': best_of_raw.get('label', ''),
         'top_content_monthly': j.get('top_content_monthly', {}),
         'all_videos':   j.get('all_videos', []),
+        'yt_kpis':      j.get('yt_kpis') or {},
         'subs_gained':  subs_gained,
         'subs_lost':    subs_lost,
         'current_subs': current_subs,
@@ -314,11 +315,34 @@ def engaged_views(socials, months):
     return out
 
 
+def _yt_kpi_card(d):
+    """YouTube KPIs card (master/yt_kpis.py, or common/ in the shared repo)."""
+    import sys as _sys
+    m = os.path.dirname(os.path.abspath(__file__))
+    while m != os.path.dirname(m):
+        for c in (m, os.path.join(m, "common")):
+            if os.path.exists(os.path.join(c, "yt_kpis.py")):
+                _sys.path.insert(0, c)
+                import yt_kpis
+                return yt_kpis.kpi_html(d.get('yt_kpis'), fmt)
+        m = os.path.dirname(m)
+    return ''
+
+
 def fill_api_views(socials, d):
     """All-views half of the engaged-views pairs from the YouTube API: for a month that has ENGAGED_VIEWS_<T>
     but no VIEWS_<T>, use the tracker's monthly views (matches Studio within a fraction of a percent).
-    A value entered by hand still wins. So only engaged views need entering."""
+    Engaged views themselves come from the API's engagedViews. A value entered by hand still wins."""
     months, data = socials.get('months', []), socials.get('data', {})
+    kp = (d.get('yt_kpis') or {}).get('monthly') or {}
+    for t in ('VIDS', 'SHORTS', 'LIVES'):          # engaged views straight from the API (engagedViews)
+        api_eng = {m: (kp.get(m, {}).get(t) or {}).get('engaged_views') for m in months}
+        if not any(v is not None for v in api_eng.values()):
+            continue
+        eng = data.setdefault(('YOUTUBE', f'ENGAGED_VIEWS_{t}'), [None] * len(months))
+        for i, m in enumerate(months):
+            if not isinstance(eng[i], (int, float)) and api_eng.get(m) is not None:
+                eng[i] = api_eng[m]
     api = {t: dict(zip(d.get('months', []), d.get(k, []))) for t, k in (('VIDS', 'vids'), ('SHORTS', 'shorts'), ('LIVES', 'lives'))}
     for t, by_month in api.items():
         eng = data.get(('YOUTUBE', f'ENGAGED_VIEWS_{t}'))
@@ -609,7 +633,7 @@ def build_html(d, revenue, socials, generated_at, audio=None):
       <div style="height:280px"><canvas id="yt-subs-chart"></canvas></div>
     </div>
     {_rt_card(d, rt_idx)}
-    {_engaged_card(socials)[0]}"""
+    {_yt_kpi_card(d)}{_engaged_card(socials)[0]}"""
     else:
         js_M = '[]'; js_vids = '[]'; js_shorts = '[]'; js_lives = '[]'; js_subs = '[]'
         js_rt_views = '[]'; js_rt_other = '[]'; js_rt_pct = '[]'

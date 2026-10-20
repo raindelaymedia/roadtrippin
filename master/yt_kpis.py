@@ -1,0 +1,266 @@
+"""
+RDM — YouTube KPIs shared by every show's tracker and dashboard
+================================================================
+collect(creds, months, cache_csv, videos)  → saved in tracker JSON as "yt_kpis":
+    monthly[YYYY-MM][VIDS|SHORTS|LIVES|ALL] = views, engaged_views, watch_hours, avg_view_sec,
+                                             avg_pct_viewed, likes, comments, shares
+    reach[YYYY-MM][VIDS|SHORTS|ALL]         = impressions, ctr   (thumbnail impressions + click-through)
+    reach_through                           = last day with reach data
+
+Monthly KPIs come from the YouTube Analytics API (engagedViews included — no more Studio entry).
+Impressions / CTR aren't in the Analytics API: they come from the YouTube Reporting API, which delivers one
+CSV per day (channel_reach_basic_a1). Reports expire after a while, so every day we download the new ones and
+keep a per-day summary in cache_csv (date, type, impressions, clicks) — that file is the history. A new
+reporting job takes ~2 days to start producing, and YouTube backfills only a limited window before that.
+
+kpi_html(kpis, fmt) → a card for a dashboard's YouTube tab.
+"""
+
+import csv
+import io
+import os
+from collections import defaultdict
+from datetime import date, timedelta
+
+import requests
+
+TYPES = {"videoOnDemand": "VIDS", "shorts": "SHORTS", "liveStream": "LIVES"}
+LABEL = {"VIDS": "Videos", "SHORTS": "Shorts", "LIVES": "Lives", "ALL": "All"}
+METRICS = "views,engagedViews,estimatedMinutesWatched,averageViewDuration,averageViewPercentage,likes,comments,shares"
+REACH_TYPE = "channel_reach_basic_a1"
+REACH_TYPES_OK = ("channel_reach_basic_a1", "channel_reach_combined_a1")
+REPORTING = "https://youtubereporting.googleapis.com/v1"
+
+
+# ── Analytics API: monthly KPIs by content type ──────────────────────────────
+def _rows(ya, start, end, dims):
+    r = ya.reports().query(ids="channel==MINE", startDate=start, endDate=end, metrics=METRICS,
+                           dimensions=dims).execute(num_retries=3)
+    names = [h["name"] for h in r["columnHeaders"]]
+    return [dict(zip(names, row)) for row in r.get("rows", [])]
+
+
+def _entry(r):
+    return {"views": r["views"], "engaged_views": r["engagedViews"],
+            "watch_hours": round(r["estimatedMinutesWatched"] / 60, 1), "avg_view_sec": r["averageViewDuration"],
+            "avg_pct_viewed": r["averageViewPercentage"], "likes": r["likes"], "comments": r["comments"],
+            "shares": r["shares"]}
+
+
+def _all(by_type):
+    t = list(by_type.values())
+    views = sum(x["views"] for x in t)
+    if not views:
+        return None
+    return {"views": views, "engaged_views": sum(x["engaged_views"] for x in t),
+            "watch_hours": round(sum(x["watch_hours"] for x in t), 1),
+            "avg_view_sec": round(sum(x["watch_hours"] for x in t) * 3600 / views),
+            "avg_pct_viewed": round(sum(x["avg_pct_viewed"] * x["views"] for x in t) / views, 2),
+            "likes": sum(x["likes"] for x in t), "comments": sum(x["comments"] for x in t),
+            "shares": sum(x["shares"] for x in t)}
+
+
+def monthly_kpis(ya, months):
+    """months: 'YYYY-MM' (any order). Complete months by the `month` dimension (its dates must be 1st-of-month);
+    the current month to date by its own query."""
+    months = sorted(months)
+    today = date.today()
+    cur = today.strftime("%Y-%m")
+    out = defaultdict(dict)
+    done = [m for m in months if m < cur]
+    if done:
+        for r in _rows(ya, f"{done[0]}-01", f"{done[-1]}-01", "month,creatorContentType"):
+            t = TYPES.get(r["creatorContentType"])
+            if t and r["month"] in done:
+                out[r["month"]][t] = _entry(r)
+    yesterday = today - timedelta(days=1)
+    if cur in months and yesterday.strftime("%Y-%m") == cur:
+        for r in _rows(ya, f"{cur}-01", yesterday.isoformat(), "creatorContentType"):
+            t = TYPES.get(r["creatorContentType"])
+            if t:
+                out[cur][t] = _entry(r)
+    for m in out:
+        a = _all(out[m])
+        if a:
+            out[m]["ALL"] = a
+    return dict(out)
+
+
+# ── Reporting API: thumbnail impressions + CTR, cached per day ───────────────
+def _job(headers):
+    jobs = requests.get(f"{REPORTING}/jobs", headers=headers, timeout=30).json().get("jobs", [])
+    for j in jobs:
+        if j.get("reportTypeId") in REACH_TYPES_OK:
+            return j["id"], False
+    r = requests.post(f"{REPORTING}/jobs", headers=headers, timeout=30,
+                      json={"reportTypeId": REACH_TYPE, "name": "RDM reach (impressions, CTR)"})
+    r.raise_for_status()
+    return r.json()["id"], True
+
+
+def _read_cache(path):
+    if not os.path.exists(path):
+        return {}
+    with open(path, encoding="utf-8-sig", newline="") as f:
+        return {(r["date"], r["type"]): r for r in csv.DictReader(f)}
+
+
+def update_reach(creds, cache_csv, video_types):
+    """Download reach reports not cached yet. video_types: {video_id: 'VIDS'|'SHORTS'|'LIVES'}. Returns a note."""
+    headers = {"Authorization": f"Bearer {creds.token}"}
+    job_id, created = _job(headers)
+    if created:
+        return f"created reporting job {job_id} — first reports in ~2 days"
+    cache = _read_cache(cache_csv)
+    have = {d for d, _ in cache}
+    reports, token = [], None
+    while True:
+        params = {"pageSize": 100, **({"pageToken": token} if token else {})}
+        j = requests.get(f"{REPORTING}/jobs/{job_id}/reports", headers=headers, params=params, timeout=30).json()
+        reports += j.get("reports", [])
+        token = j.get("nextPageToken")
+        if not token:
+            break
+    latest = {}                                     # one report per day: the newest version
+    for r in reports:
+        d = r["startTime"][:10]
+        if d not in latest or r.get("createTime", "") > latest[d].get("createTime", ""):
+            latest[d] = r
+    new = 0
+    for d, r in sorted(latest.items()):
+        if d in have:
+            continue
+        dl = requests.get(r["downloadUrl"], headers=headers, timeout=120)
+        if dl.status_code != 200:
+            continue
+        agg = defaultdict(lambda: [0, 0.0])
+        for row in csv.DictReader(io.StringIO(dl.text)):
+            imp = int(float(row.get("video_thumbnail_impressions") or 0))
+            ctr = float(row.get("video_thumbnail_impressions_ctr") or 0)
+            t = video_types.get(row.get("video_id"), "VIDS")
+            for k in (t, "ALL"):
+                agg[k][0] += imp
+                agg[k][1] += imp * ctr
+        for t, (imp, clicks) in agg.items():
+            cache[(d, t)] = {"date": d, "type": t, "impressions": imp, "clicks": round(clicks, 2)}
+        if not agg:
+            cache[(d, "ALL")] = {"date": d, "type": "ALL", "impressions": 0, "clicks": 0}
+        new += 1
+    os.makedirs(os.path.dirname(cache_csv), exist_ok=True)
+    with open(cache_csv, "w", encoding="utf-8", newline="") as f:
+        w = csv.DictWriter(f, fieldnames=["date", "type", "impressions", "clicks"], lineterminator="\r\n")
+        w.writeheader()
+        w.writerows(cache[k] for k in sorted(cache))
+    return f"{new} new day(s) cached · {len({d for d, _ in cache})} days total"
+
+
+def reach_monthly(cache_csv):
+    out = defaultdict(lambda: defaultdict(lambda: [0, 0.0]))
+    days = []
+    for (d, t), r in _read_cache(cache_csv).items():
+        a = out[d[:7]][t]
+        a[0] += int(float(r["impressions"]))
+        a[1] += float(r["clicks"])
+        days.append(d)
+    res = {m: {t: {"impressions": imp, "ctr": round(cl / imp, 4) if imp else None} for t, (imp, cl) in v.items()}
+           for m, v in out.items()}
+    return res, (max(days) if days else None)
+
+
+def collect(creds, months, cache_csv, videos):
+    """Everything for the tracker JSON. Failures in one half don't lose the other."""
+    from googleapiclient.discovery import build
+    out = {"monthly": {}, "reach": {}, "reach_through": None, "notes": []}
+    try:
+        ya = build("youtubeAnalytics", "v2", credentials=creds)
+        out["monthly"] = monthly_kpis(ya, months)
+        print(f"  ✓ YouTube KPIs: {len(out['monthly'])} months (engaged views, watch time, retention, likes …)")
+    except Exception as e:
+        out["notes"].append(f"monthly KPIs failed: {e}")
+        print(f"  ✗ YouTube KPIs: {e}")
+    try:
+        vt = {v["id"]: ("SHORTS" if v.get("type") == "short" else "LIVES" if v.get("type") == "live" else "VIDS")
+              for v in videos or [] if v.get("id")}
+        note = update_reach(creds, cache_csv, vt)
+        out["reach"], out["reach_through"] = reach_monthly(cache_csv)
+        print(f"  ✓ Reach (impressions/CTR): {note}")
+        out["notes"].append(note)
+    except Exception as e:
+        out["notes"].append(f"reach failed: {e}")
+        print(f"  ✗ Reach: {e}")
+    return out
+
+
+# ── Dashboard card ───────────────────────────────────────────────────────────
+def _mon(m):
+    from datetime import datetime
+    d = datetime.strptime(m, "%Y-%m")
+    return d.strftime("%b") + ("" if d.year == date.today().year else d.strftime(" %y"))
+
+
+def _dur(sec):
+    if sec is None:
+        return "—"
+    sec = int(sec)
+    return f"{sec // 60}:{sec % 60:02d}"
+
+
+def kpi_html(kpis, fmt, n_months=6):
+    monthly = (kpis or {}).get("monthly") or {}
+    reach = (kpis or {}).get("reach") or {}
+    months = sorted(monthly)[-n_months:][::-1]          # newest first
+    if not months:
+        return ""
+    cur = months[0]
+
+    def g(m, t, k):
+        return (monthly.get(m, {}).get(t) or {}).get(k)
+
+    def rg(m, t, k):
+        return (reach.get(m, {}).get(t) or {}).get(k)
+
+    pct = lambda v: "—" if v is None else f"{v * 100:.1f}%"
+    rows_def = [
+        ("Views", lambda m, t: fmt(g(m, t, "views"))),
+        ("Engaged views", lambda m, t: fmt(g(m, t, "engaged_views"))),
+        ("Engaged %", lambda m, t: pct(g(m, t, "engaged_views") / g(m, t, "views")) if g(m, t, "views") else "—"),
+        ("Watch time (hrs)", lambda m, t: fmt(g(m, t, "watch_hours"))),
+        ("Avg view duration", lambda m, t: _dur(g(m, t, "avg_view_sec"))),
+        ("Avg % viewed", lambda m, t: "—" if g(m, t, "avg_pct_viewed") is None else f'{g(m, t, "avg_pct_viewed"):.1f}%'),
+        ("Likes", lambda m, t: fmt(g(m, t, "likes"))),
+        ("Comments", lambda m, t: fmt(g(m, t, "comments"))),
+        ("Shares", lambda m, t: fmt(g(m, t, "shares"))),
+        ("Impressions", lambda m, t: fmt(rg(m, t, "impressions"))),
+        ("Impressions CTR", lambda m, t: pct(rg(m, t, "ctr"))),
+    ]
+    types = [t for t in ("VIDS", "SHORTS", "LIVES") if any(g(m, t, "views") for m in months)]
+    head = "".join(f"<th>{_mon(m)}</th>" for m in months)
+    body = ""
+    for t in types:
+        body += (f'<tr><td style="font-weight:700;text-align:left">{LABEL[t]}</td>' + "".join("<td></td>" for _ in months) + "</tr>")
+        for name, fn in rows_def:
+            if name.startswith("Impressions") and t != "VIDS" and not any(rg(m, t, "impressions") for m in months):
+                continue
+            body += f'<tr><td style="text-align:left;padding-left:18px">{name}</td>' + "".join(f"<td>{fn(m, t)}</td>" for m in months) + "</tr>"
+
+    def card(label, value, sub=""):
+        return (f'<div class="metric"><div class="metric-label">{label}</div><div class="metric-value">{value}</div>'
+                f'<div class="metric-delta" style="color:var(--text2)">{sub}</div></div>')
+    cards = (card(f"Watch time · {_mon(cur)}", f'{fmt(g(cur, "ALL", "watch_hours"))} hrs',
+                  f'videos avg {_dur(g(cur, "VIDS", "avg_view_sec"))} · {g(cur, "VIDS", "avg_pct_viewed") or 0:.0f}% viewed')
+             + card(f"Engaged views · {_mon(cur)}", fmt(g(cur, "ALL", "engaged_views")),
+                    pct(g(cur, "ALL", "engaged_views") / g(cur, "ALL", "views")) + " of views" if g(cur, "ALL", "views") else "")
+             + card(f"Impressions · {_mon(cur)}", fmt(rg(cur, "ALL", "impressions")) if rg(cur, "ALL", "impressions") else "—",
+                    f'CTR {pct(rg(cur, "ALL", "ctr"))}' if rg(cur, "ALL", "ctr") is not None else "Reporting API — fills in daily")
+             + card(f"Likes · comments · shares", fmt((g(cur, "ALL", "likes") or 0) + (g(cur, "ALL", "comments") or 0) + (g(cur, "ALL", "shares") or 0)),
+                    f'{fmt(g(cur, "ALL", "likes"))} · {fmt(g(cur, "ALL", "comments"))} · {fmt(g(cur, "ALL", "shares"))} in {_mon(cur)}'))
+    through = (kpis or {}).get("reach_through")
+    return f"""
+    <div class="card">
+      <div class="card-title">YouTube KPIs · by month</div>
+      <div class="metrics">{cards}</div>
+      <div class="table-scroll"><table class="data-table"><thead><tr><th style="text-align:left">Metric</th>{head}</tr></thead>
+      <tbody>{body}</tbody></table></div>
+      <div class="metric-delta" style="color:var(--text2);margin-top:8px">YouTube Analytics API · {_mon(cur)} to date.
+        Impressions / CTR = thumbnail impressions from the YouTube Reporting API{f" (through {through})" if through else " — filling in from daily reports"}.</div>
+    </div>"""
