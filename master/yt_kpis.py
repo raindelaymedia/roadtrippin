@@ -50,12 +50,14 @@ def _entry(r):
 def _all(by_type):
     t = list(by_type.values())
     views = sum(x["views"] for x in t)
+    eng = sum(x["engaged_views"] for x in t)
     if not views:
         return None
     return {"views": views, "engaged_views": sum(x["engaged_views"] for x in t),
             "watch_hours": round(sum(x["watch_hours"] for x in t), 1),
-            "avg_view_sec": round(sum(x["watch_hours"] for x in t) * 3600 / views),
-            "avg_pct_viewed": round(sum(x["avg_pct_viewed"] * x["views"] for x in t) / views, 2),
+            # YouTube's average view duration / % viewed are per ENGAGED view (watch time / engaged views)
+            "avg_view_sec": round(sum(x["watch_hours"] for x in t) * 3600 / eng) if eng else None,
+            "avg_pct_viewed": round(sum(x["avg_pct_viewed"] * x["engaged_views"] for x in t) / eng, 2) if eng else None,
             "likes": sum(x["likes"] for x in t), "comments": sum(x["comments"] for x in t),
             "shares": sum(x["shares"] for x in t)}
 
@@ -157,13 +159,15 @@ def update_reach(creds, cache_csv, video_types):
 def reach_monthly(cache_csv):
     out = defaultdict(lambda: defaultdict(lambda: [0, 0.0]))
     days = []
+    per_month = defaultdict(set)
     for (d, t), r in _read_cache(cache_csv).items():
         a = out[d[:7]][t]
         a[0] += int(float(r["impressions"]))
         a[1] += float(r["clicks"])
         days.append(d)
-    res = {m: {t: {"impressions": imp, "ctr": round(cl / imp, 4) if imp else None} for t, (imp, cl) in v.items()}
-           for m, v in out.items()}
+        per_month[d[:7]].add(d)
+    res = {m: {t: {"impressions": imp, "ctr": round(cl / imp, 4) if imp else None, "days": len(per_month[m])}
+               for t, (imp, cl) in v.items()} for m, v in out.items()}
     return res, (max(days) if days else None)
 
 
@@ -206,7 +210,11 @@ def _dur(sec):
 
 
 def kpi_html(kpis, fmt, n_months=6):
-    monthly = (kpis or {}).get("monthly") or {}
+    monthly = {m: dict(v) for m, v in ((kpis or {}).get("monthly") or {}).items()}
+    for m, v in monthly.items():                       # recompute "All" on the engaged-view basis (older JSON had it per view)
+        a = _all({t: x for t, x in v.items() if t != "ALL"})
+        if a:
+            v["ALL"] = a
     reach = (kpis or {}).get("reach") or {}
     months = sorted(monthly)[-n_months:][::-1]          # newest first
     if not months:
@@ -220,17 +228,25 @@ def kpi_html(kpis, fmt, n_months=6):
         return (reach.get(m, {}).get(t) or {}).get(k)
 
     pct = lambda v: "—" if v is None else f"{v * 100:.1f}%"
+
+    def partial(m):                                    # reach cache missing days in a finished month
+        import calendar
+        d = (reach.get(m, {}).get("ALL") or {}).get("days")
+        if d is None or m >= date.today().strftime("%Y-%m"):
+            return False
+        y, mo = map(int, m.split("-"))
+        return d < calendar.monthrange(y, mo)[1]
     rows_def = [
         ("Views", lambda m, t: fmt(g(m, t, "views"))),
         ("Engaged views", lambda m, t: fmt(g(m, t, "engaged_views"))),
         ("Engaged %", lambda m, t: pct(g(m, t, "engaged_views") / g(m, t, "views")) if g(m, t, "views") else "—"),
         ("Watch time (hrs)", lambda m, t: fmt(g(m, t, "watch_hours"))),
-        ("Avg view duration", lambda m, t: _dur(g(m, t, "avg_view_sec"))),
-        ("Avg % viewed", lambda m, t: "—" if g(m, t, "avg_pct_viewed") is None else f'{g(m, t, "avg_pct_viewed"):.1f}%'),
+        ("Avg view duration*", lambda m, t: _dur(g(m, t, "avg_view_sec"))),
+        ("Avg % viewed*", lambda m, t: "—" if g(m, t, "avg_pct_viewed") is None else f'{g(m, t, "avg_pct_viewed"):.1f}%'),
         ("Likes", lambda m, t: fmt(g(m, t, "likes"))),
         ("Comments", lambda m, t: fmt(g(m, t, "comments"))),
         ("Shares", lambda m, t: fmt(g(m, t, "shares"))),
-        ("Impressions", lambda m, t: fmt(rg(m, t, "impressions"))),
+        ("Impressions", lambda m, t: fmt(rg(m, t, "impressions")) + (" †" if partial(m) else "")),
         ("Impressions CTR", lambda m, t: pct(rg(m, t, "ctr"))),
     ]
     types = [t for t in ("VIDS", "SHORTS", "LIVES") if any(g(m, t, "views") for m in months)]
@@ -262,5 +278,6 @@ def kpi_html(kpis, fmt, n_months=6):
       <div class="table-scroll"><table class="data-table"><thead><tr><th style="text-align:left">Metric</th>{head}</tr></thead>
       <tbody>{body}</tbody></table></div>
       <div class="metric-delta" style="color:var(--text2);margin-top:8px">YouTube Analytics API · {_mon(cur)} to date.
+        * per engaged view (YouTube's definition: watch time ÷ engaged views). † month only partly covered by daily reports.
         Impressions / CTR = thumbnail impressions from the YouTube Reporting API{f" (through {through})" if through else " — filling in from daily reports"}.</div>
     </div>"""
