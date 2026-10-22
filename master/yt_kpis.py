@@ -23,7 +23,6 @@ import re
 from collections import defaultdict
 from datetime import date, timedelta
 
-import requests
 
 TYPES = {"videoOnDemand": "VIDS", "shorts": "SHORTS", "liveStream": "LIVES"}
 LABEL = {"VIDS": "Videos", "SHORTS": "Shorts", "LIVES": "Lives", "ALL": "All"}
@@ -91,6 +90,7 @@ def monthly_kpis(ya, months):
 
 # ── Reporting API: thumbnail impressions + CTR, cached per day ───────────────
 def _job(headers):
+    import requests   # lazy: the shared repo's build-only workflow has no third-party packages
     jobs = requests.get(f"{REPORTING}/jobs", headers=headers, timeout=30).json().get("jobs", [])
     for j in jobs:
         if j.get("reportTypeId") in REACH_TYPES_OK:
@@ -168,6 +168,7 @@ def _read_cache(path):
 def update_reach(creds, cache_csv, video_types, rebuild=False, types_csv=None):
     """Download reach reports not cached yet (rebuild=True: every report YouTube still has, re-sorted by type;
     days it no longer has keep their cached values). video_types: {video_id: 'VIDS'|'SHORTS'|'LIVES'}."""
+    import requests   # lazy: the shared repo's build-only workflow has no third-party packages
     headers = {"Authorization": f"Bearer {creds.token}"}
     job_id, created = _job(headers)
     if created:
