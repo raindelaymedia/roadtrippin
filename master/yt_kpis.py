@@ -19,6 +19,7 @@ kpi_html(kpis, fmt) → a card for a dashboard's YouTube tab.
 import csv
 import io
 import os
+import re
 from collections import defaultdict
 from datetime import date, timedelta
 
@@ -100,6 +101,63 @@ def _job(headers):
     return r.json()["id"], True
 
 
+def _load_types(cache_csv):
+    if not os.path.exists(cache_csv):
+        return {}
+    with open(cache_csv, encoding="utf-8-sig", newline="") as f:
+        return {r["video_id"]: r["type"] for r in csv.DictReader(f)}
+
+
+def _save_types(cache_csv, known):
+    os.makedirs(os.path.dirname(cache_csv) or ".", exist_ok=True)
+    with open(cache_csv, "w", encoding="utf-8", newline="") as f:
+        w = csv.writer(f, lineterminator="\r\n")
+        w.writerow(["video_id", "type"])
+        w.writerows(sorted(known.items()))
+
+
+def video_types(ya, cache_csv, months=15):
+    """{video_id: SHORTS|LIVES|VIDS} as YouTube classifies them (creatorContentType — Studio's Videos / Shorts / Live),
+    cached in cache_csv. The API returns at most the top 200 videos per query and can't page, so it asks month by
+    month (last `months` months, each content type)."""
+    known = _load_types(cache_csv)
+    first = date.today().replace(day=1)
+    for n in range(months):
+        y, m = divmod(first.year * 12 + first.month - 1 - n, 12)
+        s_ = date(y, m + 1, 1)
+        e_ = min((date(y + (m + 1) // 12, (m + 1) % 12 + 1, 1) - timedelta(days=1)), date.today() - timedelta(days=1))
+        if e_ < s_:
+            continue
+        for ctype, label in (("shorts", "SHORTS"), ("liveStream", "LIVES"), ("videoOnDemand", "VIDS")):
+            r = ya.reports().query(ids="channel==MINE", startDate=s_.isoformat(), endDate=e_.isoformat(), metrics="views",
+                                   dimensions="video", filters=f"creatorContentType=={ctype}", sort="-views",
+                                   maxResults=200).execute(num_retries=3)
+            for vid, _ in r.get("rows", []):
+                known[vid] = label
+    _save_types(cache_csv, known)
+    return known
+
+
+def classify_unknown(creds, ids, cache_csv):
+    """Fallback for videos the monthly lists missed: YouTube Data API — live-stream details → LIVES,
+    3 minutes or shorter → SHORTS (YouTube's Shorts limit), else VIDS. Cached with the rest."""
+    from googleapiclient.discovery import build
+    known = _load_types(cache_csv)
+    todo = [i for i in ids if i and i not in known]
+    if not todo:
+        return known
+    yt = build("youtube", "v3", credentials=creds)
+    for n in range(0, len(todo), 50):
+        r = yt.videos().list(part="contentDetails,liveStreamingDetails", id=",".join(todo[n:n + 50])).execute(num_retries=3)
+        for v in r.get("items", []):
+            dur = v.get("contentDetails", {}).get("duration", "")
+            m = re.match(r"P(?:(\d+)D)?T?(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?", dur)
+            sec = sum(int(x or 0) * k for x, k in zip(m.groups(), (86400, 3600, 60, 1))) if m else 0
+            known[v["id"]] = "LIVES" if v.get("liveStreamingDetails") else "SHORTS" if 0 < sec <= 180 else "VIDS"
+    _save_types(cache_csv, known)
+    return known
+
+
 def _read_cache(path):
     if not os.path.exists(path):
         return {}
@@ -107,8 +165,9 @@ def _read_cache(path):
         return {(r["date"], r["type"]): r for r in csv.DictReader(f)}
 
 
-def update_reach(creds, cache_csv, video_types):
-    """Download reach reports not cached yet. video_types: {video_id: 'VIDS'|'SHORTS'|'LIVES'}. Returns a note."""
+def update_reach(creds, cache_csv, video_types, rebuild=False, types_csv=None):
+    """Download reach reports not cached yet (rebuild=True: every report YouTube still has, re-sorted by type;
+    days it no longer has keep their cached values). video_types: {video_id: 'VIDS'|'SHORTS'|'LIVES'}."""
     headers = {"Authorization": f"Bearer {creds.token}"}
     job_id, created = _job(headers)
     if created:
@@ -128,21 +187,31 @@ def update_reach(creds, cache_csv, video_types):
         d = r["startTime"][:10]
         if d not in latest or r.get("createTime", "") > latest[d].get("createTime", ""):
             latest[d] = r
-    new = 0
+    texts = {}
     for d, r in sorted(latest.items()):
-        if d in have:
+        if d in have and not rebuild:
             continue
         dl = requests.get(r["downloadUrl"], headers=headers, timeout=120)
-        if dl.status_code != 200:
-            continue
+        if dl.status_code == 200:
+            texts[d] = list(csv.DictReader(io.StringIO(dl.text)))
+    if types_csv:                                   # classify videos the type lists don't cover yet
+        ids = {row.get("video_id") for rows in texts.values() for row in rows} - set(video_types)
+        try:
+            video_types = {**video_types, **classify_unknown(creds, ids, types_csv)}
+        except Exception as e:
+            print(f"    ⚠ video type fallback: {e}")
+    new = 0
+    for d, rows in sorted(texts.items()):
         agg = defaultdict(lambda: [0, 0.0])
-        for row in csv.DictReader(io.StringIO(dl.text)):
+        for row in rows:
             imp = int(float(row.get("video_thumbnail_impressions") or 0))
             ctr = float(row.get("video_thumbnail_impressions_ctr") or 0)
             t = video_types.get(row.get("video_id"), "VIDS")
             for k in (t, "ALL"):
                 agg[k][0] += imp
                 agg[k][1] += imp * ctr
+        for k in [k for k in cache if k[0] == d]:      # replace the whole day
+            del cache[k]
         for t, (imp, clicks) in agg.items():
             cache[(d, t)] = {"date": d, "type": t, "impressions": imp, "clicks": round(clicks, 2)}
         if not agg:
@@ -183,9 +252,14 @@ def collect(creds, months, cache_csv, videos):
         out["notes"].append(f"monthly KPIs failed: {e}")
         print(f"  ✗ YouTube KPIs: {e}")
     try:
-        vt = {v["id"]: ("SHORTS" if v.get("type") == "short" else "LIVES" if v.get("type") == "live" else "VIDS")
-              for v in videos or [] if v.get("id")}
-        note = update_reach(creds, cache_csv, vt)
+        types_csv = os.path.join(os.path.dirname(cache_csv), "yt_video_types.csv")
+        # Type per video as YouTube classifies it (Studio's Videos / Shorts / Live); tracker list as fallback
+        vt = {v["id"]: ("SHORTS" if v.get("type") == "short" else "VIDS") for v in videos or [] if v.get("id")}
+        try:
+            vt.update(video_types(ya, types_csv))
+        except Exception as e:
+            out["notes"].append(f"video types: {e}")
+        note = update_reach(creds, cache_csv, vt, types_csv=types_csv)
         out["reach"], out["reach_through"] = reach_monthly(cache_csv)
         print(f"  ✓ Reach (impressions/CTR): {note}")
         out["notes"].append(note)
