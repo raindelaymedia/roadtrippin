@@ -12,7 +12,7 @@ permissions:
 jobs:
   refresh:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 25   # ~11 min typical; headroom for the YouTube report downloads
 
     steps:
       - name: Checkout repo
