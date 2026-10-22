@@ -55,9 +55,9 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))   # repo root
 SHOWS = {
     "gt": {"csv": "master/shows/road_trippin/data/girls_tripp/socials_gt.csv", "instagram": {"env": "IG_TOKEN_GT"}},
     "rt": {"csv": "master/shows/road_trippin/data/socials.csv",               "instagram": {"env": "IG_TOKEN_RT"},
-           "tiktok": {"account": "rt", "snapshots": "master/shows/road_trippin/data/tiktok"}},
+           "tiktok": {"account": "rt", "expect": "Road Trippin", "snapshots": "master/shows/road_trippin/data/tiktok"}},
     "sr": {"csv": "master/shows/schultz_report/data_sr/socials_sr.csv",       "instagram": {"env": "IG_TOKEN_SR"},
-           "tiktok": {"account": "sr", "snapshots": "master/shows/schultz_report/data_sr/tiktok"}},
+           "tiktok": {"account": "sr", "expect": "Schultz Report", "snapshots": "master/shows/schultz_report/data_sr/tiktok"}},
     "fr": {"csv": "master/shows/road_trippin/data/football_related/data_fr/socials_fr.csv", "instagram": {"env": "IG_TOKEN_FR"}},
 }
 LOCAL_CONFIG = os.path.join(ROOT, "master", "config_socials.py")   # gitignored
@@ -249,6 +249,9 @@ def sync_tiktok(spec, rows, today, dry_run=False):
         raise LookupError(f"no {tt.token_name(spec['account'])} (not a secret here, not in master/config_socials.py) — skipped")
     tok = tt.access_token(cfg, spec["account"])
     user = tt.api(tok, "GET", "/user/info/", params={"fields": "display_name,follower_count,video_count"}).get("user", {})
+    if spec.get("expect") and spec["expect"].lower() not in (user.get("display_name") or "").lower():
+        raise RuntimeError(f"{tt.token_name(spec['account'])} is connected to '{user.get('display_name')}', not "
+                           f"'{spec['expect']}' — wrong token; nothing written")
     vids, cursor = [], None
     while True:                                     # every video, newest first (the account is small)
         body = {"max_count": 20, **({"cursor": cursor} if cursor else {})}
