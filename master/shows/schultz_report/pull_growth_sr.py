@@ -1,8 +1,8 @@
 """
-SR — growth since the start of the RDM term (Aug 18 2026), in two-week windows
+SR — growth since the start of the RDM term (Aug 18 2026), week by week (Mon–Sun)
 ===============================================================================
 Instagram per window: views, interactions, follows and unfollows (Instagram insights), plus the
-follower count today. Windows run every 14 days from START (Aug 18–31, Sep 1–14, Sep 15–28 …);
+follower count today. Weeks run Monday–Sunday (reported Mondays); the first is Aug 18–23 and
 the current one is partial. Saved to data_sr/growth_sr.json and pushed to the shared repo, whose
 Overview reads it together with the YouTube daily data in tracker_data_sr.json and the TikTok
 account snapshots in data_sr/tiktok/.
@@ -23,14 +23,15 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(HERE)))
 import sync_socials as ss   # noqa: E402
 
 START = date(2026, 8, 18)
-WINDOW = 14
+WINDOW = 7
 OUT = os.path.join(HERE, "data_sr", "growth_sr.json")
 
 
 def windows(through):
+    """Monday–Sunday weeks from START (the first one runs START → that Sunday); the current week is partial."""
     out, s = [], START
     while s <= through:
-        e = s + timedelta(days=WINDOW - 1)
+        e = s + timedelta(days=6 - s.weekday())
         out.append((s, min(e, through), e > through))
         s = e + timedelta(days=1)
     return out

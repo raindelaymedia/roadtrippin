@@ -1,60 +1,110 @@
 {
  "start": "2026-08-18",
- "window_days": 14,
+ "window_days": 7,
  "through": "2026-10-21",
- "pulled": "2026-10-22T14:24+00:00",
+ "pulled": "2026-10-22T17:26+00:00",
  "instagram": {
-  "followers_now": 2103,
+  "followers_now": 2108,
   "windows": [
    {
     "start": "2026-08-18",
-    "end": "2026-08-31",
+    "end": "2026-08-23",
     "partial": false,
-    "views": 545831,
-    "interactions": 30735,
-    "follows": 1185,
-    "unfollows": 511,
-    "net_followers": 674
+    "views": 164458,
+    "interactions": 7006,
+    "follows": 1029,
+    "unfollows": 88,
+    "net_followers": 941
    },
    {
-    "start": "2026-09-01",
-    "end": "2026-09-14",
+    "start": "2026-08-24",
+    "end": "2026-08-30",
     "partial": false,
-    "views": 834767,
-    "interactions": 44400,
-    "follows": 729,
-    "unfollows": 455,
-    "net_followers": 274
+    "views": 355054,
+    "interactions": 21968,
+    "follows": 144,
+    "unfollows": 398,
+    "net_followers": -254
    },
    {
-    "start": "2026-09-15",
-    "end": "2026-09-28",
+    "start": "2026-08-31",
+    "end": "2026-09-06",
     "partial": false,
-    "views": 526832,
-    "interactions": 32766,
-    "follows": 3237,
-    "unfollows": 2105,
-    "net_followers": 1132
+    "views": 516504,
+    "interactions": 27093,
+    "follows": 532,
+    "unfollows": 276,
+    "net_followers": 256
    },
    {
-    "start": "2026-09-29",
-    "end": "2026-10-12",
+    "start": "2026-09-07",
+    "end": "2026-09-13",
     "partial": false,
-    "views": 1147809,
-    "interactions": 67597,
-    "follows": 1604,
-    "unfollows": 1414,
-    "net_followers": 190
+    "views": 331637,
+    "interactions": 18382,
+    "follows": 122,
+    "unfollows": 185,
+    "net_followers": -63
    },
    {
-    "start": "2026-10-13",
+    "start": "2026-09-14",
+    "end": "2026-09-20",
+    "partial": false,
+    "views": 260864,
+    "interactions": 16694,
+    "follows": 1851,
+    "unfollows": 879,
+    "net_followers": 972
+   },
+   {
+    "start": "2026-09-21",
+    "end": "2026-09-27",
+    "partial": false,
+    "views": 246979,
+    "interactions": 14969,
+    "follows": 1386,
+    "unfollows": 1049,
+    "net_followers": 337
+   },
+   {
+    "start": "2026-09-28",
+    "end": "2026-10-04",
+    "partial": false,
+    "views": 370658,
+    "interactions": 31363,
+    "follows": 859,
+    "unfollows": 870,
+    "net_followers": -11
+   },
+   {
+    "start": "2026-10-05",
+    "end": "2026-10-11",
+    "partial": false,
+    "views": 710920,
+    "interactions": 31994,
+    "follows": 683,
+    "unfollows": 639,
+    "net_followers": 44
+   },
+   {
+    "start": "2026-10-12",
+    "end": "2026-10-18",
+    "partial": false,
+    "views": 592964,
+    "interactions": 38176,
+    "follows": 580,
+    "unfollows": 646,
+    "net_followers": -66
+   },
+   {
+    "start": "2026-10-19",
     "end": "2026-10-21",
     "partial": true,
-    "views": 641503,
-    "interactions": 39829,
-    "follows": 468,
-    "unfollows": 631,
-    "net_followers": -163
+    "views": 146708,
+    "interactions": 7682,
+    "follows": 37,
+    "unfollows": 86,
+    "net_followers": -49
    }
   ]
  }

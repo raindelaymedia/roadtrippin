@@ -170,6 +170,10 @@ jobs:
           IG_TOKEN_SR: ${{ secrets.IG_TOKEN_SR }}
         run: python master/shows/schultz_report/pull_growth_sr.py
 
+      - name: Pull SR content performance (KPI framework + weekly content grades)
+        continue-on-error: true
+        run: python master/shows/schultz_report/pull_content_sr.py
+
       - name: Pull Sprout (sponsor-tagged posts)
         continue-on-error: true
         env:
@@ -184,7 +188,7 @@ jobs:
           D=_shared/schultz_report/data_sr/from_rdm
           mkdir -p "$D/reports"
           # copy whatever exists — a missing file must not block the rest
-          for f in "$S/tracker_data_sr.json" "$S/socials_sr.csv" "$S/growth_sr.json" "$S"/fanatics_*.csv; do [ -f "$f" ] && cp "$f" "$D/"; done
+          for f in "$S/tracker_data_sr.json" "$S/socials_sr.csv" "$S/growth_sr.json" "$S/content_sr.json" "$S"/fanatics_*.csv; do [ -f "$f" ] && cp "$f" "$D/"; done
           [ -d "$S/sprout" ] && cp -r "$S/sprout" "$D/"
           [ -d "$S/tiktok" ] && cp -r "$S/tiktok" "$D/"
           # final Fanatics reports only, once committed here (drafts stay local)
