@@ -72,9 +72,19 @@ def main():
                      "follows": f, "unfollows": u, "net_followers": f - u})
         print(f"  {s} → {e}{' (partial)' if partial else ''}: views {rows[-1]['views']:>10,} · "
               f"followers +{f:,} / −{u:,} = {f - u:+,}")
+    # Recent posts with views (for the Content tab's top posts) — last 21 days
+    posts = []
+    since = (through - timedelta(days=20)).isoformat()
+    page = ig.get(f"{uid}/media", fields="id,caption,permalink,timestamp,media_type,like_count,comments_count", limit=50)
+    for m in page.get("data", []):
+        if m["timestamp"][:10] < since:
+            continue
+        posts.append({"url": m.get("permalink"), "created": m["timestamp"][:10], "text": (m.get("caption") or "")[:140],
+                      "type": m.get("media_type"), "views": ig.post_views(m["id"]), "likes": m.get("like_count"),
+                      "comments": m.get("comments_count")})
     out = {"start": START.isoformat(), "window_days": WINDOW, "through": through.isoformat(),
            "pulled": datetime.now(timezone.utc).isoformat(timespec="minutes"),
-           "instagram": {"followers_now": me["followers_count"], "windows": rows}}
+           "instagram": {"followers_now": me["followers_count"], "windows": rows, "posts": posts}}
     json.dump(out, open(OUT, "w", encoding="utf-8"), indent=1)
     print(f"✓ growth_sr.json · Instagram @{me['username']} · {me['followers_count']:,} followers")
 
