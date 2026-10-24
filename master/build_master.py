@@ -40,6 +40,7 @@ SHOWS = [
                 "tag":           "GT",
                 "color":         "#E84B8A",
                 "dashboard_url": "master/shows/road_trippin/girls_tripp.html",
+                "tracker":       "shows/road_trippin/data/girls_tripp/tracker_data_gt.json",
                 "status":        "active",       # active | coming_soon
             },
             {
@@ -48,6 +49,7 @@ SHOWS = [
                 "tag":           "FR",
                 "color":         "#1E7A46",      # placeholder until FR brand colors are set
                 "dashboard_url": "master/shows/road_trippin/data/football_related/football_related.html",
+                "tracker":       "shows/road_trippin/data/football_related/data_fr/tracker_data_fr.json",
                 "status":        "active",
             },
             # Future daughter shows go here:
@@ -95,6 +97,9 @@ SPLIT_TIERS = [
 # The split tiers are cumulative across the whole term, so Year 2 starts
 # where Year 1 ended (already in the 25% band).
 CONTRACT_START = "2025-10"          # YYYY-MM, inclusive
+# Quarters already invoiced (full label → RDM cut billed). Add a line after each invoice goes out:
+# the landing page then shows that quarter as invoiced and leads with the quarter in progress.
+INVOICED = {"Y1 Q3": 57_575.03, "Y1 Q4": 119_442.81}
 
 # YouTube AdSense and Culture Genesis (AdSense + direct-sold ads) pay out
 # mid-way through the following month, after the invoice goes out. From
@@ -363,6 +368,7 @@ def compute_show_summary(show, today=None, script_dir=None):
         "cum_before_quarter": cum_before_q,
         "cum_through_now":    cum_thru_now,
         "rdm_cut_quarter":    rdm_q_cut,
+        "quarter_invoiced":   INVOICED.get(q_label),  # amount billed, or None if still to invoice
         "rdm_cut_lifetime":   rdm_cut_completed,      # cut on completed cumulative
         "contract_start":     CONTRACT_START,
         "quarters":           quarters,               # all quarters w/ complete flag
@@ -388,8 +394,19 @@ def compute_show_summary(show, today=None, script_dir=None):
         "by_month":           dict(by_month),
         # controls whether master template renders revenue breakdown for this show
         "show_revenue":       show.get("show_revenue", False),
-        "daughter_shows":     show.get("daughter_shows", []),
+        "daughter_shows":     [_daughter_stats(d, today) for d in show.get("daughter_shows", [])],
     }
+
+
+def _daughter_stats(d, today):
+    """A daughter show's card stats from its own tracker JSON (subscribers, episodes in the last 30 days)."""
+    out = dict(d, subs=0, eps_30d=0)
+    p = os.path.join(os.path.dirname(os.path.abspath(__file__)), d.get("tracker", ""))
+    if d.get("tracker") and os.path.exists(p):
+        t = json.load(open(p, encoding="utf-8"))
+        out["subs"] = t.get("current_subs", 0) or 0
+        out["eps_30d"] = _episodes_last_n_days(t, today, days=30)
+    return out
 
 
 def _cum_through(by_month, m):
@@ -415,7 +432,13 @@ def _episodes_last_n_days(tracker, today, days=30):
     cur = today.strftime("%Y-%m")
     prev_dt = date(today.year, today.month, 1) - __import__("datetime").timedelta(days=1)
     prev = prev_dt.strftime("%Y-%m")
-    return int((eps_map.get(cur) or 0) + (eps_map.get(prev) or 0))
+    n = int((eps_map.get(cur) or 0) + (eps_map.get(prev) or 0))
+    if n:
+        return n
+    # No Megaphone episode counts (SR, GT, FR): count YouTube uploads of 20+ minutes in the last `days` days
+    since = (today - __import__("datetime").timedelta(days=days)).isoformat()
+    return sum(1 for v in tracker.get("all_videos", []) or []
+               if (v.get("published") or "") >= since and (v.get("duration_sec") or 0) >= 20 * 60)
 
 
 def _latest_episode_month(tracker):
@@ -426,12 +449,15 @@ def _latest_episode_month(tracker):
 
 # ─── Network rollup ──────────────────────────────────────────────────────
 def compute_rdm_summary(show_summaries):
+    daughters = [d for s in show_summaries for d in s.get("daughter_shows", []) if d.get("status") == "active"]
     return {
-        "active_shows":         len(show_summaries),
+        "active_shows":         len(show_summaries) + len(daughters),
         "network_mtd_gross":    sum(s["mtd_gross"]       for s in show_summaries),
         "network_cum_gross":    sum(s["cum_gross"]       for s in show_summaries),
-        "network_eps_30d":      sum(s["eps_30d"]         for s in show_summaries),
-        "network_subs":         sum(s["subs"]            for s in show_summaries),
+        "network_eps_30d":      sum(s["eps_30d"]         for s in show_summaries) + sum(d["eps_30d"] for d in daughters),
+        "network_subs":         sum(s["subs"]            for s in show_summaries) + sum(d["subs"] for d in daughters),
+        "network_q_now_cut":    sum((s.get("partial_quarter") or {}).get("rdm_cut", 0) for s in show_summaries
+                                    if s.get("show_revenue")),
         "network_q_cut":        sum(s["rdm_cut_quarter"] for s in show_summaries),
         "network_lifetime_cut": sum(s["rdm_cut_lifetime"] for s in show_summaries),
     }

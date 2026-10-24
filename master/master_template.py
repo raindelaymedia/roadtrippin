@@ -185,6 +185,13 @@ def _render_split_panel(s):
     shelves = "\n".join(_render_year_shelf(y) for y in s.get("years", [])
                          if y is not year and y["n"] < year.get("n", 0))
 
+    # Once the latest closed quarter is invoiced it folds away; the quarter in progress leads.
+    invoiced = s.get("quarter_invoiced")
+    closed_open = (f'<details class="closed-q"><summary style="cursor:pointer;margin:14px 0 6px;color:var(--mut)">'
+                   f'{s["quarter_label"]} · invoiced {_fmt_money(invoiced, 2)} ✓ — show the invoice math</summary>'
+                   if invoiced else "")
+    closed_close = "</details>" if invoiced else ""
+
     # Quarter-cut math breakdown
     cum_start = s["cum_before_quarter"]
     cum_end   = s["cum_through_now"]
@@ -310,13 +317,15 @@ def _render_split_panel(s):
   {_render_split_tier_bar(cum)}
 
   <div class="split-quarter">
+    {partial_html}
+    {closed_open}
     <div class="split-quarter-head">
       <div>
         <div class="lbl">{s['quarter_label']} <span class="mut">({s['quarter_start']} – {s['quarter_end']})</span></div>
-        <div class="quarter-title">RDM Cut · Latest Closed Quarter (to invoice)</div>
+        <div class="quarter-title">RDM Cut · Latest Closed Quarter {'(invoiced ✓)' if invoiced else '(to invoice)'}</div>
       </div>
       <div class="quarter-cut-box">
-        <div class="lbl">Owed to RDM</div>
+        <div class="lbl">{'Invoiced' if invoiced else 'Owed to RDM'}</div>
         <div class="quarter-cut-val">{_fmt_money(q_cut, 2)}</div>
       </div>
     </div>
@@ -339,7 +348,7 @@ def _render_split_panel(s):
       </table>
     </div>
     {_deferred_out_note(s.get("last_completed"))}
-    {partial_html}
+    {closed_close}
     {quarters_html}
   </div>
 </section>
@@ -368,6 +377,8 @@ def _render_show_card(s):
       <a class="sub-card" href="{d.get('dashboard_url','#')}" target="_blank" rel="noopener">
         <div class="sub-card-tag" style="background:{d['color']}">{d.get('tag','')}</div>
         <div class="sub-card-name">{d['name']}</div>
+        <div class="sub-card-stats" style="font-size:11px;color:var(--mut);margin-left:auto;margin-right:8px">
+          {_fmt_num_short(d.get('subs', 0))} subs · {_fmt_num(d.get('eps_30d', 0))} eps 30d</div>
         {status_badge}
         <div class="sub-card-arrow">↗</div>
       </a>"""
@@ -396,6 +407,24 @@ def _render_show_card(s):
 def build_master_html(rdm_summary, show_summaries, quarter_label,
                        quarter_window, generated_at):
     rdm = rdm_summary
+    rt = next((s for s in show_summaries if s.get("show_revenue")), {})
+    pq = rt.get("partial_quarter") or {}
+    now_label = pq.get("full_label") or quarter_label
+    now_window = (f"{_fmt_month_label(pq['start'])[:3]} – {_fmt_month_label(pq['end'])[:3]} {pq['end'][:4]}" if pq else quarter_window)
+    invoiced = rt.get("quarter_invoiced")
+    if invoiced and pq:
+        q_kpi = f"""<div class="kpi">
+    <div class="kpi-lbl">{now_label} RDM Cut (so far)</div>
+    <div class="kpi-val kpi-val-accent">{_fmt_money_short(rdm.get('network_q_now_cut', 0))}</div>
+    <div class="kpi-sub">Provisional · quarter closes {_fmt_month_label(pq['end'])} · {quarter_label} invoiced ✓</div>
+  </div>"""
+    else:
+        q_kpi = f"""<div class="kpi">
+    <div class="kpi-lbl">{quarter_label} RDM Cut</div>
+    <div class="kpi-val kpi-val-accent">{_fmt_money_short(rdm['network_q_cut'])}</div>
+    <div class="kpi-sub">Owed to RDM · closed quarter, to invoice</div>
+  </div>"""
+    last_pill = f"Last closed: <strong>{quarter_label}</strong> · {'invoiced ✓' if invoiced else 'to invoice'}"
 
     kpi_cards = f"""
 <div class="kpi-row">
@@ -409,11 +438,7 @@ def build_master_html(rdm_summary, show_summaries, quarter_label,
     <div class="kpi-val">{_fmt_money_short(rdm['network_mtd_gross'])}</div>
     <div class="kpi-sub">Gross, current month</div>
   </div>
-  <div class="kpi">
-    <div class="kpi-lbl">{quarter_label} RDM Cut</div>
-    <div class="kpi-val kpi-val-accent">{_fmt_money_short(rdm['network_q_cut'])}</div>
-    <div class="kpi-sub">Owed to RDM this quarter</div>
-  </div>
+  {q_kpi}
   <div class="kpi">
     <div class="kpi-lbl">Episodes (Last 30d)</div>
     <div class="kpi-val">{_fmt_num(rdm['network_eps_30d'])}</div>
@@ -1017,7 +1042,8 @@ def build_master_html(rdm_summary, show_summaries, quarter_label,
       <div class="sub">Cross-show performance, revenue, and RDM participation tracking</div>
     </div>
     <div class="page-h-pills">
-      <div class="quarter-pill">Current quarter: <strong>{quarter_label}</strong> · {quarter_window}</div>
+      <div class="quarter-pill">Now: <strong>{now_label}</strong> · {now_window}</div>
+      <div class="quarter-pill">{last_pill}</div>
       <div class="fanatics-pill">★ {year_tag}</div>
     </div>
   </div>
@@ -1032,7 +1058,7 @@ def build_master_html(rdm_summary, show_summaries, quarter_label,
 
   <div class="sec-h">
     <h2>Shows</h2>
-    <span class="r">{rdm['active_shows']} active · click any card to open the full dashboard</span>
+    <span class="r">{rdm['active_shows']} shows · click any card to open its full dashboard</span>
   </div>
   <div class="show-grid">{show_cards}</div>
 
@@ -1049,16 +1075,6 @@ def build_master_html(rdm_summary, show_summaries, quarter_label,
     <span class="comp-arrow">↗</span>
   </a>
 
-  <div class="sec-h">
-    <h2>Network Top Content &amp; Recent Episodes</h2>
-    <span class="r">v1.5</span>
-  </div>
-  <div class="coming-soon">
-    <strong>Coming next iteration.</strong><br>
-    Once we have a second show on the network, this section will surface top-performing
-    videos and recent episodes across all shows, with cross-show ranking and filters.
-    Until then, the per-show breakdowns live in each show's own dashboard.
-  </div>
 
   <div class="footer">
     Rain Delay Media · Network Dashboard · Built {generated_at}
