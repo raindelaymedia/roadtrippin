@@ -1,0 +1,526 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<title>The Schultz Report × Fanatics — Sep 1 – Sep 30, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --gold:#11116b; --yel:#E8C840; --ink:#1a1a1a; --mut:#8a8a8a; --line:#e6e6e6; }
+  * { box-sizing:border-box; }
+  body { font-family:'Barlow',sans-serif; color:var(--ink); margin:0; background:#f3f3f3; font-size:12px; }
+  .page { width:8.5in; min-height:11in; padding:0.5in 0.55in; margin:14px auto; background:#fff;
+          box-shadow:0 2px 12px rgba(0,0,0,.12); }
+  h1,h2,h3,.cond { font-family:'Barlow Condensed',sans-serif; }
+  .eyebrow { font-family:'Barlow Condensed'; letter-spacing:.28em; font-weight:600; color:var(--mut); font-size:9px; text-transform:uppercase; }
+
+  /* header */
+  .hdr { display:flex; justify-content:space-between; align-items:flex-start; background:var(--gold); color:#fff;
+          margin:-0.5in -0.55in 0; padding:0.42in 0.55in 16px; border-bottom:5px solid var(--yel); }
+  .title { font-family:'Barlow Condensed'; font-weight:800; font-size:36px; line-height:.95; letter-spacing:-.01em; text-transform:uppercase; }
+  .title .x { color:var(--yel); }
+  .subt { letter-spacing:.22em; font-weight:600; color:#c9c9ef; font-size:9px; text-transform:uppercase; margin-top:6px; }
+  .hdr-r { text-align:right; }
+  .hdr-r .big { font-family:'Barlow Condensed'; font-weight:700; font-size:20px; }
+  .hdr-r .sm { color:#c9c9ef; font-size:10px; }
+  .hdr .eyebrow { color:var(--yel); }
+
+  /* metric cards */
+  .cards { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin:16px 0; }
+  .card { border:1px solid var(--line); border-radius:3px; padding:12px 14px; }
+  .card .lbl { font-size:8px; letter-spacing:.16em; color:var(--mut); font-weight:600; text-transform:uppercase; }
+  .card .val { font-family:'Barlow Condensed'; font-weight:700; font-size:30px; line-height:1.05; margin-top:6px; }
+  .card .note { color:var(--mut); font-size:9.5px; margin-top:2px; }
+
+  /* impressions banner */
+  .imp { border:1px solid var(--line); border-radius:3px; padding:16px 18px; display:flex; gap:26px; align-items:center; margin-bottom:18px; }
+  .imp .lbl { font-size:8px; letter-spacing:.2em; color:var(--gold); font-weight:700; text-transform:uppercase; }
+  .imp .num { font-family:'Barlow Condensed'; font-weight:800; font-size:34px; color:var(--gold); line-height:1; }
+  .imp .vs { color:var(--mut); font-size:12px; }
+  .imp .pace { font-size:10px; color:#555; line-height:1.5; }
+  .imp .pace b { color:var(--gold); }
+
+  /* section heading */
+  .sec-h { display:flex; justify-content:space-between; align-items:baseline; border-bottom:1px solid var(--ink); padding-bottom:4px; margin-bottom:2px; }
+  .sec-h h2 { font-weight:700; font-size:17px; letter-spacing:.02em; margin:0; text-transform:uppercase; }
+  .sec-h .r { font-size:8px; letter-spacing:.18em; color:var(--mut); font-weight:600; }
+
+  /* views table */
+  table { width:100%; border-collapse:collapse; }
+  thead td { font-size:8px; letter-spacing:.14em; color:var(--mut); font-weight:600; padding:8px 6px; text-transform:uppercase; }
+  tbody tr { border-top:1px solid var(--line); }
+  td { padding:9px 6px; vertical-align:middle; }
+  tr.ind .pl-name { padding-left:22px; }
+  tr.ind .pl-title { font-size:10px; }
+  .pl-title { font-family:'Barlow Condensed'; font-weight:700; font-size:13px; text-transform:uppercase; }
+  .pl-sub { color:var(--mut); font-size:9px; font-style:italic; }
+  .pl-metric { color:#666; font-size:10px; font-style:italic; width:150px; }
+  .pl-num { font-family:'Barlow Condensed'; font-weight:700; font-size:15px; text-align:right; white-space:nowrap; }
+
+  /* three KPI columns */
+  .kpis { display:grid; grid-template-columns:1fr 1fr 1.35fr; gap:12px; margin-top:16px; }
+  .kpi { border:1px solid var(--line); border-radius:3px; padding:12px; }
+  .kpi-h { font-size:8px; letter-spacing:.16em; color:var(--mut); font-weight:600; text-transform:uppercase; line-height:1.3; }
+  .big-row { display:flex; align-items:baseline; gap:8px; margin:6px 0 2px; }
+  .big-num { font-family:'Barlow Condensed'; font-weight:800; font-size:30px; line-height:1; }
+  .big-pct { font-family:'Barlow Condensed'; font-weight:800; font-size:22px; color:var(--gold); }
+  .big-tgt { font-family:'Barlow Condensed'; font-weight:700; font-size:20px; color:var(--mut); }
+  .micro { font-size:7.5px; letter-spacing:.1em; color:var(--mut); text-transform:uppercase; }
+  .bar { height:5px; background:#eee; border-radius:3px; overflow:hidden; margin:8px 0; }
+  .bar-fill { height:100%; }
+  .line { display:flex; justify-content:space-between; font-size:10.5px; padding:3px 0; border-top:1px dotted var(--line); }
+  .line .v { font-family:'Barlow Condensed'; font-weight:700; }
+  .line .v small { color:var(--mut); font-weight:500; }
+
+  /* talent */
+  .talent-card { border-top:1px solid var(--line); padding:8px 0; }
+  .talent-card:first-child { border-top:none; }
+  .tc-name { font-family:'Barlow Condensed'; font-weight:700; font-size:13px; }
+  .tc-handle { color:var(--mut); font-weight:500; font-size:9px; margin-left:6px; }
+  .tc-req { color:var(--mut); font-size:8px; display:block; }
+  .tc-stats { display:grid; grid-template-columns:repeat(3,1fr); gap:6px; margin-top:5px; text-align:center; }
+  .tc-lbl { font-size:7px; letter-spacing:.1em; color:var(--mut); }
+  .tc-num { font-family:'Barlow Condensed'; font-weight:800; font-size:20px; line-height:1; }
+  .tc-num.gold { color:var(--gold); }
+  .tc-sub { font-size:7px; color:var(--mut); }
+  .gold-box { border:1px solid var(--yel); background:#fffbe6; border-radius:3px; padding:3px 0; }
+
+  /* top content cards */
+  .cc-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin:10px 0 18px; }
+  .cc { border:1px solid var(--line); border-radius:3px; overflow:hidden; text-decoration:none; color:inherit; display:block; }
+  .cc-thumb { aspect-ratio:16/9; background:#222 center/cover no-repeat; }
+  .cc-body { padding:8px 10px 11px; }
+  .cc-rank { font-family:'Barlow Condensed'; font-weight:800; font-size:22px; display:flex; align-items:baseline; gap:8px; }
+  .cc-views { font-size:13px; color:var(--gold); }
+  .cc-meta { font-size:8px; letter-spacing:.12em; color:var(--mut); text-transform:uppercase; margin:2px 0 4px; }
+  .cc-title { font-weight:600; font-size:11px; line-height:1.25; }
+  .sc { border:1px solid var(--line); border-left:3px solid var(--yel); border-radius:3px; padding:9px 11px; }
+  .sc-plat { font-family:'Barlow Condensed'; font-weight:700; font-size:11px; color:var(--gold); margin:2px 0 4px; }
+  .sc-date { color:var(--mut); font-weight:500; margin-left:8px; letter-spacing:.1em; }
+
+  /* goal box */
+  .goal { border:1px solid var(--line); border-radius:3px; padding:16px 18px; margin-top:6px; }
+  .goal-top { display:flex; justify-content:space-between; align-items:flex-start; }
+  .goal h2 { font-weight:700; font-size:18px; margin:0; text-transform:uppercase; }
+  .goal .desc { color:#666; font-size:10px; max-width:62%; margin-top:4px; }
+  .goal .tot { text-align:right; }
+  .goal .tot .l { font-size:8px; letter-spacing:.16em; color:var(--mut); }
+  .goal .tot .n { font-family:'Barlow Condensed'; font-weight:800; font-size:26px; color:var(--gold); }
+  .mults { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:14px; }
+  .mult h3 { font-weight:700; font-size:12px; margin:0; text-transform:uppercase; }
+  .mult .x { color:var(--gold); font-family:'Barlow Condensed'; font-weight:800; font-size:15px; }
+  .mult ul { list-style:none; padding:0; margin:8px 0 0; }
+  .mult li { font-size:9.5px; color:#444; padding:1.5px 0; }
+  .mult .calc { font-style:italic; font-size:9.5px; color:#666; border-top:1px solid var(--line); margin-top:8px; padding-top:6px; }
+  .mult .calc b { color:var(--gold); font-style:normal; }
+
+  .foot { display:flex; justify-content:space-between; color:var(--mut); font-size:7.5px; letter-spacing:.12em;
+           text-transform:uppercase; border-top:1px solid var(--line); margin-top:18px; padding-top:8px; }
+
+  @media print {
+    body { background:#fff; }
+    .page { box-shadow:none; margin:0; width:auto; min-height:auto; padding:0.4in 0.45in; }
+    .page + .page { page-break-before:always; }
+    .cc, .sc, .talent-card, .kpi, .mult { break-inside:avoid; }
+  }
+  @page { size:letter; margin:0; }
+
+  /* SR additions */
+  .kpi3 { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin:0 0 16px; }
+  .k3 { border:1px solid var(--line); border-top:4px solid var(--yel); border-radius:3px; padding:10px 12px; }
+  .k3 .h { font-family:'Barlow Condensed'; font-weight:800; font-size:13px; line-height:1.15; min-height:30px; color:var(--gold); text-transform:uppercase; letter-spacing:.04em; }
+  .k3 .rowv { display:flex; justify-content:space-between; font-size:10px; padding:3px 0; border-top:1px dotted var(--line); }
+  .k3 .rowv:first-of-type { border-top:none; }
+  .k3 .rowv b { font-family:'Barlow Condensed'; font-size:14px; }
+  .pend { color:#B45309; font-style:italic; font-family:'Barlow',sans-serif; font-weight:600; font-size:.85em; }
+  tr.muted td.pl-num { color:#999; }
+  .k3-note { font-size:8.5px; color:var(--mut); margin-top:4px; }
+  tr.grp td { font-size:8px; letter-spacing:.2em; color:var(--gold); font-weight:700; text-transform:uppercase; padding:10px 6px 4px; background:#f5f5fb; }
+  .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:12px; }
+  .tag { display:inline-block; font-size:7.5px; letter-spacing:.12em; font-weight:700; padding:1px 5px; border-radius:2px; margin-left:6px; vertical-align:middle; }
+  .tag.ok { background:#E8F5E9; color:#2E7D32; }
+  .tag.low { background:#FFF3E0; color:#B45309; }
+  .tag.na { background:#eee; color:#777; }
+  .marks { position:relative; height:12px; font-size:7px; color:var(--mut); margin-top:-4px; }
+  .marks span { position:absolute; transform:translateX(-50%); white-space:nowrap; }
+</style></head><body>
+
+<!-- ══════════════ PAGE 1 · HEADLINE + PLATFORM DELIVERY ══════════════ -->
+<section class="page">
+  <div class="hdr">
+    <div>
+      <div class="title">THE SCHULTZ REPORT <span class="x">×</span><br>FANATICS SPORTSBOOK</div>
+      <div class="subt">Presenting Partnership · Monthly Delivery Report</div>
+    </div>
+    <div class="hdr-r">
+      <div class="eyebrow">Reporting Period</div>
+      <div class="big">Sep 1 – Sep 30, 2026</div>
+      <div class="sm">Term: Sep 1, 2026 – Aug 31, 2027 · ~90–115 Episodes</div>
+    </div>
+  </div>
+
+  <div class="cards">
+    <div class="card"><div class="lbl">Cumulative Views &amp; Downloads</div><div class="val">5,466,169</div><div class="note">All platforms · term to date</div></div>
+    <div class="card"><div class="lbl">This Period Views &amp; Downloads</div><div class="val">5,466,169</div><div class="note">Sep 1 – Sep 30 only</div></div>
+    <div class="card"><div class="lbl">% of Term Elapsed</div><div class="val">8.2%</div><div class="note">Of 365-day term</div></div>
+    <div class="card"><div class="lbl">Days Into Partnership</div><div class="val">30</div><div class="note">of 365 days</div></div>
+  </div>
+
+  <div class="imp">
+    <div>
+      <div class="lbl">Impressions*</div>
+      <div class="num">7,367,666</div>
+      <div class="vs">vs. 87,915,000 minimum target</div>
+    </div>
+    <div class="pace">
+      <b>8.38%</b> of target delivered with 8.2% of the term elapsed<br>
+      At the current rate: on pace for <b>~89,639,936</b> impressions over the term
+    </div>
+  </div>
+
+  <div class="kpi3">
+    
+        <div class="k3"><div class="h">YouTube</div>
+          <div class="rowv"><span>Views · period</span><b>1,747,349</b></div>
+          <div class="rowv"><span>Views · cumulative</span><b>1,747,349</b></div>
+          <div class="rowv"><span>Impressions · cum.</span><b style="color:#11116b">3,619,724</b></div>
+          
+        </div>
+    
+        <div class="k3"><div class="h">Social · Jordan &amp; Keyshawn</div>
+          <div class="rowv"><span>Views · period</span><b>3,565,149</b></div>
+          <div class="rowv"><span>Views · cumulative</span><b>3,565,149</b></div>
+          <div class="rowv"><span>Impressions · cum.</span><b style="color:#11116b">3,565,149</b></div>
+          
+        </div>
+    
+        <div class="k3"><div class="h">Social · SR Show Accounts</div>
+          <div class="rowv"><span>Views · period</span><b>139,110</b></div>
+          <div class="rowv"><span>Views · cumulative</span><b>139,110</b></div>
+          <div class="rowv"><span>Impressions · cum.</span><b style="color:#11116b">139,110</b></div>
+          
+        </div>
+    
+        <div class="k3"><div class="h">Audio</div>
+          <div class="rowv"><span>Downloads · period</span><b>14,561</b></div>
+          <div class="rowv"><span>Downloads · cumulative</span><b>14,561</b></div>
+          <div class="rowv"><span>Impressions · cum.</span><b style="color:#11116b">43,683</b></div>
+          
+        </div>
+  </div>
+
+  <div class="sec-h"><h2>Platform Delivery</h2><div class="r">VIEWS &amp; DOWNLOADS · RAW COUNTS</div></div>
+  <table>
+    <thead><tr><td>Platform</td><td>Metric</td><td style="text-align:right">This Period</td><td style="text-align:right">Cumulative</td></tr></thead>
+    <tbody><tr class="grp"><td colspan="4">YouTube</td></tr>
+        <tr class="">
+          <td class="pl-name"><div class="pl-title">YOUTUBE</div><div class="pl-sub">Views during the period on all integrated videos · 93 videos this term (93 new)</div></td>
+          <td class="pl-metric">Views</td>
+          <td class="pl-num">1,747,349</td><td class="pl-num">1,747,349</td>
+        </tr>
+        <tr class="ind">
+          <td class="pl-name"><div class="pl-title">FULL EPISODES</div><div class="pl-sub">Tagged full episodes · 9 new this period</div></td>
+          <td class="pl-metric">Views</td>
+          <td class="pl-num">62,513</td><td class="pl-num">62,513</td>
+        </tr>
+        <tr class="ind">
+          <td class="pl-name"><div class="pl-title">SEGMENT CLIPS</div><div class="pl-sub">3:01–30 min · 23 new this period</div></td>
+          <td class="pl-metric">Views</td>
+          <td class="pl-num">140,596</td><td class="pl-num">140,596</td>
+        </tr>
+        <tr class="ind">
+          <td class="pl-name"><div class="pl-title">SHORTS</div><div class="pl-sub">≤3:00 · 61 new this period</div></td>
+          <td class="pl-metric">Views</td>
+          <td class="pl-num">1,544,240</td><td class="pl-num">1,544,240</td>
+        </tr><tr class="grp"><td colspan="4">Audio</td></tr>
+        <tr class="">
+          <td class="pl-name"><div class="pl-title">PODCAST</div><div class="pl-sub">RSS · Spotify · Apple Podcasts</div></td>
+          <td class="pl-metric">Downloads</td>
+          <td class="pl-num">14,561</td><td class="pl-num">14,561</td>
+        </tr><tr class="grp"><td colspan="4">Social · Schultz Report show accounts</td></tr>
+        <tr class="">
+          <td class="pl-name"><div class="pl-title">INSTAGRAM</div><div class="pl-sub">Fanatics-watermarked posts only · 13 posts this period · collabs with @JordanSchultz counted under Jordan</div></td>
+          <td class="pl-metric">Views</td>
+          <td class="pl-num">14,033</td><td class="pl-num">14,033</td>
+        </tr>
+        <tr class="">
+          <td class="pl-name"><div class="pl-title">TIKTOK</div><div class="pl-sub">Fanatics-watermarked videos only · 27 this period · separate from Jordan's</div></td>
+          <td class="pl-metric">Views</td>
+          <td class="pl-num">25,538</td><td class="pl-num">25,538</td>
+        </tr>
+        <tr class="">
+          <td class="pl-name"><div class="pl-title">X (TWITTER)</div><div class="pl-sub">Show account · own posts, separate from Jordan's</div></td>
+          <td class="pl-metric">Impressions</td>
+          <td class="pl-num">99,539</td><td class="pl-num">99,539</td>
+        </tr><tr class="grp"><td colspan="4">Social · Reporter &amp; talent accounts — Fanatics-integrated posts only</td></tr>
+        <tr class="">
+          <td class="pl-name"><div class="pl-title">@JORDANSCHULTZ · X</div><div class="pl-sub">19 Fanatics-tagged posts · Sprout Social</div></td>
+          <td class="pl-metric">Impressions</td>
+          <td class="pl-num">2,771,393</td><td class="pl-num">2,771,393</td>
+        </tr>
+        <tr class="">
+          <td class="pl-name"><div class="pl-title">@JORDANSCHULTZ · INSTAGRAM</div><div class="pl-sub">51 Fanatics-tagged posts · Sprout Social</div></td>
+          <td class="pl-metric">Views</td>
+          <td class="pl-num">661,611</td><td class="pl-num">661,611</td>
+        </tr>
+        <tr class="">
+          <td class="pl-name"><div class="pl-title">@JORDANSCHULTZ · TIKTOK</div><div class="pl-sub">41 Fanatics-tagged posts · Sprout Social</div></td>
+          <td class="pl-metric">Views</td>
+          <td class="pl-num">123,529</td><td class="pl-num">123,529</td>
+        </tr>
+        <tr class="">
+          <td class="pl-name"><div class="pl-title">@KEYSHAWNJOHNSON · INSTAGRAM</div><div class="pl-sub">Schultz Report × Keyshawn · 3 watermarked posts this period</div></td>
+          <td class="pl-metric">Views</td>
+          <td class="pl-num">8,616</td><td class="pl-num">8,616</td>
+        </tr>
+        <tr class="">
+          <td class="pl-name"><div class="pl-title">@KEYSHAWNJOHNSON · X</div><div class="pl-sub">Fanatics-integrated posts</div></td>
+          <td class="pl-metric">Views</td>
+          <td class="pl-num"><span class="pend">Pending</span></td><td class="pl-num"><span class="pend">Pending</span></td>
+        </tr></tbody>
+  </table>
+  
+  <div class="foot">
+    <span>The Schultz Report × Fanatics Sportsbook · Presenting Partnership</span>
+    <span>Prepared by Rain Delay Media · Confidential · Report v1.1</span>
+    <span>Generated October 16, 2026</span>
+  </div>
+</section>
+
+<!-- ══════════════ PAGE 2 · DELIVERY TRACKERS ══════════════ -->
+<section class="page">
+  <div class="sec-h"><h2>Delivery Tracker</h2><div class="r">TERM TO DATE VS. CONTRACT</div></div>
+
+  <div class="grid2">
+    <div class="kpi">
+      <div class="kpi-h">Episode Delivery</div>
+      <div class="big-row"><span class="big-num">9</span><span class="big-pct">10.0%</span><span class="big-tgt">of 90 floor</span></div>
+      <div class="micro">Regular episodes aired · floor 90 · cycle target ~100 · ceiling 115 incl. specials</div>
+      <div class="bar"><div class="bar-fill" style="width:7.8%;background:#E8C840"></div></div>
+      <div class="marks"><span style="left:78.3%">90</span><span style="left:87.0%">100</span><span style="left:99%">115</span></div>
+      <div class="line"><span>Jordan-Led (Solo)</span><span class="v"><small style="margin-right:6px">+1 this period</small>1 <small>/ ~39</small></span></div><div class="line"><span>Jordan + Keyshawn</span><span class="v"><small style="margin-right:6px">+4 this period</small>4 <small>/ ~22</small></span></div><div class="line"><span>Jordan + Player</span><span class="v"><small style="margin-right:6px">+4 this period</small>4 <small>/ ~17</small></span></div><div class="line"><span>Jordan-Led (Offseason)</span><span class="v">0 <small>/ ~13</small></span></div>
+      <div class="line"><span>Special / Tentpole (upside)</span><span class="v">0 <small>/ ~25</small></span></div>
+      <div class="line"><span><b>Total aired</b></span><span class="v">9 <small>/ ~100</small></span></div>
+    </div>
+
+    <div class="kpi">
+      <div class="kpi-h">Sponsorship Delivered</div>
+      <div class="big-row"><span class="big-num">54</span><span class="big-pct">10.3%</span><span class="big-tgt">~525</span></div>
+      <div class="micro">Per-episode sponsorship units · % of term target</div>
+      <div class="bar"><div class="bar-fill" style="width:10.3%;background:#E8C840"></div></div>
+      <div class="line"><span>Top-of-Show Shoutouts</span><span class="v"><small style="margin-right:6px">+9 this period</small>9 <small>/ ~90</small></span></div><div class="line"><span>Sponsored Segments (On-Cam)</span><span class="v"><small style="margin-right:6px">+9 this period</small>9 <small>/ ~75</small></span></div><div class="line"><span>YouTube Host-Read Ads</span><span class="v"><small style="margin-right:6px">+9 this period</small>9 <small>/ ~90</small></span></div><div class="line"><span>Podcast Ad Reads (:60)</span><span class="v"><small style="margin-right:6px">+9 this period</small>9 <small>/ ~90</small></span></div><div class="line"><span>Prime (First-Position) Placement</span><span class="v"><small style="margin-right:6px">+9 this period</small>9 <small>/ ~90</small></span></div><div class="line"><span>Fanatics Branding (Watermark + Set)</span><span class="v"><small style="margin-right:6px">+9 this period</small>9 <small>/ ~90</small></span></div>
+      <div class="kpi-h" style="margin-top:14px">Branded Content &amp; Added Value</div>
+      <div class="line"><span>YouTube Clips (branded)</span><span class="v"><small style="margin-right:6px">+23 this period</small>23 <small>/ ~300</small></span></div><div class="line"><span>YouTube Shorts (branded)</span><span class="v"><small style="margin-right:6px">+61 this period</small>61 <small>/ ~450</small></span></div><div class="line"><span>In-App Content & Picks (weeks)</span><span class="v"><span class="pend">Pending</span> <small>/ ~50</small></span></div><div class="line"><span>FanCash / Collectible Giveaways</span><span class="v"><span class="pend">Pending</span> <small>/ ~40</small></span></div>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="kpi">
+      <div class="kpi-h">Reporter &amp; Talent Channels · Fanatics-Integrated Posts</div>
+      
+      
+        <div class="talent-card">
+          <div class="tc-name">JORDAN SCHULTZ · X<span class="tag ok">ON PACE</span><span class="tc-req">Min. 2/wk · ~150 posts over term</span></div>
+          <div class="tc-stats">
+            <div class="tc-stat"><div class="tc-lbl">THIS PERIOD</div><div class="tc-num">19</div><div class="tc-sub">POSTS</div></div>
+            <div class="tc-stat"><div class="tc-lbl">CUMULATIVE</div><div class="tc-num">19</div><div class="tc-sub">2,771,393 IMPRESSIONS</div></div>
+            <div class="tc-stat gold-box"><div class="tc-num gold">4.4</div><div class="tc-sub">/ WK AVG<br>VS 2/WK</div></div>
+          </div>
+        </div>
+        <div class="talent-card">
+          <div class="tc-name">JORDAN SCHULTZ · INSTAGRAM<span class="tag ok">ON PACE</span><span class="tc-req">Min. 2/wk · ~100 posts over term</span></div>
+          <div class="tc-stats">
+            <div class="tc-stat"><div class="tc-lbl">THIS PERIOD</div><div class="tc-num">51</div><div class="tc-sub">POSTS</div></div>
+            <div class="tc-stat"><div class="tc-lbl">CUMULATIVE</div><div class="tc-num">51</div><div class="tc-sub">661,611 VIEWS</div></div>
+            <div class="tc-stat gold-box"><div class="tc-num gold">11.9</div><div class="tc-sub">/ WK AVG<br>VS 2/WK</div></div>
+          </div>
+        </div>
+        <div class="talent-card">
+          <div class="tc-name">JORDAN SCHULTZ · TIKTOK<span class="tag ok">ON PACE</span><span class="tc-req">Min. 1/wk · ~50 posts over term</span></div>
+          <div class="tc-stats">
+            <div class="tc-stat"><div class="tc-lbl">THIS PERIOD</div><div class="tc-num">41</div><div class="tc-sub">POSTS</div></div>
+            <div class="tc-stat"><div class="tc-lbl">CUMULATIVE</div><div class="tc-num">41</div><div class="tc-sub">123,529 VIEWS</div></div>
+            <div class="tc-stat gold-box"><div class="tc-num gold">9.6</div><div class="tc-sub">/ WK AVG<br>VS 1/WK</div></div>
+          </div>
+        </div>
+        <div class="talent-card">
+          <div class="tc-name">KEYSHAWN JOHNSON<span class="tc-handle">@KeyshawnJohnson · IG (X pending)</span><span class="tc-req">Min. 1/wk in season · ~30 posts</span></div>
+          <div class="line"><span>Watermarked posts</span><span class="v"><small style="margin-right:6px">+3 this period</small>3 <small>/ ~30</small></span></div>
+          <div class="line"><span>Watermarked-post views</span><span class="v">3,565,149</span></div>
+        </div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-h">Marquee Moments &amp; Branded Content</div>
+      <div class="line"><span>NFL in London (Oct 4)</span><span class="v">0 <small>/ ~1</small></span></div><div class="line"><span>Original Branded Series</span><span class="v">0 <small>/ ~6</small></span></div><div class="line"><span>Tentpole Activations</span><span class="v">0 <small>/ ~6</small></span></div>
+      <div class="micro" style="margin-top:8px">Event content is counted once, in the platform it ran on.</div>
+    </div>
+  </div>
+  
+  <div class="foot">
+    <span>The Schultz Report × Fanatics Sportsbook · Presenting Partnership</span>
+    <span>Prepared by Rain Delay Media · Confidential · Report v1.1</span>
+    <span>Generated October 16, 2026</span>
+  </div>
+</section>
+
+<!-- ══════════════ PAGE 3 · TOP CONTENT ══════════════ -->
+<section class="page">
+  <div class="sec-h"><h2>Top Content — Sep 1 – Sep 30</h2><div class="r">RANKED BY VIEWS</div></div>
+  <div class="eyebrow" style="margin:4px 0">Best-performing content published Sep 1 – Sep 30 · click any title to view</div>
+  <div class="eyebrow" style="color:#11116b;font-size:11px;margin-top:8px">★ Top 3 Full Episodes · YouTube</div>
+  <div class="cc-grid">
+    <a class="cc" href="https://youtu.be/tBYaOAYXd20">
+      <div class="cc-thumb" style="background-image:url('https://i.ytimg.com/vi/tBYaOAYXd20/maxresdefault.jpg')"></div>
+      <div class="cc-body">
+        <div class="cc-rank">#1<span class="cc-views">53,613 VIEWS</span></div>
+        <div class="cc-meta">Sep 01<span class="cc-dur"> · 42:35</span></div>
+        <div class="cc-title">Braden Fiske on Aaron Donald’s Return, Myles Garrett & Losing Jared Verse</div>
+      </div>
+    </a>
+    <a class="cc" href="https://youtu.be/7cu0luRvx1I">
+      <div class="cc-thumb" style="background-image:url('https://i.ytimg.com/vi/7cu0luRvx1I/maxresdefault.jpg')"></div>
+      <div class="cc-body">
+        <div class="cc-rank">#2<span class="cc-views">5,053 VIEWS</span></div>
+        <div class="cc-meta">Sep 22<span class="cc-dur"> · 30:44</span></div>
+        <div class="cc-title">TMac On The Red Hot Carolina Panthers + The Shough Coming Out Party & Week 2 Reactions</div>
+      </div>
+    </a>
+    <a class="cc" href="https://youtu.be/gk5M4WM2qE4">
+      <div class="cc-thumb" style="background-image:url('https://i.ytimg.com/vi/gk5M4WM2qE4/maxresdefault.jpg')"></div>
+      <div class="cc-body">
+        <div class="cc-rank">#3<span class="cc-views">963 VIEWS</span></div>
+        <div class="cc-meta">Sep 18<span class="cc-dur"> · 38:08</span></div>
+        <div class="cc-title">Why Keyshawn Isn’t Sold on Cam Ward and Brian Daboll</div>
+      </div>
+    </a></div>
+  <div class="eyebrow" style="color:#11116b;font-size:11px">★ Top 3 Segment Clips · YouTube</div>
+  <div class="cc-grid">
+    <a class="cc" href="https://youtu.be/JxDX0FR5OdM">
+      <div class="cc-thumb" style="background-image:url('https://i.ytimg.com/vi/JxDX0FR5OdM/maxresdefault.jpg')"></div>
+      <div class="cc-body">
+        <div class="cc-rank">#1<span class="cc-views">38,197 VIEWS</span></div>
+        <div class="cc-meta">Sep 04</div>
+        <div class="cc-title">Keyshawn Johnson Explains How He IMMEDIATELY Spotted the Alleged NFL Impostor</div>
+      </div>
+    </a>
+    <a class="cc" href="https://youtu.be/b__09rRTnv0">
+      <div class="cc-thumb" style="background-image:url('https://i.ytimg.com/vi/b__09rRTnv0/maxresdefault.jpg')"></div>
+      <div class="cc-body">
+        <div class="cc-rank">#2<span class="cc-views">21,506 VIEWS</span></div>
+        <div class="cc-meta">Sep 02</div>
+        <div class="cc-title">What Aaron Donald Told Me Before Coming Out of Retirement</div>
+      </div>
+    </a>
+    <a class="cc" href="https://youtu.be/mzai_Jj7odk">
+      <div class="cc-thumb" style="background-image:url('https://i.ytimg.com/vi/mzai_Jj7odk/maxresdefault.jpg')"></div>
+      <div class="cc-body">
+        <div class="cc-rank">#3<span class="cc-views">21,432 VIEWS</span></div>
+        <div class="cc-meta">Sep 06</div>
+        <div class="cc-title">Keyshawn Johnson Returned to the Jets and Says Aaron Glenn Changed EVERYTHING</div>
+      </div>
+    </a></div>
+  <div class="eyebrow" style="color:#11116b;font-size:11px">★ Top 3 Shorts · YouTube</div>
+  <div class="cc-grid">
+    <a class="cc" href="https://youtu.be/3yuqHB3KtDg">
+      <div class="cc-thumb" style="background-image:url('https://i.ytimg.com/vi/3yuqHB3KtDg/maxresdefault.jpg')"></div>
+      <div class="cc-body">
+        <div class="cc-rank">#1<span class="cc-views">1,387,029 VIEWS</span></div>
+        <div class="cc-meta">Sep 04</div>
+        <div class="cc-title">In the end, Bijan got to continue the legacy of Falcons legends who wore number 7 🔥</div>
+      </div>
+    </a>
+    <a class="cc" href="https://youtu.be/43NDmla5Dqs">
+      <div class="cc-thumb" style="background-image:url('https://i.ytimg.com/vi/43NDmla5Dqs/maxresdefault.jpg')"></div>
+      <div class="cc-body">
+        <div class="cc-rank">#2<span class="cc-views">13,301 VIEWS</span></div>
+        <div class="cc-meta">Sep 26</div>
+        <div class="cc-title">Every elite receiver brings a unique set of challenges to the field 🏈</div>
+      </div>
+    </a>
+    <a class="cc" href="https://youtu.be/YumkqYiBuac">
+      <div class="cc-thumb" style="background-image:url('https://i.ytimg.com/vi/YumkqYiBuac/maxresdefault.jpg')"></div>
+      <div class="cc-body">
+        <div class="cc-rank">#3<span class="cc-views">11,504 VIEWS</span></div>
+        <div class="cc-meta">Sep 08</div>
+        <div class="cc-title">Entering his 11th season, Geno Smith is well aware of the nicknames younger players have for vets 😂</div>
+      </div>
+    </a></div>
+  
+  <div class="foot">
+    <span>The Schultz Report × Fanatics Sportsbook · Presenting Partnership</span>
+    <span>Prepared by Rain Delay Media · Confidential · Report v1.1</span>
+    <span>Generated October 16, 2026</span>
+  </div>
+</section>
+
+<!-- ══════════════ PAGE 4 · SOCIAL + METHODOLOGY ══════════════ -->
+<section class="page">
+  <div class="eyebrow" style="color:#11116b;font-size:11px">★ Top 3 Social Posts</div>
+  <div class="cc-grid">
+    <div class="sc">
+      <div class="cc-rank">#1<span class="cc-views">12,986 VIEWS</span></div>
+      <div class="sc-plat">TIKTOK · @THESCHULTZREPORT<span class="sc-date">Sep 02</span></div>
+      <div class="cc-title">Every football player knows how sacred the position group chats are, and it’s no different</div>
+    </div>
+    <div class="sc">
+      <div class="cc-rank">#2<span class="cc-views">5,646 VIEWS</span></div>
+      <div class="sc-plat">INSTAGRAM · SCHULTZ REPORT × KEYSHAWN<span class="sc-date">Sep 19</span></div>
+      <div class="cc-title">The powerhouse AFC of the 2010s made building a Super Bowl roster extremely difficult for…</div>
+    </div>
+    <div class="sc">
+      <div class="cc-rank">#3<span class="cc-views">3,117 VIEWS</span></div>
+      <div class="sc-plat">INSTAGRAM · @THESCHULTZREPORT<span class="sc-date">Sep 02</span></div>
+      <div class="cc-title">Every football player knows how sacred the position group chats are, and it’s no…</div>
+    </div></div>
+
+  <div class="goal">
+    <div class="goal-top">
+      <div>
+        <h2>*How Impressions Are Calculated</h2>
+        <div class="desc">Each episode view counts once per Fanatics element delivered inside it. YouTube counts every view during the period on all Fanatics-integrated videos (published since Sep 1, 2026), not just new uploads. Only Fanatics-watermarked content is counted. Social and audio count one impression per view or download.</div>
+      </div>
+      <div class="tot"><div class="l">Impressions Total</div><div class="n">7,367,666</div>
+        <div class="micro">8.38% of 87,915,000</div></div>
+    </div>
+    <div class="mults">
+      <div class="mult">
+        <h3>Full Episodes · YouTube <span class="x">4×</span></h3>
+        <ul><li>✓ Top-of-Show Shoutout</li><li>✓ Ad Read</li>
+            <li>✓ Branded Segment <small>(Risers &amp; Fallers · SNF Parlay)</small></li><li>✓ Fanatics Branded Imagery</li></ul>
+        <div class="calc">Every episode, all formats</div>
+      </div>
+      <div class="mult">
+        <h3>Podcast Downloads <span class="x">3×</span></h3>
+        <ul><li>✓ Top-of-Show Shoutout</li><li>✓ Ad Read</li>
+            <li>✓ Branded Segment</li></ul>
+        <div class="calc">Branded imagery isn't heard, so it isn't counted</div>
+      </div>
+      <div class="mult">
+        <h3>Clips &amp; Shorts <span class="x">2×</span></h3>
+        <ul><li>✓ View</li><li>✓ Logo Watermark</li></ul>
+        <div class="calc">Social posts (watermarked): <b>1×</b></div>
+      </div>
+    </div>
+    <div class="mults" style="grid-template-columns:repeat(4,1fr)">
+      <div class="mult"><h3>YouTube</h3><div class="calc"><b>3,619,724</b> impressions</div></div>
+      <div class="mult"><h3>Social · Jordan &amp; Keyshawn</h3><div class="calc"><b>3,565,149</b> impressions</div></div>
+      <div class="mult"><h3>Social · SR Show</h3><div class="calc"><b>139,110</b> impressions</div></div>
+      <div class="mult"><h3>Audio</h3><div class="calc"><b>43,683</b> impressions</div></div>
+    </div>
+    <div class="desc" style="max-width:none;margin-top:14px;font-size:9.5px;color:#555">
+      <b style="color:#11116b">Social attribution:</b> every view is counted once. Instagram collab posts between @JordanSchultz and the
+      Schultz Report account share a single view count, so each collab is counted once, under @JordanSchultz.
+      TikTok and X posts on the two accounts are separate posts with separate views, so each account's views are counted.
+      Reporter and talent figures include Fanatics-integrated posts only.
+    </div>
+    <div class="desc" style="max-width:none;margin-top:10px;font-size:9.5px;color:#555">
+      <b style="color:#11116b">Report v1.1:</b> figures marked <i>Pending</i> are not yet available and are counted as zero.
+      Jordan Schultz figures are Fanatics-tagged posts from Sprout Social; Schultz Report TikTok views are exact per-video counts.
+      Pending figures will be added and earlier periods updated as data access is granted.
+    </div>
+  </div>
+  
+  <div class="foot">
+    <span>The Schultz Report × Fanatics Sportsbook · Presenting Partnership</span>
+    <span>Prepared by Rain Delay Media · Confidential · Report v1.1</span>
+    <span>Generated October 16, 2026</span>
+  </div>
+</section>
+</body></html>

@@ -16,6 +16,15 @@ def _fmt(n):
         return str(n)
 
 
+PENDING_TXT = "Pending"
+VERIFY_TXT = "Pending data access for verification"
+
+
+def _pv(v, pending=False):
+    """Number, or "Pending" for data we don't have access to yet."""
+    return f'<span class="pend">{PENDING_TXT}</span>' if pending or v is None else _fmt(v)
+
+
 def _md(dt):
     return f"{dt.strftime('%b')} {dt.day}"
 
@@ -72,62 +81,76 @@ def _empty(msg):
 
 def render_html(d):
     r, c, k = d["row"], d["cum"], d["kpi"]
+    pend = d["pending"]
+    jtag = "" if d["jordan_counted"] else f' · <span class="pend">{VERIFY_TXT}</span>'
+    jsrc = "Fanatics-tagged posts · Sprout Social" if d["jordan_counted"] else "posts this period (reported)"
     period_lbl = f"{_md(d['start'])} – {_mdy(d['end'])}"
     term_lbl = f"{_mdy(d['term_start'])} – {_mdy(d['term_end'])}"
 
-    def row(label, sub, metric, tp, cum, indent=False):
+    def row(label, sub, metric, tp, cum, indent=False, pending=False, muted=False):
         return f'''
-        <tr class="{'ind' if indent else ''}">
+        <tr class="{'ind' if indent else ''}{' muted' if muted else ''}">
           <td class="pl-name"><div class="pl-title">{label}</div><div class="pl-sub">{sub}</div></td>
           <td class="pl-metric">{metric}</td>
-          <td class="pl-num">{_fmt(tp)}</td><td class="pl-num">{_fmt(cum)}</td>
+          <td class="pl-num">{_pv(tp, pending)}</td><td class="pl-num">{_pv(cum, pending)}</td>
         </tr>'''
 
     grp = lambda t: f'<tr class="grp"><td colspan="4">{t}</td></tr>'
     platform_rows = (
         grp("YouTube")
-        + row("YOUTUBE", f"{_fmt(c['yt_total_count_new'])} videos this term ({_fmt(r['yt_total_count_new'])} new this period)", "Views", r["yt_total_views"], c["yt_total_views"])
-        + row("FULL EPISODES", f"&gt;30 min · {_fmt(r['yt_full_count_new'])} new this period", "Views", r["yt_full_views"], c["yt_full_views"], True)
+        + row("YOUTUBE", f"Views during the period on all integrated videos · {_fmt(c['yt_total_count_new'])} videos this term ({_fmt(r['yt_total_count_new'])} new)", "Views", r["yt_total_views"], c["yt_total_views"])
+        + row("FULL EPISODES", f"Tagged full episodes · {_fmt(r['yt_full_count_new'])} new this period", "Views", r["yt_full_views"], c["yt_full_views"], True)
         + row("SEGMENT CLIPS", f"3:01–30 min · {_fmt(r['yt_clip_count_new'])} new this period", "Views", r["yt_clip_views"], c["yt_clip_views"], True)
         + row("SHORTS", f"≤3:00 · {_fmt(r['yt_short_count_new'])} new this period", "Views", r["yt_short_views"], c["yt_short_views"], True)
         + grp("Audio")
-        + row("PODCAST", "RSS · Spotify · Apple Podcasts", "Downloads", r["audio_downloads"], c["audio_downloads"])
+        + row("PODCAST", "RSS · Spotify · Apple Podcasts", "Downloads", r["audio_downloads"], c["audio_downloads"], pending="audio_downloads" in pend)
         + grp("Social · Schultz Report show accounts")
-        + row("INSTAGRAM", "SR's own posts only · collabs with @JordanSchultz counted under Jordan", "Views", r["ig_views"], c["ig_views"])
-        + row("TIKTOK", f"Show account · {_fmt(r['tiktok_posts'])} videos this period · own posts, separate from Jordan's", "Views", r["tiktok_views"], c["tiktok_views"])
+        + row("INSTAGRAM", f"Fanatics-watermarked posts only · {_fmt(r['ig_posts'])} posts this period · collabs with @JordanSchultz counted under Jordan", "Views", r["ig_views"], c["ig_views"])
+        + row("TIKTOK", f"Fanatics-watermarked videos only · {_fmt(r['tiktok_posts'])} this period · separate from Jordan's", "Views", r["tiktok_views"], c["tiktok_views"])
         + row("X (TWITTER)", "Show account · own posts, separate from Jordan's", "Impressions", r["x_imp"], c["x_imp"])
         + grp("Social · Reporter &amp; talent accounts — Fanatics-integrated posts only")
-        + row("@JORDANSCHULTZ · X", f"{_fmt(r['js_x_posts'])} Fanatics posts this period", "Impressions", r["js_x_views"], c["js_x_views"])
-        + row("@JORDANSCHULTZ · INSTAGRAM", f"{_fmt(r['js_ig_posts'])} Fanatics posts this period", "Views", r["js_ig_views"], c["js_ig_views"])
-        + row("@JORDANSCHULTZ · TIKTOK", f"{_fmt(r['js_tt_posts'])} Fanatics posts this period", "Views", r["js_tt_views"], c["js_tt_views"])
-        + row("@KEYSHAWNJOHNSON", f"Instagram + X · {_fmt(r['kj_posts'])} Fanatics posts this period", "Views", r["kj_views"], c["kj_views"])
+        + row("@JORDANSCHULTZ · X", f"{_fmt(r['js_x_posts'])} {jsrc}{jtag}", "Impressions", r["js_x_views"], c["js_x_views"], muted=not d["jordan_counted"])
+        + row("@JORDANSCHULTZ · INSTAGRAM", f"{_fmt(r['js_ig_posts'])} {jsrc}{jtag}", "Views", r["js_ig_views"], c["js_ig_views"], muted=not d["jordan_counted"])
+        + row("@JORDANSCHULTZ · TIKTOK", f"{_fmt(r['js_tt_posts'])} {jsrc}{jtag}", "Views", r["js_tt_views"], c["js_tt_views"], muted=not d["jordan_counted"])
+        + row("@KEYSHAWNJOHNSON · INSTAGRAM", f"Schultz Report × Keyshawn · {_fmt(r['kj_ig_posts'])} watermarked posts this period", "Views", r["kj_ig_views"], c["kj_ig_views"])
+        + row("@KEYSHAWNJOHNSON · X", "Fanatics-integrated posts", "Views", r["kj_x_views"], c["kj_x_views"], pending="kj_x_views" in pend)
     )
 
-    def k3(title, key, unit):
+    def k3(title, key, unit, pending=False, note=""):
         v = k[key]
+        note_html = f'<div class="k3-note">{note}</div>' if note else ""
         return f'''
         <div class="k3"><div class="h">{title}</div>
-          <div class="rowv"><span>{unit} · period</span><b>{_fmt(v['tp_views'])}</b></div>
-          <div class="rowv"><span>{unit} · cumulative</span><b>{_fmt(v['cum_views'])}</b></div>
-          <div class="rowv"><span>Impressions · cum.</span><b style="color:{BLUE}">{_fmt(v['cum_imp'])}</b></div>
+          <div class="rowv"><span>{unit} · period</span><b>{_pv(v['tp_views'], pending)}</b></div>
+          <div class="rowv"><span>{unit} · cumulative</span><b>{_pv(v['cum_views'], pending)}</b></div>
+          <div class="rowv"><span>Impressions · cum.</span><b style="color:{BLUE}">{_pv(v['cum_imp'], pending)}</b></div>
+          {note_html}
         </div>'''
 
     # ── episodes ──
     e = d["eps"]
-    ep_lines = "".join(_line(f"{t['label']}{' · 5×' if not t['seg'] else ''}", t["cum"], t["plan"], t["tp"]) for t in e["types"])
+    mu = d["mults"]
+    ep_lines = "".join(_line(t["label"], t["cum"], t["plan"], t["tp"]) for t in e["types"])
     floor_pos, tgt_pos = 90 / 115 * 100, 100 / 115 * 100
 
     # ── sponsorship / content ──
     sponsor_total = sum(s["cum"] for s in d["sponsor"])
     sponsor_target = sum(s["target"] for s in d["sponsor"])
     sponsor_lines = "".join(_line(s["label"], s["cum"], s["target"], s["tp"]) for s in d["sponsor"])
-    content_lines = "".join(_line(s["label"], s["cum"], s["target"], s["tp"]) for s in d["content"])
+    content_lines = "".join(
+        f'<div class="line"><span>{s["label"]}</span><span class="v">{_pv(None)} <small>/ ~{s["target"]}</small></span></div>'
+        if s.get("pending") else _line(s["label"], s["cum"], s["target"], s["tp"]) for s in d["content"])
 
     # ── reporter channels ──
     rep_html = ""
     for rp in d["reporter"]:
         ok = rp["wk_avg"] >= rp["min_wk"]
-        tag = f'<span class="tag {"ok" if ok else "low"}">{"ON PACE" if ok else "BELOW MIN"}</span>' if rp["cum_posts"] else '<span class="tag na">NO DATA</span>'
+        if not rp["counted"]:
+            tag = '<span class="tag na">PENDING VERIFICATION</span>'
+        elif rp["cum_posts"]:
+            tag = f'<span class="tag {"ok" if ok else "low"}">{"ON PACE" if ok else "BELOW MIN"}</span>'
+        else:
+            tag = '<span class="tag na">NO DATA</span>'
         rep_html += f'''
         <div class="talent-card">
           <div class="tc-name">{rp['name']}{tag}<span class="tc-req">Min. {rp['min_wk']}/wk · ~{rp['target']} posts over term</span></div>
@@ -140,9 +163,9 @@ def render_html(d):
     kj = d["keyshawn"]
     rep_html += f'''
         <div class="talent-card">
-          <div class="tc-name">KEYSHAWN JOHNSON<span class="tc-handle">@KeyshawnJohnson · IG + X</span><span class="tc-req">Min. {kj['min_wk']}/wk in season · ~{kj['target']} posts</span></div>
-          {_line("Fanatics posts", kj["cum_posts"], kj["target"], kj["tp_posts"])}
-          {_line("Fanatics-post views", kj["cum_views"], None, None)}
+          <div class="tc-name">KEYSHAWN JOHNSON<span class="tc-handle">@KeyshawnJohnson · IG{' (X pending)' if kj['x_pending'] else ' + X'}</span><span class="tc-req">Min. {kj['min_wk']}/wk in season · ~{kj['target']} posts</span></div>
+          {_line("Watermarked posts", kj["cum_posts"], kj["target"], kj["tp_posts"])}
+          {_line("Watermarked-post views", kj["cum_views"], None, None)}
         </div>'''
 
     ev_lines = "".join(_line(ev["label"], ev["cum"], ev["target"], ev["tp"]) for ev in d["events"])
@@ -155,7 +178,7 @@ def render_html(d):
     foot = f'''
   <div class="foot">
     <span>The Schultz Report × Fanatics Sportsbook · Presenting Partnership</span>
-    <span>Prepared by Rain Delay Media · Confidential</span>
+    <span>Prepared by Rain Delay Media · Confidential · Report {d['version']}</span>
     <span>Generated {_Mdy(d['generated'])}</span>
   </div>'''
 
@@ -290,6 +313,9 @@ def render_html(d):
   .k3 .rowv {{ display:flex; justify-content:space-between; font-size:10px; padding:3px 0; border-top:1px dotted var(--line); }}
   .k3 .rowv:first-of-type {{ border-top:none; }}
   .k3 .rowv b {{ font-family:'Barlow Condensed'; font-size:14px; }}
+  .pend {{ color:#B45309; font-style:italic; font-family:'Barlow',sans-serif; font-weight:600; font-size:.85em; }}
+  tr.muted td.pl-num {{ color:#999; }}
+  .k3-note {{ font-size:8.5px; color:var(--mut); margin-top:4px; }}
   tr.grp td {{ font-size:8px; letter-spacing:.2em; color:var(--gold); font-weight:700; text-transform:uppercase; padding:10px 6px 4px; background:#f5f5fb; }}
   .grid2 {{ display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:12px; }}
   .tag {{ display:inline-block; font-size:7.5px; letter-spacing:.12em; font-weight:700; padding:1px 5px; border-radius:2px; margin-left:6px; vertical-align:middle; }}
@@ -335,9 +361,9 @@ def render_html(d):
 
   <div class="kpi3">
     {k3("YouTube", "youtube", "Views")}
-    {k3("Social · Jordan &amp; Keyshawn", "social_talent", "Views")}
+    {k3("Social · Jordan &amp; Keyshawn", "social_talent", "Views", note="" if d["jordan_counted"] else "Keyshawn only · Jordan: " + VERIFY_TXT.lower())}
     {k3("Social · SR Show Accounts", "social_show", "Views")}
-    {k3("Audio", "audio", "Downloads")}
+    {k3("Audio", "audio", "Downloads", pending="audio_downloads" in pend)}
   </div>
 
   <div class="sec-h"><h2>Platform Delivery</h2><div class="r">VIEWS &amp; DOWNLOADS · RAW COUNTS</div></div>
@@ -378,6 +404,7 @@ def render_html(d):
   <div class="grid2">
     <div class="kpi">
       <div class="kpi-h">Reporter &amp; Talent Channels · Fanatics-Integrated Posts</div>
+      {"" if d["jordan_counted"] else '<div class="micro" style="margin-bottom:6px">Jordan Schultz figures are as reported by his team and are not yet counted toward delivery · ' + VERIFY_TXT.lower() + '.</div>'}
       {rep_html}
     </div>
     <div class="kpi">
@@ -411,40 +438,47 @@ def render_html(d):
     <div class="goal-top">
       <div>
         <h2>*How Impressions Are Calculated</h2>
-        <div class="desc">Each episode view counts once per sponsored element delivered inside it. Social and audio count one impression per view or download.</div>
+        <div class="desc">Each episode view counts once per Fanatics element delivered inside it. YouTube counts every view during the period on all Fanatics-integrated videos (published since Sep 1, 2026), not just new uploads. Only Fanatics-watermarked content is counted. Social and audio count one impression per view or download.</div>
       </div>
       <div class="tot"><div class="l">Impressions Total</div><div class="n">{_fmt(d['total_imp'])}</div>
         <div class="micro">{d['pct_plan']:.2f}% of {_fmt(d['goal'])}</div></div>
     </div>
     <div class="mults">
       <div class="mult">
-        <h3>Jordan-Led &amp; Keyshawn Episodes <span class="x">6×</span></h3>
-        <ul><li>✓ Top-of-Show Shoutout</li><li>✓ Sponsored Segment</li><li>✓ Video Host-Read Ad</li>
-            <li>✓ Audio Ad Read</li><li>✓ Logo Watermark</li><li>✓ On-Set Branding</li></ul>
+        <h3>Full Episodes · YouTube <span class="x">{mu['episode']}×</span></h3>
+        <ul><li>✓ Top-of-Show Shoutout</li><li>✓ Ad Read</li>
+            <li>✓ Branded Segment <small>(Risers &amp; Fallers · SNF Parlay)</small></li><li>✓ Fanatics Branded Imagery</li></ul>
+        <div class="calc">Every episode, all formats</div>
       </div>
       <div class="mult">
-        <h3>Guest Episodes &amp; Specials <span class="x">5×</span></h3>
-        <ul><li>✓ Top-of-Show Shoutout</li><li>✓ Video Host-Read Ad</li><li>✓ Audio Ad Read</li>
-            <li>✓ Logo Watermark</li><li>✓ On-Set Branding</li></ul>
-        <div class="calc">This period: <b>{d['blend']:.2f}×</b> blended across the episode mix</div>
+        <h3>Podcast Downloads <span class="x">{mu['audio']}×</span></h3>
+        <ul><li>✓ Top-of-Show Shoutout</li><li>✓ Ad Read</li>
+            <li>✓ Branded Segment</li></ul>
+        <div class="calc">Branded imagery isn't heard, so it isn't counted</div>
       </div>
       <div class="mult">
-        <h3>Clips &amp; Shorts <span class="x">2×</span></h3>
+        <h3>Clips &amp; Shorts <span class="x">{mu['clips']}×</span></h3>
         <ul><li>✓ View</li><li>✓ Logo Watermark</li></ul>
-        <div class="calc">Social posts &amp; podcast downloads: <b>1×</b></div>
+        <div class="calc">Social posts (watermarked): <b>1×</b></div>
       </div>
     </div>
     <div class="mults" style="grid-template-columns:repeat(4,1fr)">
       <div class="mult"><h3>YouTube</h3><div class="calc"><b>{_fmt(k['youtube']['cum_imp'])}</b> impressions</div></div>
       <div class="mult"><h3>Social · Jordan &amp; Keyshawn</h3><div class="calc"><b>{_fmt(k['social_talent']['cum_imp'])}</b> impressions</div></div>
       <div class="mult"><h3>Social · SR Show</h3><div class="calc"><b>{_fmt(k['social_show']['cum_imp'])}</b> impressions</div></div>
-      <div class="mult"><h3>Audio</h3><div class="calc"><b>{_fmt(k['audio']['cum_imp'])}</b> impressions</div></div>
+      <div class="mult"><h3>Audio</h3><div class="calc"><b>{_pv(k['audio']['cum_imp'], "audio_downloads" in pend)}</b>{"" if "audio_downloads" in pend else " impressions"}</div></div>
     </div>
     <div class="desc" style="max-width:none;margin-top:14px;font-size:9.5px;color:#555">
       <b style="color:{BLUE}">Social attribution:</b> every view is counted once. Instagram collab posts between @JordanSchultz and the
       Schultz Report account share a single view count, so each collab is counted once, under @JordanSchultz.
       TikTok and X posts on the two accounts are separate posts with separate views, so each account's views are counted.
       Reporter and talent figures include Fanatics-integrated posts only.
+    </div>
+    <div class="desc" style="max-width:none;margin-top:10px;font-size:9.5px;color:#555">
+      <b style="color:{BLUE}">Report {d['version']}:</b> figures marked <i>Pending</i> are not yet available and are counted as zero.
+      {"Jordan Schultz figures are Fanatics-tagged posts from Sprout Social; Schultz Report TikTok views are exact per-video counts."
+       if d["jordan_counted"] else "Jordan Schultz figures are shown as reported and are not yet counted toward delivery."}
+      Pending figures will be added and earlier periods updated as data access is granted.
     </div>
   </div>
   {foot}
