@@ -1,10 +1,10 @@
 {
  "start": "2026-08-18",
  "window_days": 7,
- "through": "2026-10-22",
- "pulled": "2026-10-23T14:08+00:00",
+ "through": "2026-10-23",
+ "pulled": "2026-10-24T13:11+00:00",
  "instagram": {
-  "followers_now": 2116,
+  "followers_now": 2124,
   "windows": [
    {
     "start": "2026-08-18",
@@ -90,7 +90,7 @@
     "start": "2026-10-12",
     "end": "2026-10-18",
     "partial": false,
-    "views": 592964,
+    "views": 592967,
     "interactions": 38176,
     "follows": 580,
     "unfollows": 646,
@@ -98,22 +98,31 @@
    },
    {
     "start": "2026-10-19",
-    "end": "2026-10-22",
+    "end": "2026-10-23",
     "partial": true,
-    "views": 188428,
-    "interactions": 11502,
-    "follows": 64,
-    "unfollows": 121,
-    "net_followers": -57
+    "views": 241349,
+    "interactions": 13718,
+    "follows": 87,
+    "unfollows": 147,
+    "net_followers": -60
    }
   ],
   "posts": [
+   {
+    "url": "https://www.instagram.com/reel/De2sEvou9QS/",
+    "created": "2026-10-23",
+    "text": "The Jalen Hurts health scare explained. Wishing him a speedy recovery \ud83d\ude4f",
+    "type": "VIDEO",
+    "views": 180,
+    "likes": 8,
+    "comments": 0
+   },
    {
     "url": "https://www.instagram.com/reel/DesO9zQB3hd/",
     "created": "2026-10-19",
     "text": "Call it clich\u00e9, but Mike Vrabel really is the ultimate player\u2019s coach in New England \ud83d\udcaa",
     "type": "VIDEO",
-    "views": 66,
+    "views": 74,
     "likes": 5,
     "comments": 0
    },
@@ -122,7 +131,7 @@
     "created": "2026-10-15",
     "text": "After spending time together with the Vikings, Daniel Jones has great things to say about Jags OC Grant Udinski and his incredible football ",
     "type": "VIDEO",
-    "views": 228,
+    "views": 231,
     "likes": 4,
     "comments": 0
    },
@@ -131,7 +140,7 @@
     "created": "2026-10-14",
     "text": "Adrian Peterson was just 9 YARDS short of the the single season rushing record after his 2012 MVP season \ud83e\udd2f",
     "type": "VIDEO",
-    "views": 197,
+    "views": 198,
     "likes": 5,
     "comments": 0
    },
@@ -158,7 +167,7 @@
     "created": "2026-10-05",
     "text": "London Fletcher played 16 seasons in the NFL, and these are his top 5 hardest guys to tackle \ud83d\ude24",
     "type": "VIDEO",
-    "views": 9206,
+    "views": 9216,
     "likes": 225,
     "comments": 5
    }

@@ -1,5 +1,5 @@
 {
- "run": "2026-10-23T14:04+00:00",
+ "run": "2026-10-24T13:07+00:00",
  "where": "github-actions",
  "shows": {
   "gt": {
@@ -7,11 +7,11 @@
   },
   "sr": {
    "instagram": "ok @theschultzreport",
-   "tiktok": "ok The Schultz Report \u00b7 56 videos"
+   "tiktok": "ok The Schultz Report \u00b7 57 videos"
   },
   "rt": {
    "instagram": "skipped: no IG_TOKEN_RT (not a secret here, not in master/config_socials.py) \u2014 skipped",
-   "tiktok": "ok Road Trippin\u2019 Show \u00b7 840 videos"
+   "tiktok": "ok Road Trippin\u2019 Show \u00b7 841 videos"
   }
  }
 }
