@@ -106,6 +106,8 @@ def gt_instagram_posts(start, end):
     urls = [r["url"].strip() for r in csv.DictReader(open(path, encoding="utf-8-sig")) if (r.get("url") or "").strip()]
     code = lambda u: (re.search(r"/(?:p|reel|tv)/([A-Za-z0-9_-]+)", u) or [None, None])[1]
     want = {code(u): u for u in urls if code(u)}
+    if not want:                                         # list not filled in yet → Pending, not zero
+        return None
     sync = load_module("sync_socials", os.path.join(MASTER, "sync_socials.py"))
     tok = sync.load_token({"env": "IG_TOKEN_GT"})
     if not tok:
@@ -139,17 +141,18 @@ def total(v):
     return v
 
 
-def main():
-    ap = argparse.ArgumentParser(description="RT + GT Fanatics delivery for a window")
-    ap.add_argument("--start", required=True)
-    ap.add_argument("--end", required=True)
-    args = ap.parse_args()
-    s, e = args.start, args.end
-    out_dir = os.path.join(HERE, "data", "reports", "fanatics")
-    inputs_path = os.path.join(out_dir, f"inputs_rt_{s.replace('-', '')}_{e.replace('-', '')}.json")
-    inp = json.load(open(inputs_path, encoding="utf-8")) if os.path.exists(inputs_path) else {}
+def inputs_path(s, e):
+    return os.path.join(HERE, "data", "reports", "fanatics", f"inputs_rt_{s.replace('-', '')}_{e.replace('-', '')}.json")
+
+
+def load_inputs(s, e):
+    p = inputs_path(s, e)
+    return json.load(open(p, encoding="utf-8")) if os.path.exists(p) else {}
+
+
+def compute(s, e, inp):
+    """Everything for the window → (record, videos). Used by main() and by the Season 2 report builder."""
     days = (date.fromisoformat(e) - date.fromisoformat(s)).days + 1
-    print(f"RT × FANATICS DELIVERY · {s} → {e} ({days} days)")
 
     # ── YouTube: RT channel and GT channel, broken out by show ──
     rt_cfg = load_module("config", os.path.join(HERE, "config.py"))
@@ -202,6 +205,23 @@ def main():
         "top_videos": [{k: v[k] for k in ("show", "kind", "title", "published", "views", "url")}
                        for v in sorted(videos, key=lambda v: -v["views"])[:10]],
     }
+    return rec, videos
+
+
+def main():
+    ap = argparse.ArgumentParser(description="RT + GT Fanatics delivery for a window")
+    ap.add_argument("--start", required=True)
+    ap.add_argument("--end", required=True)
+    args = ap.parse_args()
+    s, e = args.start, args.end
+    inp = load_inputs(s, e)
+    print(f"RT × FANATICS DELIVERY · {s} → {e}")
+    rec, videos = compute(s, e, inp)
+    yt, social, audio, per_show, talent, days = (rec["youtube"], rec["social"], rec["audio"], rec["per_show"],
+                                                 rec["talent"], rec["days"])
+    impressions, goal_window, gt_missing, missing = (rec["impressions"], rec["goal"]["window"],
+                                                     rec["gt_instagram_unmatched"], rec["missing"])
+    out_dir = os.path.join(HERE, "data", "reports", "fanatics")
     path = os.path.join(out_dir, f"rt_delivery_{s.replace('-', '')}_{e.replace('-', '')}.json")
     json.dump(rec, open(path, "w", encoding="utf-8"), indent=2)
 
