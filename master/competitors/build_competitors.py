@@ -295,7 +295,7 @@ def digest_html(rows, daily, dates, groups):
     have_prior = (prev - timedelta(days=7)).isoformat() in daily
     lines = []
     for grp in groups:
-        gr = [r for r in rows if r["group"] == grp]
+        gr = [r for r in rows if r["group"] == grp and g(prev, mon, r["channel_id"]) is not None]   # shows with the full week
         wk = {r["channel_id"]: g(prev, mon, r["channel_id"]) for r in gr}
         pr = {r["channel_id"]: g(prev - timedelta(days=7), prev, r["channel_id"]) for r in gr} if have_prior else {}
         order = sorted(gr, key=lambda r: -(wk[r["channel_id"]] or 0))
@@ -403,6 +403,9 @@ def group_html(group, rows, dates, trend, gi):
     prev_rank = ({r["channel_id"]: k for k, r in enumerate(sorted(g, key=lambda r: -(r["gain7_prev"] or 0)), 1)}
                  if have_prev else {})
     group_week = sum(max(r["gain7"] or 0, 0) for r in g) if have7 else 0
+    # Shows added recently have no 7-day figure yet: they sit at the bottom and don't count in "#N of M"
+    n_ranked = sum(1 for r in g if r["gain7"] is not None) if have7 else len(g)
+    newcomers = [r["show"] for r in g if have7 and r["gain7"] is None]
 
     # Headline tiles for our show(s) in this group
     tiles = ""
@@ -424,7 +427,7 @@ def group_html(group, rows, dates, trend, gi):
         tiles += f"""
       <div class="tile ours-tile">
         <div class="t-l">★ {r['show']}</div>
-        <div class="t-v">#{rank} <small>of {len(g)}</small> {mv}</div>
+        <div class="t-v">#{rank} <small>of {n_ranked}</small> {mv}</div>
         <div class="t-s">{key_lbl} · <b>{fmt(key(r))}</b>{share}{wow}{gap}
           {f"<br>Leader: {lead['show']} · {fmt(key(lead))}" if lead and rank > 2 else ''}</div>
       </div>"""
@@ -510,7 +513,7 @@ def group_html(group, rows, dates, trend, gi):
       <div style="position:relative;height:{max(len(chart_rows) * 30 + 60, 220)}px"><canvas id="bars{gi}"></canvas></div>
     </div>
     <div class="card">
-      <div class="card-h"><h3>Leaderboard</h3><span class="r">sorted by {key_lbl}{' · ▲▼ = places moved vs the 7 days before' if have_prev else ''}</span></div>
+      <div class="card-h"><h3>Leaderboard</h3><span class="r">sorted by {key_lbl}{' · ▲▼ = places moved vs the 7 days before' if have_prev else ''}{f' · {len(newcomers)} newly added shows join the ranking once they have 7 days of history' if newcomers else ''}</span></div>
       <div class="scroll"><table class="lb">
         <thead><tr><th>#</th><th>Show</th><th class="n">Subscribers</th><th class="n">Views gained · 7d</th><th class="n">Views gained · 28d</th>
           <th class="n">Uploads 28d<br><span class="sub">ep · clip · short</span></th><th class="n">Views on 28d uploads</th>
