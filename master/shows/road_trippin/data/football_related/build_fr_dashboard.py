@@ -235,6 +235,17 @@ def load_revenue(csv_path):
 
 # ─── Formatting helpers ──────────────────────────────────────────
 
+
+def _content_tab(fmt):
+    """Content tab (master/content_tab.py) for data_fr/content.json."""
+    import sys as _sys
+    m = os.path.dirname(os.path.abspath(__file__))
+    while m != os.path.dirname(m) and not os.path.exists(os.path.join(m, "content_tab.py")):
+        m = os.path.dirname(m)
+    _sys.path.insert(0, m)
+    from content_tab import content_page
+    return content_page(os.path.join(os.path.dirname(os.path.abspath(__file__)), *"data_fr/content.json".split("/")), fmt, "Football Related")
+
 def fmt(v, pct=False):
     if v is None: return '—'
     if pct: return f'{v*100:.1f}%'
@@ -956,6 +967,10 @@ body{{font-family:'DM Sans',sans-serif;background:var(--bg) {f'url({ASSETS["marb
       <svg class="nav-icon" viewBox="0 0 16 16" fill="none"><rect x="1" y="1" width="6" height="6" rx="1.5" fill="currentColor"/><rect x="9" y="1" width="6" height="6" rx="1.5" fill="currentColor" opacity=".5"/><rect x="1" y="9" width="6" height="6" rx="1.5" fill="currentColor" opacity=".5"/><rect x="9" y="9" width="6" height="6" rx="1.5" fill="currentColor" opacity=".3"/></svg>
       <span>Overview</span>
     </div>
+    <div class="nav-item" onclick="showPage('content',this)">
+      <svg class="nav-icon" viewBox="0 0 16 16" fill="none"><path d="M8 1.5l1.9 3.9 4.3.6-3.1 3 .7 4.3L8 11.3l-3.8 2 .7-4.3-3.1-3 4.3-.6L8 1.5z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+      <span>Content</span>
+    </div>
     <div class="nav-item" onclick="showPage('youtube',this)">
       <svg class="nav-icon" viewBox="0 0 16 16" fill="none"><rect x="1" y="3" width="14" height="10" rx="2" fill="currentColor" opacity=".2"/><path d="M6.5 5.5l4 2.5-4 2.5V5.5z" fill="currentColor"/></svg>
       <span>YouTube</span>
@@ -988,6 +1003,15 @@ body{{font-family:'DM Sans',sans-serif;background:var(--bg) {f'url({ASSETS["marb
   {overview_metrics}
   {empty_state("Dashboard ready — data will populate as pipelines come online",
                "YouTube API · Socials CSV · Revenue CSV") if not has_data else ''}
+</div>
+
+<!-- ═══ CONTENT ═══ -->
+<div class="page" id="page-content">
+  <div class="page-header">
+    <div class="page-title">Content</div>
+    <div class="page-sub">How each YouTube upload is doing · graded against the show's own recent uploads</div>
+  </div>
+  {_content_tab(fmt)}
 </div>
 
 <!-- ═══ YOUTUBE ═══ -->

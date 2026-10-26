@@ -80,6 +80,10 @@ jobs:
         working-directory: master/shows/road_trippin
         run: python build_tracker.py
 
+      - name: Grade RT content (Content tab)
+        continue-on-error: true
+        run: python master/content_grades.py --show rt
+
       - name: Rebuild Road Trippin' dashboard
         working-directory: master/shows/road_trippin
         run: python build_rt_dashboard.py
@@ -99,6 +103,10 @@ jobs:
         continue-on-error: true
         working-directory: master/shows/road_trippin
         run: python build_gt_tracker.py
+
+      - name: Grade GT content (Content tab)
+        continue-on-error: true
+        run: python master/content_grades.py --show gt
 
       - name: Rebuild Girls Tripp dashboard
         continue-on-error: true
@@ -122,6 +130,11 @@ jobs:
         continue-on-error: true
         working-directory: master/shows/road_trippin/data/football_related
         run: python build_fr_tracker.py
+
+      - name: Grade FR content (Content tab)
+        if: steps.fr_config.outcome == 'success'
+        continue-on-error: true
+        run: python master/content_grades.py --show fr
 
       - name: Rebuild Football Related dashboard
         continue-on-error: true
@@ -156,6 +169,10 @@ jobs:
         continue-on-error: true
         run: python master/shows/schultz_report/pull_shared_inputs_sr.py
 
+      - name: Pull SR content performance (KPI framework + weekly content grades)
+        continue-on-error: true
+        run: python master/shows/schultz_report/pull_content_sr.py
+
       - name: Rebuild Schultz Report dashboard
         working-directory: master/shows/schultz_report
         run: python build_sr_dashboard.py
@@ -169,10 +186,6 @@ jobs:
         env:
           IG_TOKEN_SR: ${{ secrets.IG_TOKEN_SR }}
         run: python master/shows/schultz_report/pull_growth_sr.py
-
-      - name: Pull SR content performance (KPI framework + weekly content grades)
-        continue-on-error: true
-        run: python master/shows/schultz_report/pull_content_sr.py
 
       - name: Pull Sprout (sponsor-tagged posts)
         continue-on-error: true
