@@ -108,6 +108,9 @@ def main():
     ap = argparse.ArgumentParser(description="Daily public YouTube snapshot of competitor channels")
     ap.add_argument("--dry-run", action="store_true", help="Pull and summarize, write nothing")
     ap.add_argument("--force", action="store_true", help="Replace today's snapshot if it already exists")
+    ap.add_argument("--add-new", action="store_true",
+                    help="Only channels with no row in today's snapshot (just added to competitors.csv): append them, "
+                         "leave everyone else's rows as the morning run saved them")
     args = ap.parse_args()
 
     key = load_key()
@@ -120,7 +123,14 @@ def main():
     cutoff = (today - timedelta(days=VIDEO_WINDOW_DAYS)).isoformat()
     # One snapshot per day, taken by the 09:00 UTC workflow. A later manual run would swap
     # in values from a different time of day and skew the day-over-day changes.
-    if os.path.exists(os.path.join(DATA, "video_daily", f"{today.isoformat()}.csv")) and not (args.force or args.dry_run):
+    if args.add_new:
+        done = {r["channel_id"] for r in read_csv(os.path.join(DATA, "channel_daily.csv")) if r["date"] == today.isoformat()}
+        shows = [s for s in shows if s["channel_id"] not in done]
+        ids = [s["channel_id"] for s in shows]
+        if not ids:
+            print(f"Every channel already has a {today} snapshot — nothing to add.")
+            return
+    if os.path.exists(os.path.join(DATA, "video_daily", f"{today.isoformat()}.csv")) and not (args.force or args.dry_run or args.add_new):
         print(f"Snapshot for {today} already saved — skipping (use --force to replace it).")
         return
     print(f"COMPETITOR SNAPSHOT · {today} · {len(ids)} channels")
@@ -181,7 +191,7 @@ def main():
 
     # channel_daily.csv — replace today's rows on a re-run
     cd_path = os.path.join(DATA, "channel_daily.csv")
-    rows = [r for r in read_csv(cd_path) if r["date"] != today.isoformat()]
+    rows = [r for r in read_csv(cd_path) if args.add_new or r["date"] != today.isoformat()]
     for cid, c in channels.items():
         st = c["statistics"]
         rows.append({"date": today.isoformat(), "channel_id": cid, "subs": st.get("subscriberCount", ""),
@@ -203,10 +213,12 @@ def main():
               sorted(meta.values(), key=lambda r: (r["published"], r["video_id"])))
 
     # video_daily/<date>.csv — today's views for every recent upload
-    write_csv(os.path.join(DATA, "video_daily", f"{today.isoformat()}.csv"), ["video_id", "views", "likes", "comments"],
-              [{"video_id": vid, "views": v["statistics"].get("viewCount", ""),
-                "likes": v["statistics"].get("likeCount", ""), "comments": v["statistics"].get("commentCount", "")}
-               for vid, v in details.items()])
+    vd_path = os.path.join(DATA, "video_daily", f"{today.isoformat()}.csv")
+    keep = [r for r in read_csv(vd_path) if r["video_id"] not in details] if args.add_new else []
+    write_csv(vd_path, ["video_id", "views", "likes", "comments"],
+              keep + [{"video_id": vid, "views": v["statistics"].get("viewCount", ""),
+                       "likes": v["statistics"].get("likeCount", ""), "comments": v["statistics"].get("commentCount", "")}
+                      for vid, v in details.items()])
     print(f"✓ Saved {len(channels)} channels, {len(details)} videos for {today}")
 
 
