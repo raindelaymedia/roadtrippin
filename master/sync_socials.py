@@ -222,6 +222,8 @@ def sync_instagram(spec, rows, today, refresh=False):
         if last >= first:          # nothing to total on the 1st for the new month yet
             values[(ym, "VIEWS")] = ig.account_total(uid, "views", first, last)
             values[(ym, "ENGAGEMENTS")] = ig.account_total(uid, "total_interactions", first, last)
+            if values[(ym, "VIEWS")]:          # engagement rate = engagements ÷ views (stored as a fraction)
+                values[(ym, "ENGAGEMENT_RATE")] = round(values[(ym, "ENGAGEMENTS")] / values[(ym, "VIEWS")], 4)
         if ym == cur:              # followers only for the current month (last run = month-end)
             values[(ym, "FOLLOWERS")] = me["followers_count"]
             pf = cell(rows, prev_month(ym), "INSTAGRAM", "FOLLOWERS")
@@ -308,6 +310,8 @@ def sync_tiktok(spec, rows, today, dry_run=False):
             values[(close, metric)] = max(total - int(base), 0)
         else:
             print(f"    ⚠ TikTok {metric}: no LIFETIME_{metric} for {prev_month(close)} — can't work out {close}'s yet")
+    if values.get((close, "VIEWS")) and (close, "ENGAGEMENTS") in values:   # engagement rate = engagements ÷ views
+        values[(close, "ENGAGEMENT_RATE")] = round(values[(close, "ENGAGEMENTS")] / values[(close, "VIEWS")], 4)
 
     for ym in months:
         if ym == cur:

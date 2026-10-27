@@ -593,7 +593,7 @@ def build_html(d, revenue, socials, generated_at):
 
         # Readonly data tracker table
         soc_table = '<div class="table-scroll"><table class="data-table"><thead><tr><th>Platform · Metric</th>'
-        for ml in soc_months_display:
+        for ml in reversed(soc_months_display):   # newest month on the left (like RT)
             soc_table += f'<th>{ml}</th>'
         soc_table += '</tr></thead><tbody>'
         last_plat = None
@@ -610,7 +610,7 @@ def build_html(d, revenue, socials, generated_at):
                 last_plat = plat
             label = METRIC_LABELS.get(metric, metric.replace('_',' ').title())
             soc_table += f'<tr><td style="padding-left:18px;color:var(--text2)">{label}</td>'
-            vals = socials['data'][(plat, metric)]
+            vals = list(reversed(socials['data'][(plat, metric)]))
             for v in vals:
                 if v is None:
                     soc_table += '<td><span class="na">—</span></td>'
