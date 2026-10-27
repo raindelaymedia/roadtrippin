@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-27T03:42",
+ "generated": "2026-10-27T00:12",
  "through": "2026-10-26",
  "weights": {
   "retention": 0.35,
@@ -9,6 +9,7 @@
   "subs": 0.05
  },
  "peer_days": 90,
+ "final_age": 28,
  "videos": {
   "Q97HkGpJmS4": {
    "title": "Why Angel Reese\u2019s New Game Is Scaring The League #basketball #WNBA",
@@ -903,6 +904,1070 @@
      "engagement": 0.0157,
      "subs": 3.5671,
      "ctr": 0.0551
+    }
+   }
+  },
+  "hUt7HWFdw1o": {
+   "title": "Why a Tough elimination game is Just the Beginning! Cynthia Cooper on Olivia Miles #wnba #basketball",
+   "published": "2026-10-02",
+   "duration_sec": 28,
+   "format": "short",
+   "week": "2026-09-28",
+   "paid_views": 0.0,
+   "grade": {
+    "age_days": 25,
+    "peers": 25,
+    "score": 0.282,
+    "letter": "D",
+    "ranks": {
+     "retention": 0.28,
+     "ctr": 0.12,
+     "views": 0.24,
+     "engagement": 0.88,
+     "subs": 0.36
+    },
+    "values": {
+     "views": 165.0,
+     "retention": 0.4497,
+     "engagement": 0.0424,
+     "subs": 0.0,
+     "ctr": 0.4909
+    }
+   }
+  },
+  "ASUwvRi-JN4": {
+   "title": "Ryan Ruocco Says New York Has NO CEILING",
+   "published": "2026-10-01",
+   "duration_sec": 464,
+   "format": "clip",
+   "week": "2026-09-28",
+   "paid_views": 0.0,
+   "grade": {
+    "age_days": 26,
+    "peers": 7,
+    "score": 0.279,
+    "letter": "D",
+    "ranks": {
+     "retention": 0.43,
+     "ctr": 0.0,
+     "views": 0.71,
+     "engagement": 0.14,
+     "subs": 0.14
+    },
+    "values": {
+     "views": 714.0,
+     "retention": 0.2572,
+     "engagement": 0.0028,
+     "subs": 1.4006,
+     "ctr": 0.022
+    }
+   }
+  },
+  "9eJ2AYxdf8c": {
+   "title": "Caitlin Clark Answers the Call in Game 2: Winner-Take-All vs. Vegas",
+   "published": "2026-10-01",
+   "duration_sec": 450,
+   "format": "clip",
+   "week": "2026-09-28",
+   "paid_views": 0.0,
+   "grade": {
+    "age_days": 26,
+    "peers": 7,
+    "score": 0.679,
+    "letter": "B",
+    "ranks": {
+     "retention": 0.57,
+     "ctr": 0.86,
+     "views": 0.86,
+     "engagement": 0.43,
+     "subs": 0.14
+    },
+    "values": {
+     "views": 2183.0,
+     "retention": 0.3007,
+     "engagement": 0.0137,
+     "subs": 1.8323,
+     "ctr": 0.0466
+    }
+   }
+  },
+  "oDGR63HP8TM": {
+   "title": "Caitlin Clark Shines in Game 2, Now It\u2019s Winner-Take-All vs. Vegas",
+   "published": "2026-10-01",
+   "duration_sec": 4389,
+   "format": "episode",
+   "week": "2026-09-28",
+   "paid_views": 0.0,
+   "grade": {
+    "age_days": 26,
+    "peers": 2,
+    "score": null,
+    "letter": null,
+    "ranks": {
+     "retention": null,
+     "ctr": null,
+     "views": null,
+     "engagement": null,
+     "subs": null
+    },
+    "values": {
+     "views": 6884.0,
+     "retention": 0.1905,
+     "engagement": 0.0244,
+     "subs": 6.1011,
+     "ctr": 0.0609
+    }
+   }
+  },
+  "av2j5mbIq4E": {
+   "title": "Rookie of the Year\u2019s BRUTAL Playoff Lesson #wnba #oliviamiles #ajawilson",
+   "published": "2026-10-01",
+   "duration_sec": 71,
+   "format": "short",
+   "week": "2026-09-28",
+   "paid_views": 0.0,
+   "grade": {
+    "age_days": 26,
+    "peers": 23,
+    "score": 0.747,
+    "letter": "B",
+    "ranks": {
+     "retention": 0.83,
+     "ctr": 0.87,
+     "views": 0.43,
+     "engagement": 0.7,
+     "subs": 0.37
+    },
+    "values": {
+     "views": 705.0,
+     "retention": 0.751,
+     "engagement": 0.0255,
+     "subs": 0.0,
+     "ctr": 0.6369
+    }
+   }
+  },
+  "XCVxbVp6zcw": {
+   "title": "Caitlin Clark\u2019s MASSIVE Playoff Milestone Changes Everything! #caitlinclark #wnba #ajawilson",
+   "published": "2026-10-01",
+   "duration_sec": 44,
+   "format": "short",
+   "week": "2026-09-28",
+   "paid_views": 0.0,
+   "grade": {
+    "age_days": 26,
+    "peers": 23,
+    "score": 0.75,
+    "letter": "B",
+    "ranks": {
+     "retention": 1.0,
+     "ctr": 0.39,
+     "views": 0.96,
+     "engagement": 0.83,
+     "subs": 0.74
+    },
+    "values": {
+     "views": 1953.0,
+     "retention": 0.9966,
+     "engagement": 0.0364,
+     "subs": 0.512,
+     "ctr": 0.5556
+    }
+   }
+  },
+  "-z7e6gqtE3I": {
+   "title": "Indiana Fever & Minnesota Lynx Just Changed Everything! #wnba #caitlinclark #ajawilson",
+   "published": "2026-09-30",
+   "duration_sec": 52,
+   "format": "short",
+   "week": "2026-09-28",
+   "paid_views": 0.0,
+   "grade": {
+    "age_days": 27,
+    "peers": 22,
+    "score": 0.477,
+    "letter": "C",
+    "ranks": {
+     "retention": 0.64,
+     "ctr": 0.14,
+     "views": 0.86,
+     "engagement": 0.36,
+     "subs": 0.82
+    },
+    "values": {
+     "views": 1449.0,
+     "retention": 0.6192,
+     "engagement": 0.0145,
+     "subs": 0.6901,
+     "ctr": 0.499
+    }
+   }
+  },
+  "laEwIPNo_bU": {
+   "title": "The Fever\u2019s Only Hope: Stopping A\u2019ja Wilson! #caitlinclark #wnba #ajawilson",
+   "published": "2026-09-29",
+   "duration_sec": 44,
+   "format": "short",
+   "week": "2026-09-28",
+   "paid_views": 0.0,
+   "grade": {
+    "age_days": 28,
+    "peers": 21,
+    "score": 0.807,
+    "letter": "A",
+    "ranks": {
+     "retention": 0.62,
+     "ctr": 1.0,
+     "views": 1.0,
+     "engagement": 0.71,
+     "subs": 0.38
+    },
+    "values": {
+     "views": 1959.0,
+     "retention": 0.5962,
+     "engagement": 0.0296,
+     "subs": 0.0,
+     "ctr": 0.6422
+    }
+   }
+  },
+  "B3IybxBfoQI": {
+   "title": "The Indiana Fever NEED This From Lexie Hull in Game 2! #wnba #caitlinclark",
+   "published": "2026-09-28",
+   "duration_sec": 49,
+   "format": "short",
+   "week": "2026-09-28",
+   "paid_views": 0.0,
+   "grade": {
+    "age_days": 28,
+    "peers": 19,
+    "score": 0.471,
+    "letter": "C",
+    "ranks": {
+     "retention": 0.42,
+     "ctr": 0.53,
+     "views": 0.32,
+     "engagement": 0.74,
+     "subs": 0.37
+    },
+    "values": {
+     "views": 168.0,
+     "retention": 0.4464,
+     "engagement": 0.0298,
+     "subs": 0.0,
+     "ctr": 0.5714
+    }
+   }
+  },
+  "2aEUA6zNeX0": {
+   "title": "Why Minnesota Should Worry About Breanna Stewart's No. 8 Liberty",
+   "published": "2026-09-28",
+   "duration_sec": 756,
+   "format": "clip",
+   "week": "2026-09-28",
+   "paid_views": 0.0,
+   "grade": {
+    "age_days": 28,
+    "peers": 5,
+    "score": 0.49,
+    "letter": "C",
+    "ranks": {
+     "retention": 0.2,
+     "ctr": 0.8,
+     "views": 0.4,
+     "engagement": 0.6,
+     "subs": 0.4
+    },
+    "values": {
+     "views": 339.0,
+     "retention": 0.2425,
+     "engagement": 0.0147,
+     "subs": 5.8997,
+     "ctr": 0.0419
+    }
+   }
+  },
+  "blPdCzCO8po": {
+   "title": "Can Caitlin Clark's Fever Beat the Aces? Ryan Ruocco's Biggest Question Is Aliyah Boston",
+   "published": "2026-09-28",
+   "duration_sec": 536,
+   "format": "clip",
+   "week": "2026-09-28",
+   "paid_views": 0.0,
+   "grade": {
+    "age_days": 28,
+    "peers": 5,
+    "score": 0.79,
+    "letter": "B",
+    "ranks": {
+     "retention": 0.8,
+     "ctr": 0.8,
+     "views": 1.0,
+     "engagement": 0.6,
+     "subs": 0.4
+    },
+    "values": {
+     "views": 5964.0,
+     "retention": 0.3547,
+     "engagement": 0.0171,
+     "subs": 4.1918,
+     "ctr": 0.0441
+    }
+   }
+  },
+  "udCbXUSSs8E": {
+   "title": "Beat the Best to Be the Best: Liberty Take Game 1! \ud83d\udd25 #wnba #Lynx #basketball",
+   "published": "2026-09-28",
+   "duration_sec": 52,
+   "format": "short",
+   "week": "2026-09-28",
+   "paid_views": 0.0,
+   "grade": {
+    "age_days": 28,
+    "peers": 19,
+    "score": 0.653,
+    "letter": "B",
+    "ranks": {
+     "retention": 0.95,
+     "ctr": 0.53,
+     "views": 0.47,
+     "engagement": 0.47,
+     "subs": 0.37
+    },
+    "values": {
+     "views": 735.0,
+     "retention": 0.8151,
+     "engagement": 0.015,
+     "subs": 0.0,
+     "ctr": 0.5701
+    }
+   }
+  },
+  "mx4bUJHe_Wk": {
+   "title": "Why The 2026 WNBA Playoffs Will Be Completely Different #wnba #caitlinclark",
+   "published": "2026-09-25",
+   "duration_sec": 28,
+   "format": "short",
+   "week": "2026-09-21",
+   "paid_views": 0.0,
+   "grade": {
+    "age_days": 28,
+    "peers": 18,
+    "score": 0.597,
+    "letter": "C",
+    "ranks": {
+     "retention": 1.0,
+     "ctr": 0.06,
+     "views": 1.0,
+     "engagement": 0.39,
+     "subs": 0.78
+    },
+    "values": {
+     "views": 1951.0,
+     "retention": 0.8226,
+     "engagement": 0.0128,
+     "subs": 0.5126,
+     "ctr": 0.47
+    }
+   }
+  },
+  "HoIt4473r94": {
+   "title": "Caitlin Clark vs. A'ja Wilson + Ryan Ruocco's Case for a 5-Game WNBA First Round",
+   "published": "2026-09-25",
+   "duration_sec": 3605,
+   "format": "episode",
+   "week": "2026-09-21",
+   "paid_views": 0.0,
+   "grade": {
+    "age_days": 28,
+    "peers": 1,
+    "score": null,
+    "letter": null,
+    "ranks": {
+     "retention": null,
+     "ctr": null,
+     "views": null,
+     "engagement": null,
+     "subs": null
+    },
+    "values": {
+     "views": 11193.0,
+     "retention": 0.2012,
+     "engagement": 0.0247,
+     "subs": 6.6113,
+     "ctr": 0.0548
+    }
+   }
+  },
+  "sHD_NChQ6HE": {
+   "title": "Give Kara Lawson Her FLOWERS! \ud83d\udc90 Why Her Gold Medal Coaching Was A Masterclass #wnba #caitlinclark",
+   "published": "2026-09-23",
+   "duration_sec": 45,
+   "format": "short",
+   "week": "2026-09-21",
+   "paid_views": 0.0,
+   "grade": {
+    "age_days": 28,
+    "peers": 17,
+    "score": 0.507,
+    "letter": "C",
+    "ranks": {
+     "retention": 0.71,
+     "ctr": 0.41,
+     "views": 0.53,
+     "engagement": 0.18,
+     "subs": 0.38
+    },
+    "values": {
+     "views": 794.0,
+     "retention": 0.6421,
+     "engagement": 0.0088,
+     "subs": 0.0,
+     "ctr": 0.5466
+    }
+   }
+  },
+  "f5Z3149s-XM": {
+   "title": "Stewie Carried NY With 27 & 14 But Atlanta Stole The Win! #wnba #basketball #breannastewart",
+   "published": "2026-09-22",
+   "duration_sec": 49,
+   "format": "short",
+   "week": "2026-09-21",
+   "paid_views": 0.0,
+   "grade": {
+    "age_days": 28,
+    "peers": 15,
+    "score": 0.575,
+    "letter": "C",
+    "ranks": {
+     "retention": 0.4,
+     "ctr": 0.8,
+     "views": 0.6,
+     "engagement": 0.47,
+     "subs": 0.37
+    },
+    "values": {
+     "views": 1096.0,
+     "retention": 0.4274,
+     "engagement": 0.0201,
+     "subs": 0.0,
+     "ctr": 0.6013
+    }
+   }
+  },
+  "3f5w8wfShNU": {
+   "title": "The Truth About Cathy Engelbert\u2019s WNBA Legacy (Night and Day Difference!) #wnba #caitlinclark",
+   "published": "2026-09-22",
+   "duration_sec": 54,
+   "format": "short",
+   "week": "2026-09-21",
+   "paid_views": 0.0,
+   "grade": {
+    "age_days": 28,
+    "peers": 15,
+    "score": 0.648,
+    "letter": "B",
+    "ranks": {
+     "retention": 0.6,
+     "ctr": 0.87,
+     "views": 0.6,
+     "engagement": 0.27,
+     "subs": 0.37
+    },
+    "values": {
+     "views": 1103.0,
+     "retention": 0.5375,
+     "engagement": 0.0109,
+     "subs": 0.0,
+     "ctr": 0.6147
+    }
+   }
+  },
+  "mCpIWxs13fs": {
+   "title": "The Most UNDERRATED Winner In Basketball History",
+   "published": "2026-09-21",
+   "duration_sec": 42,
+   "format": "short",
+   "week": "2026-09-21",
+   "paid_views": 0.0,
+   "grade": {
+    "age_days": 28,
+    "peers": 14,
+    "score": 0.429,
+    "letter": "C",
+    "ranks": {
+     "retention": 0.57,
+     "ctr": 0.07,
+     "views": 0.86,
+     "engagement": 0.36,
+     "subs": 0.79
+    },
+    "values": {
+     "views": 1430.0,
+     "retention": 0.5314,
+     "engagement": 0.0147,
+     "subs": 0.6993,
+     "ctr": 0.4888
+    }
+   }
+  },
+  "r8G0COTZo2U": {
+   "title": "Why Ryan Ruocco Says Cathy Engelbert Deserves Credit for the WNBA's Growth",
+   "published": "2026-09-20",
+   "duration_sec": 574,
+   "format": "clip",
+   "week": "2026-09-14",
+   "paid_views": 0.0,
+   "grade": {
+    "age_days": 28,
+    "peers": 6,
+    "score": 0.117,
+    "letter": "F",
+    "ranks": {
+     "retention": 0.0,
+     "ctr": 0.17,
+     "views": 0.17,
+     "engagement": 0.0,
+     "subs": 0.67
+    },
+    "values": {
+     "views": 163.0,
+     "retention": 0.2105,
+     "engagement": 0.0,
+     "subs": 6.135,
+     "ctr": 0.0287
+    }
+   }
+  },
+  "QsBA6J2uEJw": {
+   "title": "Is this the most dominant performance of the season?! #caitlinclark #wnba #basketball",
+   "published": "2026-09-20",
+   "duration_sec": 44,
+   "format": "short",
+   "week": "2026-09-14",
+   "paid_views": 0.0,
+   "grade": {
+    "age_days": 28,
+    "peers": 12,
+    "score": 0.719,
+    "letter": "B",
+    "ranks": {
+     "retention": 1.0,
+     "ctr": 0.33,
+     "views": 1.0,
+     "engagement": 0.83,
+     "subs": 0.38
+    },
+    "values": {
+     "views": 1626.0,
+     "retention": 0.793,
+     "engagement": 0.0449,
+     "subs": 0.0,
+     "ctr": 0.532
+    }
+   }
+  },
+  "wwHB5T5vou8": {
+   "title": "The RECORD BREAKING Truth About Angel Reese #wnba #basketball",
+   "published": "2026-09-20",
+   "duration_sec": 54,
+   "format": "short",
+   "week": "2026-09-14",
+   "paid_views": 0.0,
+   "grade": {
+    "age_days": 28,
+    "peers": 12,
+    "score": 0.831,
+    "letter": "A",
+    "ranks": {
+     "retention": 0.83,
+     "ctr": 1.0,
+     "views": 0.75,
+     "engagement": 0.58,
+     "subs": 0.38
+    },
+    "values": {
+     "views": 1129.0,
+     "retention": 0.6617,
+     "engagement": 0.0221,
+     "subs": 0.0,
+     "ctr": 0.6306
+    }
+   }
+  },
+  "0CTl8q2bURs": {
+   "title": "Breanna Stewart Told Ryan Ruocco: \"I\u2019m Built for This\"",
+   "published": "2026-09-19",
+   "duration_sec": 618,
+   "format": "clip",
+   "week": "2026-09-14",
+   "paid_views": 0.0,
+   "grade": {
+    "age_days": 28,
+    "peers": 6,
+    "score": 0.383,
+    "letter": "D",
+    "ranks": {
+     "retention": 0.5,
+     "ctr": 0.33,
+     "views": 0.5,
+     "engagement": 0.17,
+     "subs": 0.0
+    },
+    "values": {
+     "views": 471.0,
+     "retention": 0.2705,
+     "engagement": 0.0127,
+     "subs": 0.0,
+     "ctr": 0.0292
+    }
+   }
+  },
+  "d1xwBqP0U9s": {
+   "title": "Is Stewie the GREATEST Winner in Women's Basketball History? #wnba #basketball",
+   "published": "2026-09-18",
+   "duration_sec": 57,
+   "format": "short",
+   "week": "2026-09-14",
+   "paid_views": 0.0,
+   "grade": {
+    "age_days": 28,
+    "peers": 10,
+    "score": 0.568,
+    "letter": "C",
+    "ranks": {
+     "retention": 0.3,
+     "ctr": 0.8,
+     "views": 0.9,
+     "engagement": 0.3,
+     "subs": 0.35
+    },
+    "values": {
+     "views": 1332.0,
+     "retention": 0.3965,
+     "engagement": 0.0113,
+     "subs": 0.0,
+     "ctr": 0.5998
+    }
+   }
+  },
+  "v_O4wjgvkrs": {
+   "title": "Caitlin Clark Didn't Need 30 Points to Give Team USA What It Needed",
+   "published": "2026-09-18",
+   "duration_sec": 410,
+   "format": "clip",
+   "week": "2026-09-14",
+   "paid_views": 0.0,
+   "grade": {
+    "age_days": 28,
+    "peers": 6,
+    "score": 0.483,
+    "letter": "C",
+    "ranks": {
+     "retention": 0.33,
+     "ctr": 0.5,
+     "views": 0.67,
+     "engagement": 0.83,
+     "subs": 0.17
+    },
+    "values": {
+     "views": 633.0,
+     "retention": 0.2497,
+     "engagement": 0.0174,
+     "subs": 3.1596,
+     "ctr": 0.0343
+    }
+   }
+  },
+  "J5puuaJZqr0": {
+   "title": "The TRUTH About International Basketball vs. The NBA! #wnba #basketball",
+   "published": "2026-09-18",
+   "duration_sec": 23,
+   "format": "short",
+   "week": "2026-09-14",
+   "paid_views": 0.0,
+   "grade": {
+    "age_days": 28,
+    "peers": 10,
+    "score": 0.425,
+    "letter": "C",
+    "ranks": {
+     "retention": 0.9,
+     "ctr": 0.15,
+     "views": 0.2,
+     "engagement": 0.1,
+     "subs": 0.35
+    },
+    "values": {
+     "views": 36.0,
+     "retention": 0.7246,
+     "engagement": 0.0,
+     "subs": 0.0,
+     "ctr": 0.5
+    }
+   }
+  },
+  "XK8WS2KSuTc": {
+   "title": "Why Chelsea Gray Is The Most Clutch Player Ever #wnba #caitlinclark #LasVegasAces",
+   "published": "2026-09-17",
+   "duration_sec": 39,
+   "format": "short",
+   "week": "2026-09-14",
+   "paid_views": 0.0,
+   "grade": {
+    "age_days": 28,
+    "peers": 8,
+    "score": 0.381,
+    "letter": "D",
+    "ranks": {
+     "retention": 0.25,
+     "ctr": 0.38,
+     "views": 0.38,
+     "engagement": 0.88,
+     "subs": 0.38
+    },
+    "values": {
+     "views": 43.0,
+     "retention": 0.2564,
+     "engagement": 0.0465,
+     "subs": 0.0,
+     "ctr": 0.5581
+    }
+   }
+  },
+  "Ibm3c9nG9D4": {
+   "title": "Did Caitlin Clark Just Prove Every HATER Wrong!?  #wnba #caitlinclark",
+   "published": "2026-09-17",
+   "duration_sec": 59,
+   "format": "short",
+   "week": "2026-09-14",
+   "paid_views": 0.0,
+   "grade": {
+    "age_days": 28,
+    "peers": 8,
+    "score": 0.637,
+    "letter": "B",
+    "ranks": {
+     "retention": 0.88,
+     "ctr": 0.25,
+     "views": 0.88,
+     "engagement": 0.75,
+     "subs": 0.75
+    },
+    "values": {
+     "views": 1202.0,
+     "retention": 0.6485,
+     "engagement": 0.0324,
+     "subs": 2.4958,
+     "ctr": 0.5258
+    }
+   }
+  },
+  "5X4z2LMziCs": {
+   "title": "Caitlin Clark's Defense Deserves CREDIT + Why Team USA NEEDED Chelsea Gray",
+   "published": "2026-09-17",
+   "duration_sec": 3931,
+   "format": "episode",
+   "week": "2026-09-14",
+   "paid_views": 0.0,
+   "grade": {
+    "age_days": 28,
+    "peers": 1,
+    "score": null,
+    "letter": null,
+    "ranks": {
+     "retention": null,
+     "ctr": null,
+     "views": null,
+     "engagement": null,
+     "subs": null
+    },
+    "values": {
+     "views": 4053.0,
+     "retention": 0.1927,
+     "engagement": 0.0188,
+     "subs": 9.129,
+     "ctr": 0.0485
+    }
+   }
+  },
+  "xgS8iYrh5BU": {
+   "title": "Girls Tripp Has Its Own Channel | WNBA Podcast with Allie Clifton & Jordan Robinson",
+   "published": "2026-09-16",
+   "duration_sec": 36,
+   "format": "clip",
+   "week": "2026-09-14",
+   "paid_views": 0.0,
+   "grade": {
+    "age_days": 28,
+    "peers": 6,
+    "score": 0.908,
+    "letter": "A",
+    "ranks": {
+     "retention": 1.0,
+     "ctr": 1.0,
+     "views": 0.83,
+     "engagement": 0.33,
+     "subs": 1.0
+    },
+    "values": {
+     "views": 1275.0,
+     "retention": 0.6007,
+     "engagement": 0.0133,
+     "subs": 23.5294,
+     "ctr": 0.0686
+    }
+   }
+  },
+  "22l5sEyk5rs": {
+   "title": "Are The Minnesota Lynx The ONLY Flawless Team In The WNBA?! #WNBA #MinnesotaLynx #NapheesaCollier",
+   "published": "2026-09-16",
+   "duration_sec": 43,
+   "format": "short",
+   "week": "2026-09-14",
+   "paid_views": 0.0,
+   "grade": {
+    "age_days": 28,
+    "peers": 5,
+    "score": 0.72,
+    "letter": "B",
+    "ranks": {
+     "retention": 0.8,
+     "ctr": 1.0,
+     "views": 0.4,
+     "engagement": 0.1,
+     "subs": 0.4
+    },
+    "values": {
+     "views": 42.0,
+     "retention": 0.483,
+     "engagement": 0.0,
+     "subs": 0.0,
+     "ctr": 0.619
+    }
+   }
+  },
+  "5s9Q_6X-DF0": {
+   "title": "Candace Parker on Why Her First Championship Was the Hardest",
+   "published": "2026-09-16",
+   "duration_sec": 270,
+   "format": "clip",
+   "week": "2026-09-14",
+   "paid_views": 0.0,
+   "grade": {
+    "age_days": 28,
+    "peers": 6,
+    "score": 0.375,
+    "letter": "D",
+    "ranks": {
+     "retention": 0.67,
+     "ctr": 0.0,
+     "views": 0.0,
+     "engagement": 1.0,
+     "subs": 0.83
+    },
+    "values": {
+     "views": 146.0,
+     "retention": 0.3404,
+     "engagement": 0.0479,
+     "subs": 13.6986,
+     "ctr": 0.0268
+    }
+   }
+  },
+  "igZDxtDoFGk": {
+   "title": "Can Paige Bueckers PULL OFF A First-Round Shock?! #WNBA #PaigeBueckers #WNBAPlayoffs",
+   "published": "2026-09-16",
+   "duration_sec": 51,
+   "format": "short",
+   "week": "2026-09-14",
+   "paid_views": 0.0,
+   "grade": {
+    "age_days": 28,
+    "peers": 5,
+    "score": 0.38,
+    "letter": "D",
+    "ranks": {
+     "retention": 0.8,
+     "ctr": 0.0,
+     "views": 0.4,
+     "engagement": 0.2,
+     "subs": 0.4
+    },
+    "values": {
+     "views": 202.0,
+     "retention": 0.5664,
+     "engagement": 0.0099,
+     "subs": 0.0,
+     "ctr": 0.2673
+    }
+   }
+  },
+  "uWx5FFJ2_g0": {
+   "title": "JuJu Watkins To The LA Sparks Would BREAK The WNBA!",
+   "published": "2026-09-16",
+   "duration_sec": 23,
+   "format": "short",
+   "week": "2026-09-14",
+   "paid_views": 0.0,
+   "grade": {
+    "age_days": 28,
+    "peers": 5,
+    "score": 0.48,
+    "letter": "C",
+    "ranks": {
+     "retention": 0.8,
+     "ctr": 0.2,
+     "views": 0.4,
+     "engagement": 0.2,
+     "subs": 1.0
+    },
+    "values": {
+     "views": 56.0,
+     "retention": 0.4348,
+     "engagement": 0.0179,
+     "subs": 17.8571,
+     "ctr": 0.5357
+    }
+   }
+  },
+  "AQQnS0tzBLk": {
+   "title": "Should Nneka Ogwumike Be The NEXT WNBA Commissioner?!     #wnba  #basketball #GirlsTripp",
+   "published": "2026-09-15",
+   "duration_sec": 37,
+   "format": "short",
+   "week": "2026-09-14",
+   "paid_views": 0.0,
+   "grade": {
+    "age_days": 28,
+    "peers": 21,
+    "score": 0.099,
+    "letter": "F",
+    "ranks": {
+     "retention": 0.05,
+     "ctr": 0.17,
+     "views": 0.0,
+     "engagement": 0.05,
+     "subs": 0.38
+    },
+    "values": {
+     "views": 16.0,
+     "retention": 0.2027,
+     "engagement": 0.0,
+     "subs": 0.0,
+     "ctr": 0.5
+    }
+   }
+  },
+  "m4RO-ogJaYg": {
+   "title": "Are The Indiana Fever ACTUALLY Title Contenders?! #WNBA #IndianaFever #CaitlinClark #KelseyMitchell",
+   "published": "2026-09-15",
+   "duration_sec": 35,
+   "format": "short",
+   "week": "2026-09-14",
+   "paid_views": 0.0,
+   "grade": {
+    "age_days": 28,
+    "peers": 21,
+    "score": 0.326,
+    "letter": "D",
+    "ranks": {
+     "retention": 0.0,
+     "ctr": 0.57,
+     "views": 0.05,
+     "engagement": 1.0,
+     "subs": 0.38
+    },
+    "values": {
+     "views": 17.0,
+     "retention": 0.1714,
+     "engagement": 0.0588,
+     "subs": 0.0,
+     "ctr": 0.5882
+    }
+   }
+  },
+  "I-HQL3kIfSc": {
+   "title": "Teresa Weatherspoon Gets Completely REAL On Her Chicago Exit",
+   "published": "2026-09-15",
+   "duration_sec": 55,
+   "format": "short",
+   "week": "2026-09-14",
+   "paid_views": 0.0,
+   "grade": {
+    "age_days": 28,
+    "peers": 21,
+    "score": 0.424,
+    "letter": "C",
+    "ranks": {
+     "retention": 0.19,
+     "ctr": 0.62,
+     "views": 0.43,
+     "engagement": 0.57,
+     "subs": 0.38
+    },
+    "values": {
+     "views": 523.0,
+     "retention": 0.4201,
+     "engagement": 0.021,
+     "subs": 0.0,
+     "ctr": 0.5908
+    }
+   }
+  },
+  "MwXveWRp1AM": {
+   "title": "\u201cShe Said \u2018Just Lead Me\u2019\u201d Teresa Weatherspoon On Chennedy Carter #WNBA #ChicagoSky #WomensBasketball",
+   "published": "2026-09-14",
+   "duration_sec": 70,
+   "format": "short",
+   "week": "2026-09-14",
+   "paid_views": 0.0,
+   "grade": {
+    "age_days": 28,
+    "peers": 21,
+    "score": 0.507,
+    "letter": "C",
+    "ranks": {
+     "retention": 0.24,
+     "ctr": 0.67,
+     "views": 0.38,
+     "engagement": 0.86,
+     "subs": 0.95
+    },
+    "values": {
+     "views": 213.0,
+     "retention": 0.4252,
+     "engagement": 0.0376,
+     "subs": 4.6948,
+     "ctr": 0.5962
+    }
+   }
+  },
+  "RnLhjqA_Ano": {
+   "title": "Caitlin Clark & Kelsey Mitchell The GREATEST Backcourt EVER?! #WNBA #CaitlinClark #KelseyMitchell",
+   "published": "2026-09-14",
+   "duration_sec": 53,
+   "format": "short",
+   "week": "2026-09-14",
+   "paid_views": 0.0,
+   "grade": {
+    "age_days": 28,
+    "peers": 21,
+    "score": 0.798,
+    "letter": "B",
+    "ranks": {
+     "retention": 0.86,
+     "ctr": 0.81,
+     "views": 0.86,
+     "engagement": 0.67,
+     "subs": 0.38
+    },
+    "values": {
+     "views": 1451.0,
+     "retention": 0.79,
+     "engagement": 0.0248,
+     "subs": 0.0,
+     "ctr": 0.6044
     }
    }
   }

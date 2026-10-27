@@ -14,7 +14,7 @@ shared Schultz dashboard, see master/shows/schultz_report/pull_content_sr.py):
 Formats: episode = in one of the show's full-episode playlists · short = YouTube Short · clip = other long-form.
 Caches in <show data>/content/ (video_daily.csv, video_reach_daily.csv) are the history — YouTube's daily report
 files expire. Only videos up to UPDATE_DAYS old are re-pulled each day (grades only need the first AGES days).
-Writes <show data>/content.json (recent uploads with their grade) for that show's dashboard Content tab.
+Writes <show data>/content.json (every graded upload in the window) for that show's dashboard Content tab.
 
     python master/content_grades.py --show rt      (rt | gt | fr)
 """
@@ -301,9 +301,10 @@ def run(show):
     except Exception as e:
         print(f"  ⚠ impressions skipped: {e}")
     graded = grade(videos, cdir, through)
-    recent = (date.today() - timedelta(days=21)).isoformat()
+    # Every graded upload in the window: the Content tab filters by any date range. A grade is taken at the upload's
+    # age, capped at day AGES — so it's Provisional (<7 days), Working (7–28) or Final (28+, locked at day 28).
     out = {"generated": datetime.now().isoformat(timespec="minutes"), "through": through, "weights": WEIGHTS,
-           "peer_days": PEER_DAYS, "videos": {k: v for k, v in graded.items() if v["published"] >= recent}}
+           "peer_days": PEER_DAYS, "final_age": AGES, "videos": graded}
     json.dump(out, open(os.path.join(cfg["data"], "content.json"), "w", encoding="utf-8"), indent=1)
     print(f"✓ content.json · {len(out['videos'])} recent uploads graded")
 

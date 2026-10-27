@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-27T03:42",
+ "generated": "2026-10-27T00:13",
  "through": "2026-10-26",
  "weights": {
   "retention": 0.35,
@@ -9,6 +9,7 @@
   "subs": 0.05
  },
  "peer_days": 90,
+ "final_age": 28,
  "videos": {
   "uXieNnEi9Bo": {
    "title": "Why Tight Ends and Offensive Linemen Have Beef",
@@ -819,6 +820,90 @@
      "engagement": 0.0175,
      "subs": 5.9144,
      "ctr": 0.0415
+    }
+   }
+  },
+  "mL9QANCarR8": {
+   "title": "\"I Am NOT Ready For the NFL!\" #football #bengals #cowboys #notredame",
+   "published": "2026-10-05",
+   "duration_sec": 45,
+   "format": "short",
+   "week": "2026-10-05",
+   "paid_views": 0.0,
+   "grade": {
+    "age_days": 22,
+    "peers": 1,
+    "score": null,
+    "letter": null,
+    "ranks": {
+     "retention": null,
+     "ctr": null,
+     "views": null,
+     "engagement": null,
+     "subs": null
+    },
+    "values": {
+     "views": 1310.0,
+     "retention": 0.5441,
+     "engagement": 0.0191,
+     "subs": 1.5267,
+     "ctr": 0.5687
+    }
+   }
+  },
+  "vKEME6GW2Vk": {
+   "title": "From Notre Dame Roommates to the NFL, to the Mic: Welcome to Football Related #NFL #CFB",
+   "published": "2026-10-04",
+   "duration_sec": 35,
+   "format": "short",
+   "week": "2026-09-28",
+   "paid_views": 0.0,
+   "grade": {
+    "age_days": 23,
+    "peers": 0,
+    "score": null,
+    "letter": null,
+    "ranks": {
+     "retention": null,
+     "ctr": null,
+     "views": null,
+     "engagement": null,
+     "subs": null
+    },
+    "values": {
+     "views": 1317.0,
+     "retention": 0.5417,
+     "engagement": 0.0296,
+     "subs": 12.9081,
+     "ctr": 0.5695
+    }
+   }
+  },
+  "qHAbqLNoXEE": {
+   "title": "Welcome to Football Related!",
+   "published": "2026-10-04",
+   "duration_sec": 55,
+   "format": "clip",
+   "week": "2026-09-28",
+   "paid_views": 0.0,
+   "grade": {
+    "age_days": 23,
+    "peers": 0,
+    "score": null,
+    "letter": null,
+    "ranks": {
+     "retention": null,
+     "ctr": null,
+     "views": null,
+     "engagement": null,
+     "subs": null
+    },
+    "values": {
+     "views": 1110.0,
+     "retention": 0.5005,
+     "engagement": 0.0387,
+     "subs": 55.8559,
+     "ctr": 0.0238
     }
    }
   }
