@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-27T00:13",
+ "generated": "2026-10-27T16:11",
  "through": "2026-10-26",
  "weights": {
   "retention": 0.35,
@@ -21,21 +21,24 @@
    "grade": {
     "age_days": 3,
     "peers": 53,
-    "score": 0.377,
-    "letter": "D",
+    "score": 0.458,
+    "letter": "C",
     "ranks": {
-     "retention": 0.75,
+     "retention": 0.89,
      "ctr": 0.17,
-     "views": 0.17,
-     "engagement": 0.17,
-     "subs": 0.25
+     "views": 0.28,
+     "engagement": 0.26,
+     "subs": 0.42
     },
     "values": {
-     "views": 2116.0,
-     "retention": 0.5232,
-     "engagement": 0.0099,
-     "subs": 0.4726,
-     "ctr": 0.0355
+     "views": 2751.0,
+     "retention": 0.5429,
+     "engagement": 0.0109,
+     "subs": 0.727,
+     "avd": 127.0308,
+     "ctr": 0.0355,
+     "r30": 0.6915,
+     "r60": 0.6071
     }
    }
   },
@@ -49,21 +52,24 @@
    "grade": {
     "age_days": 3,
     "peers": 138,
-    "score": 0.301,
+    "score": 0.393,
     "letter": "D",
     "ranks": {
-     "retention": 0.15,
-     "ctr": 0.54,
+     "retention": 0.17,
+     "ctr": 0.67,
      "views": 0.01,
-     "engagement": 0.52,
-     "subs": 0.09
+     "engagement": 0.5,
+     "subs": 0.96
     },
     "values": {
-     "views": 845.0,
-     "retention": 0.7619,
-     "engagement": 0.026,
-     "subs": 0.0,
-     "ctr": 0.5467
+     "views": 1300.0,
+     "retention": 0.7772,
+     "engagement": 0.0254,
+     "subs": 0.7692,
+     "avd": 46.63,
+     "ctr": 0.5592,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -77,21 +83,24 @@
    "grade": {
     "age_days": 3,
     "peers": 53,
-    "score": 0.704,
+    "score": 0.703,
     "letter": "B",
     "ranks": {
-     "retention": 0.75,
+     "retention": 0.74,
      "ctr": 1.0,
-     "views": 0.47,
-     "engagement": 0.02,
-     "subs": 0.34
+     "views": 0.55,
+     "engagement": 0.0,
+     "subs": 0.26
     },
     "values": {
-     "views": 8043.0,
-     "retention": 0.5233,
-     "engagement": 0.0071,
-     "subs": 0.6217,
-     "ctr": 0.1048
+     "views": 10594.0,
+     "retention": 0.5216,
+     "engagement": 0.0067,
+     "subs": 0.5664,
+     "avd": 162.2066,
+     "ctr": 0.1048,
+     "r30": 0.7362,
+     "r60": 0.6441
     }
    }
   },
@@ -105,21 +114,24 @@
    "grade": {
     "age_days": 3,
     "peers": 53,
-    "score": 0.705,
+    "score": 0.713,
     "letter": "B",
     "ranks": {
-     "retention": 0.74,
+     "retention": 0.7,
      "ctr": 0.86,
-     "views": 0.55,
+     "views": 0.68,
      "engagement": 0.38,
-     "subs": 0.53
+     "subs": 0.55
     },
     "values": {
-     "views": 11100.0,
-     "retention": 0.5112,
+     "views": 15609.0,
+     "retention": 0.5089,
      "engagement": 0.0131,
-     "subs": 0.9009,
-     "ctr": 0.0716
+     "subs": 0.8969,
+     "avd": 138.9245,
+     "ctr": 0.0716,
+     "r30": 0.8389,
+     "r60": 0.695
     }
    }
   },
@@ -133,21 +145,24 @@
    "grade": {
     "age_days": 4,
     "peers": 53,
-    "score": 0.652,
+    "score": 0.667,
     "letter": "B",
     "ranks": {
-     "retention": 0.58,
+     "retention": 0.6,
      "ctr": 0.81,
-     "views": 0.72,
-     "engagement": 0.3,
-     "subs": 0.55
+     "views": 0.83,
+     "engagement": 0.23,
+     "subs": 0.53
     },
     "values": {
-     "views": 18938.0,
-     "retention": 0.4883,
-     "engagement": 0.0122,
-     "subs": 0.9505,
-     "ctr": 0.0659
+     "views": 28795.0,
+     "retention": 0.4911,
+     "engagement": 0.0104,
+     "subs": 0.8335,
+     "avd": 371.7807,
+     "ctr": 0.0659,
+     "r30": 0.7285,
+     "r60": 0.664
     }
    }
   },
@@ -161,21 +176,24 @@
    "grade": {
     "age_days": 4,
     "peers": 140,
-    "score": 0.372,
-    "letter": "D",
+    "score": 0.457,
+    "letter": "C",
     "ranks": {
-     "retention": 0.36,
-     "ctr": 0.29,
-     "views": 0.19,
-     "engagement": 0.65,
+     "retention": 0.45,
+     "ctr": 0.46,
+     "views": 0.22,
+     "engagement": 0.54,
      "subs": 0.99
     },
     "values": {
-     "views": 4827.0,
-     "retention": 0.8775,
-     "engagement": 0.03,
-     "subs": 1.4502,
-     "ctr": 0.5115
+     "views": 5771.0,
+     "retention": 0.9181,
+     "engagement": 0.0267,
+     "subs": 1.213,
+     "avd": 49.5797,
+     "ctr": 0.5318,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -189,21 +207,24 @@
    "grade": {
     "age_days": 4,
     "peers": 140,
-    "score": 0.36,
-    "letter": "D",
+    "score": 0.404,
+    "letter": "C",
     "ranks": {
-     "retention": 0.59,
-     "ctr": 0.21,
-     "views": 0.23,
-     "engagement": 0.44,
+     "retention": 0.65,
+     "ctr": 0.24,
+     "views": 0.29,
+     "engagement": 0.46,
      "subs": 0.07
     },
     "values": {
-     "views": 6165.0,
-     "retention": 0.9882,
-     "engagement": 0.0224,
+     "views": 7057.0,
+     "retention": 1.0084,
+     "engagement": 0.0235,
      "subs": 0.0,
-     "ctr": 0.4876
+     "avd": 57.4806,
+     "ctr": 0.4927,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -222,16 +243,19 @@
     "ranks": {
      "retention": 0.5,
      "ctr": 0.18,
-     "views": 0.91,
+     "views": 0.94,
      "engagement": 0.52,
-     "subs": 0.65
+     "subs": 0.6
     },
     "values": {
-     "views": 110116.0,
-     "retention": 0.9507,
-     "engagement": 0.0261,
-     "subs": 0.2815,
-     "ctr": 0.4767
+     "views": 122985.0,
+     "retention": 0.9487,
+     "engagement": 0.026,
+     "subs": 0.2683,
+     "avd": 51.2278,
+     "ctr": 0.479,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -255,11 +279,14 @@
      "subs": 0.48
     },
     "values": {
-     "views": 43948.0,
-     "retention": 0.2796,
-     "engagement": 0.015,
-     "subs": 1.3652,
-     "ctr": 0.0569
+     "views": 46843.0,
+     "retention": 0.2794,
+     "engagement": 0.0149,
+     "subs": 1.409,
+     "avd": 915.2827,
+     "ctr": 0.0569,
+     "r30": 0.8976,
+     "r60": 0.629
     }
    }
   },
@@ -273,21 +300,24 @@
    "grade": {
     "age_days": 5,
     "peers": 51,
-    "score": 0.432,
+    "score": 0.438,
     "letter": "C",
     "ranks": {
-     "retention": 0.86,
+     "retention": 0.88,
      "ctr": 0.08,
      "views": 0.08,
      "engagement": 0.88,
      "subs": 0.04
     },
     "values": {
-     "views": 1198.0,
-     "retention": 0.5353,
-     "engagement": 0.025,
+     "views": 1266.0,
+     "retention": 0.5383,
+     "engagement": 0.0253,
      "subs": 0.0,
-     "ctr": 0.0265
+     "avd": 127.5676,
+     "ctr": 0.0265,
+     "r30": 0.7063,
+     "r60": 0.6125
     }
    }
   },
@@ -301,21 +331,24 @@
    "grade": {
     "age_days": 5,
     "peers": 139,
-    "score": 0.259,
+    "score": 0.276,
     "letter": "D",
     "ranks": {
      "retention": 0.25,
-     "ctr": 0.24,
-     "views": 0.2,
-     "engagement": 0.34,
-     "subs": 0.42
+     "ctr": 0.27,
+     "views": 0.22,
+     "engagement": 0.44,
+     "subs": 0.35
     },
     "values": {
-     "views": 5441.0,
-     "retention": 0.831,
-     "engagement": 0.021,
-     "subs": 0.1838,
-     "ctr": 0.4983
+     "views": 6097.0,
+     "retention": 0.8331,
+     "engagement": 0.0225,
+     "subs": 0.164,
+     "avd": 60.819,
+     "ctr": 0.5047,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -329,21 +362,24 @@
    "grade": {
     "age_days": 5,
     "peers": 51,
-    "score": 0.407,
+    "score": 0.412,
     "letter": "C",
     "ranks": {
      "retention": 0.37,
      "ctr": 0.47,
-     "views": 0.14,
-     "engagement": 0.88,
+     "views": 0.16,
+     "engagement": 0.9,
      "subs": 0.04
     },
     "values": {
-     "views": 2091.0,
-     "retention": 0.4295,
-     "engagement": 0.0249,
+     "views": 2118.0,
+     "retention": 0.4304,
+     "engagement": 0.0269,
      "subs": 0.0,
-     "ctr": 0.0477
+     "avd": 120.9497,
+     "ctr": 0.0477,
+     "r30": 0.7057,
+     "r60": 0.5296
     }
    }
   },
@@ -357,21 +393,24 @@
    "grade": {
     "age_days": 5,
     "peers": 139,
-    "score": 0.497,
+    "score": 0.504,
     "letter": "C",
     "ranks": {
-     "retention": 0.71,
+     "retention": 0.73,
      "ctr": 0.41,
      "views": 0.4,
-     "engagement": 0.05,
-     "subs": 0.81
+     "engagement": 0.04,
+     "subs": 0.8
     },
     "values": {
-     "views": 10358.0,
-     "retention": 1.0413,
-     "engagement": 0.0135,
-     "subs": 0.3862,
-     "ctr": 0.5295
+     "views": 10533.0,
+     "retention": 1.0543,
+     "engagement": 0.0133,
+     "subs": 0.3798,
+     "avd": 55.8773,
+     "ctr": 0.5292,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -385,21 +424,24 @@
    "grade": {
     "age_days": 6,
     "peers": 138,
-    "score": 0.538,
+    "score": 0.537,
     "letter": "C",
     "ranks": {
      "retention": 0.96,
      "ctr": 0.09,
-     "views": 0.63,
-     "engagement": 0.42,
+     "views": 0.62,
+     "engagement": 0.41,
      "subs": 0.68
     },
     "values": {
-     "views": 23820.0,
-     "retention": 1.295,
+     "views": 23858.0,
+     "retention": 1.2952,
      "engagement": 0.0223,
-     "subs": 0.2939,
-     "ctr": 0.4525
+     "subs": 0.2934,
+     "avd": 38.8566,
+     "ctr": 0.4523,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -413,21 +455,24 @@
    "grade": {
     "age_days": 6,
     "peers": 49,
-    "score": 0.699,
+    "score": 0.703,
     "letter": "B",
     "ranks": {
-     "retention": 0.57,
+     "retention": 0.59,
      "ctr": 0.95,
-     "views": 0.82,
-     "engagement": 0.14,
-     "subs": 0.61
+     "views": 0.86,
+     "engagement": 0.06,
+     "subs": 0.59
     },
     "values": {
-     "views": 39870.0,
-     "retention": 0.4822,
-     "engagement": 0.0081,
-     "subs": 1.0534,
-     "ctr": 0.0789
+     "views": 48283.0,
+     "retention": 0.4855,
+     "engagement": 0.0075,
+     "subs": 1.0148,
+     "avd": 208.7805,
+     "ctr": 0.0789,
+     "r30": 0.7768,
+     "r60": 0.6357
     }
    }
   },
@@ -441,21 +486,24 @@
    "grade": {
     "age_days": 6,
     "peers": 138,
-    "score": 0.504,
+    "score": 0.505,
     "letter": "C",
     "ranks": {
      "retention": 0.93,
      "ctr": 0.25,
-     "views": 0.45,
+     "views": 0.46,
      "engagement": 0.09,
      "subs": 0.32
     },
     "values": {
-     "views": 13236.0,
-     "retention": 1.2402,
-     "engagement": 0.0148,
-     "subs": 0.1511,
-     "ctr": 0.4986
+     "views": 13578.0,
+     "retention": 1.2367,
+     "engagement": 0.0149,
+     "subs": 0.1473,
+     "avd": 55.6509,
+     "ctr": 0.4979,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -469,21 +517,24 @@
    "grade": {
     "age_days": 6,
     "peers": 49,
-    "score": 0.382,
+    "score": 0.386,
     "letter": "D",
     "ranks": {
      "retention": 0.31,
      "ctr": 0.59,
-     "views": 0.31,
-     "engagement": 0.18,
+     "views": 0.35,
+     "engagement": 0.16,
      "subs": 0.08
     },
     "values": {
-     "views": 5641.0,
-     "retention": 0.4138,
-     "engagement": 0.0089,
-     "subs": 0.1773,
-     "ctr": 0.0548
+     "views": 5904.0,
+     "retention": 0.412,
+     "engagement": 0.0085,
+     "subs": 0.1694,
+     "avd": 120.3126,
+     "ctr": 0.0548,
+     "r30": 0.6566,
+     "r60": 0.4896
     }
    }
   },
@@ -497,21 +548,24 @@
    "grade": {
     "age_days": 6,
     "peers": 138,
-    "score": 0.497,
+    "score": 0.452,
     "letter": "C",
     "ranks": {
-     "retention": 0.91,
-     "ctr": 0.31,
-     "views": 0.36,
-     "engagement": 0.14,
+     "retention": 0.82,
+     "ctr": 0.27,
+     "views": 0.38,
+     "engagement": 0.12,
      "subs": 0.08
     },
     "values": {
-     "views": 9243.0,
-     "retention": 1.1921,
-     "engagement": 0.016,
+     "views": 10124.0,
+     "retention": 1.1096,
+     "engagement": 0.0154,
      "subs": 0.0,
-     "ctr": 0.5158
+     "avd": 49.9337,
+     "ctr": 0.5063,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -525,21 +579,24 @@
    "grade": {
     "age_days": 7,
     "peers": 137,
-    "score": 0.146,
+    "score": 0.145,
     "letter": "F",
     "ranks": {
      "retention": 0.09,
      "ctr": 0.08,
      "views": 0.04,
-     "engagement": 0.32,
+     "engagement": 0.31,
      "subs": 0.99
     },
     "values": {
-     "views": 2289.0,
-     "retention": 0.6747,
-     "engagement": 0.0201,
-     "subs": 1.3106,
-     "ctr": 0.4474
+     "views": 2301.0,
+     "retention": 0.6742,
+     "engagement": 0.02,
+     "subs": 1.3038,
+     "avd": 43.1487,
+     "ctr": 0.4472,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -563,11 +620,14 @@
      "subs": 0.48
     },
     "values": {
-     "views": 33531.0,
-     "retention": 0.2493,
-     "engagement": 0.0184,
-     "subs": 1.7297,
-     "ctr": 0.0541
+     "views": 34221.0,
+     "retention": 0.2502,
+     "engagement": 0.0183,
+     "subs": 1.7825,
+     "avd": 747.6704,
+     "ctr": 0.0541,
+     "r30": 0.9068,
+     "r60": 0.6434
     }
    }
   },
@@ -581,21 +641,24 @@
    "grade": {
     "age_days": 7,
     "peers": 137,
-    "score": 0.539,
+    "score": 0.525,
     "letter": "C",
     "ranks": {
-     "retention": 0.97,
-     "ctr": 0.16,
-     "views": 0.6,
-     "engagement": 0.34,
-     "subs": 0.37
+     "retention": 0.99,
+     "ctr": 0.1,
+     "views": 0.64,
+     "engagement": 0.33,
+     "subs": 0.32
     },
     "values": {
-     "views": 22332.0,
-     "retention": 1.3132,
-     "engagement": 0.0206,
-     "subs": 0.1791,
-     "ctr": 0.4728
+     "views": 24798.0,
+     "retention": 1.3268,
+     "engagement": 0.0203,
+     "subs": 0.1613,
+     "avd": 31.8435,
+     "ctr": 0.4607,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -609,21 +672,24 @@
    "grade": {
     "age_days": 8,
     "peers": 135,
-    "score": 0.443,
+    "score": 0.441,
     "letter": "C",
     "ranks": {
-     "retention": 0.42,
+     "retention": 0.41,
      "ctr": 0.57,
-     "views": 0.24,
+     "views": 0.25,
      "engagement": 0.56,
      "subs": 0.07
     },
     "values": {
-     "views": 7099.0,
-     "retention": 0.892,
-     "engagement": 0.0273,
+     "views": 7128.0,
+     "retention": 0.8911,
+     "engagement": 0.0274,
      "subs": 0.0,
-     "ctr": 0.5539
+     "avd": 49.0094,
+     "ctr": 0.5537,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -637,21 +703,24 @@
    "grade": {
     "age_days": 8,
     "peers": 135,
-    "score": 0.599,
+    "score": 0.596,
     "letter": "C",
     "ranks": {
      "retention": 0.99,
-     "ctr": 0.05,
+     "ctr": 0.04,
      "views": 0.77,
      "engagement": 0.76,
      "subs": 0.88
     },
     "values": {
-     "views": 37276.0,
-     "retention": 1.3195,
-     "engagement": 0.0339,
-     "subs": 0.5365,
-     "ctr": 0.4279
+     "views": 37925.0,
+     "retention": 1.3189,
+     "engagement": 0.0337,
+     "subs": 0.5274,
+     "avd": 56.7136,
+     "ctr": 0.427,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -665,21 +734,24 @@
    "grade": {
     "age_days": 9,
     "peers": 135,
-    "score": 0.448,
+    "score": 0.455,
     "letter": "C",
     "ranks": {
      "retention": 0.86,
      "ctr": 0.06,
-     "views": 0.62,
+     "views": 0.64,
      "engagement": 0.01,
-     "subs": 0.64
+     "subs": 0.73
     },
     "values": {
-     "views": 24645.0,
-     "retention": 1.1484,
-     "engagement": 0.0115,
-     "subs": 0.284,
-     "ctr": 0.4417
+     "views": 25742.0,
+     "retention": 1.149,
+     "engagement": 0.0116,
+     "subs": 0.3108,
+     "avd": 31.0241,
+     "ctr": 0.4404,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -703,11 +775,14 @@
      "subs": 0.03
     },
     "values": {
-     "views": 5820.0,
-     "retention": 0.4945,
-     "engagement": 0.0089,
+     "views": 5872.0,
+     "retention": 0.4924,
+     "engagement": 0.0087,
      "subs": 0.0,
-     "ctr": 0.0341
+     "avd": 189.0738,
+     "ctr": 0.0341,
+     "r30": 0.6949,
+     "r60": 0.5891
     }
    }
   },
@@ -721,21 +796,24 @@
    "grade": {
     "age_days": 9,
     "peers": 49,
-    "score": 0.631,
+    "score": 0.638,
     "letter": "B",
     "ranks": {
-     "retention": 0.57,
+     "retention": 0.59,
      "ctr": 0.8,
      "views": 0.45,
      "engagement": 0.41,
      "subs": 0.82
     },
     "values": {
-     "views": 11140.0,
-     "retention": 0.4882,
-     "engagement": 0.0134,
-     "subs": 2.4237,
-     "ctr": 0.0639
+     "views": 11259.0,
+     "retention": 0.4893,
+     "engagement": 0.0133,
+     "subs": 2.4869,
+     "avd": 137.007,
+     "ctr": 0.0639,
+     "r30": 0.7024,
+     "r60": 0.5289
     }
    }
   },
@@ -749,21 +827,24 @@
    "grade": {
     "age_days": 10,
     "peers": 47,
-    "score": 0.493,
+    "score": 0.494,
     "letter": "C",
     "ranks": {
      "retention": 0.19,
      "ctr": 0.82,
      "views": 0.81,
      "engagement": 0.15,
-     "subs": 0.06
+     "subs": 0.09
     },
     "values": {
-     "views": 47940.0,
-     "retention": 0.3836,
-     "engagement": 0.0084,
-     "subs": 0.3546,
-     "ctr": 0.0638
+     "views": 50178.0,
+     "retention": 0.3838,
+     "engagement": 0.0082,
+     "subs": 0.4384,
+     "avd": 128.178,
+     "ctr": 0.0638,
+     "r30": 0.7101,
+     "r60": 0.4569
     }
    }
   },
@@ -787,11 +868,14 @@
      "subs": 0.79
     },
     "values": {
-     "views": 32363.0,
-     "retention": 1.351,
-     "engagement": 0.0204,
-     "subs": 0.3708,
-     "ctr": 0.4716
+     "views": 32746.0,
+     "retention": 1.3475,
+     "engagement": 0.0202,
+     "subs": 0.3665,
+     "avd": 36.3818,
+     "ctr": 0.4713,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -805,21 +889,24 @@
    "grade": {
     "age_days": 10,
     "peers": 47,
-    "score": 0.59,
+    "score": 0.595,
     "letter": "C",
     "ranks": {
      "retention": 0.96,
      "ctr": 0.41,
      "views": 0.32,
      "engagement": 0.6,
-     "subs": 0.09
+     "subs": 0.19
     },
     "values": {
-     "views": 6684.0,
+     "views": 6697.0,
      "retention": 0.6012,
      "engagement": 0.0169,
-     "subs": 0.4488,
-     "ctr": 0.0434
+     "subs": 0.5973,
+     "avd": 102.8003,
+     "ctr": 0.0434,
+     "r30": 0.7418,
+     "r60": 0.615
     }
    }
   },
@@ -833,21 +920,24 @@
    "grade": {
     "age_days": 11,
     "peers": 135,
-    "score": 0.54,
+    "score": 0.539,
     "letter": "C",
     "ranks": {
      "retention": 0.97,
      "ctr": 0.21,
      "views": 0.49,
-     "engagement": 0.44,
+     "engagement": 0.43,
      "subs": 0.16
     },
     "values": {
-     "views": 17522.0,
-     "retention": 1.2755,
-     "engagement": 0.0236,
-     "subs": 0.0571,
-     "ctr": 0.4995
+     "views": 17617.0,
+     "retention": 1.2754,
+     "engagement": 0.0235,
+     "subs": 0.0568,
+     "avd": 36.9866,
+     "ctr": 0.4992,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -871,11 +961,14 @@
      "subs": 0.52
     },
     "values": {
-     "views": 87558.0,
-     "retention": 0.3021,
+     "views": 87956.0,
+     "retention": 0.302,
      "engagement": 0.014,
-     "subs": 2.17,
-     "ctr": 0.0567
+     "subs": 2.1602,
+     "avd": 1079.9564,
+     "ctr": 0.0567,
+     "r30": 0.8628,
+     "r60": 0.6604
     }
    }
   },
@@ -895,15 +988,18 @@
      "retention": 0.47,
      "ctr": 0.37,
      "views": 0.27,
-     "engagement": 0.12,
+     "engagement": 0.13,
      "subs": 0.58
     },
     "values": {
-     "views": 7439.0,
-     "retention": 0.9134,
-     "engagement": 0.0153,
-     "subs": 0.2689,
-     "ctr": 0.5274
+     "views": 7448.0,
+     "retention": 0.9138,
+     "engagement": 0.0154,
+     "subs": 0.2685,
+     "avd": 22.8455,
+     "ctr": 0.5275,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -927,11 +1023,14 @@
      "subs": 0.42
     },
     "values": {
-     "views": 9941.0,
-     "retention": 0.803,
-     "engagement": 0.0299,
-     "subs": 0.2012,
-     "ctr": 0.5998
+     "views": 9964.0,
+     "retention": 0.8026,
+     "engagement": 0.0298,
+     "subs": 0.2007,
+     "avd": 50.5607,
+     "ctr": 0.5997,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -955,11 +1054,14 @@
      "subs": 0.51
     },
     "values": {
-     "views": 3912.0,
-     "retention": 0.721,
+     "views": 3918.0,
+     "retention": 0.7204,
      "engagement": 0.0291,
-     "subs": 0.2556,
-     "ctr": 0.6176
+     "subs": 0.2552,
+     "avd": 43.2218,
+     "ctr": 0.6179,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -983,11 +1085,14 @@
      "subs": 0.6
     },
     "values": {
-     "views": 7273.0,
+     "views": 7286.0,
      "retention": 0.9786,
      "engagement": 0.0195,
-     "subs": 0.275,
-     "ctr": 0.4885
+     "subs": 0.2745,
+     "avd": 41.1014,
+     "ctr": 0.4885,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -1011,11 +1116,14 @@
      "subs": 0.79
     },
     "values": {
-     "views": 20570.0,
-     "retention": 0.7022,
-     "engagement": 0.0189,
-     "subs": 0.3889,
-     "ctr": 0.5022
+     "views": 20604.0,
+     "retention": 0.7023,
+     "engagement": 0.0188,
+     "subs": 0.3883,
+     "avd": 63.908,
+     "ctr": 0.5022,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -1039,11 +1147,14 @@
      "subs": 0.72
     },
     "values": {
-     "views": 78408.0,
+     "views": 78431.0,
      "retention": 1.1039,
      "engagement": 0.0217,
-     "subs": 0.3444,
-     "ctr": 0.5405
+     "subs": 0.3443,
+     "avd": 28.7027,
+     "ctr": 0.5404,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -1067,11 +1178,14 @@
      "subs": 0.24
     },
     "values": {
-     "views": 6515.0,
+     "views": 6518.0,
      "retention": 0.2772,
      "engagement": 0.0112,
-     "subs": 0.7675,
-     "ctr": 0.0411
+     "subs": 0.7671,
+     "avd": 344.0451,
+     "ctr": 0.0411,
+     "r30": 0.6982,
+     "r60": 0.5215
     }
    }
   },
@@ -1085,7 +1199,7 @@
    "grade": {
     "age_days": 19,
     "peers": 137,
-    "score": 0.494,
+    "score": 0.496,
     "letter": "C",
     "ranks": {
      "retention": 0.91,
@@ -1095,11 +1209,14 @@
      "subs": 0.27
     },
     "values": {
-     "views": 14933.0,
-     "retention": 1.1677,
+     "views": 14974.0,
+     "retention": 1.1688,
      "engagement": 0.0171,
-     "subs": 0.1339,
-     "ctr": 0.5111
+     "subs": 0.1336,
+     "avd": 44.416,
+     "ctr": 0.5112,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -1123,11 +1240,14 @@
      "subs": 0.15
     },
     "values": {
-     "views": 33849.0,
-     "retention": 1.2684,
+     "views": 33861.0,
+     "retention": 1.2686,
      "engagement": 0.0176,
      "subs": 0.0295,
-     "ctr": 0.4787
+     "avd": 24.1036,
+     "ctr": 0.4787,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -1151,11 +1271,14 @@
      "subs": 0.36
     },
     "values": {
-     "views": 5179.0,
-     "retention": 0.9589,
+     "views": 5188.0,
+     "retention": 0.9587,
      "engagement": 0.0197,
-     "subs": 0.1931,
-     "ctr": 0.5783
+     "subs": 0.1928,
+     "avd": 35.4718,
+     "ctr": 0.5781,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -1169,21 +1292,24 @@
    "grade": {
     "age_days": 28,
     "peers": 146,
-    "score": 0.464,
+    "score": 0.465,
     "letter": "C",
     "ranks": {
      "retention": 0.16,
-     "ctr": 0.8,
+     "ctr": 0.81,
      "views": 0.01,
-     "engagement": 0.83,
+     "engagement": 0.82,
      "subs": 0.88
     },
     "values": {
-     "views": 1728.0,
-     "retention": 0.7386,
-     "engagement": 0.037,
-     "subs": 0.5787,
-     "ctr": 0.592
+     "views": 1733.0,
+     "retention": 0.7379,
+     "engagement": 0.0369,
+     "subs": 0.577,
+     "avd": 59.7663,
+     "ctr": 0.5926,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -1203,15 +1329,18 @@
      "retention": 0.9,
      "ctr": 0.18,
      "views": 0.12,
-     "engagement": 0.28,
+     "engagement": 0.27,
      "subs": 0.07
     },
     "values": {
-     "views": 4840.0,
-     "retention": 1.1479,
+     "views": 4845.0,
+     "retention": 1.1473,
      "engagement": 0.0194,
      "subs": 0.0,
-     "ctr": 0.4934
+     "avd": 36.7127,
+     "ctr": 0.4935,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -1239,7 +1368,10 @@
      "retention": 0.8706,
      "engagement": 0.0292,
      "subs": 0.0,
-     "ctr": 0.5501
+     "avd": 40.9195,
+     "ctr": 0.5501,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -1267,7 +1399,10 @@
      "retention": 0.8395,
      "engagement": 0.0185,
      "subs": 0.0,
-     "ctr": 0.5558
+     "avd": 24.3444,
+     "ctr": 0.5558,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -1295,7 +1430,10 @@
      "retention": 0.9754,
      "engagement": 0.0223,
      "subs": 0.0789,
-     "ctr": 0.549
+     "avd": 43.8936,
+     "ctr": 0.549,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -1323,7 +1461,10 @@
      "retention": 0.9953,
      "engagement": 0.0187,
      "subs": 0.0912,
-     "ctr": 0.5187
+     "avd": 41.8015,
+     "ctr": 0.5187,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -1351,7 +1492,10 @@
      "retention": 0.1995,
      "engagement": 0.0111,
      "subs": 0.1961,
-     "ctr": 0.0282
+     "avd": 551.3389,
+     "ctr": 0.0282,
+     "r30": 0.8982,
+     "r60": 0.491
     }
    }
   },
@@ -1379,7 +1523,10 @@
      "retention": 0.4366,
      "engagement": 0.0099,
      "subs": 0.0,
-     "ctr": 0.034
+     "avd": 124.8679,
+     "ctr": 0.034,
+     "r30": 0.6373,
+     "r60": 0.5412
     }
    }
   },
@@ -1407,7 +1554,10 @@
      "retention": 0.3766,
      "engagement": 0.0079,
      "subs": 0.5522,
-     "ctr": 0.0418
+     "avd": 224.456,
+     "ctr": 0.0418,
+     "r30": 0.712,
+     "r60": 0.578
     }
    }
   },
@@ -1435,7 +1585,10 @@
      "retention": 1.1753,
      "engagement": 0.0311,
      "subs": 0.2191,
-     "ctr": 0.4536
+     "avd": 39.9614,
+     "ctr": 0.4536,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -1463,7 +1616,10 @@
      "retention": 1.2664,
      "engagement": 0.0217,
      "subs": 0.2249,
-     "ctr": 0.4685
+     "avd": 37.9907,
+     "ctr": 0.4685,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -1491,7 +1647,10 @@
      "retention": 0.4088,
      "engagement": 0.0066,
      "subs": 0.4855,
-     "ctr": 0.0414
+     "avd": 270.6061,
+     "ctr": 0.0414,
+     "r30": 0.757,
+     "r60": 0.6062
     }
    }
   },
@@ -1519,7 +1678,10 @@
      "retention": 1.1461,
      "engagement": 0.0149,
      "subs": 0.1819,
-     "ctr": 0.4638
+     "avd": 41.2588,
+     "ctr": 0.4638,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -1547,7 +1709,10 @@
      "retention": 0.4062,
      "engagement": 0.0112,
      "subs": 2.0345,
-     "ctr": 0.0588
+     "avd": 205.1367,
+     "ctr": 0.0588,
+     "r30": 0.7728,
+     "r60": 0.581
     }
    }
   },
@@ -1575,7 +1740,10 @@
      "retention": 1.3107,
      "engagement": 0.0131,
      "subs": 0.1043,
-     "ctr": 0.4701
+     "avd": 36.6999,
+     "ctr": 0.4701,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -1603,7 +1771,10 @@
      "retention": 0.3865,
      "engagement": 0.0063,
      "subs": 0.6874,
-     "ctr": 0.0778
+     "avd": 190.9425,
+     "ctr": 0.0778,
+     "r30": 0.7344,
+     "r60": 0.6314
     }
    }
   },
@@ -1631,7 +1802,10 @@
      "retention": 0.4954,
      "engagement": 0.0141,
      "subs": 0.6954,
-     "ctr": 0.0711
+     "avd": 140.2118,
+     "ctr": 0.0711,
+     "r30": 0.7777,
+     "r60": 0.6125
     }
    }
   },
@@ -1659,7 +1833,10 @@
      "retention": 0.4636,
      "engagement": 0.0113,
      "subs": 1.0955,
-     "ctr": 0.0439
+     "avd": 220.1871,
+     "ctr": 0.0439,
+     "r30": 0.7407,
+     "r60": 0.6365
     }
    }
   },
@@ -1687,7 +1864,10 @@
      "retention": 1.2376,
      "engagement": 0.0157,
      "subs": 0.1741,
-     "ctr": 0.431
+     "avd": 48.2667,
+     "ctr": 0.431,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -1715,7 +1895,10 @@
      "retention": 1.1534,
      "engagement": 0.0258,
      "subs": 0.3613,
-     "ctr": 0.4198
+     "avd": 49.5955,
+     "ctr": 0.4198,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -1743,7 +1926,10 @@
      "retention": 1.0568,
      "engagement": 0.025,
      "subs": 0.0,
-     "ctr": 0.5543
+     "avd": 41.2161,
+     "ctr": 0.5543,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -1771,7 +1957,10 @@
      "retention": 0.4321,
      "engagement": 0.0101,
      "subs": 1.0551,
-     "ctr": 0.0443
+     "avd": 159.8833,
+     "ctr": 0.0443,
+     "r30": 0.6833,
+     "r60": 0.577
     }
    }
   },
@@ -1799,7 +1988,10 @@
      "retention": 0.8062,
      "engagement": 0.0432,
      "subs": 0.2453,
-     "ctr": 0.5172
+     "avd": 54.8197,
+     "ctr": 0.5172,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -1827,7 +2019,10 @@
      "retention": 0.966,
      "engagement": 0.0239,
      "subs": 0.0,
-     "ctr": 0.5064
+     "avd": 41.5385,
+     "ctr": 0.5064,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -1855,7 +2050,10 @@
      "retention": 0.941,
      "engagement": 0.0245,
      "subs": 0.1842,
-     "ctr": 0.5632
+     "avd": 47.9922,
+     "ctr": 0.5632,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -1883,7 +2081,10 @@
      "retention": 1.1878,
      "engagement": 0.0126,
      "subs": 0.0515,
-     "ctr": 0.5728
+     "avd": 43.9493,
+     "ctr": 0.5728,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -1911,7 +2112,10 @@
      "retention": 0.8022,
      "engagement": 0.0301,
      "subs": 0.766,
-     "ctr": 0.5968
+     "avd": 60.1668,
+     "ctr": 0.5968,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -1939,7 +2143,10 @@
      "retention": 0.2777,
      "engagement": 0.0123,
      "subs": 0.434,
-     "ctr": 0.0672
+     "avd": 588.2279,
+     "ctr": 0.0672,
+     "r30": 0.8316,
+     "r60": 0.587
     }
    }
   },
@@ -1967,7 +2174,10 @@
      "retention": 0.5151,
      "engagement": 0.0071,
      "subs": 1.2277,
-     "ctr": 0.0735
+     "avd": 148.3517,
+     "ctr": 0.0735,
+     "r30": 0.7603,
+     "r60": 0.5992
     }
    }
   },
@@ -1995,7 +2205,10 @@
      "retention": 1.6741,
      "engagement": 0.0185,
      "subs": 0.1245,
-     "ctr": 0.423
+     "avd": 33.4811,
+     "ctr": 0.423,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -2023,7 +2236,10 @@
      "retention": 0.6271,
      "engagement": 0.0383,
      "subs": 0.0,
-     "ctr": 0.5238
+     "avd": 37.6241,
+     "ctr": 0.5238,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -2051,7 +2267,10 @@
      "retention": 0.9188,
      "engagement": 0.0223,
      "subs": 0.256,
-     "ctr": 0.5546
+     "avd": 45.0208,
+     "ctr": 0.5546,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -2079,7 +2298,10 @@
      "retention": 0.5199,
      "engagement": 0.0077,
      "subs": 0.6929,
-     "ctr": 0.061
+     "avd": 151.8098,
+     "ctr": 0.061,
+     "r30": 0.7798,
+     "r60": 0.6601
     }
    }
   },
@@ -2107,7 +2329,10 @@
      "retention": 1.1671,
      "engagement": 0.0147,
      "subs": 0.1116,
-     "ctr": 0.425
+     "avd": 39.6813,
+     "ctr": 0.425,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -2135,7 +2360,10 @@
      "retention": 1.0011,
      "engagement": 0.0264,
      "subs": 0.1012,
-     "ctr": 0.4257
+     "avd": 37.0416,
+     "ctr": 0.4257,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -2163,7 +2391,10 @@
      "retention": 0.4477,
      "engagement": 0.0074,
      "subs": 1.4394,
-     "ctr": 0.0658
+     "avd": 246.239,
+     "ctr": 0.0658,
+     "r30": 0.753,
+     "r60": 0.6176
     }
    }
   },
@@ -2191,7 +2422,10 @@
      "retention": 0.995,
      "engagement": 0.0172,
      "subs": 0.0,
-     "ctr": 0.513
+     "avd": 45.7692,
+     "ctr": 0.513,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -2219,7 +2453,10 @@
      "retention": 1.1588,
      "engagement": 0.015,
      "subs": 0.1608,
-     "ctr": 0.5071
+     "avd": 28.9709,
+     "ctr": 0.5071,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -2247,7 +2484,10 @@
      "retention": 1.1161,
      "engagement": 0.0268,
      "subs": 0.284,
-     "ctr": 0.4624
+     "avd": 53.5749,
+     "ctr": 0.4624,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -2275,7 +2515,10 @@
      "retention": 0.9962,
      "engagement": 0.0145,
      "subs": 0.2754,
-     "ctr": 0.4848
+     "avd": 36.8602,
+     "ctr": 0.4848,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -2303,7 +2546,10 @@
      "retention": 0.3818,
      "engagement": 0.019,
      "subs": 0.9339,
-     "ctr": 0.0522
+     "avd": 201.1987,
+     "ctr": 0.0522,
+     "r30": 0.6755,
+     "r60": 0.5646
     }
    }
   },
@@ -2331,7 +2577,10 @@
      "retention": 1.1867,
      "engagement": 0.0169,
      "subs": 0.2756,
-     "ctr": 0.4953
+     "avd": 39.1599,
+     "ctr": 0.4953,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -2359,7 +2608,10 @@
      "retention": 0.4776,
      "engagement": 0.0111,
      "subs": 0.5919,
-     "ctr": 0.0455
+     "avd": 171.4617,
+     "ctr": 0.0455,
+     "r30": 0.678,
+     "r60": 0.535
     }
    }
   },
@@ -2387,7 +2639,10 @@
      "retention": 1.006,
      "engagement": 0.0312,
      "subs": 0.2866,
-     "ctr": 0.4487
+     "avd": 66.399,
+     "ctr": 0.4487,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -2415,7 +2670,10 @@
      "retention": 0.8481,
      "engagement": 0.0214,
      "subs": 0.2518,
-     "ctr": 0.5317
+     "avd": 51.7313,
+     "ctr": 0.5317,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -2443,7 +2701,10 @@
      "retention": 0.5374,
      "engagement": 0.013,
      "subs": 0.7027,
-     "ctr": 0.0837
+     "avd": 125.2106,
+     "ctr": 0.0837,
+     "r30": 0.7319,
+     "r60": 0.6076
     }
    }
   },
@@ -2471,7 +2732,10 @@
      "retention": 0.4992,
      "engagement": 0.0096,
      "subs": 0.4626,
-     "ctr": 0.0535
+     "avd": 144.7589,
+     "ctr": 0.0535,
+     "r30": 0.6943,
+     "r60": 0.5828
     }
    }
   },
@@ -2499,7 +2763,10 @@
      "retention": 1.2899,
      "engagement": 0.0157,
      "subs": 0.2957,
-     "ctr": 0.3558
+     "avd": 42.5681,
+     "ctr": 0.3558,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -2527,7 +2794,10 @@
      "retention": 0.4991,
      "engagement": 0.0125,
      "subs": 0.6741,
-     "ctr": 0.0386
+     "avd": 131.7726,
+     "ctr": 0.0386,
+     "r30": 0.6683,
+     "r60": 0.5477
     }
    }
   },
@@ -2555,7 +2825,10 @@
      "retention": 0.9954,
      "engagement": 0.0314,
      "subs": 0.2009,
-     "ctr": 0.4721
+     "avd": 52.7569,
+     "ctr": 0.4721,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -2583,7 +2856,10 @@
      "retention": 0.942,
      "engagement": 0.0314,
      "subs": 0.2649,
-     "ctr": 0.477
+     "avd": 43.3341,
+     "ctr": 0.477,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -2611,7 +2887,10 @@
      "retention": 0.3912,
      "engagement": 0.0076,
      "subs": 0.6221,
-     "ctr": 0.0558
+     "avd": 238.2601,
+     "ctr": 0.0558,
+     "r30": 0.7044,
+     "r60": 0.5427
     }
    }
   },
@@ -2639,7 +2918,10 @@
      "retention": 0.9758,
      "engagement": 0.02,
      "subs": 0.1921,
-     "ctr": 0.5385
+     "avd": 36.103,
+     "ctr": 0.5385,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -2667,7 +2949,10 @@
      "retention": 0.3028,
      "engagement": 0.0185,
      "subs": 2.3795,
-     "ctr": 0.054
+     "avd": 938.1317,
+     "ctr": 0.054,
+     "r30": 0.8372,
+     "r60": 0.635
     }
    }
   },
@@ -2695,7 +2980,10 @@
      "retention": 1.0714,
      "engagement": 0.0221,
      "subs": 0.1006,
-     "ctr": 0.5369
+     "avd": 33.2122,
+     "ctr": 0.5369,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -2723,7 +3011,10 @@
      "retention": 0.7309,
      "engagement": 0.0222,
      "subs": 0.0,
-     "ctr": 0.5172
+     "avd": 40.9328,
+     "ctr": 0.5172,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -2751,7 +3042,10 @@
      "retention": 0.8522,
      "engagement": 0.0312,
      "subs": 0.3017,
-     "ctr": 0.5686
+     "avd": 55.39,
+     "ctr": 0.5686,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -2779,7 +3073,10 @@
      "retention": 0.9714,
      "engagement": 0.02,
      "subs": 0.1234,
-     "ctr": 0.6273
+     "avd": 40.7969,
+     "ctr": 0.6273,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -2807,7 +3104,10 @@
      "retention": 0.9458,
      "engagement": 0.0345,
      "subs": 0.1532,
-     "ctr": 0.5769
+     "avd": 41.6149,
+     "ctr": 0.5769,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -2835,7 +3135,10 @@
      "retention": 0.8612,
      "engagement": 0.0176,
      "subs": 0.0,
-     "ctr": 0.4868
+     "avd": 40.4751,
+     "ctr": 0.4868,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -2863,7 +3166,10 @@
      "retention": 0.8244,
      "engagement": 0.0578,
      "subs": 0.4858,
-     "ctr": 0.6242
+     "avd": 61.0041,
+     "ctr": 0.6242,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -2891,7 +3197,10 @@
      "retention": 0.8619,
      "engagement": 0.0378,
      "subs": 0.1311,
-     "ctr": 0.5625
+     "avd": 45.6783,
+     "ctr": 0.5625,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -2919,7 +3228,10 @@
      "retention": 0.2325,
      "engagement": 0.0109,
      "subs": 0.4467,
-     "ctr": 0.0671
+     "avd": 569.0868,
+     "ctr": 0.0671,
+     "r30": 0.873,
+     "r60": 0.6225
     }
    }
   },
@@ -2947,7 +3259,10 @@
      "retention": 0.7183,
      "engagement": 0.0264,
      "subs": 0.0,
-     "ctr": 0.5277
+     "avd": 22.9869,
+     "ctr": 0.5277,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -2975,7 +3290,10 @@
      "retention": 0.825,
      "engagement": 0.0179,
      "subs": 0.1947,
-     "ctr": 0.5352
+     "avd": 69.2984,
+     "ctr": 0.5352,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -3003,7 +3321,10 @@
      "retention": 0.1994,
      "engagement": 0.0205,
      "subs": 8.6025,
-     "ctr": 0.0546
+     "avd": 741.0793,
+     "ctr": 0.0546,
+     "r30": 0.9354,
+     "r60": 0.7411
     }
    }
   },
@@ -3031,7 +3352,10 @@
      "retention": 1.0166,
      "engagement": 0.014,
      "subs": 0.2723,
-     "ctr": 0.5498
+     "avd": 48.7964,
+     "ctr": 0.5498,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -3059,7 +3383,10 @@
      "retention": 1.304,
      "engagement": 0.0092,
      "subs": 0.205,
-     "ctr": 0.4394
+     "avd": 37.817,
+     "ctr": 0.4394,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -3087,7 +3414,10 @@
      "retention": 0.3344,
      "engagement": 0.0093,
      "subs": 0.9501,
-     "ctr": 0.0585
+     "avd": 634.6411,
+     "ctr": 0.0585,
+     "r30": 0.7578,
+     "r60": 0.5618
     }
    }
   },
@@ -3115,7 +3445,10 @@
      "retention": 0.9842,
      "engagement": 0.0218,
      "subs": 0.0,
-     "ctr": 0.5878
+     "avd": 34.446,
+     "ctr": 0.5878,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -3143,7 +3476,10 @@
      "retention": 0.2254,
      "engagement": 0.0165,
      "subs": 1.8083,
-     "ctr": 0.0277
+     "avd": 522.8509,
+     "ctr": 0.0277,
+     "r30": 0.8346,
+     "r60": 0.5961
     }
    }
   },
@@ -3171,7 +3507,10 @@
      "retention": 1.0951,
      "engagement": 0.0219,
      "subs": 0.2542,
-     "ctr": 0.5318
+     "avd": 36.1377,
+     "ctr": 0.5318,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -3199,7 +3538,10 @@
      "retention": 0.7423,
      "engagement": 0.028,
      "subs": 0.3564,
-     "ctr": 0.5312
+     "avd": 30.4327,
+     "ctr": 0.5312,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -3227,7 +3569,10 @@
      "retention": 0.8444,
      "engagement": 0.028,
      "subs": 0.3481,
-     "ctr": 0.5975
+     "avd": 76.8419,
+     "ctr": 0.5975,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -3255,7 +3600,10 @@
      "retention": 0.8845,
      "engagement": 0.0342,
      "subs": 0.3457,
-     "ctr": 0.5795
+     "avd": 43.3397,
+     "ctr": 0.5795,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -3283,7 +3631,10 @@
      "retention": 0.9976,
      "engagement": 0.0338,
      "subs": 0.1605,
-     "ctr": 0.5619
+     "avd": 40.9009,
+     "ctr": 0.5619,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -3311,7 +3662,10 @@
      "retention": 1.0429,
      "engagement": 0.0383,
      "subs": 0.287,
-     "ctr": 0.5043
+     "avd": 27.1144,
+     "ctr": 0.5043,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -3339,7 +3693,10 @@
      "retention": 0.6876,
      "engagement": 0.019,
      "subs": 0.0,
-     "ctr": 0.3808
+     "avd": 28.1913,
+     "ctr": 0.3808,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -3367,7 +3724,10 @@
      "retention": 0.7962,
      "engagement": 0.0194,
      "subs": 0.0,
-     "ctr": 0.5277
+     "avd": 27.8679,
+     "ctr": 0.5277,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -3395,7 +3755,10 @@
      "retention": 0.8909,
      "engagement": 0.0243,
      "subs": 0.253,
-     "ctr": 0.5503
+     "avd": 28.5103,
+     "ctr": 0.5503,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -3423,7 +3786,10 @@
      "retention": 0.1395,
      "engagement": 0.0431,
      "subs": 3.2818,
-     "ctr": 0.0211
+     "avd": 493.2248,
+     "ctr": 0.0211,
+     "r30": 0.955,
+     "r60": 0.6136
     }
    }
   },
@@ -3451,7 +3817,10 @@
      "retention": 0.634,
      "engagement": 0.0265,
      "subs": 0.0,
-     "ctr": 0.483
+     "avd": 31.0683,
+     "ctr": 0.483,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -3479,7 +3848,10 @@
      "retention": 0.227,
      "engagement": 0.0172,
      "subs": 0.2428,
-     "ctr": 0.0297
+     "avd": 660.0572,
+     "ctr": 0.0297,
+     "r30": 0.9036,
+     "r60": 0.5898
     }
    }
   },
@@ -3507,7 +3879,10 @@
      "retention": 1.0828,
      "engagement": 0.0214,
      "subs": 0.0717,
-     "ctr": 0.5412
+     "avd": 35.7326,
+     "ctr": 0.5412,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -3535,7 +3910,10 @@
      "retention": 0.9896,
      "engagement": 0.0152,
      "subs": 0.2968,
-     "ctr": 0.5237
+     "avd": 27.7087,
+     "ctr": 0.5237,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -3563,7 +3941,10 @@
      "retention": 0.8631,
      "engagement": 0.0565,
      "subs": 0.4137,
-     "ctr": 0.6258
+     "avd": 64.7299,
+     "ctr": 0.6258,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -3591,7 +3972,10 @@
      "retention": 0.8582,
      "engagement": 0.0544,
      "subs": 0.6691,
-     "ctr": 0.6523
+     "avd": 60.0727,
+     "ctr": 0.6523,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -3619,7 +4003,10 @@
      "retention": 0.9818,
      "engagement": 0.0379,
      "subs": 0.2653,
-     "ctr": 0.5362
+     "avd": 55.9606,
+     "ctr": 0.5362,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -3647,7 +4034,10 @@
      "retention": 0.1997,
      "engagement": 0.017,
      "subs": 1.0058,
-     "ctr": 0.0341
+     "avd": 784.3441,
+     "ctr": 0.0341,
+     "r30": 0.9303,
+     "r60": 0.7487
     }
    }
   },
@@ -3675,7 +4065,10 @@
      "retention": 0.8647,
      "engagement": 0.0421,
      "subs": 0.7812,
-     "ctr": 0.5506
+     "avd": 56.2051,
+     "ctr": 0.5506,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -3703,7 +4096,10 @@
      "retention": 0.907,
      "engagement": 0.0328,
      "subs": 0.4692,
-     "ctr": 0.5471
+     "avd": 77.0965,
+     "ctr": 0.5471,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -3731,7 +4127,10 @@
      "retention": 0.4649,
      "engagement": 0.014,
      "subs": 0.0,
-     "ctr": 0.3928
+     "avd": 26.4975,
+     "ctr": 0.3928,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -3759,7 +4158,10 @@
      "retention": 0.8792,
      "engagement": 0.0369,
      "subs": 0.245,
-     "ctr": 0.6002
+     "avd": 40.445,
+     "ctr": 0.6002,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -3787,7 +4189,10 @@
      "retention": 1.0067,
      "engagement": 0.0305,
      "subs": 0.2141,
-     "ctr": 0.5564
+     "avd": 53.3534,
+     "ctr": 0.5564,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -3815,7 +4220,10 @@
      "retention": 1.0999,
      "engagement": 0.0469,
      "subs": 0.6668,
-     "ctr": 0.5727
+     "avd": 57.1924,
+     "ctr": 0.5727,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -3843,7 +4251,10 @@
      "retention": 0.464,
      "engagement": 0.0172,
      "subs": 5.5197,
-     "ctr": 0.0538
+     "avd": 218.0888,
+     "ctr": 0.0538,
+     "r30": 0.7665,
+     "r60": 0.6057
     }
    }
   },
@@ -3871,7 +4282,10 @@
      "retention": 0.7839,
      "engagement": 0.0354,
      "subs": 0.5346,
-     "ctr": 0.6506
+     "avd": 86.2255,
+     "ctr": 0.6506,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -3899,7 +4313,10 @@
      "retention": 0.3902,
      "engagement": 0.0181,
      "subs": 2.559,
-     "ctr": 0.0306
+     "avd": 401.911,
+     "ctr": 0.0306,
+     "r30": 0.7802,
+     "r60": 0.6598
     }
    }
   },
@@ -3927,7 +4344,10 @@
      "retention": 0.9192,
      "engagement": 0.0287,
      "subs": 0.2977,
-     "ctr": 0.5255
+     "avd": 79.973,
+     "ctr": 0.5255,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -3955,7 +4375,10 @@
      "retention": 0.4598,
      "engagement": 0.0124,
      "subs": 0.9508,
-     "ctr": 0.0276
+     "avd": 206.929,
+     "ctr": 0.0276,
+     "r30": 0.7403,
+     "r60": 0.6018
     }
    }
   },
@@ -3983,7 +4406,10 @@
      "retention": 0.9305,
      "engagement": 0.0449,
      "subs": 0.488,
-     "ctr": 0.6194
+     "avd": 54.9021,
+     "ctr": 0.6194,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -4011,7 +4437,10 @@
      "retention": 0.4917,
      "engagement": 0.0174,
      "subs": 0.5037,
-     "ctr": 0.4598
+     "avd": 27.0427,
+     "ctr": 0.4598,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -4039,7 +4468,10 @@
      "retention": 0.147,
      "engagement": 0.0457,
      "subs": 9.3505,
-     "ctr": 0.0291
+     "avd": 649.5152,
+     "ctr": 0.0291,
+     "r30": 0.9476,
+     "r60": 0.7471
     }
    }
   },
@@ -4067,7 +4499,10 @@
      "retention": 0.4984,
      "engagement": 0.0193,
      "subs": 1.0073,
-     "ctr": 0.0507
+     "avd": 91.2125,
+     "ctr": 0.0507,
+     "r30": 0.748,
+     "r60": 0.6134
     }
    }
   },
@@ -4095,7 +4530,10 @@
      "retention": 0.9094,
      "engagement": 0.0302,
      "subs": 0.4395,
-     "ctr": 0.534
+     "avd": 62.7469,
+     "ctr": 0.534,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -4123,7 +4561,10 @@
      "retention": 0.3346,
      "engagement": 0.0218,
      "subs": 2.7635,
-     "ctr": 0.0392
+     "avd": 1006.4184,
+     "ctr": 0.0392,
+     "r30": 0.8421,
+     "r60": 0.6208
     }
    }
   },
@@ -4151,7 +4592,10 @@
      "retention": 0.4152,
      "engagement": 0.0138,
      "subs": 1.6075,
-     "ctr": 0.0679
+     "avd": 147.3783,
+     "ctr": 0.0679,
+     "r30": 0.7691,
+     "r60": 0.6023
     }
    }
   },
@@ -4179,7 +4623,10 @@
      "retention": 0.922,
      "engagement": 0.0303,
      "subs": 0.16,
-     "ctr": 0.5786
+     "avd": 51.6316,
+     "ctr": 0.5786,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -4207,7 +4654,10 @@
      "retention": 0.5197,
      "engagement": 0.0159,
      "subs": 2.7823,
-     "ctr": 0.0533
+     "avd": 97.7094,
+     "ctr": 0.0533,
+     "r30": 0.6977,
+     "r60": 0.6119
     }
    }
   },
@@ -4235,7 +4685,10 @@
      "retention": 0.9586,
      "engagement": 0.0281,
      "subs": 0.1698,
-     "ctr": 0.5424
+     "avd": 39.3031,
+     "ctr": 0.5424,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -4263,7 +4716,10 @@
      "retention": 0.5917,
      "engagement": 0.0186,
      "subs": 0.2005,
-     "ctr": 0.603
+     "avd": 40.8247,
+     "ctr": 0.603,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -4291,7 +4747,10 @@
      "retention": 0.3936,
      "engagement": 0.0144,
      "subs": 2.9388,
-     "ctr": 0.0578
+     "avd": 173.1948,
+     "ctr": 0.0578,
+     "r30": 0.6947,
+     "r60": 0.5407
     }
    }
   },
@@ -4319,7 +4778,10 @@
      "retention": 0.7636,
      "engagement": 0.0325,
      "subs": 0.2094,
-     "ctr": 0.6333
+     "avd": 35.1256,
+     "ctr": 0.6333,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -4347,7 +4809,10 @@
      "retention": 1.0273,
      "engagement": 0.0317,
      "subs": 0.2797,
-     "ctr": 0.5327
+     "avd": 56.5019,
+     "ctr": 0.5327,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -4375,7 +4840,10 @@
      "retention": 0.3026,
      "engagement": 0.0296,
      "subs": 3.4643,
-     "ctr": 0.0621
+     "avd": 623.3987,
+     "ctr": 0.0621,
+     "r30": 0.8269,
+     "r60": 0.525
     }
    }
   },
@@ -4403,7 +4871,10 @@
      "retention": 0.889,
      "engagement": 0.0393,
      "subs": 0.1443,
-     "ctr": 0.5639
+     "avd": 57.7844,
+     "ctr": 0.5639,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -4431,7 +4902,10 @@
      "retention": 1.0156,
      "engagement": 0.0253,
      "subs": 0.2037,
-     "ctr": 0.5665
+     "avd": 38.5945,
+     "ctr": 0.5665,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -4459,7 +4933,10 @@
      "retention": 0.9728,
      "engagement": 0.0134,
      "subs": 0.4858,
-     "ctr": 0.482
+     "avd": 25.2939,
+     "ctr": 0.482,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -4487,7 +4964,10 @@
      "retention": 0.8477,
      "engagement": 0.0344,
      "subs": 0.167,
-     "ctr": 0.6272
+     "avd": 53.4061,
+     "ctr": 0.6272,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -4515,7 +4995,10 @@
      "retention": 0.7435,
      "engagement": 0.0136,
      "subs": 0.0,
-     "ctr": 0.5109
+     "avd": 40.8952,
+     "ctr": 0.5109,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -4543,7 +5026,10 @@
      "retention": 0.8492,
      "engagement": 0.0259,
      "subs": 0.2565,
-     "ctr": 0.6631
+     "avd": 57.7487,
+     "ctr": 0.6631,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -4571,7 +5057,10 @@
      "retention": 0.4914,
      "engagement": 0.0129,
      "subs": 0.9932,
-     "ctr": 0.0445
+     "avd": 123.8255,
+     "ctr": 0.0445,
+     "r30": 0.7058,
+     "r60": 0.5778
     }
    }
   },
@@ -4599,7 +5088,10 @@
      "retention": 0.7157,
      "engagement": 0.0194,
      "subs": 0.1574,
-     "ctr": 0.5394
+     "avd": 32.2067,
+     "ctr": 0.5394,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -4627,7 +5119,10 @@
      "retention": 0.5051,
      "engagement": 0.0246,
      "subs": 1.6393,
-     "ctr": 0.0321
+     "avd": 109.0954,
+     "ctr": 0.0321,
+     "r30": 0.7385,
+     "r60": 0.6808
     }
    }
   },
@@ -4655,7 +5150,10 @@
      "retention": 0.7628,
      "engagement": 0.0276,
      "subs": 0.6816,
-     "ctr": 0.5622
+     "avd": 38.141,
+     "ctr": 0.5622,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -4683,7 +5181,10 @@
      "retention": 0.3151,
      "engagement": 0.0301,
      "subs": 1.0422,
-     "ctr": 0.0427
+     "avd": 434.2522,
+     "ctr": 0.0427,
+     "r30": 0.7294,
+     "r60": 0.542
     }
    }
   },
@@ -4711,7 +5212,10 @@
      "retention": 1.0669,
      "engagement": 0.0322,
      "subs": 0.2989,
-     "ctr": 0.5176
+     "avd": 43.7449,
+     "ctr": 0.5176,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -4739,7 +5243,10 @@
      "retention": 0.4859,
      "engagement": 0.0239,
      "subs": 2.7739,
-     "ctr": 0.0395
+     "avd": 101.5615,
+     "ctr": 0.0395,
+     "r30": 0.6991,
+     "r60": 0.5983
     }
    }
   },
@@ -4767,7 +5274,10 @@
      "retention": 0.9206,
      "engagement": 0.032,
      "subs": 0.0958,
-     "ctr": 0.5745
+     "avd": 44.1877,
+     "ctr": 0.5745,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -4795,7 +5305,10 @@
      "retention": 0.1524,
      "engagement": 0.0385,
      "subs": 2.457,
-     "ctr": 0.0223
+     "avd": 521.1213,
+     "ctr": 0.0223,
+     "r30": 0.9288,
+     "r60": 0.571
     }
    }
   },
@@ -4823,7 +5336,10 @@
      "retention": 0.9888,
      "engagement": 0.0414,
      "subs": 0.3499,
-     "ctr": 0.5273
+     "avd": 58.3401,
+     "ctr": 0.5273,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -4851,7 +5367,10 @@
      "retention": 0.2916,
      "engagement": 0.0216,
      "subs": 2.1047,
-     "ctr": 0.0545
+     "avd": 672.9076,
+     "ctr": 0.0545,
+     "r30": 0.8188,
+     "r60": 0.5884
     }
    }
   },
@@ -4879,7 +5398,10 @@
      "retention": 1.0705,
      "engagement": 0.0304,
      "subs": 0.5836,
-     "ctr": 0.515
+     "avd": 42.82,
+     "ctr": 0.515,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -4907,7 +5429,10 @@
      "retention": 0.3859,
      "engagement": 0.0185,
      "subs": 0.9251,
-     "ctr": 0.0164
+     "avd": 148.9732,
+     "ctr": 0.0164,
+     "r30": 0.6772,
+     "r60": 0.5351
     }
    }
   },
@@ -4935,7 +5460,10 @@
      "retention": 1.0811,
      "engagement": 0.0175,
      "subs": 0.3229,
-     "ctr": 0.5517
+     "avd": 44.3259,
+     "ctr": 0.5517,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -4963,7 +5491,10 @@
      "retention": 0.4864,
      "engagement": 0.0162,
      "subs": 0.7905,
-     "ctr": 0.0402
+     "avd": 87.5445,
+     "ctr": 0.0402,
+     "r30": 0.621,
+     "r60": 0.5217
     }
    }
   },
@@ -4991,7 +5522,10 @@
      "retention": 1.2343,
      "engagement": 0.0126,
      "subs": 0.1648,
-     "ctr": 0.4888
+     "avd": 25.9201,
+     "ctr": 0.4888,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -5019,7 +5553,10 @@
      "retention": 1.0884,
      "engagement": 0.0237,
      "subs": 0.214,
-     "ctr": 0.5674
+     "avd": 33.7419,
+     "ctr": 0.5674,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -5047,7 +5584,10 @@
      "retention": 0.5161,
      "engagement": 0.0159,
      "subs": 2.6995,
-     "ctr": 0.0407
+     "avd": 105.7994,
+     "ctr": 0.0407,
+     "r30": 0.7452,
+     "r60": 0.6187
     }
    }
   },
@@ -5075,7 +5615,10 @@
      "retention": 0.8333,
      "engagement": 0.0287,
      "subs": 0.4848,
-     "ctr": 0.6238
+     "avd": 61.6654,
+     "ctr": 0.6238,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -5103,7 +5646,10 @@
      "retention": 0.3116,
      "engagement": 0.0283,
      "subs": 2.8569,
-     "ctr": 0.0585
+     "avd": 818.684,
+     "ctr": 0.0585,
+     "r30": 0.8272,
+     "r60": 0.6222
     }
    }
   },
@@ -5131,7 +5677,10 @@
      "retention": 0.8504,
      "engagement": 0.0239,
      "subs": 0.2286,
-     "ctr": 0.6243
+     "avd": 48.4708,
+     "ctr": 0.6243,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -5159,7 +5708,10 @@
      "retention": 1.0144,
      "engagement": 0.0205,
      "subs": 0.3421,
-     "ctr": 0.5858
+     "avd": 54.7796,
+     "ctr": 0.5858,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -5187,7 +5739,10 @@
      "retention": 0.8368,
      "engagement": 0.0484,
      "subs": 0.9213,
-     "ctr": 0.5751
+     "avd": 45.1862,
+     "ctr": 0.5751,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -5215,7 +5770,10 @@
      "retention": 0.6621,
      "engagement": 0.031,
      "subs": 1.1117,
-     "ctr": 0.6361
+     "avd": 52.3034,
+     "ctr": 0.6361,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -5243,7 +5801,10 @@
      "retention": 0.2368,
      "engagement": 0.0401,
      "subs": 5.6319,
-     "ctr": 0.0295
+     "avd": 486.8126,
+     "ctr": 0.0295,
+     "r30": 0.788,
+     "r60": 0.4532
     }
    }
   },
@@ -5271,7 +5832,10 @@
      "retention": 1.0385,
      "engagement": 0.0164,
      "subs": 0.1465,
-     "ctr": 0.5262
+     "avd": 29.0785,
+     "ctr": 0.5262,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -5299,7 +5863,10 @@
      "retention": 0.5231,
      "engagement": 0.0163,
      "subs": 1.1647,
-     "ctr": 0.0611
+     "avd": 114.5574,
+     "ctr": 0.0611,
+     "r30": 0.6914,
+     "r60": 0.5596
     }
    }
   },
@@ -5327,7 +5894,10 @@
      "retention": 0.4691,
      "engagement": 0.0148,
      "subs": 0.6877,
-     "ctr": 0.0483
+     "avd": 151.5209,
+     "ctr": 0.0483,
+     "r30": 0.7106,
+     "r60": 0.5666
     }
    }
   },
@@ -5355,7 +5925,10 @@
      "retention": 0.4469,
      "engagement": 0.0124,
      "subs": 0.3868,
-     "ctr": 0.0581
+     "avd": 89.8205,
+     "ctr": 0.0581,
+     "r30": 0.6626,
+     "r60": 0.4582
     }
    }
   },
@@ -5383,7 +5956,10 @@
      "retention": 0.5738,
      "engagement": 0.0312,
      "subs": 0.7677,
-     "ctr": 0.7362
+     "avd": 49.3431,
+     "ctr": 0.7362,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -5411,7 +5987,10 @@
      "retention": 0.5555,
      "engagement": 0.0201,
      "subs": 0.0,
-     "ctr": 0.0196
+     "avd": 110.5475,
+     "ctr": 0.0196,
+     "r30": 0.7139,
+     "r60": 0.5987
     }
    }
   },
@@ -5439,7 +6018,10 @@
      "retention": 0.7678,
      "engagement": 0.0355,
      "subs": 0.2706,
-     "ctr": 0.6051
+     "avd": 69.1007,
+     "ctr": 0.6051,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -5467,7 +6049,10 @@
      "retention": 1.063,
      "engagement": 0.019,
      "subs": 0.0797,
-     "ctr": 0.4907
+     "avd": 40.393,
+     "ctr": 0.4907,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -5495,7 +6080,10 @@
      "retention": 0.3372,
      "engagement": 0.0308,
      "subs": 2.8412,
-     "ctr": 0.047
+     "avd": 817.7144,
+     "ctr": 0.047,
+     "r30": 0.8364,
+     "r60": 0.6136
     }
    }
   },
@@ -5523,7 +6111,10 @@
      "retention": 0.5862,
      "engagement": 0.0165,
      "subs": 0.5593,
-     "ctr": 0.0807
+     "avd": 183.4708,
+     "ctr": 0.0807,
+     "r30": 0.8133,
+     "r60": 0.7315
     }
    }
   },
@@ -5551,7 +6142,10 @@
      "retention": 0.6219,
      "engagement": 0.0169,
      "subs": 1.5499,
-     "ctr": 0.0578
+     "avd": 149.8733,
+     "ctr": 0.0578,
+     "r30": 0.803,
+     "r60": 0.7107
     }
    }
   },
@@ -5579,7 +6173,10 @@
      "retention": 1.1222,
      "engagement": 0.0154,
      "subs": 0.1004,
-     "ctr": 0.5494
+     "avd": 25.8114,
+     "ctr": 0.5494,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -5607,7 +6204,10 @@
      "retention": 0.5578,
      "engagement": 0.0194,
      "subs": 1.3327,
-     "ctr": 0.0441
+     "avd": 205.822,
+     "ctr": 0.0441,
+     "r30": 0.7992,
+     "r60": 0.6913
     }
    }
   },
@@ -5635,7 +6235,10 @@
      "retention": 0.9424,
      "engagement": 0.0303,
      "subs": 0.0784,
-     "ctr": 0.5632
+     "avd": 41.4637,
+     "ctr": 0.5632,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -5663,7 +6266,10 @@
      "retention": 0.2634,
      "engagement": 0.0099,
      "subs": 0.0,
-     "ctr": 0.4732
+     "avd": 21.0757,
+     "ctr": 0.4732,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -5691,7 +6297,10 @@
      "retention": 0.099,
      "engagement": 0.0486,
      "subs": 0.0,
-     "ctr": 0.0122
+     "avd": 132.6,
+     "ctr": 0.0122,
+     "r30": 0.5294,
+     "r60": 0.3031
     }
    }
   },
@@ -5719,7 +6328,10 @@
      "retention": 1.0268,
      "engagement": 0.0211,
      "subs": 0.1812,
-     "ctr": 0.5396
+     "avd": 55.4497,
+     "ctr": 0.5396,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -5747,7 +6359,10 @@
      "retention": 0.6122,
      "engagement": 0.0207,
      "subs": 2.3785,
-     "ctr": 0.0082
+     "avd": 111.4169,
+     "ctr": 0.0082,
+     "r30": 0.7454,
+     "r60": 0.6683
     }
    }
   },
@@ -5775,7 +6390,10 @@
      "retention": 0.5226,
      "engagement": 0.0197,
      "subs": 1.3554,
-     "ctr": 0.0469
+     "avd": 223.6652,
+     "ctr": 0.0469,
+     "r30": 0.7977,
+     "r60": 0.6756
     }
    }
   },
@@ -5803,7 +6421,10 @@
      "retention": 0.9076,
      "engagement": 0.0296,
      "subs": 0.2656,
-     "ctr": 0.5853
+     "avd": 63.5337,
+     "ctr": 0.5853,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -5831,7 +6452,10 @@
      "retention": 1.1098,
      "engagement": 0.0222,
      "subs": 0.1965,
-     "ctr": 0.5646
+     "avd": 49.9415,
+     "ctr": 0.5646,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -5859,7 +6483,10 @@
      "retention": 0.2867,
      "engagement": 0.0191,
      "subs": 3.4016,
-     "ctr": 0.0537
+     "avd": 1066.6721,
+     "ctr": 0.0537,
+     "r30": 0.8741,
+     "r60": 0.6939
     }
    }
   },
@@ -5887,7 +6514,10 @@
      "retention": 0.5929,
      "engagement": 0.0344,
      "subs": 0.3232,
-     "ctr": 0.5287
+     "avd": 30.2384,
+     "ctr": 0.5287,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -5915,7 +6545,10 @@
      "retention": 0.7433,
      "engagement": 0.0325,
      "subs": 0.0,
-     "ctr": 0.5262
+     "avd": 29.7326,
+     "ctr": 0.5262,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -5943,7 +6576,10 @@
      "retention": 0.842,
      "engagement": 0.0396,
      "subs": 0.606,
-     "ctr": 0.6007
+     "avd": 63.9882,
+     "ctr": 0.6007,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -5971,7 +6607,10 @@
      "retention": 0.8292,
      "engagement": 0.037,
      "subs": 0.2688,
-     "ctr": 0.6552
+     "avd": 53.8954,
+     "ctr": 0.6552,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -5999,7 +6638,10 @@
      "retention": 0.9372,
      "engagement": 0.0381,
      "subs": 0.8097,
-     "ctr": 0.5633
+     "avd": 49.6733,
+     "ctr": 0.5633,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -6027,7 +6669,10 @@
      "retention": 0.2164,
      "engagement": 0.0368,
      "subs": 8.7041,
-     "ctr": 0.0455
+     "avd": 748.6695,
+     "ctr": 0.0455,
+     "r30": 0.9227,
+     "r60": 0.6362
     }
    }
   },
@@ -6055,7 +6700,10 @@
      "retention": 0.7794,
      "engagement": 0.0385,
      "subs": 0.5407,
-     "ctr": 0.6307
+     "avd": 82.6154,
+     "ctr": 0.6307,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -6083,7 +6731,10 @@
      "retention": 0.3438,
      "engagement": 0.0707,
      "subs": 1.3257,
-     "ctr": 0.4423
+     "avd": 24.7552,
+     "ctr": 0.4423,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -6111,7 +6762,10 @@
      "retention": 0.5089,
      "engagement": 0.0533,
      "subs": 0.8785,
-     "ctr": 0.5464
+     "avd": 47.3312,
+     "ctr": 0.5464,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -6139,7 +6793,10 @@
      "retention": 0.1299,
      "engagement": 0.0328,
      "subs": 0.8624,
-     "ctr": 0.0195
+     "avd": 210.6339,
+     "ctr": 0.0195,
+     "r30": 0.6761,
+     "r60": 0.3355
     }
    }
   },
@@ -6167,7 +6824,10 @@
      "retention": 1.1926,
      "engagement": 0.0133,
      "subs": 0.0,
-     "ctr": 0.5267
+     "avd": 26.2377,
+     "ctr": 0.5267,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -6195,7 +6855,10 @@
      "retention": 0.742,
      "engagement": 0.0186,
      "subs": 0.3002,
-     "ctr": 0.6719
+     "avd": 55.6492,
+     "ctr": 0.6719,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -6223,7 +6886,10 @@
      "retention": 0.9685,
      "engagement": 0.0426,
      "subs": 0.3559,
-     "ctr": 0.5681
+     "avd": 76.5105,
+     "ctr": 0.5681,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -6251,7 +6917,10 @@
      "retention": 0.2865,
      "engagement": 0.0251,
      "subs": 0.6613,
-     "ctr": 0.035
+     "avd": 335.1558,
+     "ctr": 0.035,
+     "r30": 0.7937,
+     "r60": 0.5745
     }
    }
   },
@@ -6279,7 +6948,10 @@
      "retention": 0.8619,
      "engagement": 0.025,
      "subs": 0.0,
-     "ctr": 0.5168
+     "avd": 79.2945,
+     "ctr": 0.5168,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -6307,7 +6979,10 @@
      "retention": 0.7893,
      "engagement": 0.0424,
      "subs": 0.2661,
-     "ctr": 0.5724
+     "avd": 62.3545,
+     "ctr": 0.5724,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -6335,7 +7010,10 @@
      "retention": 0.3231,
      "engagement": 0.021,
      "subs": 3.1124,
-     "ctr": 0.0599
+     "avd": 531.1058,
+     "ctr": 0.0599,
+     "r30": 0.7948,
+     "r60": 0.5827
     }
    }
   },
@@ -6363,7 +7041,10 @@
      "retention": 0.8262,
      "engagement": 0.0174,
      "subs": 0.3795,
-     "ctr": 0.5997
+     "avd": 49.5717,
+     "ctr": 0.5997,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -6391,7 +7072,10 @@
      "retention": 0.5527,
      "engagement": 0.0486,
      "subs": 0.9231,
-     "ctr": 0.6046
+     "avd": 38.687,
+     "ctr": 0.6046,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -6419,7 +7103,10 @@
      "retention": 0.5602,
      "engagement": 0.0198,
      "subs": 0.8389,
-     "ctr": 0.0653
+     "avd": 229.1216,
+     "ctr": 0.0653,
+     "r30": 0.7097,
+     "r60": 0.6077
     }
    }
   },
@@ -6447,7 +7134,10 @@
      "retention": 0.569,
      "engagement": 0.0162,
      "subs": 0.8662,
-     "ctr": 0.0202
+     "avd": 211.1174,
+     "ctr": 0.0202,
+     "r30": 0.8001,
+     "r60": 0.6952
     }
    }
   },
@@ -6475,7 +7165,10 @@
      "retention": 0.2796,
      "engagement": 0.0223,
      "subs": 1.4401,
-     "ctr": 0.0388
+     "avd": 873.2501,
+     "ctr": 0.0388,
+     "r30": 0.8785,
+     "r60": 0.6663
     }
    }
   },
@@ -6503,7 +7196,10 @@
      "retention": 0.9963,
      "engagement": 0.0469,
      "subs": 0.7281,
-     "ctr": 0.5591
+     "avd": 58.7816,
+     "ctr": 0.5591,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -6531,7 +7227,10 @@
      "retention": 0.7091,
      "engagement": 0.0384,
      "subs": 0.3187,
-     "ctr": 0.6747
+     "avd": 53.8882,
+     "ctr": 0.6747,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -6559,7 +7258,10 @@
      "retention": 1.0201,
      "engagement": 0.0148,
      "subs": 0.3949,
-     "ctr": 0.5131
+     "avd": 46.9226,
+     "ctr": 0.5131,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -6587,7 +7289,10 @@
      "retention": 0.6863,
      "engagement": 0.0243,
      "subs": 0.4466,
-     "ctr": 0.5687
+     "avd": 40.4921,
+     "ctr": 0.5687,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -6615,7 +7320,10 @@
      "retention": 1.0313,
      "engagement": 0.0198,
      "subs": 0.2698,
-     "ctr": 0.5959
+     "avd": 55.6917,
+     "ctr": 0.5959,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -6643,7 +7351,10 @@
      "retention": 0.69,
      "engagement": 0.025,
      "subs": 0.4255,
-     "ctr": 0.5656
+     "avd": 43.4681,
+     "ctr": 0.5656,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -6671,7 +7382,10 @@
      "retention": 0.2893,
      "engagement": 0.0,
      "subs": 0.0,
-     "ctr": null
+     "avd": 160.0,
+     "ctr": null,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -6699,7 +7413,10 @@
      "retention": 0.1362,
      "engagement": 0.0377,
      "subs": 4.9522,
-     "ctr": 0.0126
+     "avd": 459.8656,
+     "ctr": 0.0126,
+     "r30": 0.9422,
+     "r60": 0.5625
     }
    }
   },
@@ -6727,7 +7444,10 @@
      "retention": 0.6863,
      "engagement": 0.0348,
      "subs": 0.0,
-     "ctr": 0.5175
+     "avd": 27.4524,
+     "ctr": 0.5175,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -6755,7 +7475,10 @@
      "retention": 0.4545,
      "engagement": 0.0134,
      "subs": 2.1007,
-     "ctr": 0.0701
+     "avd": 201.3571,
+     "ctr": 0.0701,
+     "r30": 0.677,
+     "r60": 0.5595
     }
    }
   },
@@ -6783,7 +7506,10 @@
      "retention": 0.9574,
      "engagement": 0.0219,
      "subs": 0.2477,
-     "ctr": 0.5712
+     "avd": 53.617,
+     "ctr": 0.5712,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -6811,7 +7537,10 @@
      "retention": 0.8349,
      "engagement": 0.029,
      "subs": 0.283,
-     "ctr": 0.5963
+     "avd": 65.9552,
+     "ctr": 0.5963,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -6839,7 +7568,10 @@
      "retention": 0.4096,
      "engagement": 0.0193,
      "subs": 1.6112,
-     "ctr": 0.0559
+     "avd": 204.0039,
+     "ctr": 0.0559,
+     "r30": 0.8043,
+     "r60": 0.6509
     }
    }
   },
@@ -6867,7 +7599,10 @@
      "retention": 0.3892,
      "engagement": 0.0294,
      "subs": 4.8065,
-     "ctr": 0.0615
+     "avd": 238.5857,
+     "ctr": 0.0615,
+     "r30": 0.666,
+     "r60": 0.5473
     }
    }
   },
@@ -6895,7 +7630,10 @@
      "retention": 0.4876,
      "engagement": 0.0116,
      "subs": 3.1811,
-     "ctr": 0.0836
+     "avd": 155.5441,
+     "ctr": 0.0836,
+     "r30": 0.6882,
+     "r60": 0.5893
     }
    }
   },
@@ -6923,7 +7661,10 @@
      "retention": 0.9777,
      "engagement": 0.0263,
      "subs": 0.3922,
-     "ctr": 0.4938
+     "avd": 70.3973,
+     "ctr": 0.4938,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -6951,7 +7692,10 @@
      "retention": 0.2771,
      "engagement": 0.0261,
      "subs": 5.885,
-     "ctr": 0.0666
+     "avd": 951.1486,
+     "ctr": 0.0666,
+     "r30": 0.8748,
+     "r60": 0.675
     }
    }
   },
@@ -6979,7 +7723,10 @@
      "retention": 0.9213,
      "engagement": 0.0259,
      "subs": 0.2836,
-     "ctr": 0.5655
+     "avd": 55.2758,
+     "ctr": 0.5655,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -7007,7 +7754,10 @@
      "retention": 0.2474,
      "engagement": 0.0202,
      "subs": 2.3788,
-     "ctr": 0.0093
+     "avd": 435.1519,
+     "ctr": 0.0093,
+     "r30": 0.8111,
+     "r60": 0.5699
     }
    }
   },
@@ -7035,7 +7785,10 @@
      "retention": 0.9144,
      "engagement": 0.0221,
      "subs": 0.2248,
-     "ctr": 0.5465
+     "avd": 58.5194,
+     "ctr": 0.5465,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -7063,7 +7816,10 @@
      "retention": 0.8912,
      "engagement": 0.0311,
      "subs": 0.5196,
-     "ctr": 0.6121
+     "avd": 40.1061,
+     "ctr": 0.6121,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -7091,7 +7847,10 @@
      "retention": 0.2323,
      "engagement": 0.02,
      "subs": 1.4532,
-     "ctr": 0.0215
+     "avd": 560.5947,
+     "ctr": 0.0215,
+     "r30": 0.8995,
+     "r60": 0.6861
     }
    }
   },
@@ -7119,7 +7878,10 @@
      "retention": 1.1787,
      "engagement": 0.0135,
      "subs": 0.3223,
-     "ctr": 0.5608
+     "avd": 21.2159,
+     "ctr": 0.5608,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -7147,7 +7909,10 @@
      "retention": 1.0772,
      "engagement": 0.0245,
      "subs": 0.1978,
-     "ctr": 0.5701
+     "avd": 36.6233,
+     "ctr": 0.5701,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -7175,7 +7940,10 @@
      "retention": 0.6181,
      "engagement": 0.02,
      "subs": 0.7857,
-     "ctr": 0.5771
+     "avd": 27.8148,
+     "ctr": 0.5771,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -7203,7 +7971,10 @@
      "retention": 0.8175,
      "engagement": 0.0429,
      "subs": 0.4157,
-     "ctr": 0.5875
+     "avd": 82.5632,
+     "ctr": 0.5875,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -7231,7 +8002,10 @@
      "retention": 0.8565,
      "engagement": 0.0183,
      "subs": 0.2655,
-     "ctr": 0.5464
+     "avd": 41.9701,
+     "ctr": 0.5464,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -7259,7 +8033,10 @@
      "retention": 0.8126,
      "engagement": 0.035,
      "subs": 0.4981,
-     "ctr": 0.5815
+     "avd": 94.2638,
+     "ctr": 0.5815,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -7287,7 +8064,10 @@
      "retention": 0.7203,
      "engagement": 0.0165,
      "subs": 1.0206,
-     "ctr": 0.5891
+     "avd": 32.4116,
+     "ctr": 0.5891,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -7315,7 +8095,10 @@
      "retention": 0.6281,
      "engagement": 0.026,
      "subs": 1.2446,
-     "ctr": null
+     "avd": 145.0911,
+     "ctr": null,
+     "r30": 0.7746,
+     "r60": 0.7021
     }
    }
   },
@@ -7343,7 +8126,10 @@
      "retention": 0.5662,
      "engagement": 0.0267,
      "subs": 0.8436,
-     "ctr": null
+     "avd": 158.5377,
+     "ctr": null,
+     "r30": 0.749,
+     "r60": 0.6606
     }
    }
   },
@@ -7371,7 +8157,10 @@
      "retention": 0.7012,
      "engagement": 0.0254,
      "subs": 0.4763,
-     "ctr": 0.5921
+     "avd": 45.5792,
+     "ctr": 0.5921,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -7399,7 +8188,10 @@
      "retention": 0.1051,
      "engagement": 0.0388,
      "subs": 3.5698,
-     "ctr": null
+     "avd": 437.4029,
+     "ctr": null,
+     "r30": 0.9546,
+     "r60": 0.6744
     }
    }
   },
@@ -7427,7 +8219,10 @@
      "retention": 0.5209,
      "engagement": 0.025,
      "subs": 1.569,
-     "ctr": null
+     "avd": 274.5015,
+     "ctr": null,
+     "r30": 0.7919,
+     "r60": 0.6913
     }
    }
   },
@@ -7455,7 +8250,10 @@
      "retention": 0.421,
      "engagement": 0.0144,
      "subs": 3.0828,
-     "ctr": null
+     "avd": 319.5553,
+     "ctr": null,
+     "r30": 0.7763,
+     "r60": 0.6201
     }
    }
   },
@@ -7483,7 +8281,10 @@
      "retention": 1.0251,
      "engagement": 0.0241,
      "subs": 0.5495,
-     "ctr": 0.539
+     "avd": 52.2825,
+     "ctr": 0.539,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -7511,7 +8312,10 @@
      "retention": 0.9183,
      "engagement": 0.0296,
      "subs": 0.5368,
-     "ctr": 0.58
+     "avd": 60.6103,
+     "ctr": 0.58,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -7539,7 +8343,10 @@
      "retention": 0.422,
      "engagement": 0.0209,
      "subs": 3.4658,
-     "ctr": null
+     "avd": 288.2416,
+     "ctr": null,
+     "r30": 0.8117,
+     "r60": 0.6686
     }
    }
   },
@@ -7567,7 +8374,10 @@
      "retention": 0.4891,
      "engagement": 0.0204,
      "subs": 2.7118,
-     "ctr": null
+     "avd": 223.5201,
+     "ctr": null,
+     "r30": 0.7431,
+     "r60": 0.6565
     }
    }
   },
@@ -7595,7 +8405,10 @@
      "retention": 0.9987,
      "engagement": 0.0281,
      "subs": 0.4661,
-     "ctr": 0.5676
+     "avd": 54.9305,
+     "ctr": 0.5676,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -7623,7 +8436,10 @@
      "retention": 0.8732,
      "engagement": 0.0155,
      "subs": 0.5216,
-     "ctr": 0.5524
+     "avd": 55.8879,
+     "ctr": 0.5524,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -7651,7 +8467,10 @@
      "retention": 0.4461,
      "engagement": 0.0143,
      "subs": 2.0667,
-     "ctr": null
+     "avd": 215.4608,
+     "ctr": null,
+     "r30": 0.7335,
+     "r60": 0.6044
     }
    }
   },
@@ -7679,7 +8498,10 @@
      "retention": 0.9494,
      "engagement": 0.0236,
      "subs": 0.27,
-     "ctr": 0.5367
+     "avd": 47.47,
+     "ctr": 0.5367,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -7707,7 +8529,10 @@
      "retention": 0.9821,
      "engagement": 0.0142,
      "subs": 0.467,
-     "ctr": 0.5083
+     "avd": 43.212,
+     "ctr": 0.5083,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -7735,7 +8560,10 @@
      "retention": 0.4175,
      "engagement": 0.0245,
      "subs": 2.9898,
-     "ctr": null
+     "avd": 321.9135,
+     "ctr": null,
+     "r30": 0.7382,
+     "r60": 0.6428
     }
    }
   },
@@ -7763,7 +8591,10 @@
      "retention": 0.4405,
      "engagement": 0.0136,
      "subs": 2.9742,
-     "ctr": null
+     "avd": 242.7139,
+     "ctr": null,
+     "r30": 0.7464,
+     "r60": 0.6048
     }
    }
   },
@@ -7791,7 +8622,10 @@
      "retention": 0.7303,
      "engagement": 0.0218,
      "subs": 0.4228,
-     "ctr": 0.6041
+     "avd": 70.838,
+     "ctr": 0.6041,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -7819,7 +8653,10 @@
      "retention": 0.9567,
      "engagement": 0.0284,
      "subs": 0.5826,
-     "ctr": 0.6017
+     "avd": 71.7549,
+     "ctr": 0.6017,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -7847,7 +8684,10 @@
      "retention": 0.6789,
      "engagement": 0.0525,
      "subs": 0.7336,
-     "ctr": 0.6265
+     "avd": 76.7119,
+     "ctr": 0.6265,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -7875,7 +8715,10 @@
      "retention": 0.6688,
      "engagement": 0.0166,
      "subs": 0.3915,
-     "ctr": 0.596
+     "avd": 33.4384,
+     "ctr": 0.596,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -7903,7 +8746,10 @@
      "retention": 0.1965,
      "engagement": 0.0308,
      "subs": 4.571,
-     "ctr": null
+     "avd": 880.1326,
+     "ctr": null,
+     "r30": 0.9487,
+     "r60": 0.7848
     }
    }
   },
@@ -7931,7 +8777,10 @@
      "retention": 0.8127,
      "engagement": 0.0172,
      "subs": 0.0,
-     "ctr": 0.6287
+     "avd": 16.2539,
+     "ctr": 0.6287,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -7959,7 +8808,10 @@
      "retention": 0.8567,
      "engagement": 0.0237,
      "subs": 0.0,
-     "ctr": 0.4576
+     "avd": 36.8396,
+     "ctr": 0.4576,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -7987,7 +8839,10 @@
      "retention": 0.4916,
      "engagement": 0.021,
      "subs": 2.5695,
-     "ctr": null
+     "avd": 280.7086,
+     "ctr": null,
+     "r30": 0.7838,
+     "r60": 0.6735
     }
    }
   },
@@ -8015,7 +8870,10 @@
      "retention": 0.518,
      "engagement": 0.0153,
      "subs": 1.3799,
-     "ctr": null
+     "avd": 269.3707,
+     "ctr": null,
+     "r30": 0.7935,
+     "r60": 0.7045
     }
    }
   },
@@ -8043,7 +8901,10 @@
      "retention": 1.0161,
      "engagement": 0.0205,
      "subs": 0.1365,
-     "ctr": 0.5312
+     "avd": 35.5626,
+     "ctr": 0.5312,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -8071,7 +8932,10 @@
      "retention": 0.419,
      "engagement": 0.0152,
      "subs": 3.9284,
-     "ctr": null
+     "avd": 245.5468,
+     "ctr": null,
+     "r30": 0.7365,
+     "r60": 0.6079
     }
    }
   },
@@ -8099,7 +8963,10 @@
      "retention": 0.2887,
      "engagement": 0.0269,
      "subs": 1.4144,
-     "ctr": null
+     "avd": 387.4022,
+     "ctr": null,
+     "r30": 0.8061,
+     "r60": 0.5772
     }
    }
   },
@@ -8127,7 +8994,10 @@
      "retention": 0.3875,
      "engagement": 0.021,
      "subs": 0.8921,
-     "ctr": 0.5843
+     "avd": 28.6718,
+     "ctr": 0.5843,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -8155,7 +9025,10 @@
      "retention": 0.5505,
      "engagement": 0.018,
      "subs": 1.478,
-     "ctr": null
+     "avd": 217.4609,
+     "ctr": null,
+     "r30": 0.816,
+     "r60": 0.7211
     }
    }
   },
@@ -8183,7 +9056,10 @@
      "retention": 0.5031,
      "engagement": 0.0189,
      "subs": 2.5367,
-     "ctr": null
+     "avd": 302.3906,
+     "ctr": null,
+     "r30": 0.7796,
+     "r60": 0.7253
     }
    }
   },
@@ -8211,7 +9087,10 @@
      "retention": 0.6988,
      "engagement": 0.0253,
      "subs": 0.6546,
-     "ctr": 0.4938
+     "avd": 43.323,
+     "ctr": 0.4938,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -8239,7 +9118,10 @@
      "retention": 0.0971,
      "engagement": 0.0437,
      "subs": 3.7477,
-     "ctr": null
+     "avd": 499.4503,
+     "ctr": null,
+     "r30": 0.9581,
+     "r60": 0.825
     }
    }
   },
@@ -8267,7 +9149,10 @@
      "retention": 0.9943,
      "engagement": 0.0436,
      "subs": 0.1181,
-     "ctr": 0.5325
+     "avd": 40.7675,
+     "ctr": 0.5325,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -8295,7 +9180,10 @@
      "retention": 0.6812,
      "engagement": 0.0403,
      "subs": 0.5932,
-     "ctr": 0.5754
+     "avd": 35.4227,
+     "ctr": 0.5754,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -8323,7 +9211,10 @@
      "retention": 0.7427,
      "engagement": 0.0393,
      "subs": 0.0,
-     "ctr": 0.6248
+     "avd": 69.8113,
+     "ctr": 0.6248,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -8351,7 +9242,10 @@
      "retention": 0.4359,
      "engagement": 0.0246,
      "subs": 0.8953,
-     "ctr": null
+     "avd": 310.3671,
+     "ctr": null,
+     "r30": 0.73,
+     "r60": 0.6229
     }
    }
   },
@@ -8379,7 +9273,10 @@
      "retention": 0.7055,
      "engagement": 0.0377,
      "subs": 0.4873,
-     "ctr": 0.5936
+     "avd": 54.3201,
+     "ctr": 0.5936,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -8407,7 +9304,10 @@
      "retention": 0.5093,
      "engagement": 0.0291,
      "subs": 3.2775,
-     "ctr": null
+     "avd": 201.1886,
+     "ctr": null,
+     "r30": 0.8217,
+     "r60": 0.6978
     }
    }
   },
@@ -8435,7 +9335,10 @@
      "retention": 0.726,
      "engagement": 0.0325,
      "subs": 0.2955,
-     "ctr": 0.651
+     "avd": 70.4204,
+     "ctr": 0.651,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -8463,7 +9366,10 @@
      "retention": 1.121,
      "engagement": 0.0216,
      "subs": 0.4378,
-     "ctr": 0.5244
+     "avd": 53.8075,
+     "ctr": 0.5244,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -8491,7 +9397,10 @@
      "retention": 0.437,
      "engagement": 0.034,
      "subs": 1.9007,
-     "ctr": null
+     "avd": 353.981,
+     "ctr": null,
+     "r30": 0.7685,
+     "r60": 0.6868
     }
    }
   },
@@ -8519,7 +9428,10 @@
      "retention": 0.3939,
      "engagement": 0.0319,
      "subs": 1.9305,
-     "ctr": null
+     "avd": 180.0097,
+     "ctr": null,
+     "r30": 0.7341,
+     "r60": 0.5943
     }
    }
   },
@@ -8547,7 +9459,10 @@
      "retention": 0.7603,
      "engagement": 0.0316,
      "subs": 0.3154,
-     "ctr": 0.6253
+     "avd": 49.4194,
+     "ctr": 0.6253,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -8575,7 +9490,10 @@
      "retention": 0.5161,
      "engagement": 0.0176,
      "subs": 0.4412,
-     "ctr": 0.572
+     "avd": 30.4512,
+     "ctr": 0.572,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -8603,7 +9521,10 @@
      "retention": 1.2678,
      "engagement": 0.0276,
      "subs": 0.6151,
-     "ctr": 0.508
+     "avd": 29.1588,
+     "ctr": 0.508,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -8631,7 +9552,10 @@
      "retention": 1.0403,
      "engagement": 0.0195,
      "subs": 0.2195,
-     "ctr": 0.6145
+     "avd": 33.2905,
+     "ctr": 0.6145,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -8659,7 +9583,10 @@
      "retention": 0.7522,
      "engagement": 0.0296,
      "subs": 0.8067,
-     "ctr": 0.5671
+     "avd": 37.6102,
+     "ctr": 0.5671,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -8687,7 +9614,10 @@
      "retention": 0.4978,
      "engagement": 0.0208,
      "subs": 2.4361,
-     "ctr": null
+     "avd": 314.1291,
+     "ctr": null,
+     "r30": 0.7565,
+     "r60": 0.6717
     }
    }
   },
@@ -8715,7 +9645,10 @@
      "retention": 0.8028,
      "engagement": 0.0196,
      "subs": 0.354,
-     "ctr": 0.5869
+     "avd": 61.8158,
+     "ctr": 0.5869,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -8743,7 +9676,10 @@
      "retention": 0.8524,
      "engagement": 0.0233,
      "subs": 0.6027,
-     "ctr": 0.6025
+     "avd": 42.6191,
+     "ctr": 0.6025,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -8771,7 +9707,10 @@
      "retention": 0.4033,
      "engagement": 0.0429,
      "subs": 2.6293,
-     "ctr": null
+     "avd": 125.4163,
+     "ctr": null,
+     "r30": 0.6421,
+     "r60": 0.5242
     }
    }
   },
@@ -8799,7 +9738,10 @@
      "retention": 0.0973,
      "engagement": 0.0427,
      "subs": 2.3333,
-     "ctr": null
+     "avd": 401.2475,
+     "ctr": null,
+     "r30": 0.935,
+     "r60": 0.6514
     }
    }
   },
@@ -8827,7 +9769,10 @@
      "retention": 0.7897,
      "engagement": 0.0259,
      "subs": 0.3943,
-     "ctr": 0.6122
+     "avd": 53.699,
+     "ctr": 0.6122,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -8855,7 +9800,10 @@
      "retention": 0.8647,
      "engagement": 0.0652,
      "subs": 1.5454,
-     "ctr": 0.5637
+     "avd": 99.4453,
+     "ctr": 0.5637,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -8883,7 +9831,10 @@
      "retention": 0.513,
      "engagement": 0.0188,
      "subs": 2.195,
-     "ctr": null
+     "avd": 136.4697,
+     "ctr": null,
+     "r30": 0.7778,
+     "r60": 0.6637
     }
    }
   },
@@ -8911,7 +9862,10 @@
      "retention": 1.3226,
      "engagement": 0.0254,
      "subs": 0.0725,
-     "ctr": 0.4946
+     "avd": 27.7755,
+     "ctr": 0.4946,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -8939,7 +9893,10 @@
      "retention": 0.9974,
      "engagement": 0.0287,
      "subs": 0.4235,
-     "ctr": 0.527
+     "avd": 51.8664,
+     "ctr": 0.527,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -8967,7 +9924,10 @@
      "retention": 0.3643,
      "engagement": 0.0324,
      "subs": 1.2477,
-     "ctr": null
+     "avd": 160.3119,
+     "ctr": null,
+     "r30": 0.6303,
+     "r60": 0.5298
     }
    }
   },
@@ -8995,7 +9955,10 @@
      "retention": 0.5156,
      "engagement": 0.0297,
      "subs": 4.0585,
-     "ctr": null
+     "avd": 285.1499,
+     "ctr": null,
+     "r30": 0.7657,
+     "r60": 0.6532
     }
    }
   },
@@ -9023,7 +9986,10 @@
      "retention": 1.0782,
      "engagement": 0.0133,
      "subs": 0.4526,
-     "ctr": 0.541
+     "avd": 49.5988,
+     "ctr": 0.541,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -9051,7 +10017,10 @@
      "retention": 0.758,
      "engagement": 0.0344,
      "subs": 0.349,
-     "ctr": 0.6607
+     "avd": 83.3847,
+     "ctr": 0.6607,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -9079,7 +10048,10 @@
      "retention": 0.3784,
      "engagement": 0.0358,
      "subs": 6.4246,
-     "ctr": null
+     "avd": 458.6556,
+     "ctr": null,
+     "r30": 0.8236,
+     "r60": 0.6984
     }
    }
   },
@@ -9107,7 +10079,10 @@
      "retention": 0.7682,
      "engagement": 0.0345,
      "subs": 0.3864,
-     "ctr": 0.6001
+     "avd": 55.3133,
+     "ctr": 0.6001,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -9135,7 +10110,10 @@
      "retention": 0.3982,
      "engagement": 0.0356,
      "subs": 3.0344,
-     "ctr": null
+     "avd": 581.8395,
+     "ctr": null,
+     "r30": 0.7694,
+     "r60": 0.6734
     }
    }
   },
@@ -9163,7 +10141,10 @@
      "retention": 0.6277,
      "engagement": 0.0556,
      "subs": 0.4884,
-     "ctr": 0.6271
+     "avd": 58.3762,
+     "ctr": 0.6271,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -9191,7 +10172,10 @@
      "retention": 0.5033,
      "engagement": 0.018,
      "subs": 1.3419,
-     "ctr": null
+     "avd": 288.8728,
+     "ctr": null,
+     "r30": 0.7882,
+     "r60": 0.6916
     }
    }
   },
@@ -9219,7 +10203,10 @@
      "retention": 0.7204,
      "engagement": 0.0358,
      "subs": 0.2771,
-     "ctr": 0.6759
+     "avd": 79.2405,
+     "ctr": 0.6759,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -9247,7 +10234,10 @@
      "retention": 0.4716,
      "engagement": 0.0257,
      "subs": 4.6866,
-     "ctr": null
+     "avd": 433.8435,
+     "ctr": null,
+     "r30": 0.8259,
+     "r60": 0.7315
     }
    }
   },
@@ -9275,7 +10265,10 @@
      "retention": 0.9452,
      "engagement": 0.0252,
      "subs": 0.5386,
-     "ctr": 0.5402
+     "avd": 36.8614,
+     "ctr": 0.5402,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -9303,7 +10296,10 @@
      "retention": 0.5388,
      "engagement": 0.0346,
      "subs": 4.909,
-     "ctr": null
+     "avd": 296.8707,
+     "ctr": null,
+     "r30": 0.8235,
+     "r60": 0.75
     }
    }
   },
@@ -9331,7 +10327,10 @@
      "retention": 0.7024,
      "engagement": 0.0454,
      "subs": 0.5404,
-     "ctr": 0.6602
+     "avd": 99.0327,
+     "ctr": 0.6602,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -9359,7 +10358,10 @@
      "retention": 0.5232,
      "engagement": 0.019,
      "subs": 1.4652,
-     "ctr": 0.5385
+     "avd": 48.6531,
+     "ctr": 0.5385,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -9387,7 +10389,10 @@
      "retention": 0.4159,
      "engagement": 0.0198,
      "subs": 0.9921,
-     "ctr": null
+     "avd": 131.8254,
+     "ctr": null,
+     "r30": 0.713,
+     "r60": 0.5394
     }
    }
   },
@@ -9415,7 +10420,10 @@
      "retention": 1.0131,
      "engagement": 0.0269,
      "subs": 0.6094,
-     "ctr": 0.5434
+     "avd": 57.7475,
+     "ctr": 0.5434,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -9443,7 +10451,10 @@
      "retention": 0.4069,
      "engagement": 0.0151,
      "subs": 1.1304,
-     "ctr": null
+     "avd": 150.5559,
+     "ctr": null,
+     "r30": 0.7135,
+     "r60": 0.4923
     }
    }
   },
@@ -9471,7 +10482,10 @@
      "retention": 0.493,
      "engagement": 0.0251,
      "subs": 1.5717,
-     "ctr": null
+     "avd": 180.9194,
+     "ctr": null,
+     "r30": 0.7141,
+     "r60": 0.6187
     }
    }
   },
@@ -9499,7 +10513,10 @@
      "retention": 0.4179,
      "engagement": 0.0325,
      "subs": 1.7751,
-     "ctr": null
+     "avd": 250.3491,
+     "ctr": null,
+     "r30": 0.7589,
+     "r60": 0.6339
     }
    }
   },
@@ -9527,7 +10544,10 @@
      "retention": 0.5366,
      "engagement": 0.0284,
      "subs": 1.1703,
-     "ctr": 0.5377
+     "avd": 29.5103,
+     "ctr": 0.5377,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -9555,7 +10575,10 @@
      "retention": 1.039,
      "engagement": 0.0269,
      "subs": 0.2438,
-     "ctr": 0.5168
+     "avd": 51.9502,
+     "ctr": 0.5168,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -9583,7 +10606,10 @@
      "retention": 0.7801,
      "engagement": 0.0221,
      "subs": 0.4282,
-     "ctr": 0.5725
+     "avd": 41.3463,
+     "ctr": 0.5725,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -9611,7 +10637,10 @@
      "retention": 0.0894,
      "engagement": 0.0342,
      "subs": 5.1288,
-     "ctr": null
+     "avd": 473.6277,
+     "ctr": null,
+     "r30": 0.9694,
+     "r60": 0.8662
     }
    }
   },
@@ -9639,7 +10668,10 @@
      "retention": 0.484,
      "engagement": 0.0397,
      "subs": 1.1351,
-     "ctr": null
+     "avd": 144.2452,
+     "ctr": null,
+     "r30": 0.6893,
+     "r60": 0.5882
     }
    }
   },
@@ -9667,7 +10699,10 @@
      "retention": 0.837,
      "engagement": 0.0247,
      "subs": 0.4108,
-     "ctr": 0.5892
+     "avd": 48.5465,
+     "ctr": 0.5892,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -9695,7 +10730,10 @@
      "retention": 0.5164,
      "engagement": 0.0206,
      "subs": 1.4243,
-     "ctr": null
+     "avd": 158.0092,
+     "ctr": null,
+     "r30": 0.7362,
+     "r60": 0.6677
     }
    }
   },
@@ -9723,7 +10761,10 @@
      "retention": 0.8084,
      "engagement": 0.0246,
      "subs": 0.4364,
-     "ctr": 0.5851
+     "avd": 53.3565,
+     "ctr": 0.5851,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -9751,7 +10792,10 @@
      "retention": 0.4664,
      "engagement": 0.0328,
      "subs": 5.4745,
-     "ctr": null
+     "avd": 183.2847,
+     "ctr": null,
+     "r30": 0.717,
+     "r60": 0.65
     }
    }
   },
@@ -9779,7 +10823,10 @@
      "retention": 0.9745,
      "engagement": 0.0202,
      "subs": 0.2861,
-     "ctr": 0.5571
+     "avd": 38.0041,
+     "ctr": 0.5571,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -9807,7 +10854,10 @@
      "retention": 0.4139,
      "engagement": 0.029,
      "subs": 2.4903,
-     "ctr": null
+     "avd": 335.7001,
+     "ctr": null,
+     "r30": 0.7658,
+     "r60": 0.6444
     }
    }
   },
@@ -9835,7 +10885,10 @@
      "retention": 0.5649,
      "engagement": 0.0222,
      "subs": 0.0,
-     "ctr": 0.5381
+     "avd": 21.4673,
+     "ctr": 0.5381,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -9863,7 +10916,10 @@
      "retention": 0.7434,
      "engagement": 0.0177,
      "subs": 0.2136,
-     "ctr": 0.6286
+     "avd": 60.9599,
+     "ctr": 0.6286,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -9891,7 +10947,10 @@
      "retention": 0.6403,
      "engagement": 0.032,
      "subs": 0.2972,
-     "ctr": 0.7381
+     "avd": 66.5861,
+     "ctr": 0.7381,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -9919,7 +10978,10 @@
      "retention": 0.9847,
      "engagement": 0.0211,
      "subs": 0.0692,
-     "ctr": 0.5372
+     "avd": 31.5118,
+     "ctr": 0.5372,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -9947,7 +11009,10 @@
      "retention": 0.8585,
      "engagement": 0.0492,
      "subs": 0.4315,
-     "ctr": 0.5832
+     "avd": 55.8047,
+     "ctr": 0.5832,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -9975,7 +11040,10 @@
      "retention": 0.5987,
      "engagement": 0.0282,
      "subs": 0.3706,
-     "ctr": 0.6179
+     "avd": 42.5075,
+     "ctr": 0.6179,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -10003,7 +11071,10 @@
      "retention": 0.7745,
      "engagement": 0.0212,
      "subs": 0.3636,
-     "ctr": 0.6014
+     "avd": 37.1781,
+     "ctr": 0.6014,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -10031,7 +11102,10 @@
      "retention": 1.2109,
      "engagement": 0.0135,
      "subs": 0.2325,
-     "ctr": 0.4863
+     "avd": 24.219,
+     "ctr": 0.4863,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -10059,7 +11133,10 @@
      "retention": 0.5225,
      "engagement": 0.0076,
      "subs": 0.9766,
-     "ctr": 0.5332
+     "avd": 30.3077,
+     "ctr": 0.5332,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -10087,7 +11164,10 @@
      "retention": 0.4206,
      "engagement": 0.0158,
      "subs": 0.7529,
-     "ctr": null
+     "avd": 116.078,
+     "ctr": null,
+     "r30": 0.67,
+     "r60": 0.492
     }
    }
   },
@@ -10115,7 +11195,10 @@
      "retention": 0.2482,
      "engagement": 0.0233,
      "subs": 2.1991,
-     "ctr": null
+     "avd": 787.4536,
+     "ctr": null,
+     "r30": 0.9336,
+     "r60": 0.6777
     }
    }
   },
@@ -10143,7 +11226,10 @@
      "retention": 0.135,
      "engagement": 0.0281,
      "subs": 0.0,
-     "ctr": null
+     "avd": 283.663,
+     "ctr": null,
+     "r30": 0.7343,
+     "r60": 0.4186
     }
    }
   },
@@ -10171,7 +11257,10 @@
      "retention": 0.9284,
      "engagement": 0.0175,
      "subs": 0.235,
-     "ctr": 0.5635
+     "avd": 42.7084,
+     "ctr": 0.5635,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -10199,7 +11288,10 @@
      "retention": 0.2796,
      "engagement": 0.0201,
      "subs": 2.5526,
-     "ctr": null
+     "avd": 987.9811,
+     "ctr": null,
+     "r30": 0.9316,
+     "r60": 0.771
     }
    }
   },
@@ -10227,7 +11319,10 @@
      "retention": 0.7964,
      "engagement": 0.0346,
      "subs": 1.2154,
-     "ctr": 0.572
+     "avd": 58.1355,
+     "ctr": 0.572,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -10255,7 +11350,10 @@
      "retention": 0.4652,
      "engagement": 0.0237,
      "subs": 1.4514,
-     "ctr": null
+     "avd": 143.2801,
+     "ctr": null,
+     "r30": 0.7056,
+     "r60": 0.6004
     }
    }
   },
@@ -10283,7 +11381,10 @@
      "retention": 0.8029,
      "engagement": 0.046,
      "subs": 1.1077,
-     "ctr": 0.6419
+     "avd": 87.5135,
+     "ctr": 0.6419,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -10311,7 +11412,10 @@
      "retention": 0.0983,
      "engagement": 0.0326,
      "subs": 7.77,
-     "ctr": null
+     "avd": 328.5159,
+     "ctr": null,
+     "r30": 0.9697,
+     "r60": 0.5191
     }
    }
   },
@@ -10339,7 +11443,10 @@
      "retention": 0.9858,
      "engagement": 0.0161,
      "subs": 0.2075,
-     "ctr": 0.6054
+     "avd": 37.4612,
+     "ctr": 0.6054,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -10367,7 +11474,10 @@
      "retention": 0.5108,
      "engagement": 0.0193,
      "subs": 3.2777,
-     "ctr": null
+     "avd": 207.8815,
+     "ctr": null,
+     "r30": 0.8004,
+     "r60": 0.6819
     }
    }
   },
@@ -10395,7 +11505,10 @@
      "retention": 0.7174,
      "engagement": 0.0335,
      "subs": 0.8566,
-     "ctr": 0.723
+     "avd": 86.804,
+     "ctr": 0.723,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -10423,7 +11536,10 @@
      "retention": 0.7235,
      "engagement": 0.0227,
      "subs": 0.4973,
-     "ctr": 0.646
+     "avd": 56.434,
+     "ctr": 0.646,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -10451,7 +11567,10 @@
      "retention": 0.5027,
      "engagement": 0.0241,
      "subs": 3.5547,
-     "ctr": null
+     "avd": 246.8251,
+     "ctr": null,
+     "r30": 0.7603,
+     "r60": 0.6689
     }
    }
   },
@@ -10479,7 +11598,10 @@
      "retention": 0.6531,
      "engagement": 0.0137,
      "subs": 0.0,
-     "ctr": 0.5303
+     "avd": 41.1445,
+     "ctr": 0.5303,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -10507,7 +11629,10 @@
      "retention": 0.7676,
      "engagement": 0.0176,
      "subs": 0.5892,
-     "ctr": 0.6412
+     "avd": 67.5509,
+     "ctr": 0.6412,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -10535,7 +11660,10 @@
      "retention": 0.5127,
      "engagement": 0.0129,
      "subs": 2.4521,
-     "ctr": null
+     "avd": 249.1616,
+     "ctr": null,
+     "r30": 0.7818,
+     "r60": 0.6679
     }
    }
   },
@@ -10563,7 +11691,10 @@
      "retention": 1.2901,
      "engagement": 0.0169,
      "subs": 0.1614,
-     "ctr": 0.4775
+     "avd": 28.3832,
+     "ctr": 0.4775,
+     "r30": null,
+     "r60": null
     }
    }
   }

@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-27T00:13",
+ "generated": "2026-10-27T16:12",
  "through": "2026-10-26",
  "weights": {
   "retention": 0.35,
@@ -21,21 +21,24 @@
    "grade": {
     "age_days": 3,
     "peers": 10,
-    "score": 0.152,
+    "score": 0.122,
     "letter": "F",
     "ranks": {
-     "retention": 0.2,
+     "retention": 0.1,
      "ctr": 0.0,
-     "views": 0.1,
-     "engagement": 0.5,
+     "views": 0.2,
+     "engagement": 0.4,
      "subs": 0.35
     },
     "values": {
-     "views": 60.0,
-     "retention": 0.3294,
-     "engagement": 0.0167,
+     "views": 115.0,
+     "retention": 0.3021,
+     "engagement": 0.0087,
      "subs": 0.0,
-     "ctr": 0.0102
+     "avd": 93.6364,
+     "ctr": 0.0102,
+     "r30": 0.5,
+     "r60": 0.3939
     }
    }
   },
@@ -49,21 +52,24 @@
    "grade": {
     "age_days": 4,
     "peers": 9,
-    "score": 0.403,
-    "letter": "C",
+    "score": 0.386,
+    "letter": "D",
     "ranks": {
      "retention": 0.44,
      "ctr": 0.44,
-     "views": 0.0,
-     "engagement": 0.78,
+     "views": 0.11,
+     "engagement": 0.44,
      "subs": 0.28
     },
     "values": {
-     "views": 44.0,
-     "retention": 0.3979,
-     "engagement": 0.0227,
+     "views": 100.0,
+     "retention": 0.3974,
+     "engagement": 0.01,
      "subs": 0.0,
-     "ctr": 0.0159
+     "avd": 92.1951,
+     "ctr": 0.0159,
+     "r30": 0.6017,
+     "r60": 0.475
     }
    }
   },
@@ -77,21 +83,24 @@
    "grade": {
     "age_days": 4,
     "peers": 17,
-    "score": 0.446,
+    "score": 0.475,
     "letter": "C",
     "ranks": {
      "retention": 0.41,
      "ctr": 0.65,
      "views": 0.12,
-     "engagement": 0.47,
+     "engagement": 0.76,
      "subs": 0.21
     },
     "values": {
-     "views": 165.0,
-     "retention": 0.6985,
-     "engagement": 0.0242,
+     "views": 182.0,
+     "retention": 0.6924,
+     "engagement": 0.033,
      "subs": 0.0,
-     "ctr": 0.6424
+     "avd": 32.5424,
+     "ctr": 0.6484,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -115,11 +124,14 @@
      "subs": 0.19
     },
     "values": {
-     "views": 146.0,
+     "views": 185.0,
      "retention": 0.4461,
      "engagement": 0.0,
      "subs": 0.0,
-     "ctr": 0.0255
+     "avd": 120.0,
+     "ctr": 0.0255,
+     "r30": 0.5501,
+     "r60": 0.4545
     }
    }
   },
@@ -133,21 +145,24 @@
    "grade": {
     "age_days": 5,
     "peers": 16,
-    "score": 0.653,
+    "score": 0.647,
     "letter": "B",
     "ranks": {
      "retention": 0.44,
-     "ctr": 0.94,
+     "ctr": 0.88,
      "views": 0.75,
-     "engagement": 0.25,
-     "subs": 0.69
+     "engagement": 0.44,
+     "subs": 0.62
     },
     "values": {
-     "views": 1576.0,
-     "retention": 0.731,
-     "engagement": 0.0184,
-     "subs": 1.269,
-     "ctr": 0.7024
+     "views": 1623.0,
+     "retention": 0.73,
+     "engagement": 0.0191,
+     "subs": 1.2323,
+     "avd": 28.471,
+     "ctr": 0.7012,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -171,11 +186,14 @@
      "subs": 0.14
     },
     "values": {
-     "views": 134.0,
-     "retention": 0.3964,
-     "engagement": 0.0448,
+     "views": 140.0,
+     "retention": 0.4102,
+     "engagement": 0.0429,
      "subs": 0.0,
-     "ctr": 0.0103
+     "avd": 77.9381,
+     "ctr": 0.0103,
+     "r30": 0.5263,
+     "r60": 0.4758
     }
    }
   },
@@ -199,11 +217,14 @@
      "subs": 0.43
     },
     "values": {
-     "views": 2209.0,
-     "retention": 0.7609,
+     "views": 2212.0,
+     "retention": 0.7598,
      "engagement": 0.0136,
-     "subs": 0.4527,
-     "ctr": 0.6206
+     "subs": 0.4521,
+     "avd": 33.4304,
+     "ctr": 0.6207,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -217,21 +238,24 @@
    "grade": {
     "age_days": 6,
     "peers": 14,
-    "score": 0.518,
+    "score": 0.554,
     "letter": "C",
     "ranks": {
      "retention": 0.43,
      "ctr": 0.93,
      "views": 0.21,
-     "engagement": 0.0,
-     "subs": 0.21
+     "engagement": 0.07,
+     "subs": 0.79
     },
     "values": {
-     "views": 361.0,
-     "retention": 0.6719,
-     "engagement": 0.0139,
-     "subs": 0.0,
-     "ctr": 0.7008
+     "views": 461.0,
+     "retention": 0.6851,
+     "engagement": 0.0174,
+     "subs": 2.1692,
+     "avd": 24.6626,
+     "ctr": 0.7072,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -255,11 +279,14 @@
      "subs": null
     },
     "values": {
-     "views": 1533.0,
-     "retention": 0.2377,
-     "engagement": 0.0241,
-     "subs": 3.9139,
-     "ctr": 0.0362
+     "views": 1583.0,
+     "retention": 0.2353,
+     "engagement": 0.0246,
+     "subs": 3.7903,
+     "avd": 690.251,
+     "ctr": 0.0362,
+     "r30": 0.8904,
+     "r60": 0.488
     }
    }
   },
@@ -283,11 +310,14 @@
      "subs": 0.08
     },
     "values": {
-     "views": 122.0,
-     "retention": 0.3025,
-     "engagement": 0.0164,
+     "views": 129.0,
+     "retention": 0.3061,
+     "engagement": 0.0155,
      "subs": 0.0,
-     "ctr": 0.0166
+     "avd": 84.4898,
+     "ctr": 0.0166,
+     "r30": 0.625,
+     "r60": 0.4583
     }
    }
   },
@@ -311,11 +341,14 @@
      "subs": 0.4
     },
     "values": {
-     "views": 856.0,
-     "retention": 0.3596,
-     "engagement": 0.007,
-     "subs": 1.1682,
-     "ctr": 0.0458
+     "views": 865.0,
+     "retention": 0.3575,
+     "engagement": 0.0069,
+     "subs": 1.1561,
+     "avd": 88.6607,
+     "ctr": 0.0458,
+     "r30": 0.5835,
+     "r60": 0.4403
     }
    }
   },
@@ -339,11 +372,14 @@
      "subs": 0.19
     },
     "values": {
-     "views": 114.0,
-     "retention": 2.5123,
-     "engagement": 0.0263,
+     "views": 116.0,
+     "retention": 2.4509,
+     "engagement": 0.0259,
      "subs": 0.0,
-     "ctr": 0.5526
+     "avd": 142.1538,
+     "ctr": 0.5603,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -357,21 +393,24 @@
    "grade": {
     "age_days": 11,
     "peers": 12,
-    "score": 0.462,
+    "score": 0.45,
     "letter": "C",
     "ranks": {
      "retention": 0.5,
      "ctr": 0.67,
      "views": 0.17,
-     "engagement": 0.21,
+     "engagement": 0.08,
      "subs": 0.17
     },
     "values": {
-     "views": 624.0,
-     "retention": 0.7538,
-     "engagement": 0.0192,
+     "views": 630.0,
+     "retention": 0.7528,
+     "engagement": 0.019,
      "subs": 0.0,
-     "ctr": 0.6282
+     "avd": 39.8992,
+     "ctr": 0.6302,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -395,11 +434,14 @@
      "subs": null
     },
     "values": {
-     "views": 245.0,
-     "retention": 0.4301,
-     "engagement": 0.0204,
+     "views": 253.0,
+     "retention": 0.4334,
+     "engagement": 0.0198,
      "subs": 0.0,
-     "ctr": 0.0226
+     "avd": 120.9231,
+     "ctr": 0.0226,
+     "r30": 0.6961,
+     "r60": 0.5846
     }
    }
   },
@@ -423,11 +465,14 @@
      "subs": 0.5
     },
     "values": {
-     "views": 2558.0,
-     "retention": 0.7943,
-     "engagement": 0.0192,
-     "subs": 1.1728,
-     "ctr": 0.6095
+     "views": 2559.0,
+     "retention": 0.7938,
+     "engagement": 0.0191,
+     "subs": 1.1723,
+     "avd": 28.5769,
+     "ctr": 0.6096,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -451,11 +496,14 @@
      "subs": 0.15
     },
     "values": {
-     "views": 1050.0,
-     "retention": 0.8191,
-     "engagement": 0.0343,
+     "views": 1053.0,
+     "retention": 0.818,
+     "engagement": 0.0342,
      "subs": 0.0,
-     "ctr": 0.7171
+     "avd": 61.351,
+     "ctr": 0.717,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -479,11 +527,14 @@
      "subs": 0.56
     },
     "values": {
-     "views": 1430.0,
-     "retention": 0.489,
-     "engagement": 0.0252,
-     "subs": 1.3986,
-     "ctr": 0.6084
+     "views": 1433.0,
+     "retention": 0.4879,
+     "engagement": 0.0251,
+     "subs": 1.3957,
+     "avd": 21.4679,
+     "ctr": 0.6085,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -507,11 +558,14 @@
      "subs": null
     },
     "values": {
-     "views": 2324.0,
-     "retention": 0.1954,
-     "engagement": 0.0301,
-     "subs": 14.6299,
-     "ctr": 0.03
+     "views": 2332.0,
+     "retention": 0.1943,
+     "engagement": 0.03,
+     "subs": 14.5798,
+     "avd": 831.7964,
+     "ctr": 0.03,
+     "r30": 0.939,
+     "r60": 0.7361
     }
    }
   },
@@ -535,11 +589,14 @@
      "subs": 0.5
     },
     "values": {
-     "views": 3480.0,
-     "retention": 0.7974,
-     "engagement": 0.0328,
-     "subs": 0.8621,
-     "ctr": 0.6805
+     "views": 3482.0,
+     "retention": 0.797,
+     "engagement": 0.0327,
+     "subs": 0.8616,
+     "avd": 39.0545,
+     "ctr": 0.6804,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -563,11 +620,14 @@
      "subs": null
     },
     "values": {
-     "views": 1252.0,
-     "retention": 0.396,
-     "engagement": 0.0088,
-     "subs": 0.7987,
-     "ctr": 0.0317
+     "views": 1306.0,
+     "retention": 0.3897,
+     "engagement": 0.0092,
+     "subs": 0.7657,
+     "avd": 89.6422,
+     "ctr": 0.0317,
+     "r30": 0.6494,
+     "r60": 0.4263
     }
    }
   },
@@ -591,11 +651,14 @@
      "subs": 0.43
     },
     "values": {
-     "views": 1735.0,
-     "retention": 0.5341,
-     "engagement": 0.0259,
-     "subs": 0.5764,
-     "ctr": 0.6542
+     "views": 1745.0,
+     "retention": 0.533,
+     "engagement": 0.0258,
+     "subs": 0.5731,
+     "avd": 36.2423,
+     "ctr": 0.6527,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -619,11 +682,14 @@
      "subs": null
     },
     "values": {
-     "views": 739.0,
-     "retention": 0.3718,
-     "engagement": 0.0027,
-     "subs": 4.0595,
-     "ctr": 0.0212
+     "views": 802.0,
+     "retention": 0.3671,
+     "engagement": 0.0025,
+     "subs": 4.9875,
+     "avd": 115.6477,
+     "ctr": 0.0212,
+     "r30": 0.655,
+     "r60": 0.4711
     }
    }
   },
@@ -647,11 +713,14 @@
      "subs": 0.6
     },
     "values": {
-     "views": 1216.0,
-     "retention": 0.5678,
+     "views": 1217.0,
+     "retention": 0.567,
      "engagement": 0.0263,
-     "subs": 3.2895,
-     "ctr": 0.5995
+     "subs": 3.2868,
+     "avd": 33.4521,
+     "ctr": 0.5998,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -675,11 +744,14 @@
      "subs": null
     },
     "values": {
-     "views": 954.0,
-     "retention": 0.3081,
-     "engagement": 0.0084,
-     "subs": 1.0482,
-     "ctr": 0.0491
+     "views": 1039.0,
+     "retention": 0.3121,
+     "engagement": 0.0077,
+     "subs": 0.9625,
+     "avd": 117.6429,
+     "ctr": 0.0491,
+     "r30": 0.5581,
+     "r60": 0.3701
     }
    }
   },
@@ -696,18 +768,21 @@
     "score": 0.6,
     "letter": "B",
     "ranks": {
-     "retention": 1.0,
-     "ctr": 0.4,
+     "retention": 0.8,
+     "ctr": 0.6,
      "views": 0.0,
      "engagement": 1.0,
      "subs": 0.2
     },
     "values": {
-     "views": 123.0,
-     "retention": 0.9351,
-     "engagement": 0.0732,
+     "views": 126.0,
+     "retention": 0.9215,
+     "engagement": 0.0714,
      "subs": 0.0,
-     "ctr": 0.5691
+     "avd": 60.8219,
+     "ctr": 0.5794,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -731,11 +806,14 @@
      "subs": null
     },
     "values": {
-     "views": 1430.0,
-     "retention": 0.9327,
-     "engagement": 0.0301,
+     "views": 1431.0,
+     "retention": 0.9315,
+     "engagement": 0.03,
      "subs": 0.0,
-     "ctr": 0.5629
+     "avd": 34.4665,
+     "ctr": 0.5632,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -759,11 +837,14 @@
      "subs": null
     },
     "values": {
-     "views": 262.0,
-     "retention": 0.7444,
-     "engagement": 0.042,
-     "subs": 3.8168,
-     "ctr": 0.5954
+     "views": 263.0,
+     "retention": 0.7397,
+     "engagement": 0.0418,
+     "subs": 3.8023,
+     "avd": 22.9299,
+     "ctr": 0.597,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -787,11 +868,14 @@
      "subs": null
     },
     "values": {
-     "views": 713.0,
-     "retention": 0.6362,
-     "engagement": 0.0154,
+     "views": 717.0,
+     "retention": 0.6373,
+     "engagement": 0.0153,
      "subs": 0.0,
-     "ctr": 0.683
+     "avd": 42.6994,
+     "ctr": 0.682,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -815,11 +899,14 @@
      "subs": null
     },
     "values": {
-     "views": 4227.0,
-     "retention": 0.1562,
+     "views": 4232.0,
+     "retention": 0.1558,
      "engagement": 0.0175,
-     "subs": 5.9144,
-     "ctr": 0.0415
+     "subs": 5.9074,
+     "avd": 626.1404,
+     "ctr": 0.0415,
+     "r30": 0.9383,
+     "r60": 0.6647
     }
    }
   },
@@ -843,11 +930,14 @@
      "subs": null
     },
     "values": {
-     "views": 1310.0,
-     "retention": 0.5441,
+     "views": 1312.0,
+     "retention": 0.5433,
      "engagement": 0.0191,
-     "subs": 1.5267,
-     "ctr": 0.5687
+     "subs": 1.5244,
+     "avd": 24.4504,
+     "ctr": 0.5686,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -871,11 +961,14 @@
      "subs": null
     },
     "values": {
-     "views": 1317.0,
-     "retention": 0.5417,
+     "views": 1318.0,
+     "retention": 0.541,
      "engagement": 0.0296,
-     "subs": 12.9081,
-     "ctr": 0.5695
+     "subs": 12.8983,
+     "avd": 18.9348,
+     "ctr": 0.5698,
+     "r30": null,
+     "r60": null
     }
    }
   },
@@ -899,11 +992,14 @@
      "subs": null
     },
     "values": {
-     "views": 1110.0,
-     "retention": 0.5005,
-     "engagement": 0.0387,
-     "subs": 55.8559,
-     "ctr": 0.0238
+     "views": 1115.0,
+     "retention": 0.4988,
+     "engagement": 0.0386,
+     "subs": 55.6054,
+     "avd": 27.4349,
+     "ctr": 0.0238,
+     "r30": null,
+     "r60": null
     }
    }
   }

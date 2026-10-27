@@ -36,6 +36,7 @@ sys.path.insert(0, HERE)
 sys.path.insert(0, os.path.dirname(os.path.dirname(HERE)))
 import build_tracker_sr as tracker          # noqa: E402  (OAuth for the SR channel)
 import yt_kpis                              # noqa: E402
+from content_grades import update_retention  # noqa: E402  (0:30 / 1:00 retention, shared with the other shows)
 
 DATA = os.path.join(HERE, "data_sr")
 CDIR = os.path.join(DATA, "content")
@@ -284,12 +285,20 @@ def _scores(x, dur, fmt):
     s = {"views": views,
          "retention": (x.get("minutes", 0) / (eng * dur / 60)) if eng and dur else None,
          "engagement": ((x.get("likes", 0) + x.get("comments", 0) + x.get("shares", 0)) / views) if views else None,
-         "subs": (x.get("subs", 0) / views * 1000) if views else None}
+         "subs": (x.get("subs", 0) / views * 1000) if views else None,
+         "avd": (x.get("minutes", 0) * 60 / eng) if eng else None}      # average view duration (sec)
     if fmt == "short":      # Shorts aren't clicked from thumbnails: use the share of views that were engaged
         s["ctr"] = (eng / views) if views else None
     else:
         s["ctr"] = (x.get("org_clicks", 0) / x["org_impressions"]) if x.get("org_impressions", 0) >= 100 else None
     return s
+
+
+def _f(v):
+    try:
+        return float(v)
+    except (TypeError, ValueError):
+        return None
 
 
 def _pct_rank(v, peers):
@@ -301,6 +310,7 @@ def _pct_rank(v, peers):
 
 def grade_week(vout, through):
     """Grade each upload at its current age against same-format uploads from the previous PEER_DAYS at that same age."""
+    ret = {r["video_id"]: r for r in read_csv(os.path.join(CDIR, "retention.csv"))}
     for vid, v in vout.items():
         age = len(v["by_age"])
         if not age:
@@ -321,7 +331,8 @@ def grade_week(vout, through):
                       "letter": None if score is None else "A" if score >= .8 else "B" if score >= .6 else "C" if score >= .4
                       else "D" if score >= .2 else "F",
                       "ranks": {k: (round(r, 2) if r is not None else None) for k, r in ranks.items()},
-                      "values": {k: (round(x, 4) if isinstance(x, float) else x) for k, x in cur.items()}}
+                      "values": {**{k: (round(x, 4) if isinstance(x, float) else x) for k, x in cur.items()},
+                                 "r30": _f(ret.get(vid, {}).get("r30")), "r60": _f(ret.get(vid, {}).get("r60"))}}
 
 
 def main():
@@ -349,6 +360,7 @@ def main():
 
     n, total = update_daily(ya, videos, through)
     print(f"  ✓ per-video daily stats: {n} videos refreshed · {total:,} video-days")
+    print(f"  ✓ retention (0:30 / 1:00) read for {update_retention(ya, videos, through, CDIR)} long-form uploads")
     new, days = update_reach(creds)
     print(f"  ✓ per-video impressions: {new} new day(s) · {days} days cached")
     fmt_of = lambda vid: (None if types.get(vid) == "LIVES" else "episode" if vid in episodes

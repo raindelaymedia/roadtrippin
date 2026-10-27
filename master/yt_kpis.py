@@ -25,7 +25,15 @@ from datetime import date, timedelta
 
 
 TYPES = {"videoOnDemand": "VIDS", "shorts": "SHORTS", "liveStream": "LIVES"}
-LABEL = {"VIDS": "Videos", "SHORTS": "Shorts", "LIVES": "Lives", "ALL": "All"}
+LABEL = {"VIDS": "Videos", "EPISODES": "Full episodes", "CLIPS": "Clips", "SHORTS": "Shorts", "LIVES": "Lives", "ALL": "All"}
+# Full-episode playlists per channel: VIDS (YouTube's long-form) is split into EPISODES (these) and CLIPS (the rest)
+EPISODE_PLAYLISTS = {
+    "UCSes4X8uDrpc4X46hJKjejg": ["PLX3ZLYz4-6vE2_ZNLW5AfzbHTd1jTskDl", "PLX3ZLYz4-6vHA_GG37kXNZowGAKqu94Sh",
+                                 "PLX3ZLYz4-6vFapW85GvTgNr-4rJjgkzqi"],          # RT group, Perk Unplugged, Mailbag
+    "UCLh4znMEEDzabMHw-Ob0Cpg": ["PLcPj2Bidz6D4"],                                  # Girls Tripp
+    "UCWcbo7_7Qiu0VtXPjpp-SDA": ["PLOZ-AJjs7IGw"],                                  # Football Related
+    "UCD50DP5meQbRD0ug-dm1p1g": ["PL-57LJk452aiG43ygafeNcBCb8vZAv-4U"],             # The Schultz Report
+}
 METRICS = "views,engagedViews,estimatedMinutesWatched,averageViewDuration,averageViewPercentage,likes,comments,shares"
 REACH_TYPE = "channel_reach_basic_a1"
 REACH_TYPES_OK = ("channel_reach_basic_a1", "channel_reach_combined_a1")
@@ -62,7 +70,63 @@ def _all(by_type):
             "shares": sum(x["shares"] for x in t)}
 
 
-def monthly_kpis(ya, months):
+def episode_ids(creds):
+    """Video IDs in this channel's full-episode playlists (EPISODE_PLAYLISTS)."""
+    from googleapiclient.discovery import build
+    yt = build("youtube", "v3", credentials=creds)
+    me = yt.channels().list(part="id", mine=True).execute(num_retries=3)["items"][0]["id"]
+    ids = set()
+    for pid in EPISODE_PLAYLISTS.get(me, []):
+        tok = None
+        while True:
+            r = yt.playlistItems().list(part="contentDetails", playlistId=pid, maxResults=50, pageToken=tok).execute(num_retries=3)
+            ids |= {i["contentDetails"]["videoId"] for i in r["items"]}
+            tok = r.get("nextPageToken")
+            if not tok:
+                break
+    return sorted(ids)
+
+
+def _filtered(ya, start, end, dims, ids):
+    """Monthly (or period) totals for a set of videos, chunked; ratio metrics re-weighted by engaged views."""
+    acc = defaultdict(lambda: defaultdict(float))
+    for n in range(0, len(ids), 150):
+        r = ya.reports().query(ids="channel==MINE", startDate=start, endDate=end, metrics=METRICS,
+                               dimensions=dims or None, filters="video==" + ",".join(ids[n:n + 150])).execute(num_retries=3)
+        names = [h["name"] for h in r["columnHeaders"]]
+        for row in r.get("rows", []):
+            x = dict(zip(names, row))
+            a = acc[x.get("month", "period")]
+            for k in ("views", "engagedViews", "estimatedMinutesWatched", "likes", "comments", "shares"):
+                a[k] += x[k]
+            a["pct_w"] += x["averageViewPercentage"] * x["engagedViews"]
+    return acc
+
+
+def _from_acc(a):
+    eng = a["engagedViews"]
+    return {"views": int(a["views"]), "engaged_views": int(eng), "watch_hours": round(a["estimatedMinutesWatched"] / 60, 1),
+            "avg_view_sec": round(a["estimatedMinutesWatched"] * 60 / eng) if eng else None,
+            "avg_pct_viewed": round(a["pct_w"] / eng, 2) if eng else None,
+            "likes": int(a["likes"]), "comments": int(a["comments"]), "shares": int(a["shares"])}
+
+
+def _minus(vids, eps):
+    """CLIPS = VIDS − EPISODES (ratio metrics re-derived from the remaining totals)."""
+    if not vids:
+        return None
+    ve, ee = vids["engaged_views"], eps["engaged_views"]
+    eng = ve - ee
+    mins = vids["watch_hours"] * 60 - eps["watch_hours"] * 60
+    out = {k: max(vids[k] - eps[k], 0) for k in ("views", "engaged_views", "likes", "comments", "shares")}
+    out["watch_hours"] = round(max(mins, 0) / 60, 1)
+    out["avg_view_sec"] = round(mins * 60 / eng) if eng > 0 else None
+    out["avg_pct_viewed"] = (round((vids["avg_pct_viewed"] * ve - eps["avg_pct_viewed"] * ee) / eng, 2)
+                             if eng > 0 and vids.get("avg_pct_viewed") is not None and eps.get("avg_pct_viewed") is not None else None)
+    return out
+
+
+def monthly_kpis(ya, months, episodes=None):
     """months: 'YYYY-MM' (any order). Complete months by the `month` dimension (its dates must be 1st-of-month);
     the current month to date by its own query."""
     months = sorted(months)
@@ -85,6 +149,18 @@ def monthly_kpis(ya, months):
         a = _all(out[m])
         if a:
             out[m]["ALL"] = a
+    if episodes:                                   # split long-form into full episodes and clips
+        eps = {}
+        if done:
+            eps.update(_filtered(ya, f"{done[0]}-01", f"{done[-1]}-01", "month", episodes))
+        if cur in months and yesterday.strftime("%Y-%m") == cur:
+            got = _filtered(ya, f"{cur}-01", yesterday.isoformat(), None, episodes)
+            if "period" in got:
+                eps[cur] = got["period"]
+        for m, a in eps.items():
+            if m in out and out[m].get("VIDS"):
+                out[m]["EPISODES"] = _from_acc(a)
+                out[m]["CLIPS"] = _minus(out[m]["VIDS"], out[m]["EPISODES"])
     return dict(out)
 
 
@@ -241,13 +317,43 @@ def reach_monthly(cache_csv):
     return res, (max(days) if days else None)
 
 
+def retention_monthly(data_dir):
+    """% still watching at 0:30 / 1:00 by month published, EPISODES and CLIPS, view-weighted — from the show's content
+    grades file (content.json / content_sr.json, written after the tracker, so one day behind)."""
+    import json
+    for name in ("content.json", "content_sr.json"):
+        p = os.path.join(data_dir, name)
+        if os.path.exists(p):
+            break
+    else:
+        return {}
+    acc = defaultdict(lambda: defaultdict(lambda: [0.0, 0.0, 0.0]))
+    for v in (json.load(open(p, encoding="utf-8")).get("videos") or {}).values():
+        vals = (v.get("grade") or {}).get("values") or {}
+        t = {"episode": "EPISODES", "clip": "CLIPS"}.get(v.get("format"))
+        w = vals.get("views") or 0
+        if t and w and vals.get("r30") is not None:
+            a = acc[v["published"][:7]][t]
+            a[0] += w * vals["r30"]
+            a[1] += w * (vals.get("r60") or 0)
+            a[2] += w
+    return {m: {t: {"r30": round(a[0] / a[2], 4), "r60": round(a[1] / a[2], 4)} for t, a in d.items() if a[2]} for m, d in acc.items()}
+
+
 def collect(creds, months, cache_csv, videos):
     """Everything for the tracker JSON. Failures in one half don't lose the other."""
     from googleapiclient.discovery import build
     out = {"monthly": {}, "reach": {}, "reach_through": None, "notes": []}
+    eps = []
+    try:
+        eps = episode_ids(creds)
+    except Exception as e:
+        out["notes"].append(f"episode playlists: {e}")
     try:
         ya = build("youtubeAnalytics", "v2", credentials=creds)
-        out["monthly"] = monthly_kpis(ya, months)
+        known = _load_types(os.path.join(os.path.dirname(cache_csv), "yt_video_types.csv"))
+        eps = [v for v in eps if known.get(v, "VIDS") == "VIDS"]     # a live or Short in the playlist stays in its own type
+        out["monthly"] = monthly_kpis(ya, months, eps)
         print(f"  ✓ YouTube KPIs: {len(out['monthly'])} months (engaged views, watch time, retention, likes …)")
     except Exception as e:
         out["notes"].append(f"monthly KPIs failed: {e}")
@@ -260,8 +366,11 @@ def collect(creds, months, cache_csv, videos):
             vt.update(video_types(ya, types_csv))
         except Exception as e:
             out["notes"].append(f"video types: {e}")
-        note = update_reach(creds, cache_csv, vt, types_csv=types_csv)
+        vt.update({v: "EPISODES" for v in eps})        # impressions split: full episodes vs clips (VIDS = clips)
+        rebuild = bool(eps) and not any(t == "EPISODES" for _, t in _read_cache(cache_csv))
+        note = update_reach(creds, cache_csv, vt, rebuild=rebuild, types_csv=types_csv)
         out["reach"], out["reach_through"] = reach_monthly(cache_csv)
+        out["retention"] = retention_monthly(os.path.dirname(cache_csv))
         print(f"  ✓ Reach (impressions/CTR): {note}")
         out["notes"].append(note)
     except Exception as e:
@@ -287,7 +396,7 @@ def _dur(sec):
 def kpi_html(kpis, fmt, n_months=6):
     monthly = {m: dict(v) for m, v in ((kpis or {}).get("monthly") or {}).items()}
     for m, v in monthly.items():                       # recompute "All" on the engaged-view basis (older JSON had it per view)
-        a = _all({t: x for t, x in v.items() if t != "ALL"})
+        a = _all({t: x for t, x in v.items() if t in ("VIDS", "SHORTS", "LIVES")})
         if a:
             v["ALL"] = a
     reach = (kpis or {}).get("reach") or {}
@@ -300,7 +409,12 @@ def kpi_html(kpis, fmt, n_months=6):
         return (monthly.get(m, {}).get(t) or {}).get(k)
 
     def rg(m, t, k):
-        return (reach.get(m, {}).get(t) or {}).get(k)
+        rm = reach.get(m, {})
+        if t == "CLIPS":                      # reach VIDS = clips once episodes are split out
+            t = "VIDS" if "EPISODES" in rm else None
+        return (rm.get(t) or {}).get(k) if t else None
+    retention = (kpis or {}).get("retention") or {}
+    rr = lambda m, t, k: (retention.get(m, {}).get(t) or {}).get(k)
 
     pct = lambda v: "—" if v is None else f"{v * 100:.1f}%"
 
@@ -323,14 +437,19 @@ def kpi_html(kpis, fmt, n_months=6):
         ("Shares", lambda m, t: fmt(g(m, t, "shares"))),
         ("Impressions", lambda m, t: fmt(rg(m, t, "impressions")) + (" †" if partial(m) else "")),
         ("Impressions CTR", lambda m, t: pct(rg(m, t, "ctr"))),
+        ("Still watching at 0:30‡", lambda m, t: pct(rr(m, t, "r30"))),
+        ("Still watching at 1:00‡", lambda m, t: pct(rr(m, t, "r60"))),
     ]
-    types = [t for t in ("VIDS", "SHORTS", "LIVES") if any(g(m, t, "views") for m in months)]
+    split = any(g(m, "EPISODES", "views") is not None for m in months)
+    types = [t for t in (("EPISODES", "CLIPS") if split else ("VIDS",)) + ("SHORTS", "LIVES") if any(g(m, t, "views") for m in months)]
     head = "".join(f"<th>{_mon(m)}</th>" for m in months)
     body = ""
     for t in types:
         body += (f'<tr><td style="font-weight:700;text-align:left">{LABEL[t]}</td>' + "".join("<td></td>" for _ in months) + "</tr>")
         for name, fn in rows_def:
-            if name.startswith("Impressions") and t != "VIDS" and not any(rg(m, t, "impressions") for m in months):
+            if name.startswith("Impressions") and not any(rg(m, t, "impressions") for m in months):
+                continue
+            if name.startswith("Still watching") and not any(rr(m, t, "r30") is not None for m in months):
                 continue
             body += f'<tr><td style="text-align:left;padding-left:18px">{name}</td>' + "".join(f"<td>{fn(m, t)}</td>" for m in months) + "</tr>"
 
@@ -353,6 +472,8 @@ def kpi_html(kpis, fmt, n_months=6):
       <div class="table-scroll"><table class="data-table"><thead><tr><th style="text-align:left">Metric</th>{head}</tr></thead>
       <tbody>{body}</tbody></table></div>
       <div class="metric-delta" style="color:var(--text2);margin-top:8px">YouTube Analytics API · {_mon(cur)} to date.
-        * per engaged view (YouTube's definition: watch time ÷ engaged views). † month only partly covered by daily reports.
+        * per engaged view (YouTube's definition: watch time ÷ engaged views). Full episodes = the show's full-episode
+        playlists; clips = other long-form. † month only partly covered by daily reports. ‡ still watching = organic viewers at 0:30 / 1:00 on long-form uploads published
+        that month (view-weighted, from each video's retention curve).
         Impressions / CTR = thumbnail impressions from the YouTube Reporting API{f" (through {through})" if through else " — filling in from daily reports"}.</div>
     </div>"""

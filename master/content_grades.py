@@ -57,6 +57,7 @@ WEIGHTS = {"retention": 0.35, "ctr": 0.35, "views": 0.15, "engagement": 0.10, "s
 DAILY_FIELDS = ["video_id", "date", "views", "engaged", "minutes", "likes", "comments", "shares", "subs",
                 "paid_views", "paid_engaged", "paid_minutes"]
 REACH_FIELDS = ["date", "video_id", "impressions", "clicks", "org_impressions", "org_clicks"]
+RET_FIELDS = ["video_id", "pulled", "age", "duration_sec", "r30", "r60"]
 
 
 def read_csv(path):
@@ -197,12 +198,54 @@ def update_reach(creds, cdir, keep_ids):
     return new
 
 
+def _interp(points, x):
+    """Linear interpolation on [(ratio, value)] with (0, 1.0) as the start."""
+    pts = [(0.0, 1.0)] + sorted(points)
+    for (x0, y0), (x1, y1) in zip(pts, pts[1:]):
+        if x0 <= x <= x1:
+            return y0 + (y1 - y0) * ((x - x0) / (x1 - x0) if x1 > x0 else 0)
+    return pts[-1][1]
+
+
+def update_retention(ya, videos, through, cdir):
+    """% of organic viewers still watching at 0:30 and 1:00, per long-form upload, from YouTube's retention curve
+    (audienceWatchRatio by elapsedVideoTimeRatio, 100 points). Re-read weekly until day 28, then kept."""
+    path = os.path.join(cdir, "retention.csv")
+    rows = {r["video_id"]: r for r in read_csv(path)}
+    end = date.fromisoformat(through)
+    n = 0
+    for vid, v in videos.items():
+        dur = v.get("duration_sec") or 0
+        if v["format"] == "short" or dur < 90:
+            continue
+        age = (end - date.fromisoformat(v["published"])).days + 1
+        old = rows.get(vid)
+        if age < 2 or (old and (int(old["age"]) >= AGES or age - int(old["age"]) < 7)):
+            continue
+        try:
+            r = ya.reports().query(ids="channel==MINE", startDate=v["published"], endDate=through, metrics="audienceWatchRatio",
+                                   dimensions="elapsedVideoTimeRatio", filters=f"video=={vid};audienceType==ORGANIC"
+                                   ).execute(num_retries=3)
+        except Exception:
+            continue
+        pts = [(float(x), float(y)) for x, y in r.get("rows", [])]
+        if not pts:
+            continue
+        cap = lambda y: round(min(y, 1.0), 4)
+        rows[vid] = {"video_id": vid, "pulled": through, "age": min(age, AGES), "duration_sec": dur,
+                     "r30": cap(_interp(pts, 30 / dur)), "r60": cap(_interp(pts, 60 / dur))}
+        n += 1
+    write_csv(path, RET_FIELDS, [rows[k] for k in sorted(rows)])
+    return n
+
+
 def _scores(x, dur, fmt):
     eng, views = x.get("engaged", 0), x.get("views", 0)
     s = {"views": views,
          "retention": (x.get("minutes", 0) / (eng * dur / 60)) if eng and dur else None,
          "engagement": ((x.get("likes", 0) + x.get("comments", 0) + x.get("shares", 0)) / views) if views else None,
-         "subs": (x.get("subs", 0) / views * 1000) if views else None}
+         "subs": (x.get("subs", 0) / views * 1000) if views else None,
+         "avd": (x.get("minutes", 0) * 60 / eng) if eng else None}      # average view duration (sec), YouTube's basis
     if fmt == "short":
         s["ctr"] = (eng / views) if views else None
     else:
@@ -218,6 +261,7 @@ def _pct_rank(v, peers):
 
 
 def grade(videos, cdir, through):
+    ret = {r["video_id"]: r for r in read_csv(os.path.join(cdir, "retention.csv"))}
     daily, reach = defaultdict(dict), defaultdict(dict)
     for r in read_csv(os.path.join(cdir, "video_daily.csv")):
         daily[r["video_id"]][r["date"]] = r
@@ -254,6 +298,9 @@ def grade(videos, cdir, through):
         used = {k: r for k, r in ranks.items() if r is not None}
         wsum = sum(WEIGHTS[k] for k in used)
         score = sum(WEIGHTS[k] * r for k, r in used.items()) / wsum if wsum else None
+        rt = ret.get(vid) or {}
+        cur["r30"] = float(rt["r30"]) if rt.get("r30") not in (None, "") else None
+        cur["r60"] = float(rt["r60"]) if rt.get("r60") not in (None, "") else None
         graded[vid] = {**v, "week": week_start(date.fromisoformat(v["published"])),
                        "paid_views": by_age[vid][-1].get("paid_views", 0),
                        "grade": {"age_days": age, "peers": len(peers), "score": round(score, 3) if score is not None else None,
@@ -295,6 +342,7 @@ def run(show):
           f"{sum(v['format'] == 'clip' for v in videos.values())} clips, {sum(v['format'] == 'short' for v in videos.values())} Shorts)")
     n = update_daily(ya, videos, through, cdir)
     print(f"  ✓ daily stats refreshed for {n} uploads")
+    print(f"  ✓ retention (0:30 / 1:00) read for {update_retention(ya, videos, through, cdir)} long-form uploads")
     try:
         new = update_reach(creds, cdir, set(videos))
         print(f"  ✓ impressions: {new} new day(s)")

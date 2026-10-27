@@ -332,6 +332,34 @@ def digest_html(rows, daily, dates, groups):
   </div>"""
 
 
+def format_stats(tracked, vdaily, since, base_date):
+    """Long-form (episodes + clips) vs Shorts for one show. Channel totals can't be split by format, so these come from
+    the tracked uploads (last ~35 days): views gained in the last 7 days = views now - views in the snapshot 7 days ago
+    (0 for uploads published since)."""
+    d1 = max(vdaily)
+    out = {}
+    for kind, fs in (("long", ("episode", "clip")), ("short", ("short",))):
+        vs = [v for v in tracked if v["format"] in fs]
+        g7 = None
+        if base_date:
+            g7 = 0
+            for v in vs:
+                now, then = vdaily[d1].get(v["video_id"]), vdaily[base_date].get(v["video_id"])
+                if now is None:
+                    continue
+                if then is None and v["published"] > base_date:
+                    then = 0
+                if then is not None:
+                    g7 += max(now - then, 0)
+        recent = [v for v in vs if v["published"] >= since]
+        d7 = [x for x in (views_at(vdaily, v, 7) for v in vs) if x is not None]
+        out[kind] = {"gain7": g7, "uploads": len(recent), "views28": sum(v["views"] for v in recent),
+                     "per_week": round(len(recent) / (WINDOW / 7), 1),
+                     "median": round(statistics.median([v["views"] for v in recent])) if recent else None,
+                     "day7": (round(statistics.median(d7)) if d7 else None, len(d7))}
+    return out
+
+
 def summarize(shows, daily, videos, vdaily):
     dates = sorted(daily)
     d1 = dates[-1]
@@ -339,6 +367,8 @@ def summarize(shows, daily, videos, vdaily):
     since = (today - timedelta(days=WINDOW - 1)).isoformat()
     week = (today - timedelta(days=6)).isoformat()
     views_now = vdaily.get(d1, {})
+    vtarget = (datetime.strptime(max(vdaily), "%Y-%m-%d").date() - timedelta(days=7)).isoformat() if vdaily else None
+    vbase = next((d for d in sorted(vdaily, reverse=True) if d <= vtarget), None) if vtarget else None
     by_channel = defaultdict(list)
     for vid, v in videos.items():
         if vid in views_now:     # every tracked upload (last ~35 days); 28-day stats filter below
@@ -373,6 +403,7 @@ def summarize(shows, daily, videos, vdaily):
             "scores": (sc := score_uploads(tracked, vdaily, today, views_now, since)),
             "breakouts": find_breakouts(sc, today),
             "gain7_prev": gained_between(daily, dates, cid, 7, 7),
+            "fmt": format_stats(tracked, vdaily, since, vbase) if vdaily else {},
         })
     for r in rows:
         r["upload_views_total"] = sum(r["upload_views"].values())
@@ -453,6 +484,34 @@ def group_html(group, rows, dates, trend, gi):
                     if r["ep_age"][7][1] else '<td class="n pending">—</td>')
                  + f'<td class="n">{r["eps_week"] if up["episode"] else "—"}</td></tr>')
 
+    # Long-form / Shorts leaderboards (from tracked uploads; channel totals can't be split by format)
+    def fmt_board(kind):
+        rs = [r for r in g if r.get("fmt")]
+        f7 = any(r["fmt"][kind]["gain7"] is not None for r in rs)
+        k = (lambda r: r["fmt"][kind]["gain7"] or 0) if f7 else (lambda r: r["fmt"][kind]["views28"])
+        rs = sorted([r for r in rs if r["fmt"][kind]["uploads"] or (r["fmt"][kind]["gain7"] or 0)], key=lambda r: (-k(r), r["show"]))
+        rows_ = ""
+        for i, r in enumerate(rs, 1):
+            x = r["fmt"][kind]
+            up = (f'{r["uploads"]["episode"]} · {r["uploads"]["clip"]}' if kind == "long" else fmt(x["uploads"]))
+            rows_ += (f'<tr class="{"ours" if r["ours"] else ""}"><td class="rk">{i}</td>'
+                      f'<td class="sh"><a href="https://www.youtube.com/channel/{r["channel_id"]}" target="_blank" rel="noopener">'
+                      f'{"★ " if r["ours"] else ""}{r["show"]}</a><div class="sub">{r["subgroup"]}</div></td>'
+                      + cell(x["gain7"], "" if f7 else "pending") + f'<td class="n">{up}</td>' + f'<td class="n">{x["per_week"]}</td>'
+                      + cell(x["views28"]) + cell(x["median"])
+                      + (f'<td class="n">{fmt(x["day7"][0])}<div class="sub">{x["day7"][1]} uploads</div></td>'
+                         if x["day7"][1] else '<td class="n pending">—</td>') + '</tr>')
+        noun = "long-form uploads" if kind == "long" else "Shorts"
+        if not rows_:
+            rows_ = f'<tr><td colspan="8" class="sub">No {noun} in the last 28 days.</td></tr>'
+        sub = '<br><span class="sub">ep · clip</span>' if kind == "long" else ""
+        return f"""<div class="scroll"><table class="lb">
+        <thead><tr><th>#</th><th>Show</th><th class="n">Views gained · 7d<br><span class="sub">on recent {noun}</span></th>
+          <th class="n">Uploads 28d{sub}</th><th class="n">Per week</th>
+          <th class="n">Views on 28d {noun}</th><th class="n">Median views<br><span class="sub">28d {noun}</span></th>
+          <th class="n">Day-7 views<br><span class="sub">median</span></th></tr></thead>
+        <tbody>{rows_}</tbody></table></div>"""
+
     # Charts data
     chart_rows = [r for r in g if r["upload_views_total"] or not r["inactive"]]   # inactive shows: table only
     labels = [("★ " if r["ours"] else "") + r["show"] for r in chart_rows]
@@ -513,12 +572,21 @@ def group_html(group, rows, dates, trend, gi):
       <div style="position:relative;height:{max(len(chart_rows) * 30 + 60, 220)}px"><canvas id="bars{gi}"></canvas></div>
     </div>
     <div class="card">
-      <div class="card-h"><h3>Leaderboard</h3><span class="r">sorted by {key_lbl}{' · ▲▼ = places moved vs the 7 days before' if have_prev else ''}{f' · {len(newcomers)} newly added shows join the ranking once they have 7 days of history' if newcomers else ''}</span></div>
+      <div class="card-h"><h3>Leaderboard</h3>
+        <div class="segs"><button class="seg on" data-lb="all{gi}">All</button><button class="seg" data-lb="long{gi}">Long-form</button><button class="seg" data-lb="short{gi}">Shorts</button></div></div>
+      <div class="lbv" id="lb-long{gi}" hidden>
+        <div class="sub" style="margin-bottom:8px">Episodes + clips (over 3:00) · sorted by views gained in the last 7 days on long-form uploads from the last ~5 weeks (tracked per video; older back catalog can't be split by format)</div>
+        {fmt_board("long")}</div>
+      <div class="lbv" id="lb-short{gi}" hidden>
+        <div class="sub" style="margin-bottom:8px">Shorts (3:00 and under) · sorted by views gained in the last 7 days on Shorts from the last ~5 weeks</div>
+        {fmt_board("short")}</div>
+      <div class="lbv" id="lb-all{gi}">
+      <div class="sub" style="margin-bottom:8px">Whole channel · sorted by {key_lbl}{' · ▲▼ = places moved vs the 7 days before' if have_prev else ''}{f' · {len(newcomers)} newly added shows join the ranking once they have 7 days of history' if newcomers else ''}</div>
       <div class="scroll"><table class="lb">
         <thead><tr><th>#</th><th>Show</th><th class="n">Subscribers</th><th class="n">Views gained · 7d</th><th class="n">Views gained · 28d</th>
           <th class="n">Uploads 28d<br><span class="sub">ep · clip · short</span></th><th class="n">Views on 28d uploads</th>
           <th class="n">Episode views<br><span class="sub">day 7 · median</span></th><th class="n">Episodes / week</th></tr></thead>
-        <tbody>{body}</tbody></table></div>
+        <tbody>{body}</tbody></table></div></div>
     </div>
     <div class="grid2">
       <div class="card">
@@ -602,6 +670,10 @@ def build():
   .tab {{ border:1px solid var(--border); background:var(--surface); color:var(--text2); padding:7px 14px; border-radius:999px;
          font:600 12px Inter,sans-serif; cursor:pointer; }}
   .tab.on {{ background:var(--brand); border-color:var(--brand); color:#fff; }}
+  .segs {{ display:inline-flex; border:1px solid var(--border); border-radius:8px; overflow:hidden; }}
+  .seg {{ border:0; background:var(--surface); color:var(--text2); padding:5px 12px; font:600 12px Inter,sans-serif; cursor:pointer; }}
+  .seg + .seg {{ border-left:1px solid var(--border); }}
+  .seg.on {{ background:var(--ink); color:#fff; }}
   .tiles {{ display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:12px; margin-bottom:12px; }}
   .tile {{ background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:14px 16px; }}
   .ours-tile {{ border-color:var(--gold); background:var(--gold-soft); }}
@@ -692,6 +764,11 @@ document.querySelectorAll('.tab').forEach(b => b.onclick = () => {{
   document.querySelectorAll('.tab').forEach(x => x.classList.toggle('on', x === b));
   document.querySelectorAll('.group').forEach((s,i) => s.hidden = String(i) !== b.dataset.g);
   draw(+b.dataset.g);
+}});
+document.querySelectorAll('.seg').forEach(b => b.onclick = () => {{
+  const card = b.closest('.card');
+  card.querySelectorAll('.seg').forEach(x => x.classList.toggle('on', x === b));
+  card.querySelectorAll('.lbv').forEach(v => v.hidden = v.id !== 'lb-' + b.dataset.lb);
 }});
 draw(0);
 </script>

@@ -42,6 +42,7 @@ def rows_for(content):
         out.append({"id": vid, "t": v.get("title", ""), "p": v.get("published", ""), "f": v.get("format", ""),
                     "a": age, "s": status(age, final_age), "g": gr.get("letter"), "sc": gr.get("score"),
                     "v": vals.get("views"), "pd": paid or 0, "r": vals.get("retention"), "c": vals.get("ctr"),
+                    "d": vals.get("avd"), "r3": vals.get("r30"), "r6": vals.get("r60"),
                     "w": _why(gr, v.get("format")) if gr.get("letter") else "not enough comparable uploads yet"})
     out.sort(key=lambda x: x["p"], reverse=True)
     return out
@@ -70,6 +71,9 @@ def _methodology(content, show):
         shares per view) · subscribers per 1,000 views {p(w['subs'])}.</p>
       <p style="margin:0 0 6px"><b>Grade bands:</b> A 80+ · B 60–80 · C 40–60 · D 20–40 · F under 20 (combined score out of 100).
         A measure with no data yet (e.g. too few impressions for CTR) is left out and the rest re-weighted.</p>
+      <p style="margin:0 0 6px"><b>Also shown (not graded):</b> average view duration (watch time ÷ engaged views, YouTube's
+        basis) and, for long-form uploads, the share of organic viewers still watching at 0:30 and 1:00 — read from YouTube's
+        retention curve (100 points across the video, so approximate on very long episodes).</p>
       <p style="margin:0"><b>Organic only:</b> views from YouTube ads are left out of every measure (shown in the table for reference).
         YouTube's data runs about two days behind.</p>
     </div>
@@ -110,7 +114,8 @@ _UI = r"""
   <div class="table-scroll"><table class="data-table ct-tbl"><thead><tr>
     <th data-k="sc" class="on">Grade</th><th data-k="t" style="text-align:left">Upload</th><th data-k="f">Format</th>
     <th data-k="p">Published</th><th data-k="a">Age</th><th data-k="v">Organic views</th><th data-k="pd">Paid views</th>
-    <th data-k="r">% viewed</th><th data-k="c">CTR / engaged %</th><th data-k="w" style="text-align:left">Why</th>
+    <th data-k="r">% viewed</th><th data-k="d">Avg view<br>duration</th><th data-k="r3">Still watching<br>at 0:30</th>
+    <th data-k="r6">at 1:00</th><th data-k="c">CTR / engaged %</th><th data-k="w" style="text-align:left">Why</th>
   </tr></thead><tbody id="ct-body"></tbody></table></div>
   <div class="metric-delta" style="color:var(--text2);margin-top:8px">__NOTE__</div>
 </div>
@@ -127,6 +132,7 @@ _UI = r"""
   const add = (d,n) => { const x = new Date(d); x.setUTCDate(x.getUTCDate()+n); return x; };
   const K = v => v==null ? '—' : v>=1e6 ? (v/1e6).toFixed(1)+'M' : v>=1e4 ? Math.round(v/1e3)+'K' : v>=1e3 ? (v/1e3).toFixed(1)+'K' : Math.round(v).toLocaleString();
   const P = v => v==null ? '—' : (v*100).toFixed(1)+'%';
+  const T = v => v==null ? '—' : Math.floor(v/60)+':'+String(Math.round(v%60)).padStart(2,'0');
   function range(){
     const t = D(TODAY), dow = (t.getUTCDay()+6)%7, mon = add(t,-dow), p = $('ct-preset').value;
     if (p==='tw') return [iso(mon), TODAY];
@@ -156,7 +162,7 @@ _UI = r"""
       <td>${r.g ? `<span class="ct-g" style="background:${COL[r.g]}">${r.g}</span>` : '<span style="opacity:.6">—</span>'}<span class="ct-st">${ST[r.s]}</span></td>
       <td class="t"><a href="https://www.youtube.com/watch?v=${r.id}" target="_blank" style="color:var(--brand)">${r.t.slice(0,90)}</a></td>
       <td>${FMT[r.f]||r.f}</td><td>${r.p}</td><td>day ${r.a}</td><td>${K(r.v)}</td><td style="opacity:.7">${r.pd ? K(r.pd) : '—'}</td>
-      <td>${P(r.r)}</td><td>${P(r.c)}</td><td style="text-align:left;opacity:.75">${r.w}</td></tr>`).join('');
+      <td>${P(r.r)}</td><td>${T(r.d)}</td><td>${P(r.r3)}</td><td>${P(r.r6)}</td><td>${P(r.c)}</td><td style="text-align:left;opacity:.75">${r.w}</td></tr>`).join('');
   }
   document.querySelectorAll('.ct-tbl th').forEach(th => th.onclick = () => {
     const k = th.dataset.k; asc = (sortK===k) ? !asc : (k==='t'||k==='f'); sortK = k;
