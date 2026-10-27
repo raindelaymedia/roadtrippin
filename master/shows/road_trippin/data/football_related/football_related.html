@@ -235,6 +235,10 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg) ;color:var(--text);li
       <svg class="nav-icon" viewBox="0 0 16 16" fill="none"><rect x="1" y="1" width="6" height="6" rx="1.5" fill="currentColor"/><rect x="9" y="1" width="6" height="6" rx="1.5" fill="currentColor" opacity=".5"/><rect x="1" y="9" width="6" height="6" rx="1.5" fill="currentColor" opacity=".5"/><rect x="9" y="9" width="6" height="6" rx="1.5" fill="currentColor" opacity=".3"/></svg>
       <span>Overview</span>
     </div>
+    <div class="nav-item" onclick="showPage('content',this)">
+      <svg class="nav-icon" viewBox="0 0 16 16" fill="none"><path d="M8 1.5l1.9 3.9 4.3.6-3.1 3 .7 4.3L8 11.3l-3.8 2 .7-4.3-3.1-3 4.3-.6L8 1.5z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+      <span>Content</span>
+    </div>
     <div class="nav-item" onclick="showPage('youtube',this)">
       <svg class="nav-icon" viewBox="0 0 16 16" fill="none"><rect x="1" y="3" width="14" height="10" rx="2" fill="currentColor" opacity=".2"/><path d="M6.5 5.5l4 2.5-4 2.5V5.5z" fill="currentColor"/></svg>
       <span>YouTube</span>
@@ -253,7 +257,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg) ;color:var(--text);li
       <span>Tracker</span>
     </div>
   </div>
-  <div class="sidebar-footer">Updated Oct 26, 2026</div>
+  <div class="sidebar-footer">Updated Oct 27, 2026</div>
 </nav>
 
 <div class="main">
@@ -268,12 +272,12 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg) ;color:var(--text);li
     <div class="metrics">
       <div class="metric">
         <div class="metric-label">YT Subscribers</div>
-        <div class="metric-value">348</div>
+        <div class="metric-value">353</div>
         <div class="metric-delta" style="color:var(--text2)">live count</div>
       </div>
       <div class="metric">
         <div class="metric-label">YT Views</div>
-        <div class="metric-value">43.8K</div>
+        <div class="metric-value">44.9K</div>
         <div class="metric-delta" style="color:var(--text2)">latest month</div>
       </div>
       <div class="metric">
@@ -295,6 +299,35 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg) ;color:var(--text);li
   
 </div>
 
+<!-- ═══ CONTENT ═══ -->
+<div class="page" id="page-content">
+  <div class="page-header">
+    <div class="page-title">Content</div>
+    <div class="page-sub">How each YouTube upload is doing · graded against the show's own recent uploads</div>
+  </div>
+  <div class="card"><div class="card-title">Last week · Oct 19–Oct 25 · 10 uploads</div><div class="table-scroll"><table class="data-table"><thead><tr><th>Grade</th><th style="text-align:left">Upload</th><th>Published · age</th><th>Organic views</th><th>Paid views</th><th>% viewed</th><th>CTR / engaged %</th><th style="text-align:left">Why</th></tr></thead><tbody><tr><td colspan="8" style="text-align:left;font-weight:700;opacity:.85">Episodes · 1</td></tr><tr><td style="width:44px"><span title="Not enough comparable uploads yet" style="opacity:.6">—</span></td><td style="text-align:left;white-space:normal;min-width:280px;max-width:440px"><a href="https://www.youtube.com/watch?v=4P8WuHBfqUA" target="_blank" style="color:var(--brand)">The Martin Brothers on Beating Each Other Up, Playing Together at Notre Dame & Life After </a></td><td>Oct 20 · day 7</td><td>1.5K</td><td style="opacity:.7">—</td><td>23.8%</td><td>3.6%</td><td style="text-align:left;opacity:.75">not enough comparable uploads yet</td></tr><tr><td colspan="8" style="text-align:left;font-weight:700;opacity:.85">Clips · 5</td></tr><tr><td style="width:44px"><span style="display:inline-block;min-width:22px;text-align:center;border-radius:4px;font-weight:700;color:#111;background:#E8C840">C</span></td><td style="text-align:left;white-space:normal;min-width:280px;max-width:440px"><a href="https://www.youtube.com/watch?v=ZgAfqhzhWDY" target="_blank" style="color:var(--brand)">Zack & Nick Martin Went From Fighting as Kids to the NFL</a></td><td>Oct 22 · day 5</td><td>146</td><td style="opacity:.7">—</td><td>44.6%</td><td>2.5%</td><td style="text-align:left;opacity:.75">% viewed top 25% · engagement bottom 1%</td></tr><tr><td style="width:44px"><span style="display:inline-block;min-width:22px;text-align:center;border-radius:4px;font-weight:700;color:#111;background:#E8C840">C</span></td><td style="text-align:left;white-space:normal;min-width:280px;max-width:440px"><a href="https://www.youtube.com/watch?v=cAxiJq7JQXE" target="_blank" style="color:var(--brand)">Zack Martin Reacts to Dallas Running Once in Its Final 39 Plays</a></td><td>Oct 23 · day 4</td><td>44</td><td style="opacity:.7">—</td><td>39.8%</td><td>1.6%</td><td style="text-align:left;opacity:.75">engagement top 22% · views bottom 1%</td></tr><tr><td style="width:44px"><span style="display:inline-block;min-width:22px;text-align:center;border-radius:4px;font-weight:700;color:#111;background:#E08C2A">D</span></td><td style="text-align:left;white-space:normal;min-width:280px;max-width:440px"><a href="https://www.youtube.com/watch?v=MmAMXEnnD80" target="_blank" style="color:var(--brand)">Why Does Notre Dame Keep Coming Up Short in the Biggest Moments?</a></td><td>Oct 21 · day 6</td><td>134</td><td style="opacity:.7">—</td><td>39.6%</td><td>1.0%</td><td style="text-align:left;opacity:.75">engagement top 14% · CTR bottom 1%</td></tr><tr><td style="width:44px"><span style="display:inline-block;min-width:22px;text-align:center;border-radius:4px;font-weight:700;color:#111;background:#E05252">F</span></td><td style="text-align:left;white-space:normal;min-width:280px;max-width:440px"><a href="https://www.youtube.com/watch?v=LOF5zQ29YKo" target="_blank" style="color:var(--brand)">Zack Martin & Tyler Eifert Completely Disagree About NFL Training Camp</a></td><td>Oct 19 · day 8</td><td>122</td><td style="opacity:.7">—</td><td>30.2%</td><td>1.7%</td><td style="text-align:left;opacity:.75">engagement top 33% · views bottom 1%</td></tr><tr><td style="width:44px"><span style="display:inline-block;min-width:22px;text-align:center;border-radius:4px;font-weight:700;color:#111;background:#E05252">F</span></td><td style="text-align:left;white-space:normal;min-width:280px;max-width:440px"><a href="https://www.youtube.com/watch?v=uXieNnEi9Bo" target="_blank" style="color:var(--brand)">Why Tight Ends and Offensive Linemen Have Beef</a></td><td>Oct 24 · day 3</td><td>60</td><td style="opacity:.7">—</td><td>32.9%</td><td>1.0%</td><td style="text-align:left;opacity:.75">engagement top 50% · CTR bottom 1%</td></tr><tr><td colspan="8" style="text-align:left;font-weight:700;opacity:.85">Shorts · 4</td></tr><tr><td style="width:44px"><span style="display:inline-block;min-width:22px;text-align:center;border-radius:4px;font-weight:700;color:#111;background:#8BC34A">B</span></td><td style="text-align:left;white-space:normal;min-width:280px;max-width:440px"><a href="https://www.youtube.com/watch?v=bmzs0_SrPGw" target="_blank" style="color:var(--brand)">Zack Martin Reveals The Real Secret Behind Jason Witten's Legendary NFL Career #DallasCowb</a></td><td>Oct 22 · day 5</td><td>1.6K</td><td style="opacity:.7">—</td><td>73.1%</td><td>70.2%</td><td style="text-align:left;opacity:.75">engaged % top 6% · engagement bottom 25%</td></tr><tr><td style="width:44px"><span style="display:inline-block;min-width:22px;text-align:center;border-radius:4px;font-weight:700;color:#111;background:#E8C840">C</span></td><td style="text-align:left;white-space:normal;min-width:280px;max-width:440px"><a href="https://www.youtube.com/watch?v=5t-628wOxCY" target="_blank" style="color:var(--brand)">Why Going Into Philly is Scarier Than Playing Dallas #nfl #philadelphiaeagles #dallascowbo</a></td><td>Oct 21 · day 6</td><td>2.2K</td><td style="opacity:.7">—</td><td>76.1%</td><td>62.1%</td><td style="text-align:left;opacity:.75">views top 14% · engagement bottom 1%</td></tr><tr><td style="width:44px"><span style="display:inline-block;min-width:22px;text-align:center;border-radius:4px;font-weight:700;color:#111;background:#E8C840">C</span></td><td style="text-align:left;white-space:normal;min-width:280px;max-width:440px"><a href="https://www.youtube.com/watch?v=5oUygzsGMt0" target="_blank" style="color:var(--brand)">Tyler Eifert The CRAZIEST Brian Cushing Story You've Ever Heard #nfl #HoustonTexans #footb</a></td><td>Oct 21 · day 6</td><td>361</td><td style="opacity:.7">—</td><td>67.2%</td><td>70.1%</td><td style="text-align:left;opacity:.75">engaged % top 7% · engagement bottom 1%</td></tr><tr><td style="width:44px"><span style="display:inline-block;min-width:22px;text-align:center;border-radius:4px;font-weight:700;color:#111;background:#E8C840">C</span></td><td style="text-align:left;white-space:normal;min-width:280px;max-width:440px"><a href="https://www.youtube.com/watch?v=rMQvtkwhJsY" target="_blank" style="color:var(--brand)">Ravens vs Bengals: He Was Beat Before the Snap “ANDY, WATCH OUT!” #nfl</a></td><td>Oct 23 · day 4</td><td>165</td><td style="opacity:.7">—</td><td>69.8%</td><td>64.2%</td><td style="text-align:left;opacity:.75">engaged % top 35% · views bottom 12%</td></tr></tbody></table></div></div><div class="metric-delta" style="color:var(--text2);margin:-4px 0 14px">Data through 2026-10-26. See <b>How the grades work</b> below.</div>
+  <div class="card" style="border-left:3px solid var(--brand)">
+    <div class="card-title">How the grades work</div>
+    <div style="font-size:13px;line-height:1.6">
+      <p style="margin:0 0 10px"><b>The short version:</b> every YouTube upload is compared with Football Related's own recent uploads of the
+        same kind, at the same age. <b>A</b> = doing better than about 80% of them, <b>C</b> = about average, <b>F</b> = behind about
+        80% of them. It's a comparison with ourselves, not with other channels.</p>
+      <p style="margin:0 0 6px"><b>Like for like.</b> Episodes vs episodes, clips vs clips, Shorts vs Shorts. A 3-day-old clip is
+        compared with how other clips were doing on <i>their</i> day 3, so new uploads aren't punished for being new. The comparison
+        group is the same kind of upload from the 90 days before (at least 5 needed — until then the grade
+        shows "—").</p>
+      <p style="margin:0 0 6px"><b>Five measures</b>, each ranked within that group and combined: % viewed 35% (how much
+        people watch) · click-through rate 35% (how often a thumbnail gets clicked; for Shorts, the share of views where people
+        kept watching instead of swiping) · views 15% · engagement 10% (likes, comments, shares per view) ·
+        subscribers per 1,000 views 5%.</p>
+      <p style="margin:0 0 6px"><b>Grade bands:</b> A 80+ · B 60–80 · C 40–60 · D 20–40 · F under 20 (combined score out of 100).
+        A measure with no data yet (e.g. too few impressions for CTR) is left out and the rest re-weighted.</p>
+      <p style="margin:0"><b>Organic only:</b> views from YouTube ads are left out of every measure (shown in the table for reference).
+        Grades move during the week as uploads age and YouTube's data settles (about two days behind).</p>
+    </div>
+  </div>
+</div>
+
 <!-- ═══ YOUTUBE ═══ -->
 <div class="page" id="page-youtube">
   <div class="page-header">
@@ -303,9 +336,9 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg) ;color:var(--text);li
   </div>
   
     <div class="metrics">
-      <div class="metric"><div class="metric-label">Subscribers</div><div class="metric-value">348</div></div>
-      <div class="metric"><div class="metric-label">VOD Views (OCT)</div><div class="metric-value">13.9K</div></div>
-      <div class="metric"><div class="metric-label">Shorts Views (OCT)</div><div class="metric-value">29.9K</div></div>
+      <div class="metric"><div class="metric-label">Subscribers</div><div class="metric-value">353</div></div>
+      <div class="metric"><div class="metric-label">VOD Views (OCT)</div><div class="metric-value">14.5K</div></div>
+      <div class="metric"><div class="metric-label">Shorts Views (OCT)</div><div class="metric-value">30.4K</div></div>
       <div class="metric"><div class="metric-label">Live Views (OCT)</div><div class="metric-value">0</div></div>
     </div>
     <div class="card">
@@ -320,12 +353,12 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg) ;color:var(--text);li
     
     <div class="card">
       <div class="card-title">YouTube KPIs · by month</div>
-      <div class="metrics"><div class="metric"><div class="metric-label">Watch time · Oct</div><div class="metric-value">829 hrs</div><div class="metric-delta" style="color:var(--text2)">videos avg 7:20 · 19% viewed</div></div><div class="metric"><div class="metric-label">Engaged views · Oct</div><div class="metric-value">23.9K</div><div class="metric-delta" style="color:var(--text2)">54.6% of views</div></div><div class="metric"><div class="metric-label">Impressions · Oct</div><div class="metric-value">122.7K</div><div class="metric-delta" style="color:var(--text2)">CTR 3.2%</div></div><div class="metric"><div class="metric-label">Likes · comments · shares</div><div class="metric-value">999</div><div class="metric-delta" style="color:var(--text2)">868 · 46 · 85 in Oct</div></div></div>
+      <div class="metrics"><div class="metric"><div class="metric-label">Watch time · Oct</div><div class="metric-value">844 hrs</div><div class="metric-delta" style="color:var(--text2)">videos avg 7:06 · 19% viewed</div></div><div class="metric"><div class="metric-label">Engaged views · Oct</div><div class="metric-value">24.6K</div><div class="metric-delta" style="color:var(--text2)">54.7% of views</div></div><div class="metric"><div class="metric-label">Impressions · Oct</div><div class="metric-value">126.9K</div><div class="metric-delta" style="color:var(--text2)">CTR 3.2%</div></div><div class="metric"><div class="metric-label">Likes · comments · shares</div><div class="metric-value">1.0K</div><div class="metric-delta" style="color:var(--text2)">884 · 46 · 86 in Oct</div></div></div>
       <div class="table-scroll"><table class="data-table"><thead><tr><th style="text-align:left">Metric</th><th>Oct</th></tr></thead>
-      <tbody><tr><td style="font-weight:700;text-align:left">Videos</td><td></td></tr><tr><td style="text-align:left;padding-left:18px">Views</td><td>13.9K</td></tr><tr><td style="text-align:left;padding-left:18px">Engaged views</td><td>5.3K</td></tr><tr><td style="text-align:left;padding-left:18px">Engaged %</td><td>38.0%</td></tr><tr><td style="text-align:left;padding-left:18px">Watch time (hrs)</td><td>650</td></tr><tr><td style="text-align:left;padding-left:18px">Avg view duration*</td><td>7:20</td></tr><tr><td style="text-align:left;padding-left:18px">Avg % viewed*</td><td>18.6%</td></tr><tr><td style="text-align:left;padding-left:18px">Likes</td><td>177</td></tr><tr><td style="text-align:left;padding-left:18px">Comments</td><td>35</td></tr><tr><td style="text-align:left;padding-left:18px">Shares</td><td>77</td></tr><tr><td style="text-align:left;padding-left:18px">Impressions</td><td>96.9K</td></tr><tr><td style="text-align:left;padding-left:18px">Impressions CTR</td><td>3.1%</td></tr><tr><td style="font-weight:700;text-align:left">Shorts</td><td></td></tr><tr><td style="text-align:left;padding-left:18px">Views</td><td>29.9K</td></tr><tr><td style="text-align:left;padding-left:18px">Engaged views</td><td>18.7K</td></tr><tr><td style="text-align:left;padding-left:18px">Engaged %</td><td>62.3%</td></tr><tr><td style="text-align:left;padding-left:18px">Watch time (hrs)</td><td>179</td></tr><tr><td style="text-align:left;padding-left:18px">Avg view duration*</td><td>0:33</td></tr><tr><td style="text-align:left;padding-left:18px">Avg % viewed*</td><td>68.2%</td></tr><tr><td style="text-align:left;padding-left:18px">Likes</td><td>691</td></tr><tr><td style="text-align:left;padding-left:18px">Comments</td><td>11</td></tr><tr><td style="text-align:left;padding-left:18px">Shares</td><td>8</td></tr><tr><td style="text-align:left;padding-left:18px">Impressions</td><td>25.8K</td></tr><tr><td style="text-align:left;padding-left:18px">Impressions CTR</td><td>3.8%</td></tr></tbody></table></div>
+      <tbody><tr><td style="font-weight:700;text-align:left">Videos</td><td></td></tr><tr><td style="text-align:left;padding-left:18px">Views</td><td>14.5K</td></tr><tr><td style="text-align:left;padding-left:18px">Engaged views</td><td>5.5K</td></tr><tr><td style="text-align:left;padding-left:18px">Engaged %</td><td>38.3%</td></tr><tr><td style="text-align:left;padding-left:18px">Watch time (hrs)</td><td>662</td></tr><tr><td style="text-align:left;padding-left:18px">Avg view duration*</td><td>7:06</td></tr><tr><td style="text-align:left;padding-left:18px">Avg % viewed*</td><td>18.6%</td></tr><tr><td style="text-align:left;padding-left:18px">Likes</td><td>183</td></tr><tr><td style="text-align:left;padding-left:18px">Comments</td><td>35</td></tr><tr><td style="text-align:left;padding-left:18px">Shares</td><td>78</td></tr><tr><td style="text-align:left;padding-left:18px">Impressions</td><td>100.7K</td></tr><tr><td style="text-align:left;padding-left:18px">Impressions CTR</td><td>3.1%</td></tr><tr><td style="font-weight:700;text-align:left">Shorts</td><td></td></tr><tr><td style="text-align:left;padding-left:18px">Views</td><td>30.4K</td></tr><tr><td style="text-align:left;padding-left:18px">Engaged views</td><td>19.0K</td></tr><tr><td style="text-align:left;padding-left:18px">Engaged %</td><td>62.5%</td></tr><tr><td style="text-align:left;padding-left:18px">Watch time (hrs)</td><td>181</td></tr><tr><td style="text-align:left;padding-left:18px">Avg view duration*</td><td>0:33</td></tr><tr><td style="text-align:left;padding-left:18px">Avg % viewed*</td><td>68.2%</td></tr><tr><td style="text-align:left;padding-left:18px">Likes</td><td>701</td></tr><tr><td style="text-align:left;padding-left:18px">Comments</td><td>11</td></tr><tr><td style="text-align:left;padding-left:18px">Shares</td><td>8</td></tr><tr><td style="text-align:left;padding-left:18px">Impressions</td><td>26.2K</td></tr><tr><td style="text-align:left;padding-left:18px">Impressions CTR</td><td>3.9%</td></tr></tbody></table></div>
       <div class="metric-delta" style="color:var(--text2);margin-top:8px">YouTube Analytics API · Oct to date.
         * per engaged view (YouTube's definition: watch time ÷ engaged views). † month only partly covered by daily reports.
-        Impressions / CTR = thumbnail impressions from the YouTube Reporting API (through 2026-10-24).</div>
+        Impressions / CTR = thumbnail impressions from the YouTube Reporting API (through 2026-10-25).</div>
     </div>
 </div>
 
@@ -380,7 +413,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg) ;color:var(--text);li
     <div class="page-title">Tracker</div>
     <div class="page-sub">Full data export · newest left, oldest right</div>
   </div>
-  <div class="tracker-section"><div class="tracker-section-title">📺 Views</div><div class="table-scroll"><table class="data-table"><thead><tr><th>📺 Views</th><th>OCT</th><th class="lifetime-col">Lifetime</th></tr></thead><tbody><tr><td>YT Videos</td><td>13,899</td><td class="lifetime-col">13,899</td></tr><tr><td>YT Shorts</td><td>29,933</td><td class="lifetime-col">29,933</td></tr><tr><td>YT Lives</td><td>0</td><td class="lifetime-col">0</td></tr></tbody></table></div></div><div class="tracker-section"><div class="tracker-section-title">👥 Subscribers</div><div class="table-scroll"><table class="data-table"><thead><tr><th>👥 Subscribers</th><th>OCT</th><th class="lifetime-col">Lifetime</th></tr></thead><tbody><tr><td>YouTube</td><td>348</td><td class="lifetime-col">348</td></tr></tbody></table></div></div><div class="tracker-section"><div class="tracker-section-title">🔑 KPIs</div><div class="table-scroll"><table class="data-table"><thead><tr><th>🔑 KPIs</th><th>OCT</th><th class="lifetime-col">Lifetime</th></tr></thead><tbody><tr><td>CTR – Videos</td><td><span class="na">—</span></td><td class="lifetime-col">—</td></tr><tr><td># of Shorts</td><td>19</td><td class="lifetime-col">19</td></tr><tr><td>Shorts % of Views</td><td>68.3%</td><td class="lifetime-col">—</td></tr><tr><td>Search % of Views</td><td>5.6%</td><td class="lifetime-col">—</td></tr></tbody></table></div></div>
+  <div class="tracker-section"><div class="tracker-section-title">📺 Views</div><div class="table-scroll"><table class="data-table"><thead><tr><th>📺 Views</th><th>OCT</th><th class="lifetime-col">Lifetime</th></tr></thead><tbody><tr><td>YT Videos</td><td>14,485</td><td class="lifetime-col">14,485</td></tr><tr><td>YT Shorts</td><td>30,412</td><td class="lifetime-col">30,412</td></tr><tr><td>YT Lives</td><td>0</td><td class="lifetime-col">0</td></tr></tbody></table></div></div><div class="tracker-section"><div class="tracker-section-title">👥 Subscribers</div><div class="table-scroll"><table class="data-table"><thead><tr><th>👥 Subscribers</th><th>OCT</th><th class="lifetime-col">Lifetime</th></tr></thead><tbody><tr><td>YouTube</td><td>353</td><td class="lifetime-col">353</td></tr></tbody></table></div></div><div class="tracker-section"><div class="tracker-section-title">🔑 KPIs</div><div class="table-scroll"><table class="data-table"><thead><tr><th>🔑 KPIs</th><th>OCT</th><th class="lifetime-col">Lifetime</th></tr></thead><tbody><tr><td>CTR – Videos</td><td><span class="na">—</span></td><td class="lifetime-col">—</td></tr><tr><td># of Shorts</td><td>20</td><td class="lifetime-col">20</td></tr><tr><td>Shorts % of Views</td><td>67.7%</td><td class="lifetime-col">—</td></tr><tr><td>Search % of Views</td><td>5.8%</td><td class="lifetime-col">—</td></tr></tbody></table></div></div>
 </div>
 
 </div>
@@ -404,11 +437,11 @@ document.addEventListener('DOMContentLoaded', function() {
   Chart.defaults.color = '#4a5468';
 
   const M = ["OCT"];
-  const vids = [13899];
-  const shorts = [29933];
+  const vids = [14485];
+  const shorts = [30412];
   const lives = [0];
-  const subs = [348];
-  const rtViews = [854], rtOther = [42967], rtPct = [1.9];
+  const subs = [353];
+  const rtViews = [856], rtOther = [44030], rtPct = [1.9];
   const revM = [];
   const revTotals = [];
 
