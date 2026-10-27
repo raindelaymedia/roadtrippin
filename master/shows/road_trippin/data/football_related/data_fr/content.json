@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-27T04:16",
+ "generated": "2026-10-27T15:13",
  "through": "2026-10-26",
  "weights": {
   "retention": 0.35,
@@ -143,11 +143,11 @@
      "subs": 0.69
     },
     "values": {
-     "views": 1576.0,
+     "views": 1575.0,
      "retention": 0.731,
      "engagement": 0.0184,
-     "subs": 1.269,
-     "ctr": 0.7024
+     "subs": 1.2698,
+     "ctr": 0.7029
     }
    }
   },
@@ -199,11 +199,11 @@
      "subs": 0.43
     },
     "values": {
-     "views": 2209.0,
+     "views": 2208.0,
      "retention": 0.7609,
      "engagement": 0.0136,
-     "subs": 0.4527,
-     "ctr": 0.6206
+     "subs": 0.4529,
+     "ctr": 0.6209
     }
    }
   },
@@ -507,10 +507,10 @@
      "subs": null
     },
     "values": {
-     "views": 2324.0,
+     "views": 2323.0,
      "retention": 0.1954,
      "engagement": 0.0301,
-     "subs": 14.6299,
+     "subs": 14.6362,
      "ctr": 0.03
     }
    }
@@ -815,10 +815,10 @@
      "subs": null
     },
     "values": {
-     "views": 4227.0,
+     "views": 4226.0,
      "retention": 0.1562,
      "engagement": 0.0175,
-     "subs": 5.9144,
+     "subs": 5.9158,
      "ctr": 0.0415
     }
    }
@@ -899,10 +899,10 @@
      "subs": null
     },
     "values": {
-     "views": 1110.0,
-     "retention": 0.5005,
-     "engagement": 0.0387,
-     "subs": 55.8559,
+     "views": 1109.0,
+     "retention": 0.4994,
+     "engagement": 0.0388,
+     "subs": 55.9062,
      "ctr": 0.0238
     }
    }

@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-27T04:16",
+ "generated": "2026-10-27T15:11",
  "through": "2026-10-26",
  "weights": {
   "retention": 0.35,
@@ -48,14 +48,14 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 3,
-    "peers": 138,
-    "score": 0.301,
+    "peers": 139,
+    "score": 0.3,
     "letter": "D",
     "ranks": {
      "retention": 0.15,
      "ctr": 0.54,
      "views": 0.01,
-     "engagement": 0.52,
+     "engagement": 0.53,
      "subs": 0.09
     },
     "values": {
@@ -160,14 +160,14 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 4,
-    "peers": 140,
-    "score": 0.372,
+    "peers": 141,
+    "score": 0.374,
     "letter": "D",
     "ranks": {
      "retention": 0.36,
-     "ctr": 0.29,
-     "views": 0.19,
-     "engagement": 0.65,
+     "ctr": 0.3,
+     "views": 0.18,
+     "engagement": 0.66,
      "subs": 0.99
     },
     "values": {
@@ -188,14 +188,14 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 4,
-    "peers": 140,
-    "score": 0.36,
+    "peers": 141,
+    "score": 0.358,
     "letter": "D",
     "ranks": {
-     "retention": 0.59,
+     "retention": 0.58,
      "ctr": 0.21,
      "views": 0.23,
-     "engagement": 0.44,
+     "engagement": 0.45,
      "subs": 0.07
     },
     "values": {
@@ -216,8 +216,8 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 5,
-    "peers": 139,
-    "score": 0.459,
+    "peers": 140,
+    "score": 0.458,
     "letter": "C",
     "ranks": {
      "retention": 0.5,
@@ -227,11 +227,11 @@
      "subs": 0.65
     },
     "values": {
-     "views": 110116.0,
-     "retention": 0.9507,
-     "engagement": 0.0261,
-     "subs": 0.2815,
-     "ctr": 0.4767
+     "views": 109983.0,
+     "retention": 0.9506,
+     "engagement": 0.0262,
+     "subs": 0.2819,
+     "ctr": 0.4771
     }
    }
   },
@@ -244,21 +244,21 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 5,
-    "peers": 21,
-    "score": 0.499,
+    "peers": 20,
+    "score": 0.507,
     "letter": "C",
     "ranks": {
-     "retention": 0.43,
+     "retention": 0.45,
      "ctr": 0.56,
-     "views": 0.67,
-     "engagement": 0.29,
-     "subs": 0.48
+     "views": 0.65,
+     "engagement": 0.3,
+     "subs": 0.5
     },
     "values": {
-     "views": 43948.0,
-     "retention": 0.2796,
-     "engagement": 0.015,
-     "subs": 1.3652,
+     "views": 43759.0,
+     "retention": 0.2797,
+     "engagement": 0.0151,
+     "subs": 1.394,
      "ctr": 0.0569
     }
    }
@@ -283,9 +283,9 @@
      "subs": 0.04
     },
     "values": {
-     "views": 1198.0,
-     "retention": 0.5353,
-     "engagement": 0.025,
+     "views": 1178.0,
+     "retention": 0.5334,
+     "engagement": 0.0255,
      "subs": 0.0,
      "ctr": 0.0265
     }
@@ -300,22 +300,22 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 5,
-    "peers": 139,
-    "score": 0.259,
+    "peers": 140,
+    "score": 0.261,
     "letter": "D",
     "ranks": {
      "retention": 0.25,
-     "ctr": 0.24,
+     "ctr": 0.25,
      "views": 0.2,
-     "engagement": 0.34,
+     "engagement": 0.35,
      "subs": 0.42
     },
     "values": {
-     "views": 5441.0,
-     "retention": 0.831,
+     "views": 5423.0,
+     "retention": 0.8316,
      "engagement": 0.021,
-     "subs": 0.1838,
-     "ctr": 0.4983
+     "subs": 0.1844,
+     "ctr": 0.4994
     }
    }
   },
@@ -339,9 +339,9 @@
      "subs": 0.04
     },
     "values": {
-     "views": 2091.0,
-     "retention": 0.4295,
-     "engagement": 0.0249,
+     "views": 2072.0,
+     "retention": 0.4297,
+     "engagement": 0.0251,
      "subs": 0.0,
      "ctr": 0.0477
     }
@@ -356,22 +356,22 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 5,
-    "peers": 139,
-    "score": 0.497,
+    "peers": 140,
+    "score": 0.502,
     "letter": "C",
     "ranks": {
      "retention": 0.71,
-     "ctr": 0.41,
-     "views": 0.4,
+     "ctr": 0.43,
+     "views": 0.39,
      "engagement": 0.05,
      "subs": 0.81
     },
     "values": {
-     "views": 10358.0,
-     "retention": 1.0413,
-     "engagement": 0.0135,
-     "subs": 0.3862,
-     "ctr": 0.5295
+     "views": 10326.0,
+     "retention": 1.0411,
+     "engagement": 0.0136,
+     "subs": 0.3874,
+     "ctr": 0.5301
     }
    }
   },
@@ -384,15 +384,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 6,
-    "peers": 138,
-    "score": 0.538,
+    "peers": 139,
+    "score": 0.54,
     "letter": "C",
     "ranks": {
      "retention": 0.96,
      "ctr": 0.09,
      "views": 0.63,
      "engagement": 0.42,
-     "subs": 0.68
+     "subs": 0.69
     },
     "values": {
      "views": 23820.0,
@@ -413,20 +413,20 @@
    "grade": {
     "age_days": 6,
     "peers": 49,
-    "score": 0.699,
+    "score": 0.698,
     "letter": "B",
     "ranks": {
      "retention": 0.57,
      "ctr": 0.95,
      "views": 0.82,
      "engagement": 0.14,
-     "subs": 0.61
+     "subs": 0.59
     },
     "values": {
-     "views": 39870.0,
-     "retention": 0.4822,
+     "views": 39789.0,
+     "retention": 0.4824,
      "engagement": 0.0081,
-     "subs": 1.0534,
+     "subs": 1.0304,
      "ctr": 0.0789
     }
    }
@@ -440,22 +440,22 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 6,
-    "peers": 138,
-    "score": 0.504,
+    "peers": 139,
+    "score": 0.503,
     "letter": "C",
     "ranks": {
      "retention": 0.93,
-     "ctr": 0.25,
+     "ctr": 0.24,
      "views": 0.45,
      "engagement": 0.09,
      "subs": 0.32
     },
     "values": {
-     "views": 13236.0,
-     "retention": 1.2402,
+     "views": 13224.0,
+     "retention": 1.2405,
      "engagement": 0.0148,
-     "subs": 0.1511,
-     "ctr": 0.4986
+     "subs": 0.1512,
+     "ctr": 0.4988
     }
    }
   },
@@ -479,10 +479,10 @@
      "subs": 0.08
     },
     "values": {
-     "views": 5641.0,
-     "retention": 0.4138,
+     "views": 5636.0,
+     "retention": 0.4137,
      "engagement": 0.0089,
-     "subs": 0.1773,
+     "subs": 0.1774,
      "ctr": 0.0548
     }
    }
@@ -496,22 +496,22 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 6,
-    "peers": 138,
-    "score": 0.497,
+    "peers": 139,
+    "score": 0.468,
     "letter": "C",
     "ranks": {
-     "retention": 0.91,
-     "ctr": 0.31,
-     "views": 0.36,
+     "retention": 0.82,
+     "ctr": 0.32,
+     "views": 0.35,
      "engagement": 0.14,
      "subs": 0.08
     },
     "values": {
-     "views": 9243.0,
-     "retention": 1.1921,
+     "views": 9229.0,
+     "retention": 1.1145,
      "engagement": 0.016,
      "subs": 0.0,
-     "ctr": 0.5158
+     "ctr": 0.5162
     }
    }
   },
@@ -524,14 +524,14 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 7,
-    "peers": 137,
+    "peers": 138,
     "score": 0.146,
     "letter": "F",
     "ranks": {
      "retention": 0.09,
      "ctr": 0.08,
      "views": 0.04,
-     "engagement": 0.32,
+     "engagement": 0.33,
      "subs": 0.99
     },
     "values": {
@@ -552,21 +552,21 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 7,
-    "peers": 21,
-    "score": 0.426,
+    "peers": 20,
+    "score": 0.427,
     "letter": "C",
     "ranks": {
-     "retention": 0.29,
-     "ctr": 0.53,
-     "views": 0.52,
-     "engagement": 0.38,
-     "subs": 0.48
+     "retention": 0.3,
+     "ctr": 0.5,
+     "views": 0.55,
+     "engagement": 0.4,
+     "subs": 0.5
     },
     "values": {
-     "views": 33531.0,
-     "retention": 0.2493,
+     "views": 33475.0,
+     "retention": 0.2492,
      "engagement": 0.0184,
-     "subs": 1.7297,
+     "subs": 1.7625,
      "ctr": 0.0541
     }
    }
@@ -580,22 +580,22 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 7,
-    "peers": 137,
-    "score": 0.539,
+    "peers": 138,
+    "score": 0.538,
     "letter": "C",
     "ranks": {
      "retention": 0.97,
      "ctr": 0.16,
-     "views": 0.6,
-     "engagement": 0.34,
-     "subs": 0.37
+     "views": 0.59,
+     "engagement": 0.35,
+     "subs": 0.38
     },
     "values": {
-     "views": 22332.0,
-     "retention": 1.3132,
+     "views": 22325.0,
+     "retention": 1.3131,
      "engagement": 0.0206,
-     "subs": 0.1791,
-     "ctr": 0.4728
+     "subs": 0.1792,
+     "ctr": 0.4729
     }
    }
   },
@@ -608,14 +608,14 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 8,
-    "peers": 135,
-    "score": 0.443,
+    "peers": 136,
+    "score": 0.442,
     "letter": "C",
     "ranks": {
      "retention": 0.42,
      "ctr": 0.57,
      "views": 0.24,
-     "engagement": 0.56,
+     "engagement": 0.57,
      "subs": 0.07
     },
     "values": {
@@ -636,7 +636,7 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 8,
-    "peers": 135,
+    "peers": 136,
     "score": 0.599,
     "letter": "C",
     "ranks": {
@@ -647,10 +647,10 @@
      "subs": 0.88
     },
     "values": {
-     "views": 37276.0,
+     "views": 37271.0,
      "retention": 1.3195,
      "engagement": 0.0339,
-     "subs": 0.5365,
+     "subs": 0.5366,
      "ctr": 0.4279
     }
    }
@@ -664,8 +664,8 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 9,
-    "peers": 135,
-    "score": 0.448,
+    "peers": 136,
+    "score": 0.449,
     "letter": "C",
     "ranks": {
      "retention": 0.86,
@@ -675,11 +675,11 @@
      "subs": 0.64
     },
     "values": {
-     "views": 24645.0,
+     "views": 24640.0,
      "retention": 1.1484,
      "engagement": 0.0115,
-     "subs": 0.284,
-     "ctr": 0.4417
+     "subs": 0.2841,
+     "ctr": 0.4418
     }
    }
   },
@@ -703,7 +703,7 @@
      "subs": 0.03
     },
     "values": {
-     "views": 5820.0,
+     "views": 5819.0,
      "retention": 0.4945,
      "engagement": 0.0089,
      "subs": 0.0,
@@ -759,10 +759,10 @@
      "subs": 0.06
     },
     "values": {
-     "views": 47940.0,
+     "views": 47883.0,
      "retention": 0.3836,
      "engagement": 0.0084,
-     "subs": 0.3546,
+     "subs": 0.355,
      "ctr": 0.0638
     }
    }
@@ -776,22 +776,22 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 10,
-    "peers": 135,
-    "score": 0.573,
+    "peers": 136,
+    "score": 0.574,
     "letter": "C",
     "ranks": {
      "retention": 0.99,
      "ctr": 0.13,
      "views": 0.71,
      "engagement": 0.33,
-     "subs": 0.79
+     "subs": 0.81
     },
     "values": {
-     "views": 32363.0,
+     "views": 32357.0,
      "retention": 1.351,
      "engagement": 0.0204,
-     "subs": 0.3708,
-     "ctr": 0.4716
+     "subs": 0.3709,
+     "ctr": 0.4717
     }
    }
   },
@@ -815,10 +815,10 @@
      "subs": 0.09
     },
     "values": {
-     "views": 6684.0,
+     "views": 6683.0,
      "retention": 0.6012,
      "engagement": 0.0169,
-     "subs": 0.4488,
+     "subs": 0.4489,
      "ctr": 0.0434
     }
    }
@@ -832,8 +832,8 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 11,
-    "peers": 135,
-    "score": 0.54,
+    "peers": 136,
+    "score": 0.539,
     "letter": "C",
     "ranks": {
      "retention": 0.97,
@@ -860,21 +860,21 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 11,
-    "peers": 21,
-    "score": 0.617,
+    "peers": 20,
+    "score": 0.621,
     "letter": "B",
     "ranks": {
-     "retention": 0.67,
-     "ctr": 0.67,
-     "views": 0.67,
-     "engagement": 0.24,
-     "subs": 0.52
+     "retention": 0.7,
+     "ctr": 0.65,
+     "views": 0.65,
+     "engagement": 0.25,
+     "subs": 0.55
     },
     "values": {
-     "views": 87558.0,
-     "retention": 0.3021,
+     "views": 87555.0,
+     "retention": 0.302,
      "engagement": 0.014,
-     "subs": 2.17,
+     "subs": 2.1701,
      "ctr": 0.0567
     }
    }
@@ -888,22 +888,22 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 11,
-    "peers": 135,
-    "score": 0.374,
+    "peers": 136,
+    "score": 0.371,
     "letter": "D",
     "ranks": {
-     "retention": 0.47,
-     "ctr": 0.37,
-     "views": 0.27,
+     "retention": 0.46,
+     "ctr": 0.38,
+     "views": 0.26,
      "engagement": 0.12,
      "subs": 0.58
     },
     "values": {
-     "views": 7439.0,
+     "views": 7435.0,
      "retention": 0.9134,
      "engagement": 0.0153,
-     "subs": 0.2689,
-     "ctr": 0.5274
+     "subs": 0.269,
+     "ctr": 0.5276
     }
    }
   },
@@ -916,14 +916,14 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 14,
-    "peers": 139,
-    "score": 0.518,
+    "peers": 140,
+    "score": 0.516,
     "letter": "C",
     "ranks": {
      "retention": 0.24,
      "ctr": 0.84,
      "views": 0.37,
-     "engagement": 0.61,
+     "engagement": 0.62,
      "subs": 0.42
     },
     "values": {
@@ -944,14 +944,14 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 15,
-    "peers": 139,
-    "score": 0.46,
+    "peers": 140,
+    "score": 0.459,
     "letter": "C",
     "ranks": {
      "retention": 0.14,
-     "ctr": 0.88,
-     "views": 0.12,
-     "engagement": 0.6,
+     "ctr": 0.87,
+     "views": 0.11,
+     "engagement": 0.61,
      "subs": 0.51
     },
     "values": {
@@ -972,13 +972,13 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 17,
-    "peers": 138,
-    "score": 0.371,
+    "peers": 139,
+    "score": 0.369,
     "letter": "D",
     "ranks": {
-     "retention": 0.61,
+     "retention": 0.6,
      "ctr": 0.18,
-     "views": 0.25,
+     "views": 0.24,
      "engagement": 0.28,
      "subs": 0.6
     },
@@ -1000,22 +1000,22 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 17,
-    "peers": 138,
-    "score": 0.262,
+    "peers": 139,
+    "score": 0.26,
     "letter": "D",
     "ranks": {
      "retention": 0.12,
      "ctr": 0.22,
-     "views": 0.54,
-     "engagement": 0.25,
-     "subs": 0.79
+     "views": 0.53,
+     "engagement": 0.26,
+     "subs": 0.8
     },
     "values": {
-     "views": 20570.0,
+     "views": 20568.0,
      "retention": 0.7022,
      "engagement": 0.0189,
-     "subs": 0.3889,
-     "ctr": 0.5022
+     "subs": 0.389,
+     "ctr": 0.5023
     }
    }
   },
@@ -1028,15 +1028,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 18,
-    "peers": 137,
-    "score": 0.66,
+    "peers": 138,
+    "score": 0.658,
     "letter": "B",
     "ranks": {
      "retention": 0.85,
      "ctr": 0.47,
      "views": 0.82,
-     "engagement": 0.36,
-     "subs": 0.72
+     "engagement": 0.37,
+     "subs": 0.73
     },
     "values": {
      "views": 78408.0,
@@ -1056,21 +1056,21 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 18,
-    "peers": 21,
-    "score": 0.292,
+    "peers": 20,
+    "score": 0.307,
     "letter": "D",
     "ranks": {
-     "retention": 0.33,
-     "ctr": 0.4,
+     "retention": 0.35,
+     "ctr": 0.42,
      "views": 0.1,
      "engagement": 0.1,
-     "subs": 0.24
+     "subs": 0.25
     },
     "values": {
-     "views": 6515.0,
+     "views": 6514.0,
      "retention": 0.2772,
      "engagement": 0.0112,
-     "subs": 0.7675,
+     "subs": 0.7676,
      "ctr": 0.0411
     }
    }
@@ -1084,22 +1084,22 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 19,
-    "peers": 137,
-    "score": 0.494,
+    "peers": 138,
+    "score": 0.496,
     "letter": "C",
     "ranks": {
      "retention": 0.91,
-     "ctr": 0.24,
+     "ctr": 0.25,
      "views": 0.43,
-     "engagement": 0.15,
-     "subs": 0.27
+     "engagement": 0.14,
+     "subs": 0.28
     },
     "values": {
-     "views": 14933.0,
+     "views": 14931.0,
      "retention": 1.1677,
      "engagement": 0.0171,
      "subs": 0.1339,
-     "ctr": 0.5111
+     "ctr": 0.5112
     }
    }
   },
@@ -1112,8 +1112,8 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 20,
-    "peers": 138,
-    "score": 0.521,
+    "peers": 139,
+    "score": 0.522,
     "letter": "C",
     "ranks": {
      "retention": 0.97,
@@ -1140,8 +1140,8 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 25,
-    "peers": 143,
-    "score": 0.533,
+    "peers": 144,
+    "score": 0.53,
     "letter": "C",
     "ranks": {
      "retention": 0.58,
@@ -1168,8 +1168,8 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 146,
-    "score": 0.464,
+    "peers": 147,
+    "score": 0.462,
     "letter": "C",
     "ranks": {
      "retention": 0.16,
@@ -1196,12 +1196,12 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 148,
-    "score": 0.425,
+    "peers": 149,
+    "score": 0.426,
     "letter": "C",
     "ranks": {
      "retention": 0.9,
-     "ctr": 0.18,
+     "ctr": 0.17,
      "views": 0.12,
      "engagement": 0.28,
      "subs": 0.07
@@ -1224,14 +1224,14 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 149,
-    "score": 0.392,
+    "peers": 150,
+    "score": 0.391,
     "letter": "D",
     "ranks": {
      "retention": 0.41,
-     "ctr": 0.5,
+     "ctr": 0.49,
      "views": 0.07,
-     "engagement": 0.61,
+     "engagement": 0.62,
      "subs": 0.06
     },
     "values": {
@@ -1252,8 +1252,8 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 151,
-    "score": 0.33,
+    "peers": 152,
+    "score": 0.328,
     "letter": "D",
     "ranks": {
      "retention": 0.32,
@@ -1280,11 +1280,11 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 150,
-    "score": 0.485,
+    "peers": 151,
+    "score": 0.483,
     "letter": "C",
     "ranks": {
-     "retention": 0.63,
+     "retention": 0.62,
      "ctr": 0.47,
      "views": 0.36,
      "engagement": 0.39,
@@ -1308,15 +1308,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 150,
+    "peers": 151,
     "score": 0.421,
     "letter": "C",
     "ranks": {
      "retention": 0.68,
      "ctr": 0.28,
-     "views": 0.35,
+     "views": 0.34,
      "engagement": 0.25,
-     "subs": 0.16
+     "subs": 0.17
     },
     "values": {
      "views": 10959.0,
@@ -1336,13 +1336,13 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 23,
-    "score": 0.104,
+    "peers": 22,
+    "score": 0.109,
     "letter": "F",
     "ranks": {
-     "retention": 0.04,
+     "retention": 0.05,
      "ctr": 0.14,
-     "views": 0.22,
+     "views": 0.23,
      "engagement": 0.09,
      "subs": 0.0
     },
@@ -1352,6 +1352,34 @@
      "engagement": 0.0111,
      "subs": 0.1961,
      "ctr": 0.0282
+    }
+   }
+  },
+  "op6JvrFdWrY": {
+   "title": "Carter Bryant on how new Magic coach Sean Sweeney changed his career! #nba #basketball #Spurs",
+   "published": "2026-09-24",
+   "duration_sec": 24,
+   "format": "short",
+   "week": "2026-09-21",
+   "paid_views": 0.0,
+   "grade": {
+    "age_days": 28,
+    "peers": 151,
+    "score": 0.506,
+    "letter": "C",
+    "ranks": {
+     "retention": 0.89,
+     "ctr": 0.2,
+     "views": 0.5,
+     "engagement": 0.2,
+     "subs": 0.56
+    },
+    "values": {
+     "views": 21219.0,
+     "retention": 1.1275,
+     "engagement": 0.0174,
+     "subs": 0.2828,
+     "ctr": 0.5048
     }
    }
   },
@@ -1420,7 +1448,7 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 152,
+    "peers": 151,
     "score": 0.483,
     "letter": "C",
     "ranks": {
@@ -1428,7 +1456,7 @@
      "ctr": 0.07,
      "views": 0.3,
      "engagement": 0.68,
-     "subs": 0.39
+     "subs": 0.4
     },
     "values": {
      "views": 9130.0,
@@ -1448,15 +1476,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 151,
-    "score": 0.512,
+    "peers": 150,
+    "score": 0.511,
     "letter": "C",
     "ranks": {
      "retention": 0.97,
      "ctr": 0.09,
      "views": 0.57,
      "engagement": 0.33,
-     "subs": 0.4
+     "subs": 0.41
     },
     "values": {
      "views": 26683.0,
@@ -1504,15 +1532,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 151,
+    "peers": 150,
     "score": 0.431,
     "letter": "C",
     "ranks": {
      "retention": 0.91,
      "ctr": 0.09,
-     "views": 0.36,
+     "views": 0.35,
      "engagement": 0.1,
-     "subs": 0.31
+     "subs": 0.32
     },
     "values": {
      "views": 10996.0,
@@ -1560,7 +1588,7 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 157,
+    "peers": 156,
     "score": 0.44,
     "letter": "C",
     "ranks": {
@@ -1568,7 +1596,7 @@
      "ctr": 0.09,
      "views": 0.33,
      "engagement": 0.03,
-     "subs": 0.18
+     "subs": 0.19
     },
     "values": {
      "views": 9591.0,
@@ -1672,15 +1700,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 164,
+    "peers": 163,
     "score": 0.405,
     "letter": "C",
     "ranks": {
      "retention": 0.97,
      "ctr": 0.04,
-     "views": 0.19,
+     "views": 0.18,
      "engagement": 0.11,
-     "subs": 0.28
+     "subs": 0.29
     },
     "values": {
      "views": 5743.0,
@@ -1700,15 +1728,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 164,
-    "score": 0.439,
+    "peers": 163,
+    "score": 0.438,
     "letter": "C",
     "ranks": {
      "retention": 0.93,
      "ctr": 0.02,
      "views": 0.18,
      "engagement": 0.48,
-     "subs": 0.65
+     "subs": 0.66
     },
     "values": {
      "views": 5536.0,
@@ -1728,14 +1756,14 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 164,
-    "score": 0.554,
+    "peers": 163,
+    "score": 0.552,
     "letter": "C",
     "ranks": {
-     "retention": 0.84,
-     "ctr": 0.48,
-     "views": 0.32,
-     "engagement": 0.45,
+     "retention": 0.83,
+     "ctr": 0.47,
+     "views": 0.31,
+     "engagement": 0.44,
      "subs": 0.06
     },
     "values": {
@@ -1784,15 +1812,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 164,
-    "score": 0.307,
+    "peers": 163,
+    "score": 0.306,
     "letter": "D",
     "ranks": {
      "retention": 0.3,
      "ctr": 0.21,
-     "views": 0.1,
+     "views": 0.09,
      "engagement": 0.92,
-     "subs": 0.38
+     "subs": 0.39
     },
     "values": {
      "views": 4076.0,
@@ -1812,14 +1840,14 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 166,
-    "score": 0.331,
+    "peers": 165,
+    "score": 0.329,
     "letter": "D",
     "ranks": {
      "retention": 0.64,
      "ctr": 0.16,
-     "views": 0.07,
-     "engagement": 0.4,
+     "views": 0.06,
+     "engagement": 0.39,
      "subs": 0.06
     },
     "values": {
@@ -1840,15 +1868,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 167,
-    "score": 0.528,
+    "peers": 166,
+    "score": 0.525,
     "letter": "C",
     "ranks": {
      "retention": 0.59,
      "ctr": 0.51,
      "views": 0.56,
      "engagement": 0.42,
-     "subs": 0.27
+     "subs": 0.28
     },
     "values": {
      "views": 27149.0,
@@ -1868,13 +1896,13 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 167,
-    "score": 0.666,
+    "peers": 166,
+    "score": 0.662,
     "letter": "B",
     "ranks": {
-     "retention": 0.96,
+     "retention": 0.95,
      "ctr": 0.63,
-     "views": 0.68,
+     "views": 0.67,
      "engagement": 0.02,
      "subs": 0.11
     },
@@ -1896,15 +1924,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 167,
-    "score": 0.52,
+    "peers": 166,
+    "score": 0.514,
     "letter": "C",
     "ranks": {
-     "retention": 0.32,
-     "ctr": 0.76,
-     "views": 0.25,
-     "engagement": 0.6,
-     "subs": 0.92
+     "retention": 0.31,
+     "ctr": 0.75,
+     "views": 0.23,
+     "engagement": 0.61,
+     "subs": 0.93
     },
     "values": {
      "views": 7833.0,
@@ -1924,15 +1952,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 23,
-    "score": 0.572,
+    "peers": 22,
+    "score": 0.582,
     "letter": "C",
     "ranks": {
-     "retention": 0.43,
+     "retention": 0.45,
      "ctr": 1.0,
-     "views": 0.39,
+     "views": 0.41,
      "engagement": 0.09,
-     "subs": 0.04
+     "subs": 0.05
     },
     "values": {
      "views": 23039.0,
@@ -1980,15 +2008,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 167,
+    "peers": 166,
     "score": 0.463,
     "letter": "C",
     "ranks": {
      "retention": 1.0,
      "ctr": 0.02,
-     "views": 0.53,
-     "engagement": 0.19,
-     "subs": 0.17
+     "views": 0.52,
+     "engagement": 0.2,
+     "subs": 0.18
     },
     "values": {
      "views": 24102.0,
@@ -2008,13 +2036,13 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 167,
-    "score": 0.209,
+    "peers": 166,
+    "score": 0.205,
     "letter": "D",
     "ranks": {
-     "retention": 0.08,
+     "retention": 0.07,
      "ctr": 0.23,
-     "views": 0.08,
+     "views": 0.07,
      "engagement": 0.84,
      "subs": 0.05
     },
@@ -2036,15 +2064,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 166,
-    "score": 0.454,
+    "peers": 165,
+    "score": 0.447,
     "letter": "C",
     "ranks": {
-     "retention": 0.56,
-     "ctr": 0.48,
-     "views": 0.25,
+     "retention": 0.55,
+     "ctr": 0.47,
+     "views": 0.24,
      "engagement": 0.36,
-     "subs": 0.37
+     "subs": 0.38
     },
     "values": {
      "views": 7814.0,
@@ -2092,14 +2120,14 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 166,
-    "score": 0.438,
+    "peers": 165,
+    "score": 0.435,
     "letter": "C",
     "ranks": {
      "retention": 0.95,
      "ctr": 0.02,
      "views": 0.55,
-     "engagement": 0.07,
+     "engagement": 0.08,
      "subs": 0.16
     },
     "values": {
@@ -2120,15 +2148,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 167,
-    "score": 0.375,
+    "peers": 166,
+    "score": 0.372,
     "letter": "D",
     "ranks": {
-     "retention": 0.76,
+     "retention": 0.75,
      "ctr": 0.02,
-     "views": 0.31,
+     "views": 0.3,
      "engagement": 0.5,
-     "subs": 0.15
+     "subs": 0.16
     },
     "values": {
      "views": 9878.0,
@@ -2176,14 +2204,14 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 167,
-    "score": 0.376,
+    "peers": 166,
+    "score": 0.375,
     "letter": "D",
     "ranks": {
      "retention": 0.72,
-     "ctr": 0.16,
-     "views": 0.34,
-     "engagement": 0.13,
+     "ctr": 0.17,
+     "views": 0.33,
+     "engagement": 0.14,
      "subs": 0.05
     },
     "values": {
@@ -2204,15 +2232,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 168,
+    "peers": 167,
     "score": 0.49,
     "letter": "C",
     "ranks": {
      "retention": 0.95,
      "ctr": 0.14,
-     "views": 0.61,
+     "views": 0.6,
      "engagement": 0.08,
-     "subs": 0.21
+     "subs": 0.22
     },
     "values": {
      "views": 31102.0,
@@ -2232,15 +2260,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 170,
-    "score": 0.494,
+    "peers": 169,
+    "score": 0.491,
     "letter": "C",
     "ranks": {
-     "retention": 0.94,
+     "retention": 0.93,
      "ctr": 0.05,
-     "views": 0.5,
+     "views": 0.49,
      "engagement": 0.51,
-     "subs": 0.46
+     "subs": 0.47
     },
     "values": {
      "views": 21124.0,
@@ -2260,15 +2288,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 170,
+    "peers": 169,
     "score": 0.387,
     "letter": "D",
     "ranks": {
-     "retention": 0.76,
+     "retention": 0.75,
      "ctr": 0.08,
-     "views": 0.45,
-     "engagement": 0.06,
-     "subs": 0.42
+     "views": 0.44,
+     "engagement": 0.07,
+     "subs": 0.44
     },
     "values": {
      "views": 18157.0,
@@ -2316,15 +2344,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 170,
-    "score": 0.486,
+    "peers": 169,
+    "score": 0.485,
     "letter": "C",
     "ranks": {
      "retention": 0.96,
-     "ctr": 0.11,
-     "views": 0.51,
-     "engagement": 0.11,
-     "subs": 0.42
+     "ctr": 0.12,
+     "views": 0.5,
+     "engagement": 0.12,
+     "subs": 0.44
     },
     "values": {
      "views": 21773.0,
@@ -2372,15 +2400,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 171,
-    "score": 0.459,
+    "peers": 170,
+    "score": 0.456,
     "letter": "C",
     "ranks": {
      "retention": 0.78,
      "ctr": 0.03,
-     "views": 0.57,
+     "views": 0.56,
      "engagement": 0.66,
-     "subs": 0.46
+     "subs": 0.47
     },
     "values": {
      "views": 27916.0,
@@ -2400,15 +2428,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 169,
-    "score": 0.375,
+    "peers": 168,
+    "score": 0.374,
     "letter": "D",
     "ranks": {
-     "retention": 0.45,
-     "ctr": 0.24,
+     "retention": 0.44,
+     "ctr": 0.25,
      "views": 0.57,
-     "engagement": 0.3,
-     "subs": 0.35
+     "engagement": 0.29,
+     "subs": 0.36
     },
     "values": {
      "views": 27802.0,
@@ -2484,15 +2512,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 169,
-    "score": 0.521,
+    "peers": 168,
+    "score": 0.523,
     "letter": "C",
     "ranks": {
      "retention": 0.99,
      "ctr": 0.0,
      "views": 0.95,
-     "engagement": 0.1,
-     "subs": 0.47
+     "engagement": 0.11,
+     "subs": 0.48
     },
     "values": {
      "views": 365224.0,
@@ -2540,15 +2568,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 169,
-    "score": 0.45,
+    "peers": 168,
+    "score": 0.447,
     "letter": "C",
     "ranks": {
      "retention": 0.76,
      "ctr": 0.04,
-     "views": 0.6,
+     "views": 0.59,
      "engagement": 0.67,
-     "subs": 0.27
+     "subs": 0.28
     },
     "values": {
      "views": 29865.0,
@@ -2568,15 +2596,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 166,
-    "score": 0.4,
+    "peers": 165,
+    "score": 0.395,
     "letter": "D",
     "ranks": {
-     "retention": 0.65,
+     "retention": 0.64,
      "ctr": 0.04,
-     "views": 0.48,
+     "views": 0.47,
      "engagement": 0.67,
-     "subs": 0.36
+     "subs": 0.38
     },
     "values": {
      "views": 18878.0,
@@ -2624,15 +2652,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 166,
-    "score": 0.515,
+    "peers": 165,
+    "score": 0.511,
     "letter": "C",
     "ranks": {
-     "retention": 0.72,
+     "retention": 0.71,
      "ctr": 0.31,
      "views": 0.78,
      "engagement": 0.25,
-     "subs": 0.23
+     "subs": 0.24
     },
     "values": {
      "views": 78085.0,
@@ -2652,15 +2680,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 24,
-    "score": 0.688,
+    "peers": 23,
+    "score": 0.695,
     "letter": "B",
     "ranks": {
-     "retention": 0.75,
-     "ctr": 0.65,
+     "retention": 0.78,
+     "ctr": 0.63,
      "views": 1.0,
-     "engagement": 0.21,
-     "subs": 0.54
+     "engagement": 0.22,
+     "subs": 0.57
     },
     "values": {
      "views": 337893.0,
@@ -2680,15 +2708,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 166,
-    "score": 0.545,
+    "peers": 165,
+    "score": 0.542,
     "letter": "C",
     "ranks": {
-     "retention": 0.9,
+     "retention": 0.89,
      "ctr": 0.29,
-     "views": 0.6,
+     "views": 0.59,
      "engagement": 0.33,
-     "subs": 0.15
+     "subs": 0.16
     },
     "values": {
      "views": 29831.0,
@@ -2708,13 +2736,13 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 165,
-    "score": 0.18,
+    "peers": 164,
+    "score": 0.177,
     "letter": "F",
     "ranks": {
-     "retention": 0.24,
+     "retention": 0.23,
      "ctr": 0.15,
-     "views": 0.06,
+     "views": 0.05,
      "engagement": 0.35,
      "subs": 0.05
     },
@@ -2736,15 +2764,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 165,
-    "score": 0.509,
+    "peers": 164,
+    "score": 0.504,
     "letter": "C",
     "ranks": {
-     "retention": 0.47,
+     "retention": 0.46,
      "ctr": 0.54,
-     "views": 0.44,
+     "views": 0.43,
      "engagement": 0.65,
-     "subs": 0.48
+     "subs": 0.5
     },
     "values": {
      "views": 16573.0,
@@ -2764,15 +2792,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 164,
-    "score": 0.651,
+    "peers": 163,
+    "score": 0.647,
     "letter": "B",
     "ranks": {
-     "retention": 0.7,
+     "retention": 0.69,
      "ctr": 0.89,
-     "views": 0.41,
-     "engagement": 0.24,
-     "subs": 0.15
+     "views": 0.4,
+     "engagement": 0.25,
+     "subs": 0.16
     },
     "values": {
      "views": 16203.0,
@@ -2792,13 +2820,13 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 164,
-    "score": 0.603,
-    "letter": "B",
+    "peers": 163,
+    "score": 0.597,
+    "letter": "C",
     "ranks": {
-     "retention": 0.67,
+     "retention": 0.66,
      "ctr": 0.61,
-     "views": 0.48,
+     "views": 0.46,
      "engagement": 0.74,
      "subs": 0.18
     },
@@ -2820,14 +2848,14 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 164,
-    "score": 0.231,
+    "peers": 163,
+    "score": 0.229,
     "letter": "D",
     "ranks": {
-     "retention": 0.51,
-     "ctr": 0.06,
-     "views": 0.08,
-     "engagement": 0.16,
+     "retention": 0.5,
+     "ctr": 0.07,
+     "views": 0.07,
+     "engagement": 0.17,
      "subs": 0.05
     },
     "values": {
@@ -2848,15 +2876,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 164,
-    "score": 0.614,
+    "peers": 163,
+    "score": 0.609,
     "letter": "B",
     "ranks": {
-     "retention": 0.41,
+     "retention": 0.4,
      "ctr": 0.84,
-     "views": 0.27,
+     "views": 0.26,
      "engagement": 0.99,
-     "subs": 0.73
+     "subs": 0.74
     },
     "values": {
      "views": 8233.0,
@@ -2876,13 +2904,13 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 165,
-    "score": 0.465,
+    "peers": 164,
+    "score": 0.46,
     "letter": "C",
     "ranks": {
-     "retention": 0.52,
+     "retention": 0.51,
      "ctr": 0.45,
-     "views": 0.26,
+     "views": 0.25,
      "engagement": 0.82,
      "subs": 0.15
     },
@@ -2904,13 +2932,13 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 24,
-    "score": 0.546,
+    "peers": 23,
+    "score": 0.554,
     "letter": "C",
     "ranks": {
-     "retention": 0.29,
+     "retention": 0.3,
      "ctr": 1.0,
-     "views": 0.58,
+     "views": 0.61,
      "engagement": 0.04,
      "subs": 0.04
     },
@@ -2932,14 +2960,14 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 165,
-    "score": 0.231,
+    "peers": 164,
+    "score": 0.228,
     "letter": "D",
     "ranks": {
-     "retention": 0.22,
-     "ctr": 0.21,
-     "views": 0.18,
-     "engagement": 0.5,
+     "retention": 0.21,
+     "ctr": 0.22,
+     "views": 0.17,
+     "engagement": 0.51,
      "subs": 0.05
     },
     "values": {
@@ -2960,15 +2988,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 165,
-    "score": 0.373,
+    "peers": 164,
+    "score": 0.37,
     "letter": "D",
     "ranks": {
-     "retention": 0.42,
+     "retention": 0.41,
      "ctr": 0.27,
-     "views": 0.69,
-     "engagement": 0.19,
-     "subs": 0.21
+     "views": 0.68,
+     "engagement": 0.2,
+     "subs": 0.23
     },
     "values": {
      "views": 51348.0,
@@ -3016,15 +3044,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 163,
-    "score": 0.486,
+    "peers": 162,
+    "score": 0.481,
     "letter": "C",
     "ranks": {
-     "retention": 0.82,
+     "retention": 0.81,
      "ctr": 0.38,
-     "views": 0.26,
+     "views": 0.25,
      "engagement": 0.07,
-     "subs": 0.39
+     "subs": 0.4
     },
     "values": {
      "views": 7344.0,
@@ -3044,7 +3072,7 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 163,
+    "peers": 162,
     "score": 0.461,
     "letter": "C",
     "ranks": {
@@ -3052,7 +3080,7 @@
      "ctr": 0.01,
      "views": 0.64,
      "engagement": 0.01,
-     "subs": 0.24
+     "subs": 0.25
     },
     "values": {
      "views": 39029.0,
@@ -3072,13 +3100,13 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 23,
-    "score": 0.72,
+    "peers": 22,
+    "score": 0.729,
     "letter": "B",
     "ranks": {
-     "retention": 0.91,
-     "ctr": 0.78,
-     "views": 0.83,
+     "retention": 0.95,
+     "ctr": 0.76,
+     "views": 0.82,
      "engagement": 0.0,
      "subs": 0.09
     },
@@ -3100,13 +3128,13 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 162,
-    "score": 0.562,
+    "peers": 161,
+    "score": 0.555,
     "letter": "C",
     "ranks": {
      "retention": 0.73,
-     "ctr": 0.67,
-     "views": 0.25,
+     "ctr": 0.66,
+     "views": 0.24,
      "engagement": 0.31,
      "subs": 0.05
     },
@@ -3128,15 +3156,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 22,
-    "score": 0.128,
+    "peers": 21,
+    "score": 0.134,
     "letter": "F",
     "ranks": {
-     "retention": 0.18,
+     "retention": 0.19,
      "ctr": 0.12,
      "views": 0.05,
      "engagement": 0.0,
-     "subs": 0.32
+     "subs": 0.33
     },
     "values": {
      "views": 3871.0,
@@ -3156,15 +3184,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 161,
-    "score": 0.515,
+    "peers": 160,
+    "score": 0.514,
     "letter": "C",
     "ranks": {
      "retention": 0.93,
      "ctr": 0.24,
-     "views": 0.39,
-     "engagement": 0.32,
-     "subs": 0.32
+     "views": 0.38,
+     "engagement": 0.31,
+     "subs": 0.34
     },
     "values": {
      "views": 15735.0,
@@ -3184,15 +3212,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 159,
-    "score": 0.282,
+    "peers": 158,
+    "score": 0.281,
     "letter": "D",
     "ranks": {
-     "retention": 0.26,
-     "ctr": 0.23,
-     "views": 0.19,
+     "retention": 0.25,
+     "ctr": 0.24,
+     "views": 0.18,
      "engagement": 0.53,
-     "subs": 0.53
+     "subs": 0.54
     },
     "values": {
      "views": 5612.0,
@@ -3212,15 +3240,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 159,
-    "score": 0.609,
+    "peers": 158,
+    "score": 0.603,
     "letter": "B",
     "ranks": {
-     "retention": 0.47,
-     "ctr": 0.71,
+     "retention": 0.46,
+     "ctr": 0.7,
      "views": 0.78,
      "engagement": 0.53,
-     "subs": 0.5
+     "subs": 0.52
     },
     "values": {
      "views": 100540.0,
@@ -3240,15 +3268,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 157,
-    "score": 0.608,
+    "peers": 156,
+    "score": 0.603,
     "letter": "B",
     "ranks": {
-     "retention": 0.57,
-     "ctr": 0.61,
-     "views": 0.67,
-     "engagement": 0.73,
-     "subs": 0.5
+     "retention": 0.56,
+     "ctr": 0.6,
+     "views": 0.66,
+     "engagement": 0.72,
+     "subs": 0.51
     },
     "values": {
      "views": 49174.0,
@@ -3268,15 +3296,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 157,
-    "score": 0.587,
+    "peers": 156,
+    "score": 0.581,
     "letter": "C",
     "ranks": {
      "retention": 0.78,
      "ctr": 0.43,
-     "views": 0.53,
-     "engagement": 0.73,
-     "subs": 0.18
+     "views": 0.52,
+     "engagement": 0.72,
+     "subs": 0.19
     },
     "values": {
      "views": 24928.0,
@@ -3296,15 +3324,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 156,
-    "score": 0.493,
+    "peers": 155,
+    "score": 0.492,
     "letter": "C",
     "ranks": {
-     "retention": 0.88,
+     "retention": 0.87,
      "ctr": 0.1,
-     "views": 0.32,
+     "views": 0.31,
      "engagement": 0.83,
-     "subs": 0.42
+     "subs": 0.43
     },
     "values": {
      "views": 10452.0,
@@ -3324,14 +3352,14 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 154,
-    "score": 0.093,
+    "peers": 153,
+    "score": 0.087,
     "letter": "F",
     "ranks": {
-     "retention": 0.18,
+     "retention": 0.16,
      "ctr": 0.0,
-     "views": 0.05,
-     "engagement": 0.21,
+     "views": 0.04,
+     "engagement": 0.22,
      "subs": 0.04
     },
     "values": {
@@ -3352,13 +3380,13 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 154,
-    "score": 0.246,
+    "peers": 153,
+    "score": 0.244,
     "letter": "D",
     "ranks": {
-     "retention": 0.38,
-     "ctr": 0.2,
-     "views": 0.11,
+     "retention": 0.37,
+     "ctr": 0.21,
+     "views": 0.1,
      "engagement": 0.23,
      "subs": 0.04
     },
@@ -3380,15 +3408,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 151,
-    "score": 0.422,
+    "peers": 150,
+    "score": 0.415,
     "letter": "C",
     "ranks": {
-     "retention": 0.58,
+     "retention": 0.57,
      "ctr": 0.36,
-     "views": 0.25,
+     "views": 0.23,
      "engagement": 0.4,
-     "subs": 0.3
+     "subs": 0.32
     },
     "values": {
      "views": 7905.0,
@@ -3436,11 +3464,11 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 151,
-    "score": 0.115,
+    "peers": 150,
+    "score": 0.11,
     "letter": "F",
     "ranks": {
-     "retention": 0.12,
+     "retention": 0.11,
      "ctr": 0.05,
      "views": 0.03,
      "engagement": 0.5,
@@ -3464,13 +3492,13 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 21,
-    "score": 0.173,
+    "peers": 20,
+    "score": 0.182,
     "letter": "F",
     "ranks": {
-     "retention": 0.19,
-     "ctr": 0.19,
-     "views": 0.24,
+     "retention": 0.2,
+     "ctr": 0.2,
+     "views": 0.25,
      "engagement": 0.05,
      "subs": 0.0
     },
@@ -3492,12 +3520,12 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 151,
-    "score": 0.588,
+    "peers": 150,
+    "score": 0.584,
     "letter": "C",
     "ranks": {
-     "retention": 0.92,
-     "ctr": 0.32,
+     "retention": 0.91,
+     "ctr": 0.31,
      "views": 0.8,
      "engagement": 0.3,
      "subs": 0.09
@@ -3520,15 +3548,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 149,
+    "peers": 148,
     "score": 0.398,
     "letter": "D",
     "ranks": {
-     "retention": 0.77,
-     "ctr": 0.15,
-     "views": 0.33,
+     "retention": 0.76,
+     "ctr": 0.16,
+     "views": 0.32,
      "engagement": 0.09,
-     "subs": 0.41
+     "subs": 0.43
     },
     "values": {
      "views": 13476.0,
@@ -3548,15 +3576,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 149,
-    "score": 0.737,
+    "peers": 148,
+    "score": 0.733,
     "letter": "B",
     "ranks": {
-     "retention": 0.54,
+     "retention": 0.53,
      "ctr": 0.84,
      "views": 0.84,
      "engagement": 0.99,
-     "subs": 0.56
+     "subs": 0.58
     },
     "values": {
      "views": 142620.0,
@@ -3576,15 +3604,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 147,
-    "score": 0.712,
+    "peers": 146,
+    "score": 0.707,
     "letter": "B",
     "ranks": {
-     "retention": 0.53,
+     "retention": 0.52,
      "ctr": 0.93,
-     "views": 0.39,
+     "views": 0.38,
      "engagement": 0.98,
-     "subs": 0.85
+     "subs": 0.86
     },
     "values": {
      "views": 16439.0,
@@ -3604,15 +3632,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 147,
-    "score": 0.566,
+    "peers": 146,
+    "score": 0.564,
     "letter": "C",
     "ranks": {
      "retention": 0.73,
-     "ctr": 0.24,
+     "ctr": 0.25,
      "views": 0.83,
      "engagement": 0.82,
-     "subs": 0.32
+     "subs": 0.34
     },
     "values": {
      "views": 131916.0,
@@ -3632,13 +3660,13 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 20,
-    "score": 0.137,
+    "peers": 19,
+    "score": 0.146,
     "letter": "F",
     "ranks": {
-     "retention": 0.1,
-     "ctr": 0.2,
-     "views": 0.2,
+     "retention": 0.11,
+     "ctr": 0.21,
+     "views": 0.21,
      "engagement": 0.0,
      "subs": 0.05
     },
@@ -3660,15 +3688,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 144,
-    "score": 0.489,
+    "peers": 143,
+    "score": 0.483,
     "letter": "C",
     "ranks": {
-     "retention": 0.55,
+     "retention": 0.54,
      "ctr": 0.35,
-     "views": 0.27,
+     "views": 0.26,
      "engagement": 0.88,
-     "subs": 0.88
+     "subs": 0.9
     },
     "values": {
      "views": 8960.0,
@@ -3688,15 +3716,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 144,
-    "score": 0.561,
+    "peers": 143,
+    "score": 0.556,
     "letter": "C",
     "ranks": {
-     "retention": 0.58,
-     "ctr": 0.35,
+     "retention": 0.57,
+     "ctr": 0.34,
      "views": 0.86,
      "engagement": 0.73,
-     "subs": 0.67
+     "subs": 0.68
     },
     "values": {
      "views": 191820.0,
@@ -3716,11 +3744,11 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 144,
-    "score": 0.017,
+    "peers": 143,
+    "score": 0.015,
     "letter": "F",
     "ranks": {
-     "retention": 0.02,
+     "retention": 0.01,
      "ctr": 0.0,
      "views": 0.01,
      "engagement": 0.07,
@@ -3744,15 +3772,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 142,
-    "score": 0.601,
-    "letter": "B",
+    "peers": 141,
+    "score": 0.594,
+    "letter": "C",
     "ranks": {
-     "retention": 0.57,
-     "ctr": 0.71,
-     "views": 0.38,
+     "retention": 0.56,
+     "ctr": 0.7,
+     "views": 0.37,
      "engagement": 0.81,
-     "subs": 0.3
+     "subs": 0.31
     },
     "values": {
      "views": 16324.0,
@@ -3772,15 +3800,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 142,
-    "score": 0.612,
+    "peers": 141,
+    "score": 0.607,
     "letter": "B",
     "ranks": {
-     "retention": 0.79,
+     "retention": 0.78,
      "ctr": 0.37,
-     "views": 0.85,
+     "views": 0.84,
      "engagement": 0.65,
-     "subs": 0.25
+     "subs": 0.27
     },
     "values": {
      "views": 154117.0,
@@ -3800,15 +3828,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 140,
-    "score": 0.799,
+    "peers": 139,
+    "score": 0.796,
     "letter": "B",
     "ranks": {
-     "retention": 0.93,
+     "retention": 0.92,
      "ctr": 0.55,
      "views": 0.96,
      "engagement": 0.94,
-     "subs": 0.85
+     "subs": 0.86
     },
     "values": {
      "views": 460434.0,
@@ -3856,15 +3884,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 140,
-    "score": 0.696,
+    "peers": 139,
+    "score": 0.692,
     "letter": "B",
     "ranks": {
-     "retention": 0.39,
+     "retention": 0.37,
      "ctr": 0.92,
      "views": 0.81,
      "engagement": 0.8,
-     "subs": 0.75
+     "subs": 0.76
     },
     "values": {
      "views": 102881.0,
@@ -3912,15 +3940,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 138,
-    "score": 0.47,
+    "peers": 137,
+    "score": 0.467,
     "letter": "C",
     "ranks": {
-     "retention": 0.62,
-     "ctr": 0.16,
-     "views": 0.77,
-     "engagement": 0.6,
-     "subs": 0.42
+     "retention": 0.61,
+     "ctr": 0.17,
+     "views": 0.76,
+     "engagement": 0.61,
+     "subs": 0.44
     },
     "values": {
      "views": 70549.0,
@@ -3968,15 +3996,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 138,
-    "score": 0.787,
+    "peers": 137,
+    "score": 0.781,
     "letter": "B",
     "ranks": {
-     "retention": 0.65,
-     "ctr": 0.81,
+     "retention": 0.64,
+     "ctr": 0.8,
      "views": 0.99,
      "engagement": 0.92,
-     "subs": 0.7
+     "subs": 0.72
     },
     "values": {
      "views": 506105.0,
@@ -3997,14 +4025,14 @@
    "grade": {
     "age_days": 28,
     "peers": 136,
-    "score": 0.077,
+    "score": 0.074,
     "letter": "F",
     "ranks": {
-     "retention": 0.02,
+     "retention": 0.01,
      "ctr": 0.01,
-     "views": 0.09,
+     "views": 0.07,
      "engagement": 0.15,
-     "subs": 0.73
+     "subs": 0.74
     },
     "values": {
      "views": 3971.0,
@@ -4071,34 +4099,6 @@
     }
    }
   },
-  "arlbF6cjouQ": {
-   "title": "Kendrick Perkins Shares CRAZY Young Celtics Story #nba #rajonrondo",
-   "published": "2026-08-13",
-   "duration_sec": 69,
-   "format": "short",
-   "week": "2026-08-10",
-   "paid_views": 0.0,
-   "grade": {
-    "age_days": 28,
-    "peers": 136,
-    "score": 0.453,
-    "letter": "C",
-    "ranks": {
-     "retention": 0.6,
-     "ctr": 0.24,
-     "views": 0.43,
-     "engagement": 0.64,
-     "subs": 0.64
-    },
-    "values": {
-     "views": 18202.0,
-     "retention": 0.9094,
-     "engagement": 0.0302,
-     "subs": 0.4395,
-     "ctr": 0.534
-    }
-   }
-  },
   "pWCQrmx8beo": {
    "title": "Rajon Rondo Says He\u2019s READY to Be an NBA Head Coach + What He Learned From the Pelicans Interview",
    "published": "2026-08-13",
@@ -4108,15 +4108,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 19,
-    "score": 0.622,
+    "peers": 18,
+    "score": 0.651,
     "letter": "B",
     "ranks": {
-     "retention": 0.95,
-     "ctr": 0.36,
-     "views": 0.74,
-     "engagement": 0.32,
-     "subs": 0.47
+     "retention": 1.0,
+     "ctr": 0.38,
+     "views": 0.72,
+     "engagement": 0.33,
+     "subs": 0.5
     },
     "values": {
      "views": 119414.0,
@@ -4165,14 +4165,14 @@
    "grade": {
     "age_days": 28,
     "peers": 134,
-    "score": 0.628,
+    "score": 0.625,
     "letter": "B",
     "ranks": {
-     "retention": 0.64,
+     "retention": 0.63,
      "ctr": 0.57,
      "views": 0.86,
      "engagement": 0.65,
-     "subs": 0.16
+     "subs": 0.17
     },
     "values": {
      "views": 156258.0,
@@ -4221,7 +4221,7 @@
    "grade": {
     "age_days": 28,
     "peers": 134,
-    "score": 0.544,
+    "score": 0.542,
     "letter": "C",
     "ranks": {
      "retention": 0.69,
@@ -4249,14 +4249,14 @@
    "grade": {
     "age_days": 28,
     "peers": 130,
-    "score": 0.346,
+    "score": 0.337,
     "letter": "D",
     "ranks": {
-     "retention": 0.08,
-     "ctr": 0.75,
-     "views": 0.15,
+     "retention": 0.07,
+     "ctr": 0.74,
+     "views": 0.14,
      "engagement": 0.22,
-     "subs": 0.21
+     "subs": 0.22
     },
     "values": {
      "views": 4987.0,
@@ -4305,14 +4305,14 @@
    "grade": {
     "age_days": 28,
     "peers": 130,
-    "score": 0.612,
+    "score": 0.607,
     "letter": "B",
     "ranks": {
-     "retention": 0.35,
+     "retention": 0.33,
      "ctr": 0.88,
      "views": 0.65,
      "engagement": 0.72,
-     "subs": 0.22
+     "subs": 0.24
     },
     "values": {
      "views": 38205.0,
@@ -4333,14 +4333,14 @@
    "grade": {
     "age_days": 28,
     "peers": 130,
-    "score": 0.605,
+    "score": 0.606,
     "letter": "B",
     "ranks": {
-     "retention": 0.84,
-     "ctr": 0.23,
+     "retention": 0.83,
+     "ctr": 0.24,
      "views": 0.95,
      "engagement": 0.7,
-     "subs": 0.36
+     "subs": 0.38
     },
     "values": {
      "views": 368235.0,
@@ -4360,15 +4360,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 18,
-    "score": 0.823,
+    "peers": 17,
+    "score": 0.838,
     "letter": "A",
     "ranks": {
-     "retention": 0.78,
+     "retention": 0.82,
      "ctr": 0.92,
-     "views": 0.83,
-     "engagement": 0.67,
-     "subs": 0.72
+     "views": 0.82,
+     "engagement": 0.71,
+     "subs": 0.71
     },
     "values": {
      "views": 133937.0,
@@ -4389,12 +4389,12 @@
    "grade": {
     "age_days": 28,
     "peers": 130,
-    "score": 0.523,
+    "score": 0.516,
     "letter": "C",
     "ranks": {
-     "retention": 0.59,
+     "retention": 0.58,
      "ctr": 0.43,
-     "views": 0.48,
+     "views": 0.47,
      "engagement": 0.85,
      "subs": 0.15
     },
@@ -4417,14 +4417,14 @@
    "grade": {
     "age_days": 28,
     "peers": 128,
-    "score": 0.578,
+    "score": 0.574,
     "letter": "C",
     "ranks": {
      "retention": 0.8,
      "ctr": 0.45,
      "views": 0.52,
      "engagement": 0.48,
-     "subs": 0.21
+     "subs": 0.23
     },
     "values": {
      "views": 24542.0,
@@ -4445,14 +4445,14 @@
    "grade": {
     "age_days": 28,
     "peers": 128,
-    "score": 0.329,
+    "score": 0.325,
     "letter": "D",
     "ranks": {
-     "retention": 0.71,
+     "retention": 0.7,
      "ctr": 0.03,
-     "views": 0.21,
+     "views": 0.2,
      "engagement": 0.04,
-     "subs": 0.68
+     "subs": 0.7
     },
     "values": {
      "views": 6176.0,
@@ -4473,14 +4473,14 @@
    "grade": {
     "age_days": 28,
     "peers": 127,
-    "score": 0.634,
+    "score": 0.626,
     "letter": "B",
     "ranks": {
-     "retention": 0.53,
+     "retention": 0.51,
      "ctr": 0.86,
-     "views": 0.43,
+     "views": 0.42,
      "engagement": 0.75,
-     "subs": 0.18
+     "subs": 0.19
     },
     "values": {
      "views": 17961.0,
@@ -4501,12 +4501,12 @@
    "grade": {
     "age_days": 28,
     "peers": 125,
-    "score": 0.182,
+    "score": 0.177,
     "letter": "F",
     "ranks": {
-     "retention": 0.32,
+     "retention": 0.3,
      "ctr": 0.1,
-     "views": 0.19,
+     "views": 0.18,
      "engagement": 0.06,
      "subs": 0.04
     },
@@ -4529,14 +4529,14 @@
    "grade": {
     "age_days": 28,
     "peers": 125,
-    "score": 0.67,
+    "score": 0.663,
     "letter": "B",
     "ranks": {
-     "retention": 0.53,
+     "retention": 0.51,
      "ctr": 0.95,
-     "views": 0.58,
-     "engagement": 0.51,
-     "subs": 0.28
+     "views": 0.57,
+     "engagement": 0.5,
+     "subs": 0.3
     },
     "values": {
      "views": 31187.0,
@@ -4585,12 +4585,12 @@
    "grade": {
     "age_days": 28,
     "peers": 122,
-    "score": 0.245,
+    "score": 0.237,
     "letter": "D",
     "ranks": {
-     "retention": 0.24,
+     "retention": 0.22,
      "ctr": 0.28,
-     "views": 0.22,
+     "views": 0.2,
      "engagement": 0.23,
      "subs": 0.16
     },
@@ -4641,14 +4641,14 @@
    "grade": {
     "age_days": 28,
     "peers": 122,
-    "score": 0.393,
+    "score": 0.386,
     "letter": "D",
     "ranks": {
-     "retention": 0.34,
+     "retention": 0.33,
      "ctr": 0.39,
-     "views": 0.27,
+     "views": 0.25,
      "engagement": 0.56,
-     "subs": 0.84
+     "subs": 0.85
     },
     "values": {
      "views": 8803.0,
@@ -4668,14 +4668,14 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 17,
-    "score": 0.555,
+    "peers": 16,
+    "score": 0.593,
     "letter": "C",
     "ranks": {
-     "retention": 0.88,
-     "ctr": 0.42,
-     "views": 0.18,
-     "engagement": 0.71,
+     "retention": 0.94,
+     "ctr": 0.45,
+     "views": 0.19,
+     "engagement": 0.75,
      "subs": 0.06
     },
     "values": {
@@ -4700,11 +4700,11 @@
     "score": 0.537,
     "letter": "C",
     "ranks": {
-     "retention": 0.88,
-     "ctr": 0.14,
-     "views": 0.61,
+     "retention": 0.87,
+     "ctr": 0.15,
+     "views": 0.6,
      "engagement": 0.71,
-     "subs": 0.39
+     "subs": 0.4
     },
     "values": {
      "views": 36802.0,
@@ -4753,12 +4753,12 @@
    "grade": {
     "age_days": 28,
     "peers": 120,
-    "score": 0.602,
-    "letter": "B",
+    "score": 0.598,
+    "letter": "C",
     "ranks": {
-     "retention": 0.63,
+     "retention": 0.62,
      "ctr": 0.53,
-     "views": 0.78,
+     "views": 0.77,
      "engagement": 0.72,
      "subs": 0.12
     },
@@ -4812,11 +4812,11 @@
     "score": 0.557,
     "letter": "C",
     "ranks": {
-     "retention": 0.75,
-     "ctr": 0.18,
+     "retention": 0.74,
+     "ctr": 0.19,
      "views": 0.8,
      "engagement": 0.88,
-     "subs": 0.45
+     "subs": 0.47
     },
     "values": {
      "views": 82876.0,
@@ -4836,15 +4836,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 16,
-    "score": 0.714,
+    "peers": 15,
+    "score": 0.725,
     "letter": "B",
     "ranks": {
-     "retention": 0.81,
-     "ctr": 0.73,
-     "views": 0.88,
-     "engagement": 0.31,
-     "subs": 0.25
+     "retention": 0.87,
+     "ctr": 0.7,
+     "views": 0.87,
+     "engagement": 0.33,
+     "subs": 0.27
     },
     "values": {
      "views": 139211.0,
@@ -4868,11 +4868,11 @@
     "score": 0.565,
     "letter": "C",
     "ranks": {
-     "retention": 0.9,
-     "ctr": 0.1,
-     "views": 0.74,
+     "retention": 0.89,
+     "ctr": 0.11,
+     "views": 0.73,
      "engagement": 0.67,
-     "subs": 0.77
+     "subs": 0.79
     },
     "values": {
      "views": 58258.0,
@@ -4921,14 +4921,14 @@
    "grade": {
     "age_days": 28,
     "peers": 117,
-    "score": 0.582,
+    "score": 0.579,
     "letter": "C",
     "ranks": {
      "retention": 0.91,
      "ctr": 0.33,
-     "views": 0.73,
-     "engagement": 0.15,
-     "subs": 0.42
+     "views": 0.72,
+     "engagement": 0.16,
+     "subs": 0.44
     },
     "values": {
      "views": 55744.0,
@@ -4977,14 +4977,14 @@
    "grade": {
     "age_days": 28,
     "peers": 117,
-    "score": 0.445,
+    "score": 0.447,
     "letter": "C",
     "ranks": {
      "retention": 0.97,
-     "ctr": 0.04,
-     "views": 0.53,
+     "ctr": 0.05,
+     "views": 0.52,
      "engagement": 0.02,
-     "subs": 0.16
+     "subs": 0.17
     },
     "values": {
      "views": 24278.0,
@@ -5005,14 +5005,14 @@
    "grade": {
     "age_days": 28,
     "peers": 114,
-    "score": 0.598,
+    "score": 0.592,
     "letter": "C",
     "ranks": {
-     "retention": 0.92,
+     "retention": 0.91,
      "ctr": 0.45,
-     "views": 0.45,
-     "engagement": 0.41,
-     "subs": 0.21
+     "views": 0.43,
+     "engagement": 0.4,
+     "subs": 0.23
     },
     "values": {
      "views": 18694.0,
@@ -5061,14 +5061,14 @@
    "grade": {
     "age_days": 28,
     "peers": 114,
-    "score": 0.619,
+    "score": 0.611,
     "letter": "B",
     "ranks": {
-     "retention": 0.52,
+     "retention": 0.5,
      "ctr": 0.82,
-     "views": 0.39,
+     "views": 0.37,
      "engagement": 0.61,
-     "subs": 0.66
+     "subs": 0.68
     },
     "values": {
      "views": 14439.0,
@@ -5088,15 +5088,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 15,
-    "score": 0.747,
+    "peers": 14,
+    "score": 0.769,
     "letter": "B",
     "ranks": {
-     "retention": 0.87,
-     "ctr": 0.8,
-     "views": 0.47,
-     "engagement": 0.67,
-     "subs": 0.53
+     "retention": 0.93,
+     "ctr": 0.78,
+     "views": 0.5,
+     "engagement": 0.71,
+     "subs": 0.5
     },
     "values": {
      "views": 30803.0,
@@ -5117,14 +5117,14 @@
    "grade": {
     "age_days": 28,
     "peers": 114,
-    "score": 0.675,
+    "score": 0.668,
     "letter": "B",
     "ranks": {
-     "retention": 0.55,
+     "retention": 0.54,
      "ctr": 0.82,
      "views": 0.95,
-     "engagement": 0.42,
-     "subs": 0.23
+     "engagement": 0.41,
+     "subs": 0.25
     },
     "values": {
      "views": 367476.0,
@@ -5145,14 +5145,14 @@
    "grade": {
     "age_days": 28,
     "peers": 113,
-    "score": 0.582,
+    "score": 0.574,
     "letter": "C",
     "ranks": {
-     "retention": 0.82,
-     "ctr": 0.61,
-     "views": 0.21,
+     "retention": 0.81,
+     "ctr": 0.6,
+     "views": 0.19,
      "engagement": 0.27,
-     "subs": 0.42
+     "subs": 0.44
     },
     "values": {
      "views": 5847.0,
@@ -5173,14 +5173,14 @@
    "grade": {
     "age_days": 28,
     "peers": 111,
-    "score": 0.557,
+    "score": 0.548,
     "letter": "C",
     "ranks": {
-     "retention": 0.53,
+     "retention": 0.51,
      "ctr": 0.54,
-     "views": 0.28,
+     "views": 0.26,
      "engagement": 0.94,
-     "subs": 0.92
+     "subs": 0.93
     },
     "values": {
      "views": 8683.0,
@@ -5201,14 +5201,14 @@
    "grade": {
     "age_days": 28,
     "peers": 111,
-    "score": 0.519,
+    "score": 0.51,
     "letter": "C",
     "ranks": {
-     "retention": 0.15,
+     "retention": 0.14,
      "ctr": 0.88,
-     "views": 0.28,
+     "views": 0.26,
      "engagement": 0.67,
-     "subs": 0.95
+     "subs": 0.96
     },
     "values": {
      "views": 8995.0,
@@ -5228,15 +5228,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 14,
-    "score": 0.328,
+    "peers": 13,
+    "score": 0.345,
     "letter": "D",
     "ranks": {
-     "retention": 0.29,
-     "ctr": 0.22,
-     "views": 0.07,
+     "retention": 0.31,
+     "ctr": 0.25,
+     "views": 0.08,
      "engagement": 1.0,
-     "subs": 0.79
+     "subs": 0.77
     },
     "values": {
      "views": 4439.0,
@@ -5260,11 +5260,11 @@
     "score": 0.475,
     "letter": "C",
     "ranks": {
-     "retention": 0.87,
+     "retention": 0.86,
      "ctr": 0.15,
-     "views": 0.66,
-     "engagement": 0.11,
-     "subs": 0.15
+     "views": 0.65,
+     "engagement": 0.12,
+     "subs": 0.16
     },
     "values": {
      "views": 40958.0,
@@ -5369,14 +5369,14 @@
    "grade": {
     "age_days": 28,
     "peers": 108,
-    "score": 0.506,
+    "score": 0.498,
     "letter": "C",
     "ranks": {
-     "retention": 0.09,
+     "retention": 0.07,
      "ctr": 0.99,
-     "views": 0.1,
+     "views": 0.08,
      "engagement": 0.69,
-     "subs": 0.86
+     "subs": 0.88
     },
     "values": {
      "views": 3908.0,
@@ -5425,14 +5425,14 @@
    "grade": {
     "age_days": 28,
     "peers": 108,
-    "score": 0.632,
+    "score": 0.623,
     "letter": "B",
     "ranks": {
-     "retention": 0.38,
-     "ctr": 0.78,
+     "retention": 0.36,
+     "ctr": 0.77,
      "views": 0.88,
      "engagement": 0.79,
-     "subs": 0.32
+     "subs": 0.34
     },
     "values": {
      "views": 221718.0,
@@ -5452,14 +5452,14 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 107,
-    "score": 0.408,
+    "peers": 106,
+    "score": 0.407,
     "letter": "C",
     "ranks": {
-     "retention": 0.9,
-     "ctr": 0.05,
-     "views": 0.34,
-     "engagement": 0.21,
+     "retention": 0.89,
+     "ctr": 0.06,
+     "views": 0.32,
+     "engagement": 0.23,
      "subs": 0.12
     },
     "values": {
@@ -5468,34 +5468,6 @@
      "engagement": 0.019,
      "subs": 0.0797,
      "ctr": 0.4907
-    }
-   }
-  },
-  "XTGlwLovDD0": {
-   "title": "AJ Dybantsa PROMISES Wizards PLAYOFFS, Calls KD A FRIEND & Wants Luka 1-on-1",
-   "published": "2026-07-30",
-   "duration_sec": 2425,
-   "format": "episode",
-   "week": "2026-07-27",
-   "paid_views": 0.0,
-   "grade": {
-    "age_days": 28,
-    "peers": 13,
-    "score": 0.765,
-    "letter": "B",
-    "ranks": {
-     "retention": 1.0,
-     "ctr": 0.62,
-     "views": 0.62,
-     "engagement": 0.77,
-     "subs": 0.54
-    },
-    "values": {
-     "views": 45756.0,
-     "retention": 0.3372,
-     "engagement": 0.0308,
-     "subs": 2.8412,
-     "ctr": 0.047
     }
    }
   },
@@ -5524,6 +5496,34 @@
      "engagement": 0.0165,
      "subs": 0.5593,
      "ctr": 0.0807
+    }
+   }
+  },
+  "Ne0Xqrsn22Y": {
+   "title": "RJ Jefferson Reacts to Going Viral for \"Ignoring\" N3on #nba #n3on #viral l",
+   "published": "2026-07-30",
+   "duration_sec": 48,
+   "format": "short",
+   "week": "2026-07-27",
+   "paid_views": 0.0,
+   "grade": {
+    "age_days": 28,
+    "peers": 106,
+    "score": 0.648,
+    "letter": "B",
+    "ranks": {
+     "retention": 0.64,
+     "ctr": 0.82,
+     "views": 0.5,
+     "engagement": 0.55,
+     "subs": 0.12
+    },
+    "values": {
+     "views": 23109.0,
+     "retention": 0.9205,
+     "engagement": 0.0263,
+     "subs": 0.0865,
+     "ctr": 0.6229
     }
    }
   },
@@ -5564,15 +5564,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 105,
-    "score": 0.574,
+    "peers": 104,
+    "score": 0.571,
     "letter": "C",
     "ranks": {
-     "retention": 0.94,
-     "ctr": 0.34,
-     "views": 0.73,
-     "engagement": 0.09,
-     "subs": 0.11
+     "retention": 0.93,
+     "ctr": 0.35,
+     "views": 0.72,
+     "engagement": 0.1,
+     "subs": 0.12
     },
     "values": {
      "views": 59784.0,
@@ -5620,15 +5620,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 105,
-    "score": 0.528,
+    "peers": 104,
+    "score": 0.522,
     "letter": "C",
     "ranks": {
-     "retention": 0.7,
+     "retention": 0.68,
      "ctr": 0.38,
-     "views": 0.52,
-     "engagement": 0.67,
-     "subs": 0.11
+     "views": 0.51,
+     "engagement": 0.66,
+     "subs": 0.12
     },
     "values": {
      "views": 25525.0,
@@ -5648,13 +5648,13 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 101,
-    "score": 0.015,
+    "peers": 100,
+    "score": 0.013,
     "letter": "F",
     "ranks": {
      "retention": 0.0,
      "ctr": 0.02,
-     "views": 0.03,
+     "views": 0.02,
      "engagement": 0.01,
      "subs": 0.04
     },
@@ -5704,14 +5704,14 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 101,
-    "score": 0.56,
+    "peers": 100,
+    "score": 0.556,
     "letter": "C",
     "ranks": {
-     "retention": 0.88,
+     "retention": 0.87,
      "ctr": 0.28,
      "views": 0.79,
-     "engagement": 0.29,
+     "engagement": 0.28,
      "subs": 0.14
     },
     "values": {
@@ -5788,15 +5788,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 101,
-    "score": 0.605,
-    "letter": "B",
+    "peers": 100,
+    "score": 0.597,
+    "letter": "C",
     "ranks": {
-     "retention": 0.65,
+     "retention": 0.64,
      "ctr": 0.59,
-     "views": 0.61,
+     "views": 0.6,
      "engagement": 0.64,
-     "subs": 0.24
+     "subs": 0.25
     },
     "values": {
      "views": 33881.0,
@@ -5816,15 +5816,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 101,
-    "score": 0.638,
+    "peers": 100,
+    "score": 0.635,
     "letter": "B",
     "ranks": {
-     "retention": 0.93,
+     "retention": 0.92,
      "ctr": 0.41,
      "views": 0.84,
-     "engagement": 0.37,
-     "subs": 0.14
+     "engagement": 0.36,
+     "subs": 0.15
     },
     "values": {
      "views": 142521.0,
@@ -5872,15 +5872,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 98,
-    "score": 0.216,
+    "peers": 97,
+    "score": 0.211,
     "letter": "D",
     "ranks": {
-     "retention": 0.09,
-     "ctr": 0.16,
-     "views": 0.23,
+     "retention": 0.07,
+     "ctr": 0.18,
+     "views": 0.22,
      "engagement": 0.72,
-     "subs": 0.38
+     "subs": 0.39
     },
     "values": {
      "views": 6189.0,
@@ -5900,13 +5900,13 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 98,
-    "score": 0.281,
+    "peers": 97,
+    "score": 0.276,
     "letter": "D",
     "ranks": {
-     "retention": 0.34,
-     "ctr": 0.14,
-     "views": 0.27,
+     "retention": 0.32,
+     "ctr": 0.15,
+     "views": 0.25,
      "engagement": 0.71,
      "subs": 0.04
     },
@@ -5928,15 +5928,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 98,
-    "score": 0.668,
+    "peers": 97,
+    "score": 0.661,
     "letter": "B",
     "ranks": {
-     "retention": 0.56,
+     "retention": 0.55,
      "ctr": 0.7,
-     "views": 0.67,
+     "views": 0.66,
      "engagement": 0.85,
-     "subs": 0.8
+     "subs": 0.81
     },
     "values": {
      "views": 42901.0,
@@ -5956,15 +5956,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 95,
-    "score": 0.685,
+    "peers": 94,
+    "score": 0.677,
     "letter": "B",
     "ranks": {
-     "retention": 0.54,
+     "retention": 0.52,
      "ctr": 0.93,
-     "views": 0.53,
+     "views": 0.51,
      "engagement": 0.81,
-     "subs": 0.25
+     "subs": 0.27
     },
     "values": {
      "views": 22322.0,
@@ -5984,15 +5984,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 95,
-    "score": 0.55,
+    "peers": 94,
+    "score": 0.545,
     "letter": "C",
     "ranks": {
-     "retention": 0.68,
+     "retention": 0.67,
      "ctr": 0.38,
-     "views": 0.35,
+     "views": 0.33,
      "engagement": 0.82,
-     "subs": 0.87
+     "subs": 0.89
     },
     "values": {
      "views": 13585.0,
@@ -6040,15 +6040,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 95,
-    "score": 0.671,
+    "peers": 94,
+    "score": 0.663,
     "letter": "B",
     "ranks": {
-     "retention": 0.42,
+     "retention": 0.4,
      "ctr": 0.88,
-     "views": 0.62,
+     "views": 0.61,
      "engagement": 0.83,
-     "subs": 0.75
+     "subs": 0.77
     },
     "values": {
      "views": 36991.0,
@@ -6068,15 +6068,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 91,
-    "score": 0.155,
+    "peers": 90,
+    "score": 0.153,
     "letter": "F",
     "ranks": {
      "retention": 0.0,
      "ctr": 0.0,
-     "views": 0.04,
+     "views": 0.02,
      "engagement": 1.0,
-     "subs": 0.98
+     "subs": 0.99
     },
     "values": {
      "views": 2263.0,
@@ -6096,15 +6096,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 91,
-    "score": 0.264,
+    "peers": 90,
+    "score": 0.259,
     "letter": "D",
     "ranks": {
-     "retention": 0.01,
+     "retention": 0.0,
      "ctr": 0.31,
-     "views": 0.07,
+     "views": 0.04,
      "engagement": 0.98,
-     "subs": 0.9
+     "subs": 0.92
     },
     "values": {
      "views": 3415.0,
@@ -6152,13 +6152,13 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 91,
-    "score": 0.473,
+    "peers": 90,
+    "score": 0.471,
     "letter": "C",
     "ranks": {
-     "retention": 0.96,
-     "ctr": 0.14,
-     "views": 0.56,
+     "retention": 0.94,
+     "ctr": 0.16,
+     "views": 0.54,
      "engagement": 0.02,
      "subs": 0.04
     },
@@ -6180,15 +6180,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 91,
-    "score": 0.53,
+    "peers": 90,
+    "score": 0.523,
     "letter": "C",
     "ranks": {
-     "retention": 0.32,
+     "retention": 0.3,
      "ctr": 0.96,
-     "views": 0.31,
-     "engagement": 0.21,
-     "subs": 0.34
+     "views": 0.29,
+     "engagement": 0.22,
+     "subs": 0.36
     },
     "values": {
      "views": 9995.0,
@@ -6208,15 +6208,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 89,
-    "score": 0.637,
+    "peers": 88,
+    "score": 0.634,
     "letter": "B",
     "ranks": {
-     "retention": 0.73,
+     "retention": 0.72,
      "ctr": 0.43,
      "views": 0.82,
      "engagement": 0.89,
-     "subs": 0.39
+     "subs": 0.41
     },
     "values": {
      "views": 123645.0,
@@ -6264,13 +6264,13 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 89,
-    "score": 0.379,
+    "peers": 88,
+    "score": 0.374,
     "letter": "D",
     "ranks": {
-     "retention": 0.61,
-     "ctr": 0.11,
-     "views": 0.51,
+     "retention": 0.59,
+     "ctr": 0.12,
+     "views": 0.49,
      "engagement": 0.49,
      "subs": 0.03
     },
@@ -6292,15 +6292,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 87,
-    "score": 0.494,
+    "peers": 86,
+    "score": 0.487,
     "letter": "C",
     "ranks": {
-     "retention": 0.44,
-     "ctr": 0.49,
-     "views": 0.45,
-     "engagement": 0.89,
-     "subs": 0.24
+     "retention": 0.42,
+     "ctr": 0.5,
+     "views": 0.43,
+     "engagement": 0.88,
+     "subs": 0.26
     },
     "values": {
      "views": 18787.0,
@@ -6348,15 +6348,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 87,
-    "score": 0.578,
+    "peers": 86,
+    "score": 0.572,
     "letter": "C",
     "ranks": {
-     "retention": 0.53,
+     "retention": 0.51,
      "ctr": 0.69,
      "views": 0.77,
-     "engagement": 0.15,
-     "subs": 0.41
+     "engagement": 0.16,
+     "subs": 0.43
     },
     "values": {
      "views": 81680.0,
@@ -6376,15 +6376,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 86,
-    "score": 0.435,
+    "peers": 85,
+    "score": 0.423,
     "letter": "C",
     "ranks": {
-     "retention": 0.06,
-     "ctr": 0.76,
-     "views": 0.06,
+     "retention": 0.04,
+     "ctr": 0.75,
+     "views": 0.04,
      "engagement": 0.95,
-     "subs": 0.92
+     "subs": 0.93
     },
     "values": {
      "views": 3250.0,
@@ -6488,15 +6488,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 85,
-    "score": 0.669,
+    "peers": 84,
+    "score": 0.666,
     "letter": "B",
     "ranks": {
-     "retention": 0.8,
-     "ctr": 0.35,
+     "retention": 0.79,
+     "ctr": 0.36,
      "views": 0.85,
      "engagement": 0.95,
-     "subs": 0.86
+     "subs": 0.88
     },
     "values": {
      "views": 206006.0,
@@ -6516,15 +6516,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 84,
-    "score": 0.615,
+    "peers": 83,
+    "score": 0.605,
     "letter": "B",
     "ranks": {
-     "retention": 0.25,
+     "retention": 0.23,
      "ctr": 0.96,
-     "views": 0.56,
+     "views": 0.54,
      "engagement": 0.88,
-     "subs": 0.36
+     "subs": 0.37
     },
     "values": {
      "views": 28241.0,
@@ -6544,15 +6544,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 82,
-    "score": 0.509,
+    "peers": 81,
+    "score": 0.51,
     "letter": "C",
     "ranks": {
-     "retention": 0.85,
-     "ctr": 0.1,
+     "retention": 0.84,
+     "ctr": 0.11,
      "views": 0.96,
-     "engagement": 0.07,
-     "subs": 0.48
+     "engagement": 0.09,
+     "subs": 0.49
     },
     "values": {
      "views": 473520.0,
@@ -6572,15 +6572,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 82,
-    "score": 0.328,
+    "peers": 81,
+    "score": 0.319,
     "letter": "D",
     "ranks": {
-     "retention": 0.17,
+     "retention": 0.15,
      "ctr": 0.44,
-     "views": 0.26,
+     "views": 0.23,
      "engagement": 0.46,
-     "subs": 0.6
+     "subs": 0.62
     },
     "values": {
      "views": 6717.0,
@@ -6600,15 +6600,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 81,
-    "score": 0.706,
+    "peers": 80,
+    "score": 0.7,
     "letter": "B",
     "ranks": {
-     "retention": 0.88,
-     "ctr": 0.67,
+     "retention": 0.86,
+     "ctr": 0.66,
      "views": 0.85,
      "engagement": 0.25,
-     "subs": 0.26
+     "subs": 0.28
     },
     "values": {
      "views": 196429.0,
@@ -6628,15 +6628,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 78,
-    "score": 0.328,
+    "peers": 77,
+    "score": 0.319,
     "letter": "D",
     "ranks": {
-     "retention": 0.18,
-     "ctr": 0.41,
-     "views": 0.31,
-     "engagement": 0.5,
-     "subs": 0.51
+     "retention": 0.16,
+     "ctr": 0.42,
+     "views": 0.29,
+     "engagement": 0.49,
+     "subs": 0.53
     },
     "values": {
      "views": 9401.0,
@@ -6712,13 +6712,13 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 78,
-    "score": 0.204,
-    "letter": "D",
+    "peers": 77,
+    "score": 0.196,
+    "letter": "F",
     "ranks": {
-     "retention": 0.18,
-     "ctr": 0.12,
-     "views": 0.1,
+     "retention": 0.16,
+     "ctr": 0.13,
+     "views": 0.08,
      "engagement": 0.83,
      "subs": 0.03
     },
@@ -6768,15 +6768,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 78,
-    "score": 0.576,
+    "peers": 77,
+    "score": 0.569,
     "letter": "C",
     "ranks": {
-     "retention": 0.73,
+     "retention": 0.71,
      "ctr": 0.45,
-     "views": 0.77,
-     "engagement": 0.36,
-     "subs": 0.23
+     "views": 0.75,
+     "engagement": 0.35,
+     "subs": 0.25
     },
     "values": {
      "views": 68636.0,
@@ -6796,15 +6796,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 77,
-    "score": 0.647,
+    "peers": 76,
+    "score": 0.639,
     "letter": "B",
     "ranks": {
-     "retention": 0.53,
-     "ctr": 0.68,
-     "views": 0.94,
+     "retention": 0.51,
+     "ctr": 0.67,
+     "views": 0.93,
      "engagement": 0.7,
-     "subs": 0.27
+     "subs": 0.29
     },
     "values": {
      "views": 346246.0,
@@ -6908,15 +6908,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 76,
-    "score": 0.506,
+    "peers": 75,
+    "score": 0.505,
     "letter": "C",
     "ranks": {
-     "retention": 0.75,
-     "ctr": 0.05,
+     "retention": 0.73,
+     "ctr": 0.07,
      "views": 0.96,
      "engagement": 0.59,
-     "subs": 0.43
+     "subs": 0.45
     },
     "values": {
      "views": 453801.0,
@@ -6964,15 +6964,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 75,
-    "score": 0.517,
+    "peers": 74,
+    "score": 0.509,
     "letter": "C",
     "ranks": {
-     "retention": 0.68,
-     "ctr": 0.4,
-     "views": 0.44,
-     "engagement": 0.59,
-     "subs": 0.28
+     "retention": 0.66,
+     "ctr": 0.41,
+     "views": 0.42,
+     "engagement": 0.58,
+     "subs": 0.3
     },
     "values": {
      "views": 17630.0,
@@ -7020,15 +7020,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 74,
-    "score": 0.461,
+    "peers": 73,
+    "score": 0.453,
     "letter": "C",
     "ranks": {
-     "retention": 0.66,
-     "ctr": 0.32,
-     "views": 0.45,
-     "engagement": 0.39,
-     "subs": 0.19
+     "retention": 0.64,
+     "ctr": 0.33,
+     "views": 0.42,
+     "engagement": 0.38,
+     "subs": 0.21
     },
     "values": {
      "views": 17797.0,
@@ -7048,15 +7048,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 72,
-    "score": 0.716,
+    "peers": 71,
+    "score": 0.706,
     "letter": "B",
     "ranks": {
-     "retention": 0.67,
+     "retention": 0.65,
      "ctr": 0.75,
-     "views": 0.76,
+     "views": 0.75,
      "engagement": 0.72,
-     "subs": 0.67
+     "subs": 0.69
     },
     "values": {
      "views": 61584.0,
@@ -7104,15 +7104,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 72,
-    "score": 0.562,
+    "peers": 71,
+    "score": 0.556,
     "letter": "C",
     "ranks": {
-     "retention": 0.94,
-     "ctr": 0.36,
-     "views": 0.57,
+     "retention": 0.93,
+     "ctr": 0.37,
+     "views": 0.55,
      "engagement": 0.03,
-     "subs": 0.33
+     "subs": 0.35
     },
     "values": {
      "views": 27922.0,
@@ -7132,15 +7132,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 71,
-    "score": 0.593,
+    "peers": 70,
+    "score": 0.586,
     "letter": "C",
     "ranks": {
-     "retention": 0.92,
-     "ctr": 0.42,
-     "views": 0.46,
-     "engagement": 0.48,
-     "subs": 0.14
+     "retention": 0.9,
+     "ctr": 0.43,
+     "views": 0.44,
+     "engagement": 0.47,
+     "subs": 0.16
     },
     "values": {
      "views": 20227.0,
@@ -7160,15 +7160,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 70,
-    "score": 0.307,
+    "peers": 69,
+    "score": 0.298,
     "letter": "D",
     "ranks": {
-     "retention": 0.1,
+     "retention": 0.07,
      "ctr": 0.49,
-     "views": 0.21,
-     "engagement": 0.27,
-     "subs": 0.86
+     "views": 0.19,
+     "engagement": 0.28,
+     "subs": 0.88
     },
     "values": {
      "views": 5091.0,
@@ -7188,15 +7188,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 69,
-    "score": 0.65,
+    "peers": 68,
+    "score": 0.641,
     "letter": "B",
     "ranks": {
-     "retention": 0.57,
-     "ctr": 0.58,
+     "retention": 0.54,
+     "ctr": 0.57,
      "views": 0.91,
      "engagement": 0.9,
-     "subs": 0.45
+     "subs": 0.47
     },
     "values": {
      "views": 264590.0,
@@ -7216,15 +7216,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 68,
-    "score": 0.427,
+    "peers": 67,
+    "score": 0.421,
     "letter": "C",
     "ranks": {
-     "retention": 0.6,
+     "retention": 0.58,
      "ctr": 0.34,
-     "views": 0.43,
-     "engagement": 0.22,
-     "subs": 0.24
+     "views": 0.4,
+     "engagement": 0.24,
+     "subs": 0.25
     },
     "values": {
      "views": 15068.0,
@@ -7244,15 +7244,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 66,
-    "score": 0.62,
+    "peers": 65,
+    "score": 0.615,
     "letter": "B",
     "ranks": {
-     "retention": 0.55,
+     "retention": 0.52,
      "ctr": 0.52,
      "views": 0.88,
      "engagement": 0.83,
-     "subs": 0.67
+     "subs": 0.69
     },
     "values": {
      "views": 242945.0,
@@ -7272,15 +7272,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 66,
-    "score": 0.383,
+    "peers": 65,
+    "score": 0.37,
     "letter": "D",
     "ranks": {
-     "retention": 0.27,
-     "ctr": 0.58,
-     "views": 0.2,
-     "engagement": 0.11,
-     "subs": 0.92
+     "retention": 0.25,
+     "ctr": 0.57,
+     "views": 0.17,
+     "engagement": 0.12,
+     "subs": 0.94
     },
     "values": {
      "views": 4899.0,
@@ -7356,15 +7356,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 63,
-    "score": 0.421,
+    "peers": 62,
+    "score": 0.406,
     "letter": "C",
     "ranks": {
-     "retention": 0.22,
-     "ctr": 0.59,
-     "views": 0.35,
-     "engagement": 0.54,
-     "subs": 0.63
+     "retention": 0.19,
+     "ctr": 0.58,
+     "views": 0.32,
+     "engagement": 0.53,
+     "subs": 0.66
     },
     "values": {
      "views": 10498.0,
@@ -7468,15 +7468,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 63,
-    "score": 0.645,
+    "peers": 62,
+    "score": 0.641,
     "letter": "B",
     "ranks": {
-     "retention": 0.87,
-     "ctr": 0.3,
+     "retention": 0.85,
+     "ctr": 0.31,
      "views": 1.0,
-     "engagement": 0.48,
-     "subs": 0.73
+     "engagement": 0.47,
+     "subs": 0.76
     },
     "values": {
      "views": 1610682.0,
@@ -7496,15 +7496,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 63,
-    "score": 0.667,
+    "peers": 62,
+    "score": 0.664,
     "letter": "B",
     "ranks": {
-     "retention": 0.67,
-     "ctr": 0.51,
+     "retention": 0.65,
+     "ctr": 0.52,
      "views": 1.0,
      "engagement": 0.71,
-     "subs": 0.7
+     "subs": 0.73
     },
     "values": {
      "views": 1458629.0,
@@ -7580,15 +7580,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 62,
-    "score": 0.658,
+    "peers": 61,
+    "score": 0.652,
     "letter": "B",
     "ranks": {
-     "retention": 0.84,
+     "retention": 0.82,
      "ctr": 0.44,
-     "views": 0.79,
-     "engagement": 0.63,
-     "subs": 0.61
+     "views": 0.77,
+     "engagement": 0.62,
+     "subs": 0.64
     },
     "values": {
      "views": 57927.0,
@@ -7608,15 +7608,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 59,
-    "score": 0.542,
+    "peers": 58,
+    "score": 0.54,
     "letter": "C",
     "ranks": {
-     "retention": 0.69,
+     "retention": 0.67,
      "ctr": 0.34,
      "views": 0.93,
-     "engagement": 0.07,
-     "subs": 0.68
+     "engagement": 0.09,
+     "subs": 0.71
     },
     "values": {
      "views": 251158.0,
@@ -7664,15 +7664,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 59,
-    "score": 0.509,
+    "peers": 58,
+    "score": 0.506,
     "letter": "C",
     "ranks": {
-     "retention": 0.73,
-     "ctr": 0.22,
-     "views": 0.8,
-     "engagement": 0.44,
-     "subs": 0.27
+     "retention": 0.71,
+     "ctr": 0.24,
+     "views": 0.78,
+     "engagement": 0.43,
+     "subs": 0.29
     },
     "values": {
      "views": 51851.0,
@@ -7692,15 +7692,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 59,
-    "score": 0.463,
+    "peers": 58,
+    "score": 0.46,
     "letter": "C",
     "ranks": {
-     "retention": 0.76,
-     "ctr": 0.1,
-     "views": 0.81,
+     "retention": 0.74,
+     "ctr": 0.12,
+     "views": 0.79,
      "engagement": 0.07,
-     "subs": 0.63
+     "subs": 0.66
     },
     "values": {
      "views": 66387.0,
@@ -7776,15 +7776,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 57,
-    "score": 0.526,
+    "peers": 56,
+    "score": 0.511,
     "letter": "C",
     "ranks": {
-     "retention": 0.35,
-     "ctr": 0.67,
-     "views": 0.72,
-     "engagement": 0.37,
-     "subs": 0.51
+     "retention": 0.32,
+     "ctr": 0.66,
+     "views": 0.7,
+     "engagement": 0.36,
+     "subs": 0.54
     },
     "values": {
      "views": 37847.0,
@@ -7804,15 +7804,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 57,
-    "score": 0.728,
+    "peers": 56,
+    "score": 0.719,
     "letter": "B",
     "ranks": {
-     "retention": 0.74,
-     "ctr": 0.65,
+     "retention": 0.71,
+     "ctr": 0.64,
      "views": 0.95,
-     "engagement": 0.65,
-     "subs": 0.72
+     "engagement": 0.64,
+     "subs": 0.75
     },
     "values": {
      "views": 286649.0,
@@ -7832,15 +7832,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 54,
-    "score": 0.556,
+    "peers": 53,
+    "score": 0.541,
     "letter": "C",
     "ranks": {
-     "retention": 0.19,
-     "ctr": 0.8,
-     "views": 0.5,
+     "retention": 0.15,
+     "ctr": 0.79,
+     "views": 0.47,
      "engagement": 0.96,
-     "subs": 0.83
+     "subs": 0.87
     },
     "values": {
      "views": 20447.0,
@@ -7860,15 +7860,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 54,
-    "score": 0.354,
+    "peers": 53,
+    "score": 0.338,
     "letter": "D",
     "ranks": {
-     "retention": 0.19,
-     "ctr": 0.63,
-     "views": 0.24,
-     "engagement": 0.09,
-     "subs": 0.46
+     "retention": 0.15,
+     "ctr": 0.62,
+     "views": 0.21,
+     "engagement": 0.11,
+     "subs": 0.49
     },
     "values": {
      "views": 5109.0,
@@ -7888,14 +7888,14 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 27,
-    "score": 0.308,
+    "peers": 26,
+    "score": 0.311,
     "letter": "D",
     "ranks": {
      "retention": 0.04,
      "ctr": null,
-     "views": 0.37,
-     "engagement": 0.89,
+     "views": 0.38,
+     "engagement": 0.88,
      "subs": 0.85
     },
     "values": {
@@ -7916,14 +7916,14 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 54,
-    "score": 0.54,
+    "peers": 53,
+    "score": 0.526,
     "letter": "C",
     "ranks": {
-     "retention": 0.59,
+     "retention": 0.57,
      "ctr": 0.83,
-     "views": 0.19,
-     "engagement": 0.11,
+     "views": 0.15,
+     "engagement": 0.13,
      "subs": 0.04
     },
     "values": {
@@ -7944,14 +7944,14 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 53,
-    "score": 0.298,
+    "peers": 52,
+    "score": 0.282,
     "letter": "D",
     "ranks": {
-     "retention": 0.64,
+     "retention": 0.62,
      "ctr": 0.0,
-     "views": 0.19,
-     "engagement": 0.43,
+     "views": 0.15,
+     "engagement": 0.42,
      "subs": 0.03
     },
     "values": {
@@ -8029,12 +8029,12 @@
    "grade": {
     "age_days": 28,
     "peers": 51,
-    "score": 0.49,
+    "score": 0.487,
     "letter": "C",
     "ranks": {
-     "retention": 0.84,
-     "ctr": 0.18,
-     "views": 0.67,
+     "retention": 0.82,
+     "ctr": 0.2,
+     "views": 0.65,
      "engagement": 0.27,
      "subs": 0.12
     },
@@ -8084,15 +8084,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 27,
-    "score": 0.516,
+    "peers": 26,
+    "score": 0.536,
     "letter": "C",
     "ranks": {
-     "retention": 0.67,
+     "retention": 0.69,
      "ctr": null,
-     "views": 0.11,
-     "engagement": 0.7,
-     "subs": 0.3
+     "views": 0.12,
+     "engagement": 0.73,
+     "subs": 0.31
     },
     "values": {
      "views": 6363.0,
@@ -8100,34 +8100,6 @@
      "engagement": 0.0269,
      "subs": 1.4144,
      "ctr": null
-    }
-   }
-  },
-  "bI7WiqOMn-c": {
-   "title": "Most LEGENDARY Call In WNBA History? #WNBA #LASparks #NYLiberty #basketball",
-   "published": "2026-06-26",
-   "duration_sec": 74,
-   "format": "short",
-   "week": "2026-06-22",
-   "paid_views": 0.0,
-   "grade": {
-    "age_days": 28,
-    "peers": 51,
-    "score": 0.266,
-    "letter": "D",
-    "ranks": {
-     "retention": 0.0,
-     "ctr": 0.53,
-     "views": 0.06,
-     "engagement": 0.27,
-     "subs": 0.88
-    },
-    "values": {
-     "views": 2242.0,
-     "retention": 0.3875,
-     "engagement": 0.021,
-     "subs": 0.8921,
-     "ctr": 0.5843
     }
    }
   },
@@ -8197,14 +8169,14 @@
    "grade": {
     "age_days": 28,
     "peers": 50,
-    "score": 0.198,
+    "score": 0.196,
     "letter": "F",
     "ranks": {
-     "retention": 0.2,
-     "ctr": 0.04,
-     "views": 0.16,
+     "retention": 0.18,
+     "ctr": 0.06,
+     "views": 0.14,
      "engagement": 0.48,
-     "subs": 0.84
+     "subs": 0.86
     },
     "values": {
      "views": 4583.0,
@@ -8253,12 +8225,12 @@
    "grade": {
     "age_days": 28,
     "peers": 49,
-    "score": 0.473,
+    "score": 0.47,
     "letter": "C",
     "ranks": {
-     "retention": 0.8,
-     "ctr": 0.16,
-     "views": 0.29,
+     "retention": 0.78,
+     "ctr": 0.18,
+     "views": 0.27,
      "engagement": 0.9,
      "subs": 0.1
     },
@@ -8281,14 +8253,14 @@
    "grade": {
     "age_days": 28,
     "peers": 44,
-    "score": 0.4,
-    "letter": "C",
+    "score": 0.39,
+    "letter": "D",
     "ranks": {
-     "retention": 0.2,
+     "retention": 0.18,
      "ctr": 0.5,
-     "views": 0.18,
+     "views": 0.16,
      "engagement": 0.89,
-     "subs": 0.75
+     "subs": 0.77
     },
     "values": {
      "views": 5057.0,
@@ -8309,10 +8281,10 @@
    "grade": {
     "age_days": 28,
     "peers": 44,
-    "score": 0.456,
+    "score": 0.448,
     "letter": "C",
     "ranks": {
-     "retention": 0.3,
+     "retention": 0.27,
      "ctr": 0.75,
      "views": 0.0,
      "engagement": 0.89,
@@ -8365,14 +8337,14 @@
    "grade": {
     "age_days": 28,
     "peers": 44,
-    "score": 0.438,
+    "score": 0.427,
     "letter": "C",
     "ranks": {
-     "retention": 0.23,
+     "retention": 0.2,
      "ctr": 0.59,
-     "views": 0.2,
+     "views": 0.18,
      "engagement": 0.89,
-     "subs": 0.64
+     "subs": 0.66
     },
     "values": {
      "views": 6157.0,
@@ -8421,14 +8393,14 @@
    "grade": {
     "age_days": 28,
     "peers": 44,
-    "score": 0.591,
+    "score": 0.581,
     "letter": "C",
     "ranks": {
-     "retention": 0.3,
+     "retention": 0.27,
      "ctr": 0.89,
-     "views": 0.57,
+     "views": 0.55,
      "engagement": 0.77,
-     "subs": 0.3
+     "subs": 0.32
     },
     "values": {
      "views": 27073.0,
@@ -8449,14 +8421,14 @@
    "grade": {
     "age_days": 28,
     "peers": 44,
-    "score": 0.57,
+    "score": 0.572,
     "letter": "C",
     "ranks": {
-     "retention": 0.91,
-     "ctr": 0.11,
+     "retention": 0.89,
+     "ctr": 0.14,
      "views": 0.98,
      "engagement": 0.36,
-     "subs": 0.59
+     "subs": 0.61
     },
     "values": {
      "views": 381452.0,
@@ -8533,14 +8505,14 @@
    "grade": {
     "age_days": 28,
     "peers": 43,
-    "score": 0.58,
+    "score": 0.57,
     "letter": "C",
     "ranks": {
-     "retention": 0.37,
+     "retention": 0.35,
      "ctr": 0.77,
-     "views": 0.6,
+     "views": 0.58,
      "engagement": 0.74,
-     "subs": 0.33
+     "subs": 0.35
     },
     "values": {
      "views": 31704.0,
@@ -8566,9 +8538,9 @@
     "ranks": {
      "retention": 0.0,
      "ctr": 0.48,
-     "views": 0.14,
-     "engagement": 0.19,
-     "subs": 0.6
+     "views": 0.12,
+     "engagement": 0.21,
+     "subs": 0.62
     },
     "values": {
      "views": 4533.0,
@@ -8589,14 +8561,14 @@
    "grade": {
     "age_days": 28,
     "peers": 40,
-    "score": 0.547,
+    "score": 0.554,
     "letter": "C",
     "ranks": {
      "retention": 0.95,
-     "ctr": 0.07,
-     "views": 0.57,
+     "ctr": 0.1,
+     "views": 0.55,
      "engagement": 0.62,
-     "subs": 0.8
+     "subs": 0.82
     },
     "values": {
      "views": 30890.0,
@@ -8617,14 +8589,14 @@
    "grade": {
     "age_days": 28,
     "peers": 40,
-    "score": 0.64,
+    "score": 0.629,
     "letter": "B",
     "ranks": {
-     "retention": 0.9,
+     "retention": 0.88,
      "ctr": 0.72,
-     "views": 0.25,
+     "views": 0.23,
      "engagement": 0.25,
-     "subs": 0.17
+     "subs": 0.2
     },
     "values": {
      "views": 9110.0,
@@ -8645,14 +8617,14 @@
    "grade": {
     "age_days": 28,
     "peers": 38,
-    "score": 0.404,
-    "letter": "C",
+    "score": 0.392,
+    "letter": "D",
     "ranks": {
-     "retention": 0.34,
+     "retention": 0.32,
      "ctr": 0.45,
-     "views": 0.11,
+     "views": 0.08,
      "engagement": 0.71,
-     "subs": 0.82
+     "subs": 0.84
     },
     "values": {
      "views": 3719.0,
@@ -8701,14 +8673,14 @@
    "grade": {
     "age_days": 28,
     "peers": 38,
-    "score": 0.486,
+    "score": 0.474,
     "letter": "C",
     "ranks": {
-     "retention": 0.53,
+     "retention": 0.5,
      "ctr": 0.55,
-     "views": 0.42,
+     "views": 0.39,
      "engagement": 0.26,
-     "subs": 0.37
+     "subs": 0.39
     },
     "values": {
      "views": 16948.0,
@@ -8729,14 +8701,14 @@
    "grade": {
     "age_days": 28,
     "peers": 33,
-    "score": 0.621,
+    "score": 0.608,
     "letter": "B",
     "ranks": {
-     "retention": 0.67,
+     "retention": 0.64,
      "ctr": 0.64,
-     "views": 0.52,
+     "views": 0.48,
      "engagement": 0.48,
-     "subs": 0.79
+     "subs": 0.82
     },
     "values": {
      "views": 21571.0,
@@ -8813,14 +8785,14 @@
    "grade": {
     "age_days": 28,
     "peers": 33,
-    "score": 0.624,
+    "score": 0.611,
     "letter": "B",
     "ranks": {
-     "retention": 0.55,
+     "retention": 0.52,
      "ctr": 0.67,
-     "views": 0.79,
+     "views": 0.76,
      "engagement": 0.58,
-     "subs": 0.48
+     "subs": 0.52
     },
     "values": {
      "views": 76085.0,
@@ -8841,10 +8813,10 @@
    "grade": {
     "age_days": 28,
     "peers": 33,
-    "score": 0.688,
+    "score": 0.677,
     "letter": "B",
     "ranks": {
-     "retention": 0.7,
+     "retention": 0.67,
      "ctr": 0.42,
      "views": 0.97,
      "engagement": 1.0,
@@ -8897,12 +8869,12 @@
    "grade": {
     "age_days": 28,
     "peers": 33,
-    "score": 0.488,
+    "score": 0.494,
     "letter": "C",
     "ranks": {
      "retention": 1.0,
-     "ctr": 0.06,
-     "views": 0.36,
+     "ctr": 0.09,
+     "views": 0.33,
      "engagement": 0.58,
      "subs": 0.09
     },
@@ -8925,14 +8897,14 @@
    "grade": {
     "age_days": 28,
     "peers": 33,
-    "score": 0.533,
+    "score": 0.53,
     "letter": "C",
     "ranks": {
-     "retention": 0.85,
-     "ctr": 0.09,
-     "views": 0.73,
+     "retention": 0.82,
+     "ctr": 0.12,
+     "views": 0.7,
      "engagement": 0.7,
-     "subs": 0.52
+     "subs": 0.55
     },
     "values": {
      "views": 49592.0,
@@ -9009,14 +8981,14 @@
    "grade": {
     "age_days": 28,
     "peers": 31,
-    "score": 0.6,
-    "letter": "B",
+    "score": 0.59,
+    "letter": "C",
     "ranks": {
-     "retention": 0.94,
+     "retention": 0.9,
      "ctr": 0.32,
      "views": 0.84,
      "engagement": 0.03,
-     "subs": 0.61
+     "subs": 0.65
     },
     "values": {
      "views": 103847.0,
@@ -9037,14 +9009,14 @@
    "grade": {
     "age_days": 28,
     "peers": 31,
-    "score": 0.656,
+    "score": 0.642,
     "letter": "B",
     "ranks": {
-     "retention": 0.42,
+     "retention": 0.39,
      "ctr": 0.9,
-     "views": 0.65,
+     "views": 0.61,
      "engagement": 0.77,
-     "subs": 0.39
+     "subs": 0.42
     },
     "values": {
      "views": 37250.0,
@@ -9093,14 +9065,14 @@
    "grade": {
     "age_days": 28,
     "peers": 28,
-    "score": 0.586,
+    "score": 0.57,
     "letter": "C",
     "ranks": {
-     "retention": 0.43,
+     "retention": 0.39,
      "ctr": 0.64,
-     "views": 0.68,
+     "views": 0.64,
      "engagement": 0.86,
-     "subs": 0.46
+     "subs": 0.5
     },
     "values": {
      "views": 38824.0,
@@ -9149,14 +9121,14 @@
    "grade": {
     "age_days": 28,
     "peers": 28,
-    "score": 0.53,
+    "score": 0.514,
     "letter": "C",
     "ranks": {
-     "retention": 0.18,
+     "retention": 0.14,
      "ctr": 0.75,
-     "views": 0.5,
+     "views": 0.46,
      "engagement": 1.0,
-     "subs": 0.61
+     "subs": 0.64
     },
     "values": {
      "views": 16379.0,
@@ -9205,14 +9177,14 @@
    "grade": {
     "age_days": 28,
     "peers": 28,
-    "score": 0.655,
+    "score": 0.639,
     "letter": "B",
     "ranks": {
-     "retention": 0.32,
+     "retention": 0.29,
      "ctr": 0.93,
-     "views": 0.75,
+     "views": 0.71,
      "engagement": 0.89,
-     "subs": 0.32
+     "subs": 0.36
     },
     "values": {
      "views": 50527.0,
@@ -9261,14 +9233,14 @@
    "grade": {
     "age_days": 28,
     "peers": 26,
-    "score": 0.529,
+    "score": 0.512,
     "letter": "C",
     "ranks": {
-     "retention": 0.73,
+     "retention": 0.69,
      "ctr": 0.35,
-     "views": 0.35,
+     "views": 0.31,
      "engagement": 0.65,
-     "subs": 0.69
+     "subs": 0.73
     },
     "values": {
      "views": 9283.0,
@@ -9317,14 +9289,14 @@
    "grade": {
     "age_days": 28,
     "peers": 26,
-    "score": 0.631,
+    "score": 0.613,
     "letter": "B",
     "ranks": {
-     "retention": 0.27,
+     "retention": 0.23,
      "ctr": 0.92,
-     "views": 0.58,
+     "views": 0.54,
      "engagement": 0.92,
-     "subs": 0.69
+     "subs": 0.73
     },
     "values": {
      "views": 22205.0,
@@ -9332,34 +9304,6 @@
      "engagement": 0.0454,
      "subs": 0.5404,
      "ctr": 0.6602
-    }
-   }
-  },
-  "WrfnWr9tUp8": {
-   "title": "Back 2 Back For Game 5? #Spurs #Knicks #nba #nbafinals",
-   "published": "2026-06-13",
-   "duration_sec": 93,
-   "format": "short",
-   "week": "2026-06-08",
-   "paid_views": 0.0,
-   "grade": {
-    "age_days": 28,
-    "peers": 24,
-    "score": 0.215,
-    "letter": "D",
-    "ranks": {
-     "retention": 0.04,
-     "ctr": 0.33,
-     "views": 0.0,
-     "engagement": 0.33,
-     "subs": 1.0
-    },
-    "values": {
-     "views": 1365.0,
-     "retention": 0.5232,
-     "engagement": 0.019,
-     "subs": 1.4652,
-     "ctr": 0.5385
     }
    }
   },
@@ -9388,6 +9332,34 @@
      "engagement": 0.0198,
      "subs": 0.9921,
      "ctr": null
+    }
+   }
+  },
+  "SjFpD8hyZ7c": {
+   "title": "Is Jalen Brunson a Superstar? #NBA #Knicks #NewYorkKnicks #basketball",
+   "published": "2026-06-13",
+   "duration_sec": 30,
+   "format": "short",
+   "week": "2026-06-08",
+   "paid_views": 0.0,
+   "grade": {
+    "age_days": 28,
+    "peers": 24,
+    "score": 0.475,
+    "letter": "C",
+    "ranks": {
+     "retention": 0.92,
+     "ctr": 0.04,
+     "views": 0.79,
+     "engagement": 0.12,
+     "subs": 0.17
+    },
+    "values": {
+     "views": 77811.0,
+     "retention": 1.2033,
+     "engagement": 0.0142,
+     "subs": 0.1928,
+     "ctr": 0.4831
     }
    }
   },
@@ -10100,15 +10072,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 27,
-    "score": 0.476,
+    "peers": 26,
+    "score": 0.494,
     "letter": "C",
     "ranks": {
-     "retention": 0.41,
+     "retention": 0.42,
      "ctr": null,
-     "views": 0.56,
-     "engagement": 0.59,
-     "subs": 0.48
+     "views": 0.58,
+     "engagement": 0.62,
+     "subs": 0.5
     },
     "values": {
      "views": 40925.0,
@@ -10184,15 +10156,15 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 27,
-    "score": 0.564,
+    "peers": 26,
+    "score": 0.577,
     "letter": "C",
     "ranks": {
-     "retention": 0.56,
+     "retention": 0.58,
      "ctr": null,
-     "views": 0.7,
-     "engagement": 0.37,
-     "subs": 0.59
+     "views": 0.69,
+     "engagement": 0.38,
+     "subs": 0.62
     },
     "values": {
      "views": 63465.0,
@@ -10296,14 +10268,14 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 27,
-    "score": 0.217,
+    "peers": 26,
+    "score": 0.216,
     "letter": "D",
     "ranks": {
      "retention": 0.0,
      "ctr": null,
      "views": 0.0,
-     "engagement": 0.93,
+     "engagement": 0.92,
      "subs": 0.96
     },
     "values": {
@@ -10325,14 +10297,14 @@
    "grade": {
     "age_days": 28,
     "peers": 208,
-    "score": 0.668,
+    "score": 0.663,
     "letter": "B",
     "ranks": {
-     "retention": 0.69,
-     "ctr": 0.83,
-     "views": 0.73,
-     "engagement": 0.12,
-     "subs": 0.33
+     "retention": 0.68,
+     "ctr": 0.82,
+     "views": 0.72,
+     "engagement": 0.13,
+     "subs": 0.34
     },
     "values": {
      "views": 48197.0,
@@ -10381,14 +10353,14 @@
    "grade": {
     "age_days": 28,
     "peers": 208,
-    "score": 0.664,
+    "score": 0.661,
     "letter": "B",
     "ranks": {
-     "retention": 0.17,
+     "retention": 0.16,
      "ctr": 0.99,
      "views": 0.89,
      "engagement": 0.75,
-     "subs": 0.94
+     "subs": 0.95
     },
     "values": {
      "views": 171610.0,
@@ -10409,14 +10381,14 @@
    "grade": {
     "age_days": 28,
     "peers": 208,
-    "score": 0.582,
+    "score": 0.578,
     "letter": "C",
     "ranks": {
-     "retention": 0.19,
+     "retention": 0.18,
      "ctr": 0.94,
      "views": 0.71,
      "engagement": 0.4,
-     "subs": 0.78
+     "subs": 0.79
     },
     "values": {
      "views": 40217.0,
@@ -10465,12 +10437,12 @@
    "grade": {
     "age_days": 28,
     "peers": 208,
-    "score": 0.165,
+    "score": 0.164,
     "letter": "F",
     "ranks": {
-     "retention": 0.1,
-     "ctr": 0.3,
-     "views": 0.11,
+     "retention": 0.09,
+     "ctr": 0.31,
+     "views": 0.1,
      "engagement": 0.06,
      "subs": 0.06
     },
@@ -10493,14 +10465,14 @@
    "grade": {
     "age_days": 28,
     "peers": 208,
-    "score": 0.605,
+    "score": 0.603,
     "letter": "B",
     "ranks": {
-     "retention": 0.27,
+     "retention": 0.26,
      "ctr": 0.93,
      "views": 0.83,
-     "engagement": 0.19,
-     "subs": 0.85
+     "engagement": 0.2,
+     "subs": 0.86
     },
     "values": {
      "views": 101838.0,
@@ -10549,12 +10521,12 @@
    "grade": {
     "age_days": 28,
     "peers": 208,
-    "score": 0.462,
+    "score": 0.461,
     "letter": "C",
     "ranks": {
      "retention": 0.98,
      "ctr": 0.1,
-     "views": 0.37,
+     "views": 0.36,
      "engagement": 0.15,
      "subs": 0.25
     },
