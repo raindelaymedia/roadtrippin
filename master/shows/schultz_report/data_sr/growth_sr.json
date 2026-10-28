@@ -1,10 +1,10 @@
 {
  "start": "2026-08-18",
  "window_days": 7,
- "through": "2026-10-26",
- "pulled": "2026-10-27T15:15+00:00",
+ "through": "2026-10-27",
+ "pulled": "2026-10-28T15:56+00:00",
  "instagram": {
-  "followers_now": 2240,
+  "followers_now": 2252,
   "windows": [
    {
     "start": "2026-08-18",
@@ -100,7 +100,7 @@
     "start": "2026-10-19",
     "end": "2026-10-25",
     "partial": false,
-    "views": 325022,
+    "views": 325023,
     "interactions": 17455,
     "follows": 189,
     "unfollows": 208,
@@ -108,13 +108,13 @@
    },
    {
     "start": "2026-10-26",
-    "end": "2026-10-26",
+    "end": "2026-10-27",
     "partial": true,
-    "views": 299919,
-    "interactions": 9933,
-    "follows": 0,
-    "unfollows": 0,
-    "net_followers": 0
+    "views": 501315,
+    "interactions": 18191,
+    "follows": 157,
+    "unfollows": 59,
+    "net_followers": 98
    }
   ],
   "posts": [
@@ -123,7 +123,7 @@
     "created": "2026-10-23",
     "text": "The Jalen Hurts health scare explained. Wishing him a speedy recovery \ud83d\ude4f",
     "type": "VIDEO",
-    "views": 213,
+    "views": 217,
     "likes": 11,
     "comments": 0
    },
@@ -132,7 +132,7 @@
     "created": "2026-10-19",
     "text": "Call it clich\u00e9, but Mike Vrabel really is the ultimate player\u2019s coach in New England \ud83d\udcaa",
     "type": "VIDEO",
-    "views": 77,
+    "views": 78,
     "likes": 5,
     "comments": 0
    },
@@ -141,7 +141,7 @@
     "created": "2026-10-15",
     "text": "After spending time together with the Vikings, Daniel Jones has great things to say about Jags OC Grant Udinski and his incredible football ",
     "type": "VIDEO",
-    "views": 245,
+    "views": 250,
     "likes": 4,
     "comments": 0
    },
@@ -150,7 +150,7 @@
     "created": "2026-10-14",
     "text": "Adrian Peterson was just 9 YARDS short of the the single season rushing record after his 2012 MVP season \ud83e\udd2f",
     "type": "VIDEO",
-    "views": 203,
+    "views": 204,
     "likes": 5,
     "comments": 0
    },
