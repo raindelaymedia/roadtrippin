@@ -274,7 +274,7 @@ def update_reach(creds, cache_csv, video_types, rebuild=False, types_csv=None):
     if types_csv:                                   # classify videos the type lists don't cover yet
         ids = {row.get("video_id") for rows in texts.values() for row in rows} - set(video_types)
         try:
-            video_types = {**video_types, **classify_unknown(creds, ids, types_csv)}
+            video_types = {**classify_unknown(creds, ids, types_csv), **video_types}   # passed-in types (EPISODES) win
         except Exception as e:
             print(f"    ⚠ video type fallback: {e}")
     new = 0
@@ -367,7 +367,9 @@ def collect(creds, months, cache_csv, videos):
         except Exception as e:
             out["notes"].append(f"video types: {e}")
         vt.update({v: "EPISODES" for v in eps})        # impressions split: full episodes vs clips (VIDS = clips)
-        rebuild = bool(eps) and not any(t == "EPISODES" for _, t in _read_cache(cache_csv))
+        cached = _read_cache(cache_csv)                 # re-sort once if most cached days predate the episode split
+        ep_days = sum(1 for _, t in cached if t == "EPISODES")
+        rebuild = bool(eps) and ep_days < sum(1 for _, t in cached if t == "VIDS") / 2
         note = update_reach(creds, cache_csv, vt, rebuild=rebuild, types_csv=types_csv)
         out["reach"], out["reach_through"] = reach_monthly(cache_csv)
         out["retention"] = retention_monthly(os.path.dirname(cache_csv))
