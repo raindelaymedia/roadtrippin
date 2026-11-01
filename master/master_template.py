@@ -417,7 +417,8 @@ def _render_weekly(reports):
 
     shows = ('<span class="wk-show"><i style="background:#C9A84C"></i>Road Trippin\'</span>'
              '<span class="wk-show"><i style="background:#FF4370"></i>Girls Tripp</span>'
-             '<span class="wk-show"><i style="background:#1E7A46"></i>Football Related</span>')
+             '<span class="wk-show"><i style="background:#1E7A46"></i>Football Related</span>'
+             '<span class="wk-show"><i style="background:#11116b"></i>The Schultz Report</span>')
     if not reports:
         return f"""<div class="wk-card"><div class="wk-main">
       <div class="wk-t">First report coming soon</div>
@@ -1127,7 +1128,7 @@ def build_master_html(rdm_summary, show_summaries, quarter_label,
 
   <div class="sec-h">
     <h2>Weekly Top Content</h2>
-    <span class="r">RT · GT · FR · Mon–Sun weeks · out Fridays</span>
+    <span class="r">RT · GT · FR · SR · Mon–Sun weeks · out Fridays</span>
   </div>
   {_render_weekly(weekly_reports or [])}
 
