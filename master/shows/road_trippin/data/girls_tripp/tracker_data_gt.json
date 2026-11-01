@@ -1,86 +1,104 @@
 {
-  "generated": "2026-10-31T15:06:57.994236",
+  "generated": "2026-11-01T14:25:01.369233",
   "channel_id": "UCLh4znMEEDzabMHw-Ob0Cpg",
   "rt_channel_id": "UCSes4X8uDrpc4X46hJKjejg",
   "months": [
+    "2026-11",
     "2026-10",
     "2026-09"
   ],
   "yt": {
     "vids": {
-      "2026-10": 227033,
+      "2026-11": null,
+      "2026-10": 236661,
       "2026-09": 21473
     },
     "shorts": {
-      "2026-10": 349087,
+      "2026-11": null,
+      "2026-10": 354041,
       "2026-09": 20628
     },
     "lives": {
+      "2026-11": null,
       "2026-10": 0,
       "2026-09": 0
     },
     "subs_gained": {
-      "2026-10": 1780,
+      "2026-11": null,
+      "2026-10": 1815,
       "2026-09": 254
     },
     "subs_lost": {
-      "2026-10": 99,
+      "2026-11": null,
+      "2026-10": 104,
       "2026-09": 9
     },
     "watch_hrs": {
-      "2026-10": 27709.8,
+      "2026-11": null,
+      "2026-10": 28919.9,
       "2026-09": 2068.6
     }
   },
   "audio": {
     "downloads": {
+      "2026-11": null,
       "2026-10": null,
       "2026-09": 64
     },
     "streams": {
+      "2026-11": null,
       "2026-10": null,
       "2026-09": 5
     },
     "episodes": {
+      "2026-11": null,
       "2026-10": 9,
       "2026-09": 2
     }
   },
   "kpis": {
     "shorts_count": {
+      "2026-11": null,
       "2026-10": 38,
       "2026-09": 29
     },
     "ctr": {
+      "2026-11": null,
       "2026-10": null,
       "2026-09": null
     },
     "search_pct": {
-      "2026-10": 0.0605,
+      "2026-11": null,
+      "2026-10": 0.0608,
       "2026-09": 0.0495
     },
     "tv_pct": {
-      "2026-10": 0.1415,
+      "2026-11": null,
+      "2026-10": 0.1437,
       "2026-09": 0.1865
     }
   },
   "collab": {
     "total_views": {
-      "2026-10": 576011,
+      "2026-11": null,
+      "2026-10": 590644,
       "2026-09": 42101
     },
     "rt_views": {
-      "2026-10": 644,
+      "2026-11": null,
+      "2026-10": 668,
       "2026-09": 1166
     },
     "rt_pct": {
+      "2026-11": null,
       "2026-10": 0.0011,
       "2026-09": 0.0277
     },
     "rt_by_source": {
+      "2026-11": null,
       "2026-10": {
         "suggested": 0,
-        "channel_page": 644
+        "channel_page": 668
       },
       "2026-09": {
         "suggested": 0,
@@ -88,19 +106,22 @@
       }
     },
     "collab_views": {
-      "2026-10": 7822,
+      "2026-11": null,
+      "2026-10": 7851,
       "2026-09": 1748
     },
     "collab_pct": {
-      "2026-10": 0.0136,
+      "2026-11": null,
+      "2026-10": 0.0133,
       "2026-09": 0.0415
     },
     "top_channels": {
+      "2026-11": null,
       "2026-10": [
         {
           "id": "UCiWLfSweyRNmLpgEHekhoAg",
           "name": "ESPN",
-          "views": 1348,
+          "views": 1352,
           "is_rt": false
         },
         {
@@ -112,7 +133,7 @@
         {
           "id": "UCSes4X8uDrpc4X46hJKjejg",
           "name": "Road Trippin' Show",
-          "views": 644,
+          "views": 668,
           "is_rt": true
         },
         {
@@ -162,9 +183,10 @@
       ]
     },
     "detail_coverage": {
+      "2026-11": null,
       "2026-10": {
-        "suggested": 0.2192,
-        "channel_page": 0.9766
+        "suggested": 0.2109,
+        "channel_page": 0.9765
       },
       "2026-09": {
         "suggested": 0.1511,
@@ -173,20 +195,21 @@
     }
   },
   "traffic_sources": {
+    "2026-11": {},
     "2026-10": {
-      "NO_LINK_OTHER": 4186,
-      "SUBSCRIBER": 215796,
-      "YT_CHANNEL": 8769,
-      "YT_SEARCH": 34857,
-      "RELATED_VIDEO": 44514,
-      "YT_OTHER_PAGE": 5786,
-      "EXT_URL": 1767,
-      "PLAYLIST": 988,
-      "NOTIFICATION": 909,
-      "END_SCREEN": 367,
-      "SHORTS": 257466,
-      "SHORTS_CONTENT_LINKS": 522,
-      "HASHTAGS": 21,
+      "NO_LINK_OTHER": 4326,
+      "SUBSCRIBER": 223438,
+      "YT_CHANNEL": 8909,
+      "YT_SEARCH": 35895,
+      "RELATED_VIDEO": 46424,
+      "YT_OTHER_PAGE": 5920,
+      "EXT_URL": 1795,
+      "PLAYLIST": 1035,
+      "NOTIFICATION": 960,
+      "END_SCREEN": 379,
+      "SHORTS": 260948,
+      "SHORTS_CONTENT_LINKS": 529,
+      "HASHTAGS": 23,
       "SOUND_PAGE": 62,
       "LIVE_REDIRECT": 1
     },
@@ -206,178 +229,24 @@
     }
   },
   "best_of": {
-    "label": "Oct 01 \u2013 Oct 31, 2026",
-    "long": [
-      {
-        "id": "jkRQisxTCBI",
-        "title": "Kelsey Plum Says Angel Reese Won Game 2 BEFORE Tipoff",
-        "published": "2026-10-20",
-        "views": 64278,
-        "likes": 1270,
-        "thumbnail": "https://i.ytimg.com/vi/jkRQisxTCBI/maxresdefault.jpg",
-        "url": "https://youtu.be/jkRQisxTCBI",
-        "type": "LONG",
-        "show": "GT"
-      },
-      {
-        "id": "JX0ny1fN-4A",
-        "title": "Kelsey Plum: How Golden State Held Atlanta Scoreless in the Final 3 Minutes",
-        "published": "2026-10-18",
-        "views": 49894,
-        "likes": 652,
-        "thumbnail": "https://i.ytimg.com/vi/JX0ny1fN-4A/maxresdefault.jpg",
-        "url": "https://youtu.be/JX0ny1fN-4A",
-        "type": "LONG",
-        "show": "GT"
-      },
-      {
-        "id": "Zp21EG6fL0g",
-        "title": "Angel Reese Changed Atlanta's Mentality + Why Golden State Can't Score",
-        "published": "2026-10-22",
-        "views": 33702,
-        "likes": 693,
-        "thumbnail": "https://i.ytimg.com/vi/Zp21EG6fL0g/maxresdefault.jpg",
-        "url": "https://youtu.be/Zp21EG6fL0g",
-        "type": "LONG",
-        "show": "GT"
-      },
-      {
-        "id": "Ou5lbJW-uZI",
-        "title": "Golden State or Atlanta? Sue Bird Says the WNBA Finals Hinge on ONE Thing",
-        "published": "2026-10-15",
-        "views": 18497,
-        "likes": 302,
-        "thumbnail": "https://i.ytimg.com/vi/Ou5lbJW-uZI/maxresdefault.jpg",
-        "url": "https://youtu.be/Ou5lbJW-uZI",
-        "type": "LONG",
-        "show": "GT"
-      },
-      {
-        "id": "-OXnlSk7Uvw",
-        "title": "Tina Charles on Angel Reese\u2019s Fearlessness + Can Golden State Score Enough to Win Game 7?",
-        "published": "2026-10-30",
-        "views": 16414,
-        "likes": 464,
-        "thumbnail": "https://i.ytimg.com/vi/-OXnlSk7Uvw/maxresdefault.jpg",
-        "url": "https://youtu.be/-OXnlSk7Uvw",
-        "type": "LONG",
-        "show": "GT"
-      }
-    ],
-    "mid": [
-      {
-        "id": "tR8q4e204AQ",
-        "title": "The Valkyries Have Everything the Defending Champs Don\u2019t",
-        "published": "2026-10-09",
-        "views": 4887,
-        "likes": 47,
-        "thumbnail": "https://i.ytimg.com/vi/tR8q4e204AQ/maxresdefault.jpg",
-        "url": "https://youtu.be/tR8q4e204AQ",
-        "type": "MID",
-        "show": "GT"
-      },
-      {
-        "id": "9eJ2AYxdf8c",
-        "title": "Caitlin Clark Answers the Call in Game 2: Winner-Take-All vs. Vegas",
-        "published": "2026-10-01",
-        "views": 2193,
-        "likes": 25,
-        "thumbnail": "https://i.ytimg.com/vi/9eJ2AYxdf8c/maxresdefault.jpg",
-        "url": "https://youtu.be/9eJ2AYxdf8c",
-        "type": "MID",
-        "show": "GT"
-      },
-      {
-        "id": "ASUwvRi-JN4",
-        "title": "Ryan Ruocco Says New York Has NO CEILING",
-        "published": "2026-10-01",
-        "views": 716,
-        "likes": 1,
-        "thumbnail": "https://i.ytimg.com/vi/ASUwvRi-JN4/maxresdefault.jpg",
-        "url": "https://youtu.be/ASUwvRi-JN4",
-        "type": "MID",
-        "show": "GT"
-      },
-      {
-        "id": "RNFRGlqW2gk",
-        "title": "Ryan Ruocco Calls Liberty Timeout Mistake \u201cINDEFENSIBLE\u201d",
-        "published": "2026-10-09",
-        "views": 707,
-        "likes": 18,
-        "thumbnail": "https://i.ytimg.com/vi/RNFRGlqW2gk/maxresdefault.jpg",
-        "url": "https://youtu.be/RNFRGlqW2gk",
-        "type": "MID",
-        "show": "GT"
-      }
-    ],
-    "short": [
-      {
-        "id": "qPR-1_8iJaU",
-        "title": "Kelsey Plum Just Named the WNBA's Next Superstar! #AtlantaDream #Valkyries #GabbyWilliams",
-        "published": "2026-10-18",
-        "views": 85024,
-        "likes": 1980,
-        "thumbnail": "https://i.ytimg.com/vi/qPR-1_8iJaU/maxresdefault.jpg",
-        "url": "https://youtu.be/qPR-1_8iJaU",
-        "type": "SHORT",
-        "show": "GT"
-      },
-      {
-        "id": "JTunoanIuYs",
-        "title": "DPOY Angel Reese Is DOMINATING! Can Anyone Stop Atlanta?! #wnba #newyorkliberty",
-        "published": "2026-10-09",
-        "views": 36457,
-        "likes": 1292,
-        "thumbnail": "https://i.ytimg.com/vi/JTunoanIuYs/maxresdefault.jpg",
-        "url": "https://youtu.be/JTunoanIuYs",
-        "type": "SHORT",
-        "show": "GT"
-      },
-      {
-        "id": "N6HeC5WbITk",
-        "title": "How Angel Reese Completely Changed The Atlanta Dream's Mentality #WNBAFinals",
-        "published": "2026-10-22",
-        "views": 35444,
-        "likes": 1224,
-        "thumbnail": "https://i.ytimg.com/vi/N6HeC5WbITk/maxresdefault.jpg",
-        "url": "https://youtu.be/N6HeC5WbITk",
-        "type": "SHORT",
-        "show": "GT"
-      },
-      {
-        "id": "pWE9UCtfZzg",
-        "title": "The TRUTH Behind The Golden State Valkyries Game 3 BLOWOUT #WNBA #AngelReese",
-        "published": "2026-10-23",
-        "views": 31379,
-        "likes": 733,
-        "thumbnail": "https://i.ytimg.com/vi/pWE9UCtfZzg/maxresdefault.jpg",
-        "url": "https://youtu.be/pWE9UCtfZzg",
-        "type": "SHORT",
-        "show": "GT"
-      },
-      {
-        "id": "P5AU54WKrjM",
-        "title": "Why A 12:30 PM WNBA Finals Game Is A MASSIVE Mistake! \ud83d\uded1\ud83c\udfc0 #WNBA #AngelReese #AtlantaDream",
-        "published": "2026-10-27",
-        "views": 16721,
-        "likes": 268,
-        "thumbnail": "https://i.ytimg.com/vi/P5AU54WKrjM/maxresdefault.jpg",
-        "url": "https://youtu.be/P5AU54WKrjM",
-        "type": "SHORT",
-        "show": "GT"
-      }
-    ]
+    "label": "Nov 01 \u2013 Nov 01, 2026",
+    "long": [],
+    "mid": [],
+    "short": []
   },
   "audience": {
     "eps": {
+      "2026-11": null,
       "2026-10": 9,
       "2026-09": 2
     },
     "vods": {
+      "2026-11": null,
       "2026-10": 13,
       "2026-09": 13
     },
     "lives": {
+      "2026-11": null,
       "2026-10": 2,
       "2026-09": 2
     }
@@ -390,7 +259,7 @@
           "title": "Kelsey Plum Says Angel Reese Won Game 2 BEFORE Tipoff",
           "published": "2026-10-20",
           "month": "2026-10",
-          "views": 64278,
+          "views": 64415,
           "likes": 1270,
           "comments": 273,
           "duration_sec": 2453,
@@ -403,8 +272,8 @@
           "title": "Kelsey Plum: How Golden State Held Atlanta Scoreless in the Final 3 Minutes",
           "published": "2026-10-18",
           "month": "2026-10",
-          "views": 49894,
-          "likes": 652,
+          "views": 50080,
+          "likes": 653,
           "comments": 194,
           "duration_sec": 2932,
           "thumbnail": "https://i.ytimg.com/vi/JX0ny1fN-4A/maxresdefault.jpg",
@@ -416,7 +285,7 @@
           "title": "Angel Reese Changed Atlanta's Mentality + Why Golden State Can't Score",
           "published": "2026-10-22",
           "month": "2026-10",
-          "views": 33702,
+          "views": 33734,
           "likes": 693,
           "comments": 141,
           "duration_sec": 2245,
@@ -429,7 +298,7 @@
           "title": "Golden State or Atlanta? Sue Bird Says the WNBA Finals Hinge on ONE Thing",
           "published": "2026-10-15",
           "month": "2026-10",
-          "views": 18497,
+          "views": 18545,
           "likes": 302,
           "comments": 38,
           "duration_sec": 2958,
@@ -442,9 +311,9 @@
           "title": "Tina Charles on Angel Reese\u2019s Fearlessness + Can Golden State Score Enough to Win Game 7?",
           "published": "2026-10-30",
           "month": "2026-10",
-          "views": 16414,
-          "likes": 464,
-          "comments": 61,
+          "views": 18109,
+          "likes": 477,
+          "comments": 65,
           "duration_sec": 2140,
           "thumbnail": "https://i.ytimg.com/vi/-OXnlSk7Uvw/maxresdefault.jpg",
           "url": "https://youtu.be/-OXnlSk7Uvw",
@@ -455,8 +324,8 @@
           "title": "12:30 PM for a WNBA Finals Game?! + Can the Valkyries Close It Out?",
           "published": "2026-10-27",
           "month": "2026-10",
-          "views": 15238,
-          "likes": 275,
+          "views": 15302,
+          "likes": 276,
           "comments": 75,
           "duration_sec": 2768,
           "thumbnail": "https://i.ytimg.com/vi/fvw32FSKETQ/maxresdefault.jpg",
@@ -468,7 +337,7 @@
           "title": "Ryan Ruocco Calls Liberty\u2019s Timeout Mistake \u201cINDEFENSIBLE\u201d + Valkyries Go Up 2-0",
           "published": "2026-10-08",
           "month": "2026-10",
-          "views": 14898,
+          "views": 14903,
           "likes": 177,
           "comments": 65,
           "duration_sec": 3271,
@@ -481,7 +350,7 @@
           "title": "How Golden State Took Angel Reese Out of Game 4 | Girls Tripp",
           "published": "2026-10-25",
           "month": "2026-10",
-          "views": 12548,
+          "views": 12616,
           "likes": 258,
           "comments": 119,
           "duration_sec": 2226,
@@ -494,7 +363,7 @@
           "title": "Caitlin Clark Shines in Game 2, Now It\u2019s Winner-Take-All vs. Vegas",
           "published": "2026-10-01",
           "month": "2026-10",
-          "views": 6934,
+          "views": 6935,
           "likes": 139,
           "comments": 42,
           "duration_sec": 4389,
@@ -509,7 +378,7 @@
           "title": "The Valkyries Have Everything the Defending Champs Don\u2019t",
           "published": "2026-10-09",
           "month": "2026-10",
-          "views": 4887,
+          "views": 4889,
           "likes": 47,
           "comments": 6,
           "duration_sec": 423,
@@ -548,7 +417,7 @@
           "title": "Ryan Ruocco Calls Liberty Timeout Mistake \u201cINDEFENSIBLE\u201d",
           "published": "2026-10-09",
           "month": "2026-10",
-          "views": 707,
+          "views": 710,
           "likes": 18,
           "comments": 0,
           "duration_sec": 489,
@@ -563,8 +432,8 @@
           "title": "Kelsey Plum Just Named the WNBA's Next Superstar! #AtlantaDream #Valkyries #GabbyWilliams",
           "published": "2026-10-18",
           "month": "2026-10",
-          "views": 85024,
-          "likes": 1980,
+          "views": 85224,
+          "likes": 1982,
           "comments": 134,
           "duration_sec": 42,
           "thumbnail": "https://i.ytimg.com/vi/qPR-1_8iJaU/maxresdefault.jpg",
@@ -576,7 +445,7 @@
           "title": "DPOY Angel Reese Is DOMINATING! Can Anyone Stop Atlanta?! #wnba #newyorkliberty",
           "published": "2026-10-09",
           "month": "2026-10",
-          "views": 36457,
+          "views": 36459,
           "likes": 1292,
           "comments": 66,
           "duration_sec": 39,
@@ -589,7 +458,7 @@
           "title": "How Angel Reese Completely Changed The Atlanta Dream's Mentality #WNBAFinals",
           "published": "2026-10-22",
           "month": "2026-10",
-          "views": 35444,
+          "views": 35532,
           "likes": 1224,
           "comments": 54,
           "duration_sec": 43,
@@ -602,7 +471,7 @@
           "title": "The TRUTH Behind The Golden State Valkyries Game 3 BLOWOUT #WNBA #AngelReese",
           "published": "2026-10-23",
           "month": "2026-10",
-          "views": 31379,
+          "views": 31442,
           "likes": 733,
           "comments": 117,
           "duration_sec": 43,
@@ -615,9 +484,9 @@
           "title": "Why A 12:30 PM WNBA Finals Game Is A MASSIVE Mistake! \ud83d\uded1\ud83c\udfc0 #WNBA #AngelReese #AtlantaDream",
           "published": "2026-10-27",
           "month": "2026-10",
-          "views": 16721,
-          "likes": 268,
-          "comments": 62,
+          "views": 16970,
+          "likes": 273,
+          "comments": 63,
           "duration_sec": 70,
           "thumbnail": "https://i.ytimg.com/vi/P5AU54WKrjM/maxresdefault.jpg",
           "url": "https://youtu.be/P5AU54WKrjM",
@@ -628,7 +497,7 @@
           "title": "How Angel Reese Is Already the Finals MVP Favorite! #WNBA #AtlantaDream",
           "published": "2026-10-20",
           "month": "2026-10",
-          "views": 16560,
+          "views": 16584,
           "likes": 462,
           "comments": 36,
           "duration_sec": 37,
@@ -641,7 +510,7 @@
           "title": "Kelsey Plum's Exact Game 3 Blueprint For the Valkyries! #WNBA #WNBAFinals #AngelReese",
           "published": "2026-10-21",
           "month": "2026-10",
-          "views": 11416,
+          "views": 11460,
           "likes": 203,
           "comments": 33,
           "duration_sec": 46,
@@ -654,8 +523,8 @@
           "title": "Why Angel Reese\u2019s New Game Is Scaring The League #basketball #WNBA",
           "published": "2026-10-24",
           "month": "2026-10",
-          "views": 10658,
-          "likes": 274,
+          "views": 10695,
+          "likes": 275,
           "comments": 41,
           "duration_sec": 38,
           "thumbnail": "https://i.ytimg.com/vi/Q97HkGpJmS4/maxresdefault.jpg",
@@ -667,7 +536,7 @@
           "title": "Angel Reese Doing This In Sync Meant It Was A Complete Wrap For The Golden State Valkyries",
           "published": "2026-10-23",
           "month": "2026-10",
-          "views": 10491,
+          "views": 10575,
           "likes": 285,
           "comments": 9,
           "duration_sec": 35,
@@ -680,7 +549,7 @@
           "title": "The REAL STRUGGLE of Getting Gabby Williams Open vs. Atlanta Dream #WNBA",
           "published": "2026-10-24",
           "month": "2026-10",
-          "views": 9735,
+          "views": 9765,
           "likes": 240,
           "comments": 17,
           "duration_sec": 52,
@@ -697,7 +566,7 @@
           "title": "Caitlin Clark vs. A'ja Wilson + Ryan Ruocco's Case for a 5-Game WNBA First Round",
           "published": "2026-09-25",
           "month": "2026-09",
-          "views": 11247,
+          "views": 11251,
           "likes": 220,
           "comments": 51,
           "duration_sec": 3605,
@@ -710,9 +579,9 @@
           "title": "Caitlin Clark's Defense Deserves CREDIT + Why Team USA NEEDED Chelsea Gray",
           "published": "2026-09-17",
           "month": "2026-09",
-          "views": 4677,
+          "views": 4766,
           "likes": 68,
-          "comments": 16,
+          "comments": 17,
           "duration_sec": 3931,
           "thumbnail": "https://i.ytimg.com/vi/5X4z2LMziCs/maxresdefault.jpg",
           "url": "https://youtu.be/5X4z2LMziCs",
@@ -777,7 +646,7 @@
           "title": "Candace Parker on Why Her First Championship Was the Hardest",
           "published": "2026-09-16",
           "month": "2026-09",
-          "views": 186,
+          "views": 187,
           "likes": 7,
           "comments": 2,
           "duration_sec": 270,
@@ -807,7 +676,7 @@
           "likes": 0,
           "comments": 0,
           "duration_sec": 262,
-          "thumbnail": "https://i9.ytimg.com/vi/IB0Qc05GW-s/maxresdefault.jpg?sqp=CJyHmNcG&rs=AOn4CLCwYLdB0tRMcQaVV0XmfIcJvwqc6g",
+          "thumbnail": "https://i9.ytimg.com/vi/IB0Qc05GW-s/maxresdefault.jpg?sqp=CJCVndcG&rs=AOn4CLCjTwulNFZneElhHpipDf4AflEBLQ",
           "url": "https://youtu.be/IB0Qc05GW-s",
           "type": "mid"
         },
@@ -820,7 +689,7 @@
           "likes": 0,
           "comments": 0,
           "duration_sec": 315,
-          "thumbnail": "https://i9.ytimg.com/vi/eoEP2zU1HRQ/maxresdefault.jpg?sqp=CJyHmNcG&rs=AOn4CLA0xfE9A0VD71ZhuPE9dPPcAs8i7w",
+          "thumbnail": "https://i9.ytimg.com/vi/eoEP2zU1HRQ/maxresdefault.jpg?sqp=CJCVndcG&rs=AOn4CLDvmmZfnqBtYQNUrNnMEb9lGO5ZHg",
           "url": "https://youtu.be/eoEP2zU1HRQ",
           "type": "mid"
         },
@@ -833,7 +702,7 @@
           "likes": 0,
           "comments": 0,
           "duration_sec": 336,
-          "thumbnail": "https://i9.ytimg.com/vi/-lJauQxSixM/maxresdefault.jpg?sqp=CJyHmNcG&rs=AOn4CLCSgFSFJysYFPJRJ9APC9zy7skEAQ",
+          "thumbnail": "https://i9.ytimg.com/vi/-lJauQxSixM/maxresdefault.jpg?sqp=CJCVndcG&rs=AOn4CLDayDQ5xHwt0EqKhbP3tuQVH50uEg",
           "url": "https://youtu.be/-lJauQxSixM",
           "type": "mid"
         },
@@ -846,7 +715,7 @@
           "likes": 0,
           "comments": 0,
           "duration_sec": 429,
-          "thumbnail": "https://i9.ytimg.com/vi/jlpiNl1Rwqc/maxresdefault.jpg?sqp=CJyHmNcG&rs=AOn4CLA0m0UUpG5MRbFcQiwVE44R4C5_oQ",
+          "thumbnail": "https://i9.ytimg.com/vi/jlpiNl1Rwqc/maxresdefault.jpg?sqp=CJCVndcG&rs=AOn4CLBJxTbTyx9eqCj__4QCB9H8RqnmXg",
           "url": "https://youtu.be/jlpiNl1Rwqc",
           "type": "mid"
         }
@@ -857,8 +726,8 @@
           "title": "Girls Tripp Has Its Own Channel | WNBA Podcast with Allie Clifton & Jordan Robinson",
           "published": "2026-09-16",
           "month": "2026-09",
-          "views": 2177,
-          "likes": 20,
+          "views": 2207,
+          "likes": 21,
           "comments": 1,
           "duration_sec": 36,
           "thumbnail": "https://i.ytimg.com/vi/xgS8iYrh5BU/maxresdefault.jpg",
@@ -883,7 +752,7 @@
           "title": "Why The 2026 WNBA Playoffs Will Be Completely Different #wnba #caitlinclark",
           "published": "2026-09-25",
           "month": "2026-09",
-          "views": 1956,
+          "views": 1957,
           "likes": 20,
           "comments": 3,
           "duration_sec": 28,
@@ -987,12 +856,25 @@
   },
   "all_videos": [
     {
+      "id": "r1SUGmc7zrU",
+      "title": "The WNBA Finals Game 7 X-Factors You Can't Ignore! #AngelReese #AtlantaDream #GoldenState",
+      "published": "2026-10-31",
+      "month": "2026-10",
+      "views": 2388,
+      "likes": 62,
+      "comments": 4,
+      "duration_sec": 59,
+      "thumbnail": "https://i.ytimg.com/vi/r1SUGmc7zrU/maxresdefault.jpg",
+      "url": "https://youtu.be/r1SUGmc7zrU",
+      "type": "short"
+    },
+    {
       "id": "i9u1iyONOj0",
       "title": "Who Takes Game 7: Atlanta Dream or Golden State Valkyries? #WNBA #AngelReese #WNBAFinals",
       "published": "2026-10-30",
       "month": "2026-10",
-      "views": 4878,
-      "likes": 144,
+      "views": 8634,
+      "likes": 194,
       "comments": 26,
       "duration_sec": 91,
       "thumbnail": "https://i.ytimg.com/vi/i9u1iyONOj0/maxresdefault.jpg",
@@ -1004,9 +886,9 @@
       "title": "Tina Charles on Angel Reese\u2019s Fearlessness + Can Golden State Score Enough to Win Game 7?",
       "published": "2026-10-30",
       "month": "2026-10",
-      "views": 16414,
-      "likes": 464,
-      "comments": 61,
+      "views": 18109,
+      "likes": 477,
+      "comments": 65,
       "duration_sec": 2140,
       "thumbnail": "https://i.ytimg.com/vi/-OXnlSk7Uvw/maxresdefault.jpg",
       "url": "https://youtu.be/-OXnlSk7Uvw",
@@ -1017,8 +899,8 @@
       "title": "Does Rhyne Howard Have Enough Aggression to Save the Series? #AtlantaDream #AngelReese",
       "published": "2026-10-29",
       "month": "2026-10",
-      "views": 1863,
-      "likes": 39,
+      "views": 2219,
+      "likes": 46,
       "comments": 2,
       "duration_sec": 41,
       "thumbnail": "https://i.ytimg.com/vi/EhDbehghmrc/maxresdefault.jpg",
@@ -1030,8 +912,8 @@
       "title": "Valkyries Head Coach Natalie Nakase Reveals Who She Actually Relies On #WNBA #WNBAFinals",
       "published": "2026-10-28",
       "month": "2026-10",
-      "views": 3499,
-      "likes": 97,
+      "views": 4238,
+      "likes": 114,
       "comments": 6,
       "duration_sec": 47,
       "thumbnail": "https://i.ytimg.com/vi/7MyR9YGcnGg/maxresdefault.jpg",
@@ -1043,8 +925,8 @@
       "title": "Is Kiah Stokes the Real MVP of the Series?! \ud83c\udfc6 #WNBAFinals #AtlantaDream #GoldenStateValkyries",
       "published": "2026-10-27",
       "month": "2026-10",
-      "views": 2398,
-      "likes": 76,
+      "views": 2469,
+      "likes": 78,
       "comments": 5,
       "duration_sec": 44,
       "thumbnail": "https://i.ytimg.com/vi/LjXP4-g_HRk/maxresdefault.jpg",
@@ -1056,9 +938,9 @@
       "title": "Why A 12:30 PM WNBA Finals Game Is A MASSIVE Mistake! \ud83d\uded1\ud83c\udfc0 #WNBA #AngelReese #AtlantaDream",
       "published": "2026-10-27",
       "month": "2026-10",
-      "views": 16721,
-      "likes": 268,
-      "comments": 62,
+      "views": 16970,
+      "likes": 273,
+      "comments": 63,
       "duration_sec": 70,
       "thumbnail": "https://i.ytimg.com/vi/P5AU54WKrjM/maxresdefault.jpg",
       "url": "https://youtu.be/P5AU54WKrjM",
@@ -1069,8 +951,8 @@
       "title": "12:30 PM for a WNBA Finals Game?! + Can the Valkyries Close It Out?",
       "published": "2026-10-27",
       "month": "2026-10",
-      "views": 15238,
-      "likes": 275,
+      "views": 15302,
+      "likes": 276,
       "comments": 75,
       "duration_sec": 2768,
       "thumbnail": "https://i.ytimg.com/vi/fvw32FSKETQ/maxresdefault.jpg",
@@ -1082,8 +964,8 @@
       "title": "The One Stat That Decided Valkyries vs. Dream! #WNBA #WNBAFinals #AngelReese",
       "published": "2026-10-27",
       "month": "2026-10",
-      "views": 4811,
-      "likes": 98,
+      "views": 5036,
+      "likes": 100,
       "comments": 7,
       "duration_sec": 31,
       "thumbnail": "https://i.ytimg.com/vi/GTp1fCthtqo/maxresdefault.jpg",
@@ -1095,8 +977,8 @@
       "title": "Who Wants Franchise History More? #WNBA #AngelReese #AtlantaDream #GoldenStateValkyries",
       "published": "2026-10-26",
       "month": "2026-10",
-      "views": 2705,
-      "likes": 62,
+      "views": 2740,
+      "likes": 64,
       "comments": 5,
       "duration_sec": 37,
       "thumbnail": "https://i.ytimg.com/vi/tSATTJ-oO54/maxresdefault.jpg",
@@ -1108,7 +990,7 @@
       "title": "Game 5 in Ballhalla: GREATEST atmosphere in WNBA Finals history? #WNBA #AngelReese #Valkyries",
       "published": "2026-10-26",
       "month": "2026-10",
-      "views": 3050,
+      "views": 3068,
       "likes": 78,
       "comments": 9,
       "duration_sec": 45,
@@ -1121,7 +1003,7 @@
       "title": "Why Angel Reese & The Atlanta Dream Are Built for Game 5 #WNBA #WnbaFinals",
       "published": "2026-10-25",
       "month": "2026-10",
-      "views": 1896,
+      "views": 1898,
       "likes": 48,
       "comments": 3,
       "duration_sec": 61,
@@ -1134,7 +1016,7 @@
       "title": "The Defensive Adjustment That Completely Changed the Series! #AngelReese #WNBA",
       "published": "2026-10-25",
       "month": "2026-10",
-      "views": 3429,
+      "views": 3434,
       "likes": 84,
       "comments": 3,
       "duration_sec": 53,
@@ -1147,7 +1029,7 @@
       "title": "How Golden State Took Angel Reese Out of Game 4 | Girls Tripp",
       "published": "2026-10-25",
       "month": "2026-10",
-      "views": 12548,
+      "views": 12616,
       "likes": 258,
       "comments": 119,
       "duration_sec": 2226,
@@ -1160,8 +1042,8 @@
       "title": "Why Angel Reese\u2019s New Game Is Scaring The League #basketball #WNBA",
       "published": "2026-10-24",
       "month": "2026-10",
-      "views": 10658,
-      "likes": 274,
+      "views": 10695,
+      "likes": 275,
       "comments": 41,
       "duration_sec": 38,
       "thumbnail": "https://i.ytimg.com/vi/Q97HkGpJmS4/maxresdefault.jpg",
@@ -1173,7 +1055,7 @@
       "title": "The REAL STRUGGLE of Getting Gabby Williams Open vs. Atlanta Dream #WNBA",
       "published": "2026-10-24",
       "month": "2026-10",
-      "views": 9735,
+      "views": 9765,
       "likes": 240,
       "comments": 17,
       "duration_sec": 52,
@@ -1186,7 +1068,7 @@
       "title": "Angel Reese Doing This In Sync Meant It Was A Complete Wrap For The Golden State Valkyries",
       "published": "2026-10-23",
       "month": "2026-10",
-      "views": 10491,
+      "views": 10575,
       "likes": 285,
       "comments": 9,
       "duration_sec": 35,
@@ -1199,7 +1081,7 @@
       "title": "The TRUTH Behind The Golden State Valkyries Game 3 BLOWOUT #WNBA #AngelReese",
       "published": "2026-10-23",
       "month": "2026-10",
-      "views": 31379,
+      "views": 31442,
       "likes": 733,
       "comments": 117,
       "duration_sec": 43,
@@ -1212,7 +1094,7 @@
       "title": "How Angel Reese Completely Changed The Atlanta Dream's Mentality #WNBAFinals",
       "published": "2026-10-22",
       "month": "2026-10",
-      "views": 35444,
+      "views": 35532,
       "likes": 1224,
       "comments": 54,
       "duration_sec": 43,
@@ -1225,7 +1107,7 @@
       "title": "Angel Reese Changed Atlanta's Mentality + Why Golden State Can't Score",
       "published": "2026-10-22",
       "month": "2026-10",
-      "views": 33702,
+      "views": 33734,
       "likes": 693,
       "comments": 141,
       "duration_sec": 2245,
@@ -1238,7 +1120,7 @@
       "title": "Kelsey Plum's Exact Game 3 Blueprint For the Valkyries! #WNBA #WNBAFinals #AngelReese",
       "published": "2026-10-21",
       "month": "2026-10",
-      "views": 11416,
+      "views": 11460,
       "likes": 203,
       "comments": 33,
       "duration_sec": 46,
@@ -1277,7 +1159,7 @@
       "title": "How Angel Reese Is Already the Finals MVP Favorite! #WNBA #AtlantaDream",
       "published": "2026-10-20",
       "month": "2026-10",
-      "views": 16560,
+      "views": 16584,
       "likes": 462,
       "comments": 36,
       "duration_sec": 37,
@@ -1290,7 +1172,7 @@
       "title": "Kelsey Plum Says Angel Reese Won Game 2 BEFORE Tipoff",
       "published": "2026-10-20",
       "month": "2026-10",
-      "views": 64278,
+      "views": 64415,
       "likes": 1270,
       "comments": 273,
       "duration_sec": 2453,
@@ -1303,7 +1185,7 @@
       "title": "The Moment Ryan Ruocco Realized How Big The Game Got! #basketball #WNBA",
       "published": "2026-10-20",
       "month": "2026-10",
-      "views": 4054,
+      "views": 4056,
       "likes": 85,
       "comments": 9,
       "duration_sec": 69,
@@ -1316,9 +1198,9 @@
       "title": "HOT TAKE: WNBA officiating was actually really good this playoffs! #caitlinclark #basketball",
       "published": "2026-10-19",
       "month": "2026-10",
-      "views": 6073,
+      "views": 6107,
       "likes": 151,
-      "comments": 18,
+      "comments": 17,
       "duration_sec": 74,
       "thumbnail": "https://i.ytimg.com/vi/k2GUdSculuY/maxresdefault.jpg",
       "url": "https://youtu.be/k2GUdSculuY",
@@ -1329,7 +1211,7 @@
       "title": "Why playing away in Ballhalla is a absolute nightmare! #wnba #valkyrie #atlantadream",
       "published": "2026-10-18",
       "month": "2026-10",
-      "views": 8716,
+      "views": 8742,
       "likes": 209,
       "comments": 11,
       "duration_sec": 53,
@@ -1342,8 +1224,8 @@
       "title": "Kelsey Plum Just Named the WNBA's Next Superstar! #AtlantaDream #Valkyries #GabbyWilliams",
       "published": "2026-10-18",
       "month": "2026-10",
-      "views": 85024,
-      "likes": 1980,
+      "views": 85224,
+      "likes": 1982,
       "comments": 134,
       "duration_sec": 42,
       "thumbnail": "https://i.ytimg.com/vi/qPR-1_8iJaU/maxresdefault.jpg",
@@ -1355,8 +1237,8 @@
       "title": "Kelsey Plum: How Golden State Held Atlanta Scoreless in the Final 3 Minutes",
       "published": "2026-10-18",
       "month": "2026-10",
-      "views": 49894,
-      "likes": 652,
+      "views": 50080,
+      "likes": 653,
       "comments": 194,
       "duration_sec": 2932,
       "thumbnail": "https://i.ytimg.com/vi/JX0ny1fN-4A/maxresdefault.jpg",
@@ -1394,7 +1276,7 @@
       "title": "How Sue Bird Started The Ultimate WNBA Tunnel Fit Revolution #fashion #angelreese #wnbafinals",
       "published": "2026-10-16",
       "month": "2026-10",
-      "views": 3958,
+      "views": 3961,
       "likes": 94,
       "comments": 1,
       "duration_sec": 30,
@@ -1407,7 +1289,7 @@
       "title": "Why Kiah Stokes Is The Ultimate Secret Weapon In The WNBA! #valkyrie #ajawilson #suebird",
       "published": "2026-10-15",
       "month": "2026-10",
-      "views": 6542,
+      "views": 6592,
       "likes": 196,
       "comments": 4,
       "duration_sec": 60,
@@ -1420,7 +1302,7 @@
       "title": "Why This Underdog Mentality Makes the Golden State Valkyries More Dangerous Than Ever! #wnba",
       "published": "2026-10-15",
       "month": "2026-10",
-      "views": 802,
+      "views": 803,
       "likes": 29,
       "comments": 0,
       "duration_sec": 40,
@@ -1433,7 +1315,7 @@
       "title": "Golden State or Atlanta? Sue Bird Says the WNBA Finals Hinge on ONE Thing",
       "published": "2026-10-15",
       "month": "2026-10",
-      "views": 18497,
+      "views": 18545,
       "likes": 302,
       "comments": 38,
       "duration_sec": 2958,
@@ -1446,7 +1328,7 @@
       "title": "The BIGGEST Surprise of the WNBA Playoffs #atlantadream #goldenstatevalkyries",
       "published": "2026-10-14",
       "month": "2026-10",
-      "views": 5079,
+      "views": 5080,
       "likes": 125,
       "comments": 10,
       "duration_sec": 20,
@@ -1459,7 +1341,7 @@
       "title": "The WNBA Coaching Battle We Didn't Know We Needed! #valkyrie #Aces",
       "published": "2026-10-12",
       "month": "2026-10",
-      "views": 2475,
+      "views": 2477,
       "likes": 78,
       "comments": 1,
       "duration_sec": 27,
@@ -1472,7 +1354,7 @@
       "title": "Karl Smesko\u2019s Crazy Coaching Trick That Led the Atlanta Dream to the WNBA Finals!   #AngelReese",
       "published": "2026-10-11",
       "month": "2026-10",
-      "views": 4534,
+      "views": 4549,
       "likes": 144,
       "comments": 9,
       "duration_sec": 29,
@@ -1498,7 +1380,7 @@
       "title": "The Valkyries Have Everything the Defending Champs Don\u2019t",
       "published": "2026-10-09",
       "month": "2026-10",
-      "views": 4887,
+      "views": 4889,
       "likes": 47,
       "comments": 6,
       "duration_sec": 423,
@@ -1524,7 +1406,7 @@
       "title": "Ryan Ruocco Calls Liberty Timeout Mistake \u201cINDEFENSIBLE\u201d",
       "published": "2026-10-09",
       "month": "2026-10",
-      "views": 707,
+      "views": 710,
       "likes": 18,
       "comments": 0,
       "duration_sec": 489,
@@ -1550,7 +1432,7 @@
       "title": "DPOY Angel Reese Is DOMINATING! Can Anyone Stop Atlanta?! #wnba #newyorkliberty",
       "published": "2026-10-09",
       "month": "2026-10",
-      "views": 36457,
+      "views": 36459,
       "likes": 1292,
       "comments": 66,
       "duration_sec": 39,
@@ -1563,7 +1445,7 @@
       "title": "Ryan Ruocco Calls Liberty\u2019s Timeout Mistake \u201cINDEFENSIBLE\u201d + Valkyries Go Up 2-0",
       "published": "2026-10-08",
       "month": "2026-10",
-      "views": 14898,
+      "views": 14903,
       "likes": 177,
       "comments": 65,
       "duration_sec": 3271,
@@ -1615,26 +1497,13 @@
       "title": "Caitlin Clark Shines in Game 2, Now It\u2019s Winner-Take-All vs. Vegas",
       "published": "2026-10-01",
       "month": "2026-10",
-      "views": 6934,
+      "views": 6935,
       "likes": 139,
       "comments": 42,
       "duration_sec": 4389,
       "thumbnail": "https://i.ytimg.com/vi/oDGR63HP8TM/maxresdefault.jpg",
       "url": "https://youtu.be/oDGR63HP8TM",
       "type": "long"
-    },
-    {
-      "id": "av2j5mbIq4E",
-      "title": "Rookie of the Year\u2019s BRUTAL Playoff Lesson #wnba #oliviamiles #ajawilson",
-      "published": "2026-10-01",
-      "month": "2026-10",
-      "views": 1585,
-      "likes": 30,
-      "comments": 16,
-      "duration_sec": 71,
-      "thumbnail": "https://i.ytimg.com/vi/av2j5mbIq4E/maxresdefault.jpg",
-      "url": "https://youtu.be/av2j5mbIq4E",
-      "type": "short"
     },
     {
       "id": "XCVxbVp6zcw",
@@ -1732,7 +1601,7 @@
       "title": "Why The 2026 WNBA Playoffs Will Be Completely Different #wnba #caitlinclark",
       "published": "2026-09-25",
       "month": "2026-09",
-      "views": 1956,
+      "views": 1957,
       "likes": 20,
       "comments": 3,
       "duration_sec": 28,
@@ -1745,7 +1614,7 @@
       "title": "Caitlin Clark vs. A'ja Wilson + Ryan Ruocco's Case for a 5-Game WNBA First Round",
       "published": "2026-09-25",
       "month": "2026-09",
-      "views": 11247,
+      "views": 11251,
       "likes": 220,
       "comments": 51,
       "duration_sec": 3605,
@@ -1892,7 +1761,7 @@
       "likes": 0,
       "comments": 0,
       "duration_sec": 23,
-      "thumbnail": "https://i9.ytimg.com/vi/J5puuaJZqr0/maxresdefault.jpg?sqp=CJyHmNcG&rs=AOn4CLC-jIKJJhDQWmYWG6AVQ5KFMrf4tA",
+      "thumbnail": "https://i9.ytimg.com/vi/J5puuaJZqr0/maxresdefault.jpg?sqp=CJCVndcG&rs=AOn4CLCI-2TlfMNjlNVYPqmZgRi9k_Kv7g",
       "url": "https://youtu.be/J5puuaJZqr0",
       "type": "short"
     },
@@ -1927,9 +1796,9 @@
       "title": "Caitlin Clark's Defense Deserves CREDIT + Why Team USA NEEDED Chelsea Gray",
       "published": "2026-09-17",
       "month": "2026-09",
-      "views": 4677,
+      "views": 4766,
       "likes": 68,
-      "comments": 16,
+      "comments": 17,
       "duration_sec": 3931,
       "thumbnail": "https://i.ytimg.com/vi/5X4z2LMziCs/maxresdefault.jpg",
       "url": "https://youtu.be/5X4z2LMziCs",
@@ -1940,8 +1809,8 @@
       "title": "Girls Tripp Has Its Own Channel | WNBA Podcast with Allie Clifton & Jordan Robinson",
       "published": "2026-09-16",
       "month": "2026-09",
-      "views": 2177,
-      "likes": 20,
+      "views": 2207,
+      "likes": 21,
       "comments": 1,
       "duration_sec": 36,
       "thumbnail": "https://i.ytimg.com/vi/xgS8iYrh5BU/maxresdefault.jpg",
@@ -1966,7 +1835,7 @@
       "title": "Candace Parker on Why Her First Championship Was the Hardest",
       "published": "2026-09-16",
       "month": "2026-09",
-      "views": 186,
+      "views": 187,
       "likes": 7,
       "comments": 2,
       "duration_sec": 270,
@@ -1992,7 +1861,7 @@
       "title": "JuJu Watkins To The LA Sparks Would BREAK The WNBA!",
       "published": "2026-09-16",
       "month": "2026-09",
-      "views": 76,
+      "views": 77,
       "likes": 1,
       "comments": 0,
       "duration_sec": 23,
@@ -2048,7 +1917,7 @@
       "likes": 0,
       "comments": 0,
       "duration_sec": 262,
-      "thumbnail": "https://i9.ytimg.com/vi/IB0Qc05GW-s/maxresdefault.jpg?sqp=CJyHmNcG&rs=AOn4CLCwYLdB0tRMcQaVV0XmfIcJvwqc6g",
+      "thumbnail": "https://i9.ytimg.com/vi/IB0Qc05GW-s/maxresdefault.jpg?sqp=CJCVndcG&rs=AOn4CLCjTwulNFZneElhHpipDf4AflEBLQ",
       "url": "https://youtu.be/IB0Qc05GW-s",
       "type": "mid"
     },
@@ -2074,7 +1943,7 @@
       "likes": 0,
       "comments": 0,
       "duration_sec": 315,
-      "thumbnail": "https://i9.ytimg.com/vi/eoEP2zU1HRQ/maxresdefault.jpg?sqp=CJyHmNcG&rs=AOn4CLA0xfE9A0VD71ZhuPE9dPPcAs8i7w",
+      "thumbnail": "https://i9.ytimg.com/vi/eoEP2zU1HRQ/maxresdefault.jpg?sqp=CJCVndcG&rs=AOn4CLDvmmZfnqBtYQNUrNnMEb9lGO5ZHg",
       "url": "https://youtu.be/eoEP2zU1HRQ",
       "type": "mid"
     },
@@ -2087,7 +1956,7 @@
       "likes": 0,
       "comments": 0,
       "duration_sec": 336,
-      "thumbnail": "https://i9.ytimg.com/vi/-lJauQxSixM/maxresdefault.jpg?sqp=CJyHmNcG&rs=AOn4CLCSgFSFJysYFPJRJ9APC9zy7skEAQ",
+      "thumbnail": "https://i9.ytimg.com/vi/-lJauQxSixM/maxresdefault.jpg?sqp=CJCVndcG&rs=AOn4CLDayDQ5xHwt0EqKhbP3tuQVH50uEg",
       "url": "https://youtu.be/-lJauQxSixM",
       "type": "mid"
     },
@@ -2100,7 +1969,7 @@
       "likes": 0,
       "comments": 0,
       "duration_sec": 429,
-      "thumbnail": "https://i9.ytimg.com/vi/jlpiNl1Rwqc/maxresdefault.jpg?sqp=CJyHmNcG&rs=AOn4CLA0m0UUpG5MRbFcQiwVE44R4C5_oQ",
+      "thumbnail": "https://i9.ytimg.com/vi/jlpiNl1Rwqc/maxresdefault.jpg?sqp=CJCVndcG&rs=AOn4CLBJxTbTyx9eqCj__4QCB9H8RqnmXg",
       "url": "https://youtu.be/jlpiNl1Rwqc",
       "type": "mid"
     },
@@ -2113,7 +1982,7 @@
       "likes": 0,
       "comments": 0,
       "duration_sec": 253,
-      "thumbnail": "https://i9.ytimg.com/vi/tqpQewQX_h8/maxresdefault.jpg?sqp=CJyHmNcG&rs=AOn4CLATsyV14BwrFIDu-D_pPqbIzbT3tw",
+      "thumbnail": "https://i9.ytimg.com/vi/tqpQewQX_h8/maxresdefault.jpg?sqp=CJCVndcG&rs=AOn4CLBJXOgxmfPbW4-lAl_zMbFda4xhVQ",
       "url": "https://youtu.be/tqpQewQX_h8",
       "type": "mid"
     },
@@ -2126,7 +1995,7 @@
       "likes": 0,
       "comments": 0,
       "duration_sec": 55,
-      "thumbnail": "https://i9.ytimg.com/vi/rdrf1qscQos/maxresdefault.jpg?sqp=CJyHmNcG&rs=AOn4CLA-2hfVcsc06F8d19i6ArvUb0f1Bw",
+      "thumbnail": "https://i9.ytimg.com/vi/rdrf1qscQos/maxresdefault.jpg?sqp=CJCVndcG&rs=AOn4CLAlhtRcyYsVy_3EBxo9CkyCML4Etw",
       "url": "https://youtu.be/rdrf1qscQos",
       "type": "short"
     },
@@ -2139,7 +2008,7 @@
       "likes": 0,
       "comments": 0,
       "duration_sec": 64,
-      "thumbnail": "https://i9.ytimg.com/vi/BcakqhGvp6s/maxresdefault.jpg?sqp=CJyHmNcG&rs=AOn4CLAPjpZbsJNkG-FeC4cfqNZ_zQlO2w",
+      "thumbnail": "https://i9.ytimg.com/vi/BcakqhGvp6s/maxresdefault.jpg?sqp=CJCVndcG&rs=AOn4CLAH7YGL2w8FHRaSOMyGxlOPk5tfgg",
       "url": "https://youtu.be/BcakqhGvp6s",
       "type": "short"
     },
@@ -2152,7 +2021,7 @@
       "likes": 0,
       "comments": 0,
       "duration_sec": 32,
-      "thumbnail": "https://i9.ytimg.com/vi/-V5ipn_DXqs/maxresdefault.jpg?sqp=CJyHmNcG&rs=AOn4CLC8aMSYVsnNGfcjas9y8j4llbfarw",
+      "thumbnail": "https://i9.ytimg.com/vi/-V5ipn_DXqs/maxresdefault.jpg?sqp=CJCVndcG&rs=AOn4CLAaZtzR6zE7D_Yjsfm4F1T5hwjbAg",
       "url": "https://youtu.be/-V5ipn_DXqs",
       "type": "short"
     },
@@ -2165,7 +2034,7 @@
       "likes": 0,
       "comments": 0,
       "duration_sec": 45,
-      "thumbnail": "https://i9.ytimg.com/vi/fSDB__vdRIY/maxresdefault.jpg?sqp=CJyHmNcG&rs=AOn4CLDBT1wsu72K2USWuGOQ4YDh9hGgsw",
+      "thumbnail": "https://i9.ytimg.com/vi/fSDB__vdRIY/maxresdefault.jpg?sqp=CJCVndcG&rs=AOn4CLBPJYEtqTwvr5Q-DXKi50GKCPLRiw",
       "url": "https://youtu.be/fSDB__vdRIY",
       "type": "short"
     },
@@ -2178,7 +2047,7 @@
       "likes": 0,
       "comments": 0,
       "duration_sec": 26,
-      "thumbnail": "https://i9.ytimg.com/vi/5S2Qd26Gpwc/maxresdefault.jpg?sqp=CJyHmNcG&rs=AOn4CLA_dfTDHVzYCALfD6u0ZRNxOPM75w",
+      "thumbnail": "https://i9.ytimg.com/vi/5S2Qd26Gpwc/maxresdefault.jpg?sqp=CJCVndcG&rs=AOn4CLCcrpgbft21nqn_9NG_nD8E5PoSJw",
       "url": "https://youtu.be/5S2Qd26Gpwc",
       "type": "short"
     },
@@ -2196,14 +2065,8 @@
       "type": "short"
     }
   ],
-  "current_subs": 1980,
+  "current_subs": 2000,
   "daily_yt": {
-    "2026-08-01": {
-      "total_views": 0,
-      "watch_hrs": 0.0,
-      "subs_gained": 0,
-      "subs_lost": 0
-    },
     "2026-08-02": {
       "total_views": 0,
       "watch_hrs": 0.0,
@@ -2797,20 +2660,20 @@
       "vod_views": 10414
     },
     "2026-10-26": {
-      "total_views": 10955,
-      "watch_hrs": 496.7,
+      "total_views": 10903,
+      "watch_hrs": 493.6,
       "subs_gained": 25,
       "subs_lost": 2,
       "shorts_views": 7363,
       "vod_views": 3540
     },
     "2026-10-27": {
-      "total_views": 25187,
-      "watch_hrs": 1783.7,
+      "total_views": 25022,
+      "watch_hrs": 1774.4,
       "subs_gained": 56,
       "subs_lost": 6,
-      "shorts_views": 12584,
-      "vod_views": 12603
+      "shorts_views": 12492,
+      "vod_views": 12530
     },
     "2026-10-28": {
       "total_views": 18791,
@@ -2819,6 +2682,14 @@
       "subs_lost": 3,
       "shorts_views": 14387,
       "vod_views": 4404
+    },
+    "2026-10-29": {
+      "total_views": 14747,
+      "watch_hrs": 1222.4,
+      "subs_gained": 35,
+      "subs_lost": 5,
+      "shorts_views": 5046,
+      "vod_views": 9701
     }
   },
   "yt_kpis": {
@@ -2876,55 +2747,55 @@
         }
       },
       "2026-10": {
-        "VIDS": {
-          "views": 227033,
-          "engaged_views": 133757,
-          "watch_hours": 25644.9,
-          "avg_view_sec": 688,
-          "avg_pct_viewed": 26.419999999999998,
-          "likes": 3886,
-          "comments": 565,
-          "shares": 321
-        },
         "SHORTS": {
-          "views": 349087,
-          "engaged_views": 181808,
-          "watch_hours": 2050.6,
+          "views": 354041,
+          "engaged_views": 184458,
+          "watch_hours": 2076.9,
           "avg_view_sec": 39,
-          "avg_pct_viewed": 89.8,
-          "likes": 9063,
-          "comments": 585,
-          "shares": 216
+          "avg_pct_viewed": 89.59,
+          "likes": 9147,
+          "comments": 595,
+          "shares": 219
+        },
+        "VIDS": {
+          "views": 236661,
+          "engaged_views": 139673,
+          "watch_hours": 26831.7,
+          "avg_view_sec": 689,
+          "avg_pct_viewed": 26.66,
+          "likes": 4151,
+          "comments": 587,
+          "shares": 333
         },
         "ALL": {
-          "views": 576120,
-          "engaged_views": 315565,
-          "watch_hours": 27695.5,
-          "avg_view_sec": 316,
-          "avg_pct_viewed": 62.94,
-          "likes": 12949,
-          "comments": 1150,
-          "shares": 537
+          "views": 590702,
+          "engaged_views": 324131,
+          "watch_hours": 28908.6,
+          "avg_view_sec": 321,
+          "avg_pct_viewed": 62.47,
+          "likes": 13298,
+          "comments": 1182,
+          "shares": 552
         },
         "EPISODES": {
-          "views": 216125,
-          "engaged_views": 128952,
-          "watch_hours": 25425.7,
+          "views": 225703,
+          "engaged_views": 134848,
+          "watch_hours": 26612.4,
           "avg_view_sec": 710,
-          "avg_pct_viewed": 26.35,
-          "likes": 3766,
-          "comments": 537,
-          "shares": 315
+          "avg_pct_viewed": 26.59,
+          "likes": 4031,
+          "comments": 559,
+          "shares": 327
         },
         "CLIPS": {
-          "views": 10908,
-          "engaged_views": 4805,
+          "views": 10958,
+          "engaged_views": 4825,
           "likes": 120,
           "comments": 28,
           "shares": 6,
-          "watch_hours": 219.2,
+          "watch_hours": 219.3,
           "avg_view_sec": 164,
-          "avg_pct_viewed": 28.3
+          "avg_pct_viewed": 28.62
         }
       }
     },
@@ -2953,40 +2824,40 @@
       },
       "2026-10": {
         "ALL": {
-          "impressions": 1718735,
-          "ctr": 0.0697,
-          "days": 29
+          "impressions": 1772968,
+          "ctr": 0.0699,
+          "days": 30
         },
         "EPISODES": {
-          "impressions": 1285564,
-          "ctr": 0.07,
-          "days": 29
+          "impressions": 1329829,
+          "ctr": 0.0702,
+          "days": 30
         },
         "SHORTS": {
-          "impressions": 364183,
-          "ctr": 0.074,
-          "days": 29
+          "impressions": 373881,
+          "ctr": 0.0741,
+          "days": 30
         },
         "VIDS": {
-          "impressions": 68988,
+          "impressions": 69258,
           "ctr": 0.0423,
-          "days": 29
+          "days": 30
         }
       }
     },
-    "reach_through": "2026-10-29",
+    "reach_through": "2026-10-30",
     "notes": [
-      "2 new day(s) cached \u00b7 40 days total"
+      "1 new day(s) cached \u00b7 41 days total"
     ],
     "retention": {
       "2026-10": {
         "EPISODES": {
-          "r30": 0.8784,
-          "r60": 0.6263
+          "r30": 0.8781,
+          "r60": 0.6268
         },
         "CLIPS": {
           "r30": 0.6291,
-          "r60": 0.496
+          "r60": 0.4961
         }
       },
       "2026-09": {
