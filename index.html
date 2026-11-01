@@ -134,6 +134,31 @@
   .comp-s { font-size: 12px; color: var(--text2); line-height: 1.5; max-width: 760px; }
   .comp-arrow { font-size: 18px; color: var(--mut); }
   .comp-link:hover .comp-arrow { color: var(--brand2); }
+  .wk-card {
+    display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap;
+    background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--gold);
+    border-radius: var(--radius); box-shadow: var(--shadow); padding: 16px 20px;
+  }
+  .wk-main { flex: 1 1 360px; min-width: 0; }
+  .wk-tag { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 4px; }
+  .wk-t { font-size: 15px; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+  .wk-s { font-size: 12px; color: var(--text2); line-height: 1.5; max-width: 640px; }
+  .wk-shows { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 10px; }
+  .wk-show { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 600; color: var(--text2); }
+  .wk-show i { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+  .wk-btns { display: flex; gap: 8px; flex-wrap: wrap; }
+  .wk-btn { font-size: 12px; font-weight: 600; text-decoration: none; padding: 8px 14px; border-radius: 8px;
+    border: 1px solid var(--border); color: var(--ink); background: var(--surface2); transition: border-color .15s, color .15s; }
+  .wk-btn:first-child { background: var(--ink); border-color: var(--ink); color: #fff; }
+  .wk-btn:hover { border-color: var(--brand2); color: var(--brand2); }
+  .wk-btn:first-child:hover { background: var(--brand); border-color: var(--brand); color: #fff; }
+  .wk-list { margin-top: 8px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 6px 20px; }
+  .wk-lh { font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--mut); padding: 8px 0 4px; }
+  .wk-row { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 8px 0; border-top: 1px solid var(--border); }
+  .wk-d { font-size: 12.5px; color: var(--text); }
+  .wk-mini { font-size: 11.5px; font-weight: 600; color: var(--brand2); text-decoration: none; }
+  .wk-mini:hover { text-decoration: underline; }
 
   /* ─── Revenue Split Panel ─── */
   .split-panel {
@@ -569,7 +594,7 @@
   <div class="topbar-r">
     <div>
       <div class="updated">Last Updated</div>
-      <div class="date">October 31, 2026</div>
+      <div class="date">November 01, 2026</div>
     </div>
   </div>
 </div>
@@ -596,7 +621,7 @@
   </div>
   <div class="kpi">
     <div class="kpi-lbl">Network Revenue (MTD)</div>
-    <div class="kpi-val">$2.2K</div>
+    <div class="kpi-val">$0</div>
     <div class="kpi-sub">Gross, current month</div>
   </div>
   <div class="kpi">
@@ -606,12 +631,12 @@
   </div>
   <div class="kpi">
     <div class="kpi-lbl">Episodes (Last 30d)</div>
-    <div class="kpi-val">36</div>
+    <div class="kpi-val">30</div>
     <div class="kpi-sub">Across 4 shows</div>
   </div>
   <div class="kpi">
     <div class="kpi-lbl">YT Subscribers</div>
-    <div class="kpi-val">222.7K</div>
+    <div class="kpi-val">222.8K</div>
     <div class="kpi-sub">Network total</div>
   </div>
 </div>
@@ -772,9 +797,9 @@
     </div>
     <div class="show-card-stats">
       <div><div class="lbl">YT Subs</div><div class="v">184.0K</div></div>
-    <div><div class="lbl">MTD Gross</div><div class="v">$2.2K</div></div>
+    <div><div class="lbl">MTD Gross</div><div class="v">$0</div></div>
     <div><div class="lbl">Lifetime</div><div class="v">$1.31M</div></div>
-      <div><div class="lbl">Eps 30d</div><div class="v">11</div></div>
+      <div><div class="lbl">Eps 30d</div><div class="v">7</div></div>
     </div>
     <div class="show-card-cta">Open full dashboard →</div>
   </a>
@@ -783,7 +808,7 @@
         <div class="sub-card-tag" style="background:#E84B8A">GT</div>
         <div class="sub-card-name">Girls Tripp</div>
         <div class="sub-card-stats" style="font-size:11px;color:var(--mut);margin-left:auto;margin-right:8px">
-          2.0K subs · 11 eps 30d</div>
+          2.0K subs · 9 eps 30d</div>
         
         <div class="sub-card-arrow">↗</div>
       </a>
@@ -791,7 +816,7 @@
         <div class="sub-card-tag" style="background:#1E7A46">FR</div>
         <div class="sub-card-name">Football Related</div>
         <div class="sub-card-stats" style="font-size:11px;color:var(--mut);margin-left:auto;margin-right:8px">
-          440 subs · 4 eps 30d</div>
+          454 subs · 4 eps 30d</div>
         
         <div class="sub-card-arrow">↗</div>
       </a></div>
@@ -816,6 +841,22 @@
 </div></div>
 
   <div class="sec-h">
+    <h2>Weekly Top Content</h2>
+    <span class="r">RT · GT · FR · Mon–Sun weeks · out Fridays</span>
+  </div>
+  <div class="wk-card">
+    <div class="wk-main">
+      <div class="wk-tag">Latest</div>
+      <div class="wk-t">Week of Oct 19 – 25, 2026</div>
+      <div class="wk-s">Top long-form, mid-form and short-form upload (by day-3 views or by content grade), top social post
+        and top audio episode vs the week before.</div>
+      <div class="wk-shows"><span class="wk-show"><i style="background:#C9A84C"></i>Road Trippin'</span><span class="wk-show"><i style="background:#FF4370"></i>Girls Tripp</span><span class="wk-show"><i style="background:#1E7A46"></i>Football Related</span></div>
+    </div>
+    <div class="wk-btns"><a class="wk-btn" href="master/weekly_reports/2026-10-19/Top_Content_2026-10-19_views.pdf" target="_blank" rel="noopener">By views ↗</a><a class="wk-btn" href="master/weekly_reports/2026-10-19/Top_Content_2026-10-19_grades.pdf" target="_blank" rel="noopener">By grades ↗</a></div>
+  </div>
+  
+
+  <div class="sec-h">
     <h2>Competitive Landscape</h2>
     <span class="r">internal · public YouTube stats · updated daily</span>
   </div>
@@ -830,7 +871,7 @@
 
 
   <div class="footer">
-    Rain Delay Media · Network Dashboard · Built October 31, 2026
+    Rain Delay Media · Network Dashboard · Built November 01, 2026
   </div>
 </div>
 
