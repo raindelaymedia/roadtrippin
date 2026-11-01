@@ -13,7 +13,7 @@ it in the SHOWS list below.
 """
 
 import os, csv, json, argparse
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 from collections import defaultdict
 
 from master_template import build_master_html
@@ -471,6 +471,28 @@ def _mdy(d): return f"{_MONTH_ABBR[d.month]} {d.day}, {d.year}"
 
 
 # ─── Main ────────────────────────────────────────────────────────────────
+def load_weekly_reports(script_dir):
+    """Weekly top-content PDFs (master/weekly_reports/<Monday>/Top_Content_<Monday>_{views,grades}.pdf), newest first.
+    Links are relative to index.html at the repo root."""
+    root = os.path.join(script_dir, "weekly_reports")
+    out = []
+    if not os.path.isdir(root):
+        return out
+    for wk in sorted(os.listdir(root), reverse=True):
+        try:
+            start = date.fromisoformat(wk)
+        except ValueError:
+            continue
+        links = {}
+        for kind in ("views", "grades"):
+            name = f"Top_Content_{wk}_{kind}.pdf"
+            if os.path.exists(os.path.join(root, wk, name)):
+                links[kind] = f"master/weekly_reports/{wk}/{name}"
+        if links:
+            out.append({"start": start, "end": start + timedelta(days=6), **links})
+    return out
+
+
 def main():
     ap = argparse.ArgumentParser(description="Build the RDM master dashboard.")
     ap.add_argument("--output", default="../index.html",
@@ -533,6 +555,7 @@ def main():
         quarter_label  = q_label,
         quarter_window = quarter_window,
         generated_at   = today.strftime("%B %d, %Y"),
+        weekly_reports = load_weekly_reports(script_dir),
     )
 
     os.makedirs(os.path.dirname(out_path) or ".", exist_ok=True)

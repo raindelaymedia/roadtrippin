@@ -404,8 +404,46 @@ def _render_show_card(s):
 </div>"""
 
 
+def _render_weekly(reports):
+    """Weekly top-content reports: the latest week featured, earlier weeks as a compact list."""
+    def wk(r):
+        s, e = r["start"], r["end"]
+        right = f"{e.day}" if s.month == e.month else f"{_MONTH_ABBR_T[e.month]} {e.day}"
+        return f"{_MONTH_ABBR_T[s.month]} {s.day} – {right}, {e.year}"
+
+    def btns(r, cls):
+        return "".join(f'<a class="{cls}" href="{r[k]}" target="_blank" rel="noopener">{lbl} ↗</a>'
+                       for k, lbl in (("views", "By views"), ("grades", "By grades")) if r.get(k))
+
+    shows = ('<span class="wk-show"><i style="background:#C9A84C"></i>Road Trippin\'</span>'
+             '<span class="wk-show"><i style="background:#FF4370"></i>Girls Tripp</span>'
+             '<span class="wk-show"><i style="background:#1E7A46"></i>Football Related</span>')
+    if not reports:
+        return f"""<div class="wk-card"><div class="wk-main">
+      <div class="wk-t">First report coming soon</div>
+      <div class="wk-s">Each Friday: the prior Mon–Sun week's top long-form, mid-form, short-form, social post and audio episode per show.</div>
+      <div class="wk-shows">{shows}</div></div></div>"""
+    latest, older = reports[0], reports[1:8]
+    rows = "".join(f'<div class="wk-row"><span class="wk-d">{wk(r)}</span><span class="wk-btns">{btns(r, "wk-mini")}</span></div>'
+                   for r in older)
+    return f"""<div class="wk-card">
+    <div class="wk-main">
+      <div class="wk-tag">Latest</div>
+      <div class="wk-t">Week of {wk(latest)}</div>
+      <div class="wk-s">Top long-form, mid-form and short-form upload (by day-3 views or by content grade), top social post
+        and top audio episode vs the week before.</div>
+      <div class="wk-shows">{shows}</div>
+    </div>
+    <div class="wk-btns">{btns(latest, "wk-btn")}</div>
+  </div>
+  {f'<div class="wk-list"><div class="wk-lh">Earlier weeks</div>{rows}</div>' if rows else ''}"""
+
+
+_MONTH_ABBR_T = ["", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+
+
 def build_master_html(rdm_summary, show_summaries, quarter_label,
-                       quarter_window, generated_at):
+                       quarter_window, generated_at, weekly_reports=None):
     rdm = rdm_summary
     rt = next((s for s in show_summaries if s.get("show_revenue")), {})
     pq = rt.get("partial_quarter") or {}
@@ -595,6 +633,31 @@ def build_master_html(rdm_summary, show_summaries, quarter_label,
   .comp-s {{ font-size: 12px; color: var(--text2); line-height: 1.5; max-width: 760px; }}
   .comp-arrow {{ font-size: 18px; color: var(--mut); }}
   .comp-link:hover .comp-arrow {{ color: var(--brand2); }}
+  .wk-card {{
+    display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap;
+    background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--gold);
+    border-radius: var(--radius); box-shadow: var(--shadow); padding: 16px 20px;
+  }}
+  .wk-main {{ flex: 1 1 360px; min-width: 0; }}
+  .wk-tag {{ display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 4px; }}
+  .wk-t {{ font-size: 15px; font-weight: 700; color: var(--ink); margin-bottom: 4px; }}
+  .wk-s {{ font-size: 12px; color: var(--text2); line-height: 1.5; max-width: 640px; }}
+  .wk-shows {{ display: flex; flex-wrap: wrap; gap: 14px; margin-top: 10px; }}
+  .wk-show {{ display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 600; color: var(--text2); }}
+  .wk-show i {{ width: 8px; height: 8px; border-radius: 50%; display: inline-block; }}
+  .wk-btns {{ display: flex; gap: 8px; flex-wrap: wrap; }}
+  .wk-btn {{ font-size: 12px; font-weight: 600; text-decoration: none; padding: 8px 14px; border-radius: 8px;
+    border: 1px solid var(--border); color: var(--ink); background: var(--surface2); transition: border-color .15s, color .15s; }}
+  .wk-btn:first-child {{ background: var(--ink); border-color: var(--ink); color: #fff; }}
+  .wk-btn:hover {{ border-color: var(--brand2); color: var(--brand2); }}
+  .wk-btn:first-child:hover {{ background: var(--brand); border-color: var(--brand); color: #fff; }}
+  .wk-list {{ margin-top: 8px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 6px 20px; }}
+  .wk-lh {{ font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--mut); padding: 8px 0 4px; }}
+  .wk-row {{ display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 8px 0; border-top: 1px solid var(--border); }}
+  .wk-d {{ font-size: 12.5px; color: var(--text); }}
+  .wk-mini {{ font-size: 11.5px; font-weight: 600; color: var(--brand2); text-decoration: none; }}
+  .wk-mini:hover {{ text-decoration: underline; }}
 
   /* ─── Revenue Split Panel ─── */
   .split-panel {{
@@ -1061,6 +1124,12 @@ def build_master_html(rdm_summary, show_summaries, quarter_label,
     <span class="r">{rdm['active_shows']} shows · click any card to open its full dashboard</span>
   </div>
   <div class="show-grid">{show_cards}</div>
+
+  <div class="sec-h">
+    <h2>Weekly Top Content</h2>
+    <span class="r">RT · GT · FR · Mon–Sun weeks · out Fridays</span>
+  </div>
+  {_render_weekly(weekly_reports or [])}
 
   <div class="sec-h">
     <h2>Competitive Landscape</h2>
