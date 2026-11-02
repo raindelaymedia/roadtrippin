@@ -1,6 +1,6 @@
 {
- "generated": "2026-11-01T15:51",
- "through": "2026-10-31",
+ "generated": "2026-11-02T19:16",
+ "through": "2026-11-01",
  "weights": {
   "retention": 0.35,
   "ctr": 0.35,
@@ -11,6 +11,99 @@
  "peer_days": 90,
  "final_age": 28,
  "videos": {
+  "a_rpOCkiv6M": {
+   "title": "The ULTIMATE Pro Bowl Story Featuring Eli Manning #nfl  #football #karaoke",
+   "published": "2026-10-30",
+   "duration_sec": 42,
+   "format": "short",
+   "week": "2026-10-26",
+   "paid_views": 0.0,
+   "grade": {
+    "age_days": 3,
+    "peers": 22,
+    "score": 0.619,
+    "letter": "B",
+    "ranks": {
+     "retention": 0.55,
+     "ctr": 0.77,
+     "views": 0.77,
+     "engagement": 0.32,
+     "subs": 0.2
+    },
+    "values": {
+     "views": 1810.0,
+     "retention": 0.7558,
+     "engagement": 0.0221,
+     "subs": 0.0,
+     "avd": 31.7445,
+     "ctr": 0.6746,
+     "r30": null,
+     "r60": null
+    }
+   }
+  },
+  "YV5G8l_X5XM": {
+   "title": "Zack Martin and Tyler Eifert Both Turned Down New York on NFL Draft Night",
+   "published": "2026-10-30",
+   "duration_sec": 287,
+   "format": "clip",
+   "week": "2026-10-26",
+   "paid_views": 0.0,
+   "grade": {
+    "age_days": 3,
+    "peers": 13,
+    "score": 0.669,
+    "letter": "B",
+    "ranks": {
+     "retention": 0.85,
+     "ctr": 0.77,
+     "views": 0.0,
+     "engagement": 0.85,
+     "subs": 0.38
+    },
+    "values": {
+     "views": 46.0,
+     "retention": 0.4801,
+     "engagement": 0.0435,
+     "subs": 0.0,
+     "avd": 137.7778,
+     "ctr": 0.0312,
+     "r30": 0.6869,
+     "r60": 0.5185
+    }
+   }
+  },
+  "zPU8G8woti4": {
+   "title": "Cincinnati Bengals\u2019 Tyler Eifert\u2019s INSANE Draft Night Story #nfl #football",
+   "published": "2026-10-30",
+   "duration_sec": 51,
+   "format": "short",
+   "week": "2026-10-26",
+   "paid_views": 0.0,
+   "grade": {
+    "age_days": 3,
+    "peers": 22,
+    "score": 0.619,
+    "letter": "B",
+    "ranks": {
+     "retention": 0.86,
+     "ctr": 0.59,
+     "views": 0.36,
+     "engagement": 0.45,
+     "subs": 0.2
+    },
+    "values": {
+     "views": 710.0,
+     "retention": 0.9207,
+     "engagement": 0.0254,
+     "subs": 0.0,
+     "avd": 46.9565,
+     "ctr": 0.6479,
+     "r30": null,
+     "r60": null
+    }
+   }
+  },
   "_EoFYWeZBZ4": {
    "title": "The Pro Bowl Was the Best Week of Tyler Eifert\u2019s Career\u2014Until This Happened",
    "published": "2026-10-29",
@@ -19,24 +112,24 @@
    "week": "2026-10-26",
    "paid_views": 0.0,
    "grade": {
-    "age_days": 3,
+    "age_days": 4,
     "peers": 12,
-    "score": 0.452,
+    "score": 0.408,
     "letter": "C",
     "ranks": {
-     "retention": 0.33,
-     "ctr": 0.67,
-     "views": 0.0,
-     "engagement": 0.83,
-     "subs": 0.38
+     "retention": 0.25,
+     "ctr": 0.5,
+     "views": 0.42,
+     "engagement": 0.67,
+     "subs": 0.33
     },
     "values": {
-     "views": 78.0,
-     "retention": 0.3591,
-     "engagement": 0.0256,
+     "views": 235.0,
+     "retention": 0.3336,
+     "engagement": 0.0128,
      "subs": 0.0,
-     "avd": 189.2308,
-     "ctr": 0.0216,
+     "avd": 175.8333,
+     "ctr": 0.0204,
      "r30": 0.6842,
      "r60": 0.5425
     }
@@ -50,24 +143,24 @@
    "week": "2026-10-26",
    "paid_views": 0.0,
    "grade": {
-    "age_days": 3,
+    "age_days": 4,
     "peers": 21,
-    "score": 0.874,
+    "score": 0.883,
     "letter": "A",
     "ranks": {
      "retention": 0.86,
-     "ctr": 0.9,
-     "views": 0.95,
-     "engagement": 0.81,
-     "subs": 0.67
+     "ctr": 0.86,
+     "views": 1.0,
+     "engagement": 0.95,
+     "subs": 0.76
     },
     "values": {
-     "views": 2442.0,
-     "retention": 0.8737,
-     "engagement": 0.034,
-     "subs": 1.2285,
-     "avd": 42.812,
-     "ctr": 0.699,
+     "views": 4862.0,
+     "retention": 0.8475,
+     "engagement": 0.0436,
+     "subs": 1.4397,
+     "avd": 41.526,
+     "ctr": 0.6847,
      "r30": null,
      "r60": null
     }
@@ -81,24 +174,24 @@
    "week": "2026-10-26",
    "paid_views": 0.0,
    "grade": {
-    "age_days": 4,
+    "age_days": 5,
     "peers": 20,
-    "score": 0.352,
-    "letter": "D",
+    "score": 0.485,
+    "letter": "C",
     "ranks": {
-     "retention": 0.55,
-     "ctr": 0.1,
-     "views": 0.5,
-     "engagement": 0.2,
-     "subs": 0.6
+     "retention": 0.65,
+     "ctr": 0.25,
+     "views": 0.7,
+     "engagement": 0.4,
+     "subs": 0.5
     },
     "values": {
-     "views": 1207.0,
-     "retention": 0.7436,
-     "engagement": 0.0182,
-     "subs": 0.8285,
-     "avd": 32.719,
-     "ctr": 0.5485,
+     "views": 1425.0,
+     "retention": 0.7643,
+     "engagement": 0.0196,
+     "subs": 0.7018,
+     "avd": 33.6296,
+     "ctr": 0.5684,
      "r30": null,
      "r60": null
     }
@@ -112,23 +205,23 @@
    "week": "2026-10-26",
    "paid_views": 0.0,
    "grade": {
-    "age_days": 4,
+    "age_days": 5,
     "peers": 11,
-    "score": 0.407,
-    "letter": "C",
+    "score": 0.352,
+    "letter": "D",
     "ranks": {
-     "retention": 0.64,
+     "retention": 0.55,
      "ctr": 0.27,
      "views": 0.18,
-     "engagement": 0.45,
-     "subs": 0.32
+     "engagement": 0.27,
+     "subs": 0.23
     },
     "values": {
-     "views": 137.0,
-     "retention": 0.446,
-     "engagement": 0.0073,
+     "views": 156.0,
+     "retention": 0.4171,
+     "engagement": 0.0064,
      "subs": 0.0,
-     "avd": 73.5849,
+     "avd": 68.8235,
      "ctr": 0.0135,
      "r30": 0.6612,
      "r60": 0.4545
@@ -143,24 +236,24 @@
    "week": "2026-10-26",
    "paid_views": 0.0,
    "grade": {
-    "age_days": 5,
+    "age_days": 6,
     "peers": 18,
-    "score": 0.511,
+    "score": 0.533,
     "letter": "C",
     "ranks": {
      "retention": 0.33,
-     "ctr": 0.5,
-     "views": 0.83,
-     "engagement": 0.56,
+     "ctr": 0.56,
+     "views": 0.89,
+     "engagement": 0.5,
      "subs": 0.78
     },
     "values": {
-     "views": 2100.0,
-     "retention": 0.6387,
-     "engagement": 0.0257,
-     "subs": 1.9048,
-     "avd": 33.2143,
-     "ctr": 0.6133,
+     "views": 2390.0,
+     "retention": 0.6474,
+     "engagement": 0.0259,
+     "subs": 1.6736,
+     "avd": 33.6673,
+     "ctr": 0.6264,
      "r30": null,
      "r60": null
     }
@@ -174,7 +267,7 @@
    "week": "2026-10-26",
    "paid_views": 0.0,
    "grade": {
-    "age_days": 5,
+    "age_days": 6,
     "peers": 3,
     "score": null,
     "letter": null,
@@ -186,12 +279,12 @@
      "subs": null
     },
     "values": {
-     "views": 1286.0,
-     "retention": 0.2715,
-     "engagement": 0.0241,
-     "subs": 2.3328,
-     "avd": 784.4275,
-     "ctr": 0.0321,
+     "views": 1436.0,
+     "retention": 0.2733,
+     "engagement": 0.023,
+     "subs": 2.7855,
+     "avd": 789.5154,
+     "ctr": 0.0312,
      "r30": 0.9338,
      "r60": 0.5823
     }
@@ -205,24 +298,24 @@
    "week": "2026-10-26",
    "paid_views": 0.0,
    "grade": {
-    "age_days": 5,
+    "age_days": 6,
     "peers": 18,
-    "score": 0.479,
+    "score": 0.485,
     "letter": "C",
     "ranks": {
      "retention": 0.28,
      "ctr": 0.72,
      "views": 0.28,
-     "engagement": 0.78,
+     "engagement": 0.83,
      "subs": 0.19
     },
     "values": {
-     "views": 499.0,
-     "retention": 0.6364,
-     "engagement": 0.0321,
+     "views": 577.0,
+     "retention": 0.6301,
+     "engagement": 0.0329,
      "subs": 0.0,
-     "avd": 31.1854,
-     "ctr": 0.6593,
+     "avd": 30.8753,
+     "ctr": 0.6534,
      "r30": null,
      "r60": null
     }
@@ -236,24 +329,24 @@
    "week": "2026-10-19",
    "paid_views": 0.0,
    "grade": {
-    "age_days": 8,
+    "age_days": 9,
     "peers": 10,
-    "score": 0.225,
-    "letter": "D",
+    "score": 0.185,
+    "letter": "F",
     "ranks": {
      "retention": 0.2,
-     "ctr": 0.1,
+     "ctr": 0.0,
      "views": 0.4,
      "engagement": 0.5,
-     "subs": 0.2
+     "subs": 0.1
     },
     "values": {
-     "views": 351.0,
-     "retention": 0.3189,
-     "engagement": 0.0114,
+     "views": 372.0,
+     "retention": 0.3379,
+     "engagement": 0.0108,
      "subs": 0.0,
-     "avd": 98.8571,
-     "ctr": 0.0118,
+     "avd": 104.7368,
+     "ctr": 0.0119,
      "r30": 0.5,
      "r60": 0.3939
     }
@@ -267,24 +360,24 @@
    "week": "2026-10-19",
    "paid_views": 0.0,
    "grade": {
-    "age_days": 9,
+    "age_days": 10,
     "peers": 9,
-    "score": 0.406,
-    "letter": "C",
+    "score": 0.4,
+    "letter": "D",
     "ranks": {
      "retention": 0.22,
      "ctr": 0.56,
      "views": 0.44,
      "engagement": 0.33,
-     "subs": 0.67
+     "subs": 0.56
     },
     "values": {
-     "views": 385.0,
-     "retention": 0.355,
-     "engagement": 0.0104,
-     "subs": 2.5974,
-     "avd": 82.3636,
-     "ctr": 0.0282,
+     "views": 391.0,
+     "retention": 0.3539,
+     "engagement": 0.0102,
+     "subs": 2.5575,
+     "avd": 82.1053,
+     "ctr": 0.0286,
      "r30": 0.6017,
      "r60": 0.475
     }
@@ -298,7 +391,7 @@
    "week": "2026-10-19",
    "paid_views": 0.0,
    "grade": {
-    "age_days": 9,
+    "age_days": 10,
     "peers": 17,
     "score": 0.465,
     "letter": "C",
@@ -310,12 +403,12 @@
      "subs": 0.18
     },
     "values": {
-     "views": 202.0,
-     "retention": 0.6724,
-     "engagement": 0.0347,
+     "views": 204.0,
+     "retention": 0.6673,
+     "engagement": 0.0343,
      "subs": 0.0,
-     "avd": 31.6031,
-     "ctr": 0.6485,
+     "avd": 31.3636,
+     "ctr": 0.6471,
      "r30": null,
      "r60": null
     }
@@ -329,24 +422,24 @@
    "week": "2026-10-19",
    "paid_views": 0.0,
    "grade": {
-    "age_days": 10,
+    "age_days": 11,
     "peers": 8,
-    "score": 0.681,
+    "score": 0.662,
     "letter": "B",
     "ranks": {
-     "retention": 0.88,
+     "retention": 0.75,
      "ctr": 0.75,
      "views": 0.38,
      "engagement": 0.5,
-     "subs": 0.12
+     "subs": 0.62
     },
     "values": {
-     "views": 253.0,
-     "retention": 0.4694,
-     "engagement": 0.0119,
-     "subs": 0.0,
-     "avd": 126.2687,
-     "ctr": 0.032,
+     "views": 309.0,
+     "retention": 0.4616,
+     "engagement": 0.0129,
+     "subs": 3.2362,
+     "avd": 124.1584,
+     "ctr": 0.0326,
      "r30": 0.5501,
      "r60": 0.4545
     }
@@ -360,7 +453,7 @@
    "week": "2026-10-19",
    "paid_views": 0.0,
    "grade": {
-    "age_days": 10,
+    "age_days": 11,
     "peers": 16,
     "score": 0.634,
     "letter": "B",
@@ -372,12 +465,12 @@
      "subs": 0.62
     },
     "values": {
-     "views": 1651.0,
-     "retention": 0.7284,
-     "engagement": 0.0194,
-     "subs": 1.2114,
-     "avd": 28.4073,
-     "ctr": 0.6959,
+     "views": 1656.0,
+     "retention": 0.7285,
+     "engagement": 0.0199,
+     "subs": 1.2077,
+     "avd": 28.4128,
+     "ctr": 0.6963,
      "r30": null,
      "r60": null
     }
@@ -391,24 +484,24 @@
    "week": "2026-10-19",
    "paid_views": 0.0,
    "grade": {
-    "age_days": 11,
+    "age_days": 12,
     "peers": 7,
-    "score": 0.507,
+    "score": 0.536,
     "letter": "C",
     "ranks": {
      "retention": 0.86,
      "ctr": 0.14,
-     "views": 0.14,
+     "views": 0.29,
      "engagement": 1.0,
-     "subs": 0.71
+     "subs": 0.86
     },
     "values": {
-     "views": 210.0,
-     "retention": 0.4581,
-     "engagement": 0.0476,
-     "subs": 4.7619,
-     "avd": 87.0423,
-     "ctr": 0.0166,
+     "views": 286.0,
+     "retention": 0.4892,
+     "engagement": 0.042,
+     "subs": 10.4895,
+     "avd": 92.9534,
+     "ctr": 0.018,
      "r30": 0.5263,
      "r60": 0.4758
     }
@@ -422,7 +515,7 @@
    "week": "2026-10-19",
    "paid_views": 0.0,
    "grade": {
-    "age_days": 11,
+    "age_days": 12,
     "peers": 14,
     "score": 0.55,
     "letter": "C",
@@ -434,12 +527,12 @@
      "subs": 0.43
     },
     "values": {
-     "views": 2224.0,
-     "retention": 0.7589,
+     "views": 2227.0,
+     "retention": 0.7588,
      "engagement": 0.0135,
-     "subs": 0.4496,
-     "avd": 33.3913,
-     "ctr": 0.6205,
+     "subs": 0.449,
+     "avd": 33.3864,
+     "ctr": 0.6206,
      "r30": null,
      "r60": null
     }
@@ -453,7 +546,7 @@
    "week": "2026-10-19",
    "paid_views": 0.0,
    "grade": {
-    "age_days": 11,
+    "age_days": 12,
     "peers": 14,
     "score": 0.589,
     "letter": "C",
@@ -465,12 +558,12 @@
      "subs": 0.64
     },
     "values": {
-     "views": 782.0,
-     "retention": 0.7181,
+     "views": 825.0,
+     "retention": 0.7171,
      "engagement": 0.023,
-     "subs": 1.2788,
-     "avd": 25.8528,
-     "ctr": 0.7123,
+     "subs": 1.2121,
+     "avd": 25.8163,
+     "ctr": 0.7127,
      "r30": null,
      "r60": null
     }
@@ -484,7 +577,7 @@
    "week": "2026-10-19",
    "paid_views": 0.0,
    "grade": {
-    "age_days": 12,
+    "age_days": 13,
     "peers": 2,
     "score": null,
     "letter": null,
@@ -496,12 +589,12 @@
      "subs": null
     },
     "values": {
-     "views": 1708.0,
-     "retention": 0.2522,
-     "engagement": 0.0246,
-     "subs": 4.0984,
-     "avd": 739.9286,
-     "ctr": 0.0371,
+     "views": 1779.0,
+     "retention": 0.2596,
+     "engagement": 0.0259,
+     "subs": 5.059,
+     "avd": 761.6832,
+     "ctr": 0.0377,
      "r30": 0.8904,
      "r60": 0.488
     }
@@ -515,24 +608,24 @@
    "week": "2026-10-19",
    "paid_views": 0.0,
    "grade": {
-    "age_days": 13,
+    "age_days": 14,
     "peers": 6,
-    "score": 0.146,
+    "score": 0.188,
     "letter": "F",
     "ranks": {
-     "retention": 0.0,
+     "retention": 0.17,
      "ctr": 0.17,
      "views": 0.0,
-     "engagement": 0.83,
+     "engagement": 0.67,
      "subs": 0.08
     },
     "values": {
-     "views": 145.0,
-     "retention": 0.3067,
-     "engagement": 0.0207,
+     "views": 159.0,
+     "retention": 0.3545,
+     "engagement": 0.0189,
      "subs": 0.0,
-     "avd": 84.6429,
-     "ctr": 0.0194,
+     "avd": 97.8462,
+     "ctr": 0.0199,
      "r30": 0.625,
      "r60": 0.4583
     }
@@ -546,24 +639,24 @@
    "week": "2026-10-12",
    "paid_views": 0.0,
    "grade": {
-    "age_days": 15,
+    "age_days": 16,
     "peers": 5,
-    "score": 0.78,
+    "score": 0.76,
     "letter": "B",
     "ranks": {
      "retention": 0.6,
      "ctr": 1.0,
      "views": 1.0,
-     "engagement": 0.4,
+     "engagement": 0.2,
      "subs": 0.6
     },
     "values": {
-     "views": 3161.0,
-     "retention": 0.445,
-     "engagement": 0.0073,
-     "subs": 1.5818,
-     "avd": 110.3663,
-     "ctr": 0.1034,
+     "views": 5144.0,
+     "retention": 0.4607,
+     "engagement": 0.008,
+     "subs": 2.5272,
+     "avd": 114.2613,
+     "ctr": 0.0991,
      "r30": 0.5835,
      "r60": 0.4403
     }
@@ -577,7 +670,7 @@
    "week": "2026-10-12",
    "paid_views": 0.0,
    "grade": {
-    "age_days": 15,
+    "age_days": 16,
     "peers": 13,
     "score": 0.467,
     "letter": "C",
@@ -589,12 +682,12 @@
      "subs": 0.19
     },
     "values": {
-     "views": 125.0,
-     "retention": 2.2729,
-     "engagement": 0.032,
+     "views": 128.0,
+     "retention": 2.2414,
+     "engagement": 0.0312,
      "subs": 0.0,
-     "avd": 131.831,
-     "ctr": 0.568,
+     "avd": 130.0,
+     "ctr": 0.5625,
      "r30": null,
      "r60": null
     }
@@ -608,24 +701,24 @@
    "week": "2026-10-12",
    "paid_views": 0.0,
    "grade": {
-    "age_days": 16,
+    "age_days": 17,
     "peers": 12,
-    "score": 0.502,
+    "score": 0.496,
     "letter": "C",
     "ranks": {
      "retention": 0.58,
      "ctr": 0.67,
-     "views": 0.21,
+     "views": 0.17,
      "engagement": 0.25,
      "subs": 0.17
     },
     "values": {
-     "views": 705.0,
-     "retention": 0.7513,
-     "engagement": 0.0199,
+     "views": 709.0,
+     "retention": 0.7504,
+     "engagement": 0.0197,
      "subs": 0.0,
-     "avd": 39.8182,
-     "ctr": 0.6241,
+     "avd": 39.7738,
+     "ctr": 0.6234,
      "r30": null,
      "r60": null
     }
@@ -639,7 +732,7 @@
    "week": "2026-10-12",
    "paid_views": 0.0,
    "grade": {
-    "age_days": 17,
+    "age_days": 18,
     "peers": 4,
     "score": null,
     "letter": null,
@@ -651,12 +744,12 @@
      "subs": null
     },
     "values": {
-     "views": 279.0,
-     "retention": 0.4626,
-     "engagement": 0.0251,
+     "views": 349.0,
+     "retention": 0.4665,
+     "engagement": 0.0201,
      "subs": 0.0,
-     "avd": 129.0698,
-     "ctr": 0.0313,
+     "avd": 130.1613,
+     "ctr": 0.035,
      "r30": 0.6961,
      "r60": 0.5846
     }
@@ -670,7 +763,7 @@
    "week": "2026-10-12",
    "paid_views": 0.0,
    "grade": {
-    "age_days": 17,
+    "age_days": 18,
     "peers": 10,
     "score": 0.66,
     "letter": "B",
@@ -682,12 +775,12 @@
      "subs": 0.5
     },
     "values": {
-     "views": 2586.0,
-     "retention": 0.7896,
+     "views": 2588.0,
+     "retention": 0.7886,
      "engagement": 0.0189,
-     "subs": 1.1601,
-     "avd": 28.427,
-     "ctr": 0.6121,
+     "subs": 1.1592,
+     "avd": 28.3912,
+     "ctr": 0.6124,
      "r30": null,
      "r60": null
     }
@@ -701,7 +794,7 @@
    "week": "2026-10-12",
    "paid_views": 0.0,
    "grade": {
-    "age_days": 17,
+    "age_days": 18,
     "peers": 10,
     "score": 0.762,
     "letter": "B",
@@ -713,12 +806,12 @@
      "subs": 0.15
     },
     "values": {
-     "views": 1073.0,
-     "retention": 0.8157,
-     "engagement": 0.0345,
+     "views": 1082.0,
+     "retention": 0.8177,
+     "engagement": 0.0351,
      "subs": 0.0,
-     "avd": 61.1796,
-     "ctr": 0.7111,
+     "avd": 61.3264,
+     "ctr": 0.7107,
      "r30": null,
      "r60": null
     }
@@ -732,7 +825,7 @@
    "week": "2026-10-12",
    "paid_views": 0.0,
    "grade": {
-    "age_days": 18,
+    "age_days": 19,
     "peers": 9,
     "score": 0.4,
     "letter": "D",
@@ -744,12 +837,12 @@
      "subs": 0.56
     },
     "values": {
-     "views": 1435.0,
-     "retention": 0.4873,
-     "engagement": 0.0251,
-     "subs": 1.3937,
-     "avd": 21.4433,
-     "ctr": 0.6084,
+     "views": 1438.0,
+     "retention": 0.4862,
+     "engagement": 0.025,
+     "subs": 1.3908,
+     "avd": 21.3943,
+     "ctr": 0.6085,
      "r30": null,
      "r60": null
     }
@@ -763,7 +856,7 @@
    "week": "2026-10-12",
    "paid_views": 0.0,
    "grade": {
-    "age_days": 18,
+    "age_days": 19,
     "peers": 1,
     "score": null,
     "letter": null,
@@ -775,12 +868,12 @@
      "subs": null
     },
     "values": {
-     "views": 2450.0,
-     "retention": 0.1974,
-     "engagement": 0.0306,
-     "subs": 14.6939,
-     "avd": 845.0467,
-     "ctr": 0.0309,
+     "views": 2547.0,
+     "retention": 0.1996,
+     "engagement": 0.0318,
+     "subs": 16.0974,
+     "avd": 854.629,
+     "ctr": 0.0311,
      "r30": 0.939,
      "r60": 0.7361
     }
@@ -794,7 +887,7 @@
    "week": "2026-10-05",
    "paid_views": 0.0,
    "grade": {
-    "age_days": 21,
+    "age_days": 22,
     "peers": 8,
     "score": 0.819,
     "letter": "A",
@@ -825,7 +918,7 @@
    "week": "2026-10-05",
    "paid_views": 0.0,
    "grade": {
-    "age_days": 21,
+    "age_days": 22,
     "peers": 3,
     "score": null,
     "letter": null,
@@ -837,12 +930,12 @@
      "subs": null
     },
     "values": {
-     "views": 1676.0,
-     "retention": 0.3747,
-     "engagement": 0.0078,
-     "subs": 0.5967,
-     "avd": 86.1719,
-     "ctr": 0.0372,
+     "views": 1970.0,
+     "retention": 0.3799,
+     "engagement": 0.0071,
+     "subs": 0.5076,
+     "avd": 87.3742,
+     "ctr": 0.0381,
      "r30": 0.6494,
      "r60": 0.4263
     }
@@ -856,7 +949,7 @@
    "week": "2026-10-05",
    "paid_views": 0.0,
    "grade": {
-    "age_days": 22,
+    "age_days": 23,
     "peers": 7,
     "score": 0.5,
     "letter": "C",
@@ -868,12 +961,12 @@
      "subs": 0.43
     },
     "values": {
-     "views": 1764.0,
-     "retention": 0.5326,
-     "engagement": 0.0261,
-     "subs": 0.5669,
-     "avd": 36.2195,
-     "ctr": 0.6508,
+     "views": 1766.0,
+     "retention": 0.5325,
+     "engagement": 0.026,
+     "subs": 0.5663,
+     "avd": 36.2087,
+     "ctr": 0.6512,
      "r30": null,
      "r60": null
     }
@@ -887,7 +980,7 @@
    "week": "2026-10-05",
    "paid_views": 0.0,
    "grade": {
-    "age_days": 22,
+    "age_days": 23,
     "peers": 2,
     "score": null,
     "letter": null,
@@ -899,12 +992,12 @@
      "subs": null
     },
     "values": {
-     "views": 1365.0,
-     "retention": 0.356,
-     "engagement": 0.0066,
-     "subs": 4.3956,
-     "avd": 112.1255,
-     "ctr": 0.0331,
+     "views": 1805.0,
+     "retention": 0.3659,
+     "engagement": 0.0061,
+     "subs": 4.4321,
+     "avd": 115.2599,
+     "ctr": 0.0357,
      "r30": 0.655,
      "r60": 0.4711
     }
@@ -918,7 +1011,7 @@
    "week": "2026-10-05",
    "paid_views": 0.0,
    "grade": {
-    "age_days": 23,
+    "age_days": 24,
     "peers": 5,
     "score": 0.55,
     "letter": "C",
@@ -949,7 +1042,7 @@
    "week": "2026-10-05",
    "paid_views": 0.0,
    "grade": {
-    "age_days": 23,
+    "age_days": 24,
     "peers": 1,
     "score": null,
     "letter": null,
@@ -961,12 +1054,12 @@
      "subs": null
     },
     "values": {
-     "views": 2018.0,
-     "retention": 0.3391,
-     "engagement": 0.005,
-     "subs": 0.4955,
-     "avd": 127.8397,
-     "ctr": 0.0678,
+     "views": 3512.0,
+     "retention": 0.3439,
+     "engagement": 0.0046,
+     "subs": 0.2847,
+     "avd": 129.6603,
+     "ctr": 0.0683,
      "r30": 0.5581,
      "r60": 0.3701
     }
@@ -980,24 +1073,24 @@
    "week": "2026-10-05",
    "paid_views": 0.0,
    "grade": {
-    "age_days": 23,
+    "age_days": 24,
     "peers": 5,
-    "score": 0.46,
-    "letter": "C",
+    "score": 0.39,
+    "letter": "D",
     "ranks": {
      "retention": 0.8,
-     "ctr": 0.2,
+     "ctr": 0.0,
      "views": 0.0,
      "engagement": 1.0,
      "subs": 0.2
     },
     "values": {
-     "views": 131.0,
+     "views": 133.0,
      "retention": 0.9091,
-     "engagement": 0.0763,
+     "engagement": 0.0752,
      "subs": 0.0,
      "avd": 60.0,
-     "ctr": 0.5649,
+     "ctr": 0.5639,
      "r30": null,
      "r60": null
     }
@@ -1011,7 +1104,7 @@
    "week": "2026-10-05",
    "paid_views": 0.0,
    "grade": {
-    "age_days": 24,
+    "age_days": 25,
     "peers": 4,
     "score": null,
     "letter": null,
@@ -1023,12 +1116,12 @@
      "subs": null
     },
     "values": {
-     "views": 1436.0,
-     "retention": 0.9289,
+     "views": 1439.0,
+     "retention": 0.9255,
      "engagement": 0.0299,
      "subs": 0.0,
-     "avd": 34.3704,
-     "ctr": 0.5641,
+     "avd": 34.2435,
+     "ctr": 0.565,
      "r30": null,
      "r60": null
     }
@@ -1042,7 +1135,7 @@
    "week": "2026-10-05",
    "paid_views": 0.0,
    "grade": {
-    "age_days": 24,
+    "age_days": 25,
     "peers": 4,
     "score": null,
     "letter": null,
@@ -1054,12 +1147,12 @@
      "subs": null
     },
     "values": {
-     "views": 277.0,
-     "retention": 0.7789,
-     "engagement": 0.0505,
-     "subs": 3.6101,
-     "avd": 24.1463,
-     "ctr": 0.5921,
+     "views": 280.0,
+     "retention": 0.7695,
+     "engagement": 0.05,
+     "subs": 3.5714,
+     "avd": 23.8554,
+     "ctr": 0.5929,
      "r30": null,
      "r60": null
     }
@@ -1073,7 +1166,7 @@
    "week": "2026-10-05",
    "paid_views": 0.0,
    "grade": {
-    "age_days": 24,
+    "age_days": 25,
     "peers": 4,
     "score": null,
     "letter": null,
@@ -1085,12 +1178,12 @@
      "subs": null
     },
     "values": {
-     "views": 732.0,
-     "retention": 0.6353,
-     "engagement": 0.015,
+     "views": 751.0,
+     "retention": 0.6392,
+     "engagement": 0.016,
      "subs": 0.0,
-     "avd": 42.5651,
-     "ctr": 0.6817,
+     "avd": 42.8235,
+     "ctr": 0.6791,
      "r30": null,
      "r60": null
     }
@@ -1104,7 +1197,7 @@
    "week": "2026-10-05",
    "paid_views": 0.0,
    "grade": {
-    "age_days": 24,
+    "age_days": 25,
     "peers": 0,
     "score": null,
     "letter": null,
@@ -1116,12 +1209,12 @@
      "subs": null
     },
     "values": {
-     "views": 4374.0,
-     "retention": 0.1584,
-     "engagement": 0.0174,
-     "subs": 6.4015,
-     "avd": 636.7288,
-     "ctr": 0.0429,
+     "views": 4419.0,
+     "retention": 0.1627,
+     "engagement": 0.0177,
+     "subs": 6.7889,
+     "avd": 653.6927,
+     "ctr": 0.0437,
      "r30": 0.9383,
      "r60": 0.6647
     }
@@ -1135,7 +1228,7 @@
    "week": "2026-10-05",
    "paid_views": 0.0,
    "grade": {
-    "age_days": 27,
+    "age_days": 28,
     "peers": 1,
     "score": null,
     "letter": null,
@@ -1147,12 +1240,12 @@
      "subs": null
     },
     "values": {
-     "views": 1314.0,
-     "retention": 0.5433,
+     "views": 1315.0,
+     "retention": 0.5426,
      "engagement": 0.019,
-     "subs": 1.5221,
-     "avd": 24.4504,
-     "ctr": 0.5677,
+     "subs": 1.5209,
+     "avd": 24.4177,
+     "ctr": 0.5681,
      "r30": null,
      "r60": null
     }
@@ -1167,7 +1260,7 @@
    "paid_views": 0.0,
    "grade": {
     "age_days": 28,
-    "peers": 0,
+    "peers": 1,
     "score": null,
     "letter": null,
     "ranks": {
@@ -1178,12 +1271,12 @@
      "subs": null
     },
     "values": {
-     "views": 1325.0,
-     "retention": 0.5374,
+     "views": 1327.0,
+     "retention": 0.536,
      "engagement": 0.0294,
-     "subs": 12.8302,
-     "avd": 18.8095,
-     "ctr": 0.5706,
+     "subs": 12.8109,
+     "avd": 18.7599,
+     "ctr": 0.5712,
      "r30": null,
      "r60": null
     }
@@ -1209,12 +1302,12 @@
      "subs": null
     },
     "values": {
-     "views": 1178.0,
-     "retention": 0.4865,
-     "engagement": 0.039,
-     "subs": 56.8761,
-     "avd": 26.7581,
-     "ctr": 0.0262,
+     "views": 1190.0,
+     "retention": 0.4855,
+     "engagement": 0.0387,
+     "subs": 56.3025,
+     "avd": 26.7005,
+     "ctr": 0.0265,
      "r30": null,
      "r60": null
     }
