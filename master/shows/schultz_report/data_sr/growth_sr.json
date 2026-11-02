@@ -1,10 +1,10 @@
 {
  "start": "2026-08-18",
  "window_days": 7,
- "through": "2026-10-31",
- "pulled": "2026-11-01T15:53+00:00",
+ "through": "2026-11-01",
+ "pulled": "2026-11-02T19:18+00:00",
  "instagram": {
-  "followers_now": 2316,
+  "followers_now": 2287,
   "windows": [
    {
     "start": "2026-08-18",
@@ -108,13 +108,13 @@
    },
    {
     "start": "2026-10-26",
-    "end": "2026-10-31",
-    "partial": true,
-    "views": 1821024,
-    "interactions": 68524,
-    "follows": 263,
-    "unfollows": 108,
-    "net_followers": 155
+    "end": "2026-11-01",
+    "partial": false,
+    "views": 1856798,
+    "interactions": 69822,
+    "follows": 295,
+    "unfollows": 151,
+    "net_followers": 144
    }
   ],
   "posts": [
@@ -123,7 +123,7 @@
     "created": "2026-10-23",
     "text": "The Jalen Hurts health scare explained. Wishing him a speedy recovery \ud83d\ude4f",
     "type": "VIDEO",
-    "views": 223,
+    "views": 224,
     "likes": 11,
     "comments": 0
    },
@@ -141,7 +141,7 @@
     "created": "2026-10-15",
     "text": "After spending time together with the Vikings, Daniel Jones has great things to say about Jags OC Grant Udinski and his incredible football ",
     "type": "VIDEO",
-    "views": 258,
+    "views": 259,
     "likes": 5,
     "comments": 0
    },
