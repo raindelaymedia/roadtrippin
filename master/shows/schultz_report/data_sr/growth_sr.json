@@ -1,10 +1,10 @@
 {
  "start": "2026-08-18",
  "window_days": 7,
- "through": "2026-11-01",
- "pulled": "2026-11-02T19:18+00:00",
+ "through": "2026-11-02",
+ "pulled": "2026-11-03T16:59+00:00",
  "instagram": {
-  "followers_now": 2287,
+  "followers_now": 2361,
   "windows": [
    {
     "start": "2026-08-18",
@@ -110,11 +110,21 @@
     "start": "2026-10-26",
     "end": "2026-11-01",
     "partial": false,
-    "views": 1856798,
+    "views": 1856807,
     "interactions": 69822,
     "follows": 295,
     "unfollows": 151,
     "net_followers": 144
+   },
+   {
+    "start": "2026-11-02",
+    "end": "2026-11-02",
+    "partial": true,
+    "views": 143008,
+    "interactions": 7203,
+    "follows": 0,
+    "unfollows": 0,
+    "net_followers": 0
    }
   ],
   "posts": [
@@ -141,7 +151,7 @@
     "created": "2026-10-15",
     "text": "After spending time together with the Vikings, Daniel Jones has great things to say about Jags OC Grant Udinski and his incredible football ",
     "type": "VIDEO",
-    "views": 259,
+    "views": 260,
     "likes": 5,
     "comments": 0
    },
