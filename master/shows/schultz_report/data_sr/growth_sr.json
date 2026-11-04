@@ -1,10 +1,10 @@
 {
  "start": "2026-08-18",
  "window_days": 7,
- "through": "2026-11-02",
- "pulled": "2026-11-03T16:59+00:00",
+ "through": "2026-11-03",
+ "pulled": "2026-11-04T16:59+00:00",
  "instagram": {
-  "followers_now": 2361,
+  "followers_now": 2366,
   "windows": [
    {
     "start": "2026-08-18",
@@ -118,13 +118,13 @@
    },
    {
     "start": "2026-11-02",
-    "end": "2026-11-02",
+    "end": "2026-11-03",
     "partial": true,
-    "views": 143008,
-    "interactions": 7203,
-    "follows": 0,
-    "unfollows": 0,
-    "net_followers": 0
+    "views": 238948,
+    "interactions": 12068,
+    "follows": 72,
+    "unfollows": 14,
+    "net_followers": 58
    }
   ],
   "posts": [
@@ -133,7 +133,7 @@
     "created": "2026-10-23",
     "text": "The Jalen Hurts health scare explained. Wishing him a speedy recovery \ud83d\ude4f",
     "type": "VIDEO",
-    "views": 224,
+    "views": 227,
     "likes": 11,
     "comments": 0
    },
@@ -151,7 +151,7 @@
     "created": "2026-10-15",
     "text": "After spending time together with the Vikings, Daniel Jones has great things to say about Jags OC Grant Udinski and his incredible football ",
     "type": "VIDEO",
-    "views": 260,
+    "views": 262,
     "likes": 5,
     "comments": 0
    },
@@ -163,15 +163,6 @@
     "views": 206,
     "likes": 5,
     "comments": 0
-   },
-   {
-    "url": "https://www.instagram.com/reel/DecFhy8RuoM/",
-    "created": "2026-10-13",
-    "text": "The Marvin Harrison Jr. trade had the NFL World buzzing this weekend. Here\u2019s how it all went down \ud83d\udcaa",
-    "type": "VIDEO",
-    "views": 268,
-    "likes": 12,
-    "comments": 3
    }
   ]
  }
