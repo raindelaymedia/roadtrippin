@@ -14,8 +14,9 @@ What it shows: a Monday digest (last Mon–Sun week: where our shows rank, top b
   • Median views per full episode, episodes per week, last upload, subscribers
   • Top uploads of the last 7 days across the group
 
-Formats: Short ≤ 3:00 · Clip 3:01–20:00 · Episode > 20:00 (podcast episodes often run 20–30 min,
-so the cut-off is lower than the show dashboards' 30 min).
+Formats come from the collector (videos.csv `format`): Short = in the channel's Shorts playlist, Episode = in
+the show's full-episode playlist, Clip = the rest. Rows saved before that (and shows with no episode playlist)
+fall back to length: Short ≤ 3:00 · Clip 3:01–20:00 · Episode > 20:00.
 
 Usage (from repo root):
     python master/competitors/build_competitors.py
@@ -373,7 +374,7 @@ def summarize(shows, daily, videos, vdaily):
     for vid, v in videos.items():
         if vid in views_now:     # every tracked upload (last ~35 days); 28-day stats filter below
             by_channel[v["channel_id"]].append({**v, "views": views_now[vid] or 0,
-                                                "format": video_format(num(v["duration_sec"]) or 0)})
+                                                "format": v.get("format") or video_format(num(v["duration_sec"]) or 0)})
     rows = []
     for s in shows:
         cid = s["channel_id"]

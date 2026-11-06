@@ -8,7 +8,9 @@ because this runs every day: start it early, never skip.
 
 Writes (all under master/competitors/data/):
     channel_daily.csv            date, channel_id, subs, views, videos, last_upload  (one row per channel per day)
-    videos.csv                   video_id, channel_id, published, published_at (ET), duration_sec, live, title
+    videos.csv                   video_id, channel_id, published, published_at (ET), duration_sec, live, format, title
+                                 format: short (in the channel's UUSH Shorts playlist) · episode (in the show's
+                                 episodes_playlist from competitors.csv) · clip (everything else)
     video_daily/YYYY-MM-DD.csv   video_id, views, likes, comments  — videos published in the
                                  last VIDEO_WINDOW_DAYS, one file per day (history is never rewritten)
 
@@ -39,7 +41,8 @@ DATA = os.path.join(HERE, "data")
 API = "https://www.googleapis.com/youtube/v3"
 ET = ZoneInfo("America/New_York")
 VIDEO_WINDOW_DAYS = 35      # track each upload's views daily for its first 5 weeks
-MAX_PAGES = 30              # safety cap per channel (50 uploads per page)
+MAX_PAGES = 40              # safety cap per playlist (50 items per page)
+EPISODE_MIN_SEC = 20 * 60   # length fallback for shows with no full-episode playlist
 
 
 def load_key():
@@ -87,6 +90,18 @@ def et_date(iso):
 
 def et_time(iso):
     return datetime.fromisoformat(iso.replace("Z", "+00:00")).astimezone(ET).strftime("%Y-%m-%dT%H:%M")
+
+
+def video_format(vid, cid, secs, shorts, episodes, has_eps):
+    """short = in the channel's Shorts playlist · episode = in the show's full-episode playlist ·
+    clip = any other upload. Shows with no episode playlist fall back to length (> 20 min = episode)."""
+    if vid in shorts:
+        return "short"
+    if vid in episodes:
+        return "episode"
+    if cid in has_eps:
+        return "clip"
+    return "episode" if secs > EPISODE_MIN_SEC else "clip"
 
 
 def read_csv(path):
@@ -176,6 +191,33 @@ def main():
             print(f"  ⚠ {s['show']}: {e}")
         print(f"  {s['show']:<30} {int(c['statistics'].get('subscriberCount', 0)):>10,} subs · {n:>4} uploads in {VIDEO_WINDOW_DAYS}d")
 
+    # 2b. Format by playlist, not length: YouTube keeps a Shorts-only playlist per channel (UUSH…), and
+    #     competitors.csv names each show's full-episode playlist(s). Anything else long-form is a clip.
+    shorts, episodes, has_eps = set(), set(), set()
+    for s in shows:
+        if s["channel_id"] not in channels:
+            continue
+        lists = [("UUSH" + s["channel_id"][2:], shorts, True)]
+        lists += [(p, episodes, False) for p in (s.get("episodes_playlist") or "").split(";") if p]
+        if len(lists) > 1:
+            has_eps.add(s["channel_id"])
+        for pid, into, newest_first in lists:
+            page = None
+            try:
+                for _ in range(MAX_PAGES):
+                    j = get("playlistItems", key, part="contentDetails", playlistId=pid, maxResults=50, pageToken=page or "")
+                    items = j.get("items", [])
+                    into.update(it["contentDetails"]["videoId"] for it in items if it["contentDetails"]["videoId"] in recent)
+                    page = j.get("nextPageToken")
+                    # Shorts list newest first; episode playlists can be in any order, so read them to the end
+                    oldest = min((it["contentDetails"].get("videoPublishedAt") or "9" for it in items), default="0")
+                    if not page or (newest_first and et_date(oldest) < cutoff):
+                        break
+            except RuntimeError as e:
+                if not pid.startswith("UUSH"):      # no Shorts playlist just means no Shorts
+                    print(f"  ⚠ {s['show']} playlist {pid}: {e}")
+    print(f"  formats: {len(shorts)} Shorts · {len(episodes)} full episodes by playlist")
+
     # 3. Video details + current stats (1 unit per 50 videos)
     vids = list(recent)
     details = {}
@@ -208,8 +250,10 @@ def main():
                      "published_at": et_time(v["snippet"]["publishedAt"]),
                      "duration_sec": iso_sec(v["contentDetails"].get("duration")),
                      "live": int(bool((v.get("liveStreamingDetails") or {}).get("actualStartTime"))),
+                     "format": video_format(vid, recent[vid], iso_sec(v["contentDetails"].get("duration")),
+                                            shorts, episodes, has_eps),
                      "title": v["snippet"]["title"]}
-    write_csv(v_path, ["video_id", "channel_id", "published", "published_at", "duration_sec", "live", "title"],
+    write_csv(v_path, ["video_id", "channel_id", "published", "published_at", "duration_sec", "live", "format", "title"],
               sorted(meta.values(), key=lambda r: (r["published"], r["video_id"])))
 
     # video_daily/<date>.csv — today's views for every recent upload
