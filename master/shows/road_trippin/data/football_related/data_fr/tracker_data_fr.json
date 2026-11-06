@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-04T16:55:40.266725",
+  "generated": "2026-11-06T16:40:19.934954",
   "channel_id": "UCWcbo7_7Qiu0VtXPjpp-SDA",
   "rt_channel_id": "UCSes4X8uDrpc4X46hJKjejg",
   "months": [
@@ -8,11 +8,11 @@
   ],
   "yt": {
     "vids": {
-      "2026-11": 4644,
+      "2026-11": 23032,
       "2026-10": 31756
     },
     "shorts": {
-      "2026-11": 4326,
+      "2026-11": 12184,
       "2026-10": 50042
     },
     "lives": {
@@ -20,16 +20,16 @@
       "2026-10": 0
     },
     "subs_gained": {
-      "2026-11": 13,
+      "2026-11": 78,
       "2026-10": 465
     },
     "subs_lost": {
-      "2026-11": 2,
+      "2026-11": 6,
       "2026-10": 15
     },
     "watch_hrs": {
-      "2026-11": 131.8,
-      "2026-10": 1476.6
+      "2026-11": 628.6,
+      "2026-10": 1469.7
     }
   },
   "audio": {
@@ -48,29 +48,29 @@
   },
   "kpis": {
     "shorts_count": {
-      "2026-11": 7,
-      "2026-10": 28
+      "2026-11": 11,
+      "2026-10": 27
     },
     "ctr": {
       "2026-11": null,
       "2026-10": null
     },
     "search_pct": {
-      "2026-11": 0.0328,
-      "2026-10": 0.0513
+      "2026-11": 0.0313,
+      "2026-10": 0.0514
     },
     "tv_pct": {
-      "2026-11": 0.3473,
-      "2026-10": 0.1306
+      "2026-11": 0.3823,
+      "2026-10": 0.1304
     }
   },
   "collab": {
     "total_views": {
-      "2026-11": 8970,
-      "2026-10": 81756
+      "2026-11": 35241,
+      "2026-10": 81660
     },
     "rt_views": {
-      "2026-11": 1,
+      "2026-11": 4,
       "2026-10": 1054
     },
     "rt_pct": {
@@ -80,7 +80,7 @@
     "rt_by_source": {
       "2026-11": {
         "suggested": 0,
-        "channel_page": 1
+        "channel_page": 4
       },
       "2026-10": {
         "suggested": 0,
@@ -88,11 +88,11 @@
       }
     },
     "collab_views": {
-      "2026-11": 34,
-      "2026-10": 1258
+      "2026-11": 44,
+      "2026-10": 1259
     },
     "collab_pct": {
-      "2026-11": 0.0038,
+      "2026-11": 0.0012,
       "2026-10": 0.0154
     },
     "top_channels": {
@@ -100,7 +100,7 @@
         {
           "id": "UCylgcI1N1S3zHljDO8eW-Qg",
           "name": "Bussin' With The Boys",
-          "views": 12,
+          "views": 9,
           "is_rt": false
         },
         {
@@ -110,22 +110,22 @@
           "is_rt": false
         },
         {
+          "id": "UC8xgZACsxS-qv5oWlyqHmGA",
+          "name": "Home Grown with David & Derek Carr",
+          "views": 5,
+          "is_rt": false
+        },
+        {
           "id": "UCAYhrZ3EQZBriZU5JEbQ7Yg",
           "name": "Nuthouse Sports",
-          "views": 2,
+          "views": 4,
           "is_rt": false
         },
         {
-          "id": "UCIOXmaExi4DjLHGyGvnu3bw",
-          "name": "The Big Podcast with Shaq",
-          "views": 2,
-          "is_rt": false
-        },
-        {
-          "id": "UCVRm2Ho8cL3lvWDyp2ayuFw",
-          "name": "New Heights",
-          "views": 2,
-          "is_rt": false
+          "id": "UCSes4X8uDrpc4X46hJKjejg",
+          "name": "Road Trippin' Show",
+          "views": 4,
+          "is_rt": true
         }
       ],
       "2026-10": [
@@ -163,56 +163,56 @@
     },
     "detail_coverage": {
       "2026-11": {
-        "suggested": 0.7477,
-        "channel_page": 0.9949
+        "suggested": 0.6677,
+        "channel_page": 1.0
       },
       "2026-10": {
-        "suggested": 0.4042,
-        "channel_page": 0.9978
+        "suggested": 0.4039,
+        "channel_page": 0.9971
       }
     }
   },
   "traffic_sources": {
     "2026-11": {
-      "NO_LINK_OTHER": 48,
-      "SUBSCRIBER": 4498,
-      "YT_CHANNEL": 196,
-      "YT_SEARCH": 294,
-      "RELATED_VIDEO": 111,
-      "YT_OTHER_PAGE": 70,
-      "EXT_URL": 6,
-      "PLAYLIST": 10,
-      "NOTIFICATION": 4,
-      "END_SCREEN": 13,
-      "SHORTS": 3714,
-      "SHORTS_CONTENT_LINKS": 6
+      "NO_LINK_OTHER": 268,
+      "SUBSCRIBER": 22010,
+      "YT_CHANNEL": 499,
+      "YT_SEARCH": 1103,
+      "RELATED_VIDEO": 623,
+      "YT_OTHER_PAGE": 225,
+      "EXT_URL": 30,
+      "PLAYLIST": 58,
+      "NOTIFICATION": 30,
+      "END_SCREEN": 68,
+      "SHORTS": 10316,
+      "SHORTS_CONTENT_LINKS": 11
     },
     "2026-10": {
-      "NO_LINK_OTHER": 501,
-      "SUBSCRIBER": 26692,
-      "YT_CHANNEL": 2708,
-      "YT_SEARCH": 4194,
-      "RELATED_VIDEO": 1571,
-      "YT_OTHER_PAGE": 727,
+      "NO_LINK_OTHER": 462,
+      "SUBSCRIBER": 26677,
+      "YT_CHANNEL": 2712,
+      "YT_SEARCH": 4197,
+      "RELATED_VIDEO": 1572,
+      "YT_OTHER_PAGE": 721,
       "EXT_URL": 276,
-      "PLAYLIST": 128,
-      "SHORTS": 44735,
+      "PLAYLIST": 126,
+      "SHORTS": 44694,
       "SOUND_PAGE": 3,
       "NOTIFICATION": 53,
       "SHORTS_CONTENT_LINKS": 55,
-      "END_SCREEN": 111,
+      "END_SCREEN": 110,
       "HASHTAGS": 2
     }
   },
   "best_of": {
-    "label": "Nov 01 \u2013 Nov 04, 2026",
+    "label": "Nov 01 \u2013 Nov 06, 2026",
     "long": [
       {
         "id": "_SNYKB1lv-I",
         "title": "Tyrone Crawford on 17 Stab Wounds, Choosing Boise Over LSU & the Cowboys\u2019 Secret Edge",
         "published": "2026-11-03",
-        "views": 499,
-        "likes": 11,
+        "views": 859,
+        "likes": 17,
         "thumbnail": "https://i.ytimg.com/vi/_SNYKB1lv-I/maxresdefault.jpg",
         "url": "https://youtu.be/_SNYKB1lv-I",
         "type": "LONG",
@@ -221,24 +221,35 @@
     ],
     "mid": [
       {
+        "id": "v_uoscA8oIM",
+        "title": "Kirby Smart Says College Football Players Lost Their Hunger. Three NFL Veterans Respond.",
+        "published": "2026-11-05",
+        "views": 814,
+        "likes": 7,
+        "thumbnail": "https://i.ytimg.com/vi/v_uoscA8oIM/maxresdefault.jpg",
+        "url": "https://youtu.be/v_uoscA8oIM",
+        "type": "MID",
+        "show": "FR"
+      },
+      {
         "id": "1sNujueVw0A",
         "title": "Zack Martin Wants One Thing for Notre Dame\u2013Miami: Cold Weather",
         "published": "2026-11-03",
-        "views": 483,
-        "likes": 6,
+        "views": 776,
+        "likes": 8,
         "thumbnail": "https://i.ytimg.com/vi/1sNujueVw0A/maxresdefault.jpg",
         "url": "https://youtu.be/1sNujueVw0A",
         "type": "MID",
         "show": "FR"
       },
       {
-        "id": "v_uoscA8oIM",
-        "title": "Kirby Smart Says College Football Players Lost Their Hunger. Three NFL Veterans Respond.",
-        "published": "2026-11-04",
+        "id": "aYOpJmD1HVY",
+        "title": "Why Jason Garrett Sent 10 Cowboys to Train With Navy SEALs",
+        "published": "2026-11-05",
         "views": 0,
         "likes": 0,
-        "thumbnail": "https://i9.ytimg.com/vi/v_uoscA8oIM/maxresdefault.jpg?sqp=COTGrdcG&rs=AOn4CLCKEbEu1c2KuQlJYUvgaIhyidX2WQ",
-        "url": "https://youtu.be/v_uoscA8oIM",
+        "thumbnail": "https://i9.ytimg.com/vi/aYOpJmD1HVY/maxresdefault.jpg?sqp=COCFuNcG&rs=AOn4CLCHrWney_w2nmNgieFdft_Ob87-xQ",
+        "url": "https://youtu.be/aYOpJmD1HVY",
         "type": "MID",
         "show": "FR"
       },
@@ -248,7 +259,7 @@
         "published": "2026-11-03",
         "views": 0,
         "likes": 0,
-        "thumbnail": "https://i9.ytimg.com/vi/s1uQwiNyNMw/maxresdefault.jpg?sqp=COTGrdcG&rs=AOn4CLDVvPDM9wFPPIpiBJX22y32mtPyrg",
+        "thumbnail": "https://i9.ytimg.com/vi/s1uQwiNyNMw/maxresdefault.jpg?sqp=COCFuNcG&rs=AOn4CLB8auG3mVe8-INW1MJMW3aKtxxCLg",
         "url": "https://youtu.be/s1uQwiNyNMw",
         "type": "MID",
         "show": "FR"
@@ -259,32 +270,21 @@
         "id": "zLExf6F2IR4",
         "title": "Did Tyler Eifert Actually Kill The Pro Bowl? #nfl #football #cincinattibengals",
         "published": "2026-11-01",
-        "views": 2867,
-        "likes": 74,
+        "views": 3326,
+        "likes": 83,
         "thumbnail": "https://i.ytimg.com/vi/zLExf6F2IR4/maxresdefault.jpg",
         "url": "https://youtu.be/zLExf6F2IR4",
         "type": "SHORT",
         "show": "FR"
       },
       {
-        "id": "aCg5m7Zyrtk",
-        "title": "Zack & Tyler Hoping For This Before Miami Plays Notre Dame #cfb #collegefootball #football",
-        "published": "2026-11-03",
-        "views": 1678,
-        "likes": 32,
-        "thumbnail": "https://i.ytimg.com/vi/aCg5m7Zyrtk/maxresdefault.jpg",
-        "url": "https://youtu.be/aCg5m7Zyrtk",
-        "type": "SHORT",
-        "show": "FR"
-      },
-      {
-        "id": "ZZIjHB7enfY",
-        "title": "Kirby Smart vs. The New College Football Culture #NCAA #CFB",
-        "published": "2026-11-03",
-        "views": 1435,
-        "likes": 26,
-        "thumbnail": "https://i.ytimg.com/vi/ZZIjHB7enfY/maxresdefault.jpg",
-        "url": "https://youtu.be/ZZIjHB7enfY",
+        "id": "hV71fUpap-0",
+        "title": "Are NFL Coaches Actually Stupid on 4th & 1? #nfl #football #collegefootball",
+        "published": "2026-11-05",
+        "views": 2416,
+        "likes": 54,
+        "thumbnail": "https://i.ytimg.com/vi/hV71fUpap-0/maxresdefault.jpg",
+        "url": "https://youtu.be/hV71fUpap-0",
         "type": "SHORT",
         "show": "FR"
       },
@@ -292,21 +292,32 @@
         "id": "d4To6FXOQmo",
         "title": "College Football Players Reveal What They Actually Got Paid Before NIL #NCAA #CFB #NotreDame",
         "published": "2026-11-04",
-        "views": 1367,
-        "likes": 31,
+        "views": 2352,
+        "likes": 44,
         "thumbnail": "https://i.ytimg.com/vi/d4To6FXOQmo/maxresdefault.jpg",
         "url": "https://youtu.be/d4To6FXOQmo",
         "type": "SHORT",
         "show": "FR"
       },
       {
-        "id": "OQ7pTLcaLog",
-        "title": "How an NFL Star Survived 17 Stab Wounds #nfl #DallasCowboys #BoiseState #Football",
+        "id": "0mq74zDmbSU",
+        "title": "Notre Dame Alums Tyler Eifert & Zack Martin Hammer The Line vs Miami! #FightingIrish #cfb",
+        "published": "2026-11-04",
+        "views": 2041,
+        "likes": 24,
+        "thumbnail": "https://i.ytimg.com/vi/0mq74zDmbSU/maxresdefault.jpg",
+        "url": "https://youtu.be/0mq74zDmbSU",
+        "type": "SHORT",
+        "show": "FR"
+      },
+      {
+        "id": "ZZIjHB7enfY",
+        "title": "Kirby Smart vs. The New College Football Culture #NCAA #CFB",
         "published": "2026-11-03",
-        "views": 1293,
+        "views": 1934,
         "likes": 34,
-        "thumbnail": "https://i.ytimg.com/vi/OQ7pTLcaLog/maxresdefault.jpg",
-        "url": "https://youtu.be/OQ7pTLcaLog",
+        "thumbnail": "https://i.ytimg.com/vi/ZZIjHB7enfY/maxresdefault.jpg",
+        "url": "https://youtu.be/ZZIjHB7enfY",
         "type": "SHORT",
         "show": "FR"
       }
@@ -318,7 +329,7 @@
       "2026-10": 4
     },
     "vods": {
-      "2026-11": 4,
+      "2026-11": 5,
       "2026-10": 16
     },
     "lives": {
@@ -334,8 +345,8 @@
           "title": "Tyrone Crawford on 17 Stab Wounds, Choosing Boise Over LSU & the Cowboys\u2019 Secret Edge",
           "published": "2026-11-03",
           "month": "2026-11",
-          "views": 499,
-          "likes": 11,
+          "views": 859,
+          "likes": 17,
           "comments": 4,
           "duration_sec": 3264,
           "thumbnail": "https://i.ytimg.com/vi/_SNYKB1lv-I/maxresdefault.jpg",
@@ -345,12 +356,25 @@
       ],
       "mid": [
         {
+          "id": "v_uoscA8oIM",
+          "title": "Kirby Smart Says College Football Players Lost Their Hunger. Three NFL Veterans Respond.",
+          "published": "2026-11-05",
+          "month": "2026-11",
+          "views": 814,
+          "likes": 7,
+          "comments": 2,
+          "duration_sec": 613,
+          "thumbnail": "https://i.ytimg.com/vi/v_uoscA8oIM/maxresdefault.jpg",
+          "url": "https://youtu.be/v_uoscA8oIM",
+          "type": "mid"
+        },
+        {
           "id": "1sNujueVw0A",
           "title": "Zack Martin Wants One Thing for Notre Dame\u2013Miami: Cold Weather",
           "published": "2026-11-03",
           "month": "2026-11",
-          "views": 483,
-          "likes": 6,
+          "views": 776,
+          "likes": 8,
           "comments": 0,
           "duration_sec": 225,
           "thumbnail": "https://i.ytimg.com/vi/1sNujueVw0A/maxresdefault.jpg",
@@ -358,16 +382,16 @@
           "type": "mid"
         },
         {
-          "id": "v_uoscA8oIM",
-          "title": "Kirby Smart Says College Football Players Lost Their Hunger. Three NFL Veterans Respond.",
-          "published": "2026-11-04",
+          "id": "aYOpJmD1HVY",
+          "title": "Why Jason Garrett Sent 10 Cowboys to Train With Navy SEALs",
+          "published": "2026-11-05",
           "month": "2026-11",
           "views": 0,
           "likes": 0,
           "comments": 0,
-          "duration_sec": 613,
-          "thumbnail": "https://i9.ytimg.com/vi/v_uoscA8oIM/maxresdefault.jpg?sqp=COTGrdcG&rs=AOn4CLCKEbEu1c2KuQlJYUvgaIhyidX2WQ",
-          "url": "https://youtu.be/v_uoscA8oIM",
+          "duration_sec": 385,
+          "thumbnail": "https://i9.ytimg.com/vi/aYOpJmD1HVY/maxresdefault.jpg?sqp=COCFuNcG&rs=AOn4CLCHrWney_w2nmNgieFdft_Ob87-xQ",
+          "url": "https://youtu.be/aYOpJmD1HVY",
           "type": "mid"
         },
         {
@@ -379,7 +403,7 @@
           "likes": 0,
           "comments": 0,
           "duration_sec": 394,
-          "thumbnail": "https://i9.ytimg.com/vi/s1uQwiNyNMw/maxresdefault.jpg?sqp=COTGrdcG&rs=AOn4CLDVvPDM9wFPPIpiBJX22y32mtPyrg",
+          "thumbnail": "https://i9.ytimg.com/vi/s1uQwiNyNMw/maxresdefault.jpg?sqp=COCFuNcG&rs=AOn4CLB8auG3mVe8-INW1MJMW3aKtxxCLg",
           "url": "https://youtu.be/s1uQwiNyNMw",
           "type": "mid"
         }
@@ -390,12 +414,64 @@
           "title": "Did Tyler Eifert Actually Kill The Pro Bowl? #nfl #football #cincinattibengals",
           "published": "2026-11-01",
           "month": "2026-11",
-          "views": 2867,
-          "likes": 74,
-          "comments": 1,
+          "views": 3326,
+          "likes": 83,
+          "comments": 2,
           "duration_sec": 62,
           "thumbnail": "https://i.ytimg.com/vi/zLExf6F2IR4/maxresdefault.jpg",
           "url": "https://youtu.be/zLExf6F2IR4",
+          "type": "short"
+        },
+        {
+          "id": "hV71fUpap-0",
+          "title": "Are NFL Coaches Actually Stupid on 4th & 1? #nfl #football #collegefootball",
+          "published": "2026-11-05",
+          "month": "2026-11",
+          "views": 2416,
+          "likes": 54,
+          "comments": 0,
+          "duration_sec": 104,
+          "thumbnail": "https://i.ytimg.com/vi/hV71fUpap-0/maxresdefault.jpg",
+          "url": "https://youtu.be/hV71fUpap-0",
+          "type": "short"
+        },
+        {
+          "id": "d4To6FXOQmo",
+          "title": "College Football Players Reveal What They Actually Got Paid Before NIL #NCAA #CFB #NotreDame",
+          "published": "2026-11-04",
+          "month": "2026-11",
+          "views": 2352,
+          "likes": 44,
+          "comments": 0,
+          "duration_sec": 78,
+          "thumbnail": "https://i.ytimg.com/vi/d4To6FXOQmo/maxresdefault.jpg",
+          "url": "https://youtu.be/d4To6FXOQmo",
+          "type": "short"
+        },
+        {
+          "id": "0mq74zDmbSU",
+          "title": "Notre Dame Alums Tyler Eifert & Zack Martin Hammer The Line vs Miami! #FightingIrish #cfb",
+          "published": "2026-11-04",
+          "month": "2026-11",
+          "views": 2041,
+          "likes": 24,
+          "comments": 0,
+          "duration_sec": 37,
+          "thumbnail": "https://i.ytimg.com/vi/0mq74zDmbSU/maxresdefault.jpg",
+          "url": "https://youtu.be/0mq74zDmbSU",
+          "type": "short"
+        },
+        {
+          "id": "ZZIjHB7enfY",
+          "title": "Kirby Smart vs. The New College Football Culture #NCAA #CFB",
+          "published": "2026-11-03",
+          "month": "2026-11",
+          "views": 1934,
+          "likes": 34,
+          "comments": 0,
+          "duration_sec": 57,
+          "thumbnail": "https://i.ytimg.com/vi/ZZIjHB7enfY/maxresdefault.jpg",
+          "url": "https://youtu.be/ZZIjHB7enfY",
           "type": "short"
         },
         {
@@ -403,7 +479,7 @@
           "title": "Zack & Tyler Hoping For This Before Miami Plays Notre Dame #cfb #collegefootball #football",
           "published": "2026-11-03",
           "month": "2026-11",
-          "views": 1678,
+          "views": 1795,
           "likes": 32,
           "comments": 0,
           "duration_sec": 48,
@@ -412,38 +488,12 @@
           "type": "short"
         },
         {
-          "id": "ZZIjHB7enfY",
-          "title": "Kirby Smart vs. The New College Football Culture #NCAA #CFB",
-          "published": "2026-11-03",
-          "month": "2026-11",
-          "views": 1435,
-          "likes": 26,
-          "comments": 0,
-          "duration_sec": 57,
-          "thumbnail": "https://i.ytimg.com/vi/ZZIjHB7enfY/maxresdefault.jpg",
-          "url": "https://youtu.be/ZZIjHB7enfY",
-          "type": "short"
-        },
-        {
-          "id": "d4To6FXOQmo",
-          "title": "College Football Players Reveal What They Actually Got Paid Before NIL #NCAA #CFB #NotreDame",
-          "published": "2026-11-04",
-          "month": "2026-11",
-          "views": 1367,
-          "likes": 31,
-          "comments": 0,
-          "duration_sec": 78,
-          "thumbnail": "https://i.ytimg.com/vi/d4To6FXOQmo/maxresdefault.jpg",
-          "url": "https://youtu.be/d4To6FXOQmo",
-          "type": "short"
-        },
-        {
           "id": "OQ7pTLcaLog",
           "title": "How an NFL Star Survived 17 Stab Wounds #nfl #DallasCowboys #BoiseState #Football",
           "published": "2026-11-03",
           "month": "2026-11",
-          "views": 1293,
-          "likes": 34,
+          "views": 1460,
+          "likes": 38,
           "comments": 0,
           "duration_sec": 59,
           "thumbnail": "https://i.ytimg.com/vi/OQ7pTLcaLog/maxresdefault.jpg",
@@ -455,7 +505,7 @@
           "title": "Dallas Cowboys\u2019 Zack Martin Retells Legendary Pro Bowl Walk Of Shame #nfl #football",
           "published": "2026-11-02",
           "month": "2026-11",
-          "views": 1138,
+          "views": 1144,
           "likes": 20,
           "comments": 0,
           "duration_sec": 52,
@@ -468,12 +518,25 @@
           "title": "Tyrone Crawford Was Stabbed 17 Times. Three Months Later, He Benched 400 Pounds.",
           "published": "2026-11-04",
           "month": "2026-11",
-          "views": 0,
-          "likes": 0,
+          "views": 86,
+          "likes": 1,
           "comments": 0,
           "duration_sec": 141,
-          "thumbnail": "https://i9.ytimg.com/vi/15wZw9W8Hxo/maxresdefault.jpg?sqp=COTGrdcG&rs=AOn4CLDqfSzVQPO2TAb9CNCMPzb1D-4BiQ",
+          "thumbnail": "https://i.ytimg.com/vi/15wZw9W8Hxo/maxresdefault.jpg",
           "url": "https://youtu.be/15wZw9W8Hxo",
+          "type": "short"
+        },
+        {
+          "id": "0Rk3zm0Lj9E",
+          "title": "The Madden legend of Kellen Moore: Boise State royalty to NFL mastermind! #nfl #collegefootball",
+          "published": "2026-11-05",
+          "month": "2026-11",
+          "views": 52,
+          "likes": 1,
+          "comments": 0,
+          "duration_sec": 45,
+          "thumbnail": "https://i.ytimg.com/vi/0Rk3zm0Lj9E/maxresdefault.jpg",
+          "url": "https://youtu.be/0Rk3zm0Lj9E",
           "type": "short"
         }
       ]
@@ -485,8 +548,8 @@
           "title": "Everyone Knew Zack Martin Was Dating Tyler Eifert's Sister\u2026 Except Tyler",
           "published": "2026-10-08",
           "month": "2026-10",
-          "views": 5534,
-          "likes": 62,
+          "views": 6177,
+          "likes": 67,
           "comments": 10,
           "duration_sec": 4019,
           "thumbnail": "https://i.ytimg.com/vi/5cmEznkoK9k/maxresdefault.jpg",
@@ -498,8 +561,8 @@
           "title": "Zack Martin & Tyler Eifert on Notre Dame Rivalries and NFL Training Camps",
           "published": "2026-10-14",
           "month": "2026-10",
-          "views": 2785,
-          "likes": 68,
+          "views": 2923,
+          "likes": 71,
           "comments": 7,
           "duration_sec": 4281,
           "thumbnail": "https://i.ytimg.com/vi/aVsKEwZRytM/maxresdefault.jpg",
@@ -511,7 +574,7 @@
           "title": "The Martin Brothers on Beating Each Other Up, Playing Together at Notre Dame & Life After Football",
           "published": "2026-10-20",
           "month": "2026-10",
-          "views": 2077,
+          "views": 2178,
           "likes": 35,
           "comments": 6,
           "duration_sec": 2934,
@@ -524,8 +587,8 @@
           "title": "Zack & Tyler on the Best Pro Bowl Ever, Unequal NFL Facilities & Draft-Night Anxiety",
           "published": "2026-10-27",
           "month": "2026-10",
-          "views": 1719,
-          "likes": 22,
+          "views": 1828,
+          "likes": 24,
           "comments": 6,
           "duration_sec": 2889,
           "thumbnail": "https://i.ytimg.com/vi/25aiO1zxViM/maxresdefault.jpg",
@@ -535,12 +598,25 @@
       ],
       "mid": [
         {
+          "id": "SN7zjZcHgrQ",
+          "title": "What Happens to an NFL Player\u2019s Body After Retirement?",
+          "published": "2026-10-10",
+          "month": "2026-10",
+          "views": 30482,
+          "likes": 104,
+          "comments": 3,
+          "duration_sec": 315,
+          "thumbnail": "https://i.ytimg.com/vi/SN7zjZcHgrQ/maxresdefault.jpg",
+          "url": "https://youtu.be/SN7zjZcHgrQ",
+          "type": "mid"
+        },
+        {
           "id": "vt-XiWC7wyU",
           "title": "Tyler Eifert Got Ragdolled in His Second NFL Game",
           "published": "2026-10-09",
           "month": "2026-10",
-          "views": 17130,
-          "likes": 58,
+          "views": 21462,
+          "likes": 69,
           "comments": 1,
           "duration_sec": 377,
           "thumbnail": "https://i.ytimg.com/vi/vt-XiWC7wyU/maxresdefault.jpg",
@@ -548,25 +624,12 @@
           "type": "mid"
         },
         {
-          "id": "SN7zjZcHgrQ",
-          "title": "What Happens to an NFL Player\u2019s Body After Retirement?",
-          "published": "2026-10-10",
-          "month": "2026-10",
-          "views": 11311,
-          "likes": 52,
-          "comments": 0,
-          "duration_sec": 315,
-          "thumbnail": "https://i.ytimg.com/vi/SN7zjZcHgrQ/maxresdefault.jpg",
-          "url": "https://youtu.be/SN7zjZcHgrQ",
-          "type": "mid"
-        },
-        {
           "id": "agY3fbMMBLU",
           "title": "Zack Martin Watched C.J. Carr Behind the Scenes. Here\u2019s What Stood Out",
           "published": "2026-10-17",
           "month": "2026-10",
-          "views": 7238,
-          "likes": 47,
+          "views": 7379,
+          "likes": 48,
           "comments": 4,
           "duration_sec": 248,
           "thumbnail": "https://i.ytimg.com/vi/agY3fbMMBLU/maxresdefault.jpg",
@@ -578,8 +641,8 @@
           "title": "Zack Martin Kicked Down Tyler Eifert\u2019s Door at Notre Dame",
           "published": "2026-10-11",
           "month": "2026-10",
-          "views": 2719,
-          "likes": 14,
+          "views": 2815,
+          "likes": 15,
           "comments": 2,
           "duration_sec": 230,
           "thumbnail": "https://i.ytimg.com/vi/DptsIiJcaWs/maxresdefault.jpg",
@@ -591,8 +654,8 @@
           "title": "The Pro Bowl Was the Best Week of Tyler Eifert\u2019s Career\u2014Until This Happened",
           "published": "2026-10-29",
           "month": "2026-10",
-          "views": 841,
-          "likes": 3,
+          "views": 950,
+          "likes": 5,
           "comments": 0,
           "duration_sec": 527,
           "thumbnail": "https://i.ytimg.com/vi/_EoFYWeZBZ4/maxresdefault.jpg",
@@ -604,7 +667,7 @@
           "title": "Zack & Nick Martin Went From Fighting as Kids to the NFL",
           "published": "2026-10-22",
           "month": "2026-10",
-          "views": 674,
+          "views": 811,
           "likes": 4,
           "comments": 1,
           "duration_sec": 269,
@@ -617,7 +680,7 @@
           "title": "Why Tight Ends and Offensive Linemen Have Beef",
           "published": "2026-10-24",
           "month": "2026-10",
-          "views": 589,
+          "views": 651,
           "likes": 3,
           "comments": 2,
           "duration_sec": 310,
@@ -626,24 +689,11 @@
           "type": "mid"
         },
         {
-          "id": "xVePtknKgYs",
-          "title": "The Worst Game Zack Martin Ever Played",
-          "published": "2026-10-15",
-          "month": "2026-10",
-          "views": 488,
-          "likes": 8,
-          "comments": 1,
-          "duration_sec": 279,
-          "thumbnail": "https://i.ytimg.com/vi/xVePtknKgYs/maxresdefault.jpg",
-          "url": "https://youtu.be/xVePtknKgYs",
-          "type": "mid"
-        },
-        {
           "id": "MmAMXEnnD80",
           "title": "Why Does Notre Dame Keep Coming Up Short in the Biggest Moments?",
           "published": "2026-10-21",
           "month": "2026-10",
-          "views": 484,
+          "views": 579,
           "likes": 7,
           "comments": 2,
           "duration_sec": 190,
@@ -652,16 +702,29 @@
           "type": "mid"
         },
         {
-          "id": "cAxiJq7JQXE",
-          "title": "Zack Martin Reacts to Dallas Running Once in Its Final 39 Plays",
-          "published": "2026-10-23",
+          "id": "xVePtknKgYs",
+          "title": "The Worst Game Zack Martin Ever Played",
+          "published": "2026-10-15",
           "month": "2026-10",
-          "views": 431,
-          "likes": 4,
+          "views": 527,
+          "likes": 9,
+          "comments": 1,
+          "duration_sec": 279,
+          "thumbnail": "https://i.ytimg.com/vi/xVePtknKgYs/maxresdefault.jpg",
+          "url": "https://youtu.be/xVePtknKgYs",
+          "type": "mid"
+        },
+        {
+          "id": "LOF5zQ29YKo",
+          "title": "Zack Martin & Tyler Eifert Completely Disagree About NFL Training Camp",
+          "published": "2026-10-19",
+          "month": "2026-10",
+          "views": 525,
+          "likes": 5,
           "comments": 0,
-          "duration_sec": 232,
-          "thumbnail": "https://i.ytimg.com/vi/cAxiJq7JQXE/maxresdefault.jpg",
-          "url": "https://youtu.be/cAxiJq7JQXE",
+          "duration_sec": 276,
+          "thumbnail": "https://i.ytimg.com/vi/LOF5zQ29YKo/maxresdefault.jpg",
+          "url": "https://youtu.be/LOF5zQ29YKo",
           "type": "mid"
         }
       ],
@@ -671,7 +734,7 @@
           "title": "Why NFL Owners Will NEVER Fix Turf Fields    #nfl #football",
           "published": "2026-10-29",
           "month": "2026-10",
-          "views": 5893,
+          "views": 5906,
           "likes": 244,
           "comments": 7,
           "duration_sec": 49,
@@ -684,7 +747,7 @@
           "title": "The Craziest Offensive Line Stat in NFL History #nfl #collegefootball #dallascowboys",
           "published": "2026-10-11",
           "month": "2026-10",
-          "views": 3495,
+          "views": 3497,
           "likes": 114,
           "comments": 1,
           "duration_sec": 49,
@@ -697,7 +760,7 @@
           "title": "The ULTIMATE Pro Bowl Story Featuring Eli Manning #nfl  #football #karaoke",
           "published": "2026-10-30",
           "month": "2026-10",
-          "views": 3387,
+          "views": 3477,
           "likes": 114,
           "comments": 0,
           "duration_sec": 42,
@@ -710,7 +773,7 @@
           "title": "Cincinnati Bengals\u2019 Tyler Eifert\u2019s INSANE Draft Night Story #nfl #football",
           "published": "2026-10-30",
           "month": "2026-10",
-          "views": 3143,
+          "views": 3151,
           "likes": 83,
           "comments": 0,
           "duration_sec": 51,
@@ -723,7 +786,7 @@
           "title": "Michigan vs. Notre Dame: The 2011 Heartbreaker ESPN Instant Classic #football #collegefootball",
           "published": "2026-10-15",
           "month": "2026-10",
-          "views": 2610,
+          "views": 2614,
           "likes": 48,
           "comments": 0,
           "duration_sec": 36,
@@ -749,8 +812,8 @@
           "title": "Tyler Eifert The CRAZIEST Brian Cushing Story You've Ever Heard #nfl #HoustonTexans #football",
           "published": "2026-10-21",
           "month": "2026-10",
-          "views": 2385,
-          "likes": 47,
+          "views": 2486,
+          "likes": 49,
           "comments": 0,
           "duration_sec": 36,
           "thumbnail": "https://i.ytimg.com/vi/5oUygzsGMt0/maxresdefault.jpg",
@@ -762,7 +825,7 @@
           "title": "Cincinnati Bengals\u2019 Tyler Eifert Was the Last to Know His Teammate Dated His Sister #nfl",
           "published": "2026-10-08",
           "month": "2026-10",
-          "views": 2342,
+          "views": 2346,
           "likes": 38,
           "comments": 0,
           "duration_sec": 67,
@@ -775,7 +838,7 @@
           "title": "Why Going Into Philly is Scarier Than Playing Dallas #nfl #philadelphiaeagles #dallascowboys",
           "published": "2026-10-21",
           "month": "2026-10",
-          "views": 2237,
+          "views": 2238,
           "likes": 30,
           "comments": 0,
           "duration_sec": 44,
@@ -788,7 +851,7 @@
           "title": "The Wild Notre Dame Recruiting Story That Changed Everything #cfb #ncaa #football",
           "published": "2026-10-16",
           "month": "2026-10",
-          "views": 1936,
+          "views": 1944,
           "likes": 24,
           "comments": 1,
           "duration_sec": 53,
@@ -801,38 +864,103 @@
   },
   "all_videos": [
     {
-      "id": "15wZw9W8Hxo",
-      "title": "Tyrone Crawford Was Stabbed 17 Times. Three Months Later, He Benched 400 Pounds.",
-      "published": "2026-11-04",
+      "id": "0Rk3zm0Lj9E",
+      "title": "The Madden legend of Kellen Moore: Boise State royalty to NFL mastermind! #nfl #collegefootball",
+      "published": "2026-11-05",
+      "month": "2026-11",
+      "views": 52,
+      "likes": 1,
+      "comments": 0,
+      "duration_sec": 45,
+      "thumbnail": "https://i.ytimg.com/vi/0Rk3zm0Lj9E/maxresdefault.jpg",
+      "url": "https://youtu.be/0Rk3zm0Lj9E",
+      "type": "short"
+    },
+    {
+      "id": "X_5yDoq_50M",
+      "title": "The Madden legend of Kellen Moore: Boise State royalty to NFL mastermind! #nfl #collegefootball",
+      "published": "2026-11-05",
       "month": "2026-11",
       "views": 0,
       "likes": 0,
       "comments": 0,
-      "duration_sec": 141,
-      "thumbnail": "https://i9.ytimg.com/vi/15wZw9W8Hxo/maxresdefault.jpg?sqp=COTGrdcG&rs=AOn4CLDqfSzVQPO2TAb9CNCMPzb1D-4BiQ",
-      "url": "https://youtu.be/15wZw9W8Hxo",
+      "duration_sec": 50,
+      "thumbnail": "https://i9.ytimg.com/vi/X_5yDoq_50M/maxresdefault.jpg?sqp=COCFuNcG&rs=AOn4CLDCXdthEB3rn69iEQpxL5NXvh36nw",
+      "url": "https://youtu.be/X_5yDoq_50M",
       "type": "short"
+    },
+    {
+      "id": "aYOpJmD1HVY",
+      "title": "Why Jason Garrett Sent 10 Cowboys to Train With Navy SEALs",
+      "published": "2026-11-05",
+      "month": "2026-11",
+      "views": 0,
+      "likes": 0,
+      "comments": 0,
+      "duration_sec": 385,
+      "thumbnail": "https://i9.ytimg.com/vi/aYOpJmD1HVY/maxresdefault.jpg?sqp=COCFuNcG&rs=AOn4CLCHrWney_w2nmNgieFdft_Ob87-xQ",
+      "url": "https://youtu.be/aYOpJmD1HVY",
+      "type": "mid"
     },
     {
       "id": "v_uoscA8oIM",
       "title": "Kirby Smart Says College Football Players Lost Their Hunger. Three NFL Veterans Respond.",
-      "published": "2026-11-04",
+      "published": "2026-11-05",
       "month": "2026-11",
-      "views": 0,
-      "likes": 0,
-      "comments": 0,
+      "views": 814,
+      "likes": 7,
+      "comments": 2,
       "duration_sec": 613,
-      "thumbnail": "https://i9.ytimg.com/vi/v_uoscA8oIM/maxresdefault.jpg?sqp=COTGrdcG&rs=AOn4CLCKEbEu1c2KuQlJYUvgaIhyidX2WQ",
+      "thumbnail": "https://i.ytimg.com/vi/v_uoscA8oIM/maxresdefault.jpg",
       "url": "https://youtu.be/v_uoscA8oIM",
       "type": "mid"
+    },
+    {
+      "id": "hV71fUpap-0",
+      "title": "Are NFL Coaches Actually Stupid on 4th & 1? #nfl #football #collegefootball",
+      "published": "2026-11-05",
+      "month": "2026-11",
+      "views": 2416,
+      "likes": 54,
+      "comments": 0,
+      "duration_sec": 104,
+      "thumbnail": "https://i.ytimg.com/vi/hV71fUpap-0/maxresdefault.jpg",
+      "url": "https://youtu.be/hV71fUpap-0",
+      "type": "short"
+    },
+    {
+      "id": "0mq74zDmbSU",
+      "title": "Notre Dame Alums Tyler Eifert & Zack Martin Hammer The Line vs Miami! #FightingIrish #cfb",
+      "published": "2026-11-04",
+      "month": "2026-11",
+      "views": 2041,
+      "likes": 24,
+      "comments": 0,
+      "duration_sec": 37,
+      "thumbnail": "https://i.ytimg.com/vi/0mq74zDmbSU/maxresdefault.jpg",
+      "url": "https://youtu.be/0mq74zDmbSU",
+      "type": "short"
+    },
+    {
+      "id": "15wZw9W8Hxo",
+      "title": "Tyrone Crawford Was Stabbed 17 Times. Three Months Later, He Benched 400 Pounds.",
+      "published": "2026-11-04",
+      "month": "2026-11",
+      "views": 86,
+      "likes": 1,
+      "comments": 0,
+      "duration_sec": 141,
+      "thumbnail": "https://i.ytimg.com/vi/15wZw9W8Hxo/maxresdefault.jpg",
+      "url": "https://youtu.be/15wZw9W8Hxo",
+      "type": "short"
     },
     {
       "id": "d4To6FXOQmo",
       "title": "College Football Players Reveal What They Actually Got Paid Before NIL #NCAA #CFB #NotreDame",
       "published": "2026-11-04",
       "month": "2026-11",
-      "views": 1367,
-      "likes": 31,
+      "views": 2352,
+      "likes": 44,
       "comments": 0,
       "duration_sec": 78,
       "thumbnail": "https://i.ytimg.com/vi/d4To6FXOQmo/maxresdefault.jpg",
@@ -844,8 +972,8 @@
       "title": "Kirby Smart vs. The New College Football Culture #NCAA #CFB",
       "published": "2026-11-03",
       "month": "2026-11",
-      "views": 1435,
-      "likes": 26,
+      "views": 1934,
+      "likes": 34,
       "comments": 0,
       "duration_sec": 57,
       "thumbnail": "https://i.ytimg.com/vi/ZZIjHB7enfY/maxresdefault.jpg",
@@ -861,7 +989,7 @@
       "likes": 0,
       "comments": 0,
       "duration_sec": 394,
-      "thumbnail": "https://i9.ytimg.com/vi/s1uQwiNyNMw/maxresdefault.jpg?sqp=COTGrdcG&rs=AOn4CLDVvPDM9wFPPIpiBJX22y32mtPyrg",
+      "thumbnail": "https://i9.ytimg.com/vi/s1uQwiNyNMw/maxresdefault.jpg?sqp=COCFuNcG&rs=AOn4CLB8auG3mVe8-INW1MJMW3aKtxxCLg",
       "url": "https://youtu.be/s1uQwiNyNMw",
       "type": "mid"
     },
@@ -870,8 +998,8 @@
       "title": "How an NFL Star Survived 17 Stab Wounds #nfl #DallasCowboys #BoiseState #Football",
       "published": "2026-11-03",
       "month": "2026-11",
-      "views": 1293,
-      "likes": 34,
+      "views": 1460,
+      "likes": 38,
       "comments": 0,
       "duration_sec": 59,
       "thumbnail": "https://i.ytimg.com/vi/OQ7pTLcaLog/maxresdefault.jpg",
@@ -883,8 +1011,8 @@
       "title": "Tyrone Crawford on 17 Stab Wounds, Choosing Boise Over LSU & the Cowboys\u2019 Secret Edge",
       "published": "2026-11-03",
       "month": "2026-11",
-      "views": 499,
-      "likes": 11,
+      "views": 859,
+      "likes": 17,
       "comments": 4,
       "duration_sec": 3264,
       "thumbnail": "https://i.ytimg.com/vi/_SNYKB1lv-I/maxresdefault.jpg",
@@ -896,8 +1024,8 @@
       "title": "Zack Martin Wants One Thing for Notre Dame\u2013Miami: Cold Weather",
       "published": "2026-11-03",
       "month": "2026-11",
-      "views": 483,
-      "likes": 6,
+      "views": 776,
+      "likes": 8,
       "comments": 0,
       "duration_sec": 225,
       "thumbnail": "https://i.ytimg.com/vi/1sNujueVw0A/maxresdefault.jpg",
@@ -909,7 +1037,7 @@
       "title": "Zack & Tyler Hoping For This Before Miami Plays Notre Dame #cfb #collegefootball #football",
       "published": "2026-11-03",
       "month": "2026-11",
-      "views": 1678,
+      "views": 1795,
       "likes": 32,
       "comments": 0,
       "duration_sec": 48,
@@ -922,7 +1050,7 @@
       "title": "Dallas Cowboys\u2019 Zack Martin Retells Legendary Pro Bowl Walk Of Shame #nfl #football",
       "published": "2026-11-02",
       "month": "2026-11",
-      "views": 1138,
+      "views": 1144,
       "likes": 20,
       "comments": 0,
       "duration_sec": 52,
@@ -935,9 +1063,9 @@
       "title": "Did Tyler Eifert Actually Kill The Pro Bowl? #nfl #football #cincinattibengals",
       "published": "2026-11-01",
       "month": "2026-11",
-      "views": 2867,
-      "likes": 74,
-      "comments": 1,
+      "views": 3326,
+      "likes": 83,
+      "comments": 2,
       "duration_sec": 62,
       "thumbnail": "https://i.ytimg.com/vi/zLExf6F2IR4/maxresdefault.jpg",
       "url": "https://youtu.be/zLExf6F2IR4",
@@ -948,7 +1076,7 @@
       "title": "Why Tom Brady Had To Step In And Stop Mogul Jesse Itzler #nfl #cfb #football",
       "published": "2026-10-31",
       "month": "2026-10",
-      "views": 1564,
+      "views": 1596,
       "likes": 27,
       "comments": 0,
       "duration_sec": 83,
@@ -961,7 +1089,7 @@
       "title": "Tyler & Zack\u2019s Wild Pool Etiquette Debate #nfl #poolparty",
       "published": "2026-10-31",
       "month": "2026-10",
-      "views": 986,
+      "views": 996,
       "likes": 20,
       "comments": 0,
       "duration_sec": 71,
@@ -974,7 +1102,7 @@
       "title": "The ULTIMATE Pro Bowl Story Featuring Eli Manning #nfl  #football #karaoke",
       "published": "2026-10-30",
       "month": "2026-10",
-      "views": 3387,
+      "views": 3477,
       "likes": 114,
       "comments": 0,
       "duration_sec": 42,
@@ -987,7 +1115,7 @@
       "title": "Zack Martin and Tyler Eifert Both Turned Down New York on NFL Draft Night",
       "published": "2026-10-30",
       "month": "2026-10",
-      "views": 364,
+      "views": 462,
       "likes": 4,
       "comments": 0,
       "duration_sec": 287,
@@ -1000,7 +1128,7 @@
       "title": "Cincinnati Bengals\u2019 Tyler Eifert\u2019s INSANE Draft Night Story #nfl #football",
       "published": "2026-10-30",
       "month": "2026-10",
-      "views": 3143,
+      "views": 3151,
       "likes": 83,
       "comments": 0,
       "duration_sec": 51,
@@ -1013,8 +1141,8 @@
       "title": "The Pro Bowl Was the Best Week of Tyler Eifert\u2019s Career\u2014Until This Happened",
       "published": "2026-10-29",
       "month": "2026-10",
-      "views": 841,
-      "likes": 3,
+      "views": 950,
+      "likes": 5,
       "comments": 0,
       "duration_sec": 527,
       "thumbnail": "https://i.ytimg.com/vi/_EoFYWeZBZ4/maxresdefault.jpg",
@@ -1026,7 +1154,7 @@
       "title": "Why NFL Owners Will NEVER Fix Turf Fields    #nfl #football",
       "published": "2026-10-29",
       "month": "2026-10",
-      "views": 5893,
+      "views": 5906,
       "likes": 244,
       "comments": 7,
       "duration_sec": 49,
@@ -1039,8 +1167,8 @@
       "title": "Getting DESTROYED By Jon Gruden In A Hot Tub Is A NFL Core Memory #Football #nflstories",
       "published": "2026-10-28",
       "month": "2026-10",
-      "views": 1571,
-      "likes": 30,
+      "views": 1573,
+      "likes": 31,
       "comments": 0,
       "duration_sec": 44,
       "thumbnail": "https://i.ytimg.com/vi/bG50KGmsnCs/maxresdefault.jpg",
@@ -1052,7 +1180,7 @@
       "title": "Tyler Eifert Had 8 Surgeries. Every Injury Started on Turf.",
       "published": "2026-10-28",
       "month": "2026-10",
-      "views": 383,
+      "views": 433,
       "likes": 1,
       "comments": 1,
       "duration_sec": 165,
@@ -1078,8 +1206,8 @@
       "title": "Zack & Tyler on the Best Pro Bowl Ever, Unequal NFL Facilities & Draft-Night Anxiety",
       "published": "2026-10-27",
       "month": "2026-10",
-      "views": 1719,
-      "likes": 22,
+      "views": 1828,
+      "likes": 24,
       "comments": 6,
       "duration_sec": 2889,
       "thumbnail": "https://i.ytimg.com/vi/25aiO1zxViM/maxresdefault.jpg",
@@ -1104,7 +1232,7 @@
       "title": "Why Tight Ends and Offensive Linemen Have Beef",
       "published": "2026-10-24",
       "month": "2026-10",
-      "views": 589,
+      "views": 651,
       "likes": 3,
       "comments": 2,
       "duration_sec": 310,
@@ -1117,7 +1245,7 @@
       "title": "Zack Martin Reacts to Dallas Running Once in Its Final 39 Plays",
       "published": "2026-10-23",
       "month": "2026-10",
-      "views": 431,
+      "views": 440,
       "likes": 4,
       "comments": 0,
       "duration_sec": 232,
@@ -1130,7 +1258,7 @@
       "title": "Ravens vs Bengals: He Was Beat Before the Snap \u201cANDY, WATCH OUT!\u201d #nfl",
       "published": "2026-10-23",
       "month": "2026-10",
-      "views": 1531,
+      "views": 1532,
       "likes": 36,
       "comments": 0,
       "duration_sec": 47,
@@ -1143,7 +1271,7 @@
       "title": "Zack & Nick Martin Went From Fighting as Kids to the NFL",
       "published": "2026-10-22",
       "month": "2026-10",
-      "views": 674,
+      "views": 811,
       "likes": 4,
       "comments": 1,
       "duration_sec": 269,
@@ -1156,7 +1284,7 @@
       "title": "Zack Martin Reveals The Real Secret Behind Jason Witten's Legendary NFL Career #DallasCowboys",
       "published": "2026-10-22",
       "month": "2026-10",
-      "views": 1695,
+      "views": 1726,
       "likes": 33,
       "comments": 0,
       "duration_sec": 39,
@@ -1169,7 +1297,7 @@
       "title": "Why Does Notre Dame Keep Coming Up Short in the Biggest Moments?",
       "published": "2026-10-21",
       "month": "2026-10",
-      "views": 484,
+      "views": 579,
       "likes": 7,
       "comments": 2,
       "duration_sec": 190,
@@ -1182,7 +1310,7 @@
       "title": "Why Going Into Philly is Scarier Than Playing Dallas #nfl #philadelphiaeagles #dallascowboys",
       "published": "2026-10-21",
       "month": "2026-10",
-      "views": 2237,
+      "views": 2238,
       "likes": 30,
       "comments": 0,
       "duration_sec": 44,
@@ -1195,8 +1323,8 @@
       "title": "Tyler Eifert The CRAZIEST Brian Cushing Story You've Ever Heard #nfl #HoustonTexans #football",
       "published": "2026-10-21",
       "month": "2026-10",
-      "views": 2385,
-      "likes": 47,
+      "views": 2486,
+      "likes": 49,
       "comments": 0,
       "duration_sec": 36,
       "thumbnail": "https://i.ytimg.com/vi/5oUygzsGMt0/maxresdefault.jpg",
@@ -1208,7 +1336,7 @@
       "title": "The Martin Brothers on Beating Each Other Up, Playing Together at Notre Dame & Life After Football",
       "published": "2026-10-20",
       "month": "2026-10",
-      "views": 2077,
+      "views": 2178,
       "likes": 35,
       "comments": 6,
       "duration_sec": 2934,
@@ -1221,8 +1349,8 @@
       "title": "Zack Martin & Tyler Eifert Completely Disagree About NFL Training Camp",
       "published": "2026-10-19",
       "month": "2026-10",
-      "views": 426,
-      "likes": 4,
+      "views": 525,
+      "likes": 5,
       "comments": 0,
       "duration_sec": 276,
       "thumbnail": "https://i.ytimg.com/vi/LOF5zQ29YKo/maxresdefault.jpg",
@@ -1234,8 +1362,8 @@
       "title": "Zack Martin Watched C.J. Carr Behind the Scenes. Here\u2019s What Stood Out",
       "published": "2026-10-17",
       "month": "2026-10",
-      "views": 7238,
-      "likes": 47,
+      "views": 7379,
+      "likes": 48,
       "comments": 4,
       "duration_sec": 248,
       "thumbnail": "https://i.ytimg.com/vi/agY3fbMMBLU/maxresdefault.jpg",
@@ -1247,7 +1375,7 @@
       "title": "The NFL Training Camp Debate: Grind It Out or Stay Fresh? #football #collegefootball #notredame",
       "published": "2026-10-17",
       "month": "2026-10",
-      "views": 1167,
+      "views": 1169,
       "likes": 15,
       "comments": 0,
       "duration_sec": 58,
@@ -1260,7 +1388,7 @@
       "title": "The Wild Notre Dame Recruiting Story That Changed Everything #cfb #ncaa #football",
       "published": "2026-10-16",
       "month": "2026-10",
-      "views": 1936,
+      "views": 1944,
       "likes": 24,
       "comments": 1,
       "duration_sec": 53,
@@ -1273,8 +1401,8 @@
       "title": "The Worst Game Zack Martin Ever Played",
       "published": "2026-10-15",
       "month": "2026-10",
-      "views": 488,
-      "likes": 8,
+      "views": 527,
+      "likes": 9,
       "comments": 1,
       "duration_sec": 279,
       "thumbnail": "https://i.ytimg.com/vi/xVePtknKgYs/maxresdefault.jpg",
@@ -1286,7 +1414,7 @@
       "title": "Michigan vs. Notre Dame: The 2011 Heartbreaker ESPN Instant Classic #football #collegefootball",
       "published": "2026-10-15",
       "month": "2026-10",
-      "views": 2610,
+      "views": 2614,
       "likes": 48,
       "comments": 0,
       "duration_sec": 36,
@@ -1299,7 +1427,7 @@
       "title": "The Worst Football Game Dallas Cowboys\u2019 Zack Martin Ever Played #nfl #cfb #notredame",
       "published": "2026-10-15",
       "month": "2026-10",
-      "views": 1157,
+      "views": 1160,
       "likes": 42,
       "comments": 1,
       "duration_sec": 75,
@@ -1325,8 +1453,8 @@
       "title": "Zack Martin & Tyler Eifert on Notre Dame Rivalries and NFL Training Camps",
       "published": "2026-10-14",
       "month": "2026-10",
-      "views": 2785,
-      "likes": 68,
+      "views": 2923,
+      "likes": 71,
       "comments": 7,
       "duration_sec": 4281,
       "thumbnail": "https://i.ytimg.com/vi/aVsKEwZRytM/maxresdefault.jpg",
@@ -1338,7 +1466,7 @@
       "title": "The Craziest Offensive Line Stat in NFL History #nfl #collegefootball #dallascowboys",
       "published": "2026-10-11",
       "month": "2026-10",
-      "views": 3495,
+      "views": 3497,
       "likes": 114,
       "comments": 1,
       "duration_sec": 49,
@@ -1351,8 +1479,8 @@
       "title": "Zack Martin Kicked Down Tyler Eifert\u2019s Door at Notre Dame",
       "published": "2026-10-11",
       "month": "2026-10",
-      "views": 2719,
-      "likes": 14,
+      "views": 2815,
+      "likes": 15,
       "comments": 2,
       "duration_sec": 230,
       "thumbnail": "https://i.ytimg.com/vi/DptsIiJcaWs/maxresdefault.jpg",
@@ -1377,34 +1505,21 @@
       "title": "What Happens to an NFL Player\u2019s Body After Retirement?",
       "published": "2026-10-10",
       "month": "2026-10",
-      "views": 11311,
-      "likes": 52,
-      "comments": 0,
+      "views": 30482,
+      "likes": 104,
+      "comments": 3,
       "duration_sec": 315,
       "thumbnail": "https://i.ytimg.com/vi/SN7zjZcHgrQ/maxresdefault.jpg",
       "url": "https://youtu.be/SN7zjZcHgrQ",
       "type": "mid"
     },
     {
-      "id": "46nQb_xGcQg",
-      "title": "He did NOT just kick the door down over the TV! \ud83d\ude33 #roommates #prank #fail #notredame",
-      "published": "2026-10-09",
-      "month": "2026-10",
-      "views": 1222,
-      "likes": 32,
-      "comments": 0,
-      "duration_sec": 59,
-      "thumbnail": "https://i.ytimg.com/vi/46nQb_xGcQg/maxresdefault.jpg",
-      "url": "https://youtu.be/46nQb_xGcQg",
-      "type": "short"
-    },
-    {
       "id": "vt-XiWC7wyU",
       "title": "Tyler Eifert Got Ragdolled in His Second NFL Game",
       "published": "2026-10-09",
       "month": "2026-10",
-      "views": 17130,
-      "likes": 58,
+      "views": 21462,
+      "likes": 69,
       "comments": 1,
       "duration_sec": 377,
       "thumbnail": "https://i.ytimg.com/vi/vt-XiWC7wyU/maxresdefault.jpg",
@@ -1416,7 +1531,7 @@
       "title": "The Brutal Reality of Being a Cowboys Fan #nfl #cowboys #buccaneers #tnf #dallascowboys",
       "published": "2026-10-09",
       "month": "2026-10",
-      "views": 1441,
+      "views": 1442,
       "likes": 50,
       "comments": 3,
       "duration_sec": 66,
@@ -1429,7 +1544,7 @@
       "title": "HOW Did Nobody Tell Tyler Eifert?! #nfl #bengals #steelers #pregame",
       "published": "2026-10-08",
       "month": "2026-10",
-      "views": 1446,
+      "views": 1449,
       "likes": 43,
       "comments": 0,
       "duration_sec": 37,
@@ -1442,7 +1557,7 @@
       "title": "When LaMarr Woodley Welcomed Tyler Eifert to the NFL #nfl #bengals #steelers #cowboys",
       "published": "2026-10-08",
       "month": "2026-10",
-      "views": 1468,
+      "views": 1471,
       "likes": 49,
       "comments": 1,
       "duration_sec": 31,
@@ -1455,7 +1570,7 @@
       "title": "Cincinnati Bengals\u2019 Tyler Eifert Was the Last to Know His Teammate Dated His Sister #nfl",
       "published": "2026-10-08",
       "month": "2026-10",
-      "views": 2342,
+      "views": 2346,
       "likes": 38,
       "comments": 0,
       "duration_sec": 67,
@@ -1468,8 +1583,8 @@
       "title": "Everyone Knew Zack Martin Was Dating Tyler Eifert's Sister\u2026 Except Tyler",
       "published": "2026-10-08",
       "month": "2026-10",
-      "views": 5534,
-      "likes": 62,
+      "views": 6177,
+      "likes": 67,
       "comments": 10,
       "duration_sec": 4019,
       "thumbnail": "https://i.ytimg.com/vi/5cmEznkoK9k/maxresdefault.jpg",
@@ -1507,8 +1622,8 @@
       "title": "Welcome to Football Related!",
       "published": "2026-10-04",
       "month": "2026-10",
-      "views": 1267,
-      "likes": 31,
+      "views": 1383,
+      "likes": 32,
       "comments": 8,
       "duration_sec": 55,
       "thumbnail": "https://i.ytimg.com/vi/qHAbqLNoXEE/maxresdefault.jpg",
@@ -1516,20 +1631,8 @@
       "type": "short"
     }
   ],
-  "current_subs": 538,
+  "current_subs": 625,
   "daily_yt": {
-    "2026-08-05": {
-      "total_views": 0,
-      "watch_hrs": 0.0,
-      "subs_gained": 0,
-      "subs_lost": 0
-    },
-    "2026-08-06": {
-      "total_views": 0,
-      "watch_hrs": 0.0,
-      "subs_gained": 0,
-      "subs_lost": 0
-    },
     "2026-08-07": {
       "total_views": 0,
       "watch_hrs": 0.0,
@@ -1880,7 +1983,7 @@
       "subs_lost": 0
     },
     "2026-10-04": {
-      "total_views": 805,
+      "total_views": 804,
       "watch_hrs": 2.5,
       "subs_gained": 46,
       "subs_lost": 1,
@@ -1888,7 +1991,7 @@
       "vod_views": 254
     },
     "2026-10-05": {
-      "total_views": 1972,
+      "total_views": 1971,
       "watch_hrs": 7.2,
       "subs_gained": 46,
       "subs_lost": 0,
@@ -1976,8 +2079,8 @@
       "vod_views": 990
     },
     "2026-10-16": {
-      "total_views": 2496,
-      "watch_hrs": 52.4,
+      "total_views": 2480,
+      "watch_hrs": 51.4,
       "subs_gained": 12,
       "subs_lost": 2,
       "shorts_views": 2043,
@@ -2000,8 +2103,8 @@
       "vod_views": 355
     },
     "2026-10-19": {
-      "total_views": 784,
-      "watch_hrs": 17.8,
+      "total_views": 779,
+      "watch_hrs": 16.7,
       "subs_gained": 5,
       "subs_lost": 0,
       "shorts_views": 324,
@@ -2040,7 +2143,7 @@
       "vod_views": 817
     },
     "2026-10-24": {
-      "total_views": 1065,
+      "total_views": 1057,
       "watch_hrs": 14.4,
       "subs_gained": 2,
       "subs_lost": 0,
@@ -2088,28 +2191,44 @@
       "vod_views": 3591
     },
     "2026-10-30": {
-      "total_views": 11096,
-      "watch_hrs": 188.3,
+      "total_views": 11041,
+      "watch_hrs": 184.7,
       "subs_gained": 38,
       "subs_lost": 1,
       "shorts_views": 6036,
       "vod_views": 5060
     },
     "2026-10-31": {
-      "total_views": 9021,
-      "watch_hrs": 137.6,
+      "total_views": 8980,
+      "watch_hrs": 136.5,
       "subs_gained": 18,
       "subs_lost": 1,
       "shorts_views": 4109,
       "vod_views": 4912
     },
     "2026-11-01": {
-      "total_views": 8970,
-      "watch_hrs": 131.8,
+      "total_views": 8924,
+      "watch_hrs": 131.3,
       "subs_gained": 13,
       "subs_lost": 2,
       "shorts_views": 4326,
       "vod_views": 4644
+    },
+    "2026-11-02": {
+      "total_views": 9035,
+      "watch_hrs": 158.6,
+      "subs_gained": 17,
+      "subs_lost": 0,
+      "shorts_views": 2521,
+      "vod_views": 6514
+    },
+    "2026-11-03": {
+      "total_views": 17236,
+      "watch_hrs": 338.7,
+      "subs_gained": 48,
+      "subs_lost": 4,
+      "shorts_views": 5337,
+      "vod_views": 11874
     }
   },
   "yt_kpis": {
@@ -2146,76 +2265,76 @@
           "shares": 102
         },
         "EPISODES": {
-          "views": 11122,
-          "engaged_views": 4063,
-          "watch_hours": 836.1,
-          "avg_view_sec": 741,
+          "views": 11114,
+          "engaged_views": 4056,
+          "watch_hours": 832.5,
+          "avg_view_sec": 739,
           "avg_pct_viewed": 19.44,
           "likes": 172,
           "comments": 28,
           "shares": 72
         },
         "CLIPS": {
-          "views": 20634,
-          "engaged_views": 10536,
+          "views": 20642,
+          "engaged_views": 10543,
           "likes": 142,
           "comments": 18,
           "shares": 19,
-          "watch_hours": 324.8,
-          "avg_view_sec": 111,
-          "avg_pct_viewed": 23.56
+          "watch_hours": 328.4,
+          "avg_view_sec": 112,
+          "avg_pct_viewed": 23.55
         }
       },
       "2026-11": {
         "VIDS": {
-          "views": 4644,
-          "engaged_views": 2577,
-          "watch_hours": 101.2,
-          "avg_view_sec": 139,
-          "avg_pct_viewed": 27.889999999999997,
-          "likes": 22,
-          "comments": 0,
-          "shares": 4
+          "views": 23032,
+          "engaged_views": 12627,
+          "watch_hours": 542.4,
+          "avg_view_sec": 152,
+          "avg_pct_viewed": 29.770000000000003,
+          "likes": 111,
+          "comments": 7,
+          "shares": 9
         },
         "SHORTS": {
-          "views": 4326,
-          "engaged_views": 2816,
-          "watch_hours": 30.6,
-          "avg_view_sec": 38,
-          "avg_pct_viewed": 68.35,
-          "likes": 112,
-          "comments": 0,
-          "shares": 0
+          "views": 12184,
+          "engaged_views": 7664,
+          "watch_hours": 86.6,
+          "avg_view_sec": 39,
+          "avg_pct_viewed": 68.71,
+          "likes": 269,
+          "comments": 1,
+          "shares": 1
         },
         "ALL": {
-          "views": 8970,
-          "engaged_views": 5393,
-          "watch_hours": 131.8,
-          "avg_view_sec": 88,
-          "avg_pct_viewed": 49.02,
-          "likes": 134,
-          "comments": 0,
-          "shares": 4
+          "views": 35216,
+          "engaged_views": 20291,
+          "watch_hours": 629.0,
+          "avg_view_sec": 112,
+          "avg_pct_viewed": 44.48,
+          "likes": 380,
+          "comments": 8,
+          "shares": 10
         },
         "EPISODES": {
-          "views": 214,
-          "engaged_views": 121,
-          "watch_hours": 21.4,
-          "avg_view_sec": 635,
-          "avg_pct_viewed": 17.86,
-          "likes": 4,
-          "comments": 0,
-          "shares": 4
+          "views": 1218,
+          "engaged_views": 702,
+          "watch_hours": 133.8,
+          "avg_view_sec": 686,
+          "avg_pct_viewed": 19.57,
+          "likes": 21,
+          "comments": 5,
+          "shares": 7
         },
         "CLIPS": {
-          "views": 4430,
-          "engaged_views": 2456,
-          "likes": 18,
-          "comments": 0,
-          "shares": 0,
-          "watch_hours": 79.8,
-          "avg_view_sec": 117,
-          "avg_pct_viewed": 28.38
+          "views": 21814,
+          "engaged_views": 11925,
+          "likes": 90,
+          "comments": 2,
+          "shares": 2,
+          "watch_hours": 408.6,
+          "avg_view_sec": 123,
+          "avg_pct_viewed": 30.37
         }
       }
     },
@@ -2251,40 +2370,40 @@
       },
       "2026-11": {
         "ALL": {
-          "impressions": 21056,
-          "ctr": 0.0597,
-          "days": 1
+          "impressions": 105726,
+          "ctr": 0.0649,
+          "days": 3
         },
         "EPISODES": {
-          "impressions": 1490,
-          "ctr": 0.0362,
-          "days": 1
+          "impressions": 7085,
+          "ctr": 0.0514,
+          "days": 3
         },
         "SHORTS": {
-          "impressions": 2258,
-          "ctr": 0.0593,
-          "days": 1
+          "impressions": 7801,
+          "ctr": 0.0595,
+          "days": 3
         },
         "VIDS": {
-          "impressions": 17308,
-          "ctr": 0.0617,
-          "days": 1
+          "impressions": 90840,
+          "ctr": 0.0664,
+          "days": 3
         }
       }
     },
-    "reach_through": "2026-11-01",
+    "reach_through": "2026-11-03",
     "notes": [
-      "0 new day(s) cached \u00b7 43 days total"
+      "0 new day(s) cached \u00b7 45 days total"
     ],
     "retention": {
       "2026-10": {
         "CLIPS": {
-          "r30": 0.6548,
-          "r60": 0.4671
+          "r30": 0.6469,
+          "r60": 0.4528
         },
         "EPISODES": {
-          "r30": 0.933,
-          "r60": 0.6521
+          "r30": 0.9328,
+          "r60": 0.6511
         }
       }
     }

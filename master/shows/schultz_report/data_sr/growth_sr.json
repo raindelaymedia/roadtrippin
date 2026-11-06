@@ -1,10 +1,10 @@
 {
  "start": "2026-08-18",
  "window_days": 7,
- "through": "2026-11-03",
- "pulled": "2026-11-04T16:59+00:00",
+ "through": "2026-11-05",
+ "pulled": "2026-11-06T16:43+00:00",
  "instagram": {
-  "followers_now": 2366,
+  "followers_now": 2525,
   "windows": [
    {
     "start": "2026-08-18",
@@ -118,23 +118,32 @@
    },
    {
     "start": "2026-11-02",
-    "end": "2026-11-03",
+    "end": "2026-11-05",
     "partial": true,
-    "views": 238948,
-    "interactions": 12068,
-    "follows": 72,
-    "unfollows": 14,
-    "net_followers": 58
+    "views": 471095,
+    "interactions": 25343,
+    "follows": 123,
+    "unfollows": 41,
+    "net_followers": 82
    }
   ],
   "posts": [
+   {
+    "url": "https://www.instagram.com/reel/DfVS7kUhUR3/",
+    "created": "2026-11-04",
+    "text": "One day after Jordan previewed it on the Schultz Report, the Ravens traded for Jacoby Brissett \ud83d\udc40",
+    "type": "VIDEO",
+    "views": 1358,
+    "likes": 18,
+    "comments": 1
+   },
    {
     "url": "https://www.instagram.com/reel/De2sEvou9QS/",
     "created": "2026-10-23",
     "text": "The Jalen Hurts health scare explained. Wishing him a speedy recovery \ud83d\ude4f",
     "type": "VIDEO",
-    "views": 227,
-    "likes": 11,
+    "views": 230,
+    "likes": 12,
     "comments": 0
    },
    {
@@ -143,24 +152,6 @@
     "text": "Call it clich\u00e9, but Mike Vrabel really is the ultimate player\u2019s coach in New England \ud83d\udcaa",
     "type": "VIDEO",
     "views": 81,
-    "likes": 5,
-    "comments": 0
-   },
-   {
-    "url": "https://www.instagram.com/reel/Deh4jfwB4OA/",
-    "created": "2026-10-15",
-    "text": "After spending time together with the Vikings, Daniel Jones has great things to say about Jags OC Grant Udinski and his incredible football ",
-    "type": "VIDEO",
-    "views": 262,
-    "likes": 5,
-    "comments": 0
-   },
-   {
-    "url": "https://www.instagram.com/reel/DefYBLQNbin/",
-    "created": "2026-10-14",
-    "text": "Adrian Peterson was just 9 YARDS short of the the single season rushing record after his 2012 MVP season \ud83e\udd2f",
-    "type": "VIDEO",
-    "views": 206,
     "likes": 5,
     "comments": 0
    }
