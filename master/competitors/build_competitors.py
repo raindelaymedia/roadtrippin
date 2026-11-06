@@ -99,6 +99,74 @@ def load():
     return shows, daily, videos, vdaily
 
 
+def load_history(daily):
+    """Channel totals per channel over the long run: the PodMonitor backfill (channel_history.csv, sampled every
+    ~3–6 days from Dec 2025) plus our own daily snapshots, which win on any shared date.
+    Returns channel_id -> [(date, subs, views_adj)]. views_adj ignores drops in the public total (deleted videos /
+    YouTube recounts, e.g. Gil's Arena −82M on Sep 10 2026), so gains across a drop are never negative."""
+    pts = defaultdict(dict)
+    for r in read_csv(os.path.join(DATA, "channel_history.csv")):
+        pts[r["channel_id"]][r["date"]] = (num(r["subs"]), num(r["views"]))
+    for d, chans in daily.items():
+        for cid, r in chans.items():
+            if num(r.get("views")) is not None:
+                pts[cid][d] = (num(r.get("subs")), num(r["views"]))
+    hist = {}
+    for cid, by_date in pts.items():
+        out, adj, prev = [], 0, None
+        for d, (s, v) in sorted(by_date.items()):
+            adj += max(v - prev, 0) if prev is not None else 0
+            prev = v
+            out.append((datetime.strptime(d, "%Y-%m-%d").date(), s, adj))
+        hist[cid] = out
+    return hist
+
+
+def at(series, day, i):
+    """Field i of `series` on `day`, straight-line between the nearest points; None outside the series."""
+    if not series or day < series[0][0] or day > series[-1][0]:
+        return None
+    for p, q in zip(series, series[1:] + series[-1:]):
+        if p[0] <= day <= q[0]:
+            if p[i] is None or q[i] is None:
+                return None
+            span = (q[0] - p[0]).days
+            return p[i] + (q[i] - p[i]) * ((day - p[0]).days / span if span else 0)
+    return None
+
+
+def longterm(hist, cid, today, months):
+    """Long-run growth for one channel: views gained over 30 / 90 / 180 days, the 90 days before that,
+    subscribers gained over 90 days, and views gained per calendar month."""
+    s = hist.get(cid, [])
+    if s and timedelta(0) < today - s[-1][0] <= timedelta(days=7):
+        today = s[-1][0]         # just added: backfill ends a few days before our own snapshots start
+    v = lambda d: at(s, d, 2)
+    sub = lambda d: at(s, d, 1)
+    def diff(f, a, b):
+        x, y = f(today - timedelta(days=a)), f(today - timedelta(days=b))
+        return round(x - y) if x is not None and y is not None else None
+    lt = {"since": s[0][0].isoformat() if s else None,
+          "v30": diff(v, 0, 30), "v90": diff(v, 0, 90), "v180": diff(v, 0, 180), "v90_prev": diff(v, 90, 180),
+          "s90": diff(sub, 0, 90), "monthly": []}
+    lt["mom"] = lt["v90"] / lt["v90_prev"] - 1 if lt["v90"] is not None and lt["v90_prev"] else None
+    for m0, m1 in months:
+        a, b = v(m0), v(m1)
+        lt["monthly"].append(round(b - a) if a is not None and b is not None else None)
+    return lt
+
+
+def month_bounds(first, today):
+    """(first day, first day of next month) for every whole month from `first` through last month."""
+    out, m = [], date(first.year, first.month, 1)
+    while True:
+        nxt = date(m.year + (m.month == 12), m.month % 12 + 1, 1)
+        if nxt > today:
+            return out
+        out.append((m, nxt))
+        m = nxt
+
+
 def gained(daily, dates, cid, days, field="views"):
     """Change in a channel total over `days`, or None until there's that much history."""
     d1 = dates[-1]
@@ -419,7 +487,45 @@ def summarize(shows, daily, videos, vdaily):
     return rows, dates, trend
 
 
-def group_html(group, rows, dates, trend, gi):
+def longterm_html(g, gi, months):
+    """Long-term growth card: 30 / 90 / 180-day gains and momentum, plus a views-per-month chart."""
+    lt = sorted(g, key=lambda r: (r["lt"]["v90"] is None, -(r["lt"]["v90"] or 0), r["show"]))
+    def pct(x):
+        if x is None:
+            return '<span class="pending">—</span>'
+        if x > 9:                # from a near-dormant base the % is meaningless
+            return '<span class="up">&gt;10×</span>'
+        return f'<span class="{"up" if x >= 0 else "down"}">{x * 100:+.0f}%</span>'
+    body = "".join(
+        f'<tr class="{"ours" if r["ours"] else ""}"><td class="n rk">{k if r["lt"]["v90"] is not None else ""}</td>'
+        f'<td class="sh">{"★ " if r["ours"] else ""}{r["show"]}<div class="sub">'
+        f'{"history from " + md(r["lt"]["since"]) if r["lt"]["since"] else "no history yet"}</div></td>'
+        f'<td class="n">{fmt(r["subs"])}</td><td class="n">{fmt(r["lt"]["s90"])}</td>'
+        f'<td class="n">{fmt(r["lt"]["v30"])}</td><td class="n"><b>{fmt(r["lt"]["v90"])}</b></td>'
+        f'<td class="n">{pct(r["lt"]["mom"])}</td><td class="n">{fmt(r["lt"]["v180"])}</td></tr>'
+        for k, r in enumerate(lt, 1))
+    lines = [r for r in lt if any(x is not None for x in r["lt"]["monthly"])]
+    pick = lines[:5] + [r for r in lines[5:] if r["ours"]]
+    sets = [{"label": ("★ " if r["ours"] else "") + r["show"], "data": r["lt"]["monthly"], "ours": r["ours"]} for r in pick]
+    labels = [m0.strftime("%b '%y") if m0.month in (1, 12) or i == 0 else m0.strftime("%b") for i, (m0, _) in enumerate(months)]
+    chart = (f'<div style="position:relative;height:280px"><canvas id="lt{gi}"></canvas></div>'
+             f'<script type="application/json" id="ltdata{gi}">{json.dumps({"labels": labels, "sets": sets})}</script>'
+             if sets and months else '<div class="sub">Monthly history appears once a show has a full month of data.</div>')
+    return f"""
+    <div class="card">
+      <div class="card-h"><h3>Long-term growth</h3><span class="r">channel views gained · sorted by the last 90 days · momentum = last 90 days vs the 90 before</span></div>
+      <div class="grid2">
+        <div class="scroll"><table class="lb">
+          <thead><tr><th>#</th><th>Show</th><th class="n">Subscribers</th><th class="n">Subs gained<br><span class="sub">90d</span></th>
+            <th class="n">Views gained<br><span class="sub">30d</span></th><th class="n">Views gained<br><span class="sub">90d</span></th>
+            <th class="n">Momentum</th><th class="n">Views gained<br><span class="sub">180d</span></th></tr></thead>
+          <tbody>{body}</tbody></table></div>
+        <div><h4>Views gained per month</h4><div class="sub" style="margin-bottom:8px">top 5 by 90-day gains + ours</div>{chart}</div>
+      </div>
+    </div>"""
+
+
+def group_html(group, rows, dates, trend, gi, months):
     g = [r for r in rows if r["group"] == group]
     have28 = any(r["gain28"] is not None for r in g)
     have7 = any(r["gain7"] is not None for r in g)
@@ -589,6 +695,7 @@ def group_html(group, rows, dates, trend, gi):
           <th class="n">Episode views<br><span class="sub">day 7 · median</span></th><th class="n">Episodes / week</th></tr></thead>
         <tbody>{body}</tbody></table></div></div>
     </div>
+    {longterm_html(g, gi, months)}
     <div class="grid2">
       <div class="card">
         <div class="card-h"><h3>Episode views by age</h3><span class="r">median views of full episodes 1, 3 and 7 days after upload</span></div>
@@ -623,6 +730,11 @@ def build():
     if not daily:
         raise SystemExit("No snapshots yet — run collect_competitors.py first.")
     rows, dates, trend = summarize(shows, daily, videos, vdaily)
+    hist = load_history(daily)
+    last = datetime.strptime(dates[-1], "%Y-%m-%d").date()
+    months = month_bounds(min((s[0][0] for s in hist.values() if s), default=last), last)
+    for r in rows:
+        r["lt"] = longterm(hist, r["channel_id"], last, months)
     # Missed-day guard: every day from the first snapshot to today should have one
     today_et = datetime.now(ET).date()
     first = datetime.strptime(dates[0], "%Y-%m-%d").date()
@@ -640,7 +752,7 @@ def build():
                  "in the daily workflow.</div>")
     groups = list(dict.fromkeys(s["group"] for s in shows))
     tabs = "".join(f'<button class="tab{" on" if i == 0 else ""}" data-g="{i}">{g}</button>' for i, g in enumerate(groups))
-    sections = "".join(group_html(g, rows, dates, trend, i) for i, g in enumerate(groups))
+    sections = "".join(group_html(g, rows, dates, trend, i, months) for i, g in enumerate(groups))
     digest = digest_html(rows, daily, dates, groups)
     days = len(dates)
     legend = "".join(f'<span><i style="background:{c}"></i>{l}</span>' for _, l, c in FORMATS)
@@ -723,7 +835,10 @@ def build():
   <div class="legend" id="legend">{legend}</div>
   {sections}
   <div class="foot">
-    Internal use only. Views gained = change in the channel's public total view count. Formats by length: Short ≤ 3:00 · Clip 3:01–20:00 · Episode &gt; 20:00.
+    Internal use only. Views gained = change in the channel's public total view count. Formats: Short = in the channel's Shorts
+    playlist · Episode = in the show's full-episode playlist · Clip = everything else (shows without an episode playlist go by length).
+    Long-term growth before our own daily snapshots comes from PodMonitor (sampled every ~3–6 days, straight-line between points);
+    drops in a channel's total (deleted videos, recounts) count as zero.
     Subscriber counts are rounded by YouTube (3 significant figures). Channel totals cover everything on the channel, so shows on shared
     network channels aren't tracked. Updated daily by the RDM workflow.
   </div>
@@ -760,6 +875,20 @@ function draw(i) {{
         tooltip:{{ callbacks:{{ label:c => ' '+c.dataset.label+': '+(c.parsed.y==null?'—':Math.round(c.parsed.y).toLocaleString()) }} }} }},
       scales:{{ x:{{ grid:{{ display:false }} }}, y:{{ beginAtZero:true, grid:{{ color:'#EEF1F5' }}, ticks:{{ callback:K }} }} }} }}
   }});
+  const lt = document.getElementById('lt'+i);
+  if (lt) {{
+    const L = JSON.parse(document.getElementById('ltdata'+i).textContent);
+    new Chart(lt, {{
+      type:'line',
+      data:{{ labels:L.labels, datasets:L.sets.map((s,j) => ({{ label:s.label, data:s.data, borderWidth:s.ours?3:2,
+        borderColor:s.ours?'#C9A84C':TREND_C[j%TREND_C.length], backgroundColor:s.ours?'#C9A84C':TREND_C[j%TREND_C.length],
+        pointRadius:3, pointHoverRadius:5, tension:.25 }})) }},
+      options:{{ responsive:true, maintainAspectRatio:false, interaction:{{ mode:'index', intersect:false }},
+        plugins:{{ legend:{{ position:'bottom', labels:{{ boxWidth:10, boxHeight:10, font:{{ size:11 }} }} }},
+          tooltip:{{ callbacks:{{ label:c => ' '+c.dataset.label+': '+(c.parsed.y==null?'—':Math.round(c.parsed.y).toLocaleString()) }} }} }},
+        scales:{{ x:{{ grid:{{ display:false }} }}, y:{{ beginAtZero:true, grid:{{ color:'#EEF1F5' }}, ticks:{{ callback:K }} }} }} }}
+    }});
+  }}
 }}
 document.querySelectorAll('.tab').forEach(b => b.onclick = () => {{
   document.querySelectorAll('.tab').forEach(x => x.classList.toggle('on', x === b));
